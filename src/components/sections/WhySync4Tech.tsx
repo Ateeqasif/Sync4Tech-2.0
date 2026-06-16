@@ -1,79 +1,94 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 const rows = [
-  { traditional: 'Builds Tools', sync4tech: 'Transforms Operations', desc: 'We don\'t just deliver software — we redesign how your business works.' },
-  { traditional: 'Project Based', sync4tech: 'Business Outcomes', desc: 'We measure success by your results, not by project completion dates.' },
-  { traditional: 'Feature Focused', sync4tech: 'Continuous Improvement', desc: 'Transformation compounds — we stay engaged as your business evolves.' },
-  { traditional: 'Leaves After Delivery', sync4tech: 'Strategic Partnership', desc: 'We are invested in your long-term growth and operational performance.' },
-  { traditional: 'No Long Term Value', sync4tech: 'Long Term Value', desc: 'Every engagement builds on the last, creating compounding returns.' },
+  { criterion: 'Delivery Speed', us: 'Weeks, not months', them: 'Multi-quarter engagements' },
+  { criterion: 'Technology', us: 'Best-of-breed stack, vendor-agnostic', them: 'Tied to proprietary tools' },
+  { criterion: 'Team Structure', us: 'Embedded specialists', them: 'Rotating junior consultants' },
+  { criterion: 'Outcomes Focus', us: 'ROI-guaranteed milestones', them: 'Effort-based billing' },
+  { criterion: 'AI Capability', us: 'Native AI-first delivery', them: 'AI bolted on to old methods' },
+  { criterion: 'Transparency', us: 'Weekly demos & live dashboards', them: 'Monthly status reports' },
 ]
+
+function CheckIcon({ delay }: { delay: number }) {
+  const ref = useRef<SVGSVGElement>(null)
+  const inView = useInView(ref, { once: true })
+  return (
+    <svg ref={ref} width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path
+        d="M3 8l4 4 6-6"
+        stroke="#36c5f0"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeDasharray="20"
+        strokeDashoffset={inView ? 0 : 20}
+        style={{ transition: `stroke-dashoffset 0.5s ease ${delay}s` }}
+      />
+    </svg>
+  )
+}
+
+function CrossIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M5 5l6 6M11 5l-6 6" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
 
 export default function WhySync4Tech() {
   return (
-    <section className="py-section bg-white">
+    <section className="py-section bg-white" id="why">
       <div className="section-container">
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
-          <motion.div
-            className="lg:sticky top-28"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase mb-5 px-3 py-1.5 rounded-full" style={{ color: '#007cf4', background: 'rgba(0,124,244,0.08)' }}>Why Sync4Tech</span>
-            <h2 className="font-inter-tight font-black text-gray-900 leading-tight tracking-tight mb-6" style={{ fontSize: 'clamp(34px, 4vw, 52px)' }}>
-              Not Another
-              <br /><span className="gradient-text">Technology</span>
-              <br />Vendor.
-            </h2>
-            <p className="text-gray-500 text-lg leading-relaxed mb-8">
-              Most agencies build and leave. We design, build, operate and continuously improve — because real transformation is ongoing, not a one-time delivery.
-            </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 font-bold text-sm text-white px-6 py-3 rounded-xl transition-all duration-300 btn-glow"
-              style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}
+        <div className="grid md:grid-cols-2 gap-16 items-start">
+          {/* Sticky left */}
+          <div className="md:sticky md:top-32">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              Talk to Our Team
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </a>
-          </motion.div>
+              <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Why Us</span>
+              <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight mb-6" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+                The Sync4Tech
+                <br />
+                <span className="gradient-text">Difference.</span>
+              </h2>
+              <p className="text-gray-500 leading-relaxed">
+                Traditional consultancies sell time. We sell outcomes. Every engagement is structured around measurable business impact, with clear milestones and guaranteed results.
+              </p>
+            </motion.div>
+          </div>
 
-          <div>
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              <div className="rounded-xl px-4 py-3 text-center" style={{ background: '#f8f9fc', border: '1px solid #eaecf0' }}>
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Traditional Agency</span>
-              </div>
-              <div className="rounded-xl px-4 py-3 text-center" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
-                <span className="text-xs font-bold text-white uppercase tracking-wider">Sync4Tech</span>
-              </div>
+          {/* Comparison table */}
+          <div className="flex flex-col divide-y divide-black/8">
+            <div className="grid grid-cols-3 pb-3">
+              <span className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Criterion</span>
+              <span className="text-xs font-semibold text-[#007cf4] uppercase tracking-widest text-center">Sync4Tech</span>
+              <span className="text-xs font-semibold text-gray-400 uppercase tracking-widest text-center">Others</span>
             </div>
             {rows.map((row, i) => (
               <motion.div
                 key={i}
-                className="border-b border-gray-100 py-5 last:border-0"
+                className="grid grid-cols-3 py-4 gap-2 group hover:bg-[#007cf4]/5 -mx-4 px-4 rounded-lg transition-colors duration-200"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
+                transition={{ duration: 0.5, delay: i * 0.07 }}
               >
-                <div className="grid grid-cols-2 gap-3 mb-1.5">
-                  <div className="flex items-center gap-2">
-                    <span className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#fee2e2' }}>
-                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M6 2L2 6M2 2l4 4" stroke="#ef4444" strokeWidth="1.2" strokeLinecap="round"/></svg>
-                    </span>
-                    <span className="text-gray-400 text-sm">{row.traditional}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(0,124,244,0.12)' }}>
-                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="#007cf4" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </span>
-                    <span className="font-semibold text-gray-800 text-sm">{row.sync4tech}</span>
-                  </div>
+                <span className="text-gray-700 text-sm font-medium">{row.criterion}</span>
+                <div className="flex items-center gap-2 justify-center">
+                  <CheckIcon delay={0.3 + i * 0.08} />
+                  <span className="text-gray-700 text-xs text-center leading-tight">{row.us}</span>
                 </div>
-                <p className="text-gray-400 text-xs leading-relaxed pl-6">{row.desc}</p>
+                <div className="flex items-center gap-2 justify-center">
+                  <CrossIcon />
+                  <span className="text-gray-400 text-xs text-center leading-tight">{row.them}</span>
+                </div>
               </motion.div>
             ))}
           </div>
