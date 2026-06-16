@@ -1,90 +1,110 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
-const studies = [
-  {
-    industry: 'Financial Services',
-    tag: 'Automation + AI',
-    challenge: 'Manual reconciliation processes consumed 60+ hours per week, causing delays and compliance risks.',
-    approach: 'Built an end-to-end automation layer connecting core banking systems with real-time reconciliation AI.',
-    solution: 'Intelligent workflow automation with exception-handling AI and live compliance dashboards.',
-    metrics: [{ value: '45%', label: 'Cost Reduction' }, { value: '62%', label: 'Faster Processing' }],
-  },
+function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const started = useRef(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true
+        const startTime = performance.now()
+        const duration = 1600
+        const tick = (now: number) => {
+          const t = Math.min((now - startTime) / duration, 1)
+          const ease = 1 - Math.pow(1 - t, 3)
+          el.textContent = Math.round(ease * end) + suffix
+          if (t < 1) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+      }
+    }, { threshold: 0.5 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [end, suffix])
+  return <span ref={ref}>0{suffix}</span>
+}
+
+const cases = [
   {
     industry: 'Real Estate',
-    tag: 'Data + Automation',
-    challenge: 'Disconnected CRM, property management and communication tools creating chaos across 5,000+ units.',
-    approach: 'Unified all systems through a custom integration layer with AI-powered lead scoring and automation.',
-    solution: 'Single operational command center with predictive maintenance and live P&L visibility.',
-    metrics: [{ value: '300%', label: 'More Visibility' }, { value: '2.5×', label: 'Team Productivity' }],
+    company: 'PropTech Scale-up',
+    challenge: 'Manual deal tracking across 14 systems causing 3-day delays in decision-making.',
+    solution: 'Built unified data platform + AI-powered deal scoring + automated investor reporting.',
+    metrics: [{ value: 85, suffix: '%', label: 'Faster Reporting' }, { value: 3, suffix: 'x', label: 'Deal Velocity' }, { value: 2, suffix: 'M+', label: 'Annual Savings' }],
   },
   {
-    industry: 'Healthcare',
-    tag: 'AI + Operations',
-    challenge: 'Patient intake, scheduling and billing on disconnected manual systems causing delays and revenue leakage.',
-    approach: 'Redesigned patient journey with intelligent automation and real-time capacity optimization.',
-    solution: 'End-to-end patient lifecycle automation from booking through billing, with AI triage support.',
-    metrics: [{ value: '55%', label: 'Admin Time Saved' }, { value: '38%', label: 'Revenue Increase' }],
+    industry: 'Financial Services',
+    company: 'Wealth Management Firm',
+    challenge: 'Compliance reporting took 40+ hours per week with high error rates and regulatory risk.',
+    solution: 'Automated compliance workflows with AI validation, real-time regulatory monitoring.',
+    metrics: [{ value: 96, suffix: '%', label: 'Error Reduction' }, { value: 40, suffix: 'h', label: 'Weekly Saved' }, { value: 100, suffix: '%', label: 'Audit Ready' }],
+  },
+  {
+    industry: 'Manufacturing',
+    company: 'Global Manufacturer',
+    challenge: 'Supply chain visibility gaps causing production delays and excess inventory costs.',
+    solution: 'End-to-end supply chain intelligence with predictive demand forecasting.',
+    metrics: [{ value: 31, suffix: '%', label: 'Cost Reduction' }, { value: 4, suffix: 'x', label: 'Forecast Accuracy' }, { value: 99, suffix: '%', label: 'Uptime Achieved' }],
   },
 ]
 
 export default function CaseStudies() {
   return (
-    <section className="py-section bg-white" id="case-studies">
+    <section className="py-section bg-gray-50" id="case-studies">
       <div className="section-container">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase mb-5 px-3 py-1.5 rounded-full" style={{ color: '#007cf4', background: 'rgba(0,124,244,0.08)' }}>Case Studies</span>
-            <h2 className="font-inter-tight font-black text-gray-900 leading-tight tracking-tight" style={{ fontSize: 'clamp(34px, 5vw, 60px)' }}>
-              Transformation<br /><span className="gradient-text">Stories.</span>
-            </h2>
-          </motion.div>
-          <motion.a href="#" className="text-sm font-semibold flex items-center gap-2 whitespace-nowrap group" style={{ color: '#007cf4' }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            View all stories
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform"><path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </motion.a>
-        </div>
+        <motion.div
+          className="text-center max-w-2xl mx-auto mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Case Studies</span>
+          <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+            Real Results,
+            <br />
+            <span className="gradient-text">Real Impact.</span>
+          </h2>
+        </motion.div>
 
-        <div className="flex flex-col gap-4">
-          {studies.map((study, i) => (
+        <div className="flex flex-col gap-6">
+          {cases.map((c, i) => (
             <motion.div
               key={i}
-              className="rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg hover:border-blue-100 transition-all duration-400 group"
-              style={{ background: '#fff' }}
-              initial={{ opacity: 0, y: 25 }}
+              className="bg-white rounded-3xl overflow-hidden border border-black/5 grid md:grid-cols-3"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="grid lg:grid-cols-[1fr_1fr_1fr_180px] divide-y lg:divide-y-0 lg:divide-x divide-gray-100">
-                <div className="p-7">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: 'rgba(0,124,244,0.08)', color: '#007cf4' }}>{study.industry}</span>
-                    <span className="text-xs font-medium text-gray-400">{study.tag}</span>
+              <div className="p-8 md:col-span-2">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-xs font-semibold text-[#007cf4] bg-[#007cf4]/10 px-3 py-1 rounded-full">{c.industry}</span>
+                  <span className="text-xs text-gray-400">{c.company}</span>
+                </div>
+                <div className="mb-4">
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Challenge</p>
+                  <p className="text-gray-700 text-sm leading-relaxed">{c.challenge}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Solution</p>
+                  <p className="text-gray-700 text-sm leading-relaxed">{c.solution}</p>
+                </div>
+              </div>
+              <div className="p-8 flex flex-col justify-center gap-6" style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}>
+                {c.metrics.map((m, j) => (
+                  <div key={j}>
+                    <div className="font-inter-tight font-black text-white text-3xl">
+                      <CountUp end={m.value} suffix={m.suffix} />
+                    </div>
+                    <div className="text-white/60 text-xs mt-0.5">{m.label}</div>
                   </div>
-                  <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-2">Challenge</div>
-                  <p className="text-gray-700 text-sm leading-relaxed">{study.challenge}</p>
-                </div>
-                <div className="p-7">
-                  <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-2">Approach</div>
-                  <p className="text-gray-700 text-sm leading-relaxed">{study.approach}</p>
-                </div>
-                <div className="p-7">
-                  <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-2">Solution</div>
-                  <p className="text-gray-700 text-sm leading-relaxed">{study.solution}</p>
-                </div>
-                <div className="p-7" style={{ background: 'linear-gradient(160deg,#033a9d,#007cf4)' }}>
-                  <div className="text-xs font-semibold uppercase tracking-wider mb-4" style={{ color: 'rgba(54,197,240,0.7)' }}>Impact</div>
-                  <div className="flex flex-row lg:flex-col gap-5">
-                    {study.metrics.map((m, j) => (
-                      <div key={j}>
-                        <div className="font-inter-tight font-black text-3xl" style={{ color: '#36c5f0' }}>{m.value}</div>
-                        <div className="text-xs font-medium mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>{m.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                ))}
               </div>
             </motion.div>
           ))}
