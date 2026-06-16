@@ -4,13 +4,26 @@ import { motion } from 'framer-motion'
 
 export default function FinalCTA() {
   return (
-    <section className="relative py-section overflow-hidden" id="contact" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #0052cc 50%, #007cf4 100%)' }}>
-      {/* Background radials */}
-      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 50% 60% at 80% 20%, rgba(54,197,240,0.18) 0%, transparent 55%), radial-gradient(ellipse 40% 50% at 10% 80%, rgba(3,58,157,0.4) 0%, transparent 50%)' }} />
-      {/* Grid pattern */}
-      <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)', backgroundSize: '56px 56px' }} />
-      {/* Glow orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full" style={{ background: 'radial-gradient(ellipse, rgba(54,197,240,0.12) 0%, transparent 60%)' }} />
+    <section className="py-section overflow-hidden relative" id="contact"
+      style={{ background: 'linear-gradient(135deg, #020b2a 0%, #033a9d 50%, #007cf4 100%)' }}
+    >
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full opacity-20 animate-orb-1"
+        style={{ background: 'radial-gradient(ellipse, #36c5f0 0%, transparent 70%)', filter: 'blur(60px)' }}
+      />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full opacity-15 animate-orb-2"
+        style={{ background: 'radial-gradient(ellipse, #007cf4 0%, transparent 70%)', filter: 'blur(80px)' }}
+      />
+      <div className="absolute top-3/4 left-3/4 w-[300px] h-[300px] rounded-full opacity-10 animate-orb-3"
+        style={{ background: 'radial-gradient(ellipse, #033a9d 0%, transparent 70%)', filter: 'blur(40px)' }}
+      />
+
+      <div
+        className="absolute inset-0 opacity-[0.06] animate-[gridZoom_8s_ease-in-out_infinite]"
+        style={{
+          backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }}
+      />
 
       <div className="section-container relative z-10 text-center">
         <motion.div
@@ -20,64 +33,65 @@ export default function FinalCTA() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.div
-            className="inline-flex items-center gap-2.5 mb-10 px-5 py-2 rounded-full text-sm font-semibold"
-            style={{ background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff' }}
+            className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-10"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <span className="w-2 h-2 rounded-full bg-cyan-300 animate-pulse" />
-            Ready to Transform Your Business?
+            <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+            <span className="text-sm text-white font-semibold">Ready to Transform?</span>
           </motion.div>
 
           <h2
-            className="font-inter-tight font-black text-white leading-[0.95] tracking-tight mb-6 max-w-4xl mx-auto"
-            style={{ fontSize: 'clamp(40px, 7vw, 92px)' }}
+            className="font-inter-tight font-black text-white leading-tight tracking-tight mb-6 max-w-4xl mx-auto"
+            style={{ fontSize: 'clamp(40px, 6vw, 88px)' }}
           >
-            The Future Belongs
+            The Future Belongs To
             <br />
-            To Businesses That
+            <span className="gradient-text-animated">Businesses That</span>
             <br />
-            <span style={{ background: 'linear-gradient(135deg,#36c5f0,#ffffff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Execute Better.</span>
+            Execute Better.
           </h2>
 
-          <p className="text-blue-100/70 text-xl max-w-lg mx-auto mb-12 leading-relaxed">
-            Let's build the operating system for your next stage of growth.
+          <p className="text-white/70 text-xl max-w-xl mx-auto mb-12 leading-relaxed">
+            Let’s build the operating system for your next stage of growth.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="mailto:hello@sync4tech.com"
-              className="group inline-flex items-center gap-2.5 font-bold text-base px-8 py-4 rounded-2xl transition-all duration-300"
-              style={{ background: '#fff', color: '#033a9d', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}
+              className="inline-flex items-center gap-2.5 bg-white text-[#033a9d] px-8 py-4 rounded-full font-semibold text-base hover:bg-white/90 transition-all duration-300 group"
             >
               Book Strategy Call
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
             <a
               href="#"
-              className="group inline-flex items-center gap-2.5 font-semibold text-base px-8 py-4 rounded-2xl transition-all duration-300"
-              style={{ background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.25)', color: '#fff' }}
+              className="inline-flex items-center gap-2.5 bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-white/20 transition-all duration-300 border border-white/20 group"
             >
               Download Blueprint
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-y-0.5 transition-transform">
-                <path d="M8 3v7M5 8l3 3 3-3M3 13h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M8 3v7M5 8l3 3 3-3M3 13h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           </div>
 
-          {/* Trust signals */}
-          <div className="flex flex-wrap items-center justify-center gap-8">
-            {['No commitment required', 'Response within 24 hours', 'US · UK · Pakistan'].map((t, i) => (
-              <div key={i} className="flex items-center gap-2 text-blue-100/60 text-sm">
-                <div className="w-1 h-1 rounded-full bg-cyan-400" />
-                {t}
-              </div>
-            ))}
-          </div>
+          <motion.div
+            className="mt-16 flex flex-wrap items-center justify-center gap-8 text-white/40 text-sm"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <span>No commitment required</span>
+            <span className="w-1 h-1 rounded-full bg-white/30" />
+            <span>Response within 24 hours</span>
+            <span className="w-1 h-1 rounded-full bg-white/30" />
+            <span>Serving US, UK &amp; Pakistan</span>
+          </motion.div>
         </motion.div>
       </div>
     </section>
