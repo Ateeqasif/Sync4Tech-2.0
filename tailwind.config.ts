@@ -9,37 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        accent: '#D87307',
-        'accent-secondary': '#BD7841',
-        'accent-light': '#F59E0B',
+        brand: {
+          cyan: '#36c5f0',
+          blue: '#007cf4',
+          navy: '#033a9d',
+          white: '#ffffff',
+        },
+        accent: '#007cf4',
+        'accent-light': '#36c5f0',
+        'accent-dark': '#033a9d',
       },
       fontFamily: {
         'inter-tight': ['var(--font-inter-tight)', 'sans-serif'],
         inter: ['var(--font-inter)', 'sans-serif'],
       },
-      fontSize: {
-        'display-xl': ['120px', { lineHeight: '1.0', letterSpacing: '-0.04em' }],
-        'display-lg': ['96px', { lineHeight: '1.0', letterSpacing: '-0.04em' }],
-        'display-md': ['72px', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
-        'heading-xl': ['64px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'heading-lg': ['56px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'heading-md': ['48px', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
-        'body-lg': ['22px', { lineHeight: '1.6' }],
-        'body-md': ['18px', { lineHeight: '1.6' }],
+      maxWidth: { container: '1440px' },
+      spacing: { section: '160px', 'section-sm': '120px' },
+      backgroundImage: {
+        'brand-gradient': 'linear-gradient(135deg, #007cf4, #36c5f0)',
+        'brand-gradient-dark': 'linear-gradient(135deg, #033a9d, #007cf4)',
+        'hero-mesh': 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(54,197,240,0.15) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 50%, rgba(0,124,244,0.1) 0%, transparent 50%)',
       },
-      maxWidth: {
-        container: '1440px',
+      keyframes: {
+        shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+        float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } },
+        'spin-slow': { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
       },
-      spacing: {
-        section: '180px',
-        'section-sm': '140px',
-      },
-      backdropBlur: {
-        xs: '2px',
+      animation: {
+        shimmer: 'shimmer 3s linear infinite',
+        float: 'float 6s ease-in-out infinite',
+        'spin-slow': 'spin-slow 20s linear infinite',
       },
     },
   },
   plugins: [],
 }
-
 export default config
