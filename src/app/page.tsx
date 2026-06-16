@@ -12,24 +12,32 @@ import TrustSection from '@/components/sections/TrustSection'
 import Insights from '@/components/sections/Insights'
 import FinalCTA from '@/components/sections/FinalCTA'
 import Footer from '@/components/Footer'
+import PageLoader from '@/components/PageLoader'
+import CustomCursor from '@/components/CustomCursor'
+import ScrollProgress from '@/components/ScrollProgress'
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="overflow-x-hidden">
+    <>
+      <PageLoader />
+      <CustomCursor />
+      <ScrollProgress />
       <Navigation />
-      <Hero />
-      <ExecutionGap />
-      <TransformationOS />
-      <BusinessOutcomes />
-      <Industries />
-      <TransformationJourney />
-      <CaseStudies />
-      <IntelligentBusiness />
-      <WhySync4Tech />
-      <TrustSection />
-      <Insights />
-      <FinalCTA />
+      <main>
+        <Hero />
+        <ExecutionGap />
+        <TransformationOS />
+        <BusinessOutcomes />
+        <Industries />
+        <TransformationJourney />
+        <CaseStudies />
+        <IntelligentBusiness />
+        <WhySync4Tech />
+        <TrustSection />
+        <Insights />
+        <FinalCTA />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
