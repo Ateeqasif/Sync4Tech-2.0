@@ -3,177 +3,212 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-const metrics = [
-  { value: '60%', label: 'Cost Reduction', sub: 'average across clients' },
-  { value: '3×', label: 'Faster Operations', sub: 'post-transformation' },
-  { value: '100+', label: 'Projects Delivered', sub: 'globally' },
-  { value: '24h', label: 'Response Time', sub: 'strategy consultation' },
-]
-
 function ParticleCanvas() {
-  const ref = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
   useEffect(() => {
-    const canvas = ref.current
+    const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     if (!ctx) return
+
+    let animId: number
     const resize = () => {
-      canvas.width = canvas.offsetWidth * window.devicePixelRatio
-      canvas.height = canvas.offsetHeight * window.devicePixelRatio
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio)
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
     }
     resize()
     window.addEventListener('resize', resize)
-    const W = () => canvas.offsetWidth
-    const H = () => canvas.offsetHeight
-    const pts: { x: number; y: number; vx: number; vy: number; r: number; alpha: number; color: string }[] = []
-    const colors = ['54,197,240', '0,124,244', '3,58,157']
-    for (let i = 0; i < 40; i++) {
-      pts.push({ x: Math.random() * W(), y: Math.random() * H(), vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, r: Math.random() * 2.5 + 1, alpha: Math.random() * 0.4 + 0.15, color: colors[Math.floor(Math.random() * colors.length)] })
-    }
-    let raf: number
+
+    const count = 50
+    const nodes = Array.from({ length: count }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.5 + 0.5,
+    }))
+
     const draw = () => {
-      ctx.clearRect(0, 0, W(), H())
-      pts.forEach(p => {
-        p.x += p.vx; p.y += p.vy
-        if (p.x < 0 || p.x > W()) p.vx *= -1
-        if (p.y < 0 || p.y > H()) p.vy *= -1
-        pts.forEach(q => {
-          const d = Math.hypot(p.x - q.x, p.y - q.y)
-          if (d < 160) {
-            ctx.beginPath()
-            ctx.moveTo(p.x, p.y)
-            ctx.lineTo(q.x, q.y)
-            ctx.strokeStyle = `rgba(0,124,244,${(1 - d / 160) * 0.07})`
-            ctx.lineWidth = 1
-            ctx.stroke()
-          }
-        })
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      nodes.forEach(n => {
+        n.x += n.vx
+        n.y += n.vy
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1
+
         ctx.beginPath()
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(${p.color},${p.alpha})`
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2)
+        ctx.fillStyle = 'rgba(54,197,240,0.7)'
         ctx.fill()
       })
-      raf = requestAnimationFrame(draw)
+
+      for (let i = 0; i < count; i++) {
+        for (let j = i + 1; j < count; j++) {
+          const dx = nodes[i].x - nodes[j].x
+          const dy = nodes[i].y - nodes[j].y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < 120) {
+            ctx.beginPath()
+            ctx.moveTo(nodes[i].x, nodes[i].y)
+            ctx.lineTo(nodes[j].x, nodes[j].y)
+            ctx.strokeStyle = `rgba(0,124,244,${0.15 * (1 - dist / 120)})`
+            ctx.lineWidth = 0.5
+            ctx.stroke()
+          }
+        }
+      }
+      animId = requestAnimationFrame(draw)
     }
     draw()
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize) }
+    return () => {
+      window.removeEventListener('resize', resize)
+      cancelAnimationFrame(animId)
+    }
   }, [])
-  return <canvas ref={ref} className="absolute inset-0 w-full h-full" />
+
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 }
+
+function CountUp({ end, suffix = '', duration = 2000 }: { end: number; suffix?: string; duration?: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const started = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true
+        const start = performance.now()
+        const tick = (now: number) => {
+          const t = Math.min((now - start) / duration, 1)
+          const ease = 1 - Math.pow(1 - t, 3)
+          el.textContent = Math.round(ease * end) + suffix
+          if (t < 1) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+      }
+    }, { threshold: 0.5 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [end, suffix, duration])
+
+  return <span ref={ref}>0{suffix}</span>
+}
+
+const metrics = [
+  { value: 3, suffix: 'x', label: 'Faster Execution' },
+  { value: 68, suffix: '%', label: 'Cost Reduction' },
+  { value: 12, suffix: '+', label: 'Industries Served' },
+]
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden bg-white">
-      {/* Gradient mesh background */}
-      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 70% at 50% -5%, rgba(54,197,240,0.12) 0%, transparent 55%), radial-gradient(ellipse 50% 40% at 85% 40%, rgba(0,124,244,0.08) 0%, transparent 50%), radial-gradient(ellipse 40% 30% at 10% 70%, rgba(3,58,157,0.05) 0%, transparent 50%)' }} />
-      <ParticleCanvas />
-
-      {/* Subtle grid */}
-      <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(rgba(0,124,244,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,124,244,0.04) 1px, transparent 1px)', backgroundSize: '64px 64px' }} />
-
-      <div className="relative z-10 section-container flex-1 flex flex-col justify-center pt-32 pb-12">
-        <motion.div
-          className="max-w-[900px]"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {/* Badge */}
-          <motion.div
-            className="inline-flex items-center gap-2.5 mb-8 px-4 py-2 rounded-full text-sm font-semibold border"
-            style={{ background: 'rgba(0,124,244,0.06)', borderColor: 'rgba(0,124,244,0.15)', color: '#007cf4' }}
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse" style={{ background: '#36c5f0' }} />
-            Trusted by Enterprise Leaders Across 3 Continents
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            className="font-inter-tight font-black text-gray-900 tracking-tight leading-[0.95] mb-8"
-            style={{ fontSize: 'clamp(52px, 8.5vw, 116px)' }}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          >
-            Transform Your
-            <br />
-            Business Into an
-            <br />
-            <span className="gradient-text">Intelligent</span>
-            <br />
-            <span className="gradient-text">System.</span>
-          </motion.h1>
-
-          {/* Subheadline */}
-          <motion.p
-            className="text-gray-500 max-w-xl mb-12 leading-relaxed"
-            style={{ fontSize: 'clamp(17px, 1.4vw, 20px)' }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            We combine AI, Automation, Data and Operational Excellence to help organizations reduce costs, accelerate growth and unlock scalable execution.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <a
-              href="#contact"
-              className="btn-glow group inline-flex items-center gap-2.5 text-white font-bold px-8 py-4 rounded-2xl text-base transition-all duration-300"
-              style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}
-            >
-              Book Strategy Call
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="group-hover:translate-x-0.5 transition-transform">
-                <path d="M3.75 9h10.5M10 5.25L13.75 9 10 12.75" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-            <a
-              href="#case-studies"
-              className="group inline-flex items-center gap-2.5 font-semibold text-gray-700 hover:text-brand-blue transition-colors text-base"
-            >
-              <span className="w-10 h-10 rounded-xl border border-gray-200 group-hover:border-brand-blue/30 flex items-center justify-center transition-colors">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <polygon points="5,3 13,8 5,13" fill="currentColor" className="text-gray-500 group-hover:text-brand-blue transition-colors"/>
-                </svg>
-              </span>
-              See Transformation Stories
-            </a>
-          </motion.div>
-        </motion.div>
-
-        {/* Metrics bar */}
-        <motion.div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.55 }}
-        >
-          {metrics.map((m, i) => (
-            <motion.div
-              key={i}
-              className="rounded-2xl p-5 border"
-              style={{ background: 'rgba(255,255,255,0.8)', borderColor: 'rgba(0,124,244,0.1)', backdropFilter: 'blur(12px)' }}
-              whileHover={{ y: -3, borderColor: 'rgba(0,124,244,0.25)', transition: { duration: 0.2 } }}
-            >
-              <div className="font-inter-tight font-black text-3xl mb-0.5" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{m.value}</div>
-              <div className="font-semibold text-gray-800 text-sm">{m.label}</div>
-              <div className="text-gray-400 text-xs mt-0.5">{m.sub}</div>
-            </motion.div>
-          ))}
-        </motion.div>
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black" id="home">
+      <div className="absolute inset-0 opacity-60">
+        <ParticleCanvas />
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32" style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.8))' }} />
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full opacity-20"
+          style={{ background: 'radial-gradient(ellipse, #007cf4 0%, transparent 70%)' }} />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] rounded-full opacity-10"
+          style={{ background: 'radial-gradient(ellipse, #36c5f0 0%, transparent 70%)' }} />
+      </div>
+
+      <div className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+          backgroundSize: '80px 80px',
+        }}
+      />
+
+      <div className="relative z-10 section-container text-center pt-32 pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-10"
+        >
+          <span className="w-1.5 h-1.5 bg-[#36c5f0] rounded-full animate-pulse" />
+          <span className="text-sm text-gray-300 font-medium">AI · Automation · Data · Transformation</span>
+        </motion.div>
+
+        <motion.h1
+          className="font-inter-tight font-black leading-[0.95] tracking-tight mb-8 mx-auto"
+          style={{ fontSize: 'clamp(48px, 8vw, 120px)', maxWidth: '1000px' }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="text-white">Transform How</span>
+          <br />
+          <span className="gradient-text-animated">Your Business</span>
+          <br />
+          <span className="text-white">Operates.</span>
+        </motion.h1>
+
+        <motion.p
+          className="text-gray-400 text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          We engineer the operating systems of tomorrow's enterprises — through AI, automation, and data intelligence that deliver measurable results.
+        </motion.p>
+
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2.5 bg-[#007cf4] text-white px-8 py-4 rounded-full font-semibold text-base btn-glow hover:bg-[#36c5f0] transition-all duration-300 group"
+          >
+            Book Strategy Call
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+          <a
+            href="#solutions"
+            className="inline-flex items-center gap-2.5 bg-white/5 text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-white/10 transition-all duration-300 border border-white/10 group"
+          >
+            Explore Solutions
+          </a>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-3 gap-6 max-w-xl mx-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+        >
+          {metrics.map((m) => (
+            <div key={m.label} className="text-center">
+              <div className="font-inter-tight font-black text-white text-4xl mb-1">
+                <CountUp end={m.value} suffix={m.suffix} />
+              </div>
+              <div className="text-gray-600 text-xs">{m.label}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2 }}
+        >
+          <span className="text-gray-600 text-[10px] tracking-widest uppercase">Scroll</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="animate-bounce-down">
+            <path d="M8 3v8M4 8l4 4 4-4" stroke="#36c5f0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </motion.div>
+      </div>
     </section>
   )
 }

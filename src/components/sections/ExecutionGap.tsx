@@ -1,117 +1,115 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 const before = [
-  { label: 'Manual Processes', desc: 'Hours lost to repetitive, error-prone tasks every week' },
-  { label: 'Disconnected Systems', desc: 'Data siloed across incompatible platforms and tools' },
-  { label: 'Spreadsheet Chaos', desc: 'Critical decisions based on stale, unreliable data' },
-  { label: 'Missed Opportunities', desc: 'Too slow to act on market signals and customer needs' },
+  'Siloed data across 12+ systems',
+  'Manual approvals slow every process',
+  'Reactive decisions from stale reports',
+  '40% of time spent on non-value tasks',
+  'Talent wasted on repetitive work',
 ]
 
 const after = [
-  { label: 'AI Assisted Teams', desc: 'Intelligent automation amplifies every person on your team' },
-  { label: 'Connected Workflows', desc: 'Systems that talk, sync, and act autonomously in real time' },
-  { label: 'Real Time Visibility', desc: 'Live dashboards driving confident, data-backed decisions' },
-  { label: 'Predictable Growth', desc: 'Scalable operations that compound without increasing headcount' },
+  'Unified intelligence across all systems',
+  'Autonomous workflows trigger in real-time',
+  'Predictive insights before problems arise',
+  '80%+ of routine tasks fully automated',
+  'Teams focus on strategy and innovation',
 ]
+
+function AnimatedCheck({ delay }: { delay: number }) {
+  const ref = useRef<SVGSVGElement>(null)
+  const inView = useInView(ref, { once: true })
+  return (
+    <svg ref={ref} width="18" height="18" viewBox="0 0 18 18" fill="none" className="shrink-0 mt-0.5">
+      <circle cx="9" cy="9" r="8" stroke="#36c5f0" strokeWidth="1.5" />
+      <path
+        d="M5 9l3 3 5-5"
+        stroke="#36c5f0"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeDasharray="12"
+        strokeDashoffset={inView ? 0 : 12}
+        style={{ transition: `stroke-dashoffset 0.5s ease ${delay}s` }}
+      />
+    </svg>
+  )
+}
 
 export default function ExecutionGap() {
   return (
-    <section className="py-section bg-white">
+    <section className="py-section bg-black" id="execution-gap">
       <div className="section-container">
         <motion.div
-          className="max-w-3xl mb-20"
+          className="text-center max-w-2xl mx-auto mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase mb-5 px-3 py-1.5 rounded-full" style={{ color: '#007cf4', background: 'rgba(0,124,244,0.08)' }}>
-            The Execution Gap
-          </span>
-          <h2 className="font-inter-tight font-black text-gray-900 leading-tight tracking-tight" style={{ fontSize: 'clamp(34px, 5vw, 60px)' }}>
-            Most Businesses Don't Have a{' '}
-            <span className="text-gray-300">Technology Problem.</span>
+          <span className="text-[#36c5f0] text-sm font-semibold tracking-widest uppercase mb-4 block">The Problem</span>
+          <h2 className="font-inter-tight font-black text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+            The Execution Gap Is
             <br />
-            They Have an{' '}
-            <span className="gradient-text">Execution Problem.</span>
+            <span className="gradient-text">Costing You Growth.</span>
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-5">
-          {/* Before */}
+        <div className="grid md:grid-cols-2 gap-6">
           <motion.div
-            className="rounded-3xl p-8 lg:p-10"
-            style={{ background: '#f8f9fc', border: '1px solid #eaecf0' }}
-            initial={{ opacity: 0, x: -30 }}
+            className="bg-white/3 border border-white/10 rounded-3xl p-10"
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full mb-8 bg-red-50 text-red-500">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
-              Before Transformation
+            <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-full px-4 py-1.5 mb-8">
+              <span className="w-1.5 h-1.5 bg-red-400 rounded-full" />
+              <span className="text-red-400 text-sm font-semibold">Before Sync4Tech</span>
             </div>
-            <div className="flex flex-col gap-5">
+            <ul className="flex flex-col gap-5">
               {before.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="flex items-start gap-4"
-                  initial={{ opacity: 0, x: -15 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                >
-                  <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center mt-0.5" style={{ background: '#fee2e2' }}>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M9 3L3 9M3 3l6 6" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="font-inter-tight font-bold text-gray-800 mb-0.5">{item.label}</div>
-                    <div className="text-gray-500 text-sm leading-relaxed">{item.desc}</div>
-                  </div>
-                </motion.div>
+                <li key={i} className="flex items-start gap-3">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="shrink-0 mt-0.5">
+                    <circle cx="9" cy="9" r="8" stroke="#ef4444" strokeWidth="1.5" />
+                    <path d="M6 6l6 6M12 6l-6 6" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                  <span className="text-gray-400 text-sm leading-relaxed">{item}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </motion.div>
 
-          {/* After */}
           <motion.div
-            className="rounded-3xl p-8 lg:p-10 relative overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)', border: '1px solid rgba(54,197,240,0.3)' }}
-            initial={{ opacity: 0, x: 30 }}
+            className="rounded-3xl p-10 relative overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl" style={{ background: 'rgba(54,197,240,0.15)', transform: 'translate(30%,-30%)' }} />
-            <div className="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full mb-8" style={{ background: 'rgba(54,197,240,0.2)', color: '#36c5f0' }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse" style={{ background: '#36c5f0' }} />
-              After Transformation
-            </div>
-            <div className="flex flex-col gap-5 relative z-10">
-              {after.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="flex items-start gap-4"
-                  initial={{ opacity: 0, x: 15 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                >
-                  <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center mt-0.5" style={{ background: 'rgba(54,197,240,0.25)' }}>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M2 6l3 3 5-5" stroke="#36c5f0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="font-inter-tight font-bold text-white mb-0.5">{item.label}</div>
-                    <div className="text-blue-200/70 text-sm leading-relaxed">{item.desc}</div>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+                backgroundSize: '30px 30px',
+              }}
+            />
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-8">
+                <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+                <span className="text-white text-sm font-semibold">After Sync4Tech</span>
+              </div>
+              <ul className="flex flex-col gap-5">
+                {after.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <AnimatedCheck delay={0.3 + i * 0.1} />
+                    <span className="text-white/90 text-sm leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </motion.div>
         </div>

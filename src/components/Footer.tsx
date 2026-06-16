@@ -1,100 +1,194 @@
+'use client'
+
+import { useState } from 'react'
 import Logo from './Logo'
 
-const columns = [
-  {
-    title: 'Solutions',
-    links: ['Business Automation', 'AI Enablement', 'Data Transformation', 'Execution Excellence'],
-  },
-  {
-    title: 'Industries',
-    links: ['Real Estate', 'Healthcare', 'Financial Services', 'Manufacturing', 'Technology'],
-  },
-  {
-    title: 'Company',
-    links: ['About Us', 'Case Studies', 'Insights', 'Careers', 'Contact'],
-  },
-  {
-    title: 'Resources',
-    links: ['Transformation Blueprint', 'ROI Calculator', 'Documentation', 'Partner Program'],
-  },
+const solutions = ['Business Automation', 'AI Enablement', 'Data Transformation', 'Execution Excellence', 'Process Mining', 'Change Management']
+const industries = ['Real Estate', 'Healthcare', 'Financial Services', 'Manufacturing', 'Technology', 'Retail & E-Commerce']
+const company = ['About Sync4Tech', 'Case Studies', 'Insights', 'Careers', 'Partners', 'Contact Us']
+const resources = ['Transformation Blueprint', 'ROI Calculator', 'Documentation', 'Partner Program', 'API Reference', 'Status']
+const legal = ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'GDPR', 'Security']
+
+const techStack = [
+  'Zapier', 'Make', 'n8n', 'HubSpot', 'Salesforce', 'Snowflake',
+  'dbt', 'Power BI', 'Tableau', 'AWS', 'Azure', 'Google Cloud',
+  'OpenAI', 'Anthropic', 'LangChain', 'Pinecone', 'Databricks', 'Fivetran',
 ]
 
-const socials = [
-  {
-    label: 'LinkedIn',
-    href: '#',
-    icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>,
-  },
-  {
-    label: 'Twitter',
-    href: '#',
-    icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>,
-  },
-  {
-    label: 'YouTube',
-    href: '#',
-    icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>,
-  },
+const certs = [
+  { label: 'ISO 27001 Aligned', icon: '🛡️' },
+  { label: 'GDPR Compliant', icon: '🇪🇺' },
+  { label: 'SOC 2 Practices', icon: '✅' },
+  { label: 'Enterprise Grade', icon: '🏢' },
+]
+
+const locations = [
+  { flag: '🇺🇸', city: 'United States', detail: 'North America HQ' },
+  { flag: '🇬🇧', city: 'United Kingdom', detail: 'Europe Office' },
+  { flag: '🇵🇰', city: 'Pakistan', detail: 'Delivery Centre' },
 ]
 
 export default function Footer() {
-  return (
-    <footer style={{ background: '#033a9d' }} className="relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 80% 50%, rgba(54,197,240,0.08) 0%, transparent 60%)' }} />
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(54,197,240,0.3), transparent)' }} />
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
-      <div className="section-container relative z-10 pt-16 pb-10">
-        {/* Top section */}
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-10 pb-14 border-b border-white/10">
-          <div className="col-span-2">
-            <Logo variant="full" theme="dark" className="mb-5" />
-            <p className="text-blue-200/70 text-sm leading-relaxed mb-6 max-w-xs">
-              AI, Automation, Data and Business Transformation for the world's most ambitious organizations.
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (email) setSubmitted(true)
+  }
+
+  return (
+    <footer className="bg-[#050a1a] border-t border-white/5">
+      {/* Top statement band */}
+      <div className="border-b border-white/5">
+        <div className="section-container py-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+          <div className="max-w-xl">
+            <p className="text-xs text-[#36c5f0] font-semibold tracking-widest uppercase mb-4">Stay Ahead</p>
+            <h3 className="font-inter-tight font-black text-white text-3xl md:text-4xl leading-tight">
+              Insights for the <span className="gradient-text">Modern Enterprise.</span>
+            </h3>
+            <p className="text-gray-500 mt-3 text-sm leading-relaxed max-w-sm">
+              Strategy, AI, and operational intelligence — delivered to your inbox monthly.
+            </p>
+          </div>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+            {submitted ? (
+              <div className="flex-1 flex items-center justify-center gap-2 bg-[#007cf4]/10 border border-[#007cf4]/30 rounded-full px-6 py-3.5 text-[#36c5f0] text-sm font-semibold">
+                <span>✓</span> You&apos;re on the list!
+              </div>
+            ) : (
+              <>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="Enter your work email"
+                  className="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-3.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#007cf4]/50 transition-colors"
+                />
+                <button
+                  type="submit"
+                  className="bg-[#007cf4] hover:bg-[#36c5f0] text-white font-semibold text-sm px-6 py-3.5 rounded-full transition-colors whitespace-nowrap"
+                >
+                  Subscribe
+                </button>
+              </>
+            )}
+          </form>
+        </div>
+      </div>
+
+      {/* Tech partner marquee */}
+      <div className="border-b border-white/5 py-6 overflow-hidden">
+        <p className="text-center text-[10px] text-gray-600 font-semibold uppercase tracking-widest mb-4">Technology Partners</p>
+        <div className="relative">
+          <div className="flex gap-4 animate-marquee whitespace-nowrap">
+            {[...techStack, ...techStack].map((t, i) => (
+              <span key={i} className="inline-flex items-center gap-1.5 bg-white/5 border border-white/8 rounded-full px-4 py-1.5 text-xs font-semibold text-gray-400 hover:text-[#36c5f0] hover:border-[#36c5f0]/30 transition-colors cursor-default shrink-0">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main link grid */}
+      <div className="section-container py-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
+          {/* Brand col */}
+          <div className="col-span-2 md:col-span-3 lg:col-span-1">
+            <Logo variant="full" theme="dark" />
+            <p className="text-gray-600 text-xs leading-relaxed mt-4 mb-6 max-w-[200px]">
+              AI, Automation & Business Transformation for ambitious organizations.
             </p>
             <div className="flex gap-2">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center text-blue-200/60 hover:text-white transition-all duration-200"
-                  style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)' }}
-                >
-                  {s.icon}
+              {['in', 'X', 'yt'].map(s => (
+                <a key={s} href="#" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-gray-600 hover:text-white hover:border-white/30 transition-colors text-[10px] font-bold">
+                  {s}
                 </a>
               ))}
             </div>
           </div>
 
-          {columns.map((col) => (
-            <div key={col.title}>
-              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">{col.title}</h4>
-              <ul className="flex flex-col gap-2.5">
-                {col.links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-blue-200/60 text-sm hover:text-white transition-colors duration-200">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+          <div>
+            <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-5">Solutions</h4>
+            <ul className="flex flex-col gap-2.5">
+              {solutions.map(l => (
+                <li key={l}><a href="#" className="text-gray-500 text-sm hover:text-white transition-colors">{l}</a></li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="text-blue-200/50 text-xs">
-            &copy; {new Date().getFullYear()} Sync4Tech Limited. All rights reserved.
-          </p>
-          <div className="flex items-center gap-5">
-            {[{ flag: '🇺🇸', city: 'United States' }, { flag: '🇬🇧', city: 'United Kingdom' }, { flag: '🇵🇰', city: 'Pakistan' }].map((loc) => (
-              <div key={loc.city} className="flex items-center gap-1.5">
-                <span className="text-sm">{loc.flag}</span>
-                <span className="text-blue-200/50 text-xs">{loc.city}</span>
+          <div>
+            <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-5">Industries</h4>
+            <ul className="flex flex-col gap-2.5">
+              {industries.map(l => (
+                <li key={l}><a href="#" className="text-gray-500 text-sm hover:text-white transition-colors">{l}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-5">Company</h4>
+            <ul className="flex flex-col gap-2.5">
+              {company.map(l => (
+                <li key={l}><a href="#" className="text-gray-500 text-sm hover:text-white transition-colors">{l}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-5">Resources</h4>
+            <ul className="flex flex-col gap-2.5">
+              {resources.map(l => (
+                <li key={l}><a href="#" className="text-gray-500 text-sm hover:text-white transition-colors">{l}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-5">Legal</h4>
+            <ul className="flex flex-col gap-2.5">
+              {legal.map(l => (
+                <li key={l}><a href="#" className="text-gray-500 text-sm hover:text-white transition-colors">{l}</a></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Certifications + Locations */}
+      <div className="border-t border-white/5">
+        <div className="section-container py-10">
+          <div className="flex flex-wrap gap-3 justify-center mb-10">
+            {certs.map(c => (
+              <div key={c.label} className="flex items-center gap-2 bg-white/5 border border-white/8 rounded-full px-4 py-2">
+                <span className="text-sm">{c.icon}</span>
+                <span className="text-xs font-semibold text-gray-300">{c.label}</span>
               </div>
             ))}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl mx-auto">
+            {locations.map(loc => (
+              <div key={loc.city} className="bg-white/3 border border-white/8 rounded-xl p-4 text-center">
+                <div className="text-3xl mb-2">{loc.flag}</div>
+                <div className="text-white font-semibold text-sm">{loc.city}</div>
+                <div className="text-gray-600 text-xs mt-0.5">{loc.detail}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="border-t border-white/5">
+        <div className="section-container py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-gray-700 text-xs">
+            © {new Date().getFullYear()} Sync4Tech Limited. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <a href="#" className="text-gray-700 text-xs hover:text-gray-400 transition-colors">Privacy</a>
+            <a href="#" className="text-gray-700 text-xs hover:text-gray-400 transition-colors">Terms</a>
+            <a href="#" className="text-gray-700 text-xs hover:text-gray-400 transition-colors">Cookies</a>
           </div>
         </div>
       </div>
