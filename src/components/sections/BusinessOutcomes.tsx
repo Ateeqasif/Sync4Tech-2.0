@@ -57,26 +57,33 @@ export default function BusinessOutcomes() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-black/10">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-black/8">
           {outcomes.map((o, i) => (
             <motion.div
               key={i}
-              className="group bg-white p-10 hover:bg-black transition-colors duration-500 relative overflow-hidden"
+              className="group bg-white p-10 relative overflow-hidden cursor-default transition-colors duration-500 hover:bg-[#007cf4]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
             >
-              <div className="absolute top-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500"
-                style={{ background: 'linear-gradient(90deg, #007cf4, #36c5f0)' }}
+              {/* Top border grow */}
+              <div
+                className="absolute top-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500"
+                style={{ background: 'linear-gradient(90deg, #36c5f0, #ffffff)' }}
               />
-              <div className="font-inter-tight font-black text-black group-hover:text-white transition-colors duration-500 mb-2"
+              {/* Shimmer on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: 'radial-gradient(ellipse at 30% 30%, rgba(54,197,240,0.15) 0%, transparent 70%)' }}
+              />
+              <div
+                className="font-inter-tight font-black text-black group-hover:text-white transition-colors duration-500 mb-2"
                 style={{ fontSize: 'clamp(40px, 5vw, 64px)', lineHeight: 1 }}
               >
                 <CountUp end={parseInt(o.metric)} suffix={o.suffix} />
               </div>
               <div className="font-semibold text-black group-hover:text-white transition-colors duration-500 mb-2 text-sm">{o.label}</div>
-              <div className="text-gray-500 group-hover:text-gray-400 transition-colors duration-500 text-xs leading-relaxed">{o.description}</div>
+              <div className="text-gray-500 group-hover:text-white/70 transition-colors duration-500 text-xs leading-relaxed">{o.description}</div>
             </motion.div>
           ))}
         </div>
