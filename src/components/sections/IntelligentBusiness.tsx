@@ -45,7 +45,7 @@ export default function IntelligentBusiness() {
   const r = 140
 
   return (
-    <section className="py-section bg-white relative overflow-hidden" id="intelligent">
+    <section className="py-section bg-white dark:bg-[#050f2e] relative overflow-hidden" id="intelligent">
       <SectionGrid />
 
       <div className="section-container relative z-10">
@@ -74,7 +74,7 @@ export default function IntelligentBusiness() {
               </defs>
 
               {/* Background fill */}
-              <circle cx={cx} cy={cy} r={r + 20} fill="white" />
+              <circle cx={cx} cy={cy} r={r + 20} fill="transparent" />
 
               {/* Rings */}
               {[0.33, 0.66, 1].map((scale, i) => (
@@ -141,12 +141,12 @@ export default function IntelligentBusiness() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Intelligence Layer</span>
-            <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight mb-6" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+            <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight mb-6" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
               Connect Every
               <br />
               <span className="gradient-text">Business Function.</span>
             </h2>
-            <p className="text-gray-500 leading-relaxed mb-8">
+            <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
               Our AI layer sits at the center of your business, connecting siloed functions into a unified intelligence network. Every department feeds data in, and receives actionable intelligence out.
             </p>
             <div className="flex flex-col gap-4">
@@ -161,7 +161,7 @@ export default function IntelligentBusiness() {
                   <div className="w-8 h-8 rounded-full bg-[#007cf4]/10 border border-[#007cf4]/20 flex items-center justify-center shrink-0 group-hover:bg-[#007cf4]/20 transition-colors">
                     <div className="w-2 h-2 rounded-full bg-[#007cf4]" />
                   </div>
-                  <span className="text-gray-700 text-sm font-medium">{f}</span>
+                  <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">{f}</span>
                 </motion.div>
               ))}
             </div>

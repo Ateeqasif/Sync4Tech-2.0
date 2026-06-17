@@ -35,7 +35,7 @@ export default function Footer() {
   return (
     <footer>
       {/* ── Top newsletter band: white + continuous grid ── */}
-      <div className="relative overflow-hidden bg-white">
+      <div className="relative overflow-hidden bg-white dark:bg-[#050f2e]">
         {/* Continuous grid — same spec as FinalCTA so it flows seamlessly */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -57,11 +57,11 @@ export default function Footer() {
         <div className="section-container py-16 relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
           <div className="max-w-xl">
             <p className="text-xs text-[#007cf4] font-semibold tracking-widest uppercase mb-4">Stay Ahead</p>
-            <h3 className="font-inter-tight font-black text-black text-3xl md:text-4xl leading-tight">
+            <h3 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl leading-tight">
               Insights for the{' '}
               <span className="gradient-text">Modern Enterprise.</span>
             </h3>
-            <p className="text-gray-500 mt-3 text-sm leading-relaxed max-w-sm">
+            <p className="text-gray-500 dark:text-gray-400 mt-3 text-sm leading-relaxed max-w-sm">
               Strategy, AI, and operational intelligence — delivered to your inbox monthly.
             </p>
           </div>
@@ -77,7 +77,7 @@ export default function Footer() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="Enter your work email"
-                  className="flex-1 bg-white border border-black/15 rounded-full px-5 py-3.5 text-gray-800 text-sm placeholder-gray-400 focus:outline-none focus:border-[#007cf4]/60 transition-colors shadow-sm"
+                  className="flex-1 bg-white dark:bg-[#0a1a4a] border border-black/15 dark:border-white/20 rounded-full px-5 py-3.5 text-gray-800 dark:text-gray-200 text-sm placeholder-gray-400 focus:outline-none focus:border-[#007cf4]/60 transition-colors shadow-sm"
                 />
                 <button
                   type="submit"

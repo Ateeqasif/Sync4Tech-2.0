@@ -76,7 +76,7 @@ export default function AIChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="w-80 rounded-2xl shadow-2xl overflow-hidden"
+            className="w-80 rounded-2xl shadow-2xl overflow-hidden dark:shadow-black/50"
           >
             {/* Header */}
             <div
@@ -99,10 +99,10 @@ export default function AIChatBot() {
             </div>
 
             {/* Messages */}
-            <div className="bg-white p-4 min-h-[220px] max-h-64 overflow-y-auto flex flex-col gap-3">
+            <div className="bg-white dark:bg-[#0a1a4a] p-4 min-h-[220px] max-h-64 overflow-y-auto flex flex-col gap-3">
               {/* Typing indicator */}
               {typing && (
-                <div className="flex items-center gap-1 bg-gray-100 rounded-2xl rounded-bl-sm px-4 py-3 w-fit">
+                <div className="flex items-center gap-1 bg-gray-100 dark:bg-[#071540] rounded-2xl rounded-bl-sm px-4 py-3 w-fit">
                   {[0, 1, 2].map((i) => (
                     <motion.div
                       key={i}
@@ -116,7 +116,7 @@ export default function AIChatBot() {
 
               {/* Greeting message */}
               {!typing && displayedGreeting && (
-                <div className="bg-gray-100 rounded-2xl rounded-bl-sm px-4 py-3 text-sm text-gray-700 w-fit max-w-[90%]">
+                <div className="bg-gray-100 dark:bg-[#071540] rounded-2xl rounded-bl-sm px-4 py-3 text-sm text-gray-700 dark:text-gray-200 w-fit max-w-[90%]">
                   {displayedGreeting}
                   {!greetingDone && <span className="animate-pulse">|</span>}
                 </div>
@@ -129,7 +129,7 @@ export default function AIChatBot() {
                   className={`px-4 py-3 rounded-2xl text-sm max-w-[90%] ${
                     msg.role === 'user'
                       ? 'bg-[#007cf4] text-white self-end rounded-br-sm ml-auto'
-                      : 'bg-gray-100 text-gray-700 rounded-bl-sm'
+                      : 'bg-gray-100 dark:bg-[#071540] text-gray-700 dark:text-gray-200 rounded-bl-sm'
                   }`}
                 >
                   {msg.text}
@@ -138,7 +138,7 @@ export default function AIChatBot() {
             </div>
 
             {/* Input */}
-            <div className="bg-white border-t border-gray-100 flex items-center gap-2 px-3 py-2">
+            <div className="bg-white dark:bg-[#0a1a4a] border-t border-gray-100 dark:border-white/10 flex items-center gap-2 px-3 py-2">
               <input
                 ref={inputRef}
                 type="text"
@@ -146,7 +146,7 @@ export default function AIChatBot() {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                 placeholder="Type your message..."
-                className="flex-1 text-sm outline-none text-gray-700 placeholder-gray-400 py-1"
+                className="flex-1 text-sm outline-none text-gray-700 dark:text-gray-200 placeholder-gray-400 bg-transparent py-1"
               />
               <button
                 onClick={sendMessage}

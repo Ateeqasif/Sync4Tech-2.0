@@ -41,7 +41,7 @@ function CrossIcon() {
 
 export default function WhySync4Tech() {
   return (
-    <section className="py-section bg-white" id="why">
+    <section className="py-section bg-white dark:bg-[#050f2e]" id="why">
       <div className="section-container">
         <div className="grid md:grid-cols-2 gap-16 items-start">
           <div className="md:sticky md:top-32">
@@ -52,22 +52,22 @@ export default function WhySync4Tech() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Why Us</span>
-              <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight mb-6" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+              <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight mb-6" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
                 The Sync4Tech
                 <br />
                 <span className="gradient-text">Difference.</span>
               </h2>
-              <p className="text-gray-500 leading-relaxed">
+              <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
                 Traditional consultancies sell time. We sell outcomes. Every engagement is structured around measurable business impact, with clear milestones and guaranteed results.
               </p>
             </motion.div>
           </div>
 
-          <div className="flex flex-col divide-y divide-black/8">
+          <div className="flex flex-col divide-y divide-black/8 dark:divide-white/10">
             <div className="grid grid-cols-3 pb-3">
-              <span className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Criterion</span>
+              <span className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Criterion</span>
               <span className="text-xs font-semibold text-[#007cf4] uppercase tracking-widest text-center">Sync4Tech</span>
-              <span className="text-xs font-semibold text-gray-400 uppercase tracking-widest text-center">Others</span>
+              <span className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest text-center">Others</span>
             </div>
             {rows.map((row, i) => (
               <motion.div
@@ -78,14 +78,14 @@ export default function WhySync4Tech() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
               >
-                <span className="text-gray-700 text-sm font-medium">{row.criterion}</span>
+                <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">{row.criterion}</span>
                 <div className="flex items-center gap-2 justify-center">
                   <CheckIcon delay={0.3 + i * 0.08} />
-                  <span className="text-gray-700 text-xs text-center leading-tight">{row.us}</span>
+                  <span className="text-gray-700 dark:text-gray-300 text-xs text-center leading-tight">{row.us}</span>
                 </div>
                 <div className="flex items-center gap-2 justify-center">
                   <CrossIcon />
-                  <span className="text-gray-400 text-xs text-center leading-tight">{row.them}</span>
+                  <span className="text-gray-400 dark:text-gray-500 text-xs text-center leading-tight">{row.them}</span>
                 </div>
               </motion.div>
             ))}

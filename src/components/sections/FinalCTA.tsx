@@ -35,7 +35,7 @@ function SectionGrid() {
 
 export default function FinalCTA() {
   return (
-    <section className="py-section bg-white relative overflow-hidden" id="contact">
+    <section className="py-section bg-white dark:bg-[#050f2e] relative overflow-hidden" id="contact">
       <SectionGrid />
 
       <div className="section-container relative z-10 text-center">
@@ -57,7 +57,7 @@ export default function FinalCTA() {
           </motion.div>
 
           <h2
-            className="font-inter-tight font-black text-black leading-tight tracking-tight mb-6 max-w-4xl mx-auto"
+            className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight mb-6 max-w-4xl mx-auto"
             style={{ fontSize: 'clamp(40px, 6vw, 88px)' }}
           >
             The Future Belongs To
@@ -67,7 +67,7 @@ export default function FinalCTA() {
             Execute Better
           </h2>
 
-          <p className="text-gray-500 text-xl max-w-xl mx-auto mb-12 leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 text-xl max-w-xl mx-auto mb-12 leading-relaxed">
             Let’s build the operating system for your next stage of growth
           </p>
 
@@ -86,7 +86,7 @@ export default function FinalCTA() {
             </motion.a>
             <motion.a
               href="#"
-              className="inline-flex items-center gap-2.5 bg-white text-black px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 border border-black/15 group hover:border-[#007cf4]/40 hover:text-[#007cf4]"
+              className="inline-flex items-center gap-2.5 bg-white dark:bg-white/10 text-black dark:text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 border border-black/15 dark:border-white/20 group hover:border-[#007cf4]/40 hover:text-[#007cf4]"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -98,7 +98,7 @@ export default function FinalCTA() {
           </div>
 
           <motion.div
-            className="mt-16 flex flex-wrap items-center justify-center gap-8 text-gray-400 text-sm"
+            className="mt-16 flex flex-wrap items-center justify-center gap-8 text-gray-400 dark:text-gray-500 text-sm"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

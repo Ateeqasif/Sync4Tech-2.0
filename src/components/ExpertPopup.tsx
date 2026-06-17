@@ -36,7 +36,7 @@ export default function ExpertPopup() {
           onClick={close}
         >
           <motion.div
-            className="bg-white rounded-2xl max-w-md w-full mx-4 p-8 shadow-2xl relative"
+            className="bg-white dark:bg-[#0a1a4a] rounded-2xl max-w-md w-full mx-4 p-8 shadow-2xl relative"
             initial={{ scale: 0.85, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.85, opacity: 0, y: 20 }}
@@ -56,11 +56,11 @@ export default function ExpertPopup() {
               </span>
             </div>
 
-            <h2 className="text-2xl font-bold text-[#033a9d] mb-3">
+            <h2 className="text-2xl font-bold text-[#033a9d] dark:text-white mb-3">
               Let&apos;s Find the Right Solution for You
             </h2>
 
-            <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
               Our experts are ready to understand your unique challenges and craft a tailored strategy — no generic pitches, just real answers.
             </p>
 
@@ -82,7 +82,7 @@ export default function ExpertPopup() {
               </a>
             </div>
 
-            <p className="text-xs text-gray-400 text-center mt-4">
+            <p className="text-xs text-gray-400 dark:text-gray-500 text-center mt-4">
               Usually responds within 2 hours
             </p>
           </motion.div>

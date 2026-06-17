@@ -19,7 +19,7 @@ function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boo
         {[...items, ...items].map((t, i) => (
           <span
             key={i}
-            className="inline-flex items-center bg-white border border-black/10 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-700 hover:border-[#007cf4] hover:text-[#007cf4] transition-colors duration-300 cursor-default whitespace-nowrap"
+            className="inline-flex items-center bg-white dark:bg-[#0a1a4a] border border-black/10 dark:border-white/10 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4] transition-colors duration-300 cursor-default whitespace-nowrap"
           >
             {t}
           </span>
@@ -31,7 +31,7 @@ function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boo
 
 export default function TrustSection() {
   return (
-    <section className="py-section bg-gray-50">
+    <section className="py-section bg-gray-50 dark:bg-[#071540]">
       <div className="section-container">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-20"
@@ -41,7 +41,7 @@ export default function TrustSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Trust & Credibility</span>
-          <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
             Built On <span className="gradient-text">Enterprise</span>
             <br />Standards
           </h2>
@@ -55,7 +55,7 @@ export default function TrustSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-center text-xs text-gray-400 font-semibold uppercase tracking-widest mb-4">Technology Ecosystem</p>
+          <p className="text-center text-xs text-gray-400 dark:text-gray-500 font-semibold uppercase tracking-widest mb-4">Technology Ecosystem</p>
           <MarqueeRow items={row1} />
           <MarqueeRow items={row2} reverse />
         </motion.div>

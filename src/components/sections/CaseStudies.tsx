@@ -65,7 +65,7 @@ export default function CaseStudies() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Case Studies</span>
-          <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
             Real Results,
             <br />
             <span className="gradient-text">Real Impact.</span>
@@ -76,7 +76,7 @@ export default function CaseStudies() {
           {cases.map((c, i) => (
             <motion.div
               key={i}
-              className="bg-white rounded-3xl overflow-hidden border border-black/5 grid md:grid-cols-3"
+              className="bg-white dark:bg-[#0a1a4a] rounded-3xl overflow-hidden border border-black/5 dark:border-white/10 grid md:grid-cols-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -85,15 +85,15 @@ export default function CaseStudies() {
               <div className="p-8 md:col-span-2">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="text-xs font-semibold text-[#007cf4] bg-[#007cf4]/10 px-3 py-1 rounded-full">{c.industry}</span>
-                  <span className="text-xs text-gray-400">{c.company}</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">{c.company}</span>
                 </div>
                 <div className="mb-4">
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Challenge</p>
-                  <p className="text-gray-700 text-sm leading-relaxed">{c.challenge}</p>
+                  <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1">Challenge</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{c.challenge}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Solution</p>
-                  <p className="text-gray-700 text-sm leading-relaxed">{c.solution}</p>
+                  <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1">Solution</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{c.solution}</p>
                 </div>
               </div>
               <div className="p-8 flex flex-col justify-center gap-6" style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}>

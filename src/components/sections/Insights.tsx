@@ -37,7 +37,7 @@ const tags = ['All', 'AI', 'Automation', 'Data', 'Operations', 'Transformation']
 
 export default function Insights() {
   return (
-    <section className="py-section bg-white" id="insights">
+    <section className="py-section bg-white dark:bg-[#050f2e]" id="insights">
       <div className="section-container">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
           <motion.div
@@ -47,7 +47,7 @@ export default function Insights() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Insights</span>
-            <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+            <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
               Ideas That Shape
               <br />
               <span className="gradient-text">Modern Businesses.</span>
@@ -55,7 +55,7 @@ export default function Insights() {
           </motion.div>
           <motion.a
             href="#"
-            className="text-sm font-semibold text-black hover:text-[#007cf4] transition-colors duration-300 group flex items-center gap-2 whitespace-nowrap"
+            className="text-sm font-semibold text-black dark:text-white hover:text-[#007cf4] transition-colors duration-300 group flex items-center gap-2 whitespace-nowrap"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -82,7 +82,7 @@ export default function Insights() {
               className={`px-4 py-2 rounded-full text-xs font-semibold border transition-colors duration-200 ${
                 i === 0
                   ? 'bg-[#007cf4] text-white border-[#007cf4]'
-                  : 'border-black/15 text-gray-600 hover:border-[#007cf4] hover:text-[#007cf4]'
+                  : 'border-black/15 dark:border-white/15 text-gray-600 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4]'
               }`}
             >
               {tag}
@@ -137,14 +137,14 @@ export default function Insights() {
               </div>
 
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-xs text-gray-400">{article.date}</span>
-                <span className="w-1 h-1 rounded-full bg-gray-300" />
-                <span className="text-xs text-gray-400">{article.readTime}</span>
+                <span className="text-xs text-gray-400 dark:text-gray-500">{article.date}</span>
+                <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+                <span className="text-xs text-gray-400 dark:text-gray-500">{article.readTime}</span>
               </div>
-              <h3 className="font-inter-tight font-bold text-black text-lg leading-snug mb-2 group-hover:text-[#007cf4] transition-colors duration-300">
+              <h3 className="font-inter-tight font-bold text-black dark:text-white text-lg leading-snug mb-2 group-hover:text-[#007cf4] transition-colors duration-300">
                 {article.title}
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{article.excerpt}</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{article.excerpt}</p>
 
               <div className="mt-4 flex items-center gap-1.5 text-[#007cf4] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Read article
