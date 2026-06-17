@@ -24,10 +24,10 @@ function AnimatedCheck({ delay }: { delay: number }) {
   const [inView, setInView] = [useRef(false), useRef<() => void>(() => {})]
   return (
     <svg ref={ref} width="18" height="18" viewBox="0 0 18 18" fill="none" className="shrink-0 mt-0.5">
-      <circle cx="9" cy="9" r="8" stroke="white" strokeWidth="1.5" />
+      <circle cx="9" cy="9" r="8" stroke="#007cf4" strokeWidth="1.5" />
       <path
         d="M5 9l3 3 5-5"
-        stroke="white"
+        stroke="#007cf4"
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -125,26 +125,26 @@ export default function ExecutionGap() {
           {/* After card — blue gradient */}
           <motion.div
             className="rounded-3xl p-10 relative overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%)' }}
             initial={{ opacity: 0, x: 50, rotateY: 8 }}
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -4, boxShadow: '0 20px 60px rgba(0,124,244,0.3)' }}
+            whileHover={{ y: -4, boxShadow: '0 20px 60px rgba(0,124,244,0.2)' }}
           >
-            <div className="absolute inset-0 opacity-10"
-              style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '30px 30px' }}
+            <div className="absolute inset-0 opacity-20"
+              style={{ backgroundImage: 'linear-gradient(#007cf4 1px, transparent 1px), linear-gradient(90deg, #007cf4 1px, transparent 1px)', backgroundSize: '30px 30px' }}
             />
             <motion.div
               className="absolute inset-0"
-              style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%)' }}
+              style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%)' }}
               animate={{ x: ['-100%', '200%'] }}
               transition={{ duration: 3.5, repeat: Infinity, repeatDelay: 2, ease: 'easeInOut' }}
             />
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-8">
-                <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                <span className="text-white text-sm font-semibold">After Sync4Tech</span>
+              <div className="inline-flex items-center gap-2 bg-[#007cf4]/15 border border-[#007cf4]/30 rounded-full px-4 py-1.5 mb-8">
+                <span className="w-1.5 h-1.5 bg-[#007cf4] rounded-full animate-pulse" />
+                <span className="text-[#033a9d] text-sm font-semibold">After Sync4Tech</span>
               </div>
               <ul className="flex flex-col gap-5">
                 {after.map((item, i) => (
@@ -155,7 +155,7 @@ export default function ExecutionGap() {
                     transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
                   >
                     <AnimatedCheck delay={0.3 + i * 0.1} />
-                    <span className="text-white/90 text-sm leading-relaxed">{item}</span>
+                    <span className="text-[#033a9d] text-sm leading-relaxed font-medium">{item}</span>
                   </motion.li>
                 ))}
               </ul>
