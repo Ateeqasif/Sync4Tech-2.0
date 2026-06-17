@@ -10,7 +10,7 @@ export default function ExpertPopup() {
     const alreadyShown = sessionStorage.getItem('expertPopupShown');
     if (alreadyShown) return;
     const handleScroll = () => {
-      if (window.scrollY > 600) {
+      if (window.scrollY > 300) {
         setVisible(true);
         sessionStorage.setItem('expertPopupShown', 'true');
         window.removeEventListener('scroll', handleScroll);
