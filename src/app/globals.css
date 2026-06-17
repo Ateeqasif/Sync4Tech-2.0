@@ -41,10 +41,11 @@ body {
 
 /* Glass nav */
 .glass-nav {
-  background: rgba(3, 58, 157, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(54, 197, 240, 0.15);
+  background: rgba(224, 242, 254, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 124, 244, 0.15);
+  box-shadow: 0 1px 24px 0 rgba(0, 124, 244, 0.07);
 }
 
 /* Layout */

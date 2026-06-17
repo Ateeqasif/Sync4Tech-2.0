@@ -19,7 +19,7 @@ export default function Navigation() {
     <header className="fixed top-0 left-0 right-0 z-50 glass-nav">
       <div className="section-container">
         <nav className="flex items-center justify-between h-16">
-          <Logo variant="full" theme="light" />
+          <Logo variant="full" theme="dark" />
 
           {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-8">
@@ -32,7 +32,7 @@ export default function Navigation() {
               >
                 <a
                   href={link.href}
-                  className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200"
+                  className="text-[#033a9d]/80 hover:text-[#007cf4] text-sm font-medium transition-colors duration-200"
                 >
                   {link.label}
                 </a>
@@ -58,9 +58,9 @@ export default function Navigation() {
             className="md:hidden w-8 h-8 flex flex-col items-center justify-center gap-1.5"
             onClick={() => setMobileOpen(o => !o)}
           >
-            <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
-            <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className={`w-5 h-0.5 bg-[#033a9d] transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`w-5 h-0.5 bg-[#033a9d] transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
+            <span className={`w-5 h-0.5 bg-[#033a9d] transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
           </button>
         </nav>
       </div>
@@ -73,15 +73,15 @@ export default function Navigation() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden border-t border-white/10"
-            style={{ background: 'rgba(3, 58, 157, 0.97)' }}
+            className="md:hidden overflow-hidden border-t border-[#007cf4]/15"
+            style={{ background: 'rgba(224, 242, 254, 0.92)', backdropFilter: 'blur(20px)' }}
           >
             <div className="section-container py-6 flex flex-col gap-4">
               {navLinks.map(link => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-white/80 hover:text-white text-base font-medium transition-colors py-1"
+                  className="text-[#033a9d]/80 hover:text-[#007cf4] text-base font-medium transition-colors py-1"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
