@@ -15,6 +15,7 @@ import Footer from '@/components/Footer'
 import PageLoader from '@/components/PageLoader'
 import CustomCursor from '@/components/CustomCursor'
 import ScrollProgress from '@/components/ScrollProgress'
+import ClickEffect from '@/components/ClickEffect'
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <PageLoader />
       <CustomCursor />
       <ScrollProgress />
+      <ClickEffect />
       <Navigation />
       <main>
         <Hero />
