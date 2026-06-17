@@ -127,9 +127,10 @@ export default function IntelligentBusiness() {
               ))}
 
               {/* Center */}
-              <circle cx={cx} cy={cy} r="28" fill="url(#centerGrad)" opacity="0.15" />
-              <circle cx={cx} cy={cy} r="18" fill="url(#centerGrad)" />
-              <text x={cx} y={cy} textAnchor="middle" dominantBaseline="middle" fill="white" fontSize="9" fontFamily="system-ui" fontWeight="bold">AI</text>
+              <circle cx={cx} cy={cy} r="38" fill="url(#centerGrad)" opacity="0.15" />
+              <circle cx={cx} cy={cy} r="28" fill="url(#centerGrad)" />
+              <text x={cx} y={cy - 5} textAnchor="middle" dominantBaseline="middle" fill="white" fontSize="7" fontFamily="system-ui" fontWeight="bold">Sync4Tech</text>
+              <text x={cx} y={cy + 6} textAnchor="middle" dominantBaseline="middle" fill="white" fontSize="6.5" fontFamily="system-ui" fontWeight="600">Automation</text>
             </svg>
           </motion.div>
 
