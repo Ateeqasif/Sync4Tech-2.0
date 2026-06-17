@@ -19,6 +19,7 @@ import ClickEffect from '@/components/ClickEffect'
 import ExpertPopup from '@/components/ExpertPopup'
 import AIChatBot from '@/components/AIChatBot'
 import ScrollToTop from '@/components/ScrollToTop'
+import AccessibilityPanel from '@/components/AccessibilityPanel'
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
       <ExpertPopup />
       <ScrollToTop />
       <AIChatBot />
+      <AccessibilityPanel />
       <Navigation />
       <main>
         <Hero />
