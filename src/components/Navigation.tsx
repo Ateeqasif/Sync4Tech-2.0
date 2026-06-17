@@ -39,7 +39,7 @@ export default function Navigation() {
     >
       <div className="section-container">
         <nav className="flex items-center justify-between h-16">
-          <Logo variant="full" theme="dark" />
+          <Logo variant="full" theme="light" />
 
           {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-8">
