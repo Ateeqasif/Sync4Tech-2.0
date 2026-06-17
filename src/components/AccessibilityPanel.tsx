@@ -70,6 +70,12 @@ export default function AccessibilityPanel() {
     toggle('a11y-contrast', highContrast)
     toggle('a11y-sat', saturation)
     toggle('a11y-pause', pauseAnims)
+    // Freeze Framer Motion JS animations by overriding transition durations globally
+    if (pauseAnims) {
+      root.style.setProperty('--framer-duration', '0.001s')
+    } else {
+      root.style.removeProperty('--framer-duration')
+    }
     toggle('a11y-links', highlightLinks)
     toggle('a11y-imgs', hideImages)
     toggle('a11y-dyslexia', dyslexiaFont)
@@ -93,7 +99,9 @@ export default function AccessibilityPanel() {
       css += `.a11y-sat { filter: saturate(40%) !important; }`
     }
     if (pauseAnims) {
-      css += `.a11y-pause *, .a11y-pause *::before, .a11y-pause *::after { animation-play-state: paused !important; transition-duration: 0.01ms !important; }`
+      css += `.a11y-pause *, .a11y-pause *::before, .a11y-pause *::after { animation-play-state: paused !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+.a11y-pause [style*="transform"], .a11y-pause [style*="opacity"] { transition: none !important; animation: none !important; }
+.a11y-pause canvas { display: none !important; }`
     }
     if (highlightLinks) {
       css += `.a11y-links a { outline: 2px solid #007cf4 !important; background: rgba(0,124,244,0.1) !important; border-radius: 3px !important; }`
