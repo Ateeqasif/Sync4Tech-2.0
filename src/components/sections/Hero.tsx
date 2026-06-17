@@ -97,9 +97,10 @@ function CountUp({ end, suffix = '', duration = 2000 }: { end: number; suffix?: 
   return <span ref={ref}>0{suffix}</span>
 }
 
-const metrics = [
+const metrics: { value: number; suffix: string; label: string; duration?: number }[] = [
   { value: 3, suffix: 'x', label: 'Faster Execution' },
   { value: 68, suffix: '%', label: 'Cost Reduction' },
+  { value: 280, suffix: '+', label: 'Clients Served', duration: 2400 },
   { value: 12, suffix: '+', label: 'Industries Served' },
 ]
 
@@ -187,18 +188,24 @@ export default function Hero() {
 
         {/* Metrics */}
         <motion.div
-          className="grid grid-cols-3 gap-6 max-w-xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
         >
-          {metrics.map((m) => (
-            <div key={m.label} className="text-center">
+          {metrics.map((m, i) => (
+            <motion.div
+              key={m.label}
+              className="text-center px-4 py-4 rounded-2xl bg-white/60 dark:bg-white/5 border border-[#007cf4]/10 backdrop-blur-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1.3 + i * 0.1 }}
+            >
               <div className="font-inter-tight font-black text-black dark:text-white text-4xl mb-1">
-                <CountUp end={m.value} suffix={m.suffix} />
+                <CountUp end={m.value} suffix={m.suffix} duration={m.duration} />
               </div>
-              <div className="text-gray-400 dark:text-gray-500 text-xs">{m.label}</div>
-            </div>
+              <div className="text-gray-400 dark:text-gray-500 text-xs font-medium">{m.label}</div>
+            </motion.div>
           ))}
         </motion.div>
 
