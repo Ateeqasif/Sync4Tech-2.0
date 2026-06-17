@@ -39,7 +39,7 @@ function ParticleCanvas() {
 
         ctx.beginPath()
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(54,197,240,0.7)'
+        ctx.fillStyle = 'rgba(0,124,244,0.4)'
         ctx.fill()
       })
 
@@ -52,7 +52,7 @@ function ParticleCanvas() {
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
             ctx.lineTo(nodes[j].x, nodes[j].y)
-            ctx.strokeStyle = `rgba(0,124,244,${0.15 * (1 - dist / 120)})`
+            ctx.strokeStyle = `rgba(0,124,244,${0.08 * (1 - dist / 120)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -105,21 +105,24 @@ const metrics = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black" id="home">
-      <div className="absolute inset-0 opacity-60">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white" id="home">
+      {/* Particle bg */}
+      <div className="absolute inset-0 opacity-70">
         <ParticleCanvas />
       </div>
 
+      {/* Gradient mesh */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full opacity-20"
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full opacity-10"
           style={{ background: 'radial-gradient(ellipse, #007cf4 0%, transparent 70%)' }} />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] rounded-full opacity-10"
+        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] rounded-full opacity-8"
           style={{ background: 'radial-gradient(ellipse, #36c5f0 0%, transparent 70%)' }} />
       </div>
 
-      <div className="absolute inset-0 opacity-[0.03]"
+      {/* Grid */}
+      <div className="absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(#007cf4 1px, transparent 1px), linear-gradient(90deg, #007cf4 1px, transparent 1px)',
           backgroundSize: '80px 80px',
         }}
       />
@@ -129,10 +132,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-10"
+          className="inline-flex items-center gap-2 bg-[#007cf4]/8 border border-[#007cf4]/20 rounded-full px-4 py-1.5 mb-10"
         >
-          <span className="w-1.5 h-1.5 bg-[#36c5f0] rounded-full animate-pulse" />
-          <span className="text-sm text-gray-300 font-medium">AI · Automation · Data · Transformation</span>
+          <span className="w-1.5 h-1.5 bg-[#007cf4] rounded-full animate-pulse" />
+          <span className="text-sm text-[#033a9d] font-medium">AI · Automation · Data · Transformation</span>
         </motion.div>
 
         <motion.h1
@@ -142,15 +145,15 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-white">Transform How</span>
+          <span className="text-black">Transform How</span>
           <br />
           <span className="gradient-text-animated">Your Business</span>
           <br />
-          <span className="text-white">Operates.</span>
+          <span className="text-black">Operates.</span>
         </motion.h1>
 
         <motion.p
-          className="text-gray-400 text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
+          className="text-gray-500 text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -175,12 +178,13 @@ export default function Hero() {
           </a>
           <a
             href="#solutions"
-            className="inline-flex items-center gap-2.5 bg-white/5 text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-white/10 transition-all duration-300 border border-white/10 group"
+            className="inline-flex items-center gap-2.5 bg-black/5 text-black px-8 py-4 rounded-full font-semibold text-base hover:bg-black/10 transition-all duration-300 border border-black/10 group"
           >
             Explore Solutions
           </a>
         </motion.div>
 
+        {/* Metrics */}
         <motion.div
           className="grid grid-cols-3 gap-6 max-w-xl mx-auto"
           initial={{ opacity: 0 }}
@@ -189,23 +193,24 @@ export default function Hero() {
         >
           {metrics.map((m) => (
             <div key={m.label} className="text-center">
-              <div className="font-inter-tight font-black text-white text-4xl mb-1">
+              <div className="font-inter-tight font-black text-black text-4xl mb-1">
                 <CountUp end={m.value} suffix={m.suffix} />
               </div>
-              <div className="text-gray-600 text-xs">{m.label}</div>
+              <div className="text-gray-400 text-xs">{m.label}</div>
             </div>
           ))}
         </motion.div>
 
+        {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
         >
-          <span className="text-gray-600 text-[10px] tracking-widest uppercase">Scroll</span>
+          <span className="text-gray-400 text-[10px] tracking-widest uppercase">Scroll</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="animate-bounce-down">
-            <path d="M8 3v8M4 8l4 4 4-4" stroke="#36c5f0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M8 3v8M4 8l4 4 4-4" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </motion.div>
       </div>
