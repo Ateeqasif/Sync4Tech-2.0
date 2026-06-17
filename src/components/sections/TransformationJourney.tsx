@@ -12,6 +12,34 @@ const stages = [
   { id: 6, title: 'Launch & Scale', duration: 'Ongoing', description: 'Go-live support, team training, continuous monitoring, and ongoing optimisation to compound results over time.' },
 ]
 
+function SectionGrid() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(0,124,244,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,124,244,0.05) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }}
+      />
+      <motion.div
+        className="absolute left-0 right-0 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent, #007cf4, transparent)', opacity: 0.2 }}
+        initial={{ top: '-2px' }}
+        animate={{ top: '100%' }}
+        transition={{ duration: 8, ease: 'linear', repeat: Infinity, repeatDelay: 3 }}
+      />
+      {Array.from({ length: 4 }).map((_, i) => (
+        <motion.div key={i}
+          className="absolute w-1.5 h-1.5 rounded-full"
+          style={{ background: '#007cf4', left: `${20 + i * 22}%`, top: `${25 + (i % 2) * 50}%` }}
+          animate={{ opacity: [0.08, 0.4, 0.08], scale: [1, 1.5, 1] }}
+          transition={{ duration: 3 + i * 0.7, repeat: Infinity, delay: i * 0.6 }}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function TransformationJourney() {
   const [active, setActive] = useState(0)
   const [dir, setDir] = useState(1)
@@ -27,24 +55,8 @@ export default function TransformationJourney() {
   }, [active, go])
 
   return (
-    <section
-      className="py-section relative overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}
-      id="journey"
-    >
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.06] pointer-events-none"
-        style={{
-          backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
-      {/* Glow orb */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(54,197,240,0.15) 0%, transparent 70%)' }}
-      />
+    <section className="py-section bg-white relative overflow-hidden" id="journey">
+      <SectionGrid />
 
       <div className="section-container relative z-10">
         <motion.div
@@ -54,14 +66,11 @@ export default function TransformationJourney() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#36c5f0] text-sm font-semibold tracking-widest uppercase mb-4 block">How We Work</span>
-          <h2
-            className="font-inter-tight font-black text-white leading-tight tracking-tight"
-            style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
-          >
+          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">How We Work</span>
+          <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
             Your Transformation
             <br />
-            <span style={{ color: '#36c5f0' }}>Journey.</span>
+            <span className="gradient-text">Journey.</span>
           </h2>
         </motion.div>
 
@@ -69,36 +78,34 @@ export default function TransformationJourney() {
           {/* Stage selector */}
           <div className="flex flex-col gap-3">
             {stages.map((s, i) => (
-              <button
+              <motion.button
                 key={i}
                 onClick={() => go(i)}
                 className={`text-left px-6 py-4 rounded-xl border transition-all duration-300 group ${
                   i === active
-                    ? 'border-white/40 bg-white/15'
-                    : 'border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/30'
+                    ? 'border-[#007cf4]/40 bg-[#007cf4]/8 shadow-sm'
+                    : 'border-black/8 bg-white hover:bg-[#007cf4]/4 hover:border-[#007cf4]/25'
                 }`}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.07 }}
+                whileHover={{ x: 4 }}
               >
                 <div className="flex items-center gap-3">
-                  <span
-                    className={`text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                      i === active ? 'bg-white text-[#007cf4]' : 'bg-white/20 text-white/60'
-                    }`}
-                  >
-                    {s.id}
-                  </span>
-                  <span
-                    className={`font-semibold text-sm transition-colors ${
-                      i === active ? 'text-white' : 'text-white/60 group-hover:text-white/90'
-                    }`}
-                  >
-                    {s.title}
-                  </span>
-                  <span className="ml-auto text-[10px] text-white/40 shrink-0">{s.duration}</span>
+                  <span className={`text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                    i === active ? 'bg-[#007cf4] text-white' : 'bg-black/8 text-gray-500'
+                  }`}>{s.id}</span>
+                  <span className={`font-semibold text-sm transition-colors ${
+                    i === active ? 'text-[#007cf4]' : 'text-gray-600 group-hover:text-black'
+                  }`}>{s.title}</span>
+                  <span className="ml-auto text-[10px] text-gray-400 shrink-0">{s.duration}</span>
                 </div>
                 {i === active && (
-                  <div className="mt-2 ml-9 h-0.5 bg-white/20 rounded-full overflow-hidden">
+                  <div className="mt-2 ml-9 h-0.5 bg-black/8 rounded-full overflow-hidden">
                     <motion.div
-                      className="h-full bg-white rounded-full"
+                      className="h-full rounded-full"
+                      style={{ background: 'linear-gradient(90deg, #007cf4, #36c5f0)' }}
                       initial={{ width: '0%' }}
                       animate={{ width: '100%' }}
                       transition={{ duration: 8, ease: 'linear' }}
@@ -106,11 +113,11 @@ export default function TransformationJourney() {
                     />
                   </div>
                 )}
-              </button>
+              </motion.button>
             ))}
           </div>
 
-          {/* Detail panel — fixed height, scrollable content fully visible */}
+          {/* Detail panel */}
           <div className="sticky top-28">
             <div className="relative overflow-hidden" style={{ minHeight: '380px' }}>
               <AnimatePresence mode="wait" custom={dir}>
@@ -122,24 +129,32 @@ export default function TransformationJourney() {
                     center: { x: 0, opacity: 1 },
                     exit: (d: number) => ({ x: d * -60, opacity: 0 }),
                   }}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
+                  initial="enter" animate="center" exit="exit"
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className="absolute inset-0"
                 >
-                  <div className="bg-white/10 border border-white/20 rounded-2xl p-10 h-full backdrop-blur-sm flex flex-col justify-center">
-                    <div
-                      className="font-inter-tight font-black mb-8 text-white"
-                      style={{ fontSize: 'clamp(64px, 8vw, 96px)', lineHeight: 1, opacity: 0.15 }}
-                    >
-                      {String(stages[active].id).padStart(2, '0')}
+                  <div
+                    className="rounded-2xl p-10 h-full flex flex-col justify-center relative overflow-hidden"
+                    style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
+                  >
+                    {/* Shimmer */}
+                    <motion.div
+                      className="absolute inset-0"
+                      style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%)' }}
+                      animate={{ x: ['-100%', '200%'] }}
+                      transition={{ duration: 3, repeat: Infinity, repeatDelay: 4, ease: 'easeInOut' }}
+                    />
+                    <div className="absolute inset-0 opacity-10"
+                      style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '30px 30px' }}
+                    />
+                    <div className="relative z-10">
+                      <div className="font-inter-tight font-black mb-6 text-white/20" style={{ fontSize: 'clamp(64px, 8vw, 96px)', lineHeight: 1 }}>
+                        {String(stages[active].id).padStart(2, '0')}
+                      </div>
+                      <h3 className="font-inter-tight font-bold text-white text-2xl md:text-3xl mb-3">{stages[active].title}</h3>
+                      <p className="text-white/80 text-sm font-semibold mb-5">{stages[active].duration}</p>
+                      <p className="text-white/80 leading-relaxed text-base">{stages[active].description}</p>
                     </div>
-                    <h3 className="font-inter-tight font-bold text-white text-2xl md:text-3xl mb-3">
-                      {stages[active].title}
-                    </h3>
-                    <p className="text-[#36c5f0] text-sm font-semibold mb-5">{stages[active].duration}</p>
-                    <p className="text-white/75 leading-relaxed text-base">{stages[active].description}</p>
                   </div>
                 </motion.div>
               </AnimatePresence>
