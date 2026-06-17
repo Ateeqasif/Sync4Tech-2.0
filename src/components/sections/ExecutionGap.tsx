@@ -85,7 +85,7 @@ export default function ExecutionGap() {
           <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
             The Execution Gap Is
             <br />
-            <span className="gradient-text">Costing You Growth.</span>
+            <span className="gradient-text">Costing You Growth</span>
           </h2>
         </motion.div>
 

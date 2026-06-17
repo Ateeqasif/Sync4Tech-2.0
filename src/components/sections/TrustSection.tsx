@@ -43,7 +43,7 @@ export default function TrustSection() {
           <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Trust & Credibility</span>
           <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
             Built On <span className="gradient-text">Enterprise</span>
-            <br />Standards.
+            <br />Standards
           </h2>
         </motion.div>
 

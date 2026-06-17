@@ -64,11 +64,11 @@ export default function FinalCTA() {
             <br />
             <span className="gradient-text-animated">Businesses That</span>
             <br />
-            Execute Better.
+            Execute Better
           </h2>
 
           <p className="text-gray-500 text-xl max-w-xl mx-auto mb-12 leading-relaxed">
-            Let’s build the operating system for your next stage of growth.
+            Let’s build the operating system for your next stage of growth
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -149,7 +149,7 @@ export default function Hero() {
           <br />
           <span className="gradient-text-animated">Your Business</span>
           <br />
-          <span className="text-black">Operates.</span>
+          <span className="text-black">Operates</span>
         </motion.h1>
 
         <motion.p
