@@ -5,12 +5,6 @@ import { motion } from 'framer-motion'
 const row1 = ['Zapier', 'Make', 'n8n', 'HubSpot', 'Salesforce', 'Snowflake', 'dbt', 'Power BI', 'Tableau']
 const row2 = ['AWS', 'Azure', 'Google Cloud', 'OpenAI', 'Anthropic', 'LangChain', 'Pinecone', 'Databricks', 'Fivetran']
 
-const locations = [
-  { city: 'United States', flag: '🇺🇸', detail: 'North America HQ' },
-  { city: 'United Kingdom', flag: '🇬🇧', detail: 'Europe Office' },
-  { city: 'Pakistan', flag: '🇵🇰', detail: 'Delivery Centre' },
-]
-
 const certBadges = ['ISO 27001 Aligned', 'GDPR Compliant', 'SOC 2 Practices', 'Enterprise Grade']
 
 function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boolean }) {
@@ -53,6 +47,7 @@ export default function TrustSection() {
           </h2>
         </motion.div>
 
+        {/* Dual marquee */}
         <motion.div
           className="flex flex-col gap-3 mb-16"
           initial={{ opacity: 0 }}
@@ -65,8 +60,9 @@ export default function TrustSection() {
           <MarqueeRow items={row2} reverse />
         </motion.div>
 
+        {/* Certifications */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-16"
+          className="flex flex-wrap justify-center gap-3"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -78,25 +74,6 @@ export default function TrustSection() {
               <span className="text-xs font-semibold">{badge}</span>
             </div>
           ))}
-        </motion.div>
-
-        <motion.div
-          className="border-t border-black/10 pt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <p className="text-center text-xs text-gray-400 font-semibold uppercase tracking-widest mb-8">Global Delivery Capability</p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            {locations.map((loc, i) => (
-              <div key={i} className="bg-white border border-black/10 rounded-2xl p-6 text-center">
-                <div className="text-4xl mb-3">{loc.flag}</div>
-                <div className="font-inter-tight font-bold text-black">{loc.city}</div>
-                <div className="text-gray-500 text-xs mt-1">{loc.detail}</div>
-              </div>
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>
