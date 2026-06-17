@@ -32,7 +32,7 @@ export default function TransformationJourney() {
       style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}
       id="journey"
     >
-      {/* Subtle grid overlay */}
+      {/* Grid overlay */}
       <div
         className="absolute inset-0 opacity-[0.06] pointer-events-none"
         style={{
@@ -65,7 +65,7 @@ export default function TransformationJourney() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
           {/* Stage selector */}
           <div className="flex flex-col gap-3">
             {stages.map((s, i) => (
@@ -80,7 +80,7 @@ export default function TransformationJourney() {
               >
                 <div className="flex items-center gap-3">
                   <span
-                    className={`text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center transition-colors ${
+                    className={`text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                       i === active ? 'bg-white text-[#007cf4]' : 'bg-white/20 text-white/60'
                     }`}
                   >
@@ -93,7 +93,7 @@ export default function TransformationJourney() {
                   >
                     {s.title}
                   </span>
-                  <span className="ml-auto text-[10px] text-white/40">{s.duration}</span>
+                  <span className="ml-auto text-[10px] text-white/40 shrink-0">{s.duration}</span>
                 </div>
                 {i === active && (
                   <div className="mt-2 ml-9 h-0.5 bg-white/20 rounded-full overflow-hidden">
@@ -110,38 +110,40 @@ export default function TransformationJourney() {
             ))}
           </div>
 
-          {/* Detail panel */}
-          <div className="relative overflow-hidden min-h-[240px]">
-            <AnimatePresence mode="wait" custom={dir}>
-              <motion.div
-                key={active}
-                custom={dir}
-                variants={{
-                  enter: (d: number) => ({ x: d * 60, opacity: 0 }),
-                  center: { x: 0, opacity: 1 },
-                  exit: (d: number) => ({ x: d * -60, opacity: 0 }),
-                }}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0"
-              >
-                <div className="bg-white/10 border border-white/20 rounded-2xl p-8 h-full backdrop-blur-sm">
-                  <div
-                    className="text-6xl font-inter-tight font-black mb-6 opacity-20 text-white"
-                    style={{ lineHeight: 1 }}
-                  >
-                    {String(stages[active].id).padStart(2, '0')}
+          {/* Detail panel — fixed height, scrollable content fully visible */}
+          <div className="sticky top-28">
+            <div className="relative overflow-hidden" style={{ minHeight: '380px' }}>
+              <AnimatePresence mode="wait" custom={dir}>
+                <motion.div
+                  key={active}
+                  custom={dir}
+                  variants={{
+                    enter: (d: number) => ({ x: d * 60, opacity: 0 }),
+                    center: { x: 0, opacity: 1 },
+                    exit: (d: number) => ({ x: d * -60, opacity: 0 }),
+                  }}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0"
+                >
+                  <div className="bg-white/10 border border-white/20 rounded-2xl p-10 h-full backdrop-blur-sm flex flex-col justify-center">
+                    <div
+                      className="font-inter-tight font-black mb-8 text-white"
+                      style={{ fontSize: 'clamp(64px, 8vw, 96px)', lineHeight: 1, opacity: 0.15 }}
+                    >
+                      {String(stages[active].id).padStart(2, '0')}
+                    </div>
+                    <h3 className="font-inter-tight font-bold text-white text-2xl md:text-3xl mb-3">
+                      {stages[active].title}
+                    </h3>
+                    <p className="text-[#36c5f0] text-sm font-semibold mb-5">{stages[active].duration}</p>
+                    <p className="text-white/75 leading-relaxed text-base">{stages[active].description}</p>
                   </div>
-                  <h3 className="font-inter-tight font-bold text-white text-2xl mb-2">
-                    {stages[active].title}
-                  </h3>
-                  <p className="text-[#36c5f0] text-sm mb-4">{stages[active].duration}</p>
-                  <p className="text-white/70 leading-relaxed">{stages[active].description}</p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
