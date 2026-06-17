@@ -10,6 +10,7 @@ import IntelligentBusiness from '@/components/sections/IntelligentBusiness'
 import WhySync4Tech from '@/components/sections/WhySync4Tech'
 import TrustSection from '@/components/sections/TrustSection'
 import Insights from '@/components/sections/Insights'
+import FAQ from '@/components/sections/FAQ'
 import FinalCTA from '@/components/sections/FinalCTA'
 import Footer from '@/components/Footer'
 import PageLoader from '@/components/PageLoader'
@@ -45,6 +46,7 @@ export default function Home() {
         <WhySync4Tech />
         <TrustSection />
         <Insights />
+        <FAQ />
         <FinalCTA />
       </main>
       <Footer />

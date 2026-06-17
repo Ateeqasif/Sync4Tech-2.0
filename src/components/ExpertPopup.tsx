@@ -115,7 +115,7 @@ export default function ExpertPopup() {
                   whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Talk to an Expert
+                  Schedule a Consultation
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -127,7 +127,7 @@ export default function ExpertPopup() {
                   whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Explore Solutions
+                  Explore Automation Solutions
                 </motion.a>
               </div>
 
