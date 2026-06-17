@@ -16,6 +16,9 @@ import PageLoader from '@/components/PageLoader'
 import CustomCursor from '@/components/CustomCursor'
 import ScrollProgress from '@/components/ScrollProgress'
 import ClickEffect from '@/components/ClickEffect'
+import ExpertPopup from '@/components/ExpertPopup'
+import AIChatBot from '@/components/AIChatBot'
+import ScrollToTop from '@/components/ScrollToTop'
 
 export default function Home() {
   return (
@@ -24,6 +27,9 @@ export default function Home() {
       <CustomCursor />
       <ScrollProgress />
       <ClickEffect />
+      <ExpertPopup />
+      <ScrollToTop />
+      <AIChatBot />
       <Navigation />
       <main>
         <Hero />
