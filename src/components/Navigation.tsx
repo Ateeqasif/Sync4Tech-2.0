@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useCallback, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import Logo from './Logo'
 import ThemeToggle from './ThemeToggle'
 
@@ -16,9 +16,27 @@ const navLinks = [
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { scrollY } = useScroll()
+
+  useMotionValueEvent(scrollY, 'change', (y) => {
+    // Hero section is min-h-screen (~100vh). Switch at 80% of viewport height.
+    const threshold = typeof window !== 'undefined' ? window.innerHeight * 0.8 : 600
+    setScrolled(y > threshold)
+  })
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-nav">
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50"
+      animate={{
+        background: scrolled ? 'rgba(224, 242, 254, 0.72)' : 'rgba(255,255,255,0)',
+        backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(0px)',
+        borderBottomColor: scrolled ? 'rgba(0,124,244,0.15)' : 'rgba(0,0,0,0)',
+        boxShadow: scrolled ? '0 1px 24px rgba(0,124,244,0.07)' : 'none',
+      }}
+      style={{ borderBottomWidth: 1, borderBottomStyle: 'solid' }}
+      transition={{ duration: 0.4, ease: 'easeInOut' }}
+    >
       <div className="section-container">
         <nav className="flex items-center justify-between h-16">
           <Logo variant="full" theme="dark" />
@@ -81,7 +99,7 @@ export default function Navigation() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="md:hidden overflow-hidden border-t border-[#007cf4]/15 dark:border-white/10"
-            style={{ background: 'var(--nav-bg)', backdropFilter: 'blur(20px)' }}
+            style={{ background: 'rgba(224,242,254,0.95)', backdropFilter: 'blur(20px)' }}
           >
             <div className="section-container py-6 flex flex-col gap-4">
               {navLinks.map(link => (
@@ -106,6 +124,6 @@ export default function Navigation() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   )
 }
