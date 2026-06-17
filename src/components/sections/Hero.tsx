@@ -105,7 +105,7 @@ const metrics = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white" id="home">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-[#050f2e]" id="home">
       {/* Particle bg */}
       <div className="absolute inset-0 opacity-70">
         <ParticleCanvas />
@@ -145,15 +145,15 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-black">Transform How</span>
+          <span className="text-black dark:text-white">Transform How</span>
           <br />
           <span className="gradient-text-animated">Your Business</span>
           <br />
-          <span className="text-black">Operates</span>
+          <span className="text-black dark:text-white">Operates</span>
         </motion.h1>
 
         <motion.p
-          className="text-gray-500 text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
+          className="text-gray-500 dark:text-gray-400 text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -178,7 +178,7 @@ export default function Hero() {
           </a>
           <a
             href="#solutions"
-            className="inline-flex items-center gap-2.5 bg-black/5 text-black px-8 py-4 rounded-full font-semibold text-base hover:bg-black/10 transition-all duration-300 border border-black/10 group"
+            className="inline-flex items-center gap-2.5 bg-black/5 dark:bg-white/10 text-black dark:text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-black/10 dark:hover:bg-white/15 transition-all duration-300 border border-black/10 dark:border-white/20 group"
           >
             Explore Solutions
           </a>
@@ -193,10 +193,10 @@ export default function Hero() {
         >
           {metrics.map((m) => (
             <div key={m.label} className="text-center">
-              <div className="font-inter-tight font-black text-black text-4xl mb-1">
+              <div className="font-inter-tight font-black text-black dark:text-white text-4xl mb-1">
                 <CountUp end={m.value} suffix={m.suffix} />
               </div>
-              <div className="text-gray-400 text-xs">{m.label}</div>
+              <div className="text-gray-400 dark:text-gray-500 text-xs">{m.label}</div>
             </div>
           ))}
         </motion.div>

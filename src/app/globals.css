@@ -6,6 +6,31 @@
   --accent: #007cf4;
   --accent-secondary: #36c5f0;
   --accent-navy: #033a9d;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f9ff;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-color: rgba(0, 124, 244, 0.15);
+  --grid-color: rgba(0, 124, 244, 0.05);
+  --card-shadow: 0 4px 24px rgba(0, 124, 244, 0.08);
+  --nav-bg: rgba(224, 242, 254, 0.55);
+  --nav-border: rgba(0, 124, 244, 0.15);
+}
+
+html.dark {
+  --bg-primary: #050f2e;
+  --bg-secondary: #071540;
+  --bg-card: #0a1a4a;
+  --text-primary: #f0f9ff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-color: rgba(54, 197, 240, 0.2);
+  --grid-color: rgba(54, 197, 240, 0.06);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --nav-bg: rgba(5, 15, 46, 0.85);
+  --nav-border: rgba(54, 197, 240, 0.2);
 }
 
 /* Custom cursor hide on non-touch */
@@ -17,8 +42,8 @@
 body {
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  background: #ffffff;
-  color: #fff;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
 }
 
@@ -41,10 +66,10 @@ body {
 
 /* Glass nav */
 .glass-nav {
-  background: rgba(224, 242, 254, 0.55);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(0, 124, 244, 0.15);
+  border-bottom: 1px solid var(--nav-border);
   box-shadow: 0 1px 24px 0 rgba(0, 124, 244, 0.07);
 }
 

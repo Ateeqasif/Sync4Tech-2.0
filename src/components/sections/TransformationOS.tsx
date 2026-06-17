@@ -146,7 +146,7 @@ function TechGrid() {
 
 export default function TransformationOS() {
   return (
-    <section className="py-section bg-white relative" id="solutions">
+    <section className="py-section bg-white dark:bg-[#050f2e] relative" id="solutions">
       <TechGrid />
 
       <div className="section-container relative z-10">
@@ -161,7 +161,7 @@ export default function TransformationOS() {
             What We Build
           </span>
           <h2
-            className="font-inter-tight font-black text-black leading-tight tracking-tight"
+            className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight"
             style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
           >
             The Transformation
@@ -174,7 +174,7 @@ export default function TransformationOS() {
           {pillars.map((p, i) => (
             <motion.div
               key={i}
-              className="group relative bg-white border border-black/8 rounded-3xl p-8 overflow-hidden hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500"
+              className="group relative bg-white dark:bg-[#0a1a4a] border border-black/8 dark:border-white/10 rounded-3xl p-8 overflow-hidden hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -206,11 +206,11 @@ export default function TransformationOS() {
               <div className="relative z-10">
                 <div className="mb-5">{p.icon}</div>
                 <p className="text-[#007cf4] text-xs font-semibold uppercase tracking-widest mb-1">{p.subtitle}</p>
-                <h3 className="font-inter-tight font-bold text-black text-xl mb-3">{p.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-5">{p.description}</p>
+                <h3 className="font-inter-tight font-bold text-black dark:text-white text-xl mb-3">{p.title}</h3>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-5">{p.description}</p>
                 <ul className="flex flex-col gap-2">
                   {p.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-gray-400 text-sm">
+                    <li key={f} className="flex items-center gap-2 text-gray-400 dark:text-gray-500 text-sm">
                       <span className="w-1 h-1 rounded-full bg-[#007cf4]" />
                       {f}
                     </li>

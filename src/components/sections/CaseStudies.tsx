@@ -55,7 +55,7 @@ const cases = [
 
 export default function CaseStudies() {
   return (
-    <section className="py-section bg-gray-50" id="case-studies">
+    <section className="py-section bg-gray-50 dark:bg-[#071540]" id="case-studies">
       <div className="section-container">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-20"

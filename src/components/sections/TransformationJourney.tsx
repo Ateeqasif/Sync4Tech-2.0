@@ -55,7 +55,7 @@ export default function TransformationJourney() {
   }, [active, go])
 
   return (
-    <section className="py-section bg-white relative overflow-hidden" id="journey">
+    <section className="py-section bg-white dark:bg-[#050f2e] relative overflow-hidden" id="journey">
       <SectionGrid />
 
       <div className="section-container relative z-10">
@@ -67,7 +67,7 @@ export default function TransformationJourney() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">How We Work</span>
-          <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
             Your Transformation
             <br />
             <span className="gradient-text">Journey.</span>
@@ -84,7 +84,7 @@ export default function TransformationJourney() {
                 className={`text-left px-6 py-4 rounded-xl border transition-all duration-300 group ${
                   i === active
                     ? 'border-[#007cf4]/40 bg-[#007cf4]/8 shadow-sm'
-                    : 'border-black/8 bg-white hover:bg-[#007cf4]/4 hover:border-[#007cf4]/25'
+                    : 'border-black/8 dark:border-white/10 bg-white dark:bg-[#0a1a4a] hover:bg-[#007cf4]/4 hover:border-[#007cf4]/25'
                 }`}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -94,12 +94,12 @@ export default function TransformationJourney() {
               >
                 <div className="flex items-center gap-3">
                   <span className={`text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                    i === active ? 'bg-[#007cf4] text-white' : 'bg-black/8 text-gray-500'
+                    i === active ? 'bg-[#007cf4] text-white' : 'bg-black/8 dark:bg-white/10 text-gray-500 dark:text-gray-400'
                   }`}>{s.id}</span>
                   <span className={`font-semibold text-sm transition-colors ${
-                    i === active ? 'text-[#007cf4]' : 'text-gray-600 group-hover:text-black'
+                    i === active ? 'text-[#007cf4]' : 'text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white'
                   }`}>{s.title}</span>
-                  <span className="ml-auto text-[10px] text-gray-400 shrink-0">{s.duration}</span>
+                  <span className="ml-auto text-[10px] text-gray-400 dark:text-gray-500 shrink-0">{s.duration}</span>
                 </div>
                 {i === active && (
                   <div className="mt-2 ml-9 h-0.5 bg-black/8 rounded-full overflow-hidden">

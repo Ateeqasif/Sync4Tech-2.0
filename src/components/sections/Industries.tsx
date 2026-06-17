@@ -32,7 +32,7 @@ function TiltCard({ industry, i }: { industry: typeof industries[0]; i: number }
   return (
     <motion.div
       ref={ref}
-      className="group relative bg-gray-50 border border-black/8 rounded-2xl p-6 overflow-hidden cursor-pointer"
+      className="group relative bg-gray-50 dark:bg-[#0a1a4a] border border-black/8 dark:border-white/10 rounded-2xl p-6 overflow-hidden cursor-pointer"
       style={{ rotateX, rotateY, transformPerspective: 800, transformStyle: 'preserve-3d' }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -46,8 +46,8 @@ function TiltCard({ industry, i }: { industry: typeof industries[0]; i: number }
       />
       <div className="relative z-10">
         <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">{industry.icon}</div>
-        <h3 className="font-inter-tight font-bold text-black group-hover:text-white text-base mb-1 transition-colors duration-300">{industry.name}</h3>
-        <p className="text-gray-500 group-hover:text-white/70 text-xs leading-relaxed transition-colors duration-300">{industry.desc}</p>
+        <h3 className="font-inter-tight font-bold text-black dark:text-white group-hover:text-white text-base mb-1 transition-colors duration-300">{industry.name}</h3>
+        <p className="text-gray-500 dark:text-gray-400 group-hover:text-white/70 text-xs leading-relaxed transition-colors duration-300">{industry.desc}</p>
       </div>
     </motion.div>
   )
@@ -55,7 +55,7 @@ function TiltCard({ industry, i }: { industry: typeof industries[0]; i: number }
 
 export default function Industries() {
   return (
-    <section className="py-section bg-white" id="industries">
+    <section className="py-section bg-white dark:bg-[#050f2e]" id="industries">
       <div className="section-container">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-20"
@@ -65,7 +65,7 @@ export default function Industries() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Industries</span>
-          <h2 className="font-inter-tight font-black text-black leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
             Built for the Sectors
             <br />
             <span className="gradient-text">That Drive the World.</span>
