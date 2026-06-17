@@ -182,7 +182,7 @@ export default function SchemaMarkup() {
         "name": "How long does automation implementation take?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sync4Tech delivers transformation projects in phases. Discovery and assessment takes 2-4 weeks, strategy and roadmap 1-2 weeks, design and architecture 2-3 weeks, and build and integration 4-12 weeks. Most clients see measurable results within 12 weeks."
+          "text": "Sync4Tech delivers transformation projects in phases. Discovery and assessment takes 1 week, strategy and roadmap 1 week, design and architecture 1 week, and build and integration 4-12 weeks. Most clients see measurable results within 12 weeks."
         }
       },
       {

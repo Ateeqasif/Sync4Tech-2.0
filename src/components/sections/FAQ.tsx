@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: 'How long does automation implementation take?',
-    a: 'Sync4Tech delivers in structured phases: Discovery & Assessment (2–4 weeks), Strategy & Roadmap (1–2 weeks), Design & Architecture (2–3 weeks), and Build & Integration (4–12 weeks). Most clients achieve measurable results within 12 weeks of project start.',
+    a: 'Sync4Tech delivers in structured phases: Discovery & Assessment (1 week), Strategy & Roadmap (1 week), Design & Architecture (1 week), and Build & Integration (4–12 weeks). Most clients achieve measurable results within 12 weeks of project start.',
   },
   {
     q: 'Can automation integrate with existing systems?',
