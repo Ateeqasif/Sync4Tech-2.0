@@ -9,7 +9,6 @@ export default function ExpertPopup() {
   useEffect(() => {
     const alreadyShown = sessionStorage.getItem('expertPopupShown');
     if (alreadyShown) return;
-
     const handleScroll = () => {
       if (window.scrollY > 600) {
         setVisible(true);
@@ -17,7 +16,6 @@ export default function ExpertPopup() {
         window.removeEventListener('scroll', handleScroll);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -28,63 +26,115 @@ export default function ExpertPopup() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="fixed inset-0 z-[9990] flex items-center justify-center"
-          style={{ backgroundColor: 'rgba(3,58,157,0.35)', backdropFilter: 'blur(4px)' }}
+          className="fixed inset-0 z-[9990] flex items-center justify-center px-4"
+          style={{ backgroundColor: 'rgba(3,58,157,0.4)', backdropFilter: 'blur(6px)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={close}
         >
           <motion.div
-            className="bg-white dark:bg-[#0a1a4a] rounded-2xl max-w-md w-full mx-4 p-8 shadow-2xl relative"
-            initial={{ scale: 0.85, opacity: 0, y: 20 }}
+            className="relative w-full max-w-2xl overflow-hidden rounded-3xl shadow-2xl"
+            initial={{ scale: 0.88, opacity: 0, y: 32 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.85, opacity: 0, y: 20 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            exit={{ scale: 0.88, opacity: 0, y: 32 }}
+            transition={{ type: 'spring', stiffness: 280, damping: 24 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={close}
-              className="absolute top-4 right-4 text-gray-400 hover:text-[#007cf4] text-2xl leading-none transition-colors"
+            {/* Top gradient band */}
+            <div className="relative px-10 pt-10 pb-8 text-white overflow-hidden"
+              style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}
             >
-              ×
-            </button>
+              {/* Decorative grid */}
+              <div className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+                  backgroundSize: '32px 32px',
+                }}
+              />
+              {/* Shimmer sweep */}
+              <motion.div
+                className="absolute inset-0"
+                style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%)' }}
+                animate={{ x: ['-100%', '200%'] }}
+                transition={{ duration: 3, repeat: Infinity, repeatDelay: 3, ease: 'easeInOut' }}
+              />
+              {/* Floating orb */}
+              <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full opacity-20"
+                style={{ background: 'radial-gradient(ellipse, #36c5f0, transparent 70%)' }}
+              />
 
-            <div className="mb-4">
-              <span className="inline-block bg-blue-100 text-[#007cf4] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
-                We Value Your Time
-              </span>
+              {/* Close button */}
+              <button
+                onClick={close}
+                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/30 text-white transition-colors duration-200 z-10"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </button>
+
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 bg-white/15 border border-white/25 rounded-full px-3 py-1 mb-5">
+                  <span className="w-1.5 h-1.5 bg-[#36c5f0] rounded-full animate-pulse" />
+                  <span className="text-xs font-semibold tracking-widest uppercase text-white/90">We Value Your Time</span>
+                </div>
+
+                <h2 className="text-3xl font-black leading-tight tracking-tight mb-3" style={{ fontFamily: 'var(--font-inter-tight)' }}>
+                  Let's Find the Right<br />Solution for You
+                </h2>
+                <p className="text-white/75 text-sm leading-relaxed max-w-md">
+                  Our experts understand your unique challenges and craft a tailored strategy — no generic pitches, just real answers.
+                </p>
+              </div>
             </div>
 
-            <h2 className="text-2xl font-bold text-[#033a9d] dark:text-white mb-3">
-              Let&apos;s Find the Right Solution for You
-            </h2>
+            {/* Bottom white card */}
+            <div className="bg-white dark:bg-[#0a1a4a] px-10 py-8">
+              {/* Trust indicators */}
+              <div className="flex items-center gap-6 mb-7">
+                {[
+                  { icon: '⚡', label: 'Responds in 2 hrs' },
+                  { icon: '🎯', label: 'Tailored Strategy' },
+                  { icon: '🔒', label: 'No Commitment' },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-center gap-2">
+                    <span className="text-base">{item.icon}</span>
+                    <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{item.label}</span>
+                  </div>
+                ))}
+              </div>
 
-            <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-              Our experts are ready to understand your unique challenges and craft a tailored strategy — no generic pitches, just real answers.
-            </p>
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <motion.a
+                  href="#contact"
+                  onClick={close}
+                  className="flex-1 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl text-white font-semibold text-sm transition-all duration-300 btn-glow"
+                  style={{ background: 'linear-gradient(135deg, #033a9d, #007cf4)' }}
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Talk to an Expert
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </motion.a>
+                <motion.a
+                  href="#solutions"
+                  onClick={close}
+                  className="flex-1 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-semibold text-sm border-2 border-[#007cf4] text-[#007cf4] dark:text-[#36c5f0] dark:border-[#36c5f0] transition-all duration-300 hover:bg-[#007cf4]/5"
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Explore Solutions
+                </motion.a>
+              </div>
 
-            <div className="flex flex-col gap-3">
-              <a
-                href="#contact"
-                onClick={close}
-                className="block text-center py-3 px-6 rounded-xl text-white font-semibold transition-opacity hover:opacity-90"
-                style={{ background: 'linear-gradient(135deg, #033a9d, #007cf4)' }}
-              >
-                Talk to an Expert →
-              </a>
-              <a
-                href="#solutions"
-                onClick={close}
-                className="block text-center py-3 px-6 rounded-xl font-semibold border-2 border-[#007cf4] text-[#007cf4] transition-colors hover:bg-blue-50"
-              >
-                Explore Solutions
-              </a>
+              <p className="text-xs text-gray-400 dark:text-gray-500 text-center mt-5">
+                Trusted by teams across US, UK &amp; Pakistan · No spam, ever
+              </p>
             </div>
-
-            <p className="text-xs text-gray-400 dark:text-gray-500 text-center mt-4">
-              Usually responds within 2 hours
-            </p>
           </motion.div>
         </motion.div>
       )}
