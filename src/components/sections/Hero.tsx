@@ -106,27 +106,30 @@ const metrics: { value: number; suffix: string; label: string; duration?: number
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-[#050f2e]" id="home">
-      {/* Particle bg */}
-      <div className="absolute inset-0 opacity-70">
-        <ParticleCanvas />
-      </div>
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-white dark:bg-[#050f2e]" id="home">
+      {/* Background layers — overflow-hidden scoped here so text is never clipped */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Particle bg */}
+        <div className="absolute inset-0 opacity-70">
+          <ParticleCanvas />
+        </div>
 
-      {/* Gradient mesh */}
-      <div className="absolute inset-0">
+        {/* Gradient mesh */}
+        <div className="absolute inset-0">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full opacity-10"
           style={{ background: 'radial-gradient(ellipse, #007cf4 0%, transparent 70%)' }} />
         <div className="absolute bottom-0 right-0 w-[600px] h-[400px] rounded-full opacity-8"
           style={{ background: 'radial-gradient(ellipse, #36c5f0 0%, transparent 70%)' }} />
       </div>
 
-      {/* Grid */}
-      <div className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: 'linear-gradient(#007cf4 1px, transparent 1px), linear-gradient(90deg, #007cf4 1px, transparent 1px)',
-          backgroundSize: '80px 80px',
-        }}
-      />
+        {/* Grid */}
+        <div className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: 'linear-gradient(#007cf4 1px, transparent 1px), linear-gradient(90deg, #007cf4 1px, transparent 1px)',
+            backgroundSize: '80px 80px',
+          }}
+        />
+      </div>{/* end overflow-hidden bg wrapper */}
 
       <div className="relative z-10 section-container text-center pt-32 pb-20">
         <motion.div
