@@ -132,10 +132,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-2 bg-[#007cf4]/8 border border-[#007cf4]/20 rounded-full px-4 py-1.5 mb-10"
+          className="inline-flex items-center gap-4 bg-[#007cf4]/8 border border-[#007cf4]/20 rounded-full px-8 py-2.5 mb-10"
         >
-          <span className="w-1.5 h-1.5 bg-[#007cf4] rounded-full animate-pulse" />
-          <span className="text-sm text-[#033a9d] font-medium">AI · Automation · Data · Transformation</span>
+          <span className="w-2.5 h-2.5 bg-[#007cf4] rounded-full animate-pulse shrink-0" />
+          <span className="text-sm text-[#033a9d] dark:text-[#36c5f0] font-medium tracking-widest uppercase">AI &nbsp;·&nbsp; Automation &nbsp;·&nbsp; Data &nbsp;·&nbsp; Transformation</span>
+          <span className="w-2.5 h-2.5 bg-[#36c5f0] rounded-full animate-pulse shrink-0" style={{ animationDelay: '0.5s' }} />
         </motion.div>
 
         <motion.h1
