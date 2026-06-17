@@ -75,7 +75,7 @@ export default function Navigation() {
             transition={{ duration: 0.5, delay: 0.5 }}
             whileHover={{ scale: 1.03 }}
           >
-            Book Strategy Session
+            Meet Our Experts
           </motion.a>
 
           {/* Mobile toggle */}
@@ -118,7 +118,7 @@ export default function Navigation() {
                 style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
                 onClick={() => setMobileOpen(false)}
               >
-                Book Strategy Session
+                Meet Our Experts
               </a>
             </div>
           </motion.div>

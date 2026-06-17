@@ -173,7 +173,7 @@ export default function Hero() {
             href="#contact"
             className="inline-flex items-center gap-2.5 bg-[#007cf4] text-white px-8 py-4 rounded-full font-semibold text-base btn-glow hover:bg-[#36c5f0] transition-all duration-300 group"
           >
-            Book a Strategy Session
+            Meet Our Experts
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
