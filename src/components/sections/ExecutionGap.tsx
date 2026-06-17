@@ -24,10 +24,10 @@ function AnimatedCheck({ delay }: { delay: number }) {
   const inView = useInView(ref, { once: true })
   return (
     <svg ref={ref} width="18" height="18" viewBox="0 0 18 18" fill="none" className="shrink-0 mt-0.5">
-      <circle cx="9" cy="9" r="8" stroke="#36c5f0" strokeWidth="1.5" />
+      <circle cx="9" cy="9" r="8" stroke="#007cf4" strokeWidth="1.5" />
       <path
         d="M5 9l3 3 5-5"
-        stroke="#36c5f0"
+        stroke="#007cf4"
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -39,10 +39,50 @@ function AnimatedCheck({ delay }: { delay: number }) {
   )
 }
 
+/* Animated tech-grid background */
+function TechGrid() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Base grid */}
+      <div
+        className="absolute inset-0 opacity-[0.045]"
+        style={{
+          backgroundImage:
+            'linear-gradient(#007cf4 1px, transparent 1px), linear-gradient(90deg, #007cf4 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }}
+      />
+      {/* Animated scan line */}
+      <motion.div
+        className="absolute left-0 right-0 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent, #007cf4, transparent)', opacity: 0.3 }}
+        initial={{ top: '-2px' }}
+        animate={{ top: '100%' }}
+        transition={{ duration: 6, ease: 'linear', repeat: Infinity, repeatDelay: 2 }}
+      />
+      {/* Glowing intersection dots */}
+      {Array.from({ length: 6 }).map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1.5 h-1.5 rounded-full bg-[#007cf4]"
+          style={{
+            left: `${(i % 3) * 33 + 10}%`,
+            top: `${Math.floor(i / 3) * 50 + 20}%`,
+          }}
+          animate={{ opacity: [0.1, 0.6, 0.1], scale: [1, 1.4, 1] }}
+          transition={{ duration: 3 + i * 0.5, repeat: Infinity, delay: i * 0.4 }}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function ExecutionGap() {
   return (
-    <section className="py-section bg-black" id="execution-gap">
-      <div className="section-container">
+    <section className="py-section bg-white relative" id="execution-gap">
+      <TechGrid />
+
+      <div className="section-container relative z-10">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-20"
           initial={{ opacity: 0, y: 30 }}
@@ -50,8 +90,11 @@ export default function ExecutionGap() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#36c5f0] text-sm font-semibold tracking-widest uppercase mb-4 block">The Problem</span>
-          <h2 className="font-inter-tight font-black text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">The Problem</span>
+          <h2
+            className="font-inter-tight font-black text-black leading-tight tracking-tight"
+            style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
+          >
             The Execution Gap Is
             <br />
             <span className="gradient-text">Costing You Growth.</span>
@@ -59,43 +102,65 @@ export default function ExecutionGap() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
+          {/* Before card */}
           <motion.div
-            className="bg-white/3 border border-white/10 rounded-3xl p-10"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="bg-white border border-black/10 rounded-3xl p-10 shadow-sm relative overflow-hidden"
+            initial={{ opacity: 0, x: -50, rotateY: -8 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -4, boxShadow: '0 20px 60px rgba(0,0,0,0.08)' }}
           >
-            <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-full px-4 py-1.5 mb-8">
+            {/* Subtle red tint corner */}
+            <div className="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-5" style={{ background: '#ef4444' }} />
+            <div className="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-1.5 mb-8">
               <span className="w-1.5 h-1.5 bg-red-400 rounded-full" />
-              <span className="text-red-400 text-sm font-semibold">Before Sync4Tech</span>
+              <span className="text-red-500 text-sm font-semibold">Before Sync4Tech</span>
             </div>
             <ul className="flex flex-col gap-5">
               {before.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
+                <motion.li
+                  key={i}
+                  className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                >
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="shrink-0 mt-0.5">
                     <circle cx="9" cy="9" r="8" stroke="#ef4444" strokeWidth="1.5" />
                     <path d="M6 6l6 6M12 6l-6 6" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
-                  <span className="text-gray-400 text-sm leading-relaxed">{item}</span>
-                </li>
+                  <span className="text-gray-600 text-sm leading-relaxed">{item}</span>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
 
+          {/* After card */}
           <motion.div
             className="rounded-3xl p-10 relative overflow-hidden"
             style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 50, rotateY: 8 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -4, boxShadow: '0 20px 60px rgba(0,124,244,0.3)' }}
           >
-            <div className="absolute inset-0 opacity-10"
+            <div
+              className="absolute inset-0 opacity-10"
               style={{
-                backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+                backgroundImage:
+                  'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
                 backgroundSize: '30px 30px',
               }}
+            />
+            {/* Shimmer sweep */}
+            <motion.div
+              className="absolute inset-0"
+              style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%)' }}
+              animate={{ x: ['-100%', '200%'] }}
+              transition={{ duration: 3.5, repeat: Infinity, repeatDelay: 2, ease: 'easeInOut' }}
             />
             <div className="relative z-10">
               <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-8">
@@ -104,10 +169,17 @@ export default function ExecutionGap() {
               </div>
               <ul className="flex flex-col gap-5">
                 {after.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
+                  <motion.li
+                    key={i}
+                    className="flex items-start gap-3"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  >
                     <AnimatedCheck delay={0.3 + i * 0.1} />
                     <span className="text-white/90 text-sm leading-relaxed">{item}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
