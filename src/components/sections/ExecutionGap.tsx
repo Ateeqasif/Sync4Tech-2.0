@@ -132,9 +132,6 @@ export default function ExecutionGap() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, boxShadow: '0 20px 60px rgba(0,124,244,0.2)' }}
           >
-            <div className="absolute inset-0 opacity-20"
-              style={{ backgroundImage: 'linear-gradient(#007cf4 1px, transparent 1px), linear-gradient(90deg, #007cf4 1px, transparent 1px)', backgroundSize: '30px 30px' }}
-            />
             <motion.div
               className="absolute inset-0"
               style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%)' }}
