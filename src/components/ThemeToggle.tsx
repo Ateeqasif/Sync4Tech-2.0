@@ -34,10 +34,10 @@ export default function ThemeToggle() {
       style={{
         background: isDark
           ? 'linear-gradient(135deg, #033a9d, #007cf4)'
-          : 'linear-gradient(135deg, #bae6fd, #7dd3fc)',
+          : '#ffffff',
         boxShadow: isDark
           ? '0 0 12px rgba(0,124,244,0.4)'
-          : '0 0 8px rgba(0,124,244,0.2)',
+          : '0 0 0 1.5px rgba(0,124,244,0.25), 0 2px 8px rgba(0,124,244,0.1)',
       }}
       whileTap={{ scale: 0.95 }}
       aria-label="Toggle dark mode"
