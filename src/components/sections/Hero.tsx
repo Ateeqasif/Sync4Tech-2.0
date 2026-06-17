@@ -152,7 +152,7 @@ export default function Hero() {
         >
           <span className="text-black dark:text-white">Transform How</span>
           <br />
-          <span className="gradient-text-animated">Your Business</span>
+          <span className="gradient-text-animated" style={{ paddingLeft: '0.05em', paddingRight: '0.08em' }}>Your Business</span>
           <br />
           <span className="text-black dark:text-white">Operates</span>
         </motion.h1>
