@@ -110,7 +110,7 @@ export default function Footer() {
         <div className="section-container py-16">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
             <div className="col-span-2 md:col-span-3 lg:col-span-1">
-              <Logo variant="full" theme="light" />
+              <Logo variant="full" theme="dark" />
               <p className="text-white/40 text-xs leading-relaxed mt-4 mb-6 max-w-[200px]">
                 AI, Automation & Business Transformation for ambitious organizations.
               </p>
