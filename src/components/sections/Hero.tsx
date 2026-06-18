@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
-import IconBackground from '@/components/IconBackground'
 
 function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -113,9 +112,6 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-white dark:bg-[#050f2e]" id="home">
       {/* Background layers — overflow-hidden scoped here so text is never clipped */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Stacked icon background */}
-        <IconBackground />
-
         {/* Particle bg */}
         <div className="absolute inset-0 opacity-70">
           <ParticleCanvas />
