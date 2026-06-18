@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 function SectionGrid() {
   return (
@@ -27,6 +28,7 @@ function SectionGrid() {
 }
 
 export default function FinalCTA() {
+  const { t } = useLanguage()
   return (
     <section className="py-section bg-white dark:bg-[#050f2e] relative overflow-hidden" id="contact">
       <SectionGrid />
@@ -46,22 +48,18 @@ export default function FinalCTA() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <span className="w-1.5 h-1.5 bg-[#007cf4] rounded-full animate-pulse" />
-            <span className="text-sm text-[#007cf4] font-semibold">Ready to Transform?</span>
+            <span className="text-sm text-[#007cf4] font-semibold">{t.finalCta.eyebrow}</span>
           </motion.div>
 
           <h2
             className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight mb-6 max-w-4xl mx-auto"
             style={{ fontSize: 'clamp(40px, 6vw, 88px)' }}
           >
-            The Future Belongs To
-            <br />
-            <span className="gradient-text-animated">Businesses That</span>
-            <br />
-            Execute Better
+            {t.finalCta.h2}
           </h2>
 
           <p className="text-gray-500 dark:text-gray-400 text-xl max-w-xl mx-auto mb-12 leading-relaxed">
-            Let’s build the operating system for your next stage of growth
+            {t.finalCta.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -72,7 +70,7 @@ export default function FinalCTA() {
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
             >
-              Meet Our Experts
+              {t.finalCta.cta1}
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -83,10 +81,7 @@ export default function FinalCTA() {
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
             >
-              Download Blueprint
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-y-0.5 transition-transform">
-                <path d="M8 3v7M5 8l3 3 3-3M3 13h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              {t.finalCta.cta2}
             </motion.a>
           </div>
 

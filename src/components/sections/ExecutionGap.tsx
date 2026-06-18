@@ -2,26 +2,14 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-
-const before = [
-  'Siloed data living in 12+ disconnected systems',
-  'Manual approvals bottlenecking every process',
-  'Decisions made on yesterday\'s stale reports',
-  '40% of your team\'s time on non-value work',
-  'Talented people buried in repetitive tasks',
-]
-
-const after = [
-  'One source of truth across your entire operation',
-  'Workflows that run, approve, and escalate themselves',
-  'Live intelligence that flags problems before they hit',
-  '80%+ of routine work handled without human input',
-  'Your best people working on what actually matters',
-]
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function ExecutionGap() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const { t } = useLanguage()
+  const before = t.executionGap.beforeItems
+  const after = t.executionGap.afterItems
 
   return (
     <section className="py-section bg-[#f8f9fc] dark:bg-[#060d24]" id="execution-gap">
@@ -34,10 +22,10 @@ export default function ExecutionGap() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#007cf4] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">The Transformation</span>
+          <span className="text-[#007cf4] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">{t.executionGap.eyebrow}</span>
           <h2 className="font-inter-tight font-black text-black dark:text-white leading-[1.05] tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 60px)' }}>
-            Where you are now.<br />
-            <span className="gradient-text">Where we take you.</span>
+            {t.executionGap.h2Line1}<br />
+            <span className="gradient-text">{t.executionGap.h2Line2}</span>
           </h2>
         </motion.div>
 
@@ -53,7 +41,7 @@ export default function ExecutionGap() {
           >
             <div className="flex items-center gap-3 mb-10">
               <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-              <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.18em]">Before Transformation</span>
+              <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.18em]">{t.executionGap.beforeLabel}</span>
             </div>
 
             <div className="flex flex-col gap-0 flex-1">
@@ -111,7 +99,7 @@ export default function ExecutionGap() {
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex items-center gap-3 mb-10">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#36c5f0] animate-pulse" />
-                <span className="text-xs font-bold text-white/50 uppercase tracking-[0.18em]">After Transformation</span>
+                <span className="text-xs font-bold text-white/50 uppercase tracking-[0.18em]">{t.executionGap.afterLabel}</span>
               </div>
 
               <div className="flex flex-col gap-0 flex-1">

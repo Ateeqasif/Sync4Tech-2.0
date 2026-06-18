@@ -199,9 +199,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
         >
-          {metrics.map((m, i) => (
+          {metricValues.map((m, i) => (
             <motion.div
-              key={m.label}
+              key={i}
               className="text-center px-4 py-4 rounded-2xl bg-white/60 dark:bg-white/5 border border-[#007cf4]/10 backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -210,7 +210,7 @@ export default function Hero() {
               <div className="font-inter-tight font-black text-black dark:text-white text-4xl mb-1">
                 <CountUp end={m.value} suffix={m.suffix} duration={m.duration} />
               </div>
-              <div className="text-gray-400 dark:text-gray-500 text-xs font-medium">{m.label}</div>
+              <div className="text-gray-400 dark:text-gray-500 text-xs font-medium">{metricLabels[i]}</div>
             </motion.div>
           ))}
         </motion.div>

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Logo from './Logo'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const solutions = ['Business Automation', 'AI Enablement', 'Data Transformation', 'Execution Excellence', 'Process Mining', 'Change Management']
 const industries = ['Real Estate', 'Healthcare', 'Financial Services', 'Manufacturing', 'Technology', 'Retail & E-Commerce']
@@ -26,6 +27,7 @@ const certs = [
 export default function Footer() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const { t } = useLanguage()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,19 +50,18 @@ export default function Footer() {
 
         <div className="section-container py-16 relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
           <div className="max-w-xl">
-            <p className="text-xs text-[#007cf4] font-semibold tracking-widest uppercase mb-4">Stay Ahead</p>
+            <p className="text-xs text-[#007cf4] font-semibold tracking-widest uppercase mb-4">{t.footer.stayAhead}</p>
             <h3 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl leading-tight">
-              Insights for the{' '}
-              <span className="gradient-text">Modern Enterprise.</span>
+              {t.footer.heading}
             </h3>
             <p className="text-gray-500 dark:text-gray-400 mt-3 text-sm leading-relaxed max-w-sm">
-              Strategy, AI, and operational intelligence — delivered to your inbox monthly.
+              {t.footer.subtitle}
             </p>
           </div>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
             {submitted ? (
               <div className="flex-1 flex items-center justify-center gap-2 bg-[#007cf4]/10 border border-[#007cf4]/30 rounded-full px-6 py-3.5 text-[#007cf4] text-sm font-semibold">
-                <span>✓</span> You&apos;re on the list!
+                <span>✓</span> {t.footer.successMsg}
               </div>
             ) : (
               <>
@@ -68,7 +69,7 @@ export default function Footer() {
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                  placeholder="Enter your work email"
+                  placeholder={t.footer.subscribePlaceholder}
                   className="flex-1 bg-white dark:bg-[#0a1a4a] border border-black/15 dark:border-white/20 rounded-full px-5 py-3.5 text-gray-800 dark:text-gray-200 text-sm placeholder-gray-400 focus:outline-none focus:border-[#007cf4]/60 transition-colors shadow-sm"
                 />
                 <button
@@ -76,7 +77,7 @@ export default function Footer() {
                   className="text-white font-semibold text-sm px-6 py-3.5 rounded-full transition-all whitespace-nowrap hover:opacity-90"
                   style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
                 >
-                  Subscribe
+                  {t.footer.subscribeBtn}
                 </button>
               </>
             )}
@@ -146,7 +147,7 @@ export default function Footer() {
         <div className="border-t border-white/10">
           <div className="section-container py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-white/30 text-xs">
-              © {new Date().getFullYear()} Sync4Tech Limited. All rights reserved.
+              {t.footer.copyright}
             </p>
             <div className="flex items-center gap-6">
               <a href="#" className="text-white/30 text-xs hover:text-white/70 transition-colors">Privacy</a>
