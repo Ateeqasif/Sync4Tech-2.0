@@ -3,17 +3,22 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-const CX = 460, CY = 285
+const CX = 460, CY = 290
 
+// 12 tools evenly spaced at 30° intervals (clockwise from top)
 const tools = [
-  { id: 'hubspot',    label: 'HubSpot',    cat: 'CRM',           x: 100,  y: 90,  color: '#FF7A59', dur: 2.8, d2: 0.9, d3: 1.8, floatY:  6 },
-  { id: 'snowflake',  label: 'Snowflake',  cat: 'Data Warehouse', x: 460,  y: 28,  color: '#29B5E8', dur: 2.3, d2: 0.7, d3: 1.5, floatY: -5 },
-  { id: 'salesforce', label: 'Salesforce', cat: 'Sales Cloud',    x: 820,  y: 90,  color: '#00A1E0', dur: 3.1, d2: 1.0, d3: 2.1, floatY:  7 },
-  { id: 'zapier',     label: 'Zapier',     cat: 'Automation',     x: 80,   y: 285, color: '#FF4A00', dur: 2.6, d2: 0.8, d3: 1.7, floatY: -6 },
-  { id: 'powerbi',    label: 'Power BI',   cat: 'Analytics',      x: 840,  y: 285, color: '#F2C811', dur: 2.6, d2: 0.9, d3: 1.8, floatY:  5 },
-  { id: 'aws',        label: 'AWS',        cat: 'Cloud Infra',    x: 100,  y: 480, color: '#FF9900', dur: 2.9, d2: 1.0, d3: 2.0, floatY: -7 },
-  { id: 'n8n',        label: 'n8n',        cat: 'Workflows',      x: 460,  y: 542, color: '#EA4B71', dur: 2.4, d2: 0.8, d3: 1.6, floatY:  6 },
-  { id: 'openai',     label: 'OpenAI',     cat: 'AI Layer',       x: 820,  y: 480, color: '#00A67E', dur: 3.0, d2: 0.7, d3: 1.5, floatY: -5 },
+  { id: 'snowflake',   label: 'Snowflake',   cat: 'Data Warehouse', x: 460, y: 50,  color: '#29B5E8', dur: 2.3, d2: 0.7, d3: 1.5, floatY: -5 },
+  { id: 'salesforce',  label: 'Salesforce',  cat: 'Sales Cloud',    x: 580, y: 82,  color: '#00A1E0', dur: 3.1, d2: 1.0, d3: 2.1, floatY:  6 },
+  { id: 'powerbi',     label: 'Power BI',    cat: 'Analytics',      x: 668, y: 170, color: '#F2C811', dur: 2.6, d2: 0.9, d3: 1.8, floatY:  5 },
+  { id: 'openai',      label: 'OpenAI',      cat: 'AI Layer',       x: 700, y: 290, color: '#00A67E', dur: 3.0, d2: 0.7, d3: 1.5, floatY: -5 },
+  { id: 'make',        label: 'Make.com',    cat: 'Automation',     x: 668, y: 410, color: '#6D00CC', dur: 2.7, d2: 0.8, d3: 1.7, floatY:  7 },
+  { id: 'n8n',         label: 'n8n',         cat: 'Workflows',      x: 580, y: 498, color: '#EA4B71', dur: 2.4, d2: 0.8, d3: 1.6, floatY:  6 },
+  { id: 'monday',      label: 'Monday.com',  cat: 'Project Mgmt',   x: 460, y: 530, color: '#FF3D57', dur: 2.8, d2: 1.0, d3: 1.9, floatY: -6 },
+  { id: 'ghl',         label: 'GoHighLevel', cat: 'CRM & Marketing', x: 340, y: 498, color: '#F97316', dur: 2.9, d2: 0.9, d3: 1.8, floatY:  5 },
+  { id: 'aws',         label: 'AWS',         cat: 'Cloud Infra',    x: 252, y: 410, color: '#FF9900', dur: 2.9, d2: 1.0, d3: 2.0, floatY: -7 },
+  { id: 'zapier',      label: 'Zapier',      cat: 'Automation',     x: 220, y: 290, color: '#FF4A00', dur: 2.6, d2: 0.8, d3: 1.7, floatY: -6 },
+  { id: 'hubspot',     label: 'HubSpot',     cat: 'CRM',            x: 252, y: 170, color: '#FF7A59', dur: 2.8, d2: 0.9, d3: 1.8, floatY:  6 },
+  { id: 'zoho',        label: 'Zoho',        cat: 'Business Suite', x: 340, y: 82,  color: '#E42527', dur: 2.5, d2: 0.7, d3: 1.6, floatY: -5 },
 ]
 
 export default function InfinityLoop() {
@@ -49,7 +54,7 @@ export default function InfinityLoop() {
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          <svg viewBox="0 0 920 580" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+          <svg viewBox="0 0 920 590" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
             <defs>
               <radialGradient id="hubGrad" cx="40%" cy="35%" r="65%">
                 <stop offset="0%" stopColor="#007cf4" />
