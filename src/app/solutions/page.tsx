@@ -112,19 +112,24 @@ export default function SolutionsPage() {
             {solutions.map((sol, i) => (
               <div
                 key={sol.slug}
-                className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-8 hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300 flex flex-col group"
+                className="bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 rounded-2xl overflow-hidden hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300 flex flex-col group"
               >
-                <div className="w-12 h-12 bg-[#007cf4]/10 rounded-xl flex items-center justify-center mb-5">
-                  {sol.icon}
+                <div className="h-[3px] w-full" style={{ background: i % 2 === 0 ? 'linear-gradient(90deg,#033a9d,#007cf4)' : 'linear-gradient(90deg,#007cf4,#36c5f0)' }} />
+                <div className="p-8 flex flex-col flex-1">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+                    <div className="[&_path]:stroke-white [&_circle]:stroke-white [&_rect]:stroke-white [&_ellipse]:stroke-white">
+                      {sol.icon}
+                    </div>
+                  </div>
+                  <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2">{sol.title}</h2>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{sol.description}</p>
+                  <Link
+                    href={`/solutions/${sol.slug}`}
+                    className="mt-5 text-[#007cf4] text-sm font-semibold hover:text-[#36c5f0] transition-colors inline-flex items-center gap-1 group-hover:gap-2"
+                  >
+                    Learn more →
+                  </Link>
                 </div>
-                <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2">{sol.title}</h2>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{sol.description}</p>
-                <Link
-                  href={`/solutions/${sol.slug}`}
-                  className="mt-5 text-[#007cf4] text-sm font-semibold hover:text-[#36c5f0] transition-colors inline-flex items-center gap-1 group-hover:gap-2"
-                >
-                  Learn more →
-                </Link>
               </div>
             ))}
           </div>

@@ -132,20 +132,25 @@ export default function IndustriesPage() {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {industries.map((ind) => (
+            {industries.map((ind, idx) => (
               <div
                 key={ind.slug}
-                className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-8 hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300 flex gap-5 group"
+                className="bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 rounded-2xl overflow-hidden hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300 flex flex-col group"
               >
-                <div className="w-12 h-12 bg-[#007cf4]/10 rounded-xl flex items-center justify-center shrink-0">
-                  {ind.icon}
-                </div>
-                <div>
-                  <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2">{ind.name}</h2>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">{ind.description}</p>
-                  <Link href={`/industries/${ind.slug}`} className="text-[#007cf4] text-sm font-semibold hover:text-[#36c5f0] transition-colors inline-flex items-center gap-1 group-hover:gap-2">
-                    Explore →
-                  </Link>
+                <div className="h-[3px] w-full" style={{ background: idx % 2 === 0 ? 'linear-gradient(90deg,#033a9d,#007cf4)' : 'linear-gradient(90deg,#007cf4,#36c5f0)' }} />
+                <div className="p-8 flex gap-5 flex-1">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+                    <div className="[&_path]:stroke-white [&_circle]:stroke-white [&_rect]:stroke-white">
+                      {ind.icon}
+                    </div>
+                  </div>
+                  <div>
+                    <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2">{ind.name}</h2>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">{ind.description}</p>
+                    <Link href={`/industries/${ind.slug}`} className="text-[#007cf4] text-sm font-semibold hover:text-[#36c5f0] transition-colors inline-flex items-center gap-1 group-hover:gap-2">
+                      Explore →
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
@@ -160,13 +165,18 @@ export default function IndustriesPage() {
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">By the Numbers</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Why Industry Expertise Matters</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            {stats.map((stat, i) => (
-              <div key={i} className="text-center bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-8">
-                <div className="font-inter-tight font-black text-black dark:text-white text-5xl mb-2">{stat.value}{stat.suffix}</div>
-                <div className="text-gray-500 dark:text-gray-400 text-sm">{stat.label}</div>
-              </div>
-            ))}
+          <div className="rounded-2xl overflow-hidden shadow-xl max-w-3xl mx-auto" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20">
+              {stats.map((stat, i) => (
+                <div key={i} className="text-center p-10 relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                  <div className="relative">
+                    <div className="font-inter-tight font-black text-white text-5xl mb-2">{stat.value}{stat.suffix}</div>
+                    <div className="text-white/75 text-sm">{stat.label}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

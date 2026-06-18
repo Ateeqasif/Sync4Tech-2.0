@@ -64,19 +64,25 @@ export default function AboutPage() {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-8">
-              <div className="w-10 h-10 bg-[#007cf4]/10 rounded-xl flex items-center justify-center mb-4">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#007cf4" strokeWidth="1.5" /><path d="M10 6v4l3 2" stroke="#36c5f0" strokeWidth="1.5" strokeLinecap="round" /></svg>
+            <div className="bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 rounded-2xl overflow-hidden hover:border-[#007cf4]/40 hover:shadow-md transition-all">
+              <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg,#033a9d,#007cf4)' }} />
+              <div className="p-8">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="white" strokeWidth="1.5" /><path d="M10 6v4l3 2" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></svg>
+                </div>
+                <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3">Our Mission</h2>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">To eliminate the execution gap — the painful distance between what organisations intend to do and what they actually achieve — through intelligent automation and AI-powered systems.</p>
               </div>
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3">Our Mission</h2>
-              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">To eliminate the execution gap — the painful distance between what organisations intend to do and what they actually achieve — through intelligent automation and AI-powered systems.</p>
             </div>
-            <div className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-8">
-              <div className="w-10 h-10 bg-[#007cf4]/10 rounded-xl flex items-center justify-center mb-4">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" stroke="#007cf4" strokeWidth="1.5" strokeLinejoin="round" /></svg>
+            <div className="bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 rounded-2xl overflow-hidden hover:border-[#007cf4]/40 hover:shadow-md transition-all">
+              <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg,#007cf4,#36c5f0)' }} />
+              <div className="p-8">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg,#007cf4,#36c5f0)' }}>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" stroke="white" strokeWidth="1.5" strokeLinejoin="round" /></svg>
+                </div>
+                <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3">Our Vision</h2>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">A world where every organisation — regardless of size or sector — can operate at its full potential, freed from the friction of manual processes and siloed data.</p>
               </div>
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3">Our Vision</h2>
-              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">A world where every organisation — regardless of size or sector — can operate at its full potential, freed from the friction of manual processes and siloed data.</p>
             </div>
           </div>
         </div>
@@ -115,8 +121,10 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v, i) => (
-              <div key={i} className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-6 hover:border-[#007cf4]/40 transition-all duration-300">
-                <div className="w-8 h-8 bg-gradient-to-br from-[#033a9d] to-[#007cf4] rounded-lg mb-4" />
+              <div key={i} className="bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 rounded-2xl p-6 hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300">
+                <div className="w-8 h-8 rounded-lg mb-4 flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+                  <span className="text-white font-black text-xs">{String(i + 1).padStart(2, '0')}</span>
+                </div>
                 <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2">{v.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{v.desc}</p>
               </div>
@@ -128,18 +136,23 @@ export default function AboutPage() {
       {/* Stats */}
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-            {[
-              { v: '3x', l: 'Faster Execution' },
-              { v: '68%', l: 'Cost Reduction' },
-              { v: '280+', l: 'Clients Served' },
-              { v: '12+', l: 'Industries' },
-            ].map((s, i) => (
-              <div key={i} className="text-center">
-                <div className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl mb-1">{s.v}</div>
-                <div className="text-gray-500 dark:text-gray-400 text-sm">{s.l}</div>
-              </div>
-            ))}
+          <div className="rounded-2xl overflow-hidden shadow-xl max-w-3xl mx-auto" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-y-0 divide-x-0 md:divide-x divide-white/20">
+              {[
+                { v: '3x', l: 'Faster Execution' },
+                { v: '68%', l: 'Cost Reduction' },
+                { v: '280+', l: 'Clients Served' },
+                { v: '12+', l: 'Industries' },
+              ].map((s, i) => (
+                <div key={i} className="text-center p-8 relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                  <div className="relative">
+                    <div className="font-inter-tight font-black text-white text-4xl md:text-5xl mb-1">{s.v}</div>
+                    <div className="text-white/75 text-sm">{s.l}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -154,12 +167,15 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {team.map((member, i) => (
-              <div key={i} className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-6 text-center hover:border-[#007cf4]/40 transition-all duration-300">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#033a9d] to-[#007cf4] flex items-center justify-center mx-auto mb-4 text-white font-inter-tight font-black text-xl">
-                  {member.initials}
+              <div key={i} className="bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 rounded-2xl overflow-hidden text-center hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300">
+                <div className="h-1 w-full" style={{ background: i % 2 === 0 ? 'linear-gradient(90deg,#033a9d,#007cf4)' : 'linear-gradient(90deg,#007cf4,#36c5f0)' }} />
+                <div className="p-6">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-inter-tight font-black text-xl" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+                    {member.initials}
+                  </div>
+                  <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-1">{member.name}</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs">{member.role}</p>
                 </div>
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-1">{member.name}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-xs">{member.role}</p>
               </div>
             ))}
           </div>
@@ -175,11 +191,14 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {offices.map((o, i) => (
-              <div key={i} className="bg-[#f8faff] dark:bg-[#060d24] border border-[#007cf4]/15 rounded-2xl p-6">
-                <div className="font-inter-tight font-black text-black dark:text-white text-lg mb-1">{o.city}</div>
-                <div className="text-[#007cf4] text-sm font-semibold mb-3">{o.country}</div>
-                <div className="text-gray-500 dark:text-gray-400 text-xs mb-2">{o.addr}</div>
-                <div className="text-gray-400 text-xs">{o.tz}</div>
+              <div key={i} className="bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 rounded-2xl overflow-hidden hover:border-[#007cf4]/40 hover:shadow-md transition-all">
+                <div className="h-[3px] w-full" style={{ background: i % 2 === 0 ? 'linear-gradient(90deg,#033a9d,#007cf4)' : 'linear-gradient(90deg,#007cf4,#36c5f0)' }} />
+                <div className="p-6">
+                  <div className="font-inter-tight font-black text-black dark:text-white text-lg mb-1">{o.city}</div>
+                  <div className="text-[#007cf4] text-sm font-semibold mb-3">{o.country}</div>
+                  <div className="text-gray-500 dark:text-gray-400 text-xs mb-2">{o.addr}</div>
+                  <div className="text-gray-400 text-xs">{o.tz}</div>
+                </div>
               </div>
             ))}
           </div>

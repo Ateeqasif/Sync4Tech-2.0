@@ -211,15 +211,19 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
               <p key={i} className="text-gray-500 dark:text-gray-400 leading-relaxed mb-4 text-sm">{p}</p>
             ))}
           </div>
-          <div className="bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-8 border border-[#007cf4]/10">
-            <h3 className="font-inter-tight font-bold text-black dark:text-white text-lg mb-6">Key Benefits</h3>
-            <ul className="flex flex-col gap-3">
-              {s.benefits.map((b, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
-                  <CheckIcon />{b}
-                </li>
-              ))}
-            </ul>
+          <div className="relative overflow-hidden rounded-2xl p-8 shadow-xl shadow-[#007cf4]/20" style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
+            <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+            <div className="relative">
+              <h3 className="font-inter-tight font-bold text-white text-lg mb-6">Key Benefits</h3>
+              <ul className="flex flex-col gap-3">
+                {s.benefits.map((b, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-white">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5"><circle cx="10" cy="10" r="9" fill="rgba(255,255,255,0.2)"/><path d="M6 10l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -233,8 +237,8 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
           </div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {s.steps.map((step, i) => (
-              <div key={i} className="bg-white dark:bg-[#0a1628] rounded-2xl p-8 border border-[#007cf4]/10 hover:border-[#007cf4]/30 transition-colors">
-                <div className="w-10 h-10 rounded-full bg-[#007cf4]/10 flex items-center justify-center text-[#007cf4] font-black text-lg mb-4">{i + 1}</div>
+              <div key={i} className="bg-white dark:bg-[#0a1628] rounded-2xl p-7 border-l-4 border-[#007cf4]/40 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-black text-lg mb-4" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>{i + 1}</div>
                 <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2">{step.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
               </div>
@@ -263,13 +267,19 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Results</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">Measurable Outcomes</h2>
           </div>
-          <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-            {s.metrics.map((m, i) => (
-              <div key={i} className="text-center bg-white dark:bg-[#0a1628] rounded-2xl p-8 border border-[#007cf4]/10">
-                <div className="font-inter-tight font-black text-4xl mb-2" style={{ background: 'linear-gradient(135deg,#007cf4,#36c5f0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{m.value}</div>
-                <div className="text-gray-500 dark:text-gray-400 text-xs font-medium">{m.label}</div>
-              </div>
-            ))}
+          <div className="rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
+            <div className="grid grid-cols-3 divide-x divide-white/20">
+              {s.metrics.map((m, i) => (
+                <div key={i} className="text-center p-8 relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                  <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-white/10" />
+                  <div className="relative">
+                    <div className="font-inter-tight font-black text-white text-4xl mb-2">{m.value}</div>
+                    <div className="text-white/80 text-xs font-medium">{m.label}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -279,12 +289,15 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
         <div className="section-container max-w-2xl mx-auto text-center">
           <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Case Study</span>
           <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-10">See It in Action</h2>
-          <div className="bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-8 border border-[#007cf4]/15 text-left">
-            <span className="text-xs font-semibold text-[#007cf4] uppercase tracking-widest">{s.caseStudy.industry}</span>
-            <p className="font-inter-tight font-bold text-black dark:text-white text-xl mt-3 mb-4">{s.caseStudy.result}</p>
-            <Link href={`/case-studies/${s.caseStudy.slug}`} className="inline-flex items-center gap-2 text-[#007cf4] font-semibold text-sm hover:gap-3 transition-all">
-              Read the full case study →
-            </Link>
+          <div className="relative overflow-hidden rounded-2xl border-l-4 border-[#007cf4] bg-gradient-to-br from-[#f8faff] to-white dark:bg-none dark:bg-[#0a1628] p-8 text-left shadow-sm">
+            <div className="absolute right-0 top-0 w-32 h-32 rounded-full bg-[#007cf4]/5 -translate-y-1/2 translate-x-1/2" />
+            <div className="relative">
+              <span className="inline-block bg-[#007cf4]/10 text-[#007cf4] text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">{s.caseStudy.industry}</span>
+              <p className="font-inter-tight font-bold text-black dark:text-white text-xl mb-5 leading-snug">{s.caseStudy.result}</p>
+              <Link href={`/case-studies/${s.caseStudy.slug}`} className="inline-flex items-center gap-2 text-[#007cf4] font-semibold text-sm hover:gap-3 transition-all group">
+                Read the full case study <span className="group-hover:translate-x-1 transition-transform">→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

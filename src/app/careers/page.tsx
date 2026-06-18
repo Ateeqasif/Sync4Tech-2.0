@@ -81,12 +81,17 @@ export default function CareersPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {perks.map((perk, i) => (
-              <div key={i} className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-6 hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300">
-                <div className="w-10 h-10 bg-[#007cf4]/10 rounded-xl flex items-center justify-center mb-4">
-                  {perk.icon}
+              <div key={i} className="bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 rounded-2xl overflow-hidden hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300">
+                <div className="h-[3px] w-full" style={{ background: i % 2 === 0 ? 'linear-gradient(90deg,#033a9d,#007cf4)' : 'linear-gradient(90deg,#007cf4,#36c5f0)' }} />
+                <div className="p-6">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+                    <div className="[&_path]:stroke-white [&_circle]:stroke-white [&_rect]:stroke-white">
+                      {perk.icon}
+                    </div>
+                  </div>
+                  <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2">{perk.title}</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{perk.desc}</p>
                 </div>
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2">{perk.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{perk.desc}</p>
               </div>
             ))}
           </div>

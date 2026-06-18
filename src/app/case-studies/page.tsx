@@ -41,17 +41,22 @@ export default function CaseStudiesPage() {
       {/* Stats bar */}
       <section className="py-12 bg-white dark:bg-[#050f2e] border-b border-[#007cf4]/10">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            {[
-              { v: '200+', l: 'Projects Delivered' },
-              { v: '68%', l: 'Average Cost Reduction' },
-              { v: '90 Days', l: 'Typical Time to ROI' },
-            ].map((s, i) => (
-              <div key={i}>
-                <div className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl mb-1">{s.v}</div>
-                <div className="text-gray-500 dark:text-gray-400 text-sm">{s.l}</div>
-              </div>
-            ))}
+          <div className="rounded-2xl overflow-hidden shadow-xl" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20">
+              {[
+                { v: '200+', l: 'Projects Delivered' },
+                { v: '68%', l: 'Average Cost Reduction' },
+                { v: '90 Days', l: 'Typical Time to ROI' },
+              ].map((s, i) => (
+                <div key={i} className="py-10 text-center relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                  <div className="relative">
+                    <div className="font-inter-tight font-black text-white text-4xl md:text-5xl mb-1">{s.v}</div>
+                    <div className="text-white/75 text-sm">{s.l}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
