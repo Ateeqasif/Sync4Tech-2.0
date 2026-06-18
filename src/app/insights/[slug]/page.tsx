@@ -135,7 +135,7 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
         title={a.title + ' '}
         highlight={a.highlight}
         subtitle={a.excerpt}
-        breadcrumb={[{ label: 'Insights', href: '/insights' }, { label: a.tag, href: `/insights` }]}
+        breadcrumb={[{ label: 'Insights', href: '/insights' }, { label: a.tag, href: `/insights/category/${a.tag.toLowerCase()}` }]}
       />
 
       {/* Meta bar */}

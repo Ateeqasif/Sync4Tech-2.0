@@ -67,7 +67,7 @@ export default function FinalCTA() {
               </svg>
             </motion.a>
             <motion.a
-              href="#"
+              href="/case-studies"
               className="inline-flex items-center gap-2.5 bg-white dark:bg-white/10 text-black dark:text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 border border-black/15 dark:border-white/20 group hover:border-[#007cf4]/40 hover:text-[#007cf4]"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
