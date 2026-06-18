@@ -7,6 +7,7 @@ import Industries from '@/components/sections/Industries'
 import TransformationJourney from '@/components/sections/TransformationJourney'
 import CaseStudies from '@/components/sections/CaseStudies'
 import InfinityLoop from '@/components/sections/InfinityLoop'
+import IntelligentBusiness from '@/components/sections/IntelligentBusiness'
 import WhySync4Tech from '@/components/sections/WhySync4Tech'
 import TrustSection from '@/components/sections/TrustSection'
 import Insights from '@/components/sections/Insights'
@@ -40,6 +41,7 @@ export default function Home() {
         <TransformationOS />
         <BusinessOutcomes />
         <Industries />
+        <IntelligentBusiness />
         <TransformationJourney />
         <CaseStudies />
         <InfinityLoop />
