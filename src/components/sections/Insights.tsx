@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
 const articles = [
@@ -63,6 +64,9 @@ const articles = [
 const tags = ['All', 'AI', 'Automation', 'Data', 'Operations', 'Transformation']
 
 export default function Insights() {
+  const [activeTag, setActiveTag] = useState('All')
+  const filtered = activeTag === 'All' ? articles : articles.filter(a => a.tag === activeTag)
+
   return (
     <section className="py-section bg-white dark:bg-[#050f2e]" id="insights">
       <div className="section-container">
@@ -105,8 +109,9 @@ export default function Insights() {
           {tags.map((tag, i) => (
             <button
               key={i}
+              onClick={() => setActiveTag(tag)}
               className={`px-4 py-2 rounded-full text-xs font-semibold border transition-colors duration-200 ${
-                i === 0
+                activeTag === tag
                   ? 'bg-[#007cf4] text-white border-[#007cf4]'
                   : 'border-black/15 dark:border-white/15 text-gray-600 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4]'
               }`}
@@ -116,98 +121,104 @@ export default function Insights() {
           ))}
         </motion.div>
 
-        {/* Articles — featured hero card + 5-card grid */}
-        <div className="flex flex-col gap-6">
-          {/* Row 1: featured wide card */}
-          <motion.article
-            className="group cursor-pointer grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        {/* Articles — featured hero card + remaining grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTag}
+            className="flex flex-col gap-6"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative h-64 md:h-auto overflow-hidden">
-              <Image
-                src={articles[0].image}
-                alt={articles[0].imageAlt}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
-              <div className="absolute top-4 left-4">
-                <span className="bg-[#007cf4] text-white text-xs font-bold px-3 py-1 rounded-full">{articles[0].tag}</span>
-              </div>
-            </div>
-            <div className="p-8 flex flex-col justify-center bg-white dark:bg-[#0a1628]">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs text-gray-400">{articles[0].date}</span>
-                <span className="w-1 h-1 rounded-full bg-gray-300" />
-                <span className="text-xs text-gray-400">{articles[0].readTime}</span>
-              </div>
-              <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300">
-                {articles[0].title}
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">{articles[0].excerpt}</p>
-              <div className="flex items-center gap-1.5 text-[#007cf4] text-sm font-semibold">
-                Read article
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
-                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-            </div>
-          </motion.article>
+            {filtered.length === 0 && (
+              <p className="text-center text-gray-400 py-16 text-sm">No articles in this category yet.</p>
+            )}
 
-          {/* Row 2: 5 standard cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.slice(1).map((article, i) => (
-              <motion.article
-                key={i}
-                className="group cursor-pointer rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md bg-white dark:bg-[#0a1628]"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <div className="relative h-48 overflow-hidden">
+            {/* Row 1: featured wide card */}
+            {filtered[0] && (
+              <article className="group cursor-pointer grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md">
+                <div className="relative h-64 md:h-auto overflow-hidden">
                   <Image
-                    src={article.image}
-                    alt={article.imageAlt}
+                    src={filtered[0].image}
+                    alt={filtered[0].imageAlt}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute inset-0 bg-[#007cf4]/0 group-hover:bg-[#007cf4]/15 transition-colors duration-500" />
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-white/90 backdrop-blur-sm text-[#007cf4] text-xs font-bold px-2.5 py-1 rounded-full">
-                      {article.tag}
-                    </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-[#007cf4] text-white text-xs font-bold px-3 py-1 rounded-full">{filtered[0].tag}</span>
                   </div>
                 </div>
-
-                <div className="p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-xs text-gray-400 dark:text-gray-500">{article.date}</span>
-                    <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
-                    <span className="text-xs text-gray-400 dark:text-gray-500">{article.readTime}</span>
+                <div className="p-8 flex flex-col justify-center bg-white dark:bg-[#0a1628]">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-xs text-gray-400">{filtered[0].date}</span>
+                    <span className="w-1 h-1 rounded-full bg-gray-300" />
+                    <span className="text-xs text-gray-400">{filtered[0].readTime}</span>
                   </div>
-                  <h3 className="font-inter-tight font-bold text-black dark:text-white text-base leading-snug mb-2 group-hover:text-[#007cf4] transition-colors duration-300">
-                    {article.title}
+                  <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300">
+                    {filtered[0].title}
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-3">{article.excerpt}</p>
-                  <div className="mt-4 flex items-center gap-1.5 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">{filtered[0].excerpt}</p>
+                  <div className="flex items-center gap-1.5 text-[#007cf4] text-sm font-semibold">
                     Read article
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
                       <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                 </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
+              </article>
+            )}
+
+            {/* Remaining cards grid */}
+            {filtered.length > 1 && (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filtered.slice(1).map((article, i) => (
+                  <article
+                    key={article.title}
+                    className="group cursor-pointer rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md bg-white dark:bg-[#0a1628]"
+                  >
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={article.image}
+                        alt={article.imageAlt}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-[#007cf4]/0 group-hover:bg-[#007cf4]/15 transition-colors duration-500" />
+                      <div className="absolute top-3 left-3">
+                        <span className="bg-white/90 backdrop-blur-sm text-[#007cf4] text-xs font-bold px-2.5 py-1 rounded-full">
+                          {article.tag}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-5">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-xs text-gray-400 dark:text-gray-500">{article.date}</span>
+                        <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+                        <span className="text-xs text-gray-400 dark:text-gray-500">{article.readTime}</span>
+                      </div>
+                      <h3 className="font-inter-tight font-bold text-black dark:text-white text-base leading-snug mb-2 group-hover:text-[#007cf4] transition-colors duration-300">
+                        {article.title}
+                      </h3>
+                      <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-3">{article.excerpt}</p>
+                      <div className="mt-4 flex items-center gap-1.5 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Read article
+                        <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   )
