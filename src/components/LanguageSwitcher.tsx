@@ -23,7 +23,7 @@ export default function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(o => !o)}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#007cf4]/25 bg-white/80 dark:bg-white/5 dark:border-white/15 text-xs font-semibold text-[#033a9d] dark:text-white/80 hover:border-[#007cf4]/50 transition-all"
+        className="flex items-center gap-1.5 px-3 h-7 rounded-full border border-[#007cf4]/25 bg-white/80 dark:bg-white/5 dark:border-white/15 text-xs font-semibold text-[#033a9d] dark:text-white/80 hover:border-[#007cf4]/50 transition-all"
       >
         <span>{current.flag}</span>
         <span>{locale.toUpperCase()}</span>

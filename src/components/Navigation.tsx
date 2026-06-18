@@ -64,7 +64,7 @@ export default function Navigation() {
           </ul>
 
           {/* Theme Toggle + Language Switcher */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-4">
             <ThemeToggle />
             <LanguageSwitcher />
           </div>
