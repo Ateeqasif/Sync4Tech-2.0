@@ -3,6 +3,7 @@ import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 import SolutionsFAQ from '@/components/pages/SolutionsFAQ'
+import HowItWorks from '@/components/pages/HowItWorks'
 
 export const metadata: Metadata = {
   title: 'Business Automation Solutions | Sync4Tech — AI & Business Automation',
@@ -231,11 +232,6 @@ const solutions = [
   },
 ]
 
-const steps = [
-  { n: '01', title: 'Discover', desc: 'We audit your current processes, identify automation opportunities, and map your data landscape to build a clear picture of the ROI available.' },
-  { n: '02', title: 'Design', desc: 'Our architects design a bespoke automation and AI strategy tailored to your exact workflows, tools, and business objectives.' },
-  { n: '03', title: 'Deploy', desc: 'We build, test, and deploy your solution in as little as 4–5 weeks — with live prototypes in the first week and measurable results within 30 days of go-live.' },
-]
 
 export default function SolutionsPage() {
   return (
@@ -293,27 +289,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
-        <div className="section-container">
-          <div className="text-center mb-14">
-            <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">The Process</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">How It Works</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto relative">
-            <div className="hidden md:block absolute top-10 left-1/3 right-1/3 h-px bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-30" />
-            {steps.map((step, i) => (
-              <div key={i} className="text-center relative">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#033a9d] to-[#007cf4] flex items-center justify-center mx-auto mb-5 text-white font-inter-tight font-black text-xl">
-                  {step.n}
-                </div>
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3">{step.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HowItWorks />
 
       <SolutionsFAQ />
       <FinalCTA />
