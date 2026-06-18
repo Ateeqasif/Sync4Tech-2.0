@@ -638,39 +638,47 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {/* Common Challenges */}
-            <div className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-8">
-              <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-6">
-                Common Challenges
-              </h3>
-              <ul className="space-y-4">
-                {ind.challenges.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CrossIcon />
-                    <span className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+            <div className="relative overflow-hidden rounded-2xl border border-red-200/60 dark:border-red-900/30 bg-gradient-to-br from-red-50 to-orange-50/50 dark:from-[#1a0808] dark:to-[#0a1020]">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-400 to-orange-400" />
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-8 h-8 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v6M7 10.5v.5" stroke="#ef4444" strokeWidth="2" strokeLinecap="round"/></svg>
+                  </div>
+                  <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-lg">Common Challenges</h3>
+                </div>
+                <ul className="space-y-4">
+                  {ind.challenges.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CrossIcon />
+                      <span className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* The Sync4Tech Approach */}
-            <div className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-8">
-              <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-6">
-                The Sync4Tech Approach
-              </h3>
-              <ul className="space-y-4">
-                {ind.approach.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckIcon />
-                    <span className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+            <div className="relative overflow-hidden rounded-2xl border border-[#007cf4]/20 bg-gradient-to-br from-[#f0f7ff] to-[#e8f4ff] dark:from-[#071530] dark:to-[#060d24]">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0]" />
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-8 h-8 rounded-lg bg-[#007cf4]/10 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5 6.5-7" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-lg">The Sync4Tech Approach</h3>
+                </div>
+                <ul className="space-y-4">
+                  {ind.approach.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckIcon />
+                      <span className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -688,19 +696,23 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {ind.solutions.map((sol) => (
+          <div className="grid md:grid-cols-2 gap-5">
+            {ind.solutions.map((sol, i) => (
               <Link
                 key={sol.slug}
                 href={`/solutions/${sol.slug}`}
-                className="group block bg-[#f8faff] dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-6 hover:border-[#007cf4]/40 transition-colors duration-200"
+                className="group block bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all overflow-hidden relative"
               >
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2 group-hover:text-[#007cf4] transition-colors duration-200">
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-start justify-between mb-3">
+                  <span className="text-[#007cf4]/40 text-xs font-black tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                  <svg className="opacity-0 group-hover:opacity-100 transition-all text-[#007cf4] -translate-x-1 group-hover:translate-x-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </div>
+                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2 group-hover:text-[#007cf4] transition-colors">
                   {sol.name}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                  {sol.desc}
-                </p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{sol.desc}</p>
+                <div className="mt-4 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Explore solution →</div>
               </Link>
             ))}
           </div>
@@ -719,20 +731,18 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {ind.metrics.map((metric, i) => (
-              <div
-                key={i}
-                className="bg-white dark:bg-[#0a1a4a] rounded-2xl p-8 text-center border border-[#007cf4]/15"
-              >
-                <p className="text-4xl font-inter-tight font-black bg-gradient-to-r from-[#007cf4] to-[#36c5f0] bg-clip-text text-transparent mb-2">
-                  {metric.value}
-                </p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm font-medium">
-                  {metric.label}
-                </p>
-              </div>
-            ))}
+          <div className="rounded-3xl overflow-hidden shadow-xl" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/20">
+              {ind.metrics.map((metric, i) => (
+                <div key={i} className="p-10 text-center relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                  <div className="relative">
+                    <div className="font-inter-tight font-black text-white text-4xl md:text-5xl mb-2 leading-none">{metric.value}</div>
+                    <div className="text-white/75 text-sm font-medium">{metric.label}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -750,19 +760,16 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <div className="bg-[#f8faff] dark:bg-[#0a1a4a] rounded-2xl p-8 border-l-4 border-[#007cf4]">
-              <p className="text-sm font-semibold text-[#007cf4] mb-4">
-                {ind.caseStudy.snippet}
-              </p>
-              <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-6">
-                {ind.caseStudy.outcome}
-              </p>
-              <Link
-                href={`/case-studies/${ind.caseStudy.slug}`}
-                className="inline-flex items-center text-[#007cf4] font-semibold text-sm hover:text-[#033a9d] dark:hover:text-[#36c5f0] transition-colors duration-200"
-              >
-                Read full case study →
-              </Link>
+            <div className="relative overflow-hidden rounded-2xl shadow-xl" style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}>
+              <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+              <svg className="absolute top-4 right-6 opacity-10" width="80" height="64" viewBox="0 0 40 32" fill="none"><path d="M0 32V20C0 8.954 6.716 2.238 20.148 0L22 4.148C15.716 5.48 12.334 9.096 11.852 15H18V32H0zm22 0V20C22 8.954 28.716 2.238 42.148 0L44 4.148C37.716 5.48 34.334 9.096 33.852 15H40V32H22z" fill="white"/></svg>
+              <div className="relative p-8 md:p-10">
+                <span className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">{ind.caseStudy.snippet}</span>
+                <p className="text-white font-inter-tight font-bold text-lg md:text-xl leading-relaxed mb-6">{ind.caseStudy.outcome}</p>
+                <Link href={`/case-studies/${ind.caseStudy.slug}`} className="inline-flex items-center gap-2 bg-white text-[#007cf4] font-semibold text-sm px-5 py-2.5 rounded-full hover:shadow-lg transition-all hover:gap-3">
+                  Read full case study →
+                </Link>
+              </div>
             </div>
           </div>
         </div>

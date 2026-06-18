@@ -182,16 +182,21 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
           </div>
 
           {/* Key Takeaways */}
-          <div className="mt-12 bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-8 border border-[#007cf4]/15">
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-6">Key Takeaways</h2>
-            <ul className="flex flex-col gap-3">
-              {a.takeaways.map((t, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0 mt-0.5"><path d="M3 8l4 4 6-6" stroke="#36c5f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  {t}
-                </li>
-              ))}
-            </ul>
+          <div className="mt-12 relative overflow-hidden rounded-2xl border border-[#007cf4]/20 shadow-lg shadow-[#007cf4]/5">
+            <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(0,124,244,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,124,244,0.03) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#033a9d] via-[#007cf4] to-[#36c5f0]" />
+            <div className="bg-white dark:bg-[#0a1628] p-8 pl-10 relative">
+              <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-2">Summary</p>
+              <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-6">Key Takeaways</h2>
+              <ul className="flex flex-col gap-4">
+                {a.takeaways.map((t, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <div className="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-black" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>{i + 1}</div>
+                    <span className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed pt-0.5">{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Author */}
@@ -219,15 +224,29 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
       {/* Related articles */}
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
-          <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-8 text-center">Related Articles</h2>
+          <div className="text-center mb-10">
+            <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Keep Reading</p>
+            <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl">Related Articles</h2>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {related.map(s => {
+            {related.map((s, idx) => {
               const r = articles[s]
+              const gradients = [
+                'linear-gradient(90deg,#033a9d,#007cf4)',
+                'linear-gradient(90deg,#007cf4,#36c5f0)',
+                'linear-gradient(90deg,#033a9d,#36c5f0)',
+              ]
               return (
-                <Link key={s} href={`/insights/${s}`} className="group block bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-6 border border-[#007cf4]/10 hover:border-[#007cf4]/30 transition-all">
-                  <span className="text-[#007cf4] text-xs font-bold uppercase tracking-widest">{r.tag}</span>
-                  <h3 className="font-inter-tight font-bold text-black dark:text-white mt-2 mb-1 text-sm group-hover:text-[#007cf4] transition-colors">{r.title} {r.highlight}</h3>
-                  <p className="text-gray-400 text-xs">{r.readTime}</p>
+                <Link key={s} href={`/insights/${s}`} className="group block bg-white dark:bg-[#0a1628] rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-md transition-all">
+                  <div className="h-1 w-full" style={{ background: gradients[idx % 3] }} />
+                  <div className="p-6">
+                    <span className="inline-block bg-[#007cf4]/10 text-[#007cf4] text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-widest mb-3">{r.tag}</span>
+                    <h3 className="font-inter-tight font-bold text-black dark:text-white text-sm leading-snug mb-3 group-hover:text-[#007cf4] transition-colors">{r.title} {r.highlight}</h3>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400 text-xs">{r.readTime}</span>
+                      <span className="text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Read →</span>
+                    </div>
+                  </div>
                 </Link>
               )
             })}

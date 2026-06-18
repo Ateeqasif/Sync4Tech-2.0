@@ -108,24 +108,23 @@ export default function SolutionsPage() {
       {/* Solutions Grid */}
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {solutions.map((sol, i) => (
-              <div
+              <Link
                 key={sol.slug}
-                className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-8 hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300 flex flex-col group"
+                href={`/solutions/${sol.slug}`}
+                className="group relative overflow-hidden bg-white dark:bg-[#0a1628] rounded-2xl p-8 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all flex flex-col"
               >
-                <div className="w-12 h-12 bg-[#007cf4]/10 rounded-xl flex items-center justify-center mb-5">
-                  {sol.icon}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="w-13 h-12 rounded-xl flex items-center justify-center mb-5 shadow-md [&>svg]:stroke-white" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+                  <div className="text-white [&>svg]:stroke-white">{sol.icon}</div>
                 </div>
-                <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2">{sol.title}</h2>
+                <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2 group-hover:text-[#007cf4] transition-colors">{sol.title}</h2>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{sol.description}</p>
-                <Link
-                  href={`/solutions/${sol.slug}`}
-                  className="mt-5 text-[#007cf4] text-sm font-semibold hover:text-[#36c5f0] transition-colors inline-flex items-center gap-1 group-hover:gap-2"
-                >
-                  Learn more →
-                </Link>
-              </div>
+                <div className="mt-5 text-[#007cf4] text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Explore solution →
+                </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -79,13 +79,14 @@ export default function CareersPage() {
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Why Join Us</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Life at Sync4Tech</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {perks.map((perk, i) => (
-              <div key={i} className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-6 hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300">
-                <div className="w-10 h-10 bg-[#007cf4]/10 rounded-xl flex items-center justify-center mb-4">
-                  {perk.icon}
+              <div key={i} className="group relative overflow-hidden bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all">
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shadow-md" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+                  <div className="text-white [&>svg]:stroke-white">{perk.icon}</div>
                 </div>
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2">{perk.title}</h3>
+                <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{perk.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{perk.desc}</p>
               </div>
             ))}
@@ -103,13 +104,14 @@ export default function CareersPage() {
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Our Culture</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">How We Work</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto">
             {cultureValues.map((c, i) => (
-              <div key={i} className="text-center bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#033a9d] to-[#007cf4] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-inter-tight font-black text-xs">{String(i + 1).padStart(2, '0')}</span>
+              <div key={i} className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md transition-all text-center p-8">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0]" />
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg text-white font-inter-tight font-black text-sm" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+                  {String(i + 1).padStart(2, '0')}
                 </div>
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-lg mb-2">{c.title}</h3>
+                <h3 className="font-inter-tight font-black text-black dark:text-white text-lg mb-2 group-hover:text-[#007cf4] transition-colors">{c.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.desc}</p>
               </div>
             ))}
