@@ -83,16 +83,30 @@ export default function InfinityLoop() {
               />
             ))}
 
-            {/* ── Flowing particles (3 per line) ── */}
-            {tools.map(t => (
-              [0, t.d2, t.d3].map((delay, pi) => (
-                <circle key={`dot-${t.id}-${pi}`} r="3.5" fill={t.color} opacity="0.85">
-                  <animateMotion dur={`${t.dur}s`} repeatCount="indefinite" begin={`${delay}s`}>
+            {/* ── Flowing particles — bidirectional, desynchronised, half speed ── */}
+            {tools.map(t => {
+              // Each tool gets 4 particles: 2 inward, 2 outward, all unique timing
+              const particles = [
+                { delay: 0,               dur: t.dur * 2,    dir: 'in'  },
+                { delay: t.d2 * 1.7,      dur: t.dur * 2.4,  dir: 'out' },
+                { delay: t.d3 * 1.3,      dur: t.dur * 2.1,  dir: 'in'  },
+                { delay: t.d2 + t.d3,     dur: t.dur * 2.7,  dir: 'out' },
+              ]
+              return particles.map((p, pi) => (
+                <circle key={`dot-${t.id}-${pi}`} r="3.5" fill={t.color} opacity="0.8">
+                  <animateMotion
+                    dur={`${p.dur.toFixed(2)}s`}
+                    repeatCount="indefinite"
+                    begin={`${p.delay.toFixed(2)}s`}
+                    keyPoints={p.dir === 'out' ? '1;0' : '0;1'}
+                    keyTimes="0;1"
+                    calcMode="linear"
+                  >
                     <mpath href={`#p-${t.id}`} />
                   </animateMotion>
                 </circle>
               ))
-            ))}
+            })}
 
             {/* ── Center hub pulse rings ── */}
             {[100, 80, 60].map((r, i) => (
