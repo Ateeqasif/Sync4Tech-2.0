@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Logo from './Logo'
-import WaveAnimation from './WaveAnimation'
 
 const solutions = ['Business Automation', 'AI Enablement', 'Data Transformation', 'Execution Excellence', 'Process Mining', 'Change Management']
 const industries = ['Real Estate', 'Healthcare', 'Financial Services', 'Manufacturing', 'Technology', 'Retail & E-Commerce']
@@ -46,7 +45,6 @@ export default function Footer() {
             backgroundSize: '60px 60px',
           }}
         />
-        <WaveAnimation />
 
         <div className="section-container py-16 relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
           <div className="max-w-xl">

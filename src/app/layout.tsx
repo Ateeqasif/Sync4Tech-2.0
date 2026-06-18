@@ -3,6 +3,7 @@ import { Inter, Inter_Tight } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import SchemaMarkup from '@/components/SchemaMarkup'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -96,7 +97,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${interTight.variable}`}>
-      <body className="font-inter antialiased"><SchemaMarkup /><ThemeProvider>{children}</ThemeProvider></body>
+      <body className="font-inter antialiased"><SchemaMarkup /><LanguageProvider><ThemeProvider>{children}</ThemeProvider></LanguageProvider></body>
     </html>
   )
 }

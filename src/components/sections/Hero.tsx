@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -97,14 +98,16 @@ function CountUp({ end, suffix = '', duration = 2000 }: { end: number; suffix?: 
   return <span ref={ref}>0{suffix}</span>
 }
 
-const metrics: { value: number; suffix: string; label: string; duration?: number }[] = [
-  { value: 3, suffix: 'x', label: 'Faster Execution' },
-  { value: 68, suffix: '%', label: 'Cost Reduction' },
-  { value: 280, suffix: '+', label: 'Clients Served', duration: 2400 },
-  { value: 12, suffix: '+', label: 'Industries Served' },
+const metricValues: { value: number; suffix: string; duration?: number }[] = [
+  { value: 3, suffix: 'x' },
+  { value: 68, suffix: '%' },
+  { value: 280, suffix: '+', duration: 2400 },
+  { value: 12, suffix: '+' },
 ]
 
 export default function Hero() {
+  const { t } = useLanguage()
+  const metricLabels = [t.hero.metric1Label, t.hero.metric2Label, t.hero.metric3Label, t.hero.metric4Label]
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-white dark:bg-[#050f2e]" id="home">
       {/* Background layers — overflow-hidden scoped here so text is never clipped */}
@@ -139,7 +142,7 @@ export default function Hero() {
           className="inline-flex items-center gap-4 bg-[#007cf4]/8 border border-[#007cf4]/20 rounded-full px-8 py-2.5 mb-10"
         >
           <span className="w-2.5 h-2.5 bg-[#007cf4] rounded-full animate-pulse shrink-0" />
-          <span className="text-sm text-[#033a9d] dark:text-[#36c5f0] font-medium tracking-widest uppercase">AI &nbsp;·&nbsp; Automation &nbsp;·&nbsp; Data &nbsp;·&nbsp; Transformation</span>
+          <span className="text-sm text-[#033a9d] dark:text-[#36c5f0] font-medium tracking-widest uppercase">{t.hero.badge}</span>
           <span className="w-2.5 h-2.5 bg-[#36c5f0] rounded-full animate-pulse shrink-0" style={{ animationDelay: '0.5s' }} />
         </motion.div>
 
@@ -150,11 +153,11 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-black dark:text-white">Transform How</span>
+          <span className="text-black dark:text-white">{t.hero.h1Line1}</span>
           <br />
-          <span className="gradient-text-animated" style={{ paddingLeft: '0.05em', paddingRight: '0.08em' }}>Your Business</span>
+          <span className="gradient-text-animated" style={{ paddingLeft: '0.05em', paddingRight: '0.08em' }}>{t.hero.h1Line2}</span>
           <br />
-          <span className="text-black dark:text-white">Operates</span>
+          <span className="text-black dark:text-white">{t.hero.h1Line3}</span>
         </motion.h1>
 
         <motion.p
@@ -163,7 +166,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          We engineer the operating systems of tomorrow's enterprises — through AI, automation, and data intelligence that deliver measurable results.
+          {t.hero.subtitle}
         </motion.p>
 
         <motion.div
@@ -176,7 +179,7 @@ export default function Hero() {
             href="#contact"
             className="inline-flex items-center gap-2.5 bg-[#007cf4] text-white px-8 py-4 rounded-full font-semibold text-base btn-glow hover:bg-[#36c5f0] transition-all duration-300 group"
           >
-            Meet Our Experts
+            {t.hero.cta1}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -185,7 +188,7 @@ export default function Hero() {
             href="#solutions"
             className="inline-flex items-center gap-2.5 bg-black/5 dark:bg-white/10 text-black dark:text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-black/10 dark:hover:bg-white/15 transition-all duration-300 border border-black/10 dark:border-white/20 group"
           >
-            Explore Business Automation Solutions
+            {t.hero.cta2}
           </a>
         </motion.div>
 

@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import WaveAnimation from '@/components/WaveAnimation'
 
 const stages = [
   { id: 1, title: 'Discovery & Assessment', duration: '1 week', description: 'We audit your current state: systems, processes, data maturity, and automation readiness to identify the highest-value opportunities.' },
@@ -22,7 +21,6 @@ function SectionGrid() {
           backgroundSize: '60px 60px',
         }}
       />
-      <WaveAnimation />
       {Array.from({ length: 4 }).map((_, i) => (
         <motion.div key={i}
           className="absolute w-1.5 h-1.5 rounded-full"

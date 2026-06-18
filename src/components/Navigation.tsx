@@ -4,20 +4,23 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import Logo from './Logo'
 import ThemeToggle from './ThemeToggle'
+import LanguageSwitcher from './LanguageSwitcher'
+import { useLanguage } from '@/contexts/LanguageContext'
 
-const navLinks = [
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'Case Studies', href: '#case-studies' },
-  { label: 'Insights', href: '#insights' },
-  { label: 'About', href: '#why' },
-  { label: 'Careers', href: '#careers' },
+const navHrefs = [
+  { key: 'solutions' as const, href: '#solutions' },
+  { key: 'industries' as const, href: '#industries' },
+  { key: 'caseStudies' as const, href: '#case-studies' },
+  { key: 'insights' as const, href: '#insights' },
+  { key: 'about' as const, href: '#why' },
+  { key: 'careers' as const, href: '#careers' },
 ]
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { scrollY } = useScroll()
+  const { t } = useLanguage()
 
   useMotionValueEvent(scrollY, 'change', (y) => {
     // Hero section is min-h-screen (~100vh). Switch at 80% of viewport height.
@@ -43,9 +46,9 @@ export default function Navigation() {
 
           {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link, i) => (
+            {navHrefs.map((link, i) => (
               <motion.li
-                key={link.label}
+                key={link.key}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 + i * 0.07 }}
@@ -54,15 +57,16 @@ export default function Navigation() {
                   href={link.href}
                   className="text-[#033a9d]/80 hover:text-[#007cf4] dark:text-white/80 dark:hover:text-[#36c5f0] text-sm font-medium transition-colors duration-200"
                 >
-                  {link.label}
+                  {t.nav[link.key]}
                 </a>
               </motion.li>
             ))}
           </ul>
 
-          {/* Theme Toggle */}
-          <div className="hidden md:block">
+          {/* Theme Toggle + Language Switcher */}
+          <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
+            <LanguageSwitcher />
           </div>
 
           {/* CTA */}
@@ -75,7 +79,7 @@ export default function Navigation() {
             transition={{ duration: 0.5, delay: 0.5 }}
             whileHover={{ scale: 1.03 }}
           >
-            Meet Our Experts
+            {t.nav.cta}
           </motion.a>
 
           {/* Mobile toggle */}
@@ -102,23 +106,26 @@ export default function Navigation() {
             style={{ background: 'rgba(224,242,254,0.95)', backdropFilter: 'blur(20px)' }}
           >
             <div className="section-container py-6 flex flex-col gap-4">
-              {navLinks.map(link => (
+              {navHrefs.map(link => (
                 <a
-                  key={link.label}
+                  key={link.key}
                   href={link.href}
                   className="text-[#033a9d]/80 hover:text-[#007cf4] dark:text-white/80 dark:hover:text-[#36c5f0] text-base font-medium transition-colors py-1"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {link.label}
+                  {t.nav[link.key]}
                 </a>
               ))}
+              <div className="mt-2">
+                <LanguageSwitcher />
+              </div>
               <a
                 href="#contact"
                 className="inline-flex items-center justify-center px-5 py-3 rounded-full text-sm font-semibold text-white mt-2"
                 style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
                 onClick={() => setMobileOpen(false)}
               >
-                Meet Our Experts
+                {t.nav.cta}
               </a>
             </div>
           </motion.div>

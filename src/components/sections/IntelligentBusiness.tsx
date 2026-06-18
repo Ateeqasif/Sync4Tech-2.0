@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import WaveAnimation from '@/components/WaveAnimation'
 
 const nodes = [
   { label: 'Sales', angle: 0 },
@@ -21,7 +20,6 @@ function SectionGrid() {
           backgroundSize: '60px 60px',
         }}
       />
-      <WaveAnimation />
       {Array.from({ length: 4 }).map((_, i) => (
         <motion.div key={i}
           className="absolute w-1.5 h-1.5 rounded-full"
