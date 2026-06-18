@@ -19,70 +19,213 @@ const solutions = [
   {
     slug: 'process-automation',
     title: 'Process Automation',
-    description: 'Eliminate manual bottlenecks with intelligent automation that learns and adapts to your business workflows.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M14 4a4 4 0 014 4M14 4a4 4 0 00-4 4M14 4v2M14 20a4 4 0 004-4M14 20a4 4 0 01-4-4M14 20v2M4 14a4 4 0 014-4M4 14a4 4 0 004 4M4 14H2M20 14a4 4 0 01-4 4M20 14a4 4 0 00-4-4M20 14h2" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="14" cy="14" r="3" stroke="#36c5f0" strokeWidth="1.5" />
+    subtitle: 'Eliminate manual bottlenecks with intelligent automation that learns and adapts to your business workflows.',
+    theme: 'light' as const,
+    bg: 'bg-[#e8f4ff]',
+    visual: (
+      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
+        <circle cx="130" cy="100" r="70" stroke="#007cf4" strokeWidth="1.5" strokeDasharray="6 4" opacity="0.25" />
+        <circle cx="130" cy="100" r="48" stroke="#007cf4" strokeWidth="1.5" opacity="0.15" />
+        {/* Gear outer */}
+        {[0,45,90,135,180,225,270,315].map((deg, i) => (
+          <rect key={i} x="126" y="44" width="8" height="14" rx="3"
+            fill="#007cf4" opacity="0.7"
+            transform={`rotate(${deg} 130 100)`} />
+        ))}
+        <circle cx="130" cy="100" r="28" fill="white" stroke="#007cf4" strokeWidth="2" />
+        <circle cx="130" cy="100" r="16" fill="#007cf4" opacity="0.15" />
+        {/* Arrow loop */}
+        <path d="M114 100 Q114 82 130 82 Q146 82 146 100" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <path d="M143 95l3 5-5 1" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        {/* Nodes */}
+        <circle cx="60" cy="60" r="20" fill="white" stroke="#007cf4" strokeWidth="1.5" />
+        <path d="M53 60h14M60 53v14" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="200" cy="60" r="20" fill="white" stroke="#36c5f0" strokeWidth="1.5" />
+        <path d="M194 60l4 4 8-8" stroke="#36c5f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="60" cy="140" r="20" fill="white" stroke="#36c5f0" strokeWidth="1.5" />
+        <path d="M53 140h14M53 136h10" stroke="#36c5f0" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="200" cy="140" r="20" fill="white" stroke="#007cf4" strokeWidth="1.5" />
+        <circle cx="200" cy="140" r="7" fill="#007cf4" opacity="0.2" />
+        <circle cx="200" cy="140" r="3" fill="#007cf4" />
+        {/* Connectors */}
+        <line x1="80" y1="65" x2="105" y2="78" stroke="#007cf4" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
+        <line x1="180" y1="65" x2="155" y2="78" stroke="#36c5f0" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
+        <line x1="80" y1="135" x2="105" y2="122" stroke="#36c5f0" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
+        <line x1="180" y1="135" x2="155" y2="122" stroke="#007cf4" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
       </svg>
     ),
   },
   {
     slug: 'data-intelligence',
     title: 'Data Intelligence',
-    description: 'Unify your scattered data into actionable insights that drive confident, real-time decision making.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M4 20l6-6 5 4 5-8 4 4" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <rect x="3" y="3" width="22" height="22" rx="3" stroke="#36c5f0" strokeWidth="1.5" />
+    subtitle: 'Unify your scattered data into actionable insights that drive confident, real-time decision making.',
+    theme: 'dark' as const,
+    bg: 'bg-[#050f2e]',
+    visual: (
+      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
+        {/* Bar chart */}
+        <rect x="30" y="120" width="28" height="60" rx="4" fill="#007cf4" opacity="0.5" />
+        <rect x="70" y="90" width="28" height="90" rx="4" fill="#007cf4" opacity="0.7" />
+        <rect x="110" y="60" width="28" height="120" rx="4" fill="#007cf4" />
+        <rect x="150" y="75" width="28" height="105" rx="4" fill="#36c5f0" opacity="0.8" />
+        <rect x="190" y="40" width="28" height="140" rx="4" fill="#36c5f0" />
+        {/* Trend line */}
+        <path d="M44 115 L84 85 L124 58 L164 70 L204 38" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0" fill="none" />
+        {[{x:44,y:115},{x:84,y:85},{x:124,y:58},{x:164,y:70},{x:204,y:38}].map((p,i)=>(
+          <circle key={i} cx={p.x} cy={p.y} r="5" fill="white" stroke="#007cf4" strokeWidth="2" />
+        ))}
+        {/* Glow dots */}
+        <circle cx="204" cy="38" r="10" fill="#36c5f0" opacity="0.2" />
+        <circle cx="204" cy="38" r="5" fill="#36c5f0" />
+        {/* Grid */}
+        {[20,80,140].map(y=>(
+          <line key={y} x1="20" y1={y} x2="240" y2={y} stroke="white" strokeWidth="0.5" opacity="0.08" />
+        ))}
       </svg>
     ),
   },
   {
     slug: 'workflow-orchestration',
     title: 'Workflow Orchestration',
-    description: 'Connect your tools, teams, and processes into seamless automated workflows that scale without friction.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <circle cx="7" cy="7" r="3" stroke="#007cf4" strokeWidth="1.5" />
-        <circle cx="21" cy="7" r="3" stroke="#007cf4" strokeWidth="1.5" />
-        <circle cx="14" cy="21" r="3" stroke="#36c5f0" strokeWidth="1.5" />
-        <path d="M10 7h8M9.5 9.5l-1 8.5M18.5 9.5l1 8.5" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" />
+    subtitle: 'Connect your tools, teams, and processes into seamless automated workflows that scale without friction.',
+    theme: 'dark' as const,
+    bg: 'bg-gradient-to-br from-[#033a9d] to-[#007cf4]',
+    visual: (
+      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
+        {/* Central hub */}
+        <circle cx="130" cy="100" r="30" fill="white" opacity="0.15" />
+        <circle cx="130" cy="100" r="18" fill="white" opacity="0.25" />
+        <circle cx="130" cy="100" r="8" fill="white" />
+        {/* Spokes and nodes */}
+        {[
+          {x:50, y:50, label:'CRM'},
+          {x:210, y:50, label:'ERP'},
+          {x:50, y:150, label:'HR'},
+          {x:210, y:150, label:'BI'},
+          {x:130, y:20, label:'AI'},
+        ].map((node, i) => (
+          <g key={i}>
+            <line x1={130} y1={100} x2={node.x} y2={node.y} stroke="white" strokeWidth="1.5" opacity="0.4" strokeDasharray="5 3" />
+            <circle cx={node.x} cy={node.y} r="22" fill="white" opacity="0.12" stroke="white" strokeWidth="1" strokeOpacity="0.3" />
+            <text x={node.x} y={node.y+5} textAnchor="middle" fill="white" fontSize="10" fontWeight="bold" opacity="0.9">{node.label}</text>
+          </g>
+        ))}
+        {/* Pulse rings */}
+        <circle cx="130" cy="100" r="45" stroke="white" strokeWidth="1" opacity="0.15" />
+        <circle cx="130" cy="100" r="62" stroke="white" strokeWidth="0.5" opacity="0.08" />
       </svg>
     ),
   },
   {
     slug: 'predictive-analytics',
     title: 'Predictive Analytics',
-    description: 'Anticipate market shifts and operational needs before they impact your bottom line with AI forecasting.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M4 22l8-8 4 4 8-10" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M18 8h4v4" stroke="#36c5f0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    subtitle: 'Anticipate market shifts and operational needs before they impact your bottom line with AI forecasting.',
+    theme: 'light' as const,
+    bg: 'bg-[#f0f7ff]',
+    visual: (
+      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
+        {/* Area chart */}
+        <defs>
+          <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#007cf4" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#007cf4" stopOpacity="0.02" />
+          </linearGradient>
+          <linearGradient id="predictGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#36c5f0" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#36c5f0" stopOpacity="0.02" />
+          </linearGradient>
+        </defs>
+        {/* Historical area */}
+        <path d="M20 160 L60 130 L100 140 L140 100 L140 180 L20 180Z" fill="url(#areaGrad)" />
+        <path d="M20 160 L60 130 L100 140 L140 100" stroke="#007cf4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        {/* Prediction area */}
+        <path d="M140 100 L180 70 L220 45 L220 180 L140 180Z" fill="url(#predictGrad)" />
+        <path d="M140 100 L180 70 L220 45" stroke="#36c5f0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="7 4" fill="none" />
+        {/* Divider */}
+        <line x1="140" y1="30" x2="140" y2="175" stroke="#007cf4" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
+        <text x="145" y="28" fill="#007cf4" fontSize="9" fontWeight="bold" opacity="0.7">Forecast →</text>
+        {/* Data points */}
+        {[{x:20,y:160},{x:60,y:130},{x:100,y:140},{x:140,y:100}].map((p,i)=>(
+          <circle key={i} cx={p.x} cy={p.y} r="5" fill="white" stroke="#007cf4" strokeWidth="2" />
+        ))}
+        {[{x:180,y:70},{x:220,y:45}].map((p,i)=>(
+          <circle key={i} cx={p.x} cy={p.y} r="5" fill="white" stroke="#36c5f0" strokeWidth="2" strokeDasharray="3 2" />
+        ))}
+        {/* Confidence band */}
+        <path d="M140 95 L180 62 L220 37 L220 53 L180 78 L140 105Z" fill="#36c5f0" opacity="0.08" />
+        {/* Grid */}
+        {[80,120,160].map(y=>(
+          <line key={y} x1="15" y1={y} x2="235" y2={y} stroke="#007cf4" strokeWidth="0.5" opacity="0.15" />
+        ))}
       </svg>
     ),
   },
   {
     slug: 'ai-enablement',
     title: 'AI Enablement',
-    description: 'Embed practical AI capabilities across your organisation — from LLM integrations to intelligent decision engines.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <ellipse cx="14" cy="14" rx="8" ry="6" stroke="#007cf4" strokeWidth="1.5" />
-        <circle cx="14" cy="14" r="3" fill="#007cf4" />
-        <path d="M14 4v3M14 21v3M4 14H1M27 14h-3M6.3 6.3l2.1 2.1M19.6 19.6l2.1 2.1M6.3 21.7l2.1-2.1M19.6 8.4l2.1-2.1" stroke="#36c5f0" strokeWidth="1.5" strokeLinecap="round" />
+    subtitle: 'Embed practical AI capabilities across your organisation — from LLM integrations to intelligent decision engines.',
+    theme: 'dark' as const,
+    bg: 'bg-[#050f2e]',
+    visual: (
+      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
+        {/* Brain/neural network */}
+        <circle cx="130" cy="100" r="55" stroke="#007cf4" strokeWidth="1" opacity="0.2" strokeDasharray="3 3" />
+        {/* Nodes */}
+        {[
+          {cx:130,cy:45},{cx:80,cy:75},{cx:180,cy:75},
+          {cx:60,cy:115},{cx:130,cy:110},{cx:200,cy:115},
+          {cx:85,cy:150},{cx:175,cy:150},
+        ].map((n,i)=>(
+          <g key={i}>
+            <circle cx={n.cx} cy={n.cy} r="10" fill="#007cf4" opacity={0.15+i*0.05} />
+            <circle cx={n.cx} cy={n.cy} r="5" fill={i%2===0?'#007cf4':'#36c5f0'} />
+          </g>
+        ))}
+        {/* Connections */}
+        {[
+          [130,45,80,75],[130,45,180,75],
+          [80,75,60,115],[80,75,130,110],[180,75,130,110],[180,75,200,115],
+          [60,115,85,150],[130,110,85,150],[130,110,175,150],[200,115,175,150],
+        ].map(([x1,y1,x2,y2],i)=>(
+          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#007cf4" strokeWidth="1.5" opacity="0.3" />
+        ))}
+        {/* Pulse on center node */}
+        <circle cx="130" cy="110" r="18" stroke="#36c5f0" strokeWidth="1" opacity="0.3" />
+        <circle cx="130" cy="110" r="26" stroke="#36c5f0" strokeWidth="0.5" opacity="0.15" />
+        {/* Label */}
+        <text x="130" y="185" textAnchor="middle" fill="#36c5f0" fontSize="9" opacity="0.6" fontWeight="600">NEURAL INTELLIGENCE</text>
       </svg>
     ),
   },
   {
     slug: 'change-management',
     title: 'Change Management',
-    description: 'Ensure adoption and lasting ROI with our proven transformation methodology and expert guidance.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <circle cx="10" cy="10" r="4" stroke="#007cf4" strokeWidth="1.5" />
-        <circle cx="20" cy="18" r="4" stroke="#36c5f0" strokeWidth="1.5" />
-        <path d="M13.5 12.5l3 3" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" />
+    subtitle: 'Ensure adoption and lasting ROI with our proven transformation methodology and expert guidance.',
+    theme: 'light' as const,
+    bg: 'bg-[#eef5ff]',
+    visual: (
+      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
+        {/* Progress arcs */}
+        <circle cx="130" cy="105" r="65" stroke="#e0eeff" strokeWidth="12" fill="none" />
+        <path d="M130 40 A65 65 0 1 1 73 162" stroke="#007cf4" strokeWidth="12" strokeLinecap="round" fill="none" />
+        <circle cx="130" cy="105" r="45" stroke="#e0eeff" strokeWidth="10" fill="none" />
+        <path d="M130 60 A45 45 0 0 1 175 105" stroke="#36c5f0" strokeWidth="10" strokeLinecap="round" fill="none" />
+        {/* Center */}
+        <circle cx="130" cy="105" r="28" fill="white" stroke="#007cf4" strokeWidth="1.5" strokeOpacity="0.3" />
+        <text x="130" y="100" textAnchor="middle" fill="#007cf4" fontSize="18" fontWeight="900">87%</text>
+        <text x="130" y="116" textAnchor="middle" fill="#007cf4" fontSize="8" opacity="0.6" fontWeight="600">ADOPTION</text>
+        {/* Milestones */}
+        {[
+          {x:55, y:55, label:'Plan'},
+          {x:205, y:55, label:'Train'},
+          {x:55, y:155, label:'Deploy'},
+          {x:205, y:155, label:'Scale'},
+        ].map((m,i)=>(
+          <g key={i}>
+            <circle cx={m.x} cy={m.y} r="16" fill="white" stroke="#007cf4" strokeWidth="1.5" strokeOpacity="0.4" />
+            <text x={m.x} y={m.y+4} textAnchor="middle" fill="#007cf4" fontSize="8" fontWeight="700" opacity="0.8">{m.label}</text>
+          </g>
+        ))}
       </svg>
     ),
   },
@@ -105,25 +248,45 @@ export default function SolutionsPage() {
         breadcrumb={[{ label: 'Solutions', href: '/solutions' }]}
       />
 
-      {/* Solutions Grid */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      {/* Solutions Grid — Apple-style large tiles */}
+      <section className="py-section bg-[#f5f5f7] dark:bg-[#060d24]">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {solutions.map((sol, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {solutions.map((sol) => (
               <Link
                 key={sol.slug}
                 href={`/solutions/${sol.slug}`}
-                className="group relative overflow-hidden bg-white dark:bg-[#0a1628] rounded-2xl p-8 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all flex flex-col"
+                className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col min-h-[480px] transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl`}
               >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="w-13 h-12 rounded-xl flex items-center justify-center mb-5 shadow-md [&>svg]:stroke-white" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
-                  <div className="text-white [&>svg]:stroke-white">{sol.icon}</div>
+                {/* Text block */}
+                <div className="p-10 pb-0 flex flex-col items-center text-center z-10">
+                  <h2 className={`font-inter-tight font-black text-2xl md:text-3xl mb-3 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                    {sol.title}
+                  </h2>
+                  <p className={`text-sm leading-relaxed max-w-xs ${sol.theme === 'dark' ? 'text-white/70' : 'text-gray-500'}`}>
+                    {sol.subtitle}
+                  </p>
+                  {/* CTA */}
+                  <div className="mt-5 flex items-center gap-3">
+                    <span
+                      className="px-5 py-2 rounded-full text-sm font-semibold transition-all"
+                      style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)', color: 'white' }}
+                    >
+                      Learn more
+                    </span>
+                    <span className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all group-hover:border-[#007cf4]/60 ${sol.theme === 'dark' ? 'border-white/25 text-white' : 'border-black/20 text-black'}`}>
+                      Explore →
+                    </span>
+                  </div>
                 </div>
-                <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2 group-hover:text-[#007cf4] transition-colors">{sol.title}</h2>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{sol.description}</p>
-                <div className="mt-5 text-[#007cf4] text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                  Explore solution →
+
+                {/* Visual */}
+                <div className="flex-1 flex items-center justify-center p-8 relative">
+                  {sol.visual}
                 </div>
+
+                {/* Subtle gradient overlay at bottom */}
+                <div className={`absolute bottom-0 left-0 right-0 h-16 ${sol.theme === 'dark' ? 'bg-gradient-to-t from-black/20 to-transparent' : 'bg-gradient-to-t from-white/20 to-transparent'}`} />
               </Link>
             ))}
           </div>
@@ -138,7 +301,6 @@ export default function SolutionsPage() {
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">How It Works</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto relative">
-            {/* Connector line */}
             <div className="hidden md:block absolute top-10 left-1/3 right-1/3 h-px bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-30" />
             {steps.map((step, i) => (
               <div key={i} className="text-center relative">
