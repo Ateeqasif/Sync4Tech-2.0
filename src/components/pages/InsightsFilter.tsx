@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const tags = ['All', 'AI', 'Automation', 'Data', 'Operations', 'Transformation']
@@ -41,22 +42,22 @@ const articles = [
     featured: false,
   },
   {
-    slug: 'process-mapping-vs-mining',
+    slug: 'crm-automation-sales-pipeline',
     tag: 'Operations',
     readTime: '7 min read',
-    title: 'Process Mapping vs Process Mining: What\'s the Difference?',
-    description: 'An honest comparison of two popular approaches to understanding business processes — and when to use each.',
+    title: 'How CRM Automation Doubled Our Client\'s Sales Pipeline in 90 Days',
+    description: 'A step-by-step look at how we connected HubSpot, GoHighLevel and Zapier to build a fully automated lead nurture engine that never sleeps.',
     date: 'May 22, 2025',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80&auto=format&fit=crop',
-    imageAlt: 'Business process workflow on whiteboard',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Sales pipeline on a laptop screen',
     featured: false,
   },
   {
-    slug: 'change-management-ai-projects',
+    slug: 'six-week-transformation-playbook',
     tag: 'Transformation',
     readTime: '9 min read',
-    title: 'Why Change Management is the Hidden Variable in AI Projects',
-    description: 'Technical implementation gets 80% of the attention, but change management determines 80% of the ROI. Here\'s how to close that gap.',
+    title: 'The 6-Week Digital Transformation Playbook for Mid-Market Companies',
+    description: 'Most transformation programmes fail because they try to do too much at once. Our phased approach delivers measurable ROI before the next quarter closes.',
     date: 'May 15, 2025',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop',
     imageAlt: 'Team collaboration and change management',
@@ -228,6 +229,17 @@ const articles = [
     featured: false,
   },
   {
+    slug: 'generative-ai-in-enterprise',
+    tag: 'AI',
+    readTime: '11 min read',
+    title: 'Generative AI in the Enterprise: What Actually Works in Production',
+    description: 'After deploying AI across 50+ organisations, we\'ve learned what separates pilots that stick from proofs-of-concept that gather dust.',
+    date: 'Jan 2025',
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Generative AI interface on futuristic screen',
+    featured: false,
+  },
+  {
     slug: 'process-mining-guide',
     tag: 'Operations',
     readTime: '10 min read',
@@ -240,148 +252,301 @@ const articles = [
   },
 ]
 
+const PER_PAGE = 11
+
+type Article = typeof articles[0]
+
+function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' | 'small' }) {
+  if (size === 'hero') {
+    return (
+      <Link href={`/insights/${a.slug}`}
+        className="group block rounded-3xl overflow-hidden border border-[#007cf4]/15 hover:border-[#007cf4]/50 hover:shadow-2xl transition-all duration-500 md:col-span-2 md:row-span-2"
+      >
+        <div className="flex flex-col md:flex-row h-full">
+          <div className="relative md:w-[55%] h-64 md:h-full overflow-hidden">
+            <Image src={a.image} alt={a.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px) 100vw, 55vw" />
+            <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
+            <div className="absolute top-4 left-4 flex gap-2">
+              <span className="bg-[#007cf4] text-white text-xs font-bold px-3 py-1.5 rounded-full">Featured</span>
+              <span className="bg-black/40 backdrop-blur text-white text-xs font-semibold px-3 py-1.5 rounded-full">{a.tag}</span>
+            </div>
+          </div>
+          <div className="flex-1 bg-white dark:bg-[#0a1628] p-8 md:p-10 flex flex-col justify-center">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xs text-gray-400">{a.date}</span>
+              <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+              <span className="text-xs text-gray-400">{a.readTime}</span>
+            </div>
+            <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl md:text-3xl mb-4 leading-tight group-hover:text-[#007cf4] transition-colors">{a.title}</h2>
+            <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-6 text-sm">{a.description}</p>
+            <span className="inline-flex items-center gap-2 text-[#007cf4] font-semibold text-sm group-hover:gap-3 transition-all">
+              Read article
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </span>
+          </div>
+        </div>
+      </Link>
+    )
+  }
+
+  if (size === 'wide') {
+    return (
+      <Link href={`/insights/${a.slug}`}
+        className="group block rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500 md:col-span-2"
+      >
+        <div className="flex flex-col sm:flex-row h-full">
+          <div className="relative sm:w-2/5 h-52 sm:h-full overflow-hidden">
+            <Image src={a.image} alt={a.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px) 100vw, 40vw" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="absolute top-3 left-3">
+              <span className="bg-[#007cf4] text-white text-xs font-bold px-2.5 py-1 rounded-full">{a.tag}</span>
+            </div>
+          </div>
+          <div className="flex-1 bg-white dark:bg-[#0a1628] p-7 flex flex-col justify-center">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xs text-gray-400">{a.date}</span>
+              <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+              <span className="text-xs text-gray-400">{a.readTime}</span>
+            </div>
+            <h3 className="font-inter-tight font-black text-black dark:text-white text-lg md:text-xl mb-3 leading-snug group-hover:text-[#007cf4] transition-colors">{a.title}</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed line-clamp-2">{a.description}</p>
+            <div className="mt-4 flex items-center gap-1.5 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Read article →</div>
+          </div>
+        </div>
+      </Link>
+    )
+  }
+
+  if (size === 'tall') {
+    return (
+      <Link href={`/insights/${a.slug}`}
+        className="group block rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500 md:row-span-2"
+      >
+        <div className="relative h-56 md:h-72 overflow-hidden">
+          <Image src={a.image} alt={a.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px) 100vw, 33vw" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+          <div className="absolute top-3 left-3">
+            <span className="bg-[#007cf4] text-white text-xs font-bold px-2.5 py-1 rounded-full">{a.tag}</span>
+          </div>
+        </div>
+        <div className="bg-white dark:bg-[#0a1628] p-6 flex flex-col flex-1">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-xs text-gray-400">{a.date}</span>
+            <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+            <span className="text-xs text-gray-400">{a.readTime}</span>
+          </div>
+          <h3 className="font-inter-tight font-black text-black dark:text-white text-base leading-snug mb-2 group-hover:text-[#007cf4] transition-colors">{a.title}</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-3">{a.description}</p>
+          <div className="mt-4 flex items-center gap-1.5 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Read article →</div>
+        </div>
+      </Link>
+    )
+  }
+
+  // small (default)
+  return (
+    <Link href={`/insights/${a.slug}`}
+      className="group block rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-lg transition-all duration-500"
+    >
+      <div className="relative h-44 overflow-hidden">
+        <Image src={a.image} alt={a.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px) 100vw, 33vw" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-[#007cf4]/0 group-hover:bg-[#007cf4]/10 transition-colors duration-500" />
+        <div className="absolute top-3 left-3">
+          <span className="bg-[#007cf4] text-white text-xs font-bold px-2.5 py-1 rounded-full">{a.tag}</span>
+        </div>
+      </div>
+      <div className="bg-white dark:bg-[#0a1628] p-5">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-xs text-gray-400">{a.date}</span>
+          <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+          <span className="text-xs text-gray-400">{a.readTime}</span>
+        </div>
+        <h3 className="font-inter-tight font-bold text-black dark:text-white text-sm leading-snug mb-1 group-hover:text-[#007cf4] transition-colors line-clamp-2">{a.title}</h3>
+        <div className="mt-3 flex items-center gap-1 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Read →</div>
+      </div>
+    </Link>
+  )
+}
+
+function BentoGrid({ items }: { items: Article[] }) {
+  // Assign sizes for the bento layout for 11 items:
+  // [0]=hero(2×2), [1]=tall(1×2), [2]=wide(2×1), [3]=small, [4]=small, [5]=small, [6]=small, [7]=wide(2×1), [8]=tall(1×2), [9]=small, [10]=small
+  const sizeMap: Array<'hero'|'wide'|'tall'|'small'> = [
+    'hero', 'tall', 'wide', 'small', 'small', 'small', 'small', 'wide', 'tall', 'small', 'small',
+  ]
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[280px]">
+      {items.map((a, i) => (
+        <motion.div
+          key={a.slug}
+          layout
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.97 }}
+          transition={{ duration: 0.45, delay: i * 0.04 }}
+          className={`
+            ${sizeMap[i] === 'hero' ? 'md:col-span-2 md:row-span-2' : ''}
+            ${sizeMap[i] === 'wide' ? 'md:col-span-2' : ''}
+            ${sizeMap[i] === 'tall' ? 'md:row-span-2' : ''}
+          `}
+        >
+          <ArticleCard a={a} size={sizeMap[i] ?? 'small'} />
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
+function RegularGrid({ items }: { items: Article[] }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {items.map((a, i) => (
+        <motion.div
+          key={a.slug}
+          layout
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.97 }}
+          transition={{ duration: 0.45, delay: i * 0.04 }}
+        >
+          <ArticleCard a={a} size="small" />
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
 export default function InsightsFilter() {
   const [active, setActive] = useState('All')
+  const [page, setPage] = useState(1)
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
   const filtered = active === 'All' ? articles : articles.filter(a => a.tag === active)
-  const featured = articles.find(a => a.featured)
-  const rest = filtered.filter(a => !a.featured)
+  const totalPages = Math.ceil(filtered.length / PER_PAGE)
+  const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE)
+  const isFirstPage = page === 1
+
+  const handleTagChange = (tag: string) => {
+    setActive(tag)
+    setPage(1)
+  }
 
   return (
-    <>
-      {/* Featured article */}
-      {featured && (
-        <section className="py-section bg-white dark:bg-[#050f2e]">
-          <div className="section-container">
-            <motion.a
-              href={`/insights/${featured.slug}`}
-              className="group block rounded-3xl overflow-hidden border border-[#007cf4]/20 hover:border-[#007cf4]/50 hover:shadow-xl transition-all duration-300"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+    <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <div className="section-container">
+        {/* Filter tags */}
+        <div className="flex flex-wrap gap-2 justify-center mb-12">
+          {tags.map(tag => (
+            <button
+              key={tag}
+              onClick={() => handleTagChange(tag)}
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                active === tag
+                  ? 'bg-[#007cf4] text-white'
+                  : 'bg-white dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-[#007cf4]/15 hover:border-[#007cf4]/40'
+              }`}
             >
-              <div className="flex flex-col md:flex-row">
-                <div className="relative md:w-1/2 h-64 md:h-auto overflow-hidden">
-                  <Image src={featured.image} alt={featured.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20 md:from-transparent md:to-black/30" />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-[#007cf4] text-white text-xs font-bold px-3 py-1.5 rounded-full">Featured</span>
-                  </div>
-                </div>
-                <div className="flex-1 bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 dark:from-[#0a1628] dark:to-[#060d24] p-8 md:p-12 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-xs bg-[#007cf4]/10 text-[#007cf4] px-3 py-1 rounded-full font-semibold">{featured.tag}</span>
-                    <span className="text-xs text-gray-400">{featured.readTime}</span>
-                    <span className="text-xs text-gray-400">{featured.date}</span>
-                  </div>
-                  <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl md:text-3xl mb-4 leading-tight group-hover:text-[#007cf4] transition-colors">{featured.title}</h2>
-                  <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-6">{featured.description}</p>
-                  <span className="inline-flex items-center gap-2 text-[#007cf4] font-semibold text-sm group-hover:gap-3 transition-all">
-                    Read article
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                  </span>
-                </div>
-              </div>
-            </motion.a>
-          </div>
-        </section>
-      )}
-
-      {/* Filter + Grid */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
-        <div className="section-container">
-          {/* Filter tags */}
-          <div className="flex flex-wrap gap-2 justify-center mb-12">
-            {tags.map(tag => (
-              <button
-                key={tag}
-                onClick={() => setActive(tag)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                  active === tag
-                    ? 'bg-[#007cf4] text-white'
-                    : 'bg-white dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-[#007cf4]/15 hover:border-[#007cf4]/40'
-                }`}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            <AnimatePresence mode="popLayout">
-              {rest.map((a, i) => (
-                <motion.a
-                  key={a.title}
-                  href={`/insights/${a.slug}`}
-                  layout
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  className="group block bg-white dark:bg-[#0a1628] border border-[#007cf4]/15 rounded-2xl overflow-hidden hover:border-[#007cf4]/40 hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <Image src={a.image} alt={a.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <div className="absolute inset-0 bg-[#007cf4]/0 group-hover:bg-[#007cf4]/10 transition-colors duration-500" />
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-[#007cf4] text-white text-xs font-bold px-2.5 py-1 rounded-full">{a.tag}</span>
-                    </div>
-                  </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-xs text-gray-400">{a.date}</span>
-                      <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
-                      <span className="text-xs text-gray-400">{a.readTime}</span>
-                    </div>
-                    <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2 leading-snug group-hover:text-[#007cf4] transition-colors">{a.title}</h3>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1 mb-4">{a.description}</p>
-                    <div className="flex items-center gap-1.5 text-[#007cf4] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Read article →</div>
-                  </div>
-                </motion.a>
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {/* Newsletter inline */}
-          <motion.div
-            className="bg-gradient-to-br from-[#007cf4]/8 to-[#36c5f0]/8 border border-[#007cf4]/20 rounded-3xl p-8 md:p-12 text-center max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-2">Get Insights in Your Inbox</h3>
-            <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">Join 5,000+ business leaders receiving weekly insights on AI, automation, and operational excellence.</p>
-            {subscribed ? (
-              <p className="text-[#007cf4] font-semibold">Thank you for subscribing!</p>
-            ) : (
-              <form
-                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-                onSubmit={e => { e.preventDefault(); setSubscribed(true) }}
-              >
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-full border border-[#007cf4]/20 bg-white dark:bg-[#050f2e] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors"
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-3 rounded-full bg-[#007cf4] text-white font-semibold text-sm hover:bg-[#36c5f0] transition-colors btn-glow whitespace-nowrap"
-                >
-                  Subscribe
-                </button>
-              </form>
-            )}
-          </motion.div>
+              {tag}
+            </button>
+          ))}
         </div>
-      </section>
-    </>
+
+        {/* Article count */}
+        <div className="flex items-center justify-between mb-6">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            Showing <span className="font-semibold text-black dark:text-white">{paginated.length}</span> of <span className="font-semibold text-black dark:text-white">{filtered.length}</span> articles
+          </p>
+          {totalPages > 1 && (
+            <p className="text-sm text-gray-400">Page {page} of {totalPages}</p>
+          )}
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div key={`${active}-${page}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+            {isFirstPage && active === 'All'
+              ? <BentoGrid items={paginated} />
+              : <RegularGrid items={paginated} />
+            }
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="mt-12 flex items-center justify-center gap-2">
+            <button
+              onClick={() => { setPage(p => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+              disabled={page === 1}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border border-[#007cf4]/20 text-gray-600 dark:text-gray-300 hover:border-[#007cf4]/50 hover:text-[#007cf4] transition-all disabled:opacity-30 disabled:cursor-not-allowed bg-white dark:bg-white/5"
+            >
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              Previous
+            </button>
+
+            <div className="flex items-center gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
+                <button
+                  key={n}
+                  onClick={() => { setPage(n); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+                  className={`w-10 h-10 rounded-full text-sm font-semibold transition-all ${
+                    n === page
+                      ? 'bg-[#007cf4] text-white shadow-md'
+                      : 'bg-white dark:bg-white/5 text-gray-500 dark:text-gray-400 border border-[#007cf4]/15 hover:border-[#007cf4]/40'
+                  }`}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => { setPage(p => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+              disabled={page === totalPages}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border border-[#007cf4]/20 text-gray-600 dark:text-gray-300 hover:border-[#007cf4]/50 hover:text-[#007cf4] transition-all disabled:opacity-30 disabled:cursor-not-allowed bg-white dark:bg-white/5"
+            >
+              Next
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </button>
+          </div>
+        )}
+
+        {/* Newsletter */}
+        <motion.div
+          className="mt-16 bg-gradient-to-br from-[#007cf4]/8 to-[#36c5f0]/8 border border-[#007cf4]/20 rounded-3xl p-8 md:p-12 text-center max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-2">Get Insights in Your Inbox</h3>
+          <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">Join 5,000+ business leaders receiving weekly insights on AI, automation, and operational excellence.</p>
+          {subscribed ? (
+            <p className="text-[#007cf4] font-semibold">Thank you for subscribing!</p>
+          ) : (
+            <form
+              className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+              onSubmit={e => { e.preventDefault(); setSubscribed(true) }}
+            >
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 rounded-full border border-[#007cf4]/20 bg-white dark:bg-[#050f2e] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors"
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 rounded-full bg-[#007cf4] text-white font-semibold text-sm hover:bg-[#36c5f0] transition-colors whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          )}
+        </motion.div>
+      </div>
+    </section>
   )
 }
