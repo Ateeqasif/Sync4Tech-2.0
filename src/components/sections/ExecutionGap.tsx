@@ -53,7 +53,7 @@ export default function ExecutionGap() {
           >
             <div className="flex items-center gap-3 mb-10">
               <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-              <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.18em]">Before Sync4Tech</span>
+              <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.18em]">Before Transformation</span>
             </div>
 
             <div className="flex flex-col gap-0 flex-1">
@@ -111,7 +111,7 @@ export default function ExecutionGap() {
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex items-center gap-3 mb-10">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#36c5f0] animate-pulse" />
-                <span className="text-xs font-bold text-white/50 uppercase tracking-[0.18em]">After Sync4Tech</span>
+                <span className="text-xs font-bold text-white/50 uppercase tracking-[0.18em]">After Transformation</span>
               </div>
 
               <div className="flex flex-col gap-0 flex-1">
