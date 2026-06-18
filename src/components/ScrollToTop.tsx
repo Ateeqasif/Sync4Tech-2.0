@@ -14,7 +14,7 @@ export default function ScrollToTop() {
   }, []);
 
   return (
-    <div className="fixed right-6 bottom-24 z-[9970] flex flex-col items-center gap-2">
+    <div className="fixed right-6 bottom-24 z-[9970] flex flex-col items-end gap-2">
       <AnimatePresence>
         {visible && hovered && (
           <motion.span
@@ -38,7 +38,7 @@ export default function ScrollToTop() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-colors"
+            className="w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm transition-colors"
             style={{
               backgroundColor: hovered ? 'rgba(0,124,244,0.3)' : 'rgba(0,124,244,0.15)',
               border: '1px solid rgba(0,124,244,0.3)',
