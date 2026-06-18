@@ -91,7 +91,7 @@ const solutions = [
 const steps = [
   { n: '01', title: 'Discover', desc: 'We audit your current processes, identify automation opportunities, and map your data landscape to build a clear picture of the ROI available.' },
   { n: '02', title: 'Design', desc: 'Our architects design a bespoke automation and AI strategy tailored to your exact workflows, tools, and business objectives.' },
-  { n: '03', title: 'Deploy', desc: 'We build, test, and deploy your solution in 6–12 weeks — with live prototypes in the first fortnight and measurable results within 90 days.' },
+  { n: '03', title: 'Deploy', desc: 'We build, test, and deploy your solution in as little as 4–5 weeks — with live prototypes in the first week and measurable results within 30 days of go-live.' },
 ]
 
 export default function SolutionsPage() {
