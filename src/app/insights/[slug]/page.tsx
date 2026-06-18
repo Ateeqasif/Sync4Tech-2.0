@@ -229,23 +229,26 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
             <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl">Related Articles</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {related.map((s, idx) => {
+            {related.map((s) => {
               const r = articles[s]
-              const gradients = [
-                'linear-gradient(90deg,#033a9d,#007cf4)',
-                'linear-gradient(90deg,#007cf4,#36c5f0)',
-                'linear-gradient(90deg,#033a9d,#36c5f0)',
-              ]
               return (
-                <Link key={s} href={`/insights/${s}`} className="group block bg-white dark:bg-[#0a1628] rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-md transition-all">
-                  <div className="h-1 w-full" style={{ background: gradients[idx % 3] }} />
-                  <div className="p-6">
-                    <span className="inline-block bg-[#007cf4]/10 text-[#007cf4] text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-widest mb-3">{r.tag}</span>
-                    <h3 className="font-inter-tight font-bold text-black dark:text-white text-sm leading-snug mb-3 group-hover:text-[#007cf4] transition-colors">{r.title} {r.highlight}</h3>
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-400 text-xs">{r.readTime}</span>
-                      <span className="text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Read →</span>
+                <Link key={s} href={`/insights/${s}`} className="group block bg-white dark:bg-[#0a1628] rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 hover:shadow-lg transition-all">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image src={r.image} alt={r.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-[#007cf4]/0 group-hover:bg-[#007cf4]/15 transition-colors duration-500" />
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-[#007cf4] text-white text-xs font-bold px-2.5 py-1 rounded-full">{r.tag}</span>
                     </div>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-xs text-gray-400 dark:text-gray-500">{r.date}</span>
+                      <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+                      <span className="text-xs text-gray-400 dark:text-gray-500">{r.readTime}</span>
+                    </div>
+                    <h3 className="font-inter-tight font-bold text-black dark:text-white text-sm leading-snug mb-3 group-hover:text-[#007cf4] transition-colors">{r.title} {r.highlight}</h3>
+                    <div className="flex items-center gap-1.5 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Read article →</div>
                   </div>
                 </Link>
               )

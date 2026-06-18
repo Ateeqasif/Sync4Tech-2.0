@@ -1,57 +1,76 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const tags = ['All', 'AI', 'Automation', 'Data', 'Operations', 'Transformation']
 
 const articles = [
   {
+    slug: 'why-ai-agents-will-replace-workflows',
     tag: 'AI',
-    readTime: '8 min read',
-    title: 'The AI Automation Stack Every Business Needs in 2025',
-    description: 'A practical breakdown of the tools, architectures, and integration patterns powering the most effective AI automation deployments this year.',
+    readTime: '6 min read',
+    title: 'Why AI Agents Will Replace 40% of Business Workflows by 2026',
+    description: 'The shift from AI tools to AI agents is the biggest operational inflection point since cloud computing. Here\'s what it means for your business.',
     date: 'Jun 12, 2025',
+    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'AI neural network visualization',
     featured: true,
   },
   {
+    slug: 'hidden-cost-of-manual-operations',
     tag: 'Automation',
-    readTime: '6 min read',
-    title: 'How to Audit Your Business for Automation Opportunities',
-    description: 'A step-by-step framework for identifying which processes will deliver the highest ROI when automated — and which to tackle first.',
+    readTime: '8 min read',
+    title: 'The Hidden Cost of Manual Operations Most CFOs Miss',
+    description: 'Beyond payroll, manual processes carry invisible costs in errors, delays and missed opportunities. We break down the true price of not automating.',
     date: 'Jun 5, 2025',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Automation technology circuit board',
     featured: false,
   },
   {
+    slug: 'from-spreadsheets-to-strategy',
     tag: 'Data',
     readTime: '10 min read',
-    title: 'Building a Data Strategy That Actually Drives Decisions',
-    description: 'Why most data strategies fail to influence day-to-day decisions, and the four-step model that fixes it for mid-market organisations.',
+    title: 'From Spreadsheets to Strategy: A Modern Data Infrastructure Guide',
+    description: 'Mid-market companies often outgrow their data tools before realising it. This guide shows the path from reactive reporting to predictive intelligence.',
     date: 'May 29, 2025',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Data analytics dashboard',
     featured: false,
   },
   {
+    slug: 'process-mapping-vs-mining',
     tag: 'Operations',
     readTime: '7 min read',
     title: 'Process Mapping vs Process Mining: What\'s the Difference?',
     description: 'An honest comparison of two popular approaches to understanding business processes — and when to use each.',
     date: 'May 22, 2025',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Business process workflow on whiteboard',
     featured: false,
   },
   {
+    slug: 'change-management-ai-projects',
     tag: 'Transformation',
     readTime: '9 min read',
     title: 'Why Change Management is the Hidden Variable in AI Projects',
     description: 'Technical implementation gets 80% of the attention, but change management determines 80% of the ROI. Here\'s how to close that gap.',
     date: 'May 15, 2025',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Team collaboration and change management',
     featured: false,
   },
   {
+    slug: 'predictive-analytics-forecasting',
     tag: 'AI',
     readTime: '5 min read',
     title: 'Predictive Analytics: Moving From Reporting to Forecasting',
     description: 'The practical steps organisations take to shift from backward-looking BI dashboards to forward-looking AI-driven forecasts.',
     date: 'May 8, 2025',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Analytics and forecasting charts',
     featured: false,
   },
 ]
@@ -71,27 +90,37 @@ export default function InsightsFilter() {
       {featured && (
         <section className="py-section bg-white dark:bg-[#050f2e]">
           <div className="section-container">
-            <motion.article
-              className="bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/20 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-8 hover:border-[#007cf4]/40 transition-all duration-300"
+            <motion.a
+              href={`/insights/${featured.slug}`}
+              className="group block rounded-3xl overflow-hidden border border-[#007cf4]/20 hover:border-[#007cf4]/50 hover:shadow-xl transition-all duration-300"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-xs bg-[#007cf4]/10 text-[#007cf4] px-3 py-1 rounded-full font-semibold">{featured.tag}</span>
-                  <span className="text-xs text-gray-400">{featured.readTime}</span>
-                  <span className="text-xs text-gray-400">{featured.date}</span>
+              <div className="flex flex-col md:flex-row">
+                <div className="relative md:w-1/2 h-64 md:h-auto overflow-hidden">
+                  <Image src={featured.image} alt={featured.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20 md:from-transparent md:to-black/30" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-[#007cf4] text-white text-xs font-bold px-3 py-1.5 rounded-full">Featured</span>
+                  </div>
                 </div>
-                <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl md:text-3xl mb-4 leading-tight">{featured.title}</h2>
-                <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-6">{featured.description}</p>
-                <span className="inline-flex items-center gap-2 text-[#007cf4] font-semibold text-sm hover:text-[#36c5f0] transition-colors cursor-pointer">
-                  Read article
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </span>
+                <div className="flex-1 bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 dark:from-[#0a1628] dark:to-[#060d24] p-8 md:p-12 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-xs bg-[#007cf4]/10 text-[#007cf4] px-3 py-1 rounded-full font-semibold">{featured.tag}</span>
+                    <span className="text-xs text-gray-400">{featured.readTime}</span>
+                    <span className="text-xs text-gray-400">{featured.date}</span>
+                  </div>
+                  <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl md:text-3xl mb-4 leading-tight group-hover:text-[#007cf4] transition-colors">{featured.title}</h2>
+                  <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-6">{featured.description}</p>
+                  <span className="inline-flex items-center gap-2 text-[#007cf4] font-semibold text-sm group-hover:gap-3 transition-all">
+                    Read article
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  </span>
+                </div>
               </div>
-            </motion.article>
+            </motion.a>
           </div>
         </section>
       )}
@@ -119,26 +148,35 @@ export default function InsightsFilter() {
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             <AnimatePresence mode="popLayout">
               {rest.map((a, i) => (
-                <motion.article
+                <motion.a
                   key={a.title}
+                  href={`/insights/${a.slug}`}
                   layout
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
-                  className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-6 hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300 flex flex-col"
+                  className="group block bg-white dark:bg-[#0a1628] border border-[#007cf4]/15 rounded-2xl overflow-hidden hover:border-[#007cf4]/40 hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-xs bg-[#007cf4]/10 text-[#007cf4] px-3 py-1 rounded-full font-semibold">{a.tag}</span>
-                    <span className="text-xs text-gray-400">{a.readTime}</span>
+                  <div className="relative h-48 overflow-hidden">
+                    <Image src={a.image} alt={a.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-[#007cf4]/0 group-hover:bg-[#007cf4]/10 transition-colors duration-500" />
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-[#007cf4] text-white text-xs font-bold px-2.5 py-1 rounded-full">{a.tag}</span>
+                    </div>
                   </div>
-                  <h3 className="font-inter-tight font-black text-black dark:text-white text-lg mb-3 leading-snug">{a.title}</h3>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{a.description}</p>
-                  <div className="mt-4 pt-4 border-t border-[#007cf4]/10 flex items-center justify-between">
-                    <span className="text-xs text-gray-400">{a.date}</span>
-                    <span className="text-[#007cf4] text-sm font-semibold cursor-pointer hover:text-[#36c5f0] transition-colors">Read →</span>
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-xs text-gray-400">{a.date}</span>
+                      <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+                      <span className="text-xs text-gray-400">{a.readTime}</span>
+                    </div>
+                    <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2 leading-snug group-hover:text-[#007cf4] transition-colors">{a.title}</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1 mb-4">{a.description}</p>
+                    <div className="flex items-center gap-1.5 text-[#007cf4] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Read article →</div>
                   </div>
-                </motion.article>
+                </motion.a>
               ))}
             </AnimatePresence>
           </motion.div>
