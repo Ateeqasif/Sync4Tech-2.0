@@ -41,8 +41,27 @@ function CrossIcon() {
 
 export default function WhySync4Tech() {
   return (
-    <section className="py-section bg-white dark:bg-[#050f2e]" id="why">
-      <div className="section-container">
+    <section className="py-section bg-white dark:bg-[#050f2e] relative overflow-hidden" id="why">
+      {/* Oversized brand icon — centered watermark, slow breathe + rotate */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+        animate={{ rotate: [0, 6, 0, -6, 0], scale: [1, 1.04, 1, 0.97, 1] }}
+        transition={{ duration: 26, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <svg
+          viewBox="117 408 210 184"
+          width="680"
+          height="600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ opacity: 0.055 }}
+        >
+          <path d="M174.627,418.223 L238.381,417.821 L238.795,483.419 L206.039,483.625 L205.831,450.743 L193.745,450.819 L174.945,483.821 L206.039,483.625 L206.246,516.341 L137.328,516.775 L127.769,500.477 L137.121,484.06 Z" fill="#007cf4" />
+          <path d="M270.245,581.776 L206.659,582.179 L206.247,516.341 L238.821,516.133 L239.031,549.058 L251.202,548.981 L270.136,515.746 L238.821,515.943 L238.615,483.623 L307.557,483.189 L317.119,499.493 L307.763,515.916 Z" fill="#36c5f0" />
+        </svg>
+      </motion.div>
+
+      <div className="section-container relative z-10">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-14"
           initial={{ opacity: 0, y: 24 }}
