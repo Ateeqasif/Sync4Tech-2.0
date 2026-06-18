@@ -3,181 +3,136 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-// Single continuous infinity path
-const FULL = "M 500 230 C 500 110 370 55 240 55 C 110 55 10 140 10 230 C 10 320 110 405 240 405 C 370 405 500 350 500 230 C 500 110 630 55 760 55 C 890 55 990 140 990 230 C 990 320 890 405 760 405 C 630 405 500 350 500 230"
-// Right loop only — redrawn on top at the crossing to create over/under depth
-const RIGHT = "M 500 230 C 500 110 630 55 760 55 C 890 55 990 140 990 230 C 990 320 890 405 760 405 C 630 405 500 350 500 230"
+const CX = 460, CY = 285
 
-const nodes = [
-  { cx: 68,  cy: 62,  label: 'Automation',     labelX: 100, labelY: 45,  anchor: 'start' },
-  { cx: 68,  cy: 398, label: 'Data Pipelines',  labelX: 100, labelY: 420, anchor: 'start' },
-  { cx: 932, cy: 62,  label: 'AI Enablement',   labelX: 900, labelY: 45,  anchor: 'end'   },
-  { cx: 932, cy: 398, label: 'CRM & Analytics', labelX: 900, labelY: 420, anchor: 'end'   },
+const tools = [
+  { id: 'hubspot',    label: 'HubSpot',    cat: 'CRM',           x: 100,  y: 90,  color: '#FF7A59', dur: 2.8, d2: 0.9, d3: 1.8, floatY:  6 },
+  { id: 'snowflake',  label: 'Snowflake',  cat: 'Data Warehouse', x: 460,  y: 28,  color: '#29B5E8', dur: 2.3, d2: 0.7, d3: 1.5, floatY: -5 },
+  { id: 'salesforce', label: 'Salesforce', cat: 'Sales Cloud',    x: 820,  y: 90,  color: '#00A1E0', dur: 3.1, d2: 1.0, d3: 2.1, floatY:  7 },
+  { id: 'zapier',     label: 'Zapier',     cat: 'Automation',     x: 28,   y: 285, color: '#FF4A00', dur: 2.6, d2: 0.8, d3: 1.7, floatY: -6 },
+  { id: 'powerbi',    label: 'Power BI',   cat: 'Analytics',      x: 892,  y: 285, color: '#F2C811', dur: 2.6, d2: 0.9, d3: 1.8, floatY:  5 },
+  { id: 'aws',        label: 'AWS',        cat: 'Cloud Infra',    x: 100,  y: 480, color: '#FF9900', dur: 2.9, d2: 1.0, d3: 2.0, floatY: -7 },
+  { id: 'n8n',        label: 'n8n',        cat: 'Workflows',      x: 460,  y: 542, color: '#EA4B71', dur: 2.4, d2: 0.8, d3: 1.6, floatY:  6 },
+  { id: 'openai',     label: 'OpenAI',     cat: 'AI Layer',       x: 820,  y: 480, color: '#00A67E', dur: 3.0, d2: 0.7, d3: 1.5, floatY: -5 },
 ]
-
-const sparkles = [
-  { x: 175, y: 95,  d: 0    },
-  { x: 320, y: 48,  d: 0.4  },
-  { x: 680, y: 48,  d: 0.8  },
-  { x: 825, y: 95,  d: 1.2  },
-  { x: 155, y: 365, d: 0.6  },
-  { x: 845, y: 365, d: 1.0  },
-  { x: 415, y: 130, d: 1.4  },
-  { x: 585, y: 130, d: 0.2  },
-  { x: 415, y: 330, d: 1.6  },
-  { x: 585, y: 330, d: 0.9  },
-]
-
-function StarShape({ x, y, delay }: { x: number; y: number; delay: number }) {
-  const s = 6
-  return (
-    <motion.path
-      d={`M${x} ${y-s} L${x+1.4} ${y-1.4} L${x+s} ${y} L${x+1.4} ${y+1.4} L${x} ${y+s} L${x-1.4} ${y+1.4} L${x-s} ${y} L${x-1.4} ${y-1.4}Z`}
-      fill="#007cf4"
-      animate={{ opacity: [0, 0.7, 0], scale: [0.5, 1.3, 0.5] }}
-      transition={{ duration: 2.8, repeat: Infinity, delay, ease: 'easeInOut' }}
-      style={{ originX: `${x}px`, originY: `${y}px` }}
-    />
-  )
-}
 
 export default function InfinityLoop() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="py-section bg-white dark:bg-[#050f2e]" id="infinity">
+    <section className="py-section bg-[#f8faff] dark:bg-[#060d24]" id="ecosystem">
       <div className="section-container" ref={ref}>
 
         {/* Header */}
         <motion.div
-          className="text-center mb-14"
+          className="text-center mb-12 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#007cf4] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">How It All Connects</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(32px, 4.5vw, 58px)' }}>
-            One Unified Operating System
+          <span className="text-[#007cf4] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Connected Ecosystem</span>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(32px, 4.5vw, 56px)' }}>
+            Your Entire Tech Stack,
             <br />
-            <span className="gradient-text">For Your Entire Business</span>
+            <span className="gradient-text">Unified by Sync4Tech</span>
           </h2>
+          <p className="text-gray-500 dark:text-gray-400 mt-4 text-sm leading-relaxed">
+            We connect every tool in your stack into one intelligent, automated system — no silos, no manual handoffs.
+          </p>
         </motion.div>
 
-        {/* SVG infinity */}
+        {/* Ecosystem SVG */}
         <motion.div
-          className="relative w-full max-w-4xl mx-auto"
-          initial={{ opacity: 0, scale: 0.94 }}
+          className="w-full max-w-4xl mx-auto relative"
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          <svg viewBox="0 0 1000 460" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+          <svg viewBox="0 0 920 580" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
             <defs>
-              <linearGradient id="ig" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0%"   stopColor="#033a9d" />
-                <stop offset="30%"  stopColor="#007cf4" />
-                <stop offset="55%"  stopColor="#36c5f0" />
-                <stop offset="75%"  stopColor="#007cf4" />
+              <radialGradient id="hubGrad" cx="40%" cy="35%" r="65%">
+                <stop offset="0%" stopColor="#007cf4" />
                 <stop offset="100%" stopColor="#033a9d" />
-              </linearGradient>
-              <linearGradient id="igLight" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0%"   stopColor="#033a9d" stopOpacity="0.15" />
-                <stop offset="50%"  stopColor="#36c5f0" stopOpacity="0.25" />
-                <stop offset="100%" stopColor="#033a9d" stopOpacity="0.15" />
-              </linearGradient>
-              {/* Clip for the crossing area — only shows what passes through the center */}
-              <clipPath id="crossClip">
-                <rect x="448" y="130" width="104" height="200" />
-              </clipPath>
-              <radialGradient id="nodeDot" cx="40%" cy="35%" r="65%">
-                <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="100%" stopColor="#36c5f0" />
               </radialGradient>
+              <filter id="nodeGlow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur stdDeviation="8" result="b" />
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="cardShadow" x="-10%" y="-15%" width="120%" height="140%">
+                <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#007cf4" floodOpacity="0.08"/>
+              </filter>
+              {/* path refs for animateMotion */}
+              {tools.map(t => (
+                <path key={`def-${t.id}`} id={`p-${t.id}`} d={`M ${t.x} ${t.y} L ${CX} ${CY}`} />
+              ))}
             </defs>
 
-            {/* Soft ambient shadow */}
-            <path d={FULL} stroke="url(#igLight)" strokeWidth="52" strokeLinecap="round" />
-
-            {/* ── Step 1: Full loop — creates the "back" of the crossing ── */}
-            <path d={FULL} stroke="url(#ig)" strokeWidth="16" strokeLinecap="round" />
-            {/* Inner highlight */}
-            <path d={FULL} stroke="white" strokeWidth="4" strokeLinecap="round" opacity="0.35" className="dark:opacity-20" />
-
-            {/* ── Step 2: White cover at crossing = depth illusion ── */}
-            <rect x="450" y="132" width="100" height="196" fill="white" className="dark:fill-[#050f2e]" />
-
-            {/* ── Step 3: Right loop redrawn on top at crossing ── */}
-            <path d={RIGHT} stroke="url(#ig)" strokeWidth="16" strokeLinecap="round" clipPath="url(#crossClip)" />
-            <path d={RIGHT} stroke="white" strokeWidth="4" strokeLinecap="round" opacity="0.35" className="dark:opacity-20" clipPath="url(#crossClip)" />
-
-            {/* ── Sparkle stars ── */}
-            {sparkles.map((s, i) => <StarShape key={i} x={s.x} y={s.y} delay={s.d} />)}
-
-            {/* ── Four corner nodes ── */}
-            {nodes.map((n, i) => (
-              <g key={i}>
-                {/* Outer pulse ring */}
-                <motion.circle
-                  cx={n.cx} cy={n.cy} r={22}
-                  stroke="#007cf4" strokeWidth="1.5" fill="none"
-                  animate={{ opacity: [0.2, 0.6, 0.2], r: [22, 29, 22] } as never}
-                  transition={{ duration: 2.8, repeat: Infinity, delay: i * 0.55 }}
-                />
-                {/* Node bg */}
-                <circle cx={n.cx} cy={n.cy} r={18} fill="white" stroke="#007cf4" strokeWidth="2" className="dark:fill-[#0a1a4a]" />
-                {/* Inner dot */}
-                <circle cx={n.cx} cy={n.cy} r={8} fill="url(#nodeDot)" />
-                {/* Label */}
-                <text
-                  x={n.labelX} y={n.labelY}
-                  textAnchor={n.anchor as 'start' | 'end'}
-                  fill="#033a9d" fontSize="14" fontWeight="600"
-                  className="dark:fill-white"
-                  style={{ fontFamily: 'system-ui, sans-serif' }}
-                >
-                  {n.label}
-                </text>
-              </g>
+            {/* ── Connection lines ── */}
+            {tools.map(t => (
+              <line
+                key={`line-${t.id}`}
+                x1={t.x} y1={t.y} x2={CX} y2={CY}
+                stroke="#007cf4" strokeWidth="1" opacity="0.12"
+                strokeDasharray="5 6"
+              />
             ))}
 
-            {/* ── Loop labels ── */}
-            {/* Internal Ops — inside left loop */}
-            <g>
-              <rect x="150" y="202" width="180" height="56" rx="28"
-                fill="#007cf4" />
-              <text x="240" y="234" textAnchor="middle" fill="white" fontSize="14" fontWeight="700"
-                style={{ fontFamily: 'system-ui, sans-serif' }}>Internal Ops</text>
-            </g>
-            {/* Customer Experience — inside right loop */}
-            <g>
-              <rect x="590" y="202" width="220" height="56" rx="28"
-                fill="#033a9d" />
-              <text x="700" y="234" textAnchor="middle" fill="white" fontSize="14" fontWeight="700"
-                style={{ fontFamily: 'system-ui, sans-serif' }}>Customer Experience</text>
-            </g>
+            {/* ── Flowing particles (3 per line) ── */}
+            {tools.map(t => (
+              [0, t.d2, t.d3].map((delay, pi) => (
+                <circle key={`dot-${t.id}-${pi}`} r="3.5" fill={t.color} opacity="0.85">
+                  <animateMotion dur={`${t.dur}s`} repeatCount="indefinite" begin={`${delay}s`}>
+                    <mpath href={`#p-${t.id}`} />
+                  </animateMotion>
+                </circle>
+              ))
+            ))}
+
+            {/* ── Center hub pulse rings ── */}
+            {[100, 80, 60].map((r, i) => (
+              <motion.circle
+                key={`ring-${i}`}
+                cx={CX} cy={CY} r={r}
+                stroke="#007cf4" strokeWidth="1" fill="none"
+                animate={{ opacity: [0.06, 0.18, 0.06], scale: [1, 1.06, 1] } as never}
+                transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.6 }}
+              />
+            ))}
+
+            {/* ── Center hub main circle ── */}
+            <circle cx={CX} cy={CY} r={52} fill="url(#hubGrad)" filter="url(#nodeGlow)" />
+            <circle cx={CX} cy={CY} r={52} stroke="white" strokeWidth="1.5" strokeOpacity="0.2" fill="none" />
+            <text x={CX} y={CY - 7} textAnchor="middle" fill="white" fontSize="11" fontWeight="800"
+              style={{ fontFamily: 'system-ui, sans-serif', letterSpacing: '0.08em' }}>SYNC4TECH</text>
+            <text x={CX} y={CY + 9} textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="9" fontWeight="500"
+              style={{ fontFamily: 'system-ui, sans-serif', letterSpacing: '0.1em' }}>HUB</text>
+
+            {/* ── Tool node cards ── */}
+            {tools.map((t, i) => (
+              <motion.g
+                key={t.id}
+                animate={{ y: [0, t.floatY, 0] }}
+                transition={{ duration: 3.5 + i * 0.3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 }}
+                filter="url(#cardShadow)"
+              >
+                {/* Card background */}
+                <rect
+                  x={t.x - 58} y={t.y - 22}
+                  width="116" height="44" rx="22"
+                  fill="white" stroke="#007cf4" strokeOpacity="0.18" strokeWidth="1.2"
+                />
+                {/* Color dot */}
+                <circle cx={t.x - 36} cy={t.y} r="6" fill={t.color} opacity="0.9" />
+                {/* Label */}
+                <text x={t.x - 24} y={t.y - 3} fill="#0f172a" fontSize="12" fontWeight="700"
+                  style={{ fontFamily: 'system-ui, sans-serif' }}>{t.label}</text>
+                <text x={t.x - 24} y={t.y + 11} fill="#94a3b8" fontSize="9" fontWeight="500"
+                  style={{ fontFamily: 'system-ui, sans-serif' }}>{t.cat}</text>
+              </motion.g>
+            ))}
 
           </svg>
-        </motion.div>
-
-        {/* Bottom capability chips */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-3 mt-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          {['Process Automation', 'AI Enablement', 'Data Engineering', 'CRM Automation', 'Workflow Orchestration', 'Real-Time Analytics', 'Systems Integration'].map((chip, i) => (
-            <motion.span
-              key={chip}
-              className="px-4 py-1.5 rounded-full text-xs font-semibold border border-[#007cf4]/25 text-[#007cf4] bg-[#007cf4]/5 dark:text-[#36c5f0] dark:border-[#36c5f0]/25 dark:bg-[#36c5f0]/5 cursor-default"
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.65 + i * 0.05 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              {chip}
-            </motion.span>
-          ))}
         </motion.div>
 
       </div>
