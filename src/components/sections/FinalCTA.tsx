@@ -40,16 +40,7 @@ export default function FinalCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.div
-            className="inline-flex items-center gap-2 bg-[#007cf4]/8 border border-[#007cf4]/20 rounded-full px-4 py-1.5 mb-10"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <span className="w-1.5 h-1.5 bg-[#007cf4] rounded-full animate-pulse" />
-            <span className="text-sm text-[#007cf4] font-semibold">{t.finalCta.eyebrow}</span>
-          </motion.div>
+          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">{t.finalCta.eyebrow}</span>
 
           <h2
             className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight mb-6 max-w-4xl mx-auto"
