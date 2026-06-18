@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import WaveAnimation from '@/components/WaveAnimation'
 
 function SectionGrid() {
   return (
@@ -11,13 +12,7 @@ function SectionGrid() {
           backgroundSize: '60px 60px',
         }}
       />
-      <motion.div
-        className="absolute left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, #007cf4, transparent)', opacity: 0.2 }}
-        initial={{ top: '-2px' }}
-        animate={{ top: '100%' }}
-        transition={{ duration: 10, ease: 'linear', repeat: Infinity, repeatDelay: 4 }}
-      />
+      <WaveAnimation />
       {/* Floating orbs — blue shades only */}
       <motion.div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, rgba(0,124,244,0.08) 0%, transparent 70%)', top: '-100px', left: '10%' }}

@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import WaveAnimation from '@/components/WaveAnimation'
 
 const pillars = [
   {
@@ -121,13 +122,7 @@ function TechGrid() {
           backgroundSize: '60px 60px',
         }}
       />
-      <motion.div
-        className="absolute left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, #007cf4, transparent)', opacity: 0.2 }}
-        initial={{ top: '-2px' }}
-        animate={{ top: '100%' }}
-        transition={{ duration: 7, ease: 'linear', repeat: Infinity, repeatDelay: 3 }}
-      />
+      <WaveAnimation />
       {Array.from({ length: 6 }).map((_, i) => (
         <motion.div
           key={i}

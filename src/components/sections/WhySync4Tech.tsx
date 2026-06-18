@@ -43,27 +43,25 @@ export default function WhySync4Tech() {
   return (
     <section className="py-section bg-white dark:bg-[#050f2e]" id="why">
       <div className="section-container">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
-          <div className="md:sticky md:top-32">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Why Us</span>
-              <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight mb-6" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
-                The Sync4Tech
-                <br />
-                <span className="gradient-text">Difference.</span>
-              </h2>
-              <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
-                Traditional consultancies sell time. We sell outcomes. Every engagement is structured around measurable business impact, with clear milestones and guaranteed results.
-              </p>
-            </motion.div>
-          </div>
+        <motion.div
+          className="text-center max-w-2xl mx-auto mb-14"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Why Us</span>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight mb-4" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+            The Sync4Tech
+            <br />
+            <span className="gradient-text">Difference</span>
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 leading-relaxed text-sm">
+            Traditional consultancies sell time. We sell outcomes. Every engagement is structured around measurable business impact, with clear milestones and guaranteed results.
+          </p>
+        </motion.div>
 
-          <div className="flex flex-col divide-y divide-black/8 dark:divide-white/10">
+        <div className="flex flex-col divide-y divide-black/8 dark:divide-white/10 max-w-3xl mx-auto">
             <div className="grid grid-cols-3 pb-3">
               <span className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Criterion</span>
               <span className="text-xs font-semibold text-[#007cf4] uppercase tracking-widest text-center">Sync4Tech</span>
@@ -89,7 +87,6 @@ export default function WhySync4Tech() {
                 </div>
               </motion.div>
             ))}
-          </div>
         </div>
       </div>
     </section>

@@ -39,23 +39,22 @@ export default function Insights() {
   return (
     <section className="py-section bg-white dark:bg-[#050f2e]" id="insights">
       <div className="section-container">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Insights</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
-              Ideas That Shape
-              <br />
-              <span className="gradient-text">Modern Businesses.</span>
-            </h2>
-          </motion.div>
+        <motion.div
+          className="text-center max-w-2xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Insights</span>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+            Ideas That Shape
+            <br />
+            <span className="gradient-text">Modern Businesses</span>
+          </h2>
           <motion.a
             href="#"
-            className="text-sm font-semibold text-black dark:text-white hover:text-[#007cf4] transition-colors duration-300 group flex items-center gap-2 whitespace-nowrap"
+            className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all duration-200 group"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -66,7 +65,7 @@ export default function Insights() {
               <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </motion.a>
-        </div>
+        </motion.div>
 
         {/* Tags */}
         <motion.div

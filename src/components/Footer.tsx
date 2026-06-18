@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Logo from './Logo'
+import WaveAnimation from './WaveAnimation'
 
 const solutions = ['Business Automation', 'AI Enablement', 'Data Transformation', 'Execution Excellence', 'Process Mining', 'Change Management']
 const industries = ['Real Estate', 'Healthcare', 'Financial Services', 'Manufacturing', 'Technology', 'Retail & E-Commerce']
@@ -45,14 +46,7 @@ export default function Footer() {
             backgroundSize: '60px 60px',
           }}
         />
-        {/* Animated scan line */}
-        <motion.div
-          className="absolute left-0 right-0 h-px pointer-events-none"
-          style={{ background: 'linear-gradient(90deg, transparent, #007cf4, transparent)', opacity: 0.18 }}
-          initial={{ top: '-2px' }}
-          animate={{ top: '100%' }}
-          transition={{ duration: 7, ease: 'linear', repeat: Infinity, repeatDelay: 3 }}
-        />
+        <WaveAnimation />
 
         <div className="section-container py-16 relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
           <div className="max-w-xl">
