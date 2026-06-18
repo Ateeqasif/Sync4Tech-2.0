@@ -244,47 +244,128 @@ export default function SolutionsPage() {
         breadcrumb={[{ label: 'Solutions', href: '/solutions' }]}
       />
 
-      {/* Solutions Grid — Apple-style large tiles */}
+      {/* Solutions Bento Grid */}
       <section className="py-section bg-[#f5f5f7] dark:bg-[#060d24]">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {solutions.map((sol) => (
-              <Link
-                key={sol.slug}
-                href={`/solutions/${sol.slug}`}
-                className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col min-h-[480px] transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl`}
-              >
-                {/* Text block */}
-                <div className="p-10 pb-0 flex flex-col items-center text-center z-10">
-                  <h2 className={`font-inter-tight font-black text-2xl md:text-3xl mb-3 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>
-                    {sol.title}
-                  </h2>
-                  <p className={`text-sm leading-relaxed max-w-xs ${sol.theme === 'dark' ? 'text-white/70' : 'text-gray-500'}`}>
-                    {sol.subtitle}
-                  </p>
-                  {/* CTA */}
-                  <div className="mt-5 flex items-center gap-3">
-                    <span
-                      className="px-5 py-2 rounded-full text-sm font-semibold transition-all"
-                      style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)', color: 'white' }}
-                    >
-                      Learn more
-                    </span>
-                    <span className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all group-hover:border-[#007cf4]/60 ${sol.theme === 'dark' ? 'border-white/25 text-white' : 'border-black/20 text-black'}`}>
-                      Explore →
-                    </span>
+          {/*
+            Layout (3-col grid):
+            Row 1: [Process Automation — 2col tall] [Data Intelligence — 1col tall]
+            Row 2: [Workflow Orchestration — 1col short] [Predictive Analytics — 1col short] (both inside right col of row1 area... actually use separate rows)
+            Row 3: [AI Enablement — 1col] [Change Management — 2col]
+            We use a CSS grid with explicit row spans.
+          */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[320px]">
+
+            {/* Card 0 — Process Automation — wide (2col) + tall (2row) */}
+            {(() => {
+              const sol = solutions[0]
+              return (
+                <Link key={sol.slug} href={`/solutions/${sol.slug}`}
+                  className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col md:col-span-2 md:row-span-2 transition-all duration-500 hover:scale-[1.012] hover:shadow-2xl`}
+                >
+                  <div className="p-10 pb-0 flex flex-col items-center text-center z-10">
+                    <h2 className={`font-inter-tight font-black text-3xl md:text-4xl mb-3 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
+                    <p className={`text-sm leading-relaxed max-w-sm ${sol.theme === 'dark' ? 'text-white/70' : 'text-gray-500'}`}>{sol.subtitle}</p>
+                    <div className="mt-5 flex items-center gap-3">
+                      <span className="px-5 py-2 rounded-full text-sm font-semibold" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)', color: 'white' }}>Learn more</span>
+                      <span className={`px-5 py-2 rounded-full text-sm font-semibold border group-hover:border-[#007cf4]/60 ${sol.theme === 'dark' ? 'border-white/25 text-white' : 'border-black/20 text-black'}`}>Explore →</span>
+                    </div>
                   </div>
-                </div>
+                  <div className="flex-1 flex items-center justify-center p-8 scale-125">{sol.visual}</div>
+                  <div className={`absolute bottom-0 left-0 right-0 h-20 ${sol.theme === 'dark' ? 'bg-gradient-to-t from-black/20 to-transparent' : 'bg-gradient-to-t from-white/20 to-transparent'}`} />
+                </Link>
+              )
+            })()}
 
-                {/* Visual */}
-                <div className="flex-1 flex items-center justify-center p-8 relative">
-                  {sol.visual}
-                </div>
+            {/* Card 1 — Data Intelligence — 1col, 1row */}
+            {(() => {
+              const sol = solutions[1]
+              return (
+                <Link key={sol.slug} href={`/solutions/${sol.slug}`}
+                  className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl`}
+                >
+                  <div className="p-7 pb-0 flex flex-col items-center text-center z-10">
+                    <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
+                    <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center p-4">{sol.visual}</div>
+                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity`} />
+                </Link>
+              )
+            })()}
 
-                {/* Subtle gradient overlay at bottom */}
-                <div className={`absolute bottom-0 left-0 right-0 h-16 ${sol.theme === 'dark' ? 'bg-gradient-to-t from-black/20 to-transparent' : 'bg-gradient-to-t from-white/20 to-transparent'}`} />
-              </Link>
-            ))}
+            {/* Card 2 — Workflow Orchestration — 1col, 1row */}
+            {(() => {
+              const sol = solutions[2]
+              return (
+                <Link key={sol.slug} href={`/solutions/${sol.slug}`}
+                  className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl`}
+                >
+                  <div className="p-7 pb-0 flex flex-col items-center text-center z-10">
+                    <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
+                    <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center p-4">{sol.visual}</div>
+                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity`} />
+                </Link>
+              )
+            })()}
+
+            {/* Card 3 — Predictive Analytics — 1col, 1row */}
+            {(() => {
+              const sol = solutions[3]
+              return (
+                <Link key={sol.slug} href={`/solutions/${sol.slug}`}
+                  className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl`}
+                >
+                  <div className="p-7 pb-0 flex flex-col items-center text-center z-10">
+                    <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
+                    <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center p-4">{sol.visual}</div>
+                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#007cf4] opacity-0 group-hover:opacity-100 transition-opacity`} />
+                </Link>
+              )
+            })()}
+
+            {/* Card 4 — AI Enablement — 1col, 1row */}
+            {(() => {
+              const sol = solutions[4]
+              return (
+                <Link key={sol.slug} href={`/solutions/${sol.slug}`}
+                  className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl`}
+                >
+                  <div className="p-7 pb-0 flex flex-col items-center text-center z-10">
+                    <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
+                    <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center p-4">{sol.visual}</div>
+                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity`} />
+                </Link>
+              )
+            })()}
+
+            {/* Card 5 — Change Management — wide (2col), 1row */}
+            {(() => {
+              const sol = solutions[5]
+              return (
+                <Link key={sol.slug} href={`/solutions/${sol.slug}`}
+                  className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex md:flex-row flex-col md:col-span-2 transition-all duration-500 hover:scale-[1.012] hover:shadow-2xl`}
+                >
+                  <div className="flex flex-col justify-center p-10 z-10 md:w-1/2">
+                    <h2 className={`font-inter-tight font-black text-2xl md:text-3xl mb-3 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
+                    <p className={`text-sm leading-relaxed max-w-xs mb-5 ${sol.theme === 'dark' ? 'text-white/70' : 'text-gray-500'}`}>{sol.subtitle}</p>
+                    <div className="flex items-center gap-3">
+                      <span className="px-5 py-2 rounded-full text-sm font-semibold" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)', color: 'white' }}>Learn more</span>
+                      <span className={`px-5 py-2 rounded-full text-sm font-semibold border group-hover:border-[#007cf4]/60 ${sol.theme === 'dark' ? 'border-white/25 text-white' : 'border-black/20 text-black'}`}>Explore →</span>
+                    </div>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center p-6 scale-110">{sol.visual}</div>
+                  <div className={`absolute bottom-0 left-0 right-0 h-16 ${sol.theme === 'dark' ? 'bg-gradient-to-t from-black/20 to-transparent' : 'bg-gradient-to-t from-white/20 to-transparent'}`} />
+                </Link>
+              )
+            })()}
+
           </div>
         </div>
       </section>
