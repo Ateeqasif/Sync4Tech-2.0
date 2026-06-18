@@ -43,7 +43,7 @@ export default function PageLoader() {
                 style={{ width: `${progress * 100}%` }}
               />
             </div>
-            <p className="text-white/60 text-xs tracking-widest uppercase">Initializing</p>
+            <p className="text-white/60 text-xs tracking-widest uppercase">Syncing you with Technology Partner</p>
           </motion.div>
         </motion.div>
       )}
