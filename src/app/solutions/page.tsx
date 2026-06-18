@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 import SolutionsFAQ from '@/components/pages/SolutionsFAQ'
