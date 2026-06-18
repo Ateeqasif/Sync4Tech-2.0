@@ -21,7 +21,7 @@ function ParticleCanvas() {
     resize()
     window.addEventListener('resize', resize)
 
-    const count = 50
+    const count = 80
     const nodes = Array.from({ length: count }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
