@@ -31,6 +31,33 @@ const articles = [
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop',
     imageAlt: 'Data analytics dashboard',
   },
+  {
+    tag: 'Operations',
+    title: 'How CRM Automation Doubled Our Client\'s Sales Pipeline in 90 Days',
+    excerpt: 'A step-by-step look at how we connected HubSpot, GoHighLevel and Zapier to build a fully automated lead nurture engine that never sleeps.',
+    readTime: '7 min read',
+    date: 'March 2025',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Sales pipeline on a laptop screen',
+  },
+  {
+    tag: 'Transformation',
+    title: 'The 6-Week Digital Transformation Playbook for Mid-Market Companies',
+    excerpt: 'Most transformation programmes fail because they try to do too much at once. Our phased approach delivers measurable ROI before the next quarter closes.',
+    readTime: '9 min read',
+    date: 'February 2025',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Team working on digital strategy in a modern office',
+  },
+  {
+    tag: 'AI',
+    title: 'Generative AI in the Enterprise: What Actually Works in Production',
+    excerpt: 'After deploying AI across 50+ organisations, we\'ve learned what separates pilots that stick from proofs-of-concept that gather dust. Here\'s the full picture.',
+    readTime: '11 min read',
+    date: 'January 2025',
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Generative AI interface on futuristic screen',
+  },
 ]
 
 const tags = ['All', 'AI', 'Automation', 'Data', 'Operations', 'Transformation']
@@ -89,70 +116,97 @@ export default function Insights() {
           ))}
         </motion.div>
 
-        {/* Articles */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {articles.map((article, i) => (
-            <motion.article
-              key={i}
-              className="group cursor-pointer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {/* Real image with Ken Burns + border trace */}
-              <div className="relative rounded-2xl h-52 mb-6 overflow-hidden shadow-sm">
-                <Image
-                  src={article.image}
-                  alt={article.imageAlt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                {/* Dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-                {/* Blue tint on hover */}
-                <div className="absolute inset-0 bg-[#007cf4]/0 group-hover:bg-[#007cf4]/20 transition-colors duration-500" />
-                {/* SVG border trace */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ borderRadius: '1rem' }}>
-                  <rect
-                    x="1.5" y="1.5"
-                    width="calc(100% - 3px)" height="calc(100% - 3px)"
-                    rx="14"
-                    fill="none"
-                    stroke="#007cf4"
-                    strokeWidth="2"
-                    strokeDasharray="500"
-                    strokeDashoffset="500"
-                    className="group-hover:[stroke-dashoffset:0] transition-[stroke-dashoffset] duration-700"
-                  />
-                </svg>
-                {/* Tag badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="bg-white/90 backdrop-blur-sm text-[#007cf4] text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                    {article.tag}
-                  </span>
-                </div>
+        {/* Articles — featured hero card + 5-card grid */}
+        <div className="flex flex-col gap-6">
+          {/* Row 1: featured wide card */}
+          <motion.article
+            className="group cursor-pointer grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="relative h-64 md:h-auto overflow-hidden">
+              <Image
+                src={articles[0].image}
+                alt={articles[0].imageAlt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+              <div className="absolute top-4 left-4">
+                <span className="bg-[#007cf4] text-white text-xs font-bold px-3 py-1 rounded-full">{articles[0].tag}</span>
               </div>
-
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-xs text-gray-400 dark:text-gray-500">{article.date}</span>
-                <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
-                <span className="text-xs text-gray-400 dark:text-gray-500">{article.readTime}</span>
+            </div>
+            <div className="p-8 flex flex-col justify-center bg-white dark:bg-[#0a1628]">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs text-gray-400">{articles[0].date}</span>
+                <span className="w-1 h-1 rounded-full bg-gray-300" />
+                <span className="text-xs text-gray-400">{articles[0].readTime}</span>
               </div>
-              <h3 className="font-inter-tight font-bold text-black dark:text-white text-lg leading-snug mb-2 group-hover:text-[#007cf4] transition-colors duration-300">
-                {article.title}
+              <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300">
+                {articles[0].title}
               </h3>
-              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{article.excerpt}</p>
-
-              <div className="mt-4 flex items-center gap-1.5 text-[#007cf4] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">{articles[0].excerpt}</p>
+              <div className="flex items-center gap-1.5 text-[#007cf4] text-sm font-semibold">
                 Read article
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
                   <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-            </motion.article>
-          ))}
+            </div>
+          </motion.article>
+
+          {/* Row 2: 5 standard cards */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articles.slice(1).map((article, i) => (
+              <motion.article
+                key={i}
+                className="group cursor-pointer rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md bg-white dark:bg-[#0a1628]"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={article.image}
+                    alt={article.imageAlt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-[#007cf4]/0 group-hover:bg-[#007cf4]/15 transition-colors duration-500" />
+                  <div className="absolute top-3 left-3">
+                    <span className="bg-white/90 backdrop-blur-sm text-[#007cf4] text-xs font-bold px-2.5 py-1 rounded-full">
+                      {article.tag}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-5">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-xs text-gray-400 dark:text-gray-500">{article.date}</span>
+                    <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+                    <span className="text-xs text-gray-400 dark:text-gray-500">{article.readTime}</span>
+                  </div>
+                  <h3 className="font-inter-tight font-bold text-black dark:text-white text-base leading-snug mb-2 group-hover:text-[#007cf4] transition-colors duration-300">
+                    {article.title}
+                  </h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-3">{article.excerpt}</p>
+                  <div className="mt-4 flex items-center gap-1.5 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Read article
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
