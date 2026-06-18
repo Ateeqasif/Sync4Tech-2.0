@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 interface FAQItem { q: string; a: string }
 
-export default function DetailFAQ({ items }: { items: FAQItem[] }) {
+export default function DetailFAQ({ items }: { items: readonly FAQItem[] | FAQItem[] }) {
   const [open, setOpen] = useState<number | null>(null)
   return (
     <div className="flex flex-col divide-y divide-black/8 dark:divide-white/10 max-w-3xl mx-auto">
