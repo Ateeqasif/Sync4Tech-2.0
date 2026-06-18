@@ -1,19 +1,21 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Logo from './Logo'
 import ThemeToggle from './ThemeToggle'
 import LanguageSwitcher from './LanguageSwitcher'
 import { useLanguage } from '@/contexts/LanguageContext'
 
-const navHrefs = [
-  { key: 'solutions' as const, href: '#solutions' },
-  { key: 'industries' as const, href: '#industries' },
-  { key: 'caseStudies' as const, href: '#case-studies' },
-  { key: 'insights' as const, href: '#insights' },
-  { key: 'about' as const, href: '#why' },
-  { key: 'careers' as const, href: '#careers' },
+const navLinks = [
+  { key: 'solutions' as const, href: '/solutions' },
+  { key: 'industries' as const, href: '/industries' },
+  { key: 'caseStudies' as const, href: '/case-studies' },
+  { key: 'insights' as const, href: '/insights' },
+  { key: 'about' as const, href: '/about' },
+  { key: 'careers' as const, href: '/careers' },
 ]
 
 export default function Navigation() {
@@ -21,12 +23,15 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const { scrollY } = useScroll()
   const { t } = useLanguage()
+  const pathname = usePathname()
 
   useMotionValueEvent(scrollY, 'change', (y) => {
-    // Hero section is min-h-screen (~100vh). Switch at 80% of viewport height.
     const threshold = typeof window !== 'undefined' ? window.innerHeight * 0.8 : 600
     setScrolled(y > threshold)
   })
+
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href)
 
   return (
     <motion.header
@@ -42,23 +47,27 @@ export default function Navigation() {
     >
       <div className="section-container">
         <nav className="flex items-center justify-between h-16">
-          <a href="#home"><Logo variant="full" theme="light" /></a>
+          <Link href="/"><Logo variant="full" theme="light" /></Link>
 
           {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-8">
-            {navHrefs.map((link, i) => (
+            {navLinks.map((link, i) => (
               <motion.li
                 key={link.key}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 + i * 0.07 }}
               >
-                <a
+                <Link
                   href={link.href}
-                  className="text-[#033a9d]/80 hover:text-[#007cf4] dark:text-white/80 dark:hover:text-[#36c5f0] text-sm font-medium transition-colors duration-200"
+                  className={`text-sm font-medium transition-colors duration-200 ${
+                    isActive(link.href)
+                      ? 'text-[#007cf4] dark:text-[#36c5f0]'
+                      : 'text-[#033a9d]/80 hover:text-[#007cf4] dark:text-white/80 dark:hover:text-[#36c5f0]'
+                  }`}
                 >
                   {t.nav[link.key]}
-                </a>
+                </Link>
               </motion.li>
             ))}
           </ul>
@@ -70,17 +79,20 @@ export default function Navigation() {
           </div>
 
           {/* CTA */}
-          <motion.a
-            href="#contact"
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300"
-            style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
+          <motion.div
+            className="hidden md:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            whileHover={{ scale: 1.03 }}
           >
-            {t.nav.cta}
-          </motion.a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 hover:scale-[1.03]"
+              style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
+            >
+              {t.nav.cta}
+            </Link>
+          </motion.div>
 
           {/* Mobile toggle */}
           <button
@@ -106,27 +118,31 @@ export default function Navigation() {
             style={{ background: 'rgba(224,242,254,0.95)', backdropFilter: 'blur(20px)' }}
           >
             <div className="section-container py-6 flex flex-col gap-4">
-              {navHrefs.map(link => (
-                <a
+              {navLinks.map(link => (
+                <Link
                   key={link.key}
                   href={link.href}
-                  className="text-[#033a9d]/80 hover:text-[#007cf4] dark:text-white/80 dark:hover:text-[#36c5f0] text-base font-medium transition-colors py-1"
+                  className={`text-base font-medium transition-colors py-1 ${
+                    isActive(link.href)
+                      ? 'text-[#007cf4]'
+                      : 'text-[#033a9d]/80 hover:text-[#007cf4] dark:text-white/80 dark:hover:text-[#36c5f0]'
+                  }`}
                   onClick={() => setMobileOpen(false)}
                 >
                   {t.nav[link.key]}
-                </a>
+                </Link>
               ))}
               <div className="mt-2">
                 <LanguageSwitcher />
               </div>
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="inline-flex items-center justify-center px-5 py-3 rounded-full text-sm font-semibold text-white mt-2"
                 style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
                 onClick={() => setMobileOpen(false)}
               >
                 {t.nav.cta}
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
