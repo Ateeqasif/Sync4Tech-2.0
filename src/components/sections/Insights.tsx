@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const articles = [
   {
+    slug: 'why-ai-agents-will-replace-workflows',
     tag: 'AI',
     title: 'Why AI Agents Will Replace 40% of Business Workflows by 2026',
     excerpt: "The shift from AI tools to AI agents is the biggest operational inflection point since cloud computing. Here's what it means for your business.",
@@ -15,6 +17,7 @@ const articles = [
     imageAlt: 'AI neural network visualization',
   },
   {
+    slug: 'hidden-cost-of-manual-operations',
     tag: 'Automation',
     title: 'The Hidden Cost of Manual Operations Most CFOs Miss',
     excerpt: 'Beyond payroll, manual processes carry invisible costs in errors, delays and missed opportunities. We break down the true price of not automating.',
@@ -24,6 +27,7 @@ const articles = [
     imageAlt: 'Automation technology circuit board',
   },
   {
+    slug: 'from-spreadsheets-to-strategy',
     tag: 'Data',
     title: 'From Spreadsheets to Strategy: Building a Modern Data Infrastructure',
     excerpt: 'Mid-market companies often outgrow their data tools before realizing it. This guide shows the path from reactive reporting to predictive intelligence.',
@@ -33,6 +37,7 @@ const articles = [
     imageAlt: 'Data analytics dashboard',
   },
   {
+    slug: 'crm-automation-sales-pipeline',
     tag: 'Operations',
     title: 'How CRM Automation Doubled Our Client\'s Sales Pipeline in 90 Days',
     excerpt: 'A step-by-step look at how we connected HubSpot, GoHighLevel and Zapier to build a fully automated lead nurture engine that never sleeps.',
@@ -42,6 +47,7 @@ const articles = [
     imageAlt: 'Sales pipeline on a laptop screen',
   },
   {
+    slug: 'six-week-transformation-playbook',
     tag: 'Transformation',
     title: 'The 6-Week Digital Transformation Playbook for Mid-Market Companies',
     excerpt: 'Most transformation programmes fail because they try to do too much at once. Our phased approach delivers measurable ROI before the next quarter closes.',
@@ -51,6 +57,7 @@ const articles = [
     imageAlt: 'Team working on digital strategy in a modern office',
   },
   {
+    slug: 'generative-ai-in-enterprise',
     tag: 'AI',
     title: 'Generative AI in the Enterprise: What Actually Works in Production',
     excerpt: 'After deploying AI across 50+ organisations, we\'ve learned what separates pilots that stick from proofs-of-concept that gather dust. Here\'s the full picture.',
@@ -83,19 +90,19 @@ export default function Insights() {
             <br />
             <span className="gradient-text">Modern Businesses</span>
           </h2>
-          <motion.a
-            href="#"
-            className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all duration-200 group"
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            View All Insights
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
-              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </motion.a>
+            <Link href="/insights" className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all duration-200 group">
+              View All Insights
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Tags */}
@@ -137,7 +144,7 @@ export default function Insights() {
 
             {/* Row 1: featured wide card */}
             {filtered[0] && (
-              <article className="group cursor-pointer grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md">
+              <Link href={`/insights/${filtered[0].slug}`} className="group cursor-pointer grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md">
                 <div className="relative h-64 md:h-auto overflow-hidden">
                   <Image
                     src={filtered[0].image}
@@ -169,15 +176,16 @@ export default function Insights() {
                     </svg>
                   </div>
                 </div>
-              </article>
+              </Link>
             )}
 
             {/* Remaining cards grid */}
             {filtered.length > 1 && (
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filtered.slice(1).map((article, i) => (
-                  <article
-                    key={article.title}
+                  <Link
+                    key={article.slug}
+                    href={`/insights/${article.slug}`}
                     className="group cursor-pointer rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md bg-white dark:bg-[#0a1628]"
                   >
                     <div className="relative h-48 overflow-hidden">
@@ -213,7 +221,7 @@ export default function Insights() {
                         </svg>
                       </div>
                     </div>
-                  </article>
+                  </Link>
                 ))}
               </div>
             )}

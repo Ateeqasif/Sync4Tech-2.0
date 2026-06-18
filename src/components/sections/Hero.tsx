@@ -176,7 +176,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           <a
-            href="#contact"
+            href="/contact"
             className="inline-flex items-center gap-2.5 bg-[#007cf4] text-white px-8 py-4 rounded-full font-semibold text-base btn-glow hover:bg-[#36c5f0] transition-all duration-300 group"
           >
             {t.hero.cta1}
@@ -185,7 +185,7 @@ export default function Hero() {
             </svg>
           </a>
           <a
-            href="#solutions"
+            href="/solutions"
             className="inline-flex items-center gap-2.5 bg-black/5 dark:bg-white/10 text-black dark:text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-black/10 dark:hover:bg-white/15 transition-all duration-300 border border-black/10 dark:border-white/20 group"
           >
             {t.hero.cta2}

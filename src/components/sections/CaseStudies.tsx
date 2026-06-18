@@ -250,10 +250,10 @@ export default function CaseStudies() {
               </div>
 
               {/* Bottom CTA */}
-              <div className="mt-10 pt-8 border-t border-black/5 dark:border-white/10 flex items-center justify-between">
-                <span className="text-xs text-gray-400 dark:text-gray-500">Delivered in under 12 weeks</span>
+              <div className="mt-10 pt-8 border-t border-black/5 dark:border-white/10 flex items-center justify-between flex-wrap gap-4">
+                <a href="/case-studies" className="text-xs text-gray-400 dark:text-gray-500 hover:text-[#007cf4] transition-colors">View all case studies →</a>
                 <motion.a
-                  href="#contact"
+                  href="/contact"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all duration-200"
                   whileHover={{ x: 3 }}
                 >

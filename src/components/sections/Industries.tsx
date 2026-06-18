@@ -2,9 +2,11 @@
 
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 
 const industries = [
   {
+    slug: 'real-estate',
     name: 'Real Estate',
     desc: 'Property intelligence & deal automation',
     icon: (
@@ -18,6 +20,7 @@ const industries = [
     ),
   },
   {
+    slug: 'healthcare',
     name: 'Healthcare',
     desc: 'Clinical workflows & compliance automation',
     icon: (
@@ -29,6 +32,7 @@ const industries = [
     ),
   },
   {
+    slug: 'financial-services',
     name: 'Financial Services',
     desc: 'Risk, reporting & regulatory automation',
     icon: (
@@ -40,6 +44,7 @@ const industries = [
     ),
   },
   {
+    slug: 'manufacturing',
     name: 'Manufacturing',
     desc: 'Supply chain & quality intelligence',
     icon: (
@@ -53,6 +58,7 @@ const industries = [
     ),
   },
   {
+    slug: null,
     name: 'Technology',
     desc: 'DevOps, support & growth automation',
     icon: (
@@ -65,6 +71,7 @@ const industries = [
     ),
   },
   {
+    slug: 'retail-ecommerce',
     name: 'Retail & E-Commerce',
     desc: 'Demand forecasting & CX personalization',
     icon: (
@@ -77,6 +84,7 @@ const industries = [
     ),
   },
   {
+    slug: 'legal',
     name: 'Legal Services',
     desc: 'Contract intelligence & case automation',
     icon: (
@@ -88,6 +96,7 @@ const industries = [
     ),
   },
   {
+    slug: 'education',
     name: 'Education',
     desc: 'Student journey & admin automation',
     icon: (
@@ -116,7 +125,10 @@ function TiltCard({ industry, i }: { industry: typeof industries[0]; i: number }
   }
   const onLeave = () => { x.set(0); y.set(0) }
 
+  const href = industry.slug ? `/industries/${industry.slug}` : '/industries'
+
   return (
+    <Link href={href}>
     <motion.div
       ref={ref}
       className="group relative bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/10 dark:border-white/10 rounded-2xl p-6 overflow-hidden cursor-pointer"
@@ -165,6 +177,7 @@ function TiltCard({ industry, i }: { industry: typeof industries[0]; i: number }
         </div>
       </div>
     </motion.div>
+    </Link>
   )
 }
 
@@ -190,6 +203,21 @@ export default function Industries() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {industries.map((ind, i) => <TiltCard key={i} industry={ind} i={i} />)}
         </div>
+
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <Link href="/industries" className="inline-flex items-center gap-2 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all duration-200 group">
+            View all industries
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        </motion.div>
       </div>
     </section>
   )

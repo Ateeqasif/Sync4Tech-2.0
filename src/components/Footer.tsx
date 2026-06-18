@@ -2,14 +2,47 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import Logo from './Logo'
 import { useLanguage } from '@/contexts/LanguageContext'
 
-const solutions = ['Business Automation', 'AI Enablement', 'Data Transformation', 'Execution Excellence', 'Process Mining', 'Change Management']
-const industries = ['Real Estate', 'Healthcare', 'Financial Services', 'Manufacturing', 'Technology', 'Retail & E-Commerce']
-const company = ['About Sync4Tech', 'Case Studies', 'Insights', 'Careers', 'Partners', 'Contact Us']
-const resources = ['Transformation Blueprint', 'ROI Calculator', 'Documentation', 'Partner Program', 'API Reference', 'Status']
-const legal = ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'GDPR', 'Security']
+const solutions = [
+  { label: 'Process Automation', href: '/solutions/process-automation' },
+  { label: 'AI Enablement', href: '/solutions/ai-enablement' },
+  { label: 'Data Intelligence', href: '/solutions/data-intelligence' },
+  { label: 'Workflow Orchestration', href: '/solutions/workflow-orchestration' },
+  { label: 'Change Management', href: '/solutions/change-management' },
+  { label: 'View all Solutions', href: '/solutions' },
+]
+const industries = [
+  { label: 'Healthcare', href: '/industries/healthcare' },
+  { label: 'Financial Services', href: '/industries/financial-services' },
+  { label: 'Real Estate', href: '/industries/real-estate' },
+  { label: 'Manufacturing', href: '/industries/manufacturing' },
+  { label: 'Retail & E-Commerce', href: '/industries/retail-ecommerce' },
+  { label: 'View all Industries', href: '/industries' },
+]
+const company = [
+  { label: 'About Sync4Tech', href: '/about' },
+  { label: 'Our Mission', href: '/about/mission' },
+  { label: 'Our Team', href: '/about/team' },
+  { label: 'Partners', href: '/about/partners' },
+  { label: 'Careers', href: '/careers' },
+  { label: 'Contact Us', href: '/contact' },
+]
+const resources = [
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Insights', href: '/insights' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'AI Articles', href: '/insights/category/ai' },
+  { label: 'Automation Guides', href: '/insights/category/automation' },
+  { label: 'Data Insights', href: '/insights/category/data' },
+]
+const legal = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Service', href: '/terms-of-service' },
+  { label: 'Cookie Policy', href: '/cookie-policy' },
+]
 
 const techStack = [
   'Zapier', 'Make', 'n8n', 'HubSpot', 'Salesforce', 'Snowflake',
@@ -103,7 +136,7 @@ export default function Footer() {
         <div className="section-container py-16">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
             <div className="col-span-2 md:col-span-3 lg:col-span-1">
-              <Logo variant="full" theme="dark" />
+              <Link href="/"><Logo variant="full" theme="dark" /></Link>
               <p className="text-white/40 text-xs leading-relaxed mt-4 mb-6 max-w-[200px]">
                 AI, Automation & Business Transformation for ambitious organizations.
               </p>
@@ -116,12 +149,12 @@ export default function Footer() {
               </div>
             </div>
 
-            {([['Solutions', solutions], ['Industries', industries], ['Company', company], ['Resources', resources], ['Legal', legal]] as [string, string[]][]).map(([title, links]) => (
+            {([['Solutions', solutions], ['Industries', industries], ['Company', company], ['Resources', resources], ['Legal', legal]] as [string, {label: string; href: string}[]][]).map(([title, links]) => (
               <div key={title}>
                 <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-5">{title}</h4>
                 <ul className="flex flex-col gap-2.5">
                   {links.map(l => (
-                    <li key={l}><a href="#" className="text-white/40 text-sm hover:text-white transition-colors">{l}</a></li>
+                    <li key={l.href}><Link href={l.href} className="text-white/40 text-sm hover:text-white transition-colors">{l.label}</Link></li>
                   ))}
                 </ul>
               </div>
@@ -150,9 +183,9 @@ export default function Footer() {
               {t.footer.copyright}
             </p>
             <div className="flex items-center gap-6">
-              <a href="#" className="text-white/30 text-xs hover:text-white/70 transition-colors">Privacy</a>
-              <a href="#" className="text-white/30 text-xs hover:text-white/70 transition-colors">Terms</a>
-              <a href="#" className="text-white/30 text-xs hover:text-white/70 transition-colors">Cookies</a>
+              <Link href="/privacy-policy" className="text-white/30 text-xs hover:text-white/70 transition-colors">Privacy</Link>
+              <Link href="/terms-of-service" className="text-white/30 text-xs hover:text-white/70 transition-colors">Terms</Link>
+              <Link href="/cookie-policy" className="text-white/30 text-xs hover:text-white/70 transition-colors">Cookies</Link>
             </div>
           </div>
         </div>
