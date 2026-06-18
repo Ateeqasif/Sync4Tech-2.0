@@ -37,9 +37,9 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <ExecutionGap />
         <TransformationOS />
         <BusinessOutcomes />
+        <ExecutionGap />
         <Industries />
         <IntelligentBusiness />
         <TransformationJourney />
