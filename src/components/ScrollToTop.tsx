@@ -14,13 +14,13 @@ export default function ScrollToTop() {
   }, []);
 
   return (
-    <div className="fixed right-4 top-1/2 -translate-y-1/2 z-[9970] flex items-center gap-2">
+    <div className="fixed right-6 bottom-24 z-[9970] flex flex-col items-center gap-2">
       <AnimatePresence>
         {visible && hovered && (
           <motion.span
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 10 }}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
             className="text-xs text-[#007cf4] bg-white/90 border border-[#007cf4]/30 px-2 py-1 rounded-lg shadow-sm whitespace-nowrap backdrop-blur-sm"
           >
             Back to top
