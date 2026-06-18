@@ -1,4 +1,3 @@
-import Navigation from '@/components/Navigation'
 import Hero from '@/components/sections/Hero'
 import ExecutionGap from '@/components/sections/ExecutionGap'
 import TransformationOS from '@/components/sections/TransformationOS'
@@ -13,9 +12,7 @@ import TrustSection from '@/components/sections/TrustSection'
 import Insights from '@/components/sections/Insights'
 import FAQ from '@/components/sections/FAQ'
 import FinalCTA from '@/components/sections/FinalCTA'
-import Footer from '@/components/Footer'
 import PageLoader from '@/components/PageLoader'
-import CustomCursor from '@/components/CustomCursor'
 import ScrollProgress from '@/components/ScrollProgress'
 import ClickEffect from '@/components/ClickEffect'
 import ExpertPopup from '@/components/ExpertPopup'
@@ -27,14 +24,12 @@ export default function Home() {
   return (
     <>
       <PageLoader />
-      <CustomCursor />
       <ScrollProgress />
       <ClickEffect />
       <ExpertPopup />
       <ScrollToTop />
       <AIChatBot />
       <AccessibilityPanel />
-      <Navigation />
       <main>
         <Hero />
         <TransformationOS />
@@ -51,7 +46,6 @@ export default function Home() {
         <FAQ />
         <FinalCTA />
       </main>
-      <Footer />
     </>
   )
 }
