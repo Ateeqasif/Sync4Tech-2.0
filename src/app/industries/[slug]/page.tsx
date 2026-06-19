@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 import DetailFAQ from '@/components/pages/DetailFAQ'
+import IndustryOrbitSection from '@/components/pages/IndustryOrbitSection'
 
 const industries = {
   healthcare: {
@@ -562,6 +563,141 @@ const industries = {
 
 type IndustrySlug = keyof typeof industries
 
+const orbitConfig: Record<IndustrySlug, {
+  eyebrow: string; title: string; highlight: string; description: string
+  bullets: string[]; centerLabel: string; flip: boolean
+  nodes: { label: string; angle: number; color: string }[]
+}> = {
+  healthcare: {
+    eyebrow: 'Intelligence Layer',
+    title: 'Connected Care,', highlight: 'Zero Manual Gaps',
+    description: 'Our AI layer sits at the centre of your clinical operations, linking every department into a single intelligent network — so data flows in and actionable insight flows out.',
+    bullets: ['Real-time EMR and billing synchronisation', 'AI-powered patient communication and scheduling', 'Compliance dashboards updated automatically'],
+    centerLabel: 'Care Intelligence',
+    flip: false,
+    nodes: [
+      { label: 'Patient Intake', angle: -90, color: '#007cf4' },
+      { label: 'EMR System', angle: -20, color: '#36c5f0' },
+      { label: 'Billing', angle: 50, color: '#007cf4' },
+      { label: 'Compliance', angle: 130, color: '#36c5f0' },
+      { label: 'Scheduling', angle: 200, color: '#007cf4' },
+      { label: 'Staff Portal', angle: 270, color: '#36c5f0' },
+    ],
+  },
+  'financial-services': {
+    eyebrow: 'Intelligence Layer',
+    title: 'Automate Every', highlight: 'Financial Workflow',
+    description: 'From KYC to reporting, our automation layer connects your compliance engine, transaction systems, and client management into one seamless intelligent operation.',
+    bullets: ['Automated KYC and AML screening in minutes', 'Real-time risk and compliance dashboards', 'AI-driven client onboarding and reporting'],
+    centerLabel: 'Risk Intelligence',
+    flip: true,
+    nodes: [
+      { label: 'KYC / AML', angle: -90, color: '#007cf4' },
+      { label: 'Transactions', angle: -20, color: '#36c5f0' },
+      { label: 'CRM', angle: 50, color: '#007cf4' },
+      { label: 'Reporting', angle: 130, color: '#36c5f0' },
+      { label: 'Compliance', angle: 200, color: '#007cf4' },
+      { label: 'Onboarding', angle: 270, color: '#36c5f0' },
+    ],
+  },
+  manufacturing: {
+    eyebrow: 'Intelligence Layer',
+    title: 'Smart Factory,', highlight: 'Zero Downtime',
+    description: 'Connect your production floor, supply chain, and quality systems into an AI-driven manufacturing intelligence layer that predicts issues before they cost you.',
+    bullets: ['Predictive maintenance alerts before failures occur', 'Real-time production line monitoring and OEE tracking', 'Automated quality control and defect flagging'],
+    centerLabel: 'Production AI',
+    flip: false,
+    nodes: [
+      { label: 'Production', angle: -90, color: '#007cf4' },
+      { label: 'Quality Control', angle: -20, color: '#36c5f0' },
+      { label: 'Maintenance', angle: 50, color: '#007cf4' },
+      { label: 'Supply Chain', angle: 130, color: '#36c5f0' },
+      { label: 'Inventory', angle: 200, color: '#007cf4' },
+      { label: 'ERP', angle: 270, color: '#36c5f0' },
+    ],
+  },
+  'retail-ecommerce': {
+    eyebrow: 'Intelligence Layer',
+    title: 'Sell Smarter,', highlight: 'Retain Longer',
+    description: 'Our retail AI layer connects your storefront, warehouse, CRM, and marketing stack — turning every customer signal into an automated action that drives revenue.',
+    bullets: ['Real-time inventory sync across all channels', 'AI-powered personalisation and upsell sequences', 'Automated abandoned cart and retention flows'],
+    centerLabel: 'Commerce AI',
+    flip: true,
+    nodes: [
+      { label: 'Storefront', angle: -90, color: '#007cf4' },
+      { label: 'Inventory', angle: -20, color: '#36c5f0' },
+      { label: 'CRM', angle: 50, color: '#007cf4' },
+      { label: 'Marketing', angle: 130, color: '#36c5f0' },
+      { label: 'Fulfilment', angle: 200, color: '#007cf4' },
+      { label: 'Analytics', angle: 270, color: '#36c5f0' },
+    ],
+  },
+  'real-estate': {
+    eyebrow: 'Intelligence Layer',
+    title: 'Close Faster,', highlight: 'Nurture Smarter',
+    description: 'Our AI layer connects your lead sources, CRM, and property listings into one automated pipeline — so no lead falls through the cracks and every deal moves faster.',
+    bullets: ['Instant multi-source lead capture and routing', 'Automated nurture sequences across SMS, email, and WhatsApp', 'AI-powered deal pipeline forecasting'],
+    centerLabel: 'Property AI',
+    flip: false,
+    nodes: [
+      { label: 'Lead Sources', angle: -90, color: '#007cf4' },
+      { label: 'CRM', angle: -20, color: '#36c5f0' },
+      { label: 'Listings', angle: 50, color: '#007cf4' },
+      { label: 'Viewings', angle: 130, color: '#36c5f0' },
+      { label: 'Contracts', angle: 200, color: '#007cf4' },
+      { label: 'Reporting', angle: 270, color: '#36c5f0' },
+    ],
+  },
+  logistics: {
+    eyebrow: 'Intelligence Layer',
+    title: 'Every Delivery,', highlight: 'On Time',
+    description: 'Our logistics AI layer connects your TMS, driver apps, and customer portals — giving you real-time visibility and automated dispatch that eliminates delays before they happen.',
+    bullets: ['AI route optimisation that adapts in real time', 'Automated driver dispatch and proof-of-delivery', 'Customer tracking portals with live ETAs'],
+    centerLabel: 'Route AI',
+    flip: true,
+    nodes: [
+      { label: 'Dispatch', angle: -90, color: '#007cf4' },
+      { label: 'Route AI', angle: -20, color: '#36c5f0' },
+      { label: 'Drivers', angle: 50, color: '#007cf4' },
+      { label: 'Customer', angle: 130, color: '#36c5f0' },
+      { label: 'TMS', angle: 200, color: '#007cf4' },
+      { label: 'Invoicing', angle: 270, color: '#36c5f0' },
+    ],
+  },
+  education: {
+    eyebrow: 'Intelligence Layer',
+    title: 'Automate Admin,', highlight: 'Amplify Learning',
+    description: 'Our education AI layer connects admissions, student records, and faculty tools — so staff spend their time on outcomes, not paperwork.',
+    bullets: ['Automated admissions from application to offer letter', 'Real-time student performance dashboards for staff', 'AI-powered parent and student communication'],
+    centerLabel: 'Campus AI',
+    flip: false,
+    nodes: [
+      { label: 'Admissions', angle: -90, color: '#007cf4' },
+      { label: 'SIS', angle: -20, color: '#36c5f0' },
+      { label: 'LMS', angle: 50, color: '#007cf4' },
+      { label: 'Parent Portal', angle: 130, color: '#36c5f0' },
+      { label: 'Finance', angle: 200, color: '#007cf4' },
+      { label: 'Reporting', angle: 270, color: '#36c5f0' },
+    ],
+  },
+  legal: {
+    eyebrow: 'Intelligence Layer',
+    title: 'Less Admin,', highlight: 'More Billable Hours',
+    description: 'Our legal AI layer connects your case management, document systems, and client communications — automating the repetitive so your team focuses on the work that matters.',
+    bullets: ['AI document review and contract extraction in minutes', 'Automated client onboarding and matter setup', 'Real-time matter status and deadline tracking'],
+    centerLabel: 'Legal AI',
+    flip: true,
+    nodes: [
+      { label: 'Case Mgmt', angle: -90, color: '#007cf4' },
+      { label: 'Documents', angle: -20, color: '#36c5f0' },
+      { label: 'Billing', angle: 50, color: '#007cf4' },
+      { label: 'Client Portal', angle: 130, color: '#36c5f0' },
+      { label: 'Compliance', angle: 200, color: '#007cf4' },
+      { label: 'Deadlines', angle: 270, color: '#36c5f0' },
+    ],
+  },
+}
+
 const slugList: IndustrySlug[] = [
   'healthcare',
   'financial-services',
@@ -683,6 +819,23 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+
+      {/* Intelligence Layer orbit section */}
+      {orbitConfig[params.slug as IndustrySlug] && (() => {
+        const cfg = orbitConfig[params.slug as IndustrySlug]
+        return (
+          <IndustryOrbitSection
+            eyebrow={cfg.eyebrow}
+            title={cfg.title}
+            highlight={cfg.highlight}
+            description={cfg.description}
+            bullets={cfg.bullets}
+            nodes={cfg.nodes}
+            centerLabel={cfg.centerLabel}
+            flip={cfg.flip}
+          />
+        )
+      })()}
 
       {/* 3. Solutions We Deploy */}
       <section className="py-section bg-white dark:bg-[#050f2e]">
