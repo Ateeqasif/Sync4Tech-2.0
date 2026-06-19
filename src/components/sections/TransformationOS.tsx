@@ -30,8 +30,8 @@ const pillars = [
   },
 ]
 
-// all cards use bright blue gradient
-const isDarkCard = [true, true, true, true]
+// diagonal: blue, white, white, blue
+const isDarkCard = [true, false, false, true]
 
 function TechGrid() {
   return (
@@ -91,7 +91,7 @@ export default function TransformationOS() {
                 <div
                   className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0"
                   style={{
-                    background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)',
+                    background: dark ? 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' : '#ffffff',
                   }}
                 />
 
@@ -99,7 +99,7 @@ export default function TransformationOS() {
                 <div
                   className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{
-                    background: 'linear-gradient(135deg, #0055c4 0%, #007cf4 100%)',
+                    background: dark ? 'linear-gradient(135deg, #0055c4 0%, #007cf4 100%)' : 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)',
                   }}
                 />
 
@@ -120,7 +120,7 @@ export default function TransformationOS() {
                   {/* Eyebrow */}
                   <p
                     className="text-xs font-bold uppercase tracking-[0.25em] mb-4 transition-colors duration-500"
-                    style={{ color: 'rgba(255,255,255,0.75)' }}
+                    style={{ color: dark ? 'rgba(255,255,255,0.75)' : '#007cf4' }}
                   >
                     {p.subtitle}
                   </p>
@@ -130,7 +130,7 @@ export default function TransformationOS() {
                     className="font-inter-tight font-black mb-4 leading-tight transition-colors duration-500"
                     style={{
                       fontSize: 'clamp(28px, 3vw, 40px)',
-                      color: '#ffffff',
+                      color: dark ? '#ffffff' : '#050f2e',
                     }}
                   >
                     {p.title}
@@ -139,7 +139,7 @@ export default function TransformationOS() {
                   {/* Description */}
                   <p
                     className="text-base leading-relaxed mb-8 max-w-sm transition-colors duration-500"
-                    style={{ color: 'rgba(255,255,255,0.70)' }}
+                    style={{ color: dark ? 'rgba(255,255,255,0.70)' : '#374151' }}
                   >
                     {p.description}
                   </p>
@@ -151,9 +151,9 @@ export default function TransformationOS() {
                         key={f}
                         className="rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-500"
                         style={{
-                          background: 'rgba(255,255,255,0.15)',
-                          color: '#ffffff',
-                          border: '1px solid rgba(255,255,255,0.25)',
+                          background: dark ? 'rgba(255,255,255,0.15)' : 'rgba(0,124,244,0.08)',
+                          color: dark ? '#ffffff' : '#007cf4',
+                          border: `1px solid ${dark ? 'rgba(255,255,255,0.25)' : 'rgba(0,124,244,0.20)'}`,
                         }}
                       >
                         {f}
