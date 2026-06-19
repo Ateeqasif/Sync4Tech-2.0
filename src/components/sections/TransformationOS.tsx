@@ -190,15 +190,7 @@ export default function TransformationOS() {
                 transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ boxShadow: `0 8px 48px rgba(0,124,244,0.18)` }}
               >
-                {/* Watermark number */}
-                <span
-                  className="absolute right-5 bottom-4 font-inter-tight font-black select-none pointer-events-none"
-                  style={{ fontSize: '6rem', lineHeight: 1, opacity: 0.07, color: isDark ? '#fff' : '#007cf4' }}
-                >
-                  {nums[i]}
-                </span>
-
-                <div className="relative z-10">
+<div className="relative z-10">
                   {/* Subtitle */}
                   <p
                     className="text-xs font-bold uppercase tracking-widest mb-1"
