@@ -9,108 +9,30 @@ const pillars = [
     subtitle: 'Intelligence Layer',
     description: 'Deploy purpose-built AI agents, copilots, and decision engines trained on your business context.',
     features: ['Custom LLM fine-tuning', 'AI workflow orchestration', 'Predictive analytics'],
-    icon: (
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="12" fill="url(#aiGrad)" />
-        <defs>
-          <linearGradient id="aiGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#007cf4" />
-            <stop offset="1" stopColor="#36c5f0" />
-          </linearGradient>
-        </defs>
-        {/* Brain / neural circles */}
-        <circle cx="20" cy="16" r="5" stroke="white" strokeWidth="1.5" fill="none" />
-        <circle cx="12" cy="26" r="3.5" stroke="white" strokeWidth="1.5" fill="none" />
-        <circle cx="28" cy="26" r="3.5" stroke="white" strokeWidth="1.5" fill="none" />
-        <line x1="16" y1="20" x2="13.5" y2="22.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="24" y1="20" x2="26.5" y2="22.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="12" y1="22.5" x2="28" y2="22.5" stroke="white" strokeWidth="1" strokeLinecap="round" strokeDasharray="2 2" />
-        <circle cx="20" cy="16" r="2" fill="white" />
-      </svg>
-    ),
   },
   {
     title: 'Business Automation',
     subtitle: 'Execution Layer',
     description: 'End-to-end process automation that eliminates manual work across every business function.',
     features: ['RPA + intelligent automation', 'Cross-system orchestration', 'Human-in-the-loop design'],
-    icon: (
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="12" fill="url(#autoGrad)" />
-        <defs>
-          <linearGradient id="autoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#033a9d" />
-            <stop offset="1" stopColor="#007cf4" />
-          </linearGradient>
-        </defs>
-        {/* Gear/cog */}
-        <circle cx="20" cy="20" r="5" stroke="white" strokeWidth="1.5" fill="none" />
-        <circle cx="20" cy="20" r="2" fill="white" />
-        {[0,45,90,135,180,225,270,315].map((deg, i) => {
-          const rad = (deg * Math.PI) / 180
-          const x1 = 20 + 7 * Math.cos(rad)
-          const y1 = 20 + 7 * Math.sin(rad)
-          const x2 = 20 + 9.5 * Math.cos(rad)
-          const y2 = 20 + 9.5 * Math.sin(rad)
-          return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="white" strokeWidth="2" strokeLinecap="round" />
-        })}
-        {/* Arrow suggesting flow */}
-        <path d="M27 13l3 3-3 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      </svg>
-    ),
   },
   {
     title: 'Data Transformation',
     subtitle: 'Intelligence Layer',
     description: 'Modern data infrastructure that turns fragmented data into real-time strategic intelligence.',
     features: ['Data lakehouse architecture', 'Real-time pipelines', 'Self-serve analytics'],
-    icon: (
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="12" fill="url(#dataGrad)" />
-        <defs>
-          <linearGradient id="dataGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#007cf4" />
-            <stop offset="1" stopColor="#033a9d" />
-          </linearGradient>
-        </defs>
-        {/* Bar chart rising */}
-        <rect x="10" y="26" width="4" height="6" rx="1" fill="white" opacity="0.5" />
-        <rect x="16" y="21" width="4" height="11" rx="1" fill="white" opacity="0.7" />
-        <rect x="22" y="16" width="4" height="16" rx="1" fill="white" opacity="0.9" />
-        <rect x="28" y="11" width="4" height="21" rx="1" fill="white" />
-        {/* Trend line */}
-        <path d="M12 25 L18 20 L24 15 L30 10" stroke="#36c5f0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="30" cy="10" r="2" fill="#36c5f0" />
-      </svg>
-    ),
   },
   {
     title: 'Execution Excellence',
     subtitle: 'Change Layer',
     description: 'Change management and adoption programs that ensure transformation sticks.',
     features: ['Digital adoption programs', 'KPI frameworks', 'Continuous improvement'],
-    icon: (
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="12" fill="url(#execGrad)" />
-        <defs>
-          <linearGradient id="execGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#36c5f0" />
-            <stop offset="1" stopColor="#007cf4" />
-          </linearGradient>
-        </defs>
-        {/* Target / bullseye */}
-        <circle cx="20" cy="20" r="10" stroke="white" strokeWidth="1.5" fill="none" opacity="0.4" />
-        <circle cx="20" cy="20" r="6.5" stroke="white" strokeWidth="1.5" fill="none" opacity="0.65" />
-        <circle cx="20" cy="20" r="3" fill="white" />
-        {/* Arrow pointing to center */}
-        <line x1="30" y1="10" x2="22" y2="18" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
-        <path d="M27 10h3v3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      </svg>
-    ),
   },
 ]
 
-/* Animated tech-grid background */
+// diagonal: 0=dark, 1=light, 2=light, 3=dark
+const isDarkCard = [true, false, false, true]
+
 function TechGrid() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -122,18 +44,6 @@ function TechGrid() {
           backgroundSize: '60px 60px',
         }}
       />
-      {Array.from({ length: 6 }).map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1.5 h-1.5 rounded-full bg-[#007cf4]"
-          style={{
-            left: `${(i % 3) * 33 + 8}%`,
-            top: `${Math.floor(i / 3) * 50 + 15}%`,
-          }}
-          animate={{ opacity: [0.05, 0.4, 0.05], scale: [1, 1.5, 1] }}
-          transition={{ duration: 3 + i * 0.6, repeat: Infinity, delay: i * 0.5 }}
-        />
-      ))}
     </div>
   )
 }
@@ -164,66 +74,90 @@ export default function TransformationOS() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-6">
           {pillars.map((p, i) => {
-            const isDark = i === 0 || i === 2
-            const cardBgs = [
-              'linear-gradient(135deg, #020c1e, #033a9d)',
-              undefined,
-              'linear-gradient(135deg, #050f2e, #033a9d)',
-              undefined,
-            ]
-            const nums = ['01', '02', '03', '04']
-            const accentColors = ['#36c5f0', '#007cf4', '#36c5f0', '#007cf4']
+            const dark = isDarkCard[i]
             return (
               <motion.div
                 key={i}
-                className={`group relative rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:scale-[1.015]${isDark ? '' : ' bg-[#e8f4ff] dark:bg-[#0a1628]'}`}
-                style={{
-                  background: isDark ? cardBgs[i] : undefined,
-                  borderLeft: `4px solid ${accentColors[i]}`,
-                  boxShadow: '0 4px 32px rgba(0,0,0,0.10)',
-                }}
-                initial={{ opacity: 0, y: 40 }}
+                className="group relative rounded-3xl overflow-hidden cursor-default"
+                style={{ minHeight: '320px' }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ boxShadow: `0 8px 48px rgba(0,124,244,0.18)` }}
+                transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
               >
-<div className="relative z-10">
-                  {/* Subtitle */}
+                {/* Default face */}
+                <div
+                  className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0"
+                  style={{
+                    background: dark
+                      ? 'linear-gradient(135deg, #020c1e 0%, #033a9d 100%)'
+                      : 'linear-gradient(135deg, #e8f4ff 0%, #c8e4ff 100%)',
+                  }}
+                />
+
+                {/* Hover face — swapped color */}
+                <div
+                  className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background: dark
+                      ? 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)'
+                      : 'linear-gradient(135deg, #020c1e 0%, #033a9d 100%)',
+                  }}
+                />
+
+                {/* Glow on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ boxShadow: 'inset 0 0 80px rgba(0,124,244,0.25)' }}
+                />
+
+                {/* Top accent line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[3px] transition-opacity duration-300"
+                  style={{ background: 'linear-gradient(90deg, #007cf4, #36c5f0)', opacity: dark ? 0.6 : 0.4 }}
+                />
+
+                {/* Content */}
+                <div className="relative z-10 p-10 flex flex-col h-full" style={{ minHeight: '320px' }}>
+                  {/* Eyebrow */}
                   <p
-                    className="text-xs font-bold uppercase tracking-widest mb-1"
-                    style={{ color: accentColors[i] }}
+                    className="text-xs font-bold uppercase tracking-[0.25em] mb-4 transition-colors duration-500"
+                    style={{ color: dark ? '#36c5f0' : '#007cf4' }}
                   >
                     {p.subtitle}
                   </p>
 
                   {/* Title */}
                   <h3
-                    className="font-inter-tight font-black text-xl mb-3"
-                    style={{ color: isDark ? '#fff' : '#050f2e' }}
+                    className="font-inter-tight font-black mb-4 leading-tight transition-colors duration-500"
+                    style={{
+                      fontSize: 'clamp(28px, 3vw, 40px)',
+                      color: dark ? '#ffffff' : '#050f2e',
+                    }}
                   >
                     {p.title}
                   </h3>
 
                   {/* Description */}
                   <p
-                    className="text-sm leading-relaxed mb-5"
-                    style={{ color: isDark ? 'rgba(255,255,255,0.65)' : '#374151' }}
+                    className="text-base leading-relaxed mb-8 max-w-sm transition-colors duration-500"
+                    style={{ color: dark ? 'rgba(255,255,255,0.65)' : '#374151' }}
                   >
                     {p.description}
                   </p>
 
                   {/* Feature pills */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mt-auto">
                     {p.features.map((f) => (
                       <span
                         key={f}
-                        className="rounded-full px-3 py-1 text-xs font-medium"
+                        className="rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-500"
                         style={{
-                          background: isDark ? 'rgba(255,255,255,0.10)' : 'rgba(0,124,244,0.10)',
-                          color: isDark ? 'rgba(255,255,255,0.75)' : '#007cf4',
+                          background: dark ? 'rgba(255,255,255,0.10)' : 'rgba(0,124,244,0.10)',
+                          color: dark ? 'rgba(255,255,255,0.80)' : '#007cf4',
+                          border: `1px solid ${dark ? 'rgba(255,255,255,0.15)' : 'rgba(0,124,244,0.20)'}`,
                         }}
                       >
                         {f}
