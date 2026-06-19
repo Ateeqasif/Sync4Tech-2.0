@@ -199,14 +199,6 @@ export default function TransformationOS() {
                 </span>
 
                 <div className="relative z-10">
-                  {/* Icon in gradient circle badge */}
-                  <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shrink-0"
-                    style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }}
-                  >
-                    {p.icon}
-                  </div>
-
                   {/* Subtitle */}
                   <p
                     className="text-xs font-bold uppercase tracking-widest mb-1"
