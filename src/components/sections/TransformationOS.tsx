@@ -81,7 +81,7 @@ export default function TransformationOS() {
               <motion.div
                 key={i}
                 className="group relative rounded-3xl overflow-hidden cursor-default"
-                style={{ minHeight: '320px' }}
+                style={{ minHeight: '320px', border: '1.5px solid rgba(54,197,240,0.35)' }}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
