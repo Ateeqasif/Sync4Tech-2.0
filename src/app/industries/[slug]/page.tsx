@@ -871,36 +871,86 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       })()}
 
       {/* 3. Solutions We Deploy */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-[#050f2e]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3">
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#36c5f0] mb-3">
               Our Solutions
             </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white">
+            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-white">
               Solutions We Deploy
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-5">
-            {ind.solutions.map((sol, i) => (
-              <Link
-                key={sol.slug}
-                href={`/solutions/${sol.slug}`}
-                className="group block bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all overflow-hidden relative"
-              >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="flex items-start justify-between mb-3">
-                  <span className="text-[#007cf4]/40 text-xs font-black tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-                  <svg className="opacity-0 group-hover:opacity-100 transition-all text-[#007cf4] -translate-x-1 group-hover:translate-x-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </div>
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2 group-hover:text-[#007cf4] transition-colors">
-                  {sol.name}
-                </h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{sol.desc}</p>
-                <div className="mt-4 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Explore solution →</div>
-              </Link>
-            ))}
+          <div className="grid md:grid-cols-2 gap-4">
+            {ind.solutions.map((sol, i) => {
+              const gradients = [
+                { from: '#007cf4', to: '#36c5f0' },
+                { from: '#033a9d', to: '#007cf4' },
+                { from: '#36c5f0', to: '#033a9d' },
+                { from: '#007cf4', to: '#033a9d' },
+              ]
+              const grad = gradients[i % gradients.length]
+              return (
+                <Link
+                  key={sol.slug}
+                  href={`/solutions/${sol.slug}`}
+                  className="group relative overflow-hidden rounded-2xl flex flex-col"
+                  style={{
+                    background: 'linear-gradient(145deg, #060d24 0%, #020c1e 100%)',
+                    boxShadow: '0 0 0 1px rgba(255,255,255,0.06)',
+                  }}
+                >
+                  {/* Hover border glow */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{ boxShadow: `0 0 0 1px ${grad.from}60, 0 0 40px ${grad.from}15` }}
+                  />
+
+                  {/* Decorative number — large watermark */}
+                  <span className="absolute right-6 top-4 font-inter-tight font-black text-7xl leading-none select-none pointer-events-none tabular-nums"
+                    style={{
+                      background: `linear-gradient(135deg, ${grad.from}18, ${grad.to}08)`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+
+                  {/* Top accent line */}
+                  <div className="h-px w-full opacity-40"
+                    style={{ background: `linear-gradient(90deg, ${grad.from}, ${grad.to})` }}
+                  />
+
+                  <div className="p-7 flex flex-col flex-1 relative z-10">
+                    {/* Icon circle */}
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 shrink-0"
+                      style={{ background: `linear-gradient(135deg, ${grad.from}20, ${grad.to}10)`, border: `1px solid ${grad.from}30` }}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2 8l4 4 8-8" stroke={grad.from} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+
+                    <h3 className="font-inter-tight font-black text-lg text-white mb-2.5 group-hover:text-[#36c5f0] transition-colors duration-300">
+                      {sol.name}
+                    </h3>
+                    <p className="text-gray-500 text-sm leading-relaxed flex-1">{sol.desc}</p>
+
+                    <div className="mt-5 flex items-center gap-2">
+                      <span className="text-xs font-bold transition-colors duration-200"
+                        style={{ color: grad.from }}>
+                        Explore solution
+                      </span>
+                      <svg className="transition-transform duration-200 group-hover:translate-x-1" width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ stroke: grad.from }}>
+                        <path d="M2 6h8M6 2l4 4-4 4" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>

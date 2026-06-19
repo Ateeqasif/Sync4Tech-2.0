@@ -149,7 +149,7 @@ export default function CaseStudies() {
   const c = cases[active]
 
   return (
-    <section className="py-section bg-gray-50 dark:bg-[#071540]" id="case-studies">
+    <section className="py-section bg-[#050f2e]" id="case-studies">
       <div className="section-container">
 
         {/* Header */}
@@ -160,8 +160,8 @@ export default function CaseStudies() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Case Studies</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <span className="text-[#36c5f0] text-sm font-semibold tracking-widest uppercase mb-4 block">Case Studies</span>
+          <h2 className="font-inter-tight font-black text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
             Real Results,
             <br />
             <span className="gradient-text">Real Impact</span>
@@ -170,7 +170,7 @@ export default function CaseStudies() {
 
         {/* Tab selector */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -180,10 +180,10 @@ export default function CaseStudies() {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`relative px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              className={`relative px-5 py-2 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-300 ${
                 active === i
-                  ? 'text-white shadow-lg'
-                  : 'bg-white dark:bg-[#0a1a4a] text-gray-500 dark:text-gray-400 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 hover:text-[#007cf4]'
+                  ? 'text-white shadow-lg shadow-[#007cf4]/30'
+                  : 'text-gray-400 border border-white/10 hover:border-[#007cf4]/50 hover:text-[#36c5f0]'
               }`}
               style={active === i ? { background: 'linear-gradient(135deg, #033a9d, #007cf4)' } : {}}
             >
@@ -204,62 +204,84 @@ export default function CaseStudies() {
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
-            className="grid lg:grid-cols-5 gap-0 rounded-3xl overflow-hidden shadow-xl border border-black/5 dark:border-white/10"
+            className="grid lg:grid-cols-5 gap-0 rounded-3xl overflow-hidden"
+            style={{ boxShadow: '0 0 0 1px rgba(0,124,244,0.2), 0 32px 80px rgba(0,0,0,0.6)' }}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
             {/* Left content — 3 cols */}
-            <div className="lg:col-span-3 bg-white dark:bg-[#0a1a4a] p-10 flex flex-col justify-between">
+            <div
+              className="lg:col-span-3 p-10 flex flex-col justify-between relative overflow-hidden"
+              style={{ background: 'linear-gradient(145deg, #060d24 0%, #020c1e 100%)' }}
+            >
+              {/* Subtle grid */}
+              <div className="absolute inset-0 opacity-[0.03]"
+                style={{
+                  backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+                  backgroundSize: '40px 40px',
+                }}
+              />
+              {/* Corner glow */}
+              <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full pointer-events-none"
+                style={{ background: 'radial-gradient(ellipse, rgba(0,124,244,0.12), transparent 70%)' }}
+              />
+
               {/* Top */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="text-xs font-bold text-[#007cf4] bg-[#007cf4]/10 px-3 py-1 rounded-full tracking-wide uppercase">{c.tag}</span>
-                  <span className="text-xs text-gray-400 dark:text-gray-500 font-medium">{c.company}</span>
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-8">
+                  <span className="text-xs font-black text-[#36c5f0] bg-[#36c5f0]/10 border border-[#36c5f0]/20 px-3 py-1 rounded-full tracking-widest uppercase">{c.tag}</span>
+                  <span className="text-xs text-gray-500 font-medium">{c.company}</span>
                 </div>
 
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl md:text-3xl leading-tight mb-8">
+                <h3 className="font-inter-tight font-black text-white text-2xl md:text-3xl leading-tight mb-10"
+                  style={{ textShadow: '0 0 40px rgba(0,124,244,0.3)' }}
+                >
                   {c.headline}
                 </h3>
 
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-7">
                   <div className="flex gap-4">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style={{ background: 'rgba(0,124,244,0.1)' }}>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M8 2a6 6 0 100 12A6 6 0 008 2zM8 5v4M8 10.5v.5" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round"/>
+                    <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 border border-red-500/20"
+                      style={{ background: 'rgba(239,68,68,0.08)' }}>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M7 1v6M7 9.5V10" stroke="#ef4444" strokeWidth="1.8" strokeLinecap="round"/>
+                        <circle cx="7" cy="7" r="6" stroke="#ef4444" strokeWidth="1.2" opacity="0.5"/>
                       </svg>
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1.5">Challenge</p>
-                      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{c.challenge}</p>
+                      <p className="text-[10px] font-black text-red-400/70 uppercase tracking-[0.2em] mb-2">The Challenge</p>
+                      <p className="text-gray-400 text-sm leading-relaxed">{c.challenge}</p>
                     </div>
                   </div>
                   <div className="flex gap-4">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style={{ background: 'rgba(0,124,244,0.1)' }}>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8l3.5 3.5L13 4" stroke="#007cf4" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 border border-[#36c5f0]/20"
+                      style={{ background: 'rgba(54,197,240,0.08)' }}>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 7l3.5 3.5L12 4" stroke="#36c5f0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1.5">Solution</p>
-                      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{c.solution}</p>
+                      <p className="text-[10px] font-black text-[#36c5f0]/60 uppercase tracking-[0.2em] mb-2">Our Solution</p>
+                      <p className="text-gray-400 text-sm leading-relaxed">{c.solution}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Bottom CTA */}
-              <div className="mt-10 pt-8 border-t border-black/5 dark:border-white/10 flex items-center justify-between flex-wrap gap-4">
-                <a href="/case-studies" className="text-xs text-gray-400 dark:text-gray-500 hover:text-[#007cf4] transition-colors">View all case studies →</a>
+              <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-between flex-wrap gap-4 relative z-10">
+                <a href="/case-studies" className="text-xs text-gray-600 hover:text-[#36c5f0] transition-colors font-medium">View all case studies →</a>
                 <motion.a
                   href="/contact"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all duration-200"
-                  whileHover={{ x: 3 }}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-white bg-gradient-to-r from-[#033a9d] to-[#007cf4] px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-[#007cf4]/30 transition-all duration-200"
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   Get similar results
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </motion.a>
               </div>
@@ -267,45 +289,51 @@ export default function CaseStudies() {
 
             {/* Right metrics — 2 cols */}
             <div
-              className="lg:col-span-2 p-10 flex flex-col justify-center gap-8 relative overflow-hidden"
-              style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}
+              className="lg:col-span-2 flex flex-col justify-center gap-0 relative overflow-hidden"
+              style={{ background: 'linear-gradient(160deg, #033a9d 0%, #0059c1 50%, #007cf4 100%)' }}
             >
-              {/* Grid overlay */}
-              <div className="absolute inset-0 opacity-10"
+              {/* Radial glow top */}
+              <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full pointer-events-none"
+                style={{ background: 'radial-gradient(ellipse, rgba(54,197,240,0.25), transparent 70%)' }}
+              />
+              {/* Dot grid */}
+              <div className="absolute inset-0 opacity-[0.07]"
                 style={{
-                  backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-                  backgroundSize: '28px 28px',
+                  backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
+                  backgroundSize: '20px 20px',
                 }}
               />
               {/* Shimmer */}
               <motion.div
                 className="absolute inset-0"
-                style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%)' }}
+                style={{ background: 'linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.06) 50%, transparent 65%)' }}
                 animate={{ x: ['-100%', '200%'] }}
                 transition={{ duration: 4, repeat: Infinity, repeatDelay: 3, ease: 'easeInOut' }}
               />
-              {/* Orb */}
-              <div className="absolute -bottom-12 -right-12 w-40 h-40 rounded-full opacity-20"
-                style={{ background: 'radial-gradient(ellipse, #36c5f0, transparent 70%)' }}
-              />
 
-              <div className="relative z-10">
-                <p className="text-white/50 text-xs font-bold uppercase tracking-widest mb-8">Impact Metrics</p>
-                <div className="flex flex-col gap-8">
+              <div className="relative z-10 p-10">
+                <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.25em] mb-10 flex items-center gap-2">
+                  <span className="inline-block w-4 h-px bg-white/30" />
+                  Impact Metrics
+                </p>
+                <div className="flex flex-col gap-10">
                   {c.metrics.map((m, j) => (
                     <motion.div
                       key={j}
-                      initial={{ opacity: 0, x: 20 }}
+                      initial={{ opacity: 0, x: 30 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: j * 0.1 }}
+                      transition={{ duration: 0.5, delay: j * 0.12 }}
                     >
-                      <div className="font-inter-tight font-black text-white leading-none mb-1" style={{ fontSize: 'clamp(36px, 5vw, 52px)' }}>
+                      <div className="font-inter-tight font-black text-white leading-none mb-1.5"
+                        style={{ fontSize: 'clamp(42px, 6vw, 64px)', textShadow: '0 0 30px rgba(54,197,240,0.4)' }}
+                      >
                         <CountUp end={m.value} suffix={m.suffix} />
                       </div>
-                      <div className="text-white/60 text-sm font-medium">{m.label}</div>
-                      <div className="mt-2 h-0.5 rounded-full bg-white/10 overflow-hidden">
+                      <div className="text-white/50 text-xs font-bold uppercase tracking-widest mb-3">{m.label}</div>
+                      <div className="h-px rounded-full bg-white/10 overflow-hidden">
                         <motion.div
-                          className="h-full rounded-full bg-white/40"
+                          className="h-full rounded-full"
+                          style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0.6), rgba(54,197,240,0.8))' }}
                           initial={{ width: 0 }}
                           animate={{ width: `${Math.min(m.value, 100)}%` }}
                           transition={{ duration: 1.2, delay: 0.3 + j * 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -325,7 +353,7 @@ export default function CaseStudies() {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`rounded-full transition-all duration-300 ${active === i ? 'w-6 h-2 bg-[#007cf4]' : 'w-2 h-2 bg-gray-300 dark:bg-gray-600 hover:bg-[#007cf4]/50'}`}
+              className={`rounded-full transition-all duration-300 ${active === i ? 'w-6 h-2 bg-[#007cf4] shadow-sm shadow-[#007cf4]/50' : 'w-2 h-2 bg-white/10 hover:bg-[#007cf4]/40'}`}
             />
           ))}
         </div>
