@@ -99,7 +99,7 @@ export default function HowItWorks() {
         >
           <span className="text-[#36c5f0] text-xs font-bold tracking-[0.3em] uppercase mb-4 block">The Process</span>
           <h2 className="font-inter-tight font-black text-white text-4xl md:text-5xl lg:text-6xl leading-tight">
-            How It <span style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(90deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}>Works</span>
+            How It <span style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(135deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}>Works</span>
           </h2>
         </motion.div>
 
@@ -128,7 +128,7 @@ export default function HowItWorks() {
                 }}
               >
                 {/* Top accent bar */}
-                <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, #033a9d, ${step.accent})` }} />
+                <div className="h-1 w-full" style={{ background: `linear-gradient(135deg, #033a9d, ${step.accent})` }} />
 
                 {/* Big number watermark */}
                 <div
@@ -196,7 +196,7 @@ export default function HowItWorks() {
             <div key={i} className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full" style={{ background: i === 1 ? '#36c5f0' : '#007cf4' }} />
               {i < steps.length - 1 && (
-                <div className="w-16 h-px" style={{ background: 'linear-gradient(90deg,#007cf4,#36c5f0)', opacity: 0.4 }} />
+                <div className="w-16 h-px" style={{ background: 'linear-gradient(135deg,#007cf4,#36c5f0)', opacity: 0.4 }} />
               )}
             </div>
           ))}

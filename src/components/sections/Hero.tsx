@@ -177,7 +177,8 @@ export default function Hero() {
         >
           <a
             href="/contact"
-            className="inline-flex items-center gap-2.5 bg-[#007cf4] text-white px-8 py-4 rounded-full font-semibold text-base btn-glow hover:bg-[#36c5f0] transition-all duration-300 group"
+            className="inline-flex items-center gap-2.5 text-white px-8 py-4 rounded-full font-semibold text-base btn-glow transition-all duration-300 group"
+            style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }}
           >
             {t.hero.cta1}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
