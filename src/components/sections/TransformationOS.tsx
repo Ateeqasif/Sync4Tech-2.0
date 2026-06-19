@@ -165,54 +165,91 @@ export default function TransformationOS() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-5">
-          {pillars.map((p, i) => (
-            <motion.div
-              key={i}
-              className="group relative bg-white dark:bg-[#0a1a4a] border border-black/8 dark:border-white/10 rounded-3xl p-8 overflow-hidden hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -6 }}
-            >
-              {/* Hover glow */}
-              <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          {pillars.map((p, i) => {
+            const isDark = i === 0 || i === 2
+            const cardBgs = [
+              'linear-gradient(135deg, #020c1e, #033a9d)',
+              undefined,
+              'linear-gradient(135deg, #050f2e, #033a9d)',
+              undefined,
+            ]
+            const nums = ['01', '02', '03', '04']
+            const accentColors = ['#36c5f0', '#007cf4', '#36c5f0', '#007cf4']
+            return (
+              <motion.div
+                key={i}
+                className={`group relative rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:scale-[1.015]${isDark ? '' : ' bg-[#e8f4ff] dark:bg-[#0a1628]'}`}
                 style={{
-                  background:
-                    'radial-gradient(ellipse at 50% 0%, rgba(0,124,244,0.06) 0%, transparent 70%)',
+                  background: isDark ? cardBgs[i] : undefined,
+                  borderLeft: `4px solid ${accentColors[i]}`,
+                  boxShadow: '0 4px 32px rgba(0,0,0,0.10)',
                 }}
-              />
-              {/* Floating dots */}
-              {[...Array(3)].map((_, j) => (
-                <div
-                  key={j}
-                  className="absolute w-1 h-1 rounded-full bg-[#007cf4]/20 animate-float-y"
-                  style={{
-                    right: `${20 + j * 28}px`,
-                    top: `${18 + j * 18}px`,
-                    animationDelay: `${j * 0.8}s`,
-                    animationDuration: `${3 + j}s`,
-                  }}
-                />
-              ))}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ boxShadow: `0 8px 48px rgba(0,124,244,0.18)` }}
+              >
+                {/* Watermark number */}
+                <span
+                  className="absolute right-5 bottom-4 font-inter-tight font-black select-none pointer-events-none"
+                  style={{ fontSize: '6rem', lineHeight: 1, opacity: 0.07, color: isDark ? '#fff' : '#007cf4' }}
+                >
+                  {nums[i]}
+                </span>
 
-              <div className="relative z-10">
-                <div className="mb-5">{p.icon}</div>
-                <p className="text-[#007cf4] text-xs font-semibold uppercase tracking-widest mb-1">{p.subtitle}</p>
-                <h3 className="font-inter-tight font-bold text-black dark:text-white text-xl mb-3">{p.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-5">{p.description}</p>
-                <ul className="flex flex-col gap-2">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-gray-400 dark:text-gray-500 text-sm">
-                      <span className="w-1 h-1 rounded-full bg-[#007cf4]" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+                <div className="relative z-10">
+                  {/* Icon in gradient circle badge */}
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 shrink-0"
+                    style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }}
+                  >
+                    {p.icon}
+                  </div>
+
+                  {/* Subtitle */}
+                  <p
+                    className="text-xs font-bold uppercase tracking-widest mb-1"
+                    style={{ color: accentColors[i] }}
+                  >
+                    {p.subtitle}
+                  </p>
+
+                  {/* Title */}
+                  <h3
+                    className="font-inter-tight font-black text-xl mb-3"
+                    style={{ color: isDark ? '#fff' : '#050f2e' }}
+                  >
+                    {p.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p
+                    className="text-sm leading-relaxed mb-5"
+                    style={{ color: isDark ? 'rgba(255,255,255,0.65)' : '#374151' }}
+                  >
+                    {p.description}
+                  </p>
+
+                  {/* Feature pills */}
+                  <div className="flex flex-wrap gap-2">
+                    {p.features.map((f) => (
+                      <span
+                        key={f}
+                        className="rounded-full px-3 py-1 text-xs font-medium"
+                        style={{
+                          background: isDark ? 'rgba(255,255,255,0.10)' : 'rgba(0,124,244,0.10)',
+                          color: isDark ? 'rgba(255,255,255,0.75)' : '#007cf4',
+                        }}
+                      >
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
 
         <motion.div

@@ -128,27 +128,78 @@ export default function IndustriesPage() {
         breadcrumb={[{ label: 'Industries', href: '/industries' }]}
       />
 
-      {/* Industries grid */}
+      {/* Industries bento grid */}
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {industries.map((ind) => (
-              <div
-                key={ind.slug}
-                className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-8 hover:border-[#007cf4]/40 hover:shadow-md transition-all duration-300 flex gap-5 group"
-              >
-                <div className="w-12 h-12 bg-[#007cf4]/10 rounded-xl flex items-center justify-center shrink-0">
-                  {ind.icon}
-                </div>
-                <div>
-                  <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2">{ind.name}</h2>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">{ind.description}</p>
-                  <Link href={`/industries/${ind.slug}`} className="text-[#007cf4] text-sm font-semibold hover:text-[#36c5f0] transition-colors inline-flex items-center gap-1 group-hover:gap-2">
-                    Explore →
-                  </Link>
-                </div>
-              </div>
-            ))}
+          <div
+            className="grid grid-cols-1 md:grid-cols-3 gap-5"
+            style={{ gridAutoRows: '220px' }}
+          >
+            {industries.map((ind, i) => {
+              const isDark = i === 0 || i === 2 || i === 4 || i === 6
+              const isWide = i === 0 || i === 7
+              const num = String(i + 1).padStart(2, '0')
+              const gradients = [
+                'linear-gradient(135deg, #033a9d, #007cf4)',
+                '#e8f4ff',
+                'linear-gradient(135deg, #050f2e, #033a9d)',
+                '#f0f7ff',
+                'linear-gradient(135deg, #020c1e, #007cf4)',
+                '#e8f4ff',
+                'linear-gradient(135deg, #033a9d, #050f2e)',
+                '#f0f7ff',
+              ]
+              const bg = gradients[i]
+              const isGradient = bg.startsWith('linear')
+              return (
+                <Link
+                  key={ind.slug}
+                  href={`/industries/${ind.slug}`}
+                  className={`group relative overflow-hidden rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] cursor-pointer${isWide ? ' md:col-span-2' : ''}`}
+                  style={{ background: isGradient ? bg : undefined, backgroundColor: !isGradient ? bg : undefined }}
+                >
+                  {/* Watermark number */}
+                  <span
+                    className="absolute right-5 top-3 font-inter-tight font-black select-none pointer-events-none"
+                    style={{ fontSize: '7rem', lineHeight: 1, opacity: 0.06, color: isGradient ? '#fff' : '#007cf4' }}
+                  >
+                    {num}
+                  </span>
+
+                  {/* Top blue border strip on hover */}
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl" />
+
+                  {/* Icon badge */}
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ background: isGradient ? 'rgba(255,255,255,0.12)' : 'rgba(0,124,244,0.1)' }}
+                  >
+                    <span style={{ transform: 'scale(1.7)', display: 'flex' }}>{ind.icon}</span>
+                  </div>
+
+                  <div className="relative z-10 mt-auto">
+                    <h2
+                      className="font-inter-tight font-black text-2xl mb-1 leading-tight"
+                      style={{ color: isGradient ? '#fff' : '#050f2e' }}
+                    >
+                      {ind.name}
+                    </h2>
+                    <p
+                      className="text-sm leading-relaxed mb-3 line-clamp-2"
+                      style={{ color: isGradient ? 'rgba(255,255,255,0.65)' : '#374151' }}
+                    >
+                      {ind.description}
+                    </p>
+                    <span
+                      className="text-sm font-bold inline-flex items-center gap-1 group-hover:gap-2 transition-all duration-200"
+                      style={{ color: isGradient ? '#36c5f0' : '#007cf4' }}
+                    >
+                      Explore →
+                    </span>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>

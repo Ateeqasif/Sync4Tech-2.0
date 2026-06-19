@@ -774,43 +774,76 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Common Challenges */}
-            <div className="relative overflow-hidden rounded-2xl border border-red-200/60 dark:border-red-900/30 bg-gradient-to-br from-red-50 to-orange-50/50 dark:from-[#1a0808] dark:to-[#0a1020]">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-400 to-orange-400" />
-              <div className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v6M7 10.5v.5" stroke="#ef4444" strokeWidth="2" strokeLinecap="round"/></svg>
-                  </div>
-                  <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-lg">Common Challenges</h3>
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
+            {/* Common Challenges — bold dark red card */}
+            <div
+              className="relative overflow-hidden rounded-3xl flex flex-col"
+              style={{ background: 'linear-gradient(135deg, #1a0008, #2d0a0a)' }}
+            >
+              {/* Decorative watermark icon */}
+              <svg
+                className="absolute right-4 bottom-4 opacity-[0.05] pointer-events-none select-none"
+                width="120" height="120" viewBox="0 0 120 120" fill="none"
+              >
+                <path d="M60 10v100M10 60h100M25 25l70 70M95 25l-70 70" stroke="#ef4444" strokeWidth="8" strokeLinecap="round"/>
+              </svg>
+
+              <div className="p-8 flex flex-col h-full relative z-10">
+                <div className="flex items-center gap-3 mb-7">
+                  <span className="text-4xl">⚠</span>
+                  <h3 className="font-inter-tight font-black text-white text-xl">Common Challenges</h3>
                 </div>
-                <ul className="space-y-4">
+                <ul className="flex flex-col gap-4 flex-1">
                   {ind.challenges.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CrossIcon />
-                      <span className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{item}</span>
+                    <li key={i} className="flex items-start gap-4">
+                      <span
+                        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-inter-tight font-black text-xs text-white"
+                        style={{ background: 'rgba(239,68,68,0.25)', borderLeft: '3px solid #ef4444' }}
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-white/75 text-sm leading-relaxed pt-1">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
 
-            {/* The Sync4Tech Approach */}
-            <div className="relative overflow-hidden rounded-2xl border border-[#007cf4]/20 bg-gradient-to-br from-[#f0f7ff] to-[#e8f4ff] dark:from-[#071530] dark:to-[#060d24]">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0]" />
-              <div className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-lg bg-[#007cf4]/10 flex items-center justify-center">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5 6.5-7" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            {/* The Sync4Tech Approach — bold dark blue card */}
+            <div
+              className="relative overflow-hidden rounded-3xl flex flex-col"
+              style={{ background: 'linear-gradient(135deg, #020c1e, #033a9d)' }}
+            >
+              {/* Decorative watermark icon */}
+              <svg
+                className="absolute right-4 bottom-4 opacity-[0.05] pointer-events-none select-none"
+                width="120" height="120" viewBox="0 0 120 120" fill="none"
+              >
+                <path d="M10 60l30 30 70-60" stroke="#36c5f0" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+
+              <div className="p-8 flex flex-col h-full relative z-10">
+                <div className="flex items-center gap-3 mb-7">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ background: 'rgba(54,197,240,0.18)' }}
+                  >
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M2 9l5 5 9-9" stroke="#36c5f0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </div>
-                  <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-lg">The Sync4Tech Approach</h3>
+                  <h3 className="font-inter-tight font-black text-white text-xl">The Sync4Tech Approach</h3>
                 </div>
-                <ul className="space-y-4">
+                <ul className="flex flex-col gap-4 flex-1">
                   {ind.approach.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckIcon />
-                      <span className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{item}</span>
+                    <li key={i} className="flex items-start gap-4">
+                      <span
+                        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-inter-tight font-black text-xs text-[#36c5f0]"
+                        style={{ background: 'rgba(54,197,240,0.15)', borderLeft: '3px solid #36c5f0' }}
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-white/75 text-sm leading-relaxed pt-1">{item}</span>
                     </li>
                   ))}
                 </ul>
