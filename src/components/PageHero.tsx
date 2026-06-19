@@ -127,7 +127,7 @@ export default function PageHero({ eyebrow, title, highlight, subtitle, breadcru
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-3 bg-[#007cf4]/8 border border-[#007cf4]/20 rounded-full px-6 py-2 mb-8"
+          className="inline-flex items-center gap-3 px-6 py-2 mb-8"
         >
           <span className="w-2 h-2 bg-[#007cf4] rounded-full animate-pulse" />
           <span className="text-sm text-[#033a9d] dark:text-[#36c5f0] font-semibold tracking-widest uppercase">{eyebrow}</span>

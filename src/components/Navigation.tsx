@@ -26,8 +26,7 @@ export default function Navigation() {
   const pathname = usePathname()
 
   useMotionValueEvent(scrollY, 'change', (y) => {
-    const threshold = typeof window !== 'undefined' ? window.innerHeight * 0.8 : 600
-    setScrolled(y > threshold)
+    setScrolled(y > 80)
   })
 
   const isActive = (href: string) =>
