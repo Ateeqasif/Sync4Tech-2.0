@@ -1,17 +1,9 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
-
-export const metadata: Metadata = {
-  title: 'Partners & Ecosystem | Sync4Tech',
-  description: 'Sync4Tech partners with best-in-class AI and automation platforms including OpenAI, HubSpot, Snowflake, and more. Learn about our partner ecosystem and technology alliances.',
-  openGraph: {
-    title: 'Partners & Technology Ecosystem | Sync4Tech',
-    description: 'The AI and automation platforms we partner with to deliver transformation at scale.',
-    url: 'https://sync4tech.com/about/partners',
-  },
-}
 
 const partners = [
   {
@@ -84,7 +76,12 @@ export default function PartnersPage() {
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
           <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0, ease: [0.22, 1, 0.36, 1] }}
+            >
               <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Our Approach</p>
               <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-6">
                 Partner-certified,<br />outcome-driven
@@ -95,35 +92,55 @@ export default function PartnersPage() {
               <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                 Our technology recommendations are always independent. Our expertise with those tools is not. We invest heavily in certifications, training, and partner relationships because it makes us better at what we do for our clients.
               </p>
-            </div>
+            </motion.div>
             <div className="grid grid-cols-2 gap-4">
               {partnerBenefits.map((b, i) => (
-                <div key={i} className="bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-5 border border-[#007cf4]/10">
+                <motion.div
+                  key={i}
+                  className="bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-5 border border-[#007cf4]/10"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.15 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                >
                   <h3 className="font-inter-tight font-bold text-black dark:text-white text-sm mb-2">{b.title}</h3>
                   <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">{b.body}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
           {/* Partner categories */}
           <div className="flex flex-col gap-16">
-            {partners.map(group => (
+            {partners.map((group, gi) => (
               <div key={group.category}>
-                <div className="flex items-center gap-4 mb-8">
+                <motion.div
+                  className="flex items-center gap-4 mb-8"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                >
                   <h2 className="font-inter-tight font-bold text-black dark:text-white text-xl">{group.category}</h2>
                   <div className="flex-1 h-px bg-[#007cf4]/10" />
-                </div>
+                </motion.div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {group.items.map(p => (
-                    <div key={p.name} className="group bg-white dark:bg-[#0a1628] rounded-2xl p-6 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-all">
+                  {group.items.map((p, i) => (
+                    <motion.div
+                      key={p.name}
+                      className="group bg-white dark:bg-[#0a1628] rounded-2xl p-6 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-all"
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    >
                       <div className="flex items-start justify-between mb-3">
                         <span className="text-3xl">{p.icon}</span>
                         <span className="text-[#007cf4] text-xs font-bold bg-[#007cf4]/10 px-2 py-0.5 rounded-full whitespace-nowrap">{p.tier}</span>
                       </div>
                       <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{p.name}</h3>
                       <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">{p.description}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -136,7 +153,13 @@ export default function PartnersPage() {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white dark:bg-[#0a1628] rounded-3xl p-10 border border-[#007cf4]/20 text-center">
+            <motion.div
+              className="bg-white dark:bg-[#0a1628] rounded-3xl p-10 border border-[#007cf4]/20 text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
               <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Technology Vendors</p>
               <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl md:text-3xl mb-4">
                 Interested in partnering with Sync4Tech?
@@ -151,7 +174,7 @@ export default function PartnersPage() {
               >
                 Get in touch →
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

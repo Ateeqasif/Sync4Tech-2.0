@@ -1,6 +1,8 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 import DetailFAQ from '@/components/pages/DetailFAQ'
@@ -169,19 +171,8 @@ export function generateStaticParams() {
   return Object.keys(solutions).map(slug => ({ slug }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params
-  const s = solutions[slug]
-  if (!s) return {}
-  return {
-    title: `${s.name} | Sync4Tech AI & Business Automation`,
-    description: `Sync4Tech delivers enterprise-grade ${s.name.toLowerCase()} solutions for organisations across the UK, US and Pakistan. ${s.subtitle}`,
-    openGraph: { title: `${s.name} | Sync4Tech`, description: s.subtitle, url: `https://sync4tech.com/solutions/${slug}` },
-  }
-}
-
-export default async function SolutionPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
+export default function SolutionPage({ params }: { params: { slug: string } }) {
+  const { slug } = params
   const s = solutions[slug]
   if (!s) notFound()
 
@@ -204,14 +195,26 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       {/* What It Is */}
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container grid md:grid-cols-2 gap-16 items-start">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0, ease: [0.22, 1, 0.36, 1] }}
+          >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Overview</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-6 leading-tight">What is {s.name}?</h2>
             {s.description.map((p, i) => (
               <p key={i} className="text-gray-500 dark:text-gray-400 leading-relaxed mb-4 text-sm">{p}</p>
             ))}
-          </div>
-          <div className="relative overflow-hidden rounded-2xl p-8 shadow-xl shadow-[#007cf4]/20" style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
+          </motion.div>
+          <motion.div
+            className="relative overflow-hidden rounded-2xl p-8 shadow-xl shadow-[#007cf4]/20"
+            style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
             <div className="absolute -bottom-8 -right-8 w-36 h-36 rounded-full bg-white/10 pointer-events-none" />
             <div className="relative">
@@ -228,26 +231,39 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* How We Deliver It */}
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <motion.div
+            className="text-center max-w-2xl mx-auto mb-14"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Process</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl leading-tight">How We Deliver It</h2>
-          </div>
+          </motion.div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {s.steps.map((step, i) => (
-              <div key={i} className="group bg-white dark:bg-[#0a1628] rounded-2xl p-7 border-l-4 border-[#007cf4]/30 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all">
+              <motion.div
+                key={i}
+                className="group bg-white dark:bg-[#0a1628] rounded-2xl p-7 border-l-4 border-[#007cf4]/30 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-black text-lg mb-5 shadow-lg" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{step.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -256,11 +272,27 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       {/* Tools */}
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container text-center">
-          <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Technology</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-10">Tools &amp; Technologies</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Technology</span>
+            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-10">Tools &amp; Technologies</h2>
+          </motion.div>
           <div className="flex flex-wrap justify-center gap-3">
-            {s.tools.map(t => (
-              <span key={t} className="px-4 py-2 rounded-full bg-[#f8faff] dark:bg-[#060d24] border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0]">{t}</span>
+            {s.tools.map((t, i) => (
+              <motion.span
+                key={t}
+                className="px-4 py-2 rounded-full bg-[#f8faff] dark:bg-[#060d24] border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0]"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {t}
+              </motion.span>
             ))}
           </div>
         </div>
@@ -269,20 +301,33 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       {/* Metrics */}
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <motion.div
+            className="text-center max-w-2xl mx-auto mb-14"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Results</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">Measurable Outcomes</h2>
-          </div>
+          </motion.div>
           <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-xl" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
             <div className="grid grid-cols-3 divide-x divide-white/20">
               {s.metrics.map((m, i) => (
-                <div key={i} className="p-8 text-center relative overflow-hidden">
+                <motion.div
+                  key={i}
+                  className="p-8 text-center relative overflow-hidden"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
                   <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '18px 18px' }} />
                   <div className="relative">
                     <div className="font-inter-tight font-black text-white text-4xl md:text-5xl mb-2 leading-none">{m.value}</div>
                     <div className="text-white/70 text-xs font-medium leading-snug">{m.label}</div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -292,9 +337,23 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       {/* Related Case Study */}
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container max-w-2xl mx-auto text-center">
-          <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Case Study</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-10">See It in Action</h2>
-          <div className="relative overflow-hidden rounded-2xl text-left shadow-xl" style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Case Study</span>
+            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-10">See It in Action</h2>
+          </motion.div>
+          <motion.div
+            className="relative overflow-hidden rounded-2xl text-left shadow-xl"
+            style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
             <svg className="absolute top-4 right-6 opacity-10" width="80" height="64" viewBox="0 0 40 32" fill="none"><path d="M0 32V20C0 8.954 6.716 2.238 20.148 0L22 4.148C15.716 5.48 12.334 9.096 11.852 15H18V32H0zm22 0V20C22 8.954 28.716 2.238 42.148 0L44 4.148C37.716 5.48 34.334 9.096 33.852 15H40V32H22z" fill="white"/></svg>
             <div className="relative p-8">
@@ -304,17 +363,23 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
                 Read the full case study →
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <motion.div
+            className="text-center max-w-2xl mx-auto mb-14"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">FAQ</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">Common Questions</h2>
-          </div>
+          </motion.div>
           <DetailFAQ items={s.faq} />
         </div>
       </section>
