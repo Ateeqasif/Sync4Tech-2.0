@@ -78,7 +78,7 @@ export default function HowItWorks() {
   const inView = useInView(ref, { once: true, margin: '-10%' })
 
   return (
-    <section ref={ref} className="relative overflow-hidden py-24 md:py-32" style={{ background: 'linear-gradient(135deg, #020c1e 0%, #050f2e 50%, #030a1a 100%)' }}>
+    <section ref={ref} className="relative overflow-hidden py-24 md:py-32 bg-[#f8faff] dark:bg-[#050f2e]" style={{}}>
       {/* Background grid */}
       <div className="absolute inset-0 pointer-events-none" style={{
         backgroundImage: 'linear-gradient(rgba(0,124,244,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,124,244,0.04) 1px, transparent 1px)',
@@ -86,8 +86,8 @@ export default function HowItWorks() {
       }} />
 
       {/* Glowing orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-10 blur-[120px]" style={{ background: '#007cf4' }} />
-      <div className="absolute bottom-0 right-1/4 w-72 h-72 rounded-full opacity-8 blur-[100px]" style={{ background: '#36c5f0' }} />
+      <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-8 dark:opacity-10 blur-[120px]" style={{ background: '#007cf4' }} />
+      <div className="absolute bottom-0 right-1/4 w-72 h-72 rounded-full opacity-6 dark:opacity-8 blur-[100px]" style={{ background: '#36c5f0' }} />
 
       <div className="section-container relative z-10">
         {/* Header */}
@@ -98,7 +98,7 @@ export default function HowItWorks() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#36c5f0] text-xs font-bold tracking-[0.3em] uppercase mb-4 block">The Process</span>
-          <h2 className="font-inter-tight font-black text-white text-4xl md:text-5xl lg:text-6xl leading-tight">
+          <h2 className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl lg:text-6xl leading-tight">
             How It <span style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(135deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}>Works</span>
           </h2>
         </motion.div>
@@ -118,13 +118,11 @@ export default function HowItWorks() {
 
               {/* Card */}
               <div
-                className="group relative overflow-hidden rounded-3xl h-full flex flex-col border border-white/8 hover:border-white/20 transition-all duration-500"
+                className="group relative overflow-hidden rounded-3xl h-full flex flex-col border border-[#007cf4]/15 dark:border-white/8 hover:border-[#007cf4]/40 dark:hover:border-white/20 transition-all duration-500 bg-white dark:bg-transparent"
                 style={{
-                  background: i === 1
-                    ? 'linear-gradient(145deg, #0a1f4e 0%, #0d2560 100%)'
-                    : 'linear-gradient(145deg, #071328 0%, #0a1a3a 100%)',
+                  background: undefined,
                   transform: i === 1 ? 'translateY(-12px)' : 'none',
-                  boxShadow: i === 1 ? '0 40px 80px rgba(0,124,244,0.2)' : '0 20px 40px rgba(0,0,0,0.3)',
+                  boxShadow: i === 1 ? '0 40px 80px rgba(0,124,244,0.12)' : '0 8px 32px rgba(0,124,244,0.06)',
                 }}
               >
                 {/* Top accent bar */}
@@ -162,12 +160,12 @@ export default function HowItWorks() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-inter-tight font-black text-white text-3xl md:text-4xl mb-4 leading-tight group-hover:text-[#36c5f0] transition-colors duration-300">
+                  <h3 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4 leading-tight group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors duration-300">
                     {step.title}
                   </h3>
 
                   {/* Desc */}
-                  <p className="text-white/55 leading-relaxed text-base flex-1">{step.desc}</p>
+                  <p className="text-gray-500 dark:text-white/55 leading-relaxed text-base flex-1">{step.desc}</p>
 
                   {/* Bottom CTA line */}
                   <div className="mt-8 flex items-center gap-2 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300" style={{ color: step.accent }}>
@@ -200,7 +198,7 @@ export default function HowItWorks() {
               )}
             </div>
           ))}
-          <span className="ml-4 text-white/30 text-xs font-semibold tracking-widest uppercase">From audit to live in weeks</span>
+          <span className="ml-4 text-gray-400 dark:text-white/30 text-xs font-semibold tracking-widest uppercase">From audit to live in weeks</span>
         </motion.div>
       </div>
     </section>

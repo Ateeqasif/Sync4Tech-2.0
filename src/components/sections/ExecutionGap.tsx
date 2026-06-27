@@ -12,11 +12,11 @@ export default function ExecutionGap() {
   const after = t.executionGap.afterItems
 
   return (
-    <section className="py-section bg-[#050f2e] relative overflow-hidden" id="execution-gap">
+    <section className="py-section bg-[#f0f7ff] dark:bg-[#050f2e] relative overflow-hidden" id="execution-gap">
       {/* Background orbs */}
-      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full opacity-20 pointer-events-none"
+      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full opacity-10 dark:opacity-20 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, #007cf4, transparent 70%)' }} />
-      <div className="absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full opacity-15 pointer-events-none"
+      <div className="absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full opacity-8 dark:opacity-15 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, #36c5f0, transparent 70%)' }} />
 
       <div className="section-container relative z-10" ref={ref}>
@@ -29,7 +29,7 @@ export default function ExecutionGap() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#36c5f0] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">{t.executionGap.eyebrow}</span>
-          <h2 className="font-inter-tight font-black text-white leading-[1.0] tracking-tight" style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-[1.0] tracking-tight" style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}>
             {t.executionGap.h2Line1}<br />
             <span style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(90deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}>
               {t.executionGap.h2Line2}
@@ -168,8 +168,8 @@ export default function ExecutionGap() {
           ].map((stat, i) => (
             <div
               key={i}
-              className="rounded-2xl px-8 py-6 text-center border border-white/8"
-              style={{ background: 'rgba(255,255,255,0.04)' }}
+              className="rounded-2xl px-8 py-6 text-center border border-[#007cf4]/15 dark:border-white/8 bg-white dark:bg-transparent"
+              style={{ boxShadow: '0 2px 12px rgba(0,124,244,0.06)' }}
             >
               <div
                 className="font-inter-tight font-black text-3xl md:text-4xl mb-1"
@@ -177,7 +177,7 @@ export default function ExecutionGap() {
               >
                 {stat.value}
               </div>
-              <p className="text-white/45 text-xs leading-snug">{stat.label}</p>
+              <p className="text-gray-400 dark:text-white/45 text-xs leading-snug">{stat.label}</p>
             </div>
           ))}
         </motion.div>

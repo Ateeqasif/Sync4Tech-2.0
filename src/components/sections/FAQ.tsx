@@ -68,8 +68,12 @@ const faqs = [
   },
 ]
 
+const INITIAL_COUNT = 5
+
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
+  const [expanded, setExpanded] = useState(false)
+  const visibleFaqs = expanded ? faqs : faqs.slice(0, INITIAL_COUNT)
 
   return (
     <section className="py-section bg-[#f8faff] dark:bg-[#050f2e]" id="faq" aria-label="Frequently Asked Questions">
@@ -93,7 +97,7 @@ export default function FAQ() {
         </motion.div>
 
         <div className="max-w-3xl mx-auto flex flex-col gap-2">
-          {faqs.map((faq, i) => (
+          {visibleFaqs.map((faq, i) => (
             <motion.div
               key={i}
               className="group relative overflow-hidden rounded-2xl"
@@ -169,6 +173,29 @@ export default function FAQ() {
             </motion.div>
           ))}
         </div>
+
+        {!expanded && (
+          <motion.div
+            className="flex flex-col items-center mt-8 gap-2"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <button
+              onClick={() => setExpanded(true)}
+              className="group flex flex-col items-center gap-1.5 text-[#007cf4] hover:text-[#36c5f0] transition-colors duration-200"
+            >
+              <span className="text-xs font-semibold tracking-widest uppercase">Read more</span>
+              <motion.svg
+                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                animate={{ y: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <path d="M4 7l6 6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </motion.svg>
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   )
