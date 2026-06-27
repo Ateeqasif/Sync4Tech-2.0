@@ -7,12 +7,12 @@ import Logo from './Logo'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 const solutions = [
-  { label: 'Process Automation', href: '/solutions/process-automation' },
-  { label: 'AI Enablement', href: '/solutions/ai-enablement' },
-  { label: 'Data Intelligence', href: '/solutions/data-intelligence' },
-  { label: 'Workflow Orchestration', href: '/solutions/workflow-orchestration' },
-  { label: 'Change Management', href: '/solutions/change-management' },
-  { label: 'View all Solutions', href: '/solutions' },
+  { label: 'Data Intelligence Suite', href: '/services/data-intelligence' },
+  { label: 'Business Process Automation', href: '/services/automation' },
+  { label: 'Consulting & Strategy', href: '/services/consulting' },
+  { label: 'Workflow Automation', href: '/services/automation/workflow-automation' },
+  { label: 'CRM Automation', href: '/services/automation/crm-automation' },
+  { label: 'View all Services', href: '/services' },
 ]
 const industries = [
   { label: 'Healthcare', href: '/industries/healthcare' },
