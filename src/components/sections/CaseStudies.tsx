@@ -149,7 +149,7 @@ export default function CaseStudies() {
   const c = cases[active]
 
   return (
-    <section className="py-section bg-[#050f2e]" id="case-studies">
+    <section className="py-section bg-white dark:bg-[#050f2e]" id="case-studies">
       <div className="section-container">
 
         {/* Header */}
@@ -161,7 +161,7 @@ export default function CaseStudies() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#36c5f0] text-sm font-semibold tracking-widest uppercase mb-4 block">Case Studies</span>
-          <h2 className="font-inter-tight font-black text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
             Real Results,
             <br />
             <span className="gradient-text">Real Impact</span>
@@ -183,7 +183,7 @@ export default function CaseStudies() {
               className={`relative px-5 py-2 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-300 ${
                 active === i
                   ? 'text-white shadow-lg shadow-[#007cf4]/30'
-                  : 'text-gray-400 border border-white/10 hover:border-[#007cf4]/50 hover:text-[#36c5f0]'
+                  : 'text-gray-500 border border-gray-200 dark:border-white/10 hover:border-[#007cf4]/50 hover:text-[#007cf4] dark:text-gray-400 dark:hover:text-[#36c5f0]'
               }`}
               style={active === i ? { background: 'linear-gradient(135deg, #033a9d, #007cf4)' } : {}}
             >
