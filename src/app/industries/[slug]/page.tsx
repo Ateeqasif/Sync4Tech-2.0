@@ -852,6 +852,70 @@ const orbitConfig: Record<IndustrySlug, {
       { label: 'Deadlines', angle: 270, color: '#36c5f0' },
     ],
   },
+  'technology-saas': {
+    eyebrow: 'Intelligence Layer',
+    title: 'Scale Your Product,', highlight: 'Not Your Headcount',
+    description: 'Our SaaS intelligence layer connects your product data, CRM, and success workflows — turning every usage signal into an automated action that retains and expands revenue.',
+    bullets: ['Real-time product usage signals triggering success plays', 'AI churn prediction with automated intervention sequences', 'Unified customer data from trial to renewal'],
+    centerLabel: 'Product AI',
+    flip: false,
+    nodes: [
+      { label: 'Product', angle: -90, color: '#007cf4' },
+      { label: 'CRM', angle: -20, color: '#36c5f0' },
+      { label: 'Support', angle: 50, color: '#007cf4' },
+      { label: 'Analytics', angle: 130, color: '#36c5f0' },
+      { label: 'Billing', angle: 200, color: '#007cf4' },
+      { label: 'Onboarding', angle: 270, color: '#36c5f0' },
+    ],
+  },
+  'professional-services': {
+    eyebrow: 'Intelligence Layer',
+    title: 'Automate the Admin,', highlight: 'Bill the Expertise',
+    description: 'Our professional services intelligence layer connects your projects, billing, and client communications — so every hour saved on admin is an hour recovered for billable work.',
+    bullets: ['Automated project status reports for every client', 'Real-time resource utilisation and profitability dashboards', 'Digital client onboarding from engagement letter to kickoff'],
+    centerLabel: 'Delivery AI',
+    flip: true,
+    nodes: [
+      { label: 'Projects', angle: -90, color: '#007cf4' },
+      { label: 'CRM', angle: -20, color: '#36c5f0' },
+      { label: 'Billing', angle: 50, color: '#007cf4' },
+      { label: 'Resources', angle: 130, color: '#36c5f0' },
+      { label: 'Reporting', angle: 200, color: '#007cf4' },
+      { label: 'Onboarding', angle: 270, color: '#36c5f0' },
+    ],
+  },
+  'hospitality-travel': {
+    eyebrow: 'Intelligence Layer',
+    title: 'Every Guest,', highlight: 'An Exceptional Stay',
+    description: 'Our hospitality intelligence layer connects your PMS, channel manager, and guest communications — delivering personalised experiences automatically while your team focuses on service.',
+    bullets: ['Automated pre-arrival, in-stay, and post-stay guest journeys', 'Dynamic revenue optimisation across all booking channels', 'Real-time occupancy and RevPAR dashboards'],
+    centerLabel: 'Guest AI',
+    flip: false,
+    nodes: [
+      { label: 'Bookings', angle: -90, color: '#007cf4' },
+      { label: 'PMS', angle: -20, color: '#36c5f0' },
+      { label: 'Guests', angle: 50, color: '#007cf4' },
+      { label: 'Revenue', angle: 130, color: '#36c5f0' },
+      { label: 'Reviews', angle: 200, color: '#007cf4' },
+      { label: 'Loyalty', angle: 270, color: '#36c5f0' },
+    ],
+  },
+  'nonprofit-public-sector': {
+    eyebrow: 'Intelligence Layer',
+    title: 'Maximum Impact,', highlight: 'Minimum Admin',
+    description: 'Our non-profit intelligence layer connects your programmes, donors, and impact data — so your team spends more time on mission and less time on manual reporting.',
+    bullets: ['Automated grant reporting from live programme data', 'Donor stewardship journeys from first gift to major donor', 'Real-time impact dashboards for funders and leadership'],
+    centerLabel: 'Impact AI',
+    flip: true,
+    nodes: [
+      { label: 'Programmes', angle: -90, color: '#007cf4' },
+      { label: 'Donors', angle: -20, color: '#36c5f0' },
+      { label: 'Grants', angle: 50, color: '#007cf4' },
+      { label: 'Impact', angle: 130, color: '#36c5f0' },
+      { label: 'Reporting', angle: 200, color: '#007cf4' },
+      { label: 'Volunteers', angle: 270, color: '#36c5f0' },
+    ],
+  },
 }
 
 const slugList: IndustrySlug[] = [
@@ -863,6 +927,10 @@ const slugList: IndustrySlug[] = [
   'logistics',
   'education',
   'legal',
+  'technology-saas',
+  'professional-services',
+  'hospitality-travel',
+  'nonprofit-public-sector',
 ]
 
 export function generateStaticParams() {
