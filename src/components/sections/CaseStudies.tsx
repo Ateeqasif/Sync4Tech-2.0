@@ -214,30 +214,21 @@ export default function CaseStudies() {
             {/* Left content — 3 cols */}
             <div
               className="lg:col-span-3 p-10 flex flex-col justify-between relative overflow-hidden"
-              style={{ background: 'linear-gradient(145deg, #060d24 0%, #020c1e 100%)' }}
+              style={{ background: 'white' }}
             >
-              {/* Subtle grid */}
-              <div className="absolute inset-0 opacity-[0.03]"
-                style={{
-                  backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-                  backgroundSize: '40px 40px',
-                }}
-              />
               {/* Corner glow */}
               <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse, rgba(0,124,244,0.12), transparent 70%)' }}
+                style={{ background: 'radial-gradient(ellipse, rgba(0,124,244,0.06), transparent 70%)' }}
               />
 
               {/* Top */}
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-8">
-                  <span className="text-xs font-black text-[#36c5f0] bg-[#36c5f0]/10 border border-[#36c5f0]/20 px-3 py-1 rounded-full tracking-widest uppercase">{c.tag}</span>
-                  <span className="text-xs text-gray-500 font-medium">{c.company}</span>
+                  <span className="text-xs font-black text-[#007cf4] bg-[#007cf4]/10 border border-[#007cf4]/20 px-3 py-1 rounded-full tracking-widest uppercase">{c.tag}</span>
+                  <span className="text-xs text-gray-400 font-medium">{c.company}</span>
                 </div>
 
-                <h3 className="font-inter-tight font-black text-white text-2xl md:text-3xl leading-tight mb-10"
-                  style={{ textShadow: '0 0 40px rgba(0,124,244,0.3)' }}
-                >
+                <h3 className="font-inter-tight font-black text-gray-900 text-2xl md:text-3xl leading-tight mb-10">
                   {c.headline}
                 </h3>
 
@@ -251,8 +242,8 @@ export default function CaseStudies() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-[10px] font-black text-red-400/70 uppercase tracking-[0.2em] mb-2">The Challenge</p>
-                      <p className="text-gray-400 text-sm leading-relaxed">{c.challenge}</p>
+                      <p className="text-[10px] font-black text-red-500 uppercase tracking-[0.2em] mb-2">The Challenge</p>
+                      <p className="text-gray-500 text-sm leading-relaxed">{c.challenge}</p>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -263,15 +254,15 @@ export default function CaseStudies() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-[10px] font-black text-[#36c5f0]/60 uppercase tracking-[0.2em] mb-2">Our Solution</p>
-                      <p className="text-gray-400 text-sm leading-relaxed">{c.solution}</p>
+                      <p className="text-[10px] font-black text-[#007cf4] uppercase tracking-[0.2em] mb-2">Our Solution</p>
+                      <p className="text-gray-500 text-sm leading-relaxed">{c.solution}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Bottom CTA */}
-              <div className="mt-10 pt-8 border-t border-white/5 flex items-center justify-between flex-wrap gap-4 relative z-10">
+              <div className="mt-10 pt-8 border-t border-gray-100 flex items-center justify-between flex-wrap gap-4 relative z-10">
                 <a href="/case-studies" className="text-xs text-gray-600 hover:text-[#36c5f0] transition-colors font-medium">View all case studies →</a>
                 <motion.a
                   href="/contact"
