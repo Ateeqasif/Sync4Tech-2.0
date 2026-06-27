@@ -1,18 +1,10 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
-
-export const metadata: Metadata = {
-  title: 'Our Team | Sync4Tech',
-  description: 'Meet the AI engineers, automation consultants and data specialists behind Sync4Tech a remote-first team across the UK, US and Pakistan delivering transformation at scale.',
-  openGraph: {
-    title: 'Meet the Sync4Tech Team',
-    description: 'AI engineers, automation consultants and data specialists building the future of business operations.',
-    url: 'https://sync4tech.com/about/team',
-  },
-}
 
 const team = [
   {
@@ -78,6 +70,8 @@ const values = [
   { title: 'Build to last', body: 'We document everything, train your team, and design systems that your internal staff can operate independently. We want you to not need us for day-to-day operations.' },
 ]
 
+const ease = [0.22, 1, 0.36, 1] as const
+
 export default function TeamPage() {
   return (
     <main>
@@ -96,18 +90,45 @@ export default function TeamPage() {
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
           <div className="text-center mb-16">
-            <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Who We Are</p>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4">
+            <motion.p
+              className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+            >
+              Who We Are
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Built by practitioners,<br />not generalists
-            </h2>
-            <p className="text-gray-500 dark:text-gray-400 text-sm max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p
+              className="text-gray-500 dark:text-gray-400 text-sm max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15, ease }}
+            >
               Every person on this team has built production AI systems, automated real business workflows, or architected data infrastructure that organisations depend on daily. We do not sell strategy decks we build things that work.
-            </p>
+            </motion.p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {team.map(member => (
-              <div key={member.name} className="group bg-white dark:bg-[#0a1628] rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-lg">
+            {team.map((member, i) => (
+              <motion.div
+                key={member.name}
+                className="group bg-white dark:bg-[#0a1628] rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-lg"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease }}
+              >
                 <div className="relative h-64 overflow-hidden bg-[#f0f4ff] dark:bg-[#0d1f3c]">
                   <Image
                     src={member.image}
@@ -133,7 +154,7 @@ export default function TeamPage() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -143,20 +164,41 @@ export default function TeamPage() {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="text-center mb-16">
-            <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">How We Work</p>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">
+            <motion.p
+              className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+            >
+              How We Work
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               The principles that guide us
-            </h2>
+            </motion.h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {values.map((v, i) => (
-              <div key={i} className="bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-[#007cf4]/10">
+              <motion.div
+                key={i}
+                className="bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-[#007cf4]/10"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease }}
+              >
                 <div className="w-8 h-8 rounded-lg bg-[#007cf4]/10 flex items-center justify-center mb-4">
                   <span className="text-[#007cf4] font-bold text-sm">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2">{v.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{v.body}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -165,20 +207,47 @@ export default function TeamPage() {
       {/* Join CTA */}
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container text-center">
-          <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Join Us</p>
-          <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4">
-            Want to build with us?
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mb-8">
-            We are always looking for exceptional people who are obsessed with outcomes. If you are an AI engineer, automation consultant, or data specialist who wants to work on high-impact problems, we would love to hear from you.
-          </p>
-          <Link
-            href="/careers"
-            className="inline-flex items-center justify-center gap-2 text-white px-8 py-3.5 rounded-full font-semibold text-sm transition-all hover:opacity-90 hover:gap-3"
-            style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}
+          <motion.p
+            className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease }}
           >
-            View Open Roles →
-          </Link>
+            Join Us
+          </motion.p>
+          <motion.h2
+            className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease }}
+          >
+            Want to build with us?
+          </motion.h2>
+          <motion.p
+            className="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15, ease }}
+          >
+            We are always looking for exceptional people who are obsessed with outcomes. If you are an AI engineer, automation consultant, or data specialist who wants to work on high-impact problems, we would love to hear from you.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.25, ease }}
+          >
+            <Link
+              href="/careers"
+              className="inline-flex items-center justify-center gap-2 text-white px-8 py-3.5 rounded-full font-semibold text-sm transition-all hover:opacity-90 hover:gap-3"
+              style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}
+            >
+              View Open Roles →
+            </Link>
+          </motion.div>
         </div>
       </section>
 

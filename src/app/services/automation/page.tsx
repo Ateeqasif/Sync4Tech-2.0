@@ -1,13 +1,9 @@
-import { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import PageHero from '@/components/PageHero';
 import FinalCTA from '@/components/sections/FinalCTA';
-
-export const metadata: Metadata = {
-  title: 'Business Process Automation | Sync4Tech',
-  description:
-    'Workflow automation, CRM automation, AI automation, and document automation Sync4Tech eliminates the manual work that slows your business down and builds intelligent systems that scale without headcount.',
-};
 
 const services = [
   {
@@ -69,18 +65,25 @@ export default function AutomationPage() {
       <section className="bg-[#f8faff] dark:bg-[#060d24] py-20">
         <div className="section-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service) => (
-              <Link
+            {services.map((service, i) => (
+              <motion.div
                 key={service.slug}
-                href={`/services/automation/${service.slug}`}
-                className="bg-white dark:bg-[#0a1628] border border-gray-100 dark:border-white/8 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
-                <h3 className="text-gray-900 dark:text-white font-black font-inter-tight text-lg leading-tight">
-                  {service.name}
-                </h3>
-                <p className="text-gray-500 dark:text-white/60 text-sm leading-relaxed flex-1">{service.desc}</p>
-                <span className="text-[#007cf4] text-sm font-semibold mt-1">Explore →</span>
-              </Link>
+                <Link
+                  href={`/services/automation/${service.slug}`}
+                  className="bg-white dark:bg-[#0a1628] border border-gray-100 dark:border-white/8 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
+                >
+                  <h3 className="text-gray-900 dark:text-white font-black font-inter-tight text-lg leading-tight">
+                    {service.name}
+                  </h3>
+                  <p className="text-gray-500 dark:text-white/60 text-sm leading-relaxed flex-1">{service.desc}</p>
+                  <span className="text-[#007cf4] text-sm font-semibold mt-1">Explore →</span>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>

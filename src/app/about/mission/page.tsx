@@ -1,17 +1,9 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
-
-export const metadata: Metadata = {
-  title: 'Our Mission | Sync4Tech',
-  description: 'Sync4Tech exists to close the AI and automation gap between enterprise and mid-market companies. Learn about our mission, story, and the problem we are solving.',
-  openGraph: {
-    title: 'Our Mission | Sync4Tech',
-    description: 'Closing the AI and automation gap between enterprise and mid-market. The Sync4Tech story.',
-    url: 'https://sync4tech.com/about/mission',
-  },
-}
 
 const milestones = [
   { year: '2021', label: 'Founded', detail: 'Sync4Tech incorporated in the UK with a simple thesis: mid-market companies need enterprise-grade AI and automation capability, but cannot access it through the existing consulting market.' },
@@ -41,6 +33,15 @@ const beliefs = [
   },
 ]
 
+const ease = [0.22, 1, 0.36, 1] as const
+
+const stats = [
+  { stat: '50+', label: 'Client organisations served' },
+  { stat: '340%', label: 'Average ROI across deployments' },
+  { stat: '3', label: 'Continents our team spans' },
+  { stat: '2021', label: 'Founded in the UK' },
+]
+
 export default function MissionPage() {
   return (
     <main>
@@ -59,25 +60,52 @@ export default function MissionPage() {
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
           <div className="max-w-3xl mx-auto text-center mb-20">
-            <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4">Our Mission</p>
-            <blockquote className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl leading-tight mb-8">
-              "To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy mid-market businesses across the UK, US, and beyond."
-            </blockquote>
-            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+            <motion.p
+              className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+            >
+              Our Mission
+            </motion.p>
+            <motion.blockquote
+              className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl leading-tight mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
+              &ldquo;To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy mid-market businesses across the UK, US, and beyond.&rdquo;
+            </motion.blockquote>
+            <motion.p
+              className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15, ease }}
+            >
               This is not a tagline. It shapes every decision we make: the engagements we take on, the tools we build, the talent we hire, and the way we price our services. If we are not moving this mission forward, we are wasting everyone&apos;s time.
-            </p>
+            </motion.p>
           </div>
 
           {/* Beliefs */}
           <div className="grid md:grid-cols-2 gap-6">
             {beliefs.map((b, i) => (
-              <div key={i} className="bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-8 border border-[#007cf4]/10">
+              <motion.div
+                key={i}
+                className="bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-8 border border-[#007cf4]/10"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i % 2 === 0 ? 0 : 0.15, ease }}
+              >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-1 h-8 rounded-full bg-gradient-to-b from-[#033a9d] to-[#007cf4]" />
                   <h3 className="font-inter-tight font-bold text-black dark:text-white text-lg">{b.heading}</h3>
                 </div>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{b.body}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -87,10 +115,24 @@ export default function MissionPage() {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="text-center mb-16">
-            <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Our Story</p>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">
+            <motion.p
+              className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+            >
+              Our Story
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               How we got here
-            </h2>
+            </motion.h2>
           </div>
 
           <div className="max-w-3xl mx-auto">
@@ -100,7 +142,14 @@ export default function MissionPage() {
 
               <div className="flex flex-col gap-10">
                 {milestones.map((m, i) => (
-                  <div key={i} className="flex gap-8 items-start">
+                  <motion.div
+                    key={i}
+                    className="flex gap-8 items-start"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: i * 0.09, ease }}
+                  >
                     <div className="shrink-0 w-16 text-right hidden sm:block">
                       <span className="text-[#007cf4] font-bold text-sm">{m.year}</span>
                     </div>
@@ -112,7 +161,7 @@ export default function MissionPage() {
                       <span className="font-inter-tight font-bold text-black dark:text-white text-base">{m.label}</span>
                       <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mt-2">{m.detail}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -124,16 +173,18 @@ export default function MissionPage() {
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {[
-              { stat: '50+', label: 'Client organisations served' },
-              { stat: '340%', label: 'Average ROI across deployments' },
-              { stat: '3', label: 'Continents our team spans' },
-              { stat: '2021', label: 'Founded in the UK' },
-            ].map(({ stat, label }) => (
-              <div key={label} className="text-center">
+            {stats.map(({ stat, label }, i) => (
+              <motion.div
+                key={label}
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease }}
+              >
                 <div className="font-inter-tight font-black text-4xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-[#033a9d] to-[#007cf4] mb-2">{stat}</div>
                 <p className="text-gray-500 dark:text-gray-400 text-xs leading-snug">{label}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -142,13 +193,31 @@ export default function MissionPage() {
       {/* CTA */}
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container text-center">
-          <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4">
+          <motion.h2
+            className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease }}
+          >
             Ready to close your gap?
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mb-8">
+          </motion.h2>
+          <motion.p
+            className="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15, ease }}
+          >
             Whether you&apos;re just starting to explore AI and automation, or you have a specific transformation programme in mind, we&apos;d like to understand your situation and tell you honestly whether we can help.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-3 justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.25, ease }}
+          >
             <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 text-white px-8 py-3.5 rounded-full font-semibold text-sm transition-all hover:opacity-90"
@@ -162,7 +231,7 @@ export default function MissionPage() {
             >
               Meet the team
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 

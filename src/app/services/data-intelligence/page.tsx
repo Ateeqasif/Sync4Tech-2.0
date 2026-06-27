@@ -1,13 +1,9 @@
-import { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import PageHero from '@/components/PageHero';
 import FinalCTA from '@/components/sections/FinalCTA';
-
-export const metadata: Metadata = {
-  title: 'Data Intelligence Suite | Sync4Tech',
-  description:
-    'From data engineering and ETL pipelines to business intelligence, predictive analytics, and AI Sync4Tech turns raw data into your most powerful competitive advantage.',
-};
 
 const services = [
   {
@@ -69,18 +65,25 @@ export default function DataIntelligencePage() {
       <section className="bg-[#f8faff] py-20">
         <div className="section-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service) => (
-              <Link
+            {services.map((service, i) => (
+              <motion.div
                 key={service.slug}
-                href={`/services/data-intelligence/${service.slug}`}
-                className="bg-white border border-gray-100 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
-                <h3 className="text-gray-900 font-black font-inter-tight text-lg leading-tight">
-                  {service.name}
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed flex-1">{service.desc}</p>
-                <span className="text-[#007cf4] text-sm font-semibold mt-1">Explore →</span>
-              </Link>
+                <Link
+                  href={`/services/data-intelligence/${service.slug}`}
+                  className="bg-white border border-gray-100 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
+                >
+                  <h3 className="text-gray-900 font-black font-inter-tight text-lg leading-tight">
+                    {service.name}
+                  </h3>
+                  <p className="text-gray-500 text-sm leading-relaxed flex-1">{service.desc}</p>
+                  <span className="text-[#007cf4] text-sm font-semibold mt-1">Explore →</span>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -1,4 +1,6 @@
-import type { Metadata } from 'next'
+'use client'
+
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import PageHero from '@/components/PageHero'
@@ -309,7 +311,7 @@ export async function generateMetadata({
   params,
 }: {
   params: { slug: string }
-}): Promise<Metadata> {
+}) {
   const svc = services[params.slug as AutomationSlug]
   if (!svc) return {}
   return {
@@ -321,6 +323,8 @@ export async function generateMetadata({
 export default function AutomationSubPage({ params }: { params: { slug: string } }) {
   const svc = services[params.slug as AutomationSlug]
   if (!svc) notFound()
+
+  const ease = [0.22, 1, 0.36, 1] as const
 
   return (
     <>
@@ -341,19 +345,35 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0, ease }}
+            >
               The Problem
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Challenges We Solve
-            </h2>
+            </motion.h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {/* Challenges */}
-            <div
+            <motion.div
               className="relative overflow-hidden rounded-3xl flex flex-col bg-white border border-gray-100"
               style={{ boxShadow: '0 0 0 0' }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0, ease }}
             >
               <svg
                 className="absolute right-4 bottom-4 opacity-[0.05] pointer-events-none select-none"
@@ -379,12 +399,16 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
 
             {/* Outcomes */}
-            <div
+            <motion.div
               className="relative overflow-hidden rounded-3xl flex flex-col"
               style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15, ease }}
             >
               <svg
                 className="absolute right-4 bottom-4 opacity-[0.05] pointer-events-none select-none"
@@ -410,7 +434,7 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -419,12 +443,24 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
       <section className="py-section bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#36c5f0] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#36c5f0] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0, ease }}
+            >
               What We Build
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Key Capabilities
-            </h2>
+            </motion.h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
@@ -437,13 +473,17 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
               ]
               const grad = gradients[i % gradients.length]
               return (
-                <div
+                <motion.div
                   key={feature.title}
                   className="group relative overflow-hidden rounded-2xl flex flex-col"
                   style={{
                     background: 'white',
                     boxShadow: '0 0 0 1px rgba(0,0,0,0.07)',
                   }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.08, ease }}
                 >
                   <span
                     className="absolute right-6 top-4 font-inter-tight font-black text-7xl leading-none select-none pointer-events-none tabular-nums"
@@ -473,7 +513,7 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
                     <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2.5">{feature.title}</h3>
                     <p className="text-gray-500 text-sm leading-relaxed flex-1">{feature.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               )
             })}
           </div>
@@ -484,19 +524,35 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0, ease }}
+            >
               How We Work
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Our Delivery Process
-            </h2>
+            </motion.h2>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {svc.process.map((step) => (
-              <div
+            {svc.process.map((step, i) => (
+              <motion.div
                 key={step.step}
                 className="bg-white dark:bg-[#0a1628] border border-gray-100 dark:border-white/8 rounded-2xl p-6 flex flex-col gap-3"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.09, ease }}
               >
                 <span
                   className="font-inter-tight font-black text-4xl leading-none"
@@ -511,7 +567,7 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
                 </span>
                 <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-lg leading-tight">{step.title}</h3>
                 <p className="text-gray-500 dark:text-white/60 text-sm leading-relaxed">{step.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -521,15 +577,33 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0, ease }}
+            >
               Tech Stack
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Tools &amp; Technologies
-            </h2>
+            </motion.h2>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3">
+          <motion.div
+            className="flex flex-wrap justify-center gap-3"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2, ease }}
+          >
             {svc.tools.map((tool) => (
               <span
                 key={tool}
@@ -538,7 +612,7 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
                 {tool}
               </span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -546,12 +620,24 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0, ease }}
+            >
               FAQ
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Frequently Asked Questions
-            </h2>
+            </motion.h2>
           </div>
           <DetailFAQ items={svc.faq} />
         </div>

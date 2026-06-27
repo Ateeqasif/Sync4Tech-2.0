@@ -1,6 +1,9 @@
-import { Metadata } from 'next';
+'use client';
+
 import { notFound } from 'next/navigation';
+import { use } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import PageHero from '@/components/PageHero';
 import FinalCTA from '@/components/sections/FinalCTA';
 
@@ -501,26 +504,14 @@ export function generateStaticParams() {
   return Object.keys(services).map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const service = services[slug];
-  if (!service) return { title: 'Not Found' };
-  return {
-    title: `${service.name} | Data Intelligence Suite | Sync4Tech`,
-    description: service.subtitle,
-  };
-}
+const EASE = [0.22, 1, 0.36, 1] as const;
 
-export default async function DataIntelligenceSubPage({
+export default function DataIntelligenceSubPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug } = use(params);
   const service = services[slug];
   if (!service) notFound();
 
@@ -543,7 +534,13 @@ export default async function DataIntelligenceSubPage({
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Challenges */}
-            <div className="bg-white border border-gray-100 rounded-2xl p-8">
+            <motion.div
+              className="bg-white border border-gray-100 rounded-2xl p-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0, ease: EASE }}
+            >
               <h2 className="font-inter-tight font-black text-2xl text-gray-900 mb-6">
                 Common Challenges
               </h2>
@@ -557,10 +554,17 @@ export default async function DataIntelligenceSubPage({
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Outcomes */}
-            <div className="rounded-2xl p-8" style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}>
+            <motion.div
+              className="rounded-2xl p-8"
+              style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
+            >
               <h2 className="font-inter-tight font-black text-2xl text-white mb-6">
                 With Sync4Tech
               </h2>
@@ -576,7 +580,7 @@ export default async function DataIntelligenceSubPage({
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -584,20 +588,30 @@ export default async function DataIntelligenceSubPage({
       {/* Features */}
       <section className="bg-white py-20">
         <div className="section-container">
-          <h2 className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center">
+          <motion.h2
+            className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: EASE }}
+          >
             What We Deliver
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {service.features.map((feature, i) => (
-              <div
+              <motion.div
                 key={i}
                 className="bg-[#f8faff] border border-gray-100 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: EASE }}
               >
                 <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2">
                   {feature.title}
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{feature.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -606,10 +620,22 @@ export default async function DataIntelligenceSubPage({
       {/* Tools */}
       <section className="bg-[#f8faff] py-16">
         <div className="section-container">
-          <h2 className="font-inter-tight font-black text-2xl text-gray-900 mb-8 text-center">
+          <motion.h2
+            className="font-inter-tight font-black text-2xl text-gray-900 mb-8 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: EASE }}
+          >
             Technologies We Use
-          </h2>
-          <div className="flex flex-wrap justify-center gap-3">
+          </motion.h2>
+          <motion.div
+            className="flex flex-wrap justify-center gap-3"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
+          >
             {service.tools.map((tool, i) => (
               <span
                 key={i}
@@ -618,19 +644,32 @@ export default async function DataIntelligenceSubPage({
                 {tool}
               </span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Process */}
       <section className="bg-white py-20">
         <div className="section-container">
-          <h2 className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center">
+          <motion.h2
+            className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: EASE }}
+          >
             How We Work
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {service.process.map((step, i) => (
-              <div key={i} className="relative">
+              <motion.div
+                key={i}
+                className="relative"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.09, ease: EASE }}
+              >
                 <div className="mb-4">
                   <span
                     className="text-5xl font-black font-inter-tight leading-none"
@@ -646,7 +685,7 @@ export default async function DataIntelligenceSubPage({
                 {i < service.process.length - 1 && (
                   <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-gradient-to-r from-[#007cf4]/30 to-transparent -translate-x-6" />
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -655,14 +694,24 @@ export default async function DataIntelligenceSubPage({
       {/* FAQ */}
       <section className="bg-[#f8faff] py-20">
         <div className="section-container">
-          <h2 className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center">
+          <motion.h2
+            className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: EASE }}
+          >
             Frequently Asked Questions
-          </h2>
+          </motion.h2>
           <div className="max-w-3xl mx-auto space-y-4">
             {service.faq.map((item, i) => (
-              <details
+              <motion.details
                 key={i}
                 className="bg-white border border-gray-100 rounded-2xl p-6 group open:border-[#007cf4]/30"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.07, ease: EASE }}
               >
                 <summary className="font-inter-tight font-black text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4">
                   {item.q}
@@ -683,7 +732,7 @@ export default async function DataIntelligenceSubPage({
                   </span>
                 </summary>
                 <p className="mt-4 text-gray-500 text-sm leading-relaxed">{item.a}</p>
-              </details>
+              </motion.details>
             ))}
           </div>
         </div>

@@ -1,6 +1,8 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 import DetailFAQ from '@/components/pages/DetailFAQ'
@@ -937,19 +939,6 @@ export function generateStaticParams() {
   return slugList.map((slug) => ({ slug }))
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
-  const ind = industries[params.slug as IndustrySlug]
-  if (!ind) return {}
-  return {
-    title: `AI Automation for ${ind.name} | Sync4Tech`,
-    description: ind.subtitle,
-  }
-}
-
 const CrossIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="mt-0.5 shrink-0">
     <path d="M4 4l8 8M12 4l-8 8" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" />
@@ -967,6 +956,8 @@ const CheckIcon = () => (
     />
   </svg>
 )
+
+const ease = [0.22, 1, 0.36, 1] as const
 
 export default function IndustryPage({ params }: { params: { slug: string } }) {
   const ind = industries[params.slug as IndustrySlug]
@@ -990,19 +981,35 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+            >
               The Problem
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               The Challenge in {ind.name}
-            </h2>
+            </motion.h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {/* Common Challenges bold dark red card */}
-            <div
+            <motion.div
               className="relative overflow-hidden rounded-3xl flex flex-col bg-white border border-gray-100"
               style={{ boxShadow: '0 0 0 0' }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0, ease }}
             >
               {/* Decorative watermark icon */}
               <svg
@@ -1030,12 +1037,16 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
 
             {/* The Sync4Tech Approach bold dark blue card */}
-            <div
+            <motion.div
               className="relative overflow-hidden rounded-3xl flex flex-col"
               style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15, ease }}
             >
               {/* Decorative watermark icon */}
               <svg
@@ -1063,7 +1074,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -1089,12 +1100,24 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       <section className="py-section bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#36c5f0] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#36c5f0] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+            >
               Our Solutions
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Solutions We Deploy
-            </h2>
+            </motion.h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
@@ -1107,63 +1130,70 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
               ]
               const grad = gradients[i % gradients.length]
               return (
-                <Link
+                <motion.div
                   key={sol.slug}
-                  href={`/solutions/${sol.slug}`}
-                  className="group relative overflow-hidden rounded-2xl flex flex-col"
-                  style={{
-                    background: 'white',
-                    boxShadow: '0 0 0 1px rgba(0,0,0,0.07)',
-                  }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.08, ease }}
                 >
-                  {/* Hover border glow */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{ boxShadow: `0 0 0 1px ${grad.from}60, 0 0 40px ${grad.from}15` }}
-                  />
-
-                  {/* Decorative number large watermark */}
-                  <span className="absolute right-6 top-4 font-inter-tight font-black text-7xl leading-none select-none pointer-events-none tabular-nums"
+                  <Link
+                    href={`/solutions/${sol.slug}`}
+                    className="group relative overflow-hidden rounded-2xl flex flex-col"
                     style={{
-                      background: `linear-gradient(135deg, ${grad.from}18, ${grad.to}08)`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
+                      background: 'white',
+                      boxShadow: '0 0 0 1px rgba(0,0,0,0.07)',
                     }}
                   >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
+                    {/* Hover border glow */}
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{ boxShadow: `0 0 0 1px ${grad.from}60, 0 0 40px ${grad.from}15` }}
+                    />
 
-                  {/* Top accent line */}
-                  <div className="h-px w-full opacity-40"
-                    style={{ background: `linear-gradient(90deg, ${grad.from}, ${grad.to})` }}
-                  />
-
-                  <div className="p-7 flex flex-col flex-1 relative z-10">
-                    {/* Icon circle */}
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 shrink-0"
-                      style={{ background: `linear-gradient(135deg, ${grad.from}20, ${grad.to}10)`, border: `1px solid ${grad.from}30` }}
+                    {/* Decorative number large watermark */}
+                    <span className="absolute right-6 top-4 font-inter-tight font-black text-7xl leading-none select-none pointer-events-none tabular-nums"
+                      style={{
+                        background: `linear-gradient(135deg, ${grad.from}18, ${grad.to}08)`,
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                      }}
                     >
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M2 8l4 4 8-8" stroke={grad.from} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
 
-                    <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2.5 group-hover:text-[#007cf4] transition-colors duration-300">
-                      {sol.name}
-                    </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed flex-1">{sol.desc}</p>
+                    {/* Top accent line */}
+                    <div className="h-px w-full opacity-40"
+                      style={{ background: `linear-gradient(90deg, ${grad.from}, ${grad.to})` }}
+                    />
 
-                    <div className="mt-5 flex items-center gap-2">
-                      <span className="text-xs font-bold transition-colors duration-200"
-                        style={{ color: grad.from }}>
-                        Explore solution
-                      </span>
-                      <svg className="transition-transform duration-200 group-hover:translate-x-1" width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ stroke: grad.from }}>
-                        <path d="M2 6h8M6 2l4 4-4 4" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+                    <div className="p-7 flex flex-col flex-1 relative z-10">
+                      {/* Icon circle */}
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 shrink-0"
+                        style={{ background: `linear-gradient(135deg, ${grad.from}20, ${grad.to}10)`, border: `1px solid ${grad.from}30` }}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M2 8l4 4 8-8" stroke={grad.from} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+
+                      <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2.5 group-hover:text-[#007cf4] transition-colors duration-300">
+                        {sol.name}
+                      </h3>
+                      <p className="text-gray-500 text-sm leading-relaxed flex-1">{sol.desc}</p>
+
+                      <div className="mt-5 flex items-center gap-2">
+                        <span className="text-xs font-bold transition-colors duration-200"
+                          style={{ color: grad.from }}>
+                          Explore solution
+                        </span>
+                        <svg className="transition-transform duration-200 group-hover:translate-x-1" width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ stroke: grad.from }}>
+                          <path d="M2 6h8M6 2l4 4-4 4" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </motion.div>
               )
             })}
           </div>
@@ -1174,24 +1204,43 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+            >
               Proven Impact
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Results
-            </h2>
+            </motion.h2>
           </div>
 
           <div className="rounded-3xl overflow-hidden shadow-xl" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
             <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/20">
               {ind.metrics.map((metric, i) => (
-                <div key={i} className="p-10 text-center relative overflow-hidden">
+                <motion.div
+                  key={i}
+                  className="p-10 text-center relative overflow-hidden"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease }}
+                >
                   <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
                   <div className="relative">
                     <div className="font-inter-tight font-black text-white text-4xl md:text-5xl mb-2 leading-none">{metric.value}</div>
                     <div className="text-white/75 text-sm font-medium">{metric.label}</div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -1202,16 +1251,35 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+            >
               Case Study
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Real Results, Real Clients
-            </h2>
+            </motion.h2>
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <div className="relative overflow-hidden rounded-2xl shadow-xl" style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}>
+            <motion.div
+              className="relative overflow-hidden rounded-2xl shadow-xl"
+              style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.15, ease }}
+            >
               <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
               <svg className="absolute top-4 right-6 opacity-10" width="80" height="64" viewBox="0 0 40 32" fill="none"><path d="M0 32V20C0 8.954 6.716 2.238 20.148 0L22 4.148C15.716 5.48 12.334 9.096 11.852 15H18V32H0zm22 0V20C22 8.954 28.716 2.238 42.148 0L44 4.148C37.716 5.48 34.334 9.096 33.852 15H40V32H22z" fill="white"/></svg>
               <div className="relative p-8 md:p-10">
@@ -1221,7 +1289,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
                   Read full case study →
                 </Link>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -1230,15 +1298,33 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+            >
               Tech Stack
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Tools &amp; Technologies
-            </h2>
+            </motion.h2>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3">
+          <motion.div
+            className="flex flex-wrap justify-center gap-3"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2, ease }}
+          >
             {ind.tools.map((tool) => (
               <span
                 key={tool}
@@ -1247,7 +1333,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
                 {tool}
               </span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -1255,12 +1341,24 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3">
+            <motion.p
+              className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+            >
               FAQ
-            </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white">
+            </motion.p>
+            <motion.h2
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease }}
+            >
               Frequently Asked Questions
-            </h2>
+            </motion.h2>
           </div>
           <DetailFAQ items={ind.faq} />
         </div>

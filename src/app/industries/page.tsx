@@ -1,19 +1,10 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 import IndustriesFAQ from '@/components/pages/IndustriesFAQ'
-
-export const metadata: Metadata = {
-  title: 'Industries We Serve | Sync4Tech AI & Business Automation',
-  description: 'Sync4Tech delivers AI automation solutions across 12 industries: Healthcare, Financial Services, Manufacturing, Retail, Real Estate, Logistics, Education, Legal, Technology & SaaS, Professional Services, Hospitality & Travel, and Non-Profit. Serving UK, US, and Pakistan markets.',
-  keywords: ['industry automation', 'healthcare automation', 'financial services AI', 'manufacturing automation', 'retail AI', 'logistics automation', 'legal automation', 'education technology', 'real estate CRM', 'SaaS automation', 'professional services automation', 'hospitality automation', 'nonprofit automation'],
-  openGraph: {
-    title: 'Industries We Serve | Sync4Tech',
-    description: 'Deep domain expertise across 12 sectors being transformed by AI and automation.',
-    url: 'https://sync4tech.com/industries',
-  },
-}
 
 const industries = [
   {
@@ -202,52 +193,60 @@ export default function IndustriesPage() {
               const bg = gradients[i]
               const isGradient = bg.startsWith('linear')
               return (
-                <Link
+                <motion.div
                   key={ind.slug}
-                  href={`/industries/${ind.slug}`}
-                  className={`group relative overflow-hidden rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] cursor-pointer${isWide ? ' md:col-span-2' : ''}`}
-                  style={{ background: isGradient ? bg : undefined, backgroundColor: !isGradient ? bg : undefined }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  className={isWide ? 'md:col-span-2' : ''}
                 >
-                  {/* Watermark number */}
-                  <span
-                    className="absolute right-5 top-3 font-inter-tight font-black select-none pointer-events-none"
-                    style={{ fontSize: '7rem', lineHeight: 1, opacity: 0.06, color: isGradient ? '#fff' : '#007cf4' }}
+                  <Link
+                    href={`/industries/${ind.slug}`}
+                    className={`group relative overflow-hidden rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] cursor-pointer h-full`}
+                    style={{ background: isGradient ? bg : undefined, backgroundColor: !isGradient ? bg : undefined }}
                   >
-                    {num}
-                  </span>
-
-                  {/* Top blue border strip on hover */}
-                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl" />
-
-                  {/* Icon badge */}
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background: isGradient ? 'rgba(255,255,255,0.12)' : 'rgba(0,124,244,0.1)' }}
-                  >
-                    <span style={{ transform: 'scale(1.7)', display: 'flex' }}>{ind.icon}</span>
-                  </div>
-
-                  <div className="relative z-10 mt-auto">
-                    <h2
-                      className="font-inter-tight font-black text-2xl mb-1 leading-tight"
-                      style={{ color: isGradient ? '#fff' : '#050f2e' }}
-                    >
-                      {ind.name}
-                    </h2>
-                    <p
-                      className="text-sm leading-relaxed mb-3 line-clamp-2"
-                      style={{ color: isGradient ? 'rgba(255,255,255,0.65)' : '#374151' }}
-                    >
-                      {ind.description}
-                    </p>
+                    {/* Watermark number */}
                     <span
-                      className="text-sm font-bold inline-flex items-center gap-1 group-hover:gap-2 transition-all duration-200"
-                      style={{ color: isGradient ? '#36c5f0' : '#007cf4' }}
+                      className="absolute right-5 top-3 font-inter-tight font-black select-none pointer-events-none"
+                      style={{ fontSize: '7rem', lineHeight: 1, opacity: 0.06, color: isGradient ? '#fff' : '#007cf4' }}
                     >
-                      Explore →
+                      {num}
                     </span>
-                  </div>
-                </Link>
+
+                    {/* Top blue border strip on hover */}
+                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl" />
+
+                    {/* Icon badge */}
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ background: isGradient ? 'rgba(255,255,255,0.12)' : 'rgba(0,124,244,0.1)' }}
+                    >
+                      <span style={{ transform: 'scale(1.7)', display: 'flex' }}>{ind.icon}</span>
+                    </div>
+
+                    <div className="relative z-10 mt-auto">
+                      <h2
+                        className="font-inter-tight font-black text-2xl mb-1 leading-tight"
+                        style={{ color: isGradient ? '#fff' : '#050f2e' }}
+                      >
+                        {ind.name}
+                      </h2>
+                      <p
+                        className="text-sm leading-relaxed mb-3 line-clamp-2"
+                        style={{ color: isGradient ? 'rgba(255,255,255,0.65)' : '#374151' }}
+                      >
+                        {ind.description}
+                      </p>
+                      <span
+                        className="text-sm font-bold inline-flex items-center gap-1 group-hover:gap-2 transition-all duration-200"
+                        style={{ color: isGradient ? '#36c5f0' : '#007cf4' }}
+                      >
+                        Explore →
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
               )
             })}
           </div>
@@ -258,15 +257,36 @@ export default function IndustriesPage() {
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
           <div className="text-center mb-12">
-            <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">By the Numbers</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Why Industry Expertise Matters</h2>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">By the Numbers</span>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Why Industry Expertise Matters</h2>
+            </motion.div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {stats.map((stat, i) => (
-              <div key={i} className="text-center bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-8">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-8"
+              >
                 <div className="font-inter-tight font-black text-black dark:text-white text-5xl mb-2">{stat.value}{stat.suffix}</div>
                 <div className="text-gray-500 dark:text-gray-400 text-sm">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -1,25 +1,9 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
-
-export const metadata: Metadata = {
-  title: 'Pricing | Sync4Tech Transparent AI Automation Pricing',
-  description:
-    'Sync4Tech offers flexible engagement models for AI and business automation. Project-based, retainer, and enterprise pricing available. No hidden fees pricing structured around results.',
-  keywords: [
-    'automation pricing',
-    'AI consulting cost',
-    'digital transformation pricing',
-    'business automation cost UK',
-    'fixed-price automation project',
-  ],
-  openGraph: {
-    title: 'Pricing | Sync4Tech Transparent AI Automation Pricing',
-    description: 'No hidden fees. No bloated retainers. Pricing structured around the results we deliver.',
-    url: 'https://sync4tech.com/pricing',
-  },
-}
 
 const tiers = [
   {
@@ -126,24 +110,47 @@ export default function PricingPage() {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="text-center mb-14">
-            <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Engagement Models</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Engagement Models</span>
+            </motion.div>
+            <motion.h2
+              className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
               Choose Your Starting Point
-            </h2>
-            <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-xl mx-auto text-sm">
+            </motion.h2>
+            <motion.p
+              className="text-gray-500 dark:text-gray-400 mt-4 max-w-xl mx-auto text-sm"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            >
               Every engagement is scoped to your specific needs. These tiers give you a clear starting framework.
-            </p>
+            </motion.p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-            {tiers.map((tier) => (
-              <div
+            {tiers.map((tier, i) => (
+              <motion.div
                 key={tier.name}
                 className={`relative rounded-2xl flex flex-col ${
                   tier.highlight
                     ? 'bg-gradient-to-b from-[#007cf4]/10 to-[#36c5f0]/5 border-2 border-[#007cf4]/40 shadow-lg shadow-[#007cf4]/10'
                     : 'bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15'
                 }`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 {tier.badge && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -191,7 +198,7 @@ export default function PricingPage() {
                     {tier.cta}
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -201,14 +208,33 @@ export default function PricingPage() {
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
           <div className="text-center mb-12">
-            <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Every Engagement</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">All Plans Include</h2>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Every Engagement</span>
+            </motion.div>
+            <motion.h2
+              className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              All Plans Include
+            </motion.h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
             {included.map((item, i) => (
-              <div
+              <motion.div
                 key={i}
                 className="bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-5 text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="w-8 h-8 bg-[#007cf4]/10 rounded-lg flex items-center justify-center mx-auto mb-3">
                   <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
@@ -216,7 +242,7 @@ export default function PricingPage() {
                   </svg>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 text-xs font-semibold leading-tight">{item}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -226,18 +252,37 @@ export default function PricingPage() {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Common Questions</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">Pricing FAQ</h2>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Common Questions</span>
+            </motion.div>
+            <motion.h2
+              className="font-inter-tight font-black text-black dark:text-white text-3xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Pricing FAQ
+            </motion.h2>
           </div>
           <div className="space-y-4">
             {pricingFAQ.map((faq, i) => (
-              <div
+              <motion.div
                 key={i}
                 className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-6"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               >
                 <h3 className="font-semibold text-black dark:text-white text-base mb-2">{faq.q}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{faq.a}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -246,7 +291,13 @@ export default function PricingPage() {
       {/* Trust strip */}
       <section className="py-10 bg-white dark:bg-[#050f2e] border-t border-[#007cf4]/10">
         <div className="section-container">
-          <div className="flex flex-wrap justify-center gap-8 text-center">
+          <motion.div
+            className="flex flex-wrap justify-center gap-8 text-center"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
             {[
               'Free strategy session no commitment',
               'Fixed-price projects available',
@@ -260,7 +311,7 @@ export default function PricingPage() {
                 {item}
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 

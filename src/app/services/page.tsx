@@ -1,18 +1,9 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
-
-export const metadata: Metadata = {
-  title: 'Services | Sync4Tech Data Intelligence, Automation & Consulting',
-  description: 'Sync4Tech delivers Data Intelligence, Business Process Automation, and Consulting & Strategy services that help organisations eliminate manual work, build intelligent systems, and make data-driven decisions.',
-  keywords: ['data intelligence', 'business process automation', 'consulting strategy', 'workflow automation', 'CRM automation', 'AI automation', 'digital transformation'],
-  openGraph: {
-    title: 'Services | Sync4Tech',
-    description: 'Data Intelligence, Automation, and Strategic Consulting for ambitious organisations.',
-    url: 'https://sync4tech.com/services',
-  },
-}
 
 const pillars = [
   {
@@ -111,8 +102,12 @@ export default function ServicesPage() {
         <div className="section-container">
           <div className="flex flex-col gap-8">
             {pillars.map((pillar, i) => (
-              <div
+              <motion.div
                 key={pillar.slug}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className={`grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden ${i % 2 === 1 ? 'md:[direction:rtl]' : ''}`}
               >
                 {/* Colour panel */}
@@ -155,7 +150,7 @@ export default function ServicesPage() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -164,14 +159,27 @@ export default function ServicesPage() {
       {/* Technology partners */}
       <section className="py-16 bg-white dark:bg-[#050f2e] border-t border-gray-100 dark:border-white/8">
         <div className="section-container">
-          <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">Technologies We Deploy</p>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">Technologies We Deploy</p>
+          </motion.div>
+          <motion.div
+            className="flex flex-wrap gap-3 justify-center"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
             {tools.map(tool => (
               <span key={tool} className="inline-flex items-center bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full px-4 py-2 text-sm font-semibold text-gray-600 dark:text-white/60 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-colors cursor-default">
                 {tool}
               </span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
