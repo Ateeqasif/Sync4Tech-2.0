@@ -60,8 +60,8 @@ const solutions = [
     slug: 'data-intelligence',
     title: 'Data Intelligence',
     subtitle: 'Unify your scattered data into actionable insights that drive confident, real-time decision making.',
-    theme: 'dark' as const,
-    bg: 'bg-[#050f2e]',
+    theme: 'light' as const,
+    bg: 'bg-[#f0f7ff]',
     visual: (
       <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
         {/* Bar chart */}
@@ -90,7 +90,7 @@ const solutions = [
     title: 'Workflow Orchestration',
     subtitle: 'Connect your tools, teams, and processes into seamless automated workflows that scale without friction.',
     theme: 'dark' as const,
-    bg: 'bg-gradient-to-br from-[#033a9d] to-[#007cf4]',
+    bg: 'bg-gradient-to-br from-[#007cf4] to-[#36c5f0]',
     visual: (
       <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
         {/* Central hub */}
@@ -165,8 +165,8 @@ const solutions = [
     slug: 'ai-enablement',
     title: 'AI Enablement',
     subtitle: 'Embed practical AI capabilities across your organisation — from LLM integrations to intelligent decision engines.',
-    theme: 'dark' as const,
-    bg: 'bg-[#050f2e]',
+    theme: 'light' as const,
+    bg: 'bg-[#f0f7ff]',
     visual: (
       <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
         {/* Brain/neural network */}

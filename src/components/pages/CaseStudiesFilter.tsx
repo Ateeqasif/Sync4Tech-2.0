@@ -94,7 +94,7 @@ export default function CaseStudiesFilter() {
   const filtered = active === 'All' ? cases : cases.filter(c => c.category === active)
 
   return (
-    <section className="py-section bg-[#050f2e]">
+    <section className="py-section bg-[#f8faff]">
       <div className="section-container">
         {/* Filter tabs */}
         <div className="flex flex-wrap gap-2 justify-center mb-14">
@@ -105,7 +105,7 @@ export default function CaseStudiesFilter() {
               className={`px-6 py-2.5 rounded-full text-xs font-black tracking-widest uppercase transition-all duration-200 ${
                 active === cat
                   ? 'text-white shadow-lg shadow-[#007cf4]/30'
-                  : 'text-gray-500 border border-white/10 hover:border-[#007cf4]/40 hover:text-[#36c5f0]'
+                  : 'text-gray-500 border border-black/10 hover:border-[#007cf4]/40 hover:text-[#007cf4]'
               }`}
               style={active === cat ? { background: 'linear-gradient(135deg, #033a9d, #007cf4)' } : {}}
             >
@@ -127,8 +127,8 @@ export default function CaseStudiesFilter() {
                 transition={{ duration: 0.4, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
                 className="group relative flex flex-col overflow-hidden rounded-2xl"
                 style={{
-                  background: 'linear-gradient(145deg, #060d24 0%, #020c1e 100%)',
-                  boxShadow: '0 0 0 1px rgba(255,255,255,0.06)',
+                  background: 'white',
+                  boxShadow: '0 0 0 1px rgba(0,0,0,0.07)',
                 }}
               >
                 {/* Hover border glow */}
@@ -149,7 +149,7 @@ export default function CaseStudiesFilter() {
                         className="font-inter-tight font-black leading-none mb-1"
                         style={{
                           fontSize: 'clamp(52px, 8vw, 72px)',
-                          background: `linear-gradient(135deg, #fff 30%, ${c.accentColor})`,
+                          background: `linear-gradient(135deg, #007cf4 0%, ${c.accentColor})`,
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent',
                           backgroundClip: 'text',
@@ -179,7 +179,7 @@ export default function CaseStudiesFilter() {
                     <span className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">{c.industry}</span>
                   </div>
 
-                  <h3 className="font-inter-tight font-black text-white text-base leading-snug mb-3 group-hover:text-[#36c5f0] transition-colors duration-300">
+                  <h3 className="font-inter-tight font-black text-gray-900 text-base leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300">
                     {c.title}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed flex-1">{c.description}</p>
