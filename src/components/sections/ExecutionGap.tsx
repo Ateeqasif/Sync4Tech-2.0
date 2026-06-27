@@ -48,15 +48,15 @@ export default function ExecutionGap() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="absolute inset-0 bg-white dark:bg-[#1a0a0a]" />
-            <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #ef4444, #f87171)' }} />
+            <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #007cf4, #36c5f0)' }} />
             <div className="relative z-10 p-10">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-8 h-8 rounded-full bg-red-100 border border-red-200 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: 'rgba(0,124,244,0.08)', border: '1px solid rgba(0,124,244,0.2)' }}>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 2l8 8M10 2L2 10" stroke="#ef4444" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M2 2l8 8M10 2L2 10" stroke="#007cf4" strokeWidth="2" strokeLinecap="round"/>
                   </svg>
                 </div>
-                <span className="text-xs font-black text-gray-800 dark:text-red-400 uppercase tracking-[0.2em]">{t.executionGap.beforeLabel}</span>
+                <span className="text-xs font-black text-gray-800 dark:text-white/70 uppercase tracking-[0.2em]">{t.executionGap.beforeLabel}</span>
               </div>
 
               <div className="flex flex-col gap-4">
@@ -68,8 +68,8 @@ export default function ExecutionGap() {
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
                   >
-                    <span className="text-gray-300 dark:text-red-500/40 font-mono text-xs font-bold w-5 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                    <div className="flex-1 bg-gray-50 border border-gray-200 dark:bg-red-500/8 dark:border-red-500/15 rounded-xl px-4 py-3">
+                    <span className="text-gray-300 dark:text-white/20 font-mono text-xs font-bold w-5 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                    <div className="flex-1 bg-gray-50 border border-gray-200 dark:bg-white/5 dark:border-white/10 rounded-xl px-4 py-3">
                       <p className="text-gray-700 dark:text-white/60 text-sm leading-relaxed">{item}</p>
                     </div>
                   </motion.div>
@@ -83,11 +83,11 @@ export default function ExecutionGap() {
                 transition={{ delay: 0.8 }}
               >
                 <motion.span
-                  className="w-2 h-2 rounded-full bg-red-400"
+                  className="w-2 h-2 rounded-full bg-[#007cf4]"
                   animate={{ opacity: [1, 0.3, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 />
-                <span className="text-xs text-gray-400 dark:text-red-400/70 font-medium">Costing you growth every quarter</span>
+                <span className="text-xs text-gray-400 dark:text-white/40 font-medium">Costing you growth every quarter</span>
               </motion.div>
             </div>
           </motion.div>
