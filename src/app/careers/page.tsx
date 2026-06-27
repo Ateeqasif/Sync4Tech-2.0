@@ -1,18 +1,9 @@
-import type { Metadata } from 'next'
+'use client'
+
+import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 import CareersList from '@/components/pages/CareersList'
-
-export const metadata: Metadata = {
-  title: 'Careers at Sync4Tech | Join Our Team',
-  description: 'Join the Sync4Tech team and help build the future of business automation. Remote-first roles across AI/ML engineering, consulting, data engineering, business development, and design. Offices in London, New York, and Lahore.',
-  keywords: ['Sync4Tech careers', 'AI engineer jobs', 'automation consultant jobs', 'remote data engineer', 'tech jobs UK Pakistan', 'business development manager'],
-  openGraph: {
-    title: 'Careers at Sync4Tech | Join Our Team',
-    description: 'Build the future of business automation with a global team of AI and automation specialists.',
-    url: 'https://sync4tech.com/careers',
-  },
-}
 
 const perks = [
   {
@@ -75,20 +66,33 @@ export default function CareersPage() {
       {/* Why Sync4Tech */}
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Why Join Us</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Life at Sync4Tech</h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {perks.map((perk, i) => (
-              <div key={i} className="group relative overflow-hidden bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="group relative overflow-hidden bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
+              >
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shadow-md" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
                   <div className="text-white [&>svg]:stroke-white">{perk.icon}</div>
                 </div>
                 <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{perk.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{perk.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -100,20 +104,33 @@ export default function CareersPage() {
       {/* Culture */}
       <section className="py-section bg-white dark:bg-[#050f2e]">
         <div className="section-container">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Our Culture</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">How We Work</h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto">
             {cultureValues.map((c, i) => (
-              <div key={i} className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md transition-all text-center p-8">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md transition-all text-center p-8"
+              >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0]" />
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg text-white font-inter-tight font-black text-sm" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 <h3 className="font-inter-tight font-black text-black dark:text-white text-lg mb-2 group-hover:text-[#007cf4] transition-colors">{c.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
