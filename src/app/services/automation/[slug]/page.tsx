@@ -359,7 +359,7 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
                 className="absolute right-4 bottom-4 opacity-[0.05] pointer-events-none select-none"
                 width="120" height="120" viewBox="0 0 120 120" fill="none"
               >
-                <path d="M60 10v100M10 60h100M25 25l70 70M95 25l-70 70" stroke="#ef4444" strokeWidth="8" strokeLinecap="round"/>
+                <path d="M60 10v100M10 60h100M25 25l70 70M95 25l-70 70" stroke="#007cf4" strokeWidth="8" strokeLinecap="round"/>
               </svg>
               <div className="p-8 flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 mb-7">
@@ -370,8 +370,8 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
                   {svc.challenges.map((item, i) => (
                     <li key={i} className="flex items-start gap-4">
                       <span
-                        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-inter-tight font-black text-xs text-red-500"
-                        style={{ background: 'rgba(239,68,68,0.25)', borderLeft: '3px solid #ef4444' }}
+                        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-inter-tight font-black text-xs text-[#007cf4]"
+                        style={{ background: 'rgba(0,124,244,0.12)', borderLeft: '3px solid #007cf4' }}
                       >
                         {String(i + 1).padStart(2, '0')}
                       </span>

@@ -678,8 +678,8 @@ export default async function ConsultingSubPage({
               <ul className="space-y-4">
                 {service.challenges.map((challenge, i) => (
                   <li key={i} className="flex gap-3">
-                    <span className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center">
-                      <span className="w-2 h-2 rounded-full bg-red-500 block" />
+                    <span className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center">
+                      <span className="w-2 h-2 rounded-full bg-[#007cf4] block" />
                     </span>
                     <span className="text-gray-600 text-sm leading-relaxed">{challenge}</span>
                   </li>

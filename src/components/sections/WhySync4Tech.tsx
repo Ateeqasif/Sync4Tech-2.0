@@ -34,7 +34,7 @@ function CheckIcon({ delay }: { delay: number }) {
 function CrossIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path d="M5 5l6 6M11 5l-6 6" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M5 5l6 6M11 5l-6 6" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   )
 }
