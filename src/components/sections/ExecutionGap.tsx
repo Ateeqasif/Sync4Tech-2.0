@@ -12,113 +12,124 @@ export default function ExecutionGap() {
   const after = t.executionGap.afterItems
 
   return (
-    <section className="py-section bg-[#f8f9fc] dark:bg-[#060d24]" id="execution-gap">
-      <div className="section-container" ref={ref}>
+    <section className="py-section bg-[#050f2e] relative overflow-hidden" id="execution-gap">
+      {/* Background orbs */}
+      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full opacity-20 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse, #007cf4, transparent 70%)' }} />
+      <div className="absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full opacity-15 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse, #36c5f0, transparent 70%)' }} />
 
-        {/* Eyebrow + heading */}
+      <div className="section-container relative z-10" ref={ref}>
+
+        {/* Heading */}
         <motion.div
-          className="mb-16 max-w-2xl mx-auto text-center"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#007cf4] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">{t.executionGap.eyebrow}</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white leading-[1.05] tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 60px)' }}>
+          <span className="text-[#36c5f0] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">{t.executionGap.eyebrow}</span>
+          <h2 className="font-inter-tight font-black text-white leading-[1.0] tracking-tight" style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}>
             {t.executionGap.h2Line1}<br />
-            <span className="gradient-text">{t.executionGap.h2Line2}</span>
+            <span style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(90deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}>
+              {t.executionGap.h2Line2}
+            </span>
           </h2>
         </motion.div>
 
-        {/* Main comparison block */}
-        <div className="grid md:grid-cols-2 gap-px bg-black/8 dark:bg-white/8 rounded-3xl overflow-hidden shadow-sm">
+        {/* VS comparison */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
 
-          {/* ── BEFORE ── */}
+          {/* BEFORE */}
           <motion.div
-            className="bg-white dark:bg-[#0d1b3e] p-10 md:p-14 flex flex-col"
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6 }}
+            className="relative rounded-3xl overflow-hidden"
+            initial={{ opacity: 0, x: -40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex items-center gap-3 mb-10">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-              <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-[0.18em]">{t.executionGap.beforeLabel}</span>
-            </div>
-
-            <div className="flex flex-col gap-0 flex-1">
-              {before.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="group flex items-start gap-5 py-5 border-b border-black/6 dark:border-white/6 last:border-0"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.1 + i * 0.07 }}
-                >
-                  <span className="text-[11px] font-bold text-gray-300 dark:text-gray-600 font-mono mt-0.5 w-5 shrink-0 select-none">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{item}</p>
-                  <div className="w-5 h-5 rounded-full border border-red-200 dark:border-red-900 flex items-center justify-center shrink-0 mt-0.5">
-                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                      <path d="M1.5 1.5l5 5M6.5 1.5l-5 5" stroke="#f87171" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              className="mt-10 inline-flex items-center gap-2.5 text-xs font-medium text-gray-400 dark:text-gray-500"
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.7 }}
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-red-300 animate-pulse" />
-              Costing you growth every single quarter
-            </motion.div>
-          </motion.div>
-
-          {/* ── AFTER ── */}
-          <motion.div
-            className="bg-[#033a9d] dark:bg-[#022d80] p-10 md:p-14 flex flex-col relative overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
-          >
-            {/* Subtle top-right glow */}
-            <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full opacity-20 pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse, #36c5f0, transparent 70%)' }}
-            />
-            {/* Very subtle dot grid */}
-            <div className="absolute inset-0 opacity-[0.06] pointer-events-none"
-              style={{
-                backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
-                backgroundSize: '24px 24px',
-              }}
-            />
-
-            <div className="relative z-10 flex flex-col h-full">
-              <div className="flex items-center gap-3 mb-10">
-                <div className="w-2.5 h-2.5 rounded-full bg-[#36c5f0] animate-pulse" />
-                <span className="text-xs font-bold text-white/50 uppercase tracking-[0.18em]">{t.executionGap.afterLabel}</span>
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #1a0a0a 0%, #2d0f0f 100%)' }} />
+            <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #ef4444, #f87171)' }} />
+            <div className="relative z-10 p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-8 rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 2l8 8M10 2L2 10" stroke="#f87171" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <span className="text-xs font-black text-red-400 uppercase tracking-[0.2em]">{t.executionGap.beforeLabel}</span>
               </div>
 
-              <div className="flex flex-col gap-0 flex-1">
+              <div className="flex flex-col gap-4">
+                {before.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    className="flex items-center gap-4"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
+                  >
+                    <span className="text-red-500/40 font-mono text-xs font-bold w-5 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                    <div className="flex-1 bg-red-500/8 border border-red-500/15 rounded-xl px-4 py-3">
+                      <p className="text-white/60 text-sm leading-relaxed">{item}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div
+                className="mt-8 flex items-center gap-2"
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.8 }}
+              >
+                <motion.span
+                  className="w-2 h-2 rounded-full bg-red-400"
+                  animate={{ opacity: [1, 0.3, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+                <span className="text-xs text-red-400/70 font-medium">Costing you growth every quarter</span>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* AFTER */}
+          <motion.div
+            className="relative rounded-3xl overflow-hidden"
+            initial={{ opacity: 0, x: 40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }} />
+            {/* Shimmer */}
+            <motion.div
+              className="absolute inset-0"
+              style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%)' }}
+              animate={{ x: ['-100%', '200%'] }}
+              transition={{ duration: 4, repeat: Infinity, repeatDelay: 2, ease: 'easeInOut' }}
+            />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-white/30" />
+            <div className="relative z-10 p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-8 rounded-full bg-white/20 border border-white/30 flex items-center justify-center">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <span className="text-xs font-black text-white/80 uppercase tracking-[0.2em]">{t.executionGap.afterLabel}</span>
+              </div>
+
+              <div className="flex flex-col gap-4">
                 {after.map((item, i) => (
                   <motion.div
                     key={i}
-                    className="flex items-start gap-5 py-5 border-b border-white/10 last:border-0"
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.25 + i * 0.07 }}
+                    className="flex items-center gap-4"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.25 + i * 0.08 }}
                   >
-                    <span className="text-[11px] font-bold text-white/25 font-mono mt-0.5 w-5 shrink-0 select-none">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <p className="text-white/90 text-sm leading-relaxed flex-1 font-medium">{item}</p>
-                    <div className="w-5 h-5 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                        <path d="M1.5 4l2 2 3-3" stroke="#36c5f0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+                    <span className="text-white/30 font-mono text-xs font-bold w-5 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                    <div className="flex-1 bg-white/15 border border-white/20 rounded-xl px-4 py-3 backdrop-blur-sm">
+                      <p className="text-white font-semibold text-sm leading-relaxed">{item}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -126,14 +137,14 @@ export default function ExecutionGap() {
 
               <motion.a
                 href="#contact"
-                className="mt-10 inline-flex items-center gap-3 self-start group"
+                className="mt-8 inline-flex items-center gap-3 group"
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ delay: 0.9 }}
                 whileHover={{ x: 4 }}
               >
-                <span className="text-sm font-semibold text-white">Start your transformation</span>
-                <div className="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white/25 transition-colors">
+                <span className="text-sm font-bold text-white">Start your transformation</span>
+                <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/35 transition-colors">
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                     <path d="M2 6h8M6 2l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -143,10 +154,10 @@ export default function ExecutionGap() {
           </motion.div>
         </div>
 
-        {/* Bottom stat strip */}
+        {/* Stat strip */}
         <motion.div
-          className="grid grid-cols-3 gap-px bg-black/8 dark:bg-white/8 rounded-2xl overflow-hidden mt-4 shadow-sm"
-          initial={{ opacity: 0, y: 20 }}
+          className="grid grid-cols-3 gap-4"
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
@@ -155,9 +166,18 @@ export default function ExecutionGap() {
             { value: '80%+', label: 'Routine tasks eliminated on day one' },
             { value: '3x', label: 'Faster team output post-implementation' },
           ].map((stat, i) => (
-            <div key={i} className="bg-white dark:bg-[#0d1b3e] px-8 py-6 flex flex-col gap-1">
-              <span className="font-inter-tight font-black text-black dark:text-white text-2xl md:text-3xl tracking-tight">{stat.value}</span>
-              <span className="text-xs text-gray-400 dark:text-gray-500 leading-snug">{stat.label}</span>
+            <div
+              key={i}
+              className="rounded-2xl px-8 py-6 text-center border border-white/8"
+              style={{ background: 'rgba(255,255,255,0.04)' }}
+            >
+              <div
+                className="font-inter-tight font-black text-3xl md:text-4xl mb-1"
+                style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(135deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}
+              >
+                {stat.value}
+              </div>
+              <p className="text-white/45 text-xs leading-snug">{stat.label}</p>
             </div>
           ))}
         </motion.div>
