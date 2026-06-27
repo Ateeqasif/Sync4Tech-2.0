@@ -4,9 +4,9 @@ import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 
 export const metadata: Metadata = {
-  title: 'Pricing | Sync4Tech — Transparent AI Automation Pricing',
+  title: 'Pricing | Sync4Tech Transparent AI Automation Pricing',
   description:
-    'Sync4Tech offers flexible engagement models for AI and business automation. Project-based, retainer, and enterprise pricing available. No hidden fees — pricing structured around results.',
+    'Sync4Tech offers flexible engagement models for AI and business automation. Project-based, retainer, and enterprise pricing available. No hidden fees pricing structured around results.',
   keywords: [
     'automation pricing',
     'AI consulting cost',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'fixed-price automation project',
   ],
   openGraph: {
-    title: 'Pricing | Sync4Tech — Transparent AI Automation Pricing',
+    title: 'Pricing | Sync4Tech Transparent AI Automation Pricing',
     description: 'No hidden fees. No bloated retainers. Pricing structured around the results we deliver.',
     url: 'https://sync4tech.com/pricing',
   },
@@ -99,7 +99,7 @@ const pricingFAQ = [
   },
   {
     q: 'Are there ongoing costs after delivery?',
-    a: 'Only if you choose to add an ongoing support retainer, which is completely optional. We hand over full ownership of everything we build — you are never locked in.',
+    a: 'Only if you choose to add an ongoing support retainer, which is completely optional. We hand over full ownership of everything we build you are never locked in.',
   },
   {
     q: 'Can we start small and scale up?',
@@ -107,7 +107,7 @@ const pricingFAQ = [
   },
   {
     q: 'What is included in the free strategy session?',
-    a: 'A 45-minute call with a senior specialist who will map your biggest operational challenge, identify the highest-impact automation opportunities, and outline a realistic roadmap — no commitment required.',
+    a: 'A 45-minute call with a senior specialist who will map your biggest operational challenge, identify the highest-impact automation opportunities, and outline a realistic roadmap no commitment required.',
   },
 ]
 
@@ -248,7 +248,7 @@ export default function PricingPage() {
         <div className="section-container">
           <div className="flex flex-wrap justify-center gap-8 text-center">
             {[
-              'Free strategy session — no commitment',
+              'Free strategy session no commitment',
               'Fixed-price projects available',
               'NDA on request',
               'Delivery across UK, US & Pakistan',

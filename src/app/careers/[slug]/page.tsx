@@ -42,7 +42,7 @@ const jobs: Record<string, {
     title: 'Automation Consultant', department: 'Consulting',
     location: 'UK or Pakistan', type: 'Full-time', salary: '£45,000–£65,000',
     about: [
-      'Sync4Tech is hiring an Automation Consultant to lead client engagements from discovery to deployment. You will be the primary point of contact for clients during their automation journey — running workshops, designing workflows, building automations, and training teams.',
+      'Sync4Tech is hiring an Automation Consultant to lead client engagements from discovery to deployment. You will be the primary point of contact for clients during their automation journey running workshops, designing workflows, building automations, and training teams.',
       'This role sits at the intersection of technology and business strategy. You do not need to be a developer, but you need to be technically confident with no-code and low-code automation tools and able to understand and communicate technical concepts clearly.',
       'You will work across a variety of industries and client sizes, with engagements typically running 4–16 weeks. You will be supported by our engineering and data teams for complex technical components.',
     ],
@@ -59,8 +59,8 @@ const jobs: Record<string, {
       '3+ years of hands-on experience with automation tools (Zapier, Make.com, or similar)',
       'Client-facing consulting or account management experience',
       'Ability to independently build complex multi-step automations',
-      'Strong project management skills — you will manage multiple engagements simultaneously',
-      'Excellent written and verbal communication — you will present to C-suite stakeholders',
+      'Strong project management skills you will manage multiple engagements simultaneously',
+      'Excellent written and verbal communication you will present to C-suite stakeholders',
       'A structured, analytical approach to problem-solving',
     ],
     niceToHave: ['HubSpot CRM administration or certification', 'SQL or basic data skills', 'Background in a specific industry (healthcare, finance, legal, or logistics)', 'Previous consulting firm experience'],
@@ -85,7 +85,7 @@ const jobs: Record<string, {
     ],
     requirements: [
       '3+ years of data engineering in production environments',
-      'Strong SQL — you write complex queries comfortably and optimise them instinctively',
+      'Strong SQL you write complex queries comfortably and optimise them instinctively',
       'Hands-on dbt experience including models, tests, and documentation',
       'Experience with Snowflake, BigQuery, or Redshift',
       'Python proficiency for custom pipeline logic and data transformation',
@@ -99,7 +99,7 @@ const jobs: Record<string, {
     location: 'UK or US', type: 'Full-time', salary: '£50,000–£70,000 + OTE',
     about: [
       'Sync4Tech is hiring a Business Development Manager to drive new client acquisition across the UK and US markets. You will own the full sales cycle from outbound prospecting through to signed contract, working with warm inbound leads alongside building your own pipeline.',
-      'This is a consultative sales role — you are selling transformation outcomes, not software licences. You need to be genuinely curious about how businesses operate, comfortable discussing AI and automation at a strategic level, and able to build trust with senior decision-makers.',
+      'This is a consultative sales role you are selling transformation outcomes, not software licences. You need to be genuinely curious about how businesses operate, comfortable discussing AI and automation at a strategic level, and able to build trust with senior decision-makers.',
       'You will work closely with our consulting team to scope engagements accurately and with our marketing team to develop compelling outreach. OTE is achievable with consistent pipeline management.',
     ],
     responsibilities: [
@@ -115,9 +115,9 @@ const jobs: Record<string, {
       '4+ years of B2B sales with consistent quota achievement',
       'Experience selling complex, consultative solutions (not transactional)',
       'Comfortable selling to C-suite and senior operational leadership',
-      'Strong CRM discipline — you maintain your pipeline religiously',
-      'Excellent storytelling — you can make technical outcomes compelling to non-technical buyers',
-      'Self-motivated with an entrepreneurial mindset — you do not need hand-holding',
+      'Strong CRM discipline you maintain your pipeline religiously',
+      'Excellent storytelling you can make technical outcomes compelling to non-technical buyers',
+      'Self-motivated with an entrepreneurial mindset you do not need hand-holding',
     ],
     niceToHave: ['Experience in AI, automation, or digital transformation sales', 'Existing network in target sectors (healthcare, financial services, legal, logistics)', 'Experience with account-based marketing approaches'],
     perks: ['Uncapped commission with clear OTE structure', 'Remote-first with occasional travel for client meetings', 'Warm inbound leads from content and marketing alongside self-generated pipeline', 'Growing brand in a high-demand market', 'Stock options discussion for exceptional performers'],
@@ -131,7 +131,7 @@ const jobs: Record<string, {
       'We are looking for someone with strong taste, a systematic approach to design, and the ability to work autonomously with minimal briefing.',
     ],
     responsibilities: [
-      'Own the visual design and UX of the Sync4Tech website — ongoing improvements and new page design',
+      'Own the visual design and UX of the Sync4Tech website ongoing improvements and new page design',
       'Design client-facing dashboards and data visualisation components that are both functional and beautiful',
       'Build and maintain a comprehensive Figma component library that engineering can implement directly',
       'Design marketing assets: social graphics, presentation decks, email templates, and sales collateral',
@@ -145,10 +145,10 @@ const jobs: Record<string, {
       'Strong portfolio demonstrating both visual craft and UX thinking',
       'Experience designing and maintaining design systems',
       'Comfortable working from a brief or generating your own design direction',
-      'High attention to detail — you notice when a pixel is off',
+      'High attention to detail you notice when a pixel is off',
     ],
     niceToHave: ['Motion design or Framer experience', 'Experience with data visualisation design', 'Brand identity design background', 'Front-end HTML/CSS knowledge'],
-    perks: ['Remote contract with flexible scheduling', 'Competitive day rate with regular review', 'Creative autonomy — we hire for taste, not just execution', 'Portfolio-worthy client work across multiple industries', 'Strong potential for long-term engagement'],
+    perks: ['Remote contract with flexible scheduling', 'Competitive day rate with regular review', 'Creative autonomy we hire for taste, not just execution', 'Portfolio-worthy client work across multiple industries', 'Strong potential for long-term engagement'],
   },
 }
 

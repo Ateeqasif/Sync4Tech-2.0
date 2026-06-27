@@ -128,7 +128,7 @@ export default function Insights() {
           ))}
         </motion.div>
 
-        {/* Articles — featured hero card + remaining grid */}
+        {/* Articles featured hero card + remaining grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTag}

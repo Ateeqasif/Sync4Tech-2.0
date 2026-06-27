@@ -95,7 +95,7 @@ export default function TransformationOS() {
                   }}
                 />
 
-                {/* Hover face — swapped color */}
+                {/* Hover face swapped color */}
                 <div
                   className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{

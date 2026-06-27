@@ -9,7 +9,7 @@ const roles = [
     dept: 'Engineering',
     location: 'Remote',
     type: 'Full-time',
-    description: 'Design and build production-grade machine learning pipelines, LLM integrations, and AI-powered automation systems for our client portfolio. You will work across the full ML lifecycle — from data preparation and model training to deployment and monitoring in cloud environments (AWS/GCP/Azure).',
+    description: 'Design and build production-grade machine learning pipelines, LLM integrations, and AI-powered automation systems for our client portfolio. You will work across the full ML lifecycle from data preparation and model training to deployment and monitoring in cloud environments (AWS/GCP/Azure).',
   },
   {
     title: 'Automation Consultant',

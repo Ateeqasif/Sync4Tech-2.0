@@ -4,7 +4,7 @@ import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 
 export const metadata: Metadata = {
-  title: 'Services | Sync4Tech — Data Intelligence, Automation & Consulting',
+  title: 'Services | Sync4Tech Data Intelligence, Automation & Consulting',
   description: 'Sync4Tech delivers Data Intelligence, Business Process Automation, and Consulting & Strategy services that help organisations eliminate manual work, build intelligent systems, and make data-driven decisions.',
   keywords: ['data intelligence', 'business process automation', 'consulting strategy', 'workflow automation', 'CRM automation', 'AI automation', 'digital transformation'],
   openGraph: {
@@ -19,7 +19,7 @@ const pillars = [
     slug: 'data-intelligence',
     name: 'Data Intelligence Suite',
     tagline: 'Turn raw data into competitive advantage.',
-    description: 'We design and build the full data layer for your business — from ingestion and integration through to analytics, reporting, and AI-powered forecasting. Stop making decisions in the dark.',
+    description: 'We design and build the full data layer for your business from ingestion and integration through to analytics, reporting, and AI-powered forecasting. Stop making decisions in the dark.',
     color: '#007cf4',
     gradient: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)',
     services: [
@@ -43,7 +43,7 @@ const pillars = [
     slug: 'automation',
     name: 'Business Process Automation',
     tagline: 'Eliminate manual work. Scale without headcount.',
-    description: 'We automate the repetitive workflows, CRM processes, sales sequences, and internal operations that consume your team\'s time. Systems do the heavy lifting — your people do the thinking.',
+    description: 'We automate the repetitive workflows, CRM processes, sales sequences, and internal operations that consume your team\'s time. Systems do the heavy lifting your people do the thinking.',
     color: '#36c5f0',
     gradient: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)',
     services: [
@@ -68,7 +68,7 @@ const pillars = [
     slug: 'consulting',
     name: 'Consulting & Strategy',
     tagline: 'Expert guidance from discovery to delivery.',
-    description: 'We don\'t just build — we think alongside you. From discovery workshops and digital transformation roadmaps through to fractional CDO and CAO advisory, we bring senior expertise to every stage.',
+    description: 'We don\'t just build we think alongside you. From discovery workshops and digital transformation roadmaps through to fractional CDO and CAO advisory, we bring senior expertise to every stage.',
     color: '#007cf4',
     gradient: 'linear-gradient(135deg, #050f2e 0%, #033a9d 100%)',
     services: [
@@ -102,7 +102,7 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Everything You Need to"
         highlight="Transform"
-        subtitle="Data Intelligence, Business Process Automation, and Strategic Consulting — delivered by senior practitioners who are accountable to outcomes, not hours."
+        subtitle="Data Intelligence, Business Process Automation, and Strategic Consulting delivered by senior practitioners who are accountable to outcomes, not hours."
         breadcrumb={[{ label: 'Services', href: '/services' }]}
       />
 

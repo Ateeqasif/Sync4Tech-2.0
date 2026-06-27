@@ -15,21 +15,21 @@ export const metadata: Metadata = {
 
 const milestones = [
   { year: '2021', label: 'Founded', detail: 'Sync4Tech incorporated in the UK with a simple thesis: mid-market companies need enterprise-grade AI and automation capability, but cannot access it through the existing consulting market.' },
-  { year: '2022', label: 'First 10 Clients', detail: 'Signed our first ten clients across healthcare, legal, and financial services. Learned that the biggest barrier to transformation is not technology — it is change management and clear ROI measurement.' },
+  { year: '2022', label: 'First 10 Clients', detail: 'Signed our first ten clients across healthcare, legal, and financial services. Learned that the biggest barrier to transformation is not technology it is change management and clear ROI measurement.' },
   { year: '2023', label: 'Pakistan Office', detail: 'Opened our Lahore office to expand engineering capacity and deliver 24/7 coverage across client time zones. Pakistan became a core part of our remote-first culture, not just a delivery centre.' },
   { year: '2024', label: 'US Expansion', detail: 'Expanded into the US market with a focus on mid-market healthcare and logistics companies. AI agent deployments became our fastest-growing service line as LLM capability matured.' },
   { year: '2025', label: '50+ Organisations', detail: 'Crossed 50 client organisations served, with an average measurable ROI of 340% across automation and AI deployments. Launched our proprietary TransformationOS methodology.' },
-  { year: '2026', label: 'What\'s Next', detail: 'Building toward becoming the defining AI and automation consultancy for the global mid-market — the partner that makes enterprise-grade transformation genuinely accessible.' },
+  { year: '2026', label: 'What\'s Next', detail: 'Building toward becoming the defining AI and automation consultancy for the global mid-market the partner that makes enterprise-grade transformation genuinely accessible.' },
 ]
 
 const beliefs = [
   {
-    heading: 'The gap is real — and it is growing',
-    body: 'Enterprise companies spend hundreds of millions on AI and automation through the Big Four. Mid-market companies — those with £10M–£500M in revenue — are largely left out. The tools exist. The expertise does not reach them. That is the gap we exist to close.',
+    heading: 'The gap is real and it is growing',
+    body: 'Enterprise companies spend hundreds of millions on AI and automation through the Big Four. Mid-market companies those with £10M–£500M in revenue are largely left out. The tools exist. The expertise does not reach them. That is the gap we exist to close.',
   },
   {
     heading: 'Technology without adoption is waste',
-    body: 'We have seen too many transformation programmes that deploy impressive technology which staff never use. We design for adoption from day one — training, change management, and user-centred design are not afterthoughts in our engagements.',
+    body: 'We have seen too many transformation programmes that deploy impressive technology which staff never use. We design for adoption from day one training, change management, and user-centred design are not afterthoughts in our engagements.',
   },
   {
     heading: 'ROI is not optional, it is the product',
@@ -48,7 +48,7 @@ export default function MissionPage() {
         eyebrow="About"
         title="Why Sync4Tech "
         highlight="Exists"
-        subtitle="We founded Sync4Tech because the companies that stand to gain the most from AI and automation — mid-market businesses with 50–2,000 employees — have the least access to the expertise needed to deploy it effectively."
+        subtitle="We founded Sync4Tech because the companies that stand to gain the most from AI and automation mid-market businesses with 50–2,000 employees have the least access to the expertise needed to deploy it effectively."
         breadcrumb={[
           { label: 'About', href: '/about' },
           { label: 'Our Mission', href: '/about/mission' },
@@ -61,7 +61,7 @@ export default function MissionPage() {
           <div className="max-w-3xl mx-auto text-center mb-20">
             <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4">Our Mission</p>
             <blockquote className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl leading-tight mb-8">
-              "To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy — mid-market businesses across the UK, US, and beyond."
+              "To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy mid-market businesses across the UK, US, and beyond."
             </blockquote>
             <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
               This is not a tagline. It shapes every decision we make: the engagements we take on, the tools we build, the talent we hire, and the way we price our services. If we are not moving this mission forward, we are wasting everyone&apos;s time.

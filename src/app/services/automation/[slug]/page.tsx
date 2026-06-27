@@ -18,11 +18,11 @@ const services = {
     outcomes: [
       'End-to-end workflows running automatically from trigger to completion',
       'Approvals routed digitally with deadlines, escalations, and full audit trails',
-      'Consistent, error-free process execution every time — regardless of volume',
+      'Consistent, error-free process execution every time regardless of volume',
       'Real-time workflow monitoring with alerting on delays or failures',
     ],
     features: [
-      { title: 'Process Mapping', desc: 'Document and optimise your existing processes before we automate them — fixing the workflow before locking it in.' },
+      { title: 'Process Mapping', desc: 'Document and optimise your existing processes before we automate them fixing the workflow before locking it in.' },
       { title: 'No-Code Automation', desc: 'Build complex multi-step workflows visually using n8n, Make.com, or Zapier without writing code.' },
       { title: 'Approval Workflows', desc: 'Digital approval chains with role-based routing, deadline tracking, and automatic escalation.' },
       { title: 'Monitoring & Alerting', desc: 'Real-time dashboard of all running workflows with instant alerting on failures or SLA breaches.' },
@@ -36,31 +36,31 @@ const services = {
     ],
     faq: [
       { q: 'Which automation platform do you recommend?', a: 'It depends on your technical team, existing tools, and budget. n8n for self-hosted flexibility, Make.com for ease of use, Power Automate for Microsoft-heavy environments. We assess your situation and recommend the right fit.' },
-      { q: 'Can you automate processes that involve human decisions?', a: 'Yes. We build hybrid workflows where automation handles the repeatable steps and humans are brought in only for the decisions that require judgment — with full context provided automatically.' },
+      { q: 'Can you automate processes that involve human decisions?', a: 'Yes. We build hybrid workflows where automation handles the repeatable steps and humans are brought in only for the decisions that require judgment with full context provided automatically.' },
       { q: 'What happens when an automated workflow fails?', a: 'We build error handling, retry logic, and alerting into every workflow. Failures trigger notifications to the right people with enough context to resolve the issue quickly.' },
       { q: 'Can existing manual processes be automated without disruption?', a: 'Yes. We run automated and manual processes in parallel during testing, cutting over only when the automated version has been validated. Staff are trained before go-live.' },
     ],
   },
   'crm-automation': {
     name: 'CRM Automation',
-    subtitle: 'A CRM that works for your team — not the other way around.',
+    subtitle: 'A CRM that works for your team not the other way around.',
     challenges: [
       'Sales reps spending hours every week manually updating CRM records',
       'Leads falling through the cracks because follow-up is done manually',
-      'CRM data stale, incomplete, or inaccurate — making it useless for reporting',
+      'CRM data stale, incomplete, or inaccurate making it useless for reporting',
       'No automated lead scoring or prioritisation leaving reps working blind',
     ],
     outcomes: [
-      'CRM auto-populated from every source in real time — zero manual data entry',
+      'CRM auto-populated from every source in real time zero manual data entry',
       'Every lead actioned automatically with the right follow-up at the right time',
       'Accurate, complete CRM data that leadership can trust for forecasting',
       'AI lead scoring surfacing the hottest opportunities for the sales team',
     ],
     features: [
       { title: 'Lead Capture & Routing', desc: 'Capture leads from every source and route them to the right rep instantly with zero manual intervention.' },
-      { title: 'Automated Follow-Up', desc: 'Personalised follow-up sequences triggered by lead behaviour — emails, tasks, and reminders run automatically.' },
+      { title: 'Automated Follow-Up', desc: 'Personalised follow-up sequences triggered by lead behaviour emails, tasks, and reminders run automatically.' },
       { title: 'CRM Data Enrichment', desc: 'Auto-enrich contact records with company data, social profiles, and firmographic information.' },
-      { title: 'Pipeline Automation', desc: 'Move deals through stages automatically based on activity, time, or custom triggers — no manual dragging required.' },
+      { title: 'Pipeline Automation', desc: 'Move deals through stages automatically based on activity, time, or custom triggers no manual dragging required.' },
     ],
     tools: ['HubSpot', 'Salesforce', 'GoHighLevel', 'Zoho', 'Pipedrive', 'Make.com', 'Zapier', 'n8n', 'Clearbit'],
     process: [
@@ -71,31 +71,31 @@ const services = {
     ],
     faq: [
       { q: 'Which CRM platforms do you work with?', a: 'HubSpot, Salesforce, GoHighLevel, Zoho, Pipedrive, and most major CRM platforms. We also build custom CRM workflows on top of platforms like Airtable or Monday.com for teams with specific requirements.' },
-      { q: 'Can you clean our existing CRM data?', a: 'Yes. CRM data cleaning — deduplication, enrichment, and standardisation — is part of most engagements. We clean the existing data before building automation so the system starts from a reliable foundation.' },
+      { q: 'Can you clean our existing CRM data?', a: 'Yes. CRM data cleaning deduplication, enrichment, and standardisation is part of most engagements. We clean the existing data before building automation so the system starts from a reliable foundation.' },
       { q: 'How long to automate our CRM?', a: 'Basic lead capture and follow-up automation can be live in 2–3 weeks. A full CRM automation overhaul including enrichment, scoring, and pipeline automation typically takes 6–8 weeks.' },
-      { q: 'Can automation feel personalised to leads?', a: 'Yes. We build dynamic personalisation into every communication — using the lead\'s name, company, industry, and behaviour to make automated messages feel genuinely relevant.' },
+      { q: 'Can automation feel personalised to leads?', a: 'Yes. We build dynamic personalisation into every communication using the lead\'s name, company, industry, and behaviour to make automated messages feel genuinely relevant.' },
     ],
   },
   'sales-automation': {
     name: 'Sales Automation',
-    subtitle: 'Let your best salespeople sell — automate everything else.',
+    subtitle: 'Let your best salespeople sell automate everything else.',
     challenges: [
       'Reps spending 60% of their time on admin, data entry, and scheduling',
-      'No consistent outreach process — follow-up depends entirely on individual habits',
+      'No consistent outreach process follow-up depends entirely on individual habits',
       'Proposals and contracts taking days to produce manually for each prospect',
       'Pipeline reporting manually compiled from CRM data that is always out of date',
     ],
     outcomes: [
-      'Reps spend their time selling — all admin handled automatically',
+      'Reps spend their time selling all admin handled automatically',
       'Consistent, personalised outreach sequences running for every lead',
       'Proposals generated in minutes from templates using deal data automatically',
       'Real-time pipeline visibility without anyone compiling a report',
     ],
     features: [
       { title: 'Outreach Sequences', desc: 'Multi-touch email, LinkedIn, and phone sequences that run automatically based on prospect behaviour and timing.' },
-      { title: 'Proposal Automation', desc: 'Generate professional proposals in minutes from templates populated with deal data — no manual drafting.' },
+      { title: 'Proposal Automation', desc: 'Generate professional proposals in minutes from templates populated with deal data no manual drafting.' },
       { title: 'Meeting Scheduling', desc: 'Automated booking links, reminders, and follow-up so no meeting opportunity is lost to back-and-forth emails.' },
-      { title: 'Pipeline Reporting', desc: 'Live pipeline dashboards that update in real time as deals progress — no manual report compilation.' },
+      { title: 'Pipeline Reporting', desc: 'Live pipeline dashboards that update in real time as deals progress no manual report compilation.' },
     ],
     tools: ['HubSpot', 'Salesforce', 'Apollo.io', 'Outreach', 'Lemlist', 'DocuSign', 'Calendly', 'Make.com', 'Zapier'],
     process: [
@@ -105,7 +105,7 @@ const services = {
       { step: '04', title: 'Train & Optimise', desc: 'Train the team, monitor early results, and optimise sequences for conversion.' },
     ],
     faq: [
-      { q: 'Will automation make our outreach feel impersonal?', a: 'Only if done poorly. We build personalisation at the variable level — name, company, industry, recent news, and behaviour signals — so automated outreach reads as individually crafted. Response rates typically improve after automation.' },
+      { q: 'Will automation make our outreach feel impersonal?', a: 'Only if done poorly. We build personalisation at the variable level name, company, industry, recent news, and behaviour signals so automated outreach reads as individually crafted. Response rates typically improve after automation.' },
       { q: 'Can we automate LinkedIn outreach?', a: 'Yes. We integrate LinkedIn outreach into multi-channel sequences alongside email and phone, respecting LinkedIn usage policies and platform limits.' },
       { q: 'How quickly can we see results?', a: 'Most clients see measurable improvements in lead response rates and pipeline volume within the first 30 days. Full optimisation of sequences typically takes 60–90 days of data.' },
       { q: 'Do you work with B2B or B2C sales teams?', a: 'Both. B2B sales automation typically focuses on outbound sequences and deal management. B2C focuses more on CRM automation, lead nurture, and conversion optimisation. We tailor the approach to your sales model.' },
@@ -128,8 +128,8 @@ const services = {
     ],
     features: [
       { title: 'Lead Nurture Flows', desc: 'Automated email, SMS, and WhatsApp sequences triggered by behaviour, time, and lead characteristics.' },
-      { title: 'Behavioural Segmentation', desc: 'Segment contacts automatically by action, engagement, and intent — and trigger different journeys accordingly.' },
-      { title: 'Lead Scoring', desc: 'Score every contact based on demographic fit and behavioural engagement — pass only the right leads to sales.' },
+      { title: 'Behavioural Segmentation', desc: 'Segment contacts automatically by action, engagement, and intent and trigger different journeys accordingly.' },
+      { title: 'Lead Scoring', desc: 'Score every contact based on demographic fit and behavioural engagement pass only the right leads to sales.' },
       { title: 'Campaign Automation', desc: 'Schedule, personalise, and optimise campaigns automatically with A/B testing and send-time optimisation.' },
     ],
     tools: ['HubSpot', 'Klaviyo', 'ActiveCampaign', 'Mailchimp', 'GoHighLevel', 'Make.com', 'Zapier', 'n8n', 'Twilio'],
@@ -141,14 +141,14 @@ const services = {
     ],
     faq: [
       { q: 'Which marketing automation platforms do you work with?', a: 'HubSpot, Klaviyo, ActiveCampaign, Mailchimp, GoHighLevel, and others. We recommend the platform that best fits your sales model, budget, and existing tech stack.' },
-      { q: 'How do you personalise at scale?', a: 'Dynamic content — personalised by name, company, industry, behaviour, and purchase history — delivered automatically. Every contact receives relevant communications without a human deciding what to send to whom.' },
+      { q: 'How do you personalise at scale?', a: 'Dynamic content personalised by name, company, industry, behaviour, and purchase history delivered automatically. Every contact receives relevant communications without a human deciding what to send to whom.' },
       { q: 'How long to see results from marketing automation?', a: 'Lead nurture improvements are typically visible within 30–60 days. Full funnel optimisation and measurable conversion rate improvement usually materialises in 90–120 days.' },
-      { q: 'Can you integrate with our ad platforms?', a: 'Yes. We integrate Google Ads, Meta, and LinkedIn ad data with your CRM and automation platform — enabling remarketing audiences, lead sync, and closed-loop attribution from ad click to customer.' },
+      { q: 'Can you integrate with our ad platforms?', a: 'Yes. We integrate Google Ads, Meta, and LinkedIn ad data with your CRM and automation platform enabling remarketing audiences, lead sync, and closed-loop attribution from ad click to customer.' },
     ],
   },
   'ai-automation': {
     name: 'AI Automation',
-    subtitle: 'Intelligent systems that think, decide, and act — at scale.',
+    subtitle: 'Intelligent systems that think, decide, and act at scale.',
     challenges: [
       'High-volume tasks that require reading, understanding, or classifying text',
       'Customer queries requiring human responses that are actually highly repetitive',
@@ -159,7 +159,7 @@ const services = {
       'AI handling document processing, classification, and extraction automatically',
       'AI assistants resolving 60–80% of customer queries without human intervention',
       'Staff freed from repetitive cognitive tasks to focus on complex, high-value work',
-      'Unlimited scalability — AI handles volume spikes with no additional cost',
+      'Unlimited scalability AI handles volume spikes with no additional cost',
     ],
     features: [
       { title: 'AI Assistants & Chatbots', desc: 'Intelligent conversational AI that handles customer queries, qualifies leads, and books meetings around the clock.' },
@@ -177,7 +177,7 @@ const services = {
     faq: [
       { q: 'How accurate are AI document processing systems?', a: 'Modern AI document processing achieves 90–98% accuracy on structured documents and 80–95% on unstructured ones. We build human review queues for the low-confidence extractions so nothing falls through the cracks.' },
       { q: 'Can AI handle our industry-specific terminology?', a: 'Yes. We fine-tune and prompt AI systems on your specific domain, terminology, and document types. Industry context significantly improves accuracy compared to generic AI deployments.' },
-      { q: 'What happens when the AI gets something wrong?', a: 'We design all AI automation with human-in-the-loop fallbacks. Low-confidence outputs are flagged for human review rather than processed automatically — maintaining accuracy without sacrificing throughput.' },
+      { q: 'What happens when the AI gets something wrong?', a: 'We design all AI automation with human-in-the-loop fallbacks. Low-confidence outputs are flagged for human review rather than processed automatically maintaining accuracy without sacrificing throughput.' },
       { q: 'Can a voice AI sound natural?', a: 'Modern voice AI using ElevenLabs and similar platforms is virtually indistinguishable from human speech. We design voice agents with natural conversation flows, handling interruptions, pauses, and topic changes gracefully.' },
     ],
   },
@@ -193,7 +193,7 @@ const services = {
     outcomes: [
       'ERP connected to every other business system with real-time data sync',
       'Orders, invoices, and fulfilment data consistent across all platforms automatically',
-      'Finance reconciliation automated — hours of work reduced to minutes',
+      'Finance reconciliation automated hours of work reduced to minutes',
       'Live ERP reporting through BI tools without IT involvement',
     ],
     features: [
@@ -211,7 +211,7 @@ const services = {
     ],
     faq: [
       { q: 'Can you integrate with our legacy ERP?', a: 'Usually yes. Older ERP systems without modern APIs can often be integrated via database connectors, file exports, or middleware. We assess feasibility in discovery and recommend the most robust integration approach.' },
-      { q: 'How do you handle data conflicts during sync?', a: 'We define conflict resolution rules during design — which system wins for each data type, how conflicts are flagged, and how they are resolved. No assumption is made without your sign-off.' },
+      { q: 'How do you handle data conflicts during sync?', a: 'We define conflict resolution rules during design which system wins for each data type, how conflicts are flagged, and how they are resolved. No assumption is made without your sign-off.' },
       { q: 'How long do ERP integrations take?', a: 'Simple point-to-point ERP integrations take 4–8 weeks. Multi-system integration projects with transformation and bidirectional sync typically take 12–20 weeks.' },
       { q: 'Is integration disruptive to operations?', a: 'We design integrations to run alongside existing operations, cutting over in controlled windows with rollback capability. Most integrations go live with zero operational disruption.' },
     ],
@@ -233,7 +233,7 @@ const services = {
     ],
     features: [
       { title: 'Employee Onboarding', desc: 'Automated onboarding checklists, system provisioning, document collection, and welcome communications.' },
-      { title: 'HR Workflow Automation', desc: 'Leave management, performance review scheduling, and policy acknowledgement — all automated.' },
+      { title: 'HR Workflow Automation', desc: 'Leave management, performance review scheduling, and policy acknowledgement all automated.' },
       { title: 'Finance & Approval Workflows', desc: 'Purchase approvals, expense management, and budget authorisation with automated routing and audit trails.' },
       { title: 'Inventory & Asset Management', desc: 'Automated stock alerts, procurement workflows, and asset tracking integrated with your existing systems.' },
     ],
@@ -245,15 +245,15 @@ const services = {
       { step: '04', title: 'Rollout & Train', desc: 'Phased rollout with training sessions and a hypercare period for each team.' },
     ],
     faq: [
-      { q: 'Can you automate HR processes without replacing our HR system?', a: 'Yes. We build automation on top of your existing HR system — connecting it to IT provisioning, payroll, and communication tools to automate the cross-system steps that are currently done manually.' },
-      { q: 'How do approval workflows handle out-of-office scenarios?', a: 'We build escalation paths and delegation rules into every approval workflow. If an approver is unavailable, the request routes to the next authorised approver automatically — no request is ever stuck.' },
-      { q: 'Can employee onboarding automation handle different departments?', a: 'Yes. We build role-based onboarding workflows — each department sees the checklist, tasks, and documents relevant to them, triggered automatically when an employee record is created for their department.' },
+      { q: 'Can you automate HR processes without replacing our HR system?', a: 'Yes. We build automation on top of your existing HR system connecting it to IT provisioning, payroll, and communication tools to automate the cross-system steps that are currently done manually.' },
+      { q: 'How do approval workflows handle out-of-office scenarios?', a: 'We build escalation paths and delegation rules into every approval workflow. If an approver is unavailable, the request routes to the next authorised approver automatically no request is ever stuck.' },
+      { q: 'Can employee onboarding automation handle different departments?', a: 'Yes. We build role-based onboarding workflows each department sees the checklist, tasks, and documents relevant to them, triggered automatically when an employee record is created for their department.' },
       { q: 'Is our employee data secure?', a: 'Absolutely. We design all people data workflows with strict access controls, encryption, and GDPR compliance. Employee data is only accessible to authorised systems and individuals, with full audit trails.' },
     ],
   },
   'document-automation': {
     name: 'Document Automation',
-    subtitle: 'Generate, route, sign, and file documents — without touching a keyboard.',
+    subtitle: 'Generate, route, sign, and file documents without touching a keyboard.',
     challenges: [
       'Contracts and proposals drafted manually from scratch for every new client',
       'Document approvals routed via email with no tracking or deadline management',
@@ -267,7 +267,7 @@ const services = {
       'Compliance documents produced automatically on schedule with full audit trails',
     ],
     features: [
-      { title: 'Template-Based Generation', desc: 'Generate any document type — proposals, contracts, NDAs, reports — from templates populated with live data.' },
+      { title: 'Template-Based Generation', desc: 'Generate any document type proposals, contracts, NDAs, reports from templates populated with live data.' },
       { title: 'E-Signature Integration', desc: 'Embedded DocuSign or Adobe Sign workflows so documents are signed without leaving your process.' },
       { title: 'Approval Routing', desc: 'Digital approval chains with deadline tracking, escalation, and full audit trail for every document.' },
       { title: 'Document Archive', desc: 'Automatic filing, version control, and full-text search across your entire document archive.' },
@@ -280,9 +280,9 @@ const services = {
       { step: '04', title: 'Test & Deploy', desc: 'Thorough testing with real documents before go-live, with training for all users.' },
     ],
     faq: [
-      { q: 'Can documents be generated from CRM data automatically?', a: 'Yes. We connect your CRM directly to document templates — so a proposal or contract is generated in seconds from the deal record, populated with the client name, scope, pricing, and any other CRM field.' },
+      { q: 'Can documents be generated from CRM data automatically?', a: 'Yes. We connect your CRM directly to document templates so a proposal or contract is generated in seconds from the deal record, populated with the client name, scope, pricing, and any other CRM field.' },
       { q: 'Which e-signature tools do you integrate with?', a: 'DocuSign and Adobe Sign are our most common integrations, but we also work with PandaDoc, HelloSign, and others. We can recommend the right tool if you do not have one already.' },
-      { q: 'Can we automate compliance document production?', a: 'Yes. Compliance reports, data subject access request responses, and regulatory filings can all be automated — pulling live data, applying formatting rules, and delivering on schedule with full audit trails.' },
+      { q: 'Can we automate compliance document production?', a: 'Yes. Compliance reports, data subject access request responses, and regulatory filings can all be automated pulling live data, applying formatting rules, and delivering on schedule with full audit trails.' },
       { q: 'What document formats do you support?', a: 'PDF, Word, Excel, PowerPoint, and HTML. We can generate documents in any format your process requires and convert between formats automatically as part of the workflow.' },
     ],
   },

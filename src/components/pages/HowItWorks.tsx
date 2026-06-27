@@ -37,7 +37,7 @@ const steps = [
     n: '03',
     title: 'Deploy',
     tag: '4–5 Weeks',
-    desc: 'We build, test, and deploy your solution in as little as 4–5 weeks — with live prototypes in the first week and measurable results within 30 days of go-live.',
+    desc: 'We build, test, and deploy your solution in as little as 4–5 weeks with live prototypes in the first week and measurable results within 30 days of go-live.',
     accent: '#007cf4',
     icon: (
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none">

@@ -222,7 +222,7 @@ export default function SchemaMarkup() {
         "name": "Why choose Sync4Tech over traditional consulting firms?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Unlike traditional consulting firms, Sync4Tech combines implementation expertise with strategic advisory. We automate repetitive workflows, reduce operational bottlenecks, and create scalable business systems — delivering measurable outcomes, not just recommendations. Our clients achieve results within 12 weeks."
+          "text": "Unlike traditional consulting firms, Sync4Tech combines implementation expertise with strategic advisory. We automate repetitive workflows, reduce operational bottlenecks, and create scalable business systems delivering measurable outcomes, not just recommendations. Our clients achieve results within 12 weeks."
         }
       },
       {

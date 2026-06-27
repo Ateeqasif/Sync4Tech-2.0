@@ -78,7 +78,7 @@ const cases = [
     company: 'Professional Services Firm',
     headline: 'Automating 10,000+ manual tasks per month',
     challenge: 'Staff spent 60% of their time on repetitive data entry, approvals, and handoffs across 8 disconnected tools.',
-    solution: 'Built a centralised workflow automation layer using n8n and Make — connecting CRM, ERP, and project tools with intelligent routing and auto-approvals.',
+    solution: 'Built a centralised workflow automation layer using n8n and Make connecting CRM, ERP, and project tools with intelligent routing and auto-approvals.',
     metrics: [
       { value: 73, suffix: '%', label: 'Time Saved' },
       { value: 10, suffix: 'k+', label: 'Tasks Automated/mo' },
@@ -90,7 +90,7 @@ const cases = [
     industry: 'Sales Automation',
     tag: 'Revenue Ops',
     company: 'B2B SaaS Company',
-    headline: 'Pipeline from cold to closed — on autopilot',
+    headline: 'Pipeline from cold to closed on autopilot',
     challenge: 'Sales reps manually chasing leads, duplicating data between tools, and missing follow-ups causing 30% pipeline leakage.',
     solution: 'End-to-end HubSpot automation: lead scoring, personalised email sequences, deal stage triggers, and Slack alerts for high-intent signals.',
     metrics: [
@@ -118,8 +118,8 @@ const cases = [
     industry: 'CRM Automation',
     tag: 'Workflow Automation',
     company: 'Enterprise Tech Company',
-    headline: 'CRM data that sells — not just stores',
-    challenge: 'CRM had 40,000+ stale contacts, no enrichment, and zero automation — reps worked blind with no context before calls.',
+    headline: 'CRM data that sells not just stores',
+    challenge: 'CRM had 40,000+ stale contacts, no enrichment, and zero automation reps worked blind with no context before calls.',
     solution: 'Automated CRM enrichment, deduplication, activity tracking, and AI-generated call briefs delivered to reps 30 minutes before each meeting.',
     metrics: [
       { value: 91, suffix: '%', label: 'Data Accuracy' },
@@ -134,7 +134,7 @@ const cases = [
     company: 'Logistics & Fulfilment Co.',
     headline: 'Zero-touch order processing from click to ship',
     challenge: 'Order fulfilment required 7 manual handoffs across teams, causing delays, errors, and customer complaints.',
-    solution: 'Fully automated order-to-fulfilment workflow: intake, validation, warehouse routing, courier booking, and customer notifications — all triggered automatically.',
+    solution: 'Fully automated order-to-fulfilment workflow: intake, validation, warehouse routing, courier booking, and customer notifications all triggered automatically.',
     metrics: [
       { value: 99, suffix: '%', label: 'Error-Free Orders' },
       { value: 6, suffix: 'h', label: 'Faster Fulfilment' },
@@ -211,7 +211,7 @@ export default function CaseStudies() {
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Left content — 3 cols */}
+            {/* Left content 3 cols */}
             <div
               className="lg:col-span-3 p-10 flex flex-col justify-between relative overflow-hidden"
               style={{ background: 'white' }}
@@ -261,7 +261,7 @@ export default function CaseStudies() {
               </div>
             </div>
 
-            {/* Right metrics — 2 cols */}
+            {/* Right metrics 2 cols */}
             <div
               className="lg:col-span-2 flex flex-col justify-center gap-0 relative overflow-hidden"
               style={{ background: 'linear-gradient(160deg, #033a9d 0%, #0059c1 50%, #007cf4 100%)' }}

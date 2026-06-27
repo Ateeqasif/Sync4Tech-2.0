@@ -111,7 +111,7 @@ export default function ExpertPopup() {
                   Let's Find the Right<br />Solution for You
                 </h2>
                 <p className="text-white/75 text-sm leading-relaxed max-w-md">
-                  Our experts understand your unique challenges and craft a tailored strategy — no generic pitches, just real answers.
+                  Our experts understand your unique challenges and craft a tailored strategy no generic pitches, just real answers.
                 </p>
               </div>
             </div>

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const perks = [
   {
     title: 'Remote-First Culture',
-    desc: 'Work from anywhere in the world. We are a distributed team by design — no mandatory office days, genuine flexibility.',
+    desc: 'Work from anywhere in the world. We are a distributed team by design no mandatory office days, genuine flexibility.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -57,7 +57,7 @@ const perks = [
 
 const cultureValues = [
   { title: 'Fast-Paced', desc: 'We move quickly, make decisions with available information, and iterate rapidly. Bureaucracy is our enemy.' },
-  { title: 'Outcome-Focused', desc: 'We measure everything against business results — for our clients and ourselves. Activity without output is not valued.' },
+  { title: 'Outcome-Focused', desc: 'We measure everything against business results for our clients and ourselves. Activity without output is not valued.' },
   { title: 'Globally Distributed', desc: 'Three continents, multiple time zones, one team. We celebrate diverse perspectives and asynchronous-first communication.' },
 ]
 
@@ -94,7 +94,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Open roles — client component */}
+      {/* Open roles client component */}
       <CareersList />
 
       {/* Culture */}

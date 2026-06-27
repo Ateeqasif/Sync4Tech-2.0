@@ -4,11 +4,11 @@ import FinalCTA from '@/components/sections/FinalCTA'
 import CaseStudiesFilter from '@/components/pages/CaseStudiesFilter'
 
 export const metadata: Metadata = {
-  title: 'Client Case Studies | Sync4Tech — Real Results',
+  title: 'Client Case Studies | Sync4Tech Real Results',
   description: 'Real business results from AI and automation deployments across healthcare, finance, manufacturing, retail, logistics, and more. Sync4Tech serves clients in UK, US, and Pakistan.',
   keywords: ['automation case studies', 'AI business results', 'business transformation examples', 'ROI automation', 'digital transformation results'],
   openGraph: {
-    title: 'Client Case Studies | Sync4Tech — Real Results',
+    title: 'Client Case Studies | Sync4Tech Real Results',
     description: 'See how leading organisations transformed operations with Sync4Tech\'s AI and automation solutions.',
     url: 'https://sync4tech.com/case-studies',
   },
@@ -56,7 +56,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* Filter + Cards — client component */}
+      {/* Filter + Cards client component */}
       <CaseStudiesFilter />
 
       {/* Testimonials */}

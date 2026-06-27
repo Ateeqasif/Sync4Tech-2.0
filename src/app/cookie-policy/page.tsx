@@ -3,7 +3,7 @@ import PageHero from '@/components/PageHero'
 
 export const metadata: Metadata = {
   title: 'Cookie Policy | Sync4Tech',
-  description: 'Sync4Tech Cookie Policy — how we use cookies and similar technologies on our website, and how you can manage your preferences.',
+  description: 'Sync4Tech Cookie Policy how we use cookies and similar technologies on our website, and how you can manage your preferences.',
   openGraph: {
     title: 'Cookie Policy | Sync4Tech',
     url: 'https://sync4tech.com/cookie-policy',
@@ -36,7 +36,7 @@ export default function CookiePolicyPage() {
             <p>These cookies are essential for the website to function and cannot be switched off. They are usually set in response to actions you take, such as setting your privacy preferences or filling in forms. Without these, the website cannot work properly.</p>
 
             <h3>Performance & Analytics Cookies</h3>
-            <p>These cookies allow us to count visits and measure how visitors find and use our website. All information is aggregated and anonymous — they do not identify individual visitors. We use these to understand which pages are most popular and how visitors navigate the site, helping us improve the experience. Currently we use Google Analytics (with IP anonymisation) for this purpose.</p>
+            <p>These cookies allow us to count visits and measure how visitors find and use our website. All information is aggregated and anonymous they do not identify individual visitors. We use these to understand which pages are most popular and how visitors navigate the site, helping us improve the experience. Currently we use Google Analytics (with IP anonymisation) for this purpose.</p>
 
             <h3>Functional Cookies</h3>
             <p>These cookies enable the website to provide enhanced functionality and personalisation, such as remembering your dark/light mode preference, language selection, and accessibility settings. They may be set by us or by third-party providers whose services we have added to our pages.</p>
@@ -47,18 +47,18 @@ export default function CookiePolicyPage() {
             <h2>3. Managing Cookies</h2>
             <p>You can control and manage cookies in several ways:</p>
             <ul>
-              <li><strong>Cookie consent banner</strong> — when you first visit our site, you can accept or decline non-essential cookies via our consent banner. You can change your preferences at any time by clicking "Cookie Settings" in the footer.</li>
-              <li><strong>Browser settings</strong> — most browsers allow you to refuse cookies or delete cookies that have already been set. Visit your browser's help section for instructions. Note that disabling cookies may affect website functionality.</li>
-              <li><strong>Opt-out tools</strong> — for Google Analytics, use the <a href="https://tools.google.com/dlpage/gaoptout" className="text-[#007cf4]">Google Analytics Opt-out Browser Add-on</a>.</li>
+              <li><strong>Cookie consent banner</strong> when you first visit our site, you can accept or decline non-essential cookies via our consent banner. You can change your preferences at any time by clicking "Cookie Settings" in the footer.</li>
+              <li><strong>Browser settings</strong> most browsers allow you to refuse cookies or delete cookies that have already been set. Visit your browser's help section for instructions. Note that disabling cookies may affect website functionality.</li>
+              <li><strong>Opt-out tools</strong> for Google Analytics, use the <a href="https://tools.google.com/dlpage/gaoptout" className="text-[#007cf4]">Google Analytics Opt-out Browser Add-on</a>.</li>
             </ul>
 
             <h2>4. Third-Party Cookies</h2>
             <p>Where we embed content or functionality from third parties (such as YouTube videos, LinkedIn widgets, or social sharing buttons), those third parties may set their own cookies. We have no control over these cookies. Please refer to the relevant third party's privacy/cookie policy for details.</p>
             <p>Key third parties whose cookies may be present on our website:</p>
             <ul>
-              <li><strong>Google</strong> (Analytics, Ads) — <a href="https://policies.google.com/privacy" className="text-[#007cf4]">Google Privacy Policy</a></li>
-              <li><strong>LinkedIn</strong> (Insight Tag) — <a href="https://www.linkedin.com/legal/privacy-policy" className="text-[#007cf4]">LinkedIn Privacy Policy</a></li>
-              <li><strong>HubSpot</strong> (CRM & chat) — <a href="https://legal.hubspot.com/privacy-policy" className="text-[#007cf4]">HubSpot Privacy Policy</a></li>
+              <li><strong>Google</strong> (Analytics, Ads) <a href="https://policies.google.com/privacy" className="text-[#007cf4]">Google Privacy Policy</a></li>
+              <li><strong>LinkedIn</strong> (Insight Tag) <a href="https://www.linkedin.com/legal/privacy-policy" className="text-[#007cf4]">LinkedIn Privacy Policy</a></li>
+              <li><strong>HubSpot</strong> (CRM & chat) <a href="https://legal.hubspot.com/privacy-policy" className="text-[#007cf4]">HubSpot Privacy Policy</a></li>
             </ul>
 
             <h2>5. Changes to This Policy</h2>

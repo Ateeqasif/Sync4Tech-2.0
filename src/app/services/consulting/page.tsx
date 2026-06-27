@@ -6,7 +6,7 @@ import FinalCTA from '@/components/sections/FinalCTA';
 export const metadata: Metadata = {
   title: 'Consulting & Strategy | Sync4Tech',
   description:
-    'From business analysis and digital transformation to AI readiness and fractional executive leadership — Sync4Tech provides the strategic consulting that turns ambition into measurable outcomes.',
+    'From business analysis and digital transformation to AI readiness and fractional executive leadership Sync4Tech provides the strategic consulting that turns ambition into measurable outcomes.',
 };
 
 const services = [
@@ -59,7 +59,7 @@ export default function ConsultingPage() {
         eyebrow="Consulting & Strategy"
         title="Strategy That"
         highlight="Delivers"
-        subtitle="We provide the strategic leadership, frameworks, and analysis that turn complex business challenges into clear programmes of work — with measurable outcomes at every stage."
+        subtitle="We provide the strategic leadership, frameworks, and analysis that turn complex business challenges into clear programmes of work with measurable outcomes at every stage."
         breadcrumb={[
           { label: 'Services', href: '/services' },
           { label: 'Consulting & Strategy', href: '/services/consulting' },

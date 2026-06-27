@@ -5,7 +5,7 @@ import FinalCTA from '@/components/sections/FinalCTA'
 
 export const metadata: Metadata = {
   title: 'About Sync4Tech | AI & Automation Consultancy',
-  description: 'Sync4Tech is a specialist AI and automation consultancy helping ambitious organisations bridge the gap between strategy and execution. Based in London, New York, and Lahore — serving UK, US, and Pakistan.',
+  description: 'Sync4Tech is a specialist AI and automation consultancy helping ambitious organisations bridge the gap between strategy and execution. Based in London, New York, and Lahore serving UK, US, and Pakistan.',
   keywords: ['about Sync4Tech', 'AI consultancy', 'automation agency', 'digital transformation team', 'UK automation consultancy', 'Pakistan tech company'],
   openGraph: {
     title: 'About Sync4Tech | AI & Automation Consultancy',
@@ -45,9 +45,9 @@ const offices = [
 
 const aboutFAQ = [
   { q: 'Where is Sync4Tech based?', a: 'Sync4Tech has offices in London (UK), New York (US), and Lahore (Pakistan). Our distributed model means we can serve clients across all time zones without compromise on responsiveness.' },
-  { q: 'How big is the Sync4Tech team?', a: 'We are a focused team of 40+ specialists across engineering, data science, consulting, and design. We deliberately stay lean to maintain quality — every client engagement is led by a senior specialist, not a junior analyst.' },
+  { q: 'How big is the Sync4Tech team?', a: 'We are a focused team of 40+ specialists across engineering, data science, consulting, and design. We deliberately stay lean to maintain quality every client engagement is led by a senior specialist, not a junior analyst.' },
   { q: 'What types of clients do you work with?', a: 'We work with ambitious organisations from Series B startups to FTSE 250 enterprises. What they have in common: a desire to operate more intelligently and a willingness to invest in transformation.' },
-  { q: 'Are you a software company or consultancy?', a: 'We are a delivery-first consultancy that builds real software. We design strategy and then build and deploy the systems to execute it — unlike traditional consultancies who hand off implementation to others.' },
+  { q: 'Are you a software company or consultancy?', a: 'We are a delivery-first consultancy that builds real software. We design strategy and then build and deploy the systems to execute it unlike traditional consultancies who hand off implementation to others.' },
 ]
 
 export default function AboutPage() {
@@ -74,7 +74,7 @@ export default function AboutPage() {
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="white" strokeWidth="1.5" /><path d="M10 6v4l3 2" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></svg>
                 </div>
                 <h2 className="font-inter-tight font-black text-white text-xl mb-3">Our Mission</h2>
-                <p className="text-white/80 text-sm leading-relaxed">To eliminate the execution gap — the painful distance between what organisations intend to do and what they actually achieve — through intelligent automation and AI-powered systems.</p>
+                <p className="text-white/80 text-sm leading-relaxed">To eliminate the execution gap the painful distance between what organisations intend to do and what they actually achieve through intelligent automation and AI-powered systems.</p>
               </div>
             </div>
             {/* Vision */}
@@ -84,7 +84,7 @@ export default function AboutPage() {
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" stroke="#007cf4" strokeWidth="1.5" strokeLinejoin="round" /></svg>
               </div>
               <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3">Our Vision</h2>
-              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">A world where every organisation — regardless of size or sector — can operate at its full potential, freed from the friction of manual processes and siloed data.</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">A world where every organisation regardless of size or sector can operate at its full potential, freed from the friction of manual processes and siloed data.</p>
             </div>
           </div>
         </div>
@@ -114,7 +114,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story — Timeline */}
+      {/* Our Story Timeline */}
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container max-w-3xl mx-auto">
           <div className="text-center mb-14">

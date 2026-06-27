@@ -6,7 +6,7 @@ import FinalCTA from '@/components/sections/FinalCTA';
 export const metadata: Metadata = {
   title: 'Business Process Automation | Sync4Tech',
   description:
-    'Workflow automation, CRM automation, AI automation, and document automation — Sync4Tech eliminates the manual work that slows your business down and builds intelligent systems that scale without headcount.',
+    'Workflow automation, CRM automation, AI automation, and document automation Sync4Tech eliminates the manual work that slows your business down and builds intelligent systems that scale without headcount.',
 };
 
 const services = [
@@ -18,7 +18,7 @@ const services = [
   {
     slug: 'crm-automation',
     name: 'CRM Automation',
-    desc: 'Keep your CRM clean, current, and working for your sales team — automatically.',
+    desc: 'Keep your CRM clean, current, and working for your sales team automatically.',
   },
   {
     slug: 'sales-automation',
@@ -59,7 +59,7 @@ export default function AutomationPage() {
         eyebrow="Business Process Automation"
         title="Eliminate the Work"
         highlight="That Never Should Have Been Manual"
-        subtitle="We automate the repetitive workflows, CRM processes, sales sequences, and internal operations that consume your team's time. Systems do the heavy lifting — your people do the thinking."
+        subtitle="We automate the repetitive workflows, CRM processes, sales sequences, and internal operations that consume your team's time. Systems do the heavy lifting your people do the thinking."
         breadcrumb={[
           { label: 'Services', href: '/services' },
           { label: 'Business Process Automation', href: '/services/automation' },

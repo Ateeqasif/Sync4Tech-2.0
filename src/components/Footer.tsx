@@ -71,7 +71,7 @@ export default function Footer() {
     <footer>
       {/* ── Top newsletter band: white + continuous grid ── */}
       <div className="relative overflow-hidden bg-[#f3f4f6] dark:bg-[#050f2e]">
-        {/* Continuous grid — same spec as FinalCTA so it flows seamlessly */}
+        {/* Continuous grid same spec as FinalCTA so it flows seamlessly */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

@@ -5,7 +5,7 @@ import FinalCTA from '@/components/sections/FinalCTA'
 import IndustriesFAQ from '@/components/pages/IndustriesFAQ'
 
 export const metadata: Metadata = {
-  title: 'Industries We Serve | Sync4Tech — AI & Business Automation',
+  title: 'Industries We Serve | Sync4Tech AI & Business Automation',
   description: 'Sync4Tech delivers AI automation solutions across 12 industries: Healthcare, Financial Services, Manufacturing, Retail, Real Estate, Logistics, Education, Legal, Technology & SaaS, Professional Services, Hospitality & Travel, and Non-Profit. Serving UK, US, and Pakistan markets.',
   keywords: ['industry automation', 'healthcare automation', 'financial services AI', 'manufacturing automation', 'retail AI', 'logistics automation', 'legal automation', 'education technology', 'real estate CRM', 'SaaS automation', 'professional services automation', 'hospitality automation', 'nonprofit automation'],
   openGraph: {
@@ -19,7 +19,7 @@ const industries = [
   {
     slug: 'healthcare',
     name: 'Healthcare',
-    description: 'Automate patient intake, appointment scheduling, and clinical documentation. We help healthcare providers reduce admin burden, improve compliance, and free clinical staff for patient care — while maintaining full HIPAA alignment.',
+    description: 'Automate patient intake, appointment scheduling, and clinical documentation. We help healthcare providers reduce admin burden, improve compliance, and free clinical staff for patient care while maintaining full HIPAA alignment.',
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <rect x="3" y="3" width="22" height="22" rx="4" stroke="#007cf4" strokeWidth="1.5" />

@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: 'Can solutions be customised per industry?',
-    a: 'Absolutely — no two industries are the same, and we never apply generic templates. Every engagement starts with deep discovery of your industry-specific workflows, regulatory constraints, and KPIs. The result is a bespoke automation architecture designed for your exact operating model.'
+    a: 'Absolutely no two industries are the same, and we never apply generic templates. Every engagement starts with deep discovery of your industry-specific workflows, regulatory constraints, and KPIs. The result is a bespoke automation architecture designed for your exact operating model.'
   },
   {
     q: 'How do you handle industry-specific compliance?',

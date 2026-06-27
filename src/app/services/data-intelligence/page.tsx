@@ -6,7 +6,7 @@ import FinalCTA from '@/components/sections/FinalCTA';
 export const metadata: Metadata = {
   title: 'Data Intelligence Suite | Sync4Tech',
   description:
-    'From data engineering and ETL pipelines to business intelligence, predictive analytics, and AI — Sync4Tech turns raw data into your most powerful competitive advantage.',
+    'From data engineering and ETL pipelines to business intelligence, predictive analytics, and AI Sync4Tech turns raw data into your most powerful competitive advantage.',
 };
 
 const services = [

@@ -52,7 +52,7 @@ export default function CustomCursor() {
       className="fixed top-0 left-0 pointer-events-none z-[9999] select-none"
       style={{ willChange: 'transform' }}
     >
-      {/* Arrow cursor SVG — tip at (0,0) */}
+      {/* Arrow cursor SVG tip at (0,0) */}
       <svg
         width="24"
         height="28"

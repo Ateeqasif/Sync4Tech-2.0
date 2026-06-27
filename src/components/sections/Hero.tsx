@@ -110,7 +110,7 @@ export default function Hero() {
   const metricLabels = [t.hero.metric1Label, t.hero.metric2Label, t.hero.metric3Label, t.hero.metric4Label]
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-white dark:bg-[#050f2e]" id="home">
-      {/* Background layers — overflow-hidden scoped here so text is never clipped */}
+      {/* Background layers overflow-hidden scoped here so text is never clipped */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Particle bg */}
         <div className="absolute inset-0 opacity-70">

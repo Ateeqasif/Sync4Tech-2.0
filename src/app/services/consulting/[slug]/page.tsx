@@ -64,7 +64,7 @@ const services: Record<string, ServiceData> = {
       {
         step: '03',
         title: 'Requirements Documentation',
-        desc: 'Produce BRD, SRS, or user stories — whichever format your delivery team works with.',
+        desc: 'Produce BRD, SRS, or user stories whichever format your delivery team works with.',
       },
       {
         step: '04',
@@ -75,7 +75,7 @@ const services: Record<string, ServiceData> = {
     faq: [
       {
         q: 'Do you produce BRDs, SRS documents, or user stories?',
-        a: 'All three, depending on what your development team works with. We adapt our output format to your delivery methodology — waterfall projects get formal BRDs and SRS documents, Agile projects get epics and user stories.',
+        a: 'All three, depending on what your development team works with. We adapt our output format to your delivery methodology waterfall projects get formal BRDs and SRS documents, Agile projects get epics and user stories.',
       },
       {
         q: 'How long does business analysis take?',
@@ -94,7 +94,7 @@ const services: Record<string, ServiceData> = {
 
   'digital-transformation': {
     name: 'Digital Transformation',
-    subtitle: 'Transformation that delivers measurable outcomes — not just a new tech stack.',
+    subtitle: 'Transformation that delivers measurable outcomes not just a new tech stack.',
     challenges: [
       'Transformation initiatives stalled because no one owns the outcomes or the roadmap',
       'Technology selected before the business problem is clearly defined',
@@ -110,7 +110,7 @@ const services: Record<string, ServiceData> = {
     features: [
       {
         title: 'Transformation Strategy',
-        desc: 'A 12–24 month roadmap that prioritises initiatives by impact, cost, and feasibility — not technology fashion.',
+        desc: 'A 12–24 month roadmap that prioritises initiatives by impact, cost, and feasibility not technology fashion.',
       },
       {
         title: 'Technology Roadmap',
@@ -130,7 +130,7 @@ const services: Record<string, ServiceData> = {
       {
         step: '01',
         title: 'Current State Assessment',
-        desc: 'Understand where the business is today — processes, systems, data maturity, and digital capability.',
+        desc: 'Understand where the business is today processes, systems, data maturity, and digital capability.',
       },
       {
         step: '02',
@@ -151,7 +151,7 @@ const services: Record<string, ServiceData> = {
     faq: [
       {
         q: 'How is digital transformation different from IT projects?',
-        a: 'IT projects deliver technology. Digital transformation delivers business outcomes — using technology as an enabler. We start with the business problem, define success in commercial terms, and work backwards to the technology solution.',
+        a: 'IT projects deliver technology. Digital transformation delivers business outcomes using technology as an enabler. We start with the business problem, define success in commercial terms, and work backwards to the technology solution.',
       },
       {
         q: 'How long does a transformation programme take?',
@@ -163,14 +163,14 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Do you handle change management as well as technology?',
-        a: 'Yes. Technology delivery without adoption is wasted money. Change management — communication, training, and resistance management — is built into every transformation engagement from day one.',
+        a: 'Yes. Technology delivery without adoption is wasted money. Change management communication, training, and resistance management is built into every transformation engagement from day one.',
       },
     ],
   },
 
   'solution-architecture': {
     name: 'Solution Architecture',
-    subtitle: 'Design the right system — before spending a pound building the wrong one.',
+    subtitle: 'Design the right system before spending a pound building the wrong one.',
     challenges: [
       'Systems built by developers who made architecture decisions without business input',
       'Point-to-point integrations creating a fragile web that breaks when anything changes',
@@ -186,7 +186,7 @@ const services: Record<string, ServiceData> = {
     features: [
       {
         title: 'Enterprise Architecture',
-        desc: 'Blueprint of your full technology landscape — current state, target state, and the transition path between them.',
+        desc: 'Blueprint of your full technology landscape current state, target state, and the transition path between them.',
       },
       {
         title: 'Integration Design',
@@ -198,7 +198,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'Vendor Evaluation',
-        desc: 'Technology and vendor assessment against defined architecture requirements — with a clear recommendation and rationale.',
+        desc: 'Technology and vendor assessment against defined architecture requirements with a clear recommendation and rationale.',
       },
     ],
     tools: ['AWS', 'Azure', 'GCP', 'Kubernetes', 'REST APIs', 'GraphQL', 'Event Bridge', 'Kafka', 'Terraform', 'draw.io'],
@@ -231,15 +231,15 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Do you produce architecture documentation?',
-        a: 'Yes. We produce architecture decision records, system diagrams, integration specifications, and data flow documentation — in whatever format your development team uses.',
+        a: 'Yes. We produce architecture decision records, system diagrams, integration specifications, and data flow documentation in whatever format your development team uses.',
       },
       {
         q: 'Can you assess our existing architecture?',
-        a: 'Yes. Architecture reviews are a common engagement type — we assess your current system landscape, identify risks and technical debt, and recommend a path to a more maintainable target state.',
+        a: 'Yes. Architecture reviews are a common engagement type we assess your current system landscape, identify risks and technical debt, and recommend a path to a more maintainable target state.',
       },
       {
         q: 'Do you work with cloud-native or on-premise architectures?',
-        a: 'Both, and hybrid. We design for the infrastructure reality of your organisation — whether cloud-first, on-premise constrained, or managing a transition between the two.',
+        a: 'Both, and hybrid. We design for the infrastructure reality of your organisation whether cloud-first, on-premise constrained, or managing a transition between the two.',
       },
     ],
   },
@@ -250,7 +250,7 @@ const services: Record<string, ServiceData> = {
     challenges: [
       'Technology projects consistently delivered late, over budget, or missing scope',
       'No single owner of the delivery programme coordinating vendors, teams, and stakeholders',
-      'Risks identified too late to mitigate — always firefighting rather than managing proactively',
+      'Risks identified too late to mitigate always firefighting rather than managing proactively',
       'Project status reported subjectively rather than tracked against objective milestones',
     ],
     outcomes: [
@@ -266,7 +266,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'PMO Setup',
-        desc: 'Project management office design — standards, templates, governance, and reporting frameworks.',
+        desc: 'Project management office design standards, templates, governance, and reporting frameworks.',
       },
       {
         title: 'Agile Delivery',
@@ -287,7 +287,7 @@ const services: Record<string, ServiceData> = {
       {
         step: '02',
         title: 'Delivery',
-        desc: 'Manage delivery week by week — sprint ceremonies, stakeholder communication, and risk management.',
+        desc: 'Manage delivery week by week sprint ceremonies, stakeholder communication, and risk management.',
       },
       {
         step: '03',
@@ -303,15 +303,15 @@ const services: Record<string, ServiceData> = {
     faq: [
       {
         q: 'Do you use Agile or waterfall delivery?',
-        a: 'Both, depending on the project type. Software and automation delivery typically uses Agile sprints. Larger transformation programmes often use a hybrid approach — Agile at the workstream level within a waterfall programme structure.',
+        a: 'Both, depending on the project type. Software and automation delivery typically uses Agile sprints. Larger transformation programmes often use a hybrid approach Agile at the workstream level within a waterfall programme structure.',
       },
       {
         q: 'Can you manage external vendors on our behalf?',
-        a: 'Yes. Vendor management — holding suppliers accountable to scope, quality, and timeline — is one of the most high-value parts of our delivery management service.',
+        a: 'Yes. Vendor management holding suppliers accountable to scope, quality, and timeline is one of the most high-value parts of our delivery management service.',
       },
       {
         q: 'Do you set up PMOs?',
-        a: 'Yes. We design and stand up PMOs for organisations that need consistent project delivery governance — defining standards, templates, reporting cadences, and resource management processes.',
+        a: 'Yes. We design and stand up PMOs for organisations that need consistent project delivery governance defining standards, templates, reporting cadences, and resource management processes.',
       },
       {
         q: 'What size projects do you manage?',
@@ -325,7 +325,7 @@ const services: Record<string, ServiceData> = {
     subtitle: 'Risk and compliance frameworks built for the modern digital enterprise.',
     challenges: [
       'Technology decisions made without formal risk assessment or compliance review',
-      'Data governance non-existent — no policies, no ownership, no audit trails',
+      'Data governance non-existent no policies, no ownership, no audit trails',
       'Regulatory compliance managed reactively after audits rather than proactively designed in',
       'IT governance fragmented across departments with no enterprise-wide standards',
     ],
@@ -379,7 +379,7 @@ const services: Record<string, ServiceData> = {
     faq: [
       {
         q: 'Do you help with GDPR compliance?',
-        a: 'Yes. We conduct GDPR gap assessments, design compliant data handling processes, implement consent management, and produce the documentation required for compliance — including DPIAs and processing records.',
+        a: 'Yes. We conduct GDPR gap assessments, design compliant data handling processes, implement consent management, and produce the documentation required for compliance including DPIAs and processing records.',
       },
       {
         q: 'Can you help us prepare for ISO 27001 certification?',
@@ -391,17 +391,17 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Is data governance the same as data management?',
-        a: 'They are related but different. Data governance is the policy and ownership layer — who owns data, what the rules are, and how compliance is monitored. Data management is the operational layer — how data is actually collected, stored, and maintained. Both are needed.',
+        a: 'They are related but different. Data governance is the policy and ownership layer who owns data, what the rules are, and how compliance is monitored. Data management is the operational layer how data is actually collected, stored, and maintained. Both are needed.',
       },
     ],
   },
 
   'ai-readiness': {
     name: 'AI Readiness Assessment',
-    subtitle: 'Know exactly where AI will work in your business — and where it will not.',
+    subtitle: 'Know exactly where AI will work in your business and where it will not.',
     challenges: [
       'Executive pressure to adopt AI without clarity on where it will actually deliver ROI',
-      'Data infrastructure too immature for most AI use cases — but no one has assessed it formally',
+      'Data infrastructure too immature for most AI use cases but no one has assessed it formally',
       'AI pilots failing because the business case and data foundation were not established first',
       'Vendor AI solutions evaluated without an independent view of fit, risk, and alternatives',
     ],
@@ -455,7 +455,7 @@ const services: Record<string, ServiceData> = {
     faq: [
       {
         q: 'How long does an AI readiness assessment take?',
-        a: 'A focused AI readiness assessment typically takes 3–4 weeks — stakeholder interviews in week one, data and infrastructure assessment in weeks two and three, and report delivery in week four.',
+        a: 'A focused AI readiness assessment typically takes 3–4 weeks stakeholder interviews in week one, data and infrastructure assessment in weeks two and three, and report delivery in week four.',
       },
       {
         q: 'What do we get at the end?',
@@ -463,22 +463,22 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Do we need to have started AI to get value from this?',
-        a: 'No. The assessment is most valuable before you have committed to an AI approach or vendor — it gives you the independent foundation to make the right decisions from the start.',
+        a: 'No. The assessment is most valuable before you have committed to an AI approach or vendor it gives you the independent foundation to make the right decisions from the start.',
       },
       {
         q: 'Can you assess specific AI vendor proposals?',
-        a: 'Yes. We regularly evaluate specific vendor AI solutions against business requirements, data readiness, and total cost of ownership — giving you independent guidance before committing to a commercial relationship.',
+        a: 'Yes. We regularly evaluate specific vendor AI solutions against business requirements, data readiness, and total cost of ownership giving you independent guidance before committing to a commercial relationship.',
       },
     ],
   },
 
   'automation-audit': {
     name: 'Automation Audit',
-    subtitle: 'Find every hour your business is losing to manual work — and build the case to automate it.',
+    subtitle: 'Find every hour your business is losing to manual work and build the case to automate it.',
     challenges: [
       'No systematic view of which processes consume the most time and effort across the business',
       'Automation projects selected based on loudest stakeholder rather than highest ROI',
-      'Business case for automation never formally built — investment decisions made on gut feel',
+      'Business case for automation never formally built investment decisions made on gut feel',
       'Existing automations not performing as expected but no one has assessed why',
     ],
     outcomes: [
@@ -539,7 +539,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Can you audit existing automation as well as new opportunities?',
-        a: 'Yes. We review existing automation implementations — identifying failures, gaps in coverage, and optimisation opportunities — as part of the same engagement.',
+        a: 'Yes. We review existing automation implementations identifying failures, gaps in coverage, and optimisation opportunities as part of the same engagement.',
       },
       {
         q: 'Do you benchmark against industry peers?',
@@ -550,7 +550,7 @@ const services: Record<string, ServiceData> = {
 
   'fractional-cdo-cao': {
     name: 'Fractional CDO & CAO',
-    subtitle: 'Senior data and automation leadership — without the full-time executive cost.',
+    subtitle: 'Senior data and automation leadership without the full-time executive cost.',
     challenges: [
       'No senior data or automation leader to own the strategy and hold delivery accountable',
       'Board-level decisions on data and AI being made without the expertise to evaluate them',
@@ -578,7 +578,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'Team Leadership',
-        desc: 'Direct leadership of internal data or automation teams — hiring, direction-setting, and performance management.',
+        desc: 'Direct leadership of internal data or automation teams hiring, direction-setting, and performance management.',
       },
     ],
     tools: ['All data and automation tooling relevant to the engagement', 'Board reporting frameworks', 'OKR methodology', 'Quarterly business reviews'],
@@ -596,7 +596,7 @@ const services: Record<string, ServiceData> = {
       {
         step: '03',
         title: 'Programme Delivery',
-        desc: 'Own delivery of the strategy — directing internal teams and external partners.',
+        desc: 'Own delivery of the strategy directing internal teams and external partners.',
       },
       {
         step: '04',
@@ -611,7 +611,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Can a fractional CDO hire our internal data team?',
-        a: 'Yes. Building, hiring, and developing the internal data or automation team is a core part of most fractional executive engagements — with the goal of reducing external dependency over time.',
+        a: 'Yes. Building, hiring, and developing the internal data or automation team is a core part of most fractional executive engagements with the goal of reducing external dependency over time.',
       },
       {
         q: 'How long is a typical fractional engagement?',
@@ -619,7 +619,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Is this the same as interim management?',
-        a: 'Different. An interim manager backfills a vacant role full-time. A fractional executive provides strategic leadership part-time alongside your existing structure — typically at a fraction of the full-time cost.',
+        a: 'Different. An interim manager backfills a vacant role full-time. A fractional executive provides strategic leadership part-time alongside your existing structure typically at a fraction of the full-time cost.',
       },
     ],
   },

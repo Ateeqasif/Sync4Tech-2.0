@@ -60,7 +60,7 @@ const industries = {
     faq: [
       {
         q: 'Is healthcare automation GDPR compliant?',
-        a: 'Yes. All systems we build are designed with GDPR compliance from the ground up — data minimisation, consent management, access controls, and audit trails. We work closely with your DPO throughout the project.',
+        a: 'Yes. All systems we build are designed with GDPR compliance from the ground up data minimisation, consent management, access controls, and audit trails. We work closely with your DPO throughout the project.',
       },
       {
         q: 'Can you integrate with our EMR system?',
@@ -72,7 +72,7 @@ const industries = {
       },
       {
         q: 'Do clinical staff need training?',
-        a: 'We design every system with clinical staff in mind — intuitive interfaces that require minimal training. We include role-specific training sessions and create simple reference guides for all users.',
+        a: 'We design every system with clinical staff in mind intuitive interfaces that require minimal training. We include role-specific training sessions and create simple reference guides for all users.',
       },
     ],
   },
@@ -137,7 +137,7 @@ const industries = {
       },
       {
         q: 'Do you support SOX compliance?',
-        a: 'Yes. We can design data pipelines and reporting systems with SOX compliance built in — audit trails, access controls, data lineage tracking, and change management documentation are standard in our financial services engagements.',
+        a: 'Yes. We can design data pipelines and reporting systems with SOX compliance built in audit trails, access controls, data lineage tracking, and change management documentation are standard in our financial services engagements.',
       },
       {
         q: 'What data sources can you connect?',
@@ -202,7 +202,7 @@ const industries = {
       },
       {
         q: 'How long until we see results?',
-        a: 'Early predictive models and dashboards are typically live within 8 weeks. Full predictive maintenance capability — covering all critical equipment — is usually complete within 16 weeks. Clients typically see ROI within 6 months of go-live.',
+        a: 'Early predictive models and dashboards are typically live within 8 weeks. Full predictive maintenance capability covering all critical equipment is usually complete within 16 weeks. Clients typically see ROI within 6 months of go-live.',
       },
       {
         q: 'Can you integrate with our ERP?',
@@ -267,11 +267,11 @@ const industries = {
     faq: [
       {
         q: 'Do you integrate with Shopify?',
-        a: 'Yes — Shopify is one of our most common integration targets. We connect Shopify with your CRM, inventory systems, fulfilment partners, email platforms, and analytics stack to create a fully unified retail operation.',
+        a: 'Yes Shopify is one of our most common integration targets. We connect Shopify with your CRM, inventory systems, fulfilment partners, email platforms, and analytics stack to create a fully unified retail operation.',
       },
       {
         q: 'Can you personalise for millions of customers?',
-        a: 'Yes. Our AI personalisation systems are built to scale — segmenting customers by behaviour, purchase history, and predictive lifetime value, then triggering personalised communications automatically across email, SMS, and on-site experiences.',
+        a: 'Yes. Our AI personalisation systems are built to scale segmenting customers by behaviour, purchase history, and predictive lifetime value, then triggering personalised communications automatically across email, SMS, and on-site experiences.',
       },
       {
         q: 'How quickly can we see ROI?',
@@ -330,7 +330,7 @@ const industries = {
       slug: 'real-estate-crm-automation',
       snippet: 'UK Real Estate Agency',
       outcome:
-        'Automated the full lead nurture cycle for a UK estate agency — from portal lead capture through to viewing booking and follow-up — tripling conversion rates and freeing agents for client-facing work.',
+        'Automated the full lead nurture cycle for a UK estate agency from portal lead capture through to viewing booking and follow-up tripling conversion rates and freeing agents for client-facing work.',
     },
     tools: ['GoHighLevel', 'HubSpot', 'Zapier', 'Make.com', 'Monday.com', 'Twilio'],
     faq: [
@@ -344,11 +344,11 @@ const industries = {
       },
       {
         q: 'Do you work with lettings and sales agencies?',
-        a: 'We work with both lettings and sales agencies, as well as commercial property firms and property developers. The workflows differ but the automation principles are the same — respond fast, follow up consistently, keep CRM clean.',
+        a: 'We work with both lettings and sales agencies, as well as commercial property firms and property developers. The workflows differ but the automation principles are the same respond fast, follow up consistently, keep CRM clean.',
       },
       {
         q: 'How do you handle GDPR for lead data?',
-        a: 'We build GDPR compliance into every lead management system — consent capture, data retention policies, unsubscribe handling, and audit trails. All systems are reviewed by your compliance team before go-live.',
+        a: 'We build GDPR compliance into every lead management system consent capture, data retention policies, unsubscribe handling, and audit trails. All systems are reviewed by your compliance team before go-live.',
       },
     ],
   },
@@ -399,7 +399,7 @@ const industries = {
       slug: 'logistics-route-optimisation',
       snippet: 'UK Logistics Company',
       outcome:
-        'Deployed AI route optimisation and automated dispatch for a UK logistics provider, cutting fuel costs by 31% and achieving 99.2% on-time delivery — with fuel savings alone covering the project cost in the first quarter.',
+        'Deployed AI route optimisation and automated dispatch for a UK logistics provider, cutting fuel costs by 31% and achieving 99.2% on-time delivery with fuel savings alone covering the project cost in the first quarter.',
     },
     tools: ['Google Maps API', 'AWS', 'n8n', 'Twilio', 'Monday.com', 'Python'],
     faq: [
@@ -417,7 +417,7 @@ const industries = {
       },
       {
         q: 'Can customers track their deliveries?',
-        a: 'Yes. We build customer-facing tracking portals and automated notification sequences so customers receive proactive ETAs and live tracking links — dramatically reducing inbound queries to your customer service team.',
+        a: 'Yes. We build customer-facing tracking portals and automated notification sequences so customers receive proactive ETAs and live tracking links dramatically reducing inbound queries to your customer service team.',
       },
     ],
   },
@@ -474,7 +474,7 @@ const industries = {
     faq: [
       {
         q: 'Do you work with universities and schools?',
-        a: 'Yes. We work across the education sector — universities, further education colleges, independent schools, and online learning providers. The automation opportunities differ by institution type and we tailor our approach accordingly.',
+        a: 'Yes. We work across the education sector universities, further education colleges, independent schools, and online learning providers. The automation opportunities differ by institution type and we tailor our approach accordingly.',
       },
       {
         q: 'Can you integrate with our MIS?',
@@ -482,7 +482,7 @@ const industries = {
       },
       {
         q: 'Is student data kept secure?',
-        a: 'Absolutely. We design all systems with data protection legislation compliance (UK GDPR) built in — appropriate access controls, data minimisation, retention policies, and full audit trails for all student data handling.',
+        a: 'Absolutely. We design all systems with data protection legislation compliance (UK GDPR) built in appropriate access controls, data minimisation, retention policies, and full audit trails for all student data handling.',
       },
       {
         q: 'Do you support UCAS integrations?',
@@ -551,7 +551,7 @@ const industries = {
       },
       {
         q: 'Do you work with law firms of all sizes?',
-        a: 'Yes. We work with sole practitioners, boutique firms, and large multi-office practices. The automation scope scales to firm size — smaller firms often start with document automation and billing, while larger firms benefit from full workflow orchestration across departments.',
+        a: 'Yes. We work with sole practitioners, boutique firms, and large multi-office practices. The automation scope scales to firm size smaller firms often start with document automation and billing, while larger firms benefit from full workflow orchestration across departments.',
       },
       {
         q: 'What document types can be automated?',
@@ -592,10 +592,10 @@ const industries = {
     },
     tools: ['HubSpot', 'Segment', 'Snowflake', 'OpenAI', 'n8n', 'Intercom'],
     faq: [
-      { q: 'Can you integrate with our product data?', a: 'Yes. We connect to your product analytics stack — whether Amplitude, Mixpanel, Segment, or custom event tracking — and unify it with CRM and support data to create a complete customer intelligence layer.' },
+      { q: 'Can you integrate with our product data?', a: 'Yes. We connect to your product analytics stack whether Amplitude, Mixpanel, Segment, or custom event tracking and unify it with CRM and support data to create a complete customer intelligence layer.' },
       { q: 'How does churn prediction work?', a: 'We build ML models trained on your historical customer behaviour, usage patterns, and engagement signals. These models score every active customer weekly and trigger automated success plays when a customer moves into an at-risk segment.' },
-      { q: 'Do you work with early-stage startups?', a: 'Yes. We work with SaaS businesses at all stages — from Series A startups building their first automation layer to mature platforms modernising legacy workflows. Our approach scales to your current team size and data maturity.' },
-      { q: 'Can you automate renewal workflows?', a: 'Absolutely. We automate the full renewal lifecycle — usage-based health scoring, proactive renewal outreach sequences, contract generation, e-signature workflows, and post-renewal onboarding for expanded seats or tiers.' },
+      { q: 'Do you work with early-stage startups?', a: 'Yes. We work with SaaS businesses at all stages from Series A startups building their first automation layer to mature platforms modernising legacy workflows. Our approach scales to your current team size and data maturity.' },
+      { q: 'Can you automate renewal workflows?', a: 'Absolutely. We automate the full renewal lifecycle usage-based health scoring, proactive renewal outreach sequences, contract generation, e-signature workflows, and post-renewal onboarding for expanded seats or tiers.' },
     ],
   },
   'professional-services': {
@@ -632,7 +632,7 @@ const industries = {
     tools: ['Monday.com', 'HubSpot', 'Zapier', 'Harvest', 'DocuSign', 'Power BI'],
     faq: [
       { q: 'Which PSA tools do you integrate with?', a: 'We integrate with Monday.com, Teamwork, Wrike, Harvest, and most major professional services automation platforms. We can also build custom integrations with bespoke project management systems.' },
-      { q: 'Can you automate timesheet and billing?', a: 'Yes. We connect time tracking tools to billing systems, automating invoice generation, approval workflows, and payment chasing — significantly reducing the billing cycle and recovering revenue that would otherwise be lost to manual delays.' },
+      { q: 'Can you automate timesheet and billing?', a: 'Yes. We connect time tracking tools to billing systems, automating invoice generation, approval workflows, and payment chasing significantly reducing the billing cycle and recovering revenue that would otherwise be lost to manual delays.' },
       { q: 'Do you work with small consultancies?', a: 'Absolutely. We work with boutique consultancies of 5–10 people through to large professional services firms. Smaller firms often see the fastest ROI because automation has an outsized impact on lean teams.' },
       { q: 'How do you handle client data security?', a: 'All client data remains within your own infrastructure or approved cloud environment. We follow enterprise data security practices and ensure all automations comply with your confidentiality obligations to clients.' },
     ],
@@ -671,7 +671,7 @@ const industries = {
     tools: ['Mews', 'HubSpot', 'Zapier', 'Twilio', 'OpenAI', 'Power BI'],
     faq: [
       { q: 'Which PMS systems do you integrate with?', a: 'We integrate with Mews, Opera, Cloudbeds, Little Hotelier, and most major property management systems. We also work with custom reservation systems via API or database integration.' },
-      { q: 'Can you automate guest messaging?', a: 'Yes. We build automated pre-arrival, in-stay, and post-stay communication sequences across email, SMS, and WhatsApp — personalised to each guest\'s booking type, preferences, and behaviour.' },
+      { q: 'Can you automate guest messaging?', a: 'Yes. We build automated pre-arrival, in-stay, and post-stay communication sequences across email, SMS, and WhatsApp personalised to each guest\'s booking type, preferences, and behaviour.' },
       { q: 'Do you work with travel agencies and tour operators?', a: 'Yes. Beyond hotels, we work with OTAs, travel management companies, tour operators, and airlines to automate booking workflows, supplier communications, and customer journey orchestration.' },
       { q: 'How does dynamic pricing work?', a: 'Our pricing models analyse historical occupancy, local demand signals, competitor rates, and seasonal patterns to recommend optimal pricing in real time. Pricing updates can be applied manually or fed directly into your channel manager automatically.' },
     ],
@@ -711,7 +711,7 @@ const industries = {
     faq: [
       { q: 'Do you offer discounts for non-profits?', a: 'Yes. We offer preferential pricing for registered charities and non-profit organisations. We believe automation should be accessible to mission-driven organisations, and we structure our engagements to deliver maximum impact within constrained budgets.' },
       { q: 'Can you integrate with Salesforce Nonprofit?', a: 'Yes. Salesforce Nonprofit (NPSP) is one of our most common integration targets in this sector. We build automation layers on top of NPSP and connect it with your programme management, communications, and reporting tools.' },
-      { q: 'How do you handle sensitive beneficiary data?', a: 'We design all systems with data protection at the core — appropriate access controls, encryption, consent management, and audit trails. All systems comply with UK GDPR and relevant sector-specific data handling requirements.' },
+      { q: 'How do you handle sensitive beneficiary data?', a: 'We design all systems with data protection at the core appropriate access controls, encryption, consent management, and audit trails. All systems comply with UK GDPR and relevant sector-specific data handling requirements.' },
       { q: 'Do you work with public sector organisations?', a: 'Yes. We work with local authorities, NHS bodies, housing associations, and other public sector organisations. We understand the procurement, information governance, and change management requirements of public sector projects.' },
     ],
   },
@@ -727,7 +727,7 @@ const orbitConfig: Record<IndustrySlug, {
   healthcare: {
     eyebrow: 'Intelligence Layer',
     title: 'Connected Care,', highlight: 'Zero Manual Gaps',
-    description: 'Our AI layer sits at the centre of your clinical operations, linking every department into a single intelligent network — so data flows in and actionable insight flows out.',
+    description: 'Our AI layer sits at the centre of your clinical operations, linking every department into a single intelligent network so data flows in and actionable insight flows out.',
     bullets: ['Real-time EMR and billing synchronisation', 'AI-powered patient communication and scheduling', 'Compliance dashboards updated automatically'],
     centerLabel: 'Care Intelligence',
     flip: false,
@@ -775,7 +775,7 @@ const orbitConfig: Record<IndustrySlug, {
   'retail-ecommerce': {
     eyebrow: 'Intelligence Layer',
     title: 'Sell Smarter,', highlight: 'Retain Longer',
-    description: 'Our retail AI layer connects your storefront, warehouse, CRM, and marketing stack — turning every customer signal into an automated action that drives revenue.',
+    description: 'Our retail AI layer connects your storefront, warehouse, CRM, and marketing stack turning every customer signal into an automated action that drives revenue.',
     bullets: ['Real-time inventory sync across all channels', 'AI-powered personalisation and upsell sequences', 'Automated abandoned cart and retention flows'],
     centerLabel: 'Commerce AI',
     flip: true,
@@ -791,7 +791,7 @@ const orbitConfig: Record<IndustrySlug, {
   'real-estate': {
     eyebrow: 'Intelligence Layer',
     title: 'Close Faster,', highlight: 'Nurture Smarter',
-    description: 'Our AI layer connects your lead sources, CRM, and property listings into one automated pipeline — so no lead falls through the cracks and every deal moves faster.',
+    description: 'Our AI layer connects your lead sources, CRM, and property listings into one automated pipeline so no lead falls through the cracks and every deal moves faster.',
     bullets: ['Instant multi-source lead capture and routing', 'Automated nurture sequences across SMS, email, and WhatsApp', 'AI-powered deal pipeline forecasting'],
     centerLabel: 'Property AI',
     flip: false,
@@ -807,7 +807,7 @@ const orbitConfig: Record<IndustrySlug, {
   logistics: {
     eyebrow: 'Intelligence Layer',
     title: 'Every Delivery,', highlight: 'On Time',
-    description: 'Our logistics AI layer connects your TMS, driver apps, and customer portals — giving you real-time visibility and automated dispatch that eliminates delays before they happen.',
+    description: 'Our logistics AI layer connects your TMS, driver apps, and customer portals giving you real-time visibility and automated dispatch that eliminates delays before they happen.',
     bullets: ['AI route optimisation that adapts in real time', 'Automated driver dispatch and proof-of-delivery', 'Customer tracking portals with live ETAs'],
     centerLabel: 'Route AI',
     flip: true,
@@ -823,7 +823,7 @@ const orbitConfig: Record<IndustrySlug, {
   education: {
     eyebrow: 'Intelligence Layer',
     title: 'Automate Admin,', highlight: 'Amplify Learning',
-    description: 'Our education AI layer connects admissions, student records, and faculty tools — so staff spend their time on outcomes, not paperwork.',
+    description: 'Our education AI layer connects admissions, student records, and faculty tools so staff spend their time on outcomes, not paperwork.',
     bullets: ['Automated admissions from application to offer letter', 'Real-time student performance dashboards for staff', 'AI-powered parent and student communication'],
     centerLabel: 'Campus AI',
     flip: false,
@@ -839,7 +839,7 @@ const orbitConfig: Record<IndustrySlug, {
   legal: {
     eyebrow: 'Intelligence Layer',
     title: 'Less Admin,', highlight: 'More Billable Hours',
-    description: 'Our legal AI layer connects your case management, document systems, and client communications — automating the repetitive so your team focuses on the work that matters.',
+    description: 'Our legal AI layer connects your case management, document systems, and client communications automating the repetitive so your team focuses on the work that matters.',
     bullets: ['AI document review and contract extraction in minutes', 'Automated client onboarding and matter setup', 'Real-time matter status and deadline tracking'],
     centerLabel: 'Legal AI',
     flip: true,
@@ -855,7 +855,7 @@ const orbitConfig: Record<IndustrySlug, {
   'technology-saas': {
     eyebrow: 'Intelligence Layer',
     title: 'Scale Your Product,', highlight: 'Not Your Headcount',
-    description: 'Our SaaS intelligence layer connects your product data, CRM, and success workflows — turning every usage signal into an automated action that retains and expands revenue.',
+    description: 'Our SaaS intelligence layer connects your product data, CRM, and success workflows turning every usage signal into an automated action that retains and expands revenue.',
     bullets: ['Real-time product usage signals triggering success plays', 'AI churn prediction with automated intervention sequences', 'Unified customer data from trial to renewal'],
     centerLabel: 'Product AI',
     flip: false,
@@ -871,7 +871,7 @@ const orbitConfig: Record<IndustrySlug, {
   'professional-services': {
     eyebrow: 'Intelligence Layer',
     title: 'Automate the Admin,', highlight: 'Bill the Expertise',
-    description: 'Our professional services intelligence layer connects your projects, billing, and client communications — so every hour saved on admin is an hour recovered for billable work.',
+    description: 'Our professional services intelligence layer connects your projects, billing, and client communications so every hour saved on admin is an hour recovered for billable work.',
     bullets: ['Automated project status reports for every client', 'Real-time resource utilisation and profitability dashboards', 'Digital client onboarding from engagement letter to kickoff'],
     centerLabel: 'Delivery AI',
     flip: true,
@@ -887,7 +887,7 @@ const orbitConfig: Record<IndustrySlug, {
   'hospitality-travel': {
     eyebrow: 'Intelligence Layer',
     title: 'Every Guest,', highlight: 'An Exceptional Stay',
-    description: 'Our hospitality intelligence layer connects your PMS, channel manager, and guest communications — delivering personalised experiences automatically while your team focuses on service.',
+    description: 'Our hospitality intelligence layer connects your PMS, channel manager, and guest communications delivering personalised experiences automatically while your team focuses on service.',
     bullets: ['Automated pre-arrival, in-stay, and post-stay guest journeys', 'Dynamic revenue optimisation across all booking channels', 'Real-time occupancy and RevPAR dashboards'],
     centerLabel: 'Guest AI',
     flip: false,
@@ -903,7 +903,7 @@ const orbitConfig: Record<IndustrySlug, {
   'nonprofit-public-sector': {
     eyebrow: 'Intelligence Layer',
     title: 'Maximum Impact,', highlight: 'Minimum Admin',
-    description: 'Our non-profit intelligence layer connects your programmes, donors, and impact data — so your team spends more time on mission and less time on manual reporting.',
+    description: 'Our non-profit intelligence layer connects your programmes, donors, and impact data so your team spends more time on mission and less time on manual reporting.',
     bullets: ['Automated grant reporting from live programme data', 'Donor stewardship journeys from first gift to major donor', 'Real-time impact dashboards for funders and leadership'],
     centerLabel: 'Impact AI',
     flip: true,
@@ -999,7 +999,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
-            {/* Common Challenges — bold dark red card */}
+            {/* Common Challenges bold dark red card */}
             <div
               className="relative overflow-hidden rounded-3xl flex flex-col bg-white border border-gray-100"
               style={{ boxShadow: '0 0 0 0' }}
@@ -1033,7 +1033,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
               </div>
             </div>
 
-            {/* The Sync4Tech Approach — bold dark blue card */}
+            {/* The Sync4Tech Approach bold dark blue card */}
             <div
               className="relative overflow-hidden rounded-3xl flex flex-col"
               style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
@@ -1130,7 +1130,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
                     style={{ boxShadow: `0 0 0 1px ${grad.from}60, 0 0 40px ${grad.from}15` }}
                   />
 
-                  {/* Decorative number — large watermark */}
+                  {/* Decorative number large watermark */}
                   <span className="absolute right-6 top-4 font-inter-tight font-black text-7xl leading-none select-none pointer-events-none tabular-nums"
                     style={{
                       background: `linear-gradient(135deg, ${grad.from}18, ${grad.to}08)`,

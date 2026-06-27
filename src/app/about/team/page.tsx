@@ -6,7 +6,7 @@ import FinalCTA from '@/components/sections/FinalCTA'
 
 export const metadata: Metadata = {
   title: 'Our Team | Sync4Tech',
-  description: 'Meet the AI engineers, automation consultants and data specialists behind Sync4Tech — a remote-first team across the UK, US and Pakistan delivering transformation at scale.',
+  description: 'Meet the AI engineers, automation consultants and data specialists behind Sync4Tech a remote-first team across the UK, US and Pakistan delivering transformation at scale.',
   openGraph: {
     title: 'Meet the Sync4Tech Team',
     description: 'AI engineers, automation consultants and data specialists building the future of business operations.',
@@ -74,7 +74,7 @@ const team = [
 const values = [
   { title: 'Outcomes over outputs', body: 'We are measured by what changes in your business, not what we deliver in a zip file. Every engagement starts with defining what success looks like in numbers.' },
   { title: 'Radical transparency', body: 'We tell you what we can deliver, what we cannot, and what it will cost before we start. No scope creep surprises, no inflated estimates to protect margin.' },
-  { title: 'Remote-first, globally connected', body: 'Our team spans three continents. That is a feature, not a limitation — it means we bring diverse perspectives and we work across your time zone, not just ours.' },
+  { title: 'Remote-first, globally connected', body: 'Our team spans three continents. That is a feature, not a limitation it means we bring diverse perspectives and we work across your time zone, not just ours.' },
   { title: 'Build to last', body: 'We document everything, train your team, and design systems that your internal staff can operate independently. We want you to not need us for day-to-day operations.' },
 ]
 
@@ -85,7 +85,7 @@ export default function TeamPage() {
         eyebrow="About"
         title="The people behind "
         highlight="Sync4Tech"
-        subtitle="A remote-first team of AI engineers, automation specialists, and data engineers working across the UK, US and Pakistan — united by a belief that mid-market companies deserve enterprise-grade technology transformation."
+        subtitle="A remote-first team of AI engineers, automation specialists, and data engineers working across the UK, US and Pakistan united by a belief that mid-market companies deserve enterprise-grade technology transformation."
         breadcrumb={[
           { label: 'About', href: '/about' },
           { label: 'Our Team', href: '/about/team' },
@@ -101,7 +101,7 @@ export default function TeamPage() {
               Built by practitioners,<br />not generalists
             </h2>
             <p className="text-gray-500 dark:text-gray-400 text-sm max-w-2xl mx-auto">
-              Every person on this team has built production AI systems, automated real business workflows, or architected data infrastructure that organisations depend on daily. We do not sell strategy decks — we build things that work.
+              Every person on this team has built production AI systems, automated real business workflows, or architected data infrastructure that organisations depend on daily. We do not sell strategy decks we build things that work.
             </p>
           </div>
 

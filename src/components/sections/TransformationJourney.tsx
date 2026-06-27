@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const stages = [
   { id: 1, title: 'Discovery & Assessment', duration: '3 days', description: 'We audit your current state: systems, processes, data maturity, and automation readiness to identify the highest-value opportunities.' },
   { id: 2, title: 'Strategy & Roadmap', duration: '2 days', description: 'A prioritised transformation roadmap aligned to your business goals, with clear ROI projections and phased delivery milestones.' },
-  { id: 3, title: 'Design & Architecture', duration: '3 days', description: 'Solution architecture, data models, workflow designs, and integration blueprints — built for scale and resilience.' },
+  { id: 3, title: 'Design & Architecture', duration: '3 days', description: 'Solution architecture, data models, workflow designs, and integration blueprints built for scale and resilience.' },
   { id: 4, title: 'Build & Integrate', duration: '2 weeks', description: 'Rapid development and deployment of automation, AI, and data solutions with weekly delivery cycles.' },
   { id: 5, title: 'Test & Optimise', duration: '1 week', description: 'Rigorous QA, performance testing, and real-world validation before go-live with your team.' },
   { id: 6, title: 'Launch & Scale', duration: 'Ongoing', description: 'Go-live support, team training, continuous monitoring, and ongoing optimisation to compound results over time.' },

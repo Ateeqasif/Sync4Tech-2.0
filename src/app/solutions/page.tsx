@@ -6,8 +6,8 @@ import SolutionsFAQ from '@/components/pages/SolutionsFAQ'
 import HowItWorks from '@/components/pages/HowItWorks'
 
 export const metadata: Metadata = {
-  title: 'Business Automation Solutions | Sync4Tech — AI & Business Automation',
-  description: 'Explore Sync4Tech\'s six integrated business automation solutions — process automation, data intelligence, workflow orchestration, predictive analytics, AI enablement, and change management. Serving businesses across UK, US, and Pakistan.',
+  title: 'Business Automation Solutions | Sync4Tech AI & Business Automation',
+  description: 'Explore Sync4Tech\'s six integrated business automation solutions process automation, data intelligence, workflow orchestration, predictive analytics, AI enablement, and change management. Serving businesses across UK, US, and Pakistan.',
   keywords: ['business automation solutions', 'process automation', 'data intelligence', 'workflow orchestration', 'predictive analytics', 'AI enablement', 'change management', 'digital transformation UK', 'automation consulting'],
   openGraph: {
     title: 'Business Automation Solutions | Sync4Tech',
@@ -164,7 +164,7 @@ const solutions = [
   {
     slug: 'ai-enablement',
     title: 'AI Enablement',
-    subtitle: 'Embed practical AI capabilities across your organisation — from LLM integrations to intelligent decision engines.',
+    subtitle: 'Embed practical AI capabilities across your organisation from LLM integrations to intelligent decision engines.',
     theme: 'light' as const,
     bg: 'bg-[#f0f7ff]',
     visual: (
@@ -249,14 +249,14 @@ export default function SolutionsPage() {
         <div className="section-container">
           {/*
             Layout (3-col grid):
-            Row 1: [Process Automation — 2col tall] [Data Intelligence — 1col tall]
-            Row 2: [Workflow Orchestration — 1col short] [Predictive Analytics — 1col short] (both inside right col of row1 area... actually use separate rows)
-            Row 3: [AI Enablement — 1col] [Change Management — 2col]
+            Row 1: [Process Automation 2col tall] [Data Intelligence 1col tall]
+            Row 2: [Workflow Orchestration 1col short] [Predictive Analytics 1col short] (both inside right col of row1 area... actually use separate rows)
+            Row 3: [AI Enablement 1col] [Change Management 2col]
             We use a CSS grid with explicit row spans.
           */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[320px]">
 
-            {/* Card 0 — Process Automation — wide (2col) + tall (2row) */}
+            {/* Card 0 Process Automation wide (2col) + tall (2row) */}
             {(() => {
               const sol = solutions[0]
               return (
@@ -277,7 +277,7 @@ export default function SolutionsPage() {
               )
             })()}
 
-            {/* Card 1 — Data Intelligence — 1col, 1row */}
+            {/* Card 1 Data Intelligence 1col, 1row */}
             {(() => {
               const sol = solutions[1]
               return (
@@ -294,7 +294,7 @@ export default function SolutionsPage() {
               )
             })()}
 
-            {/* Card 2 — Workflow Orchestration — 1col, 1row */}
+            {/* Card 2 Workflow Orchestration 1col, 1row */}
             {(() => {
               const sol = solutions[2]
               return (
@@ -311,7 +311,7 @@ export default function SolutionsPage() {
               )
             })()}
 
-            {/* Card 3 — Predictive Analytics — 1col, 1row */}
+            {/* Card 3 Predictive Analytics 1col, 1row */}
             {(() => {
               const sol = solutions[3]
               return (
@@ -328,7 +328,7 @@ export default function SolutionsPage() {
               )
             })()}
 
-            {/* Card 4 — AI Enablement — 1col, 1row */}
+            {/* Card 4 AI Enablement 1col, 1row */}
             {(() => {
               const sol = solutions[4]
               return (
@@ -345,7 +345,7 @@ export default function SolutionsPage() {
               )
             })()}
 
-            {/* Card 5 — Change Management — wide (2col), 1row */}
+            {/* Card 5 Change Management wide (2col), 1row */}
             {(() => {
               const sol = solutions[5]
               return (

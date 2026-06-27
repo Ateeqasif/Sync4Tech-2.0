@@ -3,7 +3,7 @@ import PageHero from '@/components/PageHero'
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Sync4Tech',
-  description: 'Sync4Tech Terms of Service — the legal agreement governing use of our website and services. Governed by the laws of England & Wales.',
+  description: 'Sync4Tech Terms of Service the legal agreement governing use of our website and services. Governed by the laws of England & Wales.',
   openGraph: {
     title: 'Terms of Service | Sync4Tech',
     url: 'https://sync4tech.com/terms-of-service',
@@ -41,7 +41,7 @@ export default function TermsOfServicePage() {
             </ul>
 
             <h2>3. Intellectual Property</h2>
-            <p><strong>Our IP:</strong> All intellectual property on this website — including text, graphics, code, branding, and methodology frameworks — is owned by or licensed to Sync4Tech Ltd. You may not reproduce, distribute, or create derivative works without our express written permission.</p>
+            <p><strong>Our IP:</strong> All intellectual property on this website including text, graphics, code, branding, and methodology frameworks is owned by or licensed to Sync4Tech Ltd. You may not reproduce, distribute, or create derivative works without our express written permission.</p>
             <p><strong>Client deliverables:</strong> Upon full payment of all invoices, Sync4Tech assigns to the client all intellectual property rights in the specific custom deliverables created for that engagement. We retain ownership of our underlying tools, frameworks, and methodologies, and the right to use anonymised learnings for future engagements.</p>
 
             <h2>4. Limitation of Liability</h2>

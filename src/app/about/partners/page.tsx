@@ -60,9 +60,9 @@ const partners = [
 ]
 
 const partnerBenefits = [
-  { title: 'Certified expertise', body: 'Platform certifications are not marketing — they translate into faster implementation, fewer errors, and access to partner support channels that accelerate problem resolution.' },
+  { title: 'Certified expertise', body: 'Platform certifications are not marketing they translate into faster implementation, fewer errors, and access to partner support channels that accelerate problem resolution.' },
   { title: 'Preferential pricing', body: 'Our partner status allows us to pass on discounts and credits to clients on several platforms, reducing your total cost of the technology stack we deploy.' },
-  { title: 'Partner engineering support', body: 'When complex edge cases arise, our partner relationships give us direct access to platform engineering teams — not just public documentation and ticketing queues.' },
+  { title: 'Partner engineering support', body: 'When complex edge cases arise, our partner relationships give us direct access to platform engineering teams not just public documentation and ticketing queues.' },
   { title: 'Early access to capabilities', body: 'Partners often receive beta access to new features before general availability. Our clients benefit from capabilities weeks or months before they are publicly released.' },
 ]
 
@@ -90,7 +90,7 @@ export default function PartnersPage() {
                 Partner-certified,<br />outcome-driven
               </h2>
               <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">
-                We do not recommend tools because we have a reseller agreement. We recommend tools because they are the right fit for the problem — then we pursue the deepest possible partnership with those tools to serve our clients better.
+                We do not recommend tools because we have a reseller agreement. We recommend tools because they are the right fit for the problem then we pursue the deepest possible partnership with those tools to serve our clients better.
               </p>
               <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                 Our technology recommendations are always independent. Our expertise with those tools is not. We invest heavily in certifications, training, and partner relationships because it makes us better at what we do for our clients.

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const faqs = [
   {
     q: 'What business processes can Sync4Tech automate?',
-    a: 'We automate a wide range of business processes including data entry, invoice processing, customer onboarding, report generation, inventory management, HR workflows, and more. If it is repetitive and rule-based — or can be made intelligent with AI — we can automate it. Our team conducts a process audit to identify the highest-value automation opportunities specific to your business.'
+    a: 'We automate a wide range of business processes including data entry, invoice processing, customer onboarding, report generation, inventory management, HR workflows, and more. If it is repetitive and rule-based or can be made intelligent with AI we can automate it. Our team conducts a process audit to identify the highest-value automation opportunities specific to your business.'
   },
   {
     q: 'How long does implementation take?',

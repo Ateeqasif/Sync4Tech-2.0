@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: ['AI insights', 'automation blog', 'business transformation', 'digital transformation articles', 'process automation guides', 'AI strategy', 'data intelligence'],
   openGraph: {
     title: 'AI & Automation Insights | Sync4Tech Blog',
-    description: 'Ideas that drive business forward — practical guides on AI, automation, and digital transformation.',
+    description: 'Ideas that drive business forward practical guides on AI, automation, and digital transformation.',
     url: 'https://sync4tech.com/insights',
   },
 }

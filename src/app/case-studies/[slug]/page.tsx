@@ -30,7 +30,7 @@ const caseStudies: Record<string, {
     ],
     metrics: [
       { value: '74%', label: 'Admin Time Reduced', context: 'Front-desk staff now spend their time with patients, not paperwork.' },
-      { value: '8 min', label: 'Intake Time', context: 'Down from 45 minutes per patient — a 5.6x improvement in throughput.' },
+      { value: '8 min', label: 'Intake Time', context: 'Down from 45 minutes per patient a 5.6x improvement in throughput.' },
       { value: '99%', label: 'Data Accuracy', context: 'Near-zero errors in patient records, eliminating costly billing corrections.' },
     ],
     tools: ['Zapier', 'HubSpot', 'Custom EMR API', 'Power BI', 'Make.com', 'Typeform'],
@@ -48,19 +48,19 @@ const caseStudies: Record<string, {
     title: 'Risk reporting reduced from 3 days to', highlight: '4 Hours',
     subtitle: 'How a UK financial services firm replaced manual reporting with a real-time risk intelligence platform.',
     challengeBody: [
-      'A mid-market UK financial services firm was compiling its risk dashboard by hand — analysts pulling data from six disconnected systems, reconciling figures in Excel, and spending three full working days each month preparing a report that was already outdated by the time it reached the board.',
+      'A mid-market UK financial services firm was compiling its risk dashboard by hand analysts pulling data from six disconnected systems, reconciling figures in Excel, and spending three full working days each month preparing a report that was already outdated by the time it reached the board.',
       'The process was error-prone, heavily dependent on two key individuals, and provided no intra-month visibility. When a market event required rapid risk assessment, the firm had no way to get a current picture without another multi-day manual exercise.',
-      'Leadership needed real-time risk visibility, automated regulatory reporting, and the ability to drill down from board-level metrics to individual trade level — without adding headcount.',
+      'Leadership needed real-time risk visibility, automated regulatory reporting, and the ability to drill down from board-level metrics to individual trade level without adding headcount.',
     ],
     steps: [
-      { title: 'Data Source Audit', desc: 'We mapped all six data sources — trading platform, CRM, finance system, compliance tool, and two legacy databases — assessing data quality and integration feasibility.' },
+      { title: 'Data Source Audit', desc: 'We mapped all six data sources trading platform, CRM, finance system, compliance tool, and two legacy databases assessing data quality and integration feasibility.' },
       { title: 'Warehouse Architecture', desc: 'We designed and built a Snowflake data warehouse with automated Fivetran pipelines pulling from all six sources on a 15-minute refresh cycle.' },
-      { title: 'dbt Transformation Layer', desc: 'We built a dbt modelling layer that cleaned, joined, and transformed raw data into reliable risk metrics — with data quality tests on every model.' },
+      { title: 'dbt Transformation Layer', desc: 'We built a dbt modelling layer that cleaned, joined, and transformed raw data into reliable risk metrics with data quality tests on every model.' },
       { title: 'Power BI Dashboard', desc: 'We built a role-specific Power BI dashboard suite: executive risk summary, analyst drill-down, and automated regulatory report generation.' },
     ],
     metrics: [
       { value: '18x', label: 'Faster Reporting', context: 'From 3 days of manual effort to a dashboard refreshed every 15 minutes.' },
-      { value: '4 hrs', label: 'Monthly Close Time', context: 'Down from 3 full working days — analysts now validate rather than compile.' },
+      { value: '4 hrs', label: 'Monthly Close Time', context: 'Down from 3 full working days analysts now validate rather than compile.' },
       { value: '100%', label: 'Data Accuracy', context: 'Automated pipelines with quality checks eliminated manual reconciliation errors.' },
     ],
     tools: ['Snowflake', 'dbt', 'Fivetran', 'Power BI', 'Python', 'SQL'],
@@ -78,11 +78,11 @@ const caseStudies: Record<string, {
     subtitle: 'How a UK e-commerce retailer replaced gut-feel buying with AI-powered demand forecasting.',
     challengeBody: [
       'A UK online retailer with 4,000 SKUs across three product categories was experiencing stockout rates of 12–18% during peak periods, directly costing an estimated £340K per year in lost revenue. The buying team was working from last year\'s data and intuition.',
-      'Simultaneously, overstock on slow-moving lines was tying up £200K+ in working capital. The business needed to get smarter about what to buy, when to buy it, and in what quantities — without adding buying headcount.',
+      'Simultaneously, overstock on slow-moving lines was tying up £200K+ in working capital. The business needed to get smarter about what to buy, when to buy it, and in what quantities without adding buying headcount.',
       'The challenge was compounded by a highly seasonal product mix, a supplier base with 8–14 week lead times, and no existing data infrastructure to build on.',
     ],
     steps: [
-      { title: 'Data Infrastructure', desc: 'We built a Snowflake data warehouse connecting Shopify, the supplier portal, Google Analytics, and the finance system — creating the data foundation for forecasting.' },
+      { title: 'Data Infrastructure', desc: 'We built a Snowflake data warehouse connecting Shopify, the supplier portal, Google Analytics, and the finance system creating the data foundation for forecasting.' },
       { title: 'Demand Signal Engineering', desc: 'We engineered demand signals from 18 months of sales history, seasonality patterns, promotional calendars, and external trend data.' },
       { title: 'Forecasting Model', desc: 'We trained and validated an ensemble forecasting model achieving 94% accuracy on held-out data, with SKU-level and category-level predictions.' },
       { title: 'Buying Workflow Integration', desc: 'We integrated model outputs into a buying dashboard and automated purchase order suggestions, reviewed weekly by the buying team.' },
@@ -108,7 +108,7 @@ const caseStudies: Record<string, {
     subtitle: 'How a US manufacturing plant saved $2.1M annually by predicting failures before they happen.',
     challengeBody: [
       'A US manufacturing facility running 24/7 production was experiencing 4–6 unplanned shutdowns per quarter, each costing an average of $85,000 in lost production, emergency labour, and expedited parts. Annual downtime costs exceeded $2M.',
-      'Maintenance was entirely reactive — engineers responded to failures after they happened. The facility had sensors on critical equipment but no system to interpret the data they were generating. Thousands of data points went unread every hour.',
+      'Maintenance was entirely reactive engineers responded to failures after they happened. The facility had sensors on critical equipment but no system to interpret the data they were generating. Thousands of data points went unread every hour.',
       'Leadership wanted to move to a predictive maintenance model but had no data science capability in-house and needed a solution that could integrate with their existing SCADA systems without disrupting production.',
     ],
     steps: [
@@ -137,19 +137,19 @@ const caseStudies: Record<string, {
     title: 'Lead conversion tripled in', highlight: '60 Days',
     subtitle: 'How a UK real estate agency automated its entire lead nurture and CRM workflow.',
     challengeBody: [
-      'A UK residential and commercial agency with 12 agents was losing leads to competitors due to slow follow-up. The average response time to new enquiries was 4 hours — well above the industry benchmark of under 5 minutes for optimal conversion.',
+      'A UK residential and commercial agency with 12 agents was losing leads to competitors due to slow follow-up. The average response time to new enquiries was 4 hours well above the industry benchmark of under 5 minutes for optimal conversion.',
       'Agents were manually entering leads from Rightmove, Zoopla, and the agency website into the CRM, often hours after initial contact. Follow-up sequences were ad hoc, and there was no visibility into pipeline health for management.',
-      'With agents spending 2–3 hours daily on CRM admin, they had less time for viewings, valuations, and relationship building — the activities that actually generate revenue.',
+      'With agents spending 2–3 hours daily on CRM admin, they had less time for viewings, valuations, and relationship building the activities that actually generate revenue.',
     ],
     steps: [
-      { title: 'Lead Source Integration', desc: 'We connected all lead sources — Rightmove, Zoopla, website forms, and social media — to the CRM via automated webhooks, eliminating all manual entry.' },
+      { title: 'Lead Source Integration', desc: 'We connected all lead sources Rightmove, Zoopla, website forms, and social media to the CRM via automated webhooks, eliminating all manual entry.' },
       { title: 'Instant Response Workflow', desc: 'We built automated instant response sequences: personalised SMS and email within 90 seconds of a lead arriving, with agent notification and calendar link.' },
-      { title: 'Nurture Automation', desc: 'We designed and automated 30-day nurture sequences tailored by property type, budget, and stage — keeping leads warm without agent effort.' },
+      { title: 'Nurture Automation', desc: 'We designed and automated 30-day nurture sequences tailored by property type, budget, and stage keeping leads warm without agent effort.' },
       { title: 'Pipeline Dashboard', desc: 'We built a real-time pipeline dashboard giving management full visibility into lead volume, conversion rates, and agent performance.' },
     ],
     metrics: [
       { value: '3x', label: 'Lead Conversion', context: 'Conversion rate tripled within 60 days of go-live, driven by faster response times.' },
-      { value: '90 sec', label: 'Response Time', context: 'Down from 4 hours average — leads now receive personalised outreach in under 2 minutes.' },
+      { value: '90 sec', label: 'Response Time', context: 'Down from 4 hours average leads now receive personalised outreach in under 2 minutes.' },
       { value: '80%', label: 'CRM Tasks Automated', context: 'Agents reclaimed 2–3 hours daily previously spent on manual CRM administration.' },
     ],
     tools: ['GoHighLevel', 'Make.com', 'HubSpot', 'Zapier', 'Twilio', 'Typeform'],
@@ -166,9 +166,9 @@ const caseStudies: Record<string, {
     title: 'Fuel costs reduced by', highlight: '31%',
     subtitle: 'How a UK logistics company saved £180K annually with AI-powered route optimisation.',
     challengeBody: [
-      'A UK regional logistics company operating 45 vehicles was planning routes manually each morning — dispatchers printing maps, calling drivers, and adjusting plans reactively when deliveries were missed or addresses were wrong.',
+      'A UK regional logistics company operating 45 vehicles was planning routes manually each morning dispatchers printing maps, calling drivers, and adjusting plans reactively when deliveries were missed or addresses were wrong.',
       'Fuel was the business\'s largest variable cost, and it was being consumed inefficiently: vehicles crossing each other\'s paths, drivers taking suboptimal routes, and last-minute changes causing cascading delays.',
-      'Customer satisfaction was also suffering — ETAs were estimates at best, real-time tracking was unavailable, and missed deliveries required expensive re-runs.',
+      'Customer satisfaction was also suffering ETAs were estimates at best, real-time tracking was unavailable, and missed deliveries required expensive re-runs.',
     ],
     steps: [
       { title: 'Fleet Data Integration', desc: 'We connected the vehicle telematics system, order management platform, and customer database into a unified operations data layer.' },
@@ -178,7 +178,7 @@ const caseStudies: Record<string, {
     ],
     metrics: [
       { value: '31%', label: 'Fuel Cost Reduction', context: '£180K saved annually on fuel through optimised routing across the 45-vehicle fleet.' },
-      { value: '99.2%', label: 'On-Time Delivery', context: 'Up from 87% — driven by optimised routes and real-time rerouting.' },
+      { value: '99.2%', label: 'On-Time Delivery', context: 'Up from 87% driven by optimised routes and real-time rerouting.' },
       { value: '£180K', label: 'Annual Savings', context: 'Fuel savings alone covered the full project cost within the first quarter.' },
     ],
     tools: ['Google Maps API', 'AWS', 'Python', 'n8n', 'Twilio', 'Monday.com', 'Snowflake'],
@@ -196,15 +196,15 @@ const caseStudies: Record<string, {
     title: 'MRR grew', highlight: '4.2x',
     subtitle: 'How a US SaaS company automated its entire sales stack and grew revenue 4x in one quarter.',
     challengeBody: [
-      'A US B2B SaaS company with 8 salespeople was running its entire sales process manually — reps logging calls by hand, sending follow-up emails from templates, and updating CRM records at end-of-day from memory.',
+      'A US B2B SaaS company with 8 salespeople was running its entire sales process manually reps logging calls by hand, sending follow-up emails from templates, and updating CRM records at end-of-day from memory.',
       'As a result, follow-up was inconsistent, deals were falling through the cracks, and the sales team was spending 40% of their time on admin rather than selling. Pipeline visibility was poor, and the VP of Sales had no reliable forecast.',
-      'The company needed to systematise its sales process, automate everything that could be automated, and give leadership real-time visibility — without disrupting the 8 reps mid-quarter.',
+      'The company needed to systematise its sales process, automate everything that could be automated, and give leadership real-time visibility without disrupting the 8 reps mid-quarter.',
     ],
     steps: [
-      { title: 'Sales Process Documentation', desc: 'We worked with the VP of Sales to document the ideal sales process — every stage, every touchpoint, every trigger — as the blueprint for automation.' },
+      { title: 'Sales Process Documentation', desc: 'We worked with the VP of Sales to document the ideal sales process every stage, every touchpoint, every trigger as the blueprint for automation.' },
       { title: 'CRM Configuration', desc: 'We rebuilt the HubSpot CRM pipeline with defined stages, required fields, and automated stage progression based on activity signals.' },
       { title: 'Sequence Automation', desc: 'We built automated email sequences, LinkedIn touchpoint reminders, and call scheduling workflows triggered by lead actions and stage changes.' },
-      { title: 'Reporting & Forecasting', desc: 'We built a sales dashboard with real-time pipeline, velocity metrics, and AI-assisted forecasting — giving the VP daily visibility without rep input.' },
+      { title: 'Reporting & Forecasting', desc: 'We built a sales dashboard with real-time pipeline, velocity metrics, and AI-assisted forecasting giving the VP daily visibility without rep input.' },
     ],
     metrics: [
       { value: '4.2x', label: 'MRR Growth', context: 'Monthly recurring revenue grew 4.2x in the quarter following automation go-live.' },
@@ -226,18 +226,18 @@ const caseStudies: Record<string, {
     title: 'Billing cycle cut from 14 days to', highlight: '48 Hours',
     subtitle: 'How a UK law firm recovered hundreds of billable hours with AI document automation.',
     challengeBody: [
-      'A UK law firm with 24 fee earners was losing significant billable revenue to non-billable document work. Solicitors were spending 2–3 hours per day drafting standard documents — NDAs, engagement letters, standard clauses — from scratch or from outdated templates.',
+      'A UK law firm with 24 fee earners was losing significant billable revenue to non-billable document work. Solicitors were spending 2–3 hours per day drafting standard documents NDAs, engagement letters, standard clauses from scratch or from outdated templates.',
       'The billing cycle was a further drain: time entries were compiled manually at month-end, invoices drafted in Word, and the process from matter close to invoice sent took 14 working days on average.',
-      'With the firm growing rapidly, the partners needed to increase capacity without proportionally increasing headcount — and identified document automation as the highest-value opportunity.',
+      'With the firm growing rapidly, the partners needed to increase capacity without proportionally increasing headcount and identified document automation as the highest-value opportunity.',
     ],
     steps: [
       { title: 'Document Audit', desc: 'We catalogued every document type produced by the firm over the previous 12 months, identifying the 40 templates responsible for 80% of drafting volume.' },
-      { title: 'AI Template Engine', desc: 'We built an AI-powered document generation system using OpenAI and a custom template engine — fee earners answer a structured questionnaire and receive a first draft in under 60 seconds.' },
-      { title: 'Billing Automation', desc: 'We integrated time tracking, matter management (Clio), and invoicing into an automated billing workflow — invoices generated, reviewed, and sent within 48 hours of matter close.' },
-      { title: 'Client Onboarding Flow', desc: 'We automated the client onboarding process — engagement letter generation, e-signature via DocuSign, AML checks, and matter opening — reducing onboarding from 5 days to same-day.' },
+      { title: 'AI Template Engine', desc: 'We built an AI-powered document generation system using OpenAI and a custom template engine fee earners answer a structured questionnaire and receive a first draft in under 60 seconds.' },
+      { title: 'Billing Automation', desc: 'We integrated time tracking, matter management (Clio), and invoicing into an automated billing workflow invoices generated, reviewed, and sent within 48 hours of matter close.' },
+      { title: 'Client Onboarding Flow', desc: 'We automated the client onboarding process engagement letter generation, e-signature via DocuSign, AML checks, and matter opening reducing onboarding from 5 days to same-day.' },
     ],
     metrics: [
-      { value: '48 hrs', label: 'Billing Cycle', context: 'Down from 14 working days — cash flow transformed and write-offs eliminated.' },
+      { value: '48 hrs', label: 'Billing Cycle', context: 'Down from 14 working days cash flow transformed and write-offs eliminated.' },
       { value: '60%', label: 'Non-Billable Hours Reduced', context: 'Solicitors reclaimed hours previously spent on drafting and admin, redirected to fee-earning work.' },
       { value: '3x', label: 'Faster Client Onboarding', context: 'New clients onboarded same-day vs. 5 working days previously.' },
     ],

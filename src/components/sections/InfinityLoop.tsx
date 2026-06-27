@@ -43,7 +43,7 @@ export default function InfinityLoop() {
             <span className="gradient-text">Unified by Sync4Tech</span>
           </h2>
           <p className="text-gray-500 dark:text-gray-400 mt-4 text-sm leading-relaxed">
-            We connect every tool in your stack into one intelligent, automated system — no silos, no manual handoffs.
+            We connect every tool in your stack into one intelligent, automated system no silos, no manual handoffs.
           </p>
         </motion.div>
 
@@ -83,7 +83,7 @@ export default function InfinityLoop() {
               />
             ))}
 
-            {/* ── Flowing particles — bidirectional, desynchronised, half speed ── */}
+            {/* ── Flowing particles bidirectional, desynchronised, half speed ── */}
             {tools.map(t => {
               // Each tool gets 4 particles: 2 inward, 2 outward, all unique timing
               const particles = [

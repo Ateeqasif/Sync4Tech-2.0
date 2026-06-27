@@ -9,8 +9,8 @@ const SIZES = ['1–10', '11–50', '51–200', '201–500', '500+']
 const FAQ = [
   { q: 'How quickly will I hear back?', a: 'We respond to all enquiries within 24 business hours. For urgent matters, email hello@sync4tech.com directly.' },
   { q: 'Is the initial consultation free?', a: 'Yes. The discovery call and initial strategy session are completely free with no obligation. We want to understand your challenge before recommending anything.' },
-  { q: 'What information should I prepare?', a: 'The more context the better — current tools, team size, biggest operational pain points, and any budget or timeline constraints. Even rough numbers help us tailor the conversation.' },
-  { q: 'Do you work with startups or only enterprise?', a: 'We work with ambitious organisations of all sizes — from funded startups looking to build scalable operations, to mid-market companies optimising for growth, to enterprise clients needing complex multi-system automation.' },
+  { q: 'What information should I prepare?', a: 'The more context the better current tools, team size, biggest operational pain points, and any budget or timeline constraints. Even rough numbers help us tailor the conversation.' },
+  { q: 'Do you work with startups or only enterprise?', a: 'We work with ambitious organisations of all sizes from funded startups looking to build scalable operations, to mid-market companies optimising for growth, to enterprise clients needing complex multi-system automation.' },
 ]
 
 export default function ContactForm() {
@@ -31,7 +31,7 @@ export default function ContactForm() {
       <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* LEFT — Form */}
+            {/* LEFT Form */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -96,7 +96,7 @@ export default function ContactForm() {
               </div>
             </motion.div>
 
-            {/* RIGHT — Contact info */}
+            {/* RIGHT Contact info */}
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
