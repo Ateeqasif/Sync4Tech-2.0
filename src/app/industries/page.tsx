@@ -6,11 +6,11 @@ import IndustriesFAQ from '@/components/pages/IndustriesFAQ'
 
 export const metadata: Metadata = {
   title: 'Industries We Serve | Sync4Tech — AI & Business Automation',
-  description: 'Sync4Tech delivers AI automation solutions across 8 industries: Healthcare, Financial Services, Manufacturing, Retail, Real Estate, Logistics, Education, and Legal. Serving UK, US, and Pakistan markets.',
-  keywords: ['industry automation', 'healthcare automation', 'financial services AI', 'manufacturing automation', 'retail AI', 'logistics automation', 'legal automation', 'education technology', 'real estate CRM'],
+  description: 'Sync4Tech delivers AI automation solutions across 12 industries: Healthcare, Financial Services, Manufacturing, Retail, Real Estate, Logistics, Education, Legal, Technology & SaaS, Professional Services, Hospitality & Travel, and Non-Profit. Serving UK, US, and Pakistan markets.',
+  keywords: ['industry automation', 'healthcare automation', 'financial services AI', 'manufacturing automation', 'retail AI', 'logistics automation', 'legal automation', 'education technology', 'real estate CRM', 'SaaS automation', 'professional services automation', 'hospitality automation', 'nonprofit automation'],
   openGraph: {
     title: 'Industries We Serve | Sync4Tech',
-    description: 'Deep domain expertise across 8 sectors being transformed by AI and automation.',
+    description: 'Deep domain expertise across 12 sectors being transformed by AI and automation.',
     url: 'https://sync4tech.com/industries',
   },
 }
@@ -109,10 +109,56 @@ const industries = [
       </svg>
     ),
   },
+  {
+    slug: 'technology-saas',
+    name: 'Technology & SaaS',
+    description: 'Automate customer onboarding, churn prediction, and product analytics pipelines. Help SaaS companies reduce time-to-value, improve NRR, and scale operations without scaling headcount.',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="3" y="7" width="22" height="14" rx="3" stroke="#007cf4" strokeWidth="1.5" />
+        <path d="M9 12l3 3-3 3M14 18h5" stroke="#36c5f0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    slug: 'professional-services',
+    name: 'Professional Services',
+    description: 'Automate project delivery workflows, client reporting, and resource planning. Free consultants and advisors from administrative overhead so they can focus on billable, high-value client work.',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="10" r="4" stroke="#007cf4" strokeWidth="1.5" />
+        <path d="M6 24c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#36c5f0" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M20 4l4 4-4 4" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    slug: 'hospitality-travel',
+    name: 'Hospitality & Travel',
+    description: 'Automate booking management, guest communications, and revenue optimisation. Help hotels, agencies, and venues deliver personalised experiences while eliminating manual operational overhead.',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M4 22L14 6l10 16H4z" stroke="#007cf4" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M10 22v-6h8v6" stroke="#36c5f0" strokeWidth="1.5" strokeLinejoin="round" />
+        <circle cx="14" cy="13" r="1.5" fill="#007cf4" />
+      </svg>
+    ),
+  },
+  {
+    slug: 'nonprofit-public-sector',
+    name: 'Non-Profit & Public Sector',
+    description: 'Automate grant reporting, beneficiary management, and impact measurement. Help mission-driven organisations do more with limited resources through smart automation and data-driven decision-making.',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M14 4l2.5 7h7.5l-6 4.5 2.5 7L14 18.5 7.5 22.5l2.5-7L4 11h7.5L14 4z" stroke="#007cf4" strokeWidth="1.5" strokeLinejoin="round" />
+        <circle cx="14" cy="14" r="3" stroke="#36c5f0" strokeWidth="1.2" />
+      </svg>
+    ),
+  },
 ]
 
 const stats = [
-  { value: '8', label: 'Industries Served', suffix: '' },
+  { value: '12', label: 'Industries Served', suffix: '' },
   { value: '200+', label: 'Deployments Delivered', suffix: '' },
   { value: '90', label: 'Days to ROI', suffix: '-Day' },
 ]
@@ -136,8 +182,8 @@ export default function IndustriesPage() {
             style={{ gridAutoRows: '220px' }}
           >
             {industries.map((ind, i) => {
-              const isDark = i === 0 || i === 2 || i === 4 || i === 6
-              const isWide = i === 0 || i === 7
+              const isDark = i === 0 || i === 2 || i === 4 || i === 6 || i === 8 || i === 10
+              const isWide = i === 0 || i === 11
               const num = String(i + 1).padStart(2, '0')
               const gradients = [
                 'linear-gradient(135deg, #033a9d, #007cf4)',
@@ -145,6 +191,10 @@ export default function IndustriesPage() {
                 'linear-gradient(135deg, #050f2e, #033a9d)',
                 '#f0f7ff',
                 'linear-gradient(135deg, #020c1e, #007cf4)',
+                '#e8f4ff',
+                'linear-gradient(135deg, #033a9d, #050f2e)',
+                '#f0f7ff',
+                'linear-gradient(135deg, #050f2e, #007cf4)',
                 '#e8f4ff',
                 'linear-gradient(135deg, #033a9d, #050f2e)',
                 '#f0f7ff',

@@ -559,6 +559,162 @@ const industries = {
       },
     ],
   },
+  'technology-saas': {
+    name: 'Technology & SaaS',
+    subtitle: 'Automate onboarding, reduce churn, and scale operations without scaling headcount.',
+    challenges: [
+      'Manual customer onboarding delaying time-to-value by weeks',
+      'No predictive signals for churn until customers have already left',
+      'Product analytics siloed from CRM and customer success teams',
+      'Support tickets consuming engineering and success team hours',
+    ],
+    approach: [
+      'Automated onboarding workflows from signup to first value moment',
+      'AI-powered churn prediction with proactive intervention triggers',
+      'Unified product and CRM data layer for full customer intelligence',
+      'Automated support ticket routing and resolution workflows',
+    ],
+    solutions: [
+      { slug: 'ai-enablement', name: 'AI Enablement', desc: 'Churn prediction models and AI-powered customer success automation.' },
+      { slug: 'data-intelligence', name: 'Data Intelligence', desc: 'Unified product analytics, CRM, and usage data for complete customer visibility.' },
+      { slug: 'process-automation', name: 'Process Automation', desc: 'Automate onboarding, renewals, and customer success playbooks.' },
+      { slug: 'workflow-orchestration', name: 'Workflow Orchestration', desc: 'Connect product, CRM, support, and billing into one seamless customer journey.' },
+    ],
+    metrics: [
+      { value: '60%', label: 'Churn Rate Reduction' },
+      { value: '3x', label: 'Faster Time-to-Value' },
+      { value: '80%', label: 'Onboarding Tasks Automated' },
+    ],
+    caseStudy: {
+      slug: 'saas-onboarding-automation',
+      snippet: 'B2B SaaS Platform, UK',
+      outcome: 'Automated the full customer onboarding journey and deployed churn prediction models, reducing churn by 60% and cutting time-to-value from 3 weeks to under 5 days.',
+    },
+    tools: ['HubSpot', 'Segment', 'Snowflake', 'OpenAI', 'n8n', 'Intercom'],
+    faq: [
+      { q: 'Can you integrate with our product data?', a: 'Yes. We connect to your product analytics stack — whether Amplitude, Mixpanel, Segment, or custom event tracking — and unify it with CRM and support data to create a complete customer intelligence layer.' },
+      { q: 'How does churn prediction work?', a: 'We build ML models trained on your historical customer behaviour, usage patterns, and engagement signals. These models score every active customer weekly and trigger automated success plays when a customer moves into an at-risk segment.' },
+      { q: 'Do you work with early-stage startups?', a: 'Yes. We work with SaaS businesses at all stages — from Series A startups building their first automation layer to mature platforms modernising legacy workflows. Our approach scales to your current team size and data maturity.' },
+      { q: 'Can you automate renewal workflows?', a: 'Absolutely. We automate the full renewal lifecycle — usage-based health scoring, proactive renewal outreach sequences, contract generation, e-signature workflows, and post-renewal onboarding for expanded seats or tiers.' },
+    ],
+  },
+  'professional-services': {
+    name: 'Professional Services',
+    subtitle: 'Free your consultants from admin and focus their expertise on client outcomes.',
+    challenges: [
+      'Consultants spending 40%+ of their time on non-billable admin work',
+      'Project status reporting done manually across disconnected tools',
+      'Resource allocation based on guesswork rather than real utilisation data',
+      'Client onboarding taking days of back-and-forth paperwork',
+    ],
+    approach: [
+      'Automated project reporting freeing consultants for billable work',
+      'Real-time resource utilisation dashboards for smarter allocation',
+      'Digital client onboarding completing in hours instead of days',
+      'Integrated project management connected to billing and CRM',
+    ],
+    solutions: [
+      { slug: 'process-automation', name: 'Process Automation', desc: 'Automate client onboarding, project reporting, and billing workflows.' },
+      { slug: 'data-intelligence', name: 'Data Intelligence', desc: 'Resource utilisation dashboards and project profitability analytics.' },
+      { slug: 'workflow-orchestration', name: 'Workflow Orchestration', desc: 'Connect PSA, CRM, billing, and communication tools seamlessly.' },
+      { slug: 'ai-enablement', name: 'AI Enablement', desc: 'AI-generated project status reports and intelligent resource matching.' },
+    ],
+    metrics: [
+      { value: '45%', label: 'Non-Billable Hours Reduced' },
+      { value: '2x', label: 'Faster Client Onboarding' },
+      { value: '98%', label: 'Project Data Accuracy' },
+    ],
+    caseStudy: {
+      slug: 'professional-services-automation',
+      snippet: 'UK Management Consultancy',
+      outcome: 'Automated project reporting and client onboarding workflows for a UK consultancy, reducing non-billable admin by 45% and recovering over £200K in previously lost billable hours annually.',
+    },
+    tools: ['Monday.com', 'HubSpot', 'Zapier', 'Harvest', 'DocuSign', 'Power BI'],
+    faq: [
+      { q: 'Which PSA tools do you integrate with?', a: 'We integrate with Monday.com, Teamwork, Wrike, Harvest, and most major professional services automation platforms. We can also build custom integrations with bespoke project management systems.' },
+      { q: 'Can you automate timesheet and billing?', a: 'Yes. We connect time tracking tools to billing systems, automating invoice generation, approval workflows, and payment chasing — significantly reducing the billing cycle and recovering revenue that would otherwise be lost to manual delays.' },
+      { q: 'Do you work with small consultancies?', a: 'Absolutely. We work with boutique consultancies of 5–10 people through to large professional services firms. Smaller firms often see the fastest ROI because automation has an outsized impact on lean teams.' },
+      { q: 'How do you handle client data security?', a: 'All client data remains within your own infrastructure or approved cloud environment. We follow enterprise data security practices and ensure all automations comply with your confidentiality obligations to clients.' },
+    ],
+  },
+  'hospitality-travel': {
+    name: 'Hospitality & Travel',
+    subtitle: 'Deliver memorable guest experiences while eliminating operational overhead.',
+    challenges: [
+      'Manual booking management creating errors and double-bookings',
+      'Guest communications handled reactively rather than proactively',
+      'Revenue management based on intuition rather than dynamic pricing data',
+      'Post-stay review and loyalty follow-up falling through the cracks',
+    ],
+    approach: [
+      'Automated booking workflows with real-time availability sync',
+      'Proactive guest communication sequences from booking to checkout',
+      'Dynamic pricing intelligence based on demand, seasonality, and competition',
+      'Automated post-stay review requests and loyalty re-engagement flows',
+    ],
+    solutions: [
+      { slug: 'process-automation', name: 'Process Automation', desc: 'Automate booking management, guest communications, and staff workflows.' },
+      { slug: 'ai-enablement', name: 'AI Enablement', desc: 'Dynamic pricing AI and personalised guest experience automation.' },
+      { slug: 'data-intelligence', name: 'Data Intelligence', desc: 'Revenue dashboards, occupancy analytics, and guest behaviour insights.' },
+      { slug: 'workflow-orchestration', name: 'Workflow Orchestration', desc: 'Connect PMS, channel managers, CRM, and guest communication tools.' },
+    ],
+    metrics: [
+      { value: '28%', label: 'Revenue Per Room Increase' },
+      { value: '4.8★', label: 'Average Guest Rating' },
+      { value: '70%', label: 'Admin Tasks Automated' },
+    ],
+    caseStudy: {
+      slug: 'hospitality-revenue-automation',
+      snippet: 'Boutique Hotel Group, UK',
+      outcome: 'Deployed automated revenue management and guest communication workflows for a UK hotel group, increasing RevPAR by 28% and achieving a 4.8-star average rating through consistent, personalised guest experiences.',
+    },
+    tools: ['Mews', 'HubSpot', 'Zapier', 'Twilio', 'OpenAI', 'Power BI'],
+    faq: [
+      { q: 'Which PMS systems do you integrate with?', a: 'We integrate with Mews, Opera, Cloudbeds, Little Hotelier, and most major property management systems. We also work with custom reservation systems via API or database integration.' },
+      { q: 'Can you automate guest messaging?', a: 'Yes. We build automated pre-arrival, in-stay, and post-stay communication sequences across email, SMS, and WhatsApp — personalised to each guest\'s booking type, preferences, and behaviour.' },
+      { q: 'Do you work with travel agencies and tour operators?', a: 'Yes. Beyond hotels, we work with OTAs, travel management companies, tour operators, and airlines to automate booking workflows, supplier communications, and customer journey orchestration.' },
+      { q: 'How does dynamic pricing work?', a: 'Our pricing models analyse historical occupancy, local demand signals, competitor rates, and seasonal patterns to recommend optimal pricing in real time. Pricing updates can be applied manually or fed directly into your channel manager automatically.' },
+    ],
+  },
+  'nonprofit-public-sector': {
+    name: 'Non-Profit & Public Sector',
+    subtitle: 'Maximise impact with automation that does more with your existing resources.',
+    challenges: [
+      'Grant reporting consuming disproportionate staff time every quarter',
+      'Beneficiary data siloed across programmes and spreadsheets',
+      'Donor management handled manually with no automated stewardship',
+      'Impact measurement relying on manual data collection and reporting',
+    ],
+    approach: [
+      'Automated grant reporting pulling live data directly from your systems',
+      'Unified beneficiary database connecting all programme data',
+      'Automated donor stewardship journeys from first gift to major donor',
+      'Real-time impact dashboards updated automatically from field data',
+    ],
+    solutions: [
+      { slug: 'process-automation', name: 'Process Automation', desc: 'Automate grant reporting, donor stewardship, and beneficiary management workflows.' },
+      { slug: 'data-intelligence', name: 'Data Intelligence', desc: 'Impact dashboards and programme performance analytics for leadership and funders.' },
+      { slug: 'workflow-orchestration', name: 'Workflow Orchestration', desc: 'Connect CRM, case management, fundraising, and reporting tools.' },
+      { slug: 'change-management', name: 'Change Management', desc: 'Ensure staff adoption of new systems across distributed teams and programmes.' },
+    ],
+    metrics: [
+      { value: '70%', label: 'Grant Reporting Time Saved' },
+      { value: '3x', label: 'More Donors Managed Per Staff' },
+      { value: '100%', label: 'Impact Data Accuracy' },
+    ],
+    caseStudy: {
+      slug: 'nonprofit-impact-automation',
+      snippet: 'UK Non-Profit Organisation',
+      outcome: 'Automated grant reporting and donor stewardship workflows for a UK charity, cutting quarterly reporting time by 70% and enabling the team to manage 3x more donor relationships with the same headcount.',
+    },
+    tools: ['Salesforce Nonprofit', 'HubSpot', 'Zapier', 'Power BI', 'Airtable', 'Make.com'],
+    faq: [
+      { q: 'Do you offer discounts for non-profits?', a: 'Yes. We offer preferential pricing for registered charities and non-profit organisations. We believe automation should be accessible to mission-driven organisations, and we structure our engagements to deliver maximum impact within constrained budgets.' },
+      { q: 'Can you integrate with Salesforce Nonprofit?', a: 'Yes. Salesforce Nonprofit (NPSP) is one of our most common integration targets in this sector. We build automation layers on top of NPSP and connect it with your programme management, communications, and reporting tools.' },
+      { q: 'How do you handle sensitive beneficiary data?', a: 'We design all systems with data protection at the core — appropriate access controls, encryption, consent management, and audit trails. All systems comply with UK GDPR and relevant sector-specific data handling requirements.' },
+      { q: 'Do you work with public sector organisations?', a: 'Yes. We work with local authorities, NHS bodies, housing associations, and other public sector organisations. We understand the procurement, information governance, and change management requirements of public sector projects.' },
+    ],
+  },
 } as const
 
 type IndustrySlug = keyof typeof industries
