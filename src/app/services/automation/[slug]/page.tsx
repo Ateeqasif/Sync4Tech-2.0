@@ -363,7 +363,6 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
               </svg>
               <div className="p-8 flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 mb-7">
-                  <span className="text-4xl">&#9888;</span>
                   <h3 className="font-inter-tight font-black text-gray-900 text-xl">Common Challenges</h3>
                 </div>
                 <ul className="flex flex-col gap-4 flex-1">
@@ -395,14 +394,6 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
               </svg>
               <div className="p-8 flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 mb-7">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background: 'rgba(54,197,240,0.18)' }}
-                  >
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                      <path d="M2 9l5 5 9-9" stroke="#36c5f0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
                   <h3 className="font-inter-tight font-black text-white text-xl">What You Get Instead</h3>
                 </div>
                 <ul className="flex flex-col gap-4 flex-1">
