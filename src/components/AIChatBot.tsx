@@ -3,14 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const BOT_GREETING = "Hi! I'm the Sync4Tech AI. How can I help you today?";
-
-const STEPS = [
-  { field: 'name',    prompt: "What's your full name?",                   placeholder: 'Full name' },
-  { field: 'email',   prompt: "Great! What's your email address?",        placeholder: 'Email address' },
-  { field: 'phone',   prompt: "And your phone number?",                   placeholder: 'Phone number' },
-  { field: 'message', prompt: "What solution or help are you looking for?", placeholder: 'Describe what you need...' },
-];
+const GREETING = "Hi! I'm the Sync4Tech AI. How can I help you today?";
 
 const BrainIcon = ({ color = 'white', size = 24 }: { color?: string; size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
@@ -27,114 +20,85 @@ const BrainIcon = ({ color = 'white', size = 24 }: { color?: string; size?: numb
 );
 
 interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+interface DisplayMessage {
   role: 'bot' | 'user';
   text: string;
 }
 
 export default function AIChatBot() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [displayMessages, setDisplayMessages] = useState<DisplayMessage[]>([]);
+  const [history, setHistory] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [typing, setTyping] = useState(false);
-  const [greetingDone, setGreetingDone] = useState(false);
+  const [done, setDone] = useState(false);
+  const [greetingShown, setGreetingShown] = useState(false);
   const [displayedGreeting, setDisplayedGreeting] = useState('');
-  const [step, setStep] = useState(0); // 0 = greeting shown, 1-4 = collecting fields, 5 = done
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
+  const [greetingComplete, setGreetingComplete] = useState(false);
   const greetingStarted = useRef(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to bottom on new messages
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, typing, displayedGreeting]);
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [displayMessages, typing, displayedGreeting]);
 
-  // Type-write greeting on open
   useEffect(() => {
     if (open && !greetingStarted.current) {
       greetingStarted.current = true;
       setTyping(true);
       setTimeout(() => {
         setTyping(false);
+        setGreetingShown(true);
         let i = 0;
-        const interval = setInterval(() => {
+        const iv = setInterval(() => {
           i++;
-          setDisplayedGreeting(BOT_GREETING.slice(0, i));
-          if (i >= BOT_GREETING.length) {
-            clearInterval(interval);
-            setGreetingDone(true);
-            // After greeting, show first step prompt
-            setTimeout(() => showBotMessage(STEPS[0].prompt), 400);
+          setDisplayedGreeting(GREETING.slice(0, i));
+          if (i >= GREETING.length) {
+            clearInterval(iv);
+            setGreetingComplete(true);
+            setTimeout(() => inputRef.current?.focus(), 100);
           }
-        }, 30);
+        }, 28);
       }, 700);
     }
   }, [open]);
 
-  // Focus input when step changes
-  useEffect(() => {
-    if (step > 0 && step <= STEPS.length) {
-      setTimeout(() => inputRef.current?.focus(), 100);
-    }
-  }, [step]);
+  const sendMessage = async () => {
+    const text = inputValue.trim();
+    if (!text || typing || done) return;
 
-  const showBotMessage = (text: string) => {
-    setTyping(true);
-    setTimeout(() => {
-      setTyping(false);
-      setMessages((prev) => [...prev, { role: 'bot', text }]);
-      setStep((s) => s + 1);
-    }, 600);
-  };
-
-  const handleSend = async () => {
-    const value = inputValue.trim();
-    if (!value || submitting) return;
-
-    const currentField = STEPS[step - 1]?.field as keyof typeof formData;
-    const updatedData = { ...formData, [currentField]: value };
-    setFormData(updatedData);
-    setMessages((prev) => [...prev, { role: 'user', text: value }]);
     setInputValue('');
+    setDisplayMessages((prev) => [...prev, { role: 'user', text }]);
+    const newHistory: Message[] = [...history, { role: 'user', content: text }];
+    setHistory(newHistory);
+    setTyping(true);
 
-    const nextStepIndex = step; // step is 1-based index into STEPS, nextStepIndex is 0-based
-    if (nextStepIndex < STEPS.length) {
-      // Show next question
-      showBotMessage(STEPS[nextStepIndex].prompt);
-    } else {
-      // All fields collected — submit
-      setTyping(true);
-      setSubmitting(true);
-      try {
-        await fetch('/api/chat-lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(updatedData),
-        });
-      } catch {
-        // fail silently — still show success
-      }
-      setTimeout(() => {
-        setTyping(false);
-        setSubmitting(false);
-        setSubmitted(true);
-        setMessages((prev) => [
-          ...prev,
-          {
-            role: 'bot',
-            text: `Thanks ${updatedData.name}! Your details have been sent to our team. We'll be in touch at ${updatedData.email} shortly.`,
-          },
-        ]);
-        setStep(STEPS.length + 1);
-      }, 800);
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: newHistory }),
+      });
+      const data = await res.json();
+      const reply = data.text || "Sorry, I'm having trouble connecting. Please try again.";
+      setDisplayMessages((prev) => [...prev, { role: 'bot', text: reply }]);
+      setHistory((prev) => [...prev, { role: 'assistant', content: reply }]);
+      if (data.done) setDone(true);
+    } catch {
+      setDisplayMessages((prev) => [
+        ...prev,
+        { role: 'bot', text: "Sorry, I'm having trouble connecting right now. Please try again in a moment." },
+      ]);
+    } finally {
+      setTyping(false);
+      setTimeout(() => inputRef.current?.focus(), 50);
     }
   };
-
-  const currentPlaceholder = step >= 1 && step <= STEPS.length
-    ? STEPS[step - 1].placeholder
-    : 'Type here...';
 
   return (
     <div className="fixed bottom-6 right-6 z-[9980] flex flex-col items-end gap-3">
@@ -154,14 +118,14 @@ export default function AIChatBot() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-white font-bold text-sm">Sync4Tech AI</div>
-                <div className="text-white/70 text-xs">Online · Typically replies instantly</div>
+                <div className="text-white/70 text-xs">Powered by Claude · Online</div>
               </div>
               <button onClick={() => setOpen(false)} className="text-white text-xl leading-none hover:text-white/70 transition-colors">×</button>
             </div>
 
             {/* Messages */}
             <div className="bg-white dark:bg-[#0a1a4a] p-4 min-h-[220px] max-h-72 overflow-y-auto flex flex-col gap-3">
-              {/* Typing indicator */}
+              {/* Typing dots */}
               {typing && (
                 <div className="flex items-center gap-1 bg-gray-100 dark:bg-[#071540] rounded-2xl rounded-bl-sm px-4 py-3 w-fit">
                   {[0, 1, 2].map((i) => (
@@ -173,17 +137,17 @@ export default function AIChatBot() {
                 </div>
               )}
 
-              {/* Greeting */}
-              {!typing && displayedGreeting && (
+              {/* Greeting typewriter */}
+              {!typing && greetingShown && (
                 <div className="bg-gray-100 dark:bg-[#071540] rounded-2xl rounded-bl-sm px-4 py-3 text-sm text-gray-700 dark:text-gray-200 w-fit max-w-[90%]">
                   {displayedGreeting}
-                  {!greetingDone && <span className="animate-pulse">|</span>}
+                  {!greetingComplete && <span className="animate-pulse">|</span>}
                 </div>
               )}
 
-              {/* Conversation */}
-              {messages.map((msg, idx) => (
-                <div key={idx} className={`px-4 py-3 rounded-2xl text-sm max-w-[90%] ${
+              {/* Conversation messages */}
+              {displayMessages.map((msg, idx) => (
+                <div key={idx} className={`px-4 py-3 rounded-2xl text-sm max-w-[90%] whitespace-pre-wrap ${
                   msg.role === 'user'
                     ? 'bg-[#007cf4] text-white self-end rounded-br-sm ml-auto'
                     : 'bg-gray-100 dark:bg-[#071540] text-gray-700 dark:text-gray-200 rounded-bl-sm'
@@ -191,25 +155,25 @@ export default function AIChatBot() {
                   {msg.text}
                 </div>
               ))}
-              <div ref={messagesEndRef} />
+              <div ref={bottomRef} />
             </div>
 
             {/* Input */}
-            {!submitted && (
+            {!done && (
               <div className="bg-white dark:bg-[#0a1a4a] border-t border-gray-100 dark:border-white/10 flex items-center gap-2 px-3 py-2">
                 <input
                   ref={inputRef}
-                  type={step === 2 ? 'email' : step === 3 ? 'tel' : 'text'}
+                  type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                  placeholder={currentPlaceholder}
-                  disabled={step === 0 || submitting}
+                  onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                  placeholder={greetingComplete ? 'Type your message...' : ''}
+                  disabled={!greetingComplete || typing}
                   className="flex-1 text-sm outline-none text-gray-700 dark:text-gray-200 placeholder-gray-400 bg-transparent py-1 disabled:opacity-40"
                 />
                 <button
-                  onClick={handleSend}
-                  disabled={!inputValue.trim() || step === 0 || submitting}
+                  onClick={sendMessage}
+                  disabled={!inputValue.trim() || !greetingComplete || typing}
                   className="w-8 h-8 rounded-full flex items-center justify-center bg-[#007cf4] hover:opacity-90 transition-opacity flex-shrink-0 disabled:opacity-40"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -223,9 +187,9 @@ export default function AIChatBot() {
         )}
       </AnimatePresence>
 
-      {/* Launcher button */}
+      {/* Launcher */}
       <motion.button
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => setOpen((p) => !p)}
         whileHover={{ scale: 1.1 }}
         className="relative w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
         style={{ background: 'linear-gradient(135deg, #033a9d, #007cf4)' }}
