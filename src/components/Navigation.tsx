@@ -180,21 +180,17 @@ export default function Navigation() {
                     <div className="grid grid-cols-3 divide-x divide-gray-100">
                       {servicesMega.map((col) => (
                         <div key={col.label} className="p-5">
-                          <Link href={col.href} className="flex items-center gap-2 mb-4 group">
-                            <span className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(0,124,244,0.08)' }}>
-                              {col.icon}
-                            </span>
+                          <Link href={col.href} className="block mb-3 group">
                             <span className="text-xs font-black text-gray-800 uppercase tracking-wide group-hover:text-[#007cf4] transition-colors">{col.label}</span>
                           </Link>
-                          <ul className="flex flex-col gap-1">
+                          <ul className="flex flex-col">
                             {col.items.map((item) => (
                               <li key={item.href}>
                                 <Link
                                   href={item.href}
-                                  className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm text-gray-600 hover:text-[#007cf4] hover:bg-[#007cf4]/5 transition-all duration-150"
+                                  className="block px-0 py-1.5 text-sm text-gray-500 hover:text-[#007cf4] transition-colors duration-150"
                                   onClick={() => setMegaOpen(null)}
                                 >
-                                  <span className="w-1 h-1 rounded-full bg-[#36c5f0] shrink-0" />
                                   {item.label}
                                 </Link>
                               </li>
@@ -243,15 +239,14 @@ export default function Navigation() {
                       <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Industry Solutions</span>
                       <Link href="/industries" className="text-xs text-[#007cf4] font-semibold hover:underline">View all →</Link>
                     </div>
-                    <div className="p-4 grid grid-cols-2 gap-1">
+                    <div className="p-5 grid grid-cols-2 gap-x-4">
                       {industriesMega.map((ind) => (
                         <Link
                           key={ind.href}
                           href={ind.href}
-                          className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:text-[#007cf4] hover:bg-[#007cf4]/5 transition-all duration-150"
+                          className="block py-1.5 text-sm text-gray-500 hover:text-[#007cf4] transition-colors duration-150"
                           onClick={() => setMegaOpen(null)}
                         >
-                          <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }} />
                           {ind.label}
                         </Link>
                       ))}
