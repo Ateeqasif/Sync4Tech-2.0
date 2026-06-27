@@ -70,7 +70,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="py-section bg-[#050f2e]" id="faq" aria-label="Frequently Asked Questions">
+    <section className="py-section bg-[#f8faff] dark:bg-[#050f2e]" id="faq" aria-label="Frequently Asked Questions">
       <div className="section-container">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16"
@@ -80,7 +80,7 @@ export default function FAQ() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#36c5f0] text-sm font-semibold tracking-widest uppercase mb-4 block">FAQ</span>
-          <h2 className="font-inter-tight font-black text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}>
             Frequently Asked
             <br />
             <span className="gradient-text">Questions</span>
@@ -96,10 +96,10 @@ export default function FAQ() {
               key={i}
               className="group relative overflow-hidden rounded-2xl"
               style={{
-                background: 'linear-gradient(145deg, #060d24 0%, #020c1e 100%)',
+                background: open === i ? 'white' : 'white',
                 boxShadow: open === i
-                  ? '0 0 0 1px rgba(0,124,244,0.35), 0 8px 32px rgba(0,0,0,0.4)'
-                  : '0 0 0 1px rgba(255,255,255,0.05)',
+                  ? '0 0 0 1.5px rgba(0,124,244,0.4), 0 8px 32px rgba(0,124,244,0.08)'
+                  : '0 0 0 1px rgba(0,0,0,0.07)',
                 transition: 'box-shadow 0.3s ease',
               }}
               initial={{ opacity: 0, y: 16 }}
@@ -124,12 +124,12 @@ export default function FAQ() {
                 {/* Number */}
                 <span
                   className="shrink-0 font-inter-tight font-black text-xs tabular-nums transition-colors duration-200"
-                  style={{ color: open === i ? '#007cf4' : 'rgba(255,255,255,0.15)' }}
+                  style={{ color: open === i ? '#007cf4' : 'rgba(0,0,0,0.2)' }}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>
 
-                <span className={`flex-1 font-semibold text-sm leading-snug transition-colors duration-200 ${open === i ? 'text-white' : 'text-gray-400 group-hover:text-gray-200'}`}>
+                <span className={`flex-1 font-semibold text-sm leading-snug transition-colors duration-200 ${open === i ? 'text-[#050f2e]' : 'text-gray-600 group-hover:text-[#007cf4]'}`}>
                   {faq.q}
                 </span>
 
@@ -139,13 +139,13 @@ export default function FAQ() {
                   transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                   className="shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200"
                   style={{
-                    background: open === i ? 'linear-gradient(135deg, #033a9d, #007cf4)' : 'rgba(255,255,255,0.05)',
-                    boxShadow: open === i ? '0 0 16px rgba(0,124,244,0.5)' : 'none',
-                    border: open === i ? 'none' : '1px solid rgba(255,255,255,0.1)',
+                    background: open === i ? 'linear-gradient(135deg, #007cf4, #36c5f0)' : 'rgba(0,0,0,0.04)',
+                    boxShadow: open === i ? '0 0 16px rgba(0,124,244,0.35)' : 'none',
+                    border: open === i ? 'none' : '1px solid rgba(0,0,0,0.10)',
                   }}
                 >
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M5 1v8M1 5h8" stroke={open === i ? '#fff' : '#555'} strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M5 1v8M1 5h8" stroke={open === i ? '#fff' : '#888'} strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
                 </motion.span>
               </button>
@@ -158,7 +158,7 @@ export default function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <div className="pl-16 pr-6 pb-6 text-gray-400 text-sm leading-relaxed">
+                    <div className="pl-16 pr-6 pb-6 text-gray-500 text-sm leading-relaxed">
                       {faq.a}
                     </div>
                   </motion.div>
