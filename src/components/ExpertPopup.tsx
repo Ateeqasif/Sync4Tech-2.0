@@ -3,6 +3,17 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const DOT_POSITIONS = [
+  { x: '12%', y: '18%', delay: 0 },
+  { x: '28%', y: '72%', delay: 0.4 },
+  { x: '48%', y: '30%', delay: 0.8 },
+  { x: '65%', y: '65%', delay: 0.2 },
+  { x: '80%', y: '20%', delay: 1.1 },
+  { x: '90%', y: '55%', delay: 0.6 },
+  { x: '38%', y: '85%', delay: 1.4 },
+  { x: '72%', y: '88%', delay: 0.9 },
+]
+
 export default function ExpertPopup() {
   const [visible, setVisible] = useState(false);
 
@@ -42,27 +53,39 @@ export default function ExpertPopup() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Top gradient band */}
-            <div className="relative px-10 pt-10 pb-8 text-white overflow-hidden"
+            <div
+              className="relative px-10 pt-10 pb-8 text-white overflow-hidden"
               style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}
             >
-              {/* Decorative grid */}
-              <div className="absolute inset-0 opacity-10"
-                style={{
-                  backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-                  backgroundSize: '32px 32px',
-                }}
-              />
               {/* Shimmer sweep */}
               <motion.div
                 className="absolute inset-0"
-                style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%)' }}
+                style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%)' }}
                 animate={{ x: ['-100%', '200%'] }}
                 transition={{ duration: 3, repeat: Infinity, repeatDelay: 3, ease: 'easeInOut' }}
               />
               {/* Floating orb */}
-              <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full opacity-20"
+              <div
+                className="absolute -top-16 -right-16 w-48 h-48 rounded-full opacity-20"
                 style={{ background: 'radial-gradient(ellipse, #36c5f0, transparent 70%)' }}
               />
+
+              {/* Animated dots */}
+              {DOT_POSITIONS.map((dot, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute rounded-full"
+                  style={{
+                    left: dot.x,
+                    top: dot.y,
+                    width: i % 3 === 0 ? '6px' : '4px',
+                    height: i % 3 === 0 ? '6px' : '4px',
+                    background: i % 2 === 0 ? 'rgba(255,255,255,0.5)' : 'rgba(54,197,240,0.7)',
+                  }}
+                  animate={{ opacity: [0.2, 1, 0.2], scale: [1, 1.5, 1] }}
+                  transition={{ duration: 2.5, repeat: Infinity, delay: dot.delay, ease: 'easeInOut' }}
+                />
+              ))}
 
               {/* Close button */}
               <button
@@ -76,7 +99,11 @@ export default function ExpertPopup() {
 
               <div className="relative z-10">
                 <div className="inline-flex items-center gap-2 bg-white/15 border border-white/25 rounded-full px-3 py-1 mb-5">
-                  <span className="w-1.5 h-1.5 bg-[#36c5f0] rounded-full animate-pulse" />
+                  <motion.span
+                    className="w-1.5 h-1.5 bg-[#36c5f0] rounded-full"
+                    animate={{ opacity: [1, 0.3, 1] }}
+                    transition={{ duration: 1.2, repeat: Infinity }}
+                  />
                   <span className="text-xs font-semibold tracking-widest uppercase text-white/90">We Value Your Time</span>
                 </div>
 
@@ -94,12 +121,17 @@ export default function ExpertPopup() {
               {/* Trust indicators */}
               <div className="flex items-center gap-6 mb-7">
                 {[
-                  { icon: '⚡', label: 'Responds in 2 hrs' },
-                  { icon: '🎯', label: 'Tailored Strategy' },
-                  { icon: '🔒', label: 'No Commitment' },
-                ].map((item) => (
+                  { label: 'Responds in 2 hrs' },
+                  { label: 'Tailored Strategy' },
+                  { label: 'No Commitment' },
+                ].map((item, idx) => (
                   <div key={item.label} className="flex items-center gap-2">
-                    <span className="text-base">{item.icon}</span>
+                    <motion.span
+                      className="w-2 h-2 rounded-full flex-shrink-0"
+                      style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }}
+                      animate={{ opacity: [1, 0.3, 1], scale: [1, 1.4, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: idx * 0.4 }}
+                    />
                     <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{item.label}</span>
                   </div>
                 ))}
@@ -132,7 +164,7 @@ export default function ExpertPopup() {
               </div>
 
               <p className="text-xs text-gray-400 dark:text-gray-500 text-center mt-5">
-                Trusted by teams across US, UK &amp; Pakistan · No spam, ever
+                Trusted by businesses globally · No spam, ever
               </p>
             </div>
           </motion.div>
