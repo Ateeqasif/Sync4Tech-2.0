@@ -37,7 +37,7 @@ export default function InfinityLoop() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#007cf4] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Connected Ecosystem</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(32px, 4.5vw, 56px)' }}>
+          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
             Your Entire Tech Stack,
             <br />
             <span className="gradient-text">Unified by Sync4Tech</span>

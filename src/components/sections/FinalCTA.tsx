@@ -44,7 +44,7 @@ export default function FinalCTA() {
 
           <h2
             className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight mb-6 max-w-4xl mx-auto"
-            style={{ fontSize: 'clamp(40px, 6vw, 88px)' }}
+            style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
           >
             {t.finalCta.h2}
           </h2>
