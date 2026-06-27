@@ -230,7 +230,7 @@ export default function Navigation() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[380px] rounded-2xl overflow-hidden shadow-2xl border border-black/8"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[780px] rounded-2xl overflow-hidden shadow-2xl border border-black/8"
                     style={{ background: 'white' }}
                     onMouseEnter={keepOpen}
                     onMouseLeave={closeMega}
@@ -239,7 +239,7 @@ export default function Navigation() {
                       <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Industry Solutions</span>
                       <Link href="/industries" className="text-xs text-[#007cf4] font-semibold hover:underline">View all →</Link>
                     </div>
-                    <div className="p-5 grid grid-cols-2 gap-x-4">
+                    <div className="p-5 grid grid-cols-4 gap-x-4">
                       {industriesMega.map((ind) => (
                         <Link
                           key={ind.href}
