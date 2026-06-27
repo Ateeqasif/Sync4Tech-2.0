@@ -70,20 +70,10 @@ export default function CustomCursor() {
         />
       </svg>
 
-      {/* Hover dot that appears on interactive elements */}
-      <div
-        className="cursor-hover-dot absolute -top-1 -left-1 w-8 h-8 rounded-full border border-[#007cf4]/60 opacity-0 scale-75 transition-all duration-200"
-        style={{ background: 'rgba(0,124,244,0.08)' }}
-      />
-
       <style>{`
         .cursor-hovered .cursor-arrow path {
           fill: #007cf4;
           stroke: white;
-        }
-        .cursor-hovered .cursor-hover-dot {
-          opacity: 1;
-          transform: scale(1);
         }
       `}</style>
     </div>

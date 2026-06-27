@@ -260,7 +260,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
   if (size === 'hero') {
     return (
       <Link href={`/insights/${a.slug}`}
-        className="group block rounded-3xl overflow-hidden border border-[#007cf4]/15 hover:border-[#007cf4]/50 hover:shadow-2xl transition-all duration-500 md:col-span-2 md:row-span-2"
+        className="group block rounded-3xl overflow-hidden border border-[#007cf4]/15 hover:border-[#007cf4]/50 hover:shadow-2xl transition-all duration-500 h-full"
       >
         <div className="flex flex-col md:flex-row h-full">
           <div className="relative md:w-[55%] h-64 md:h-full overflow-hidden">
@@ -292,7 +292,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
   if (size === 'wide') {
     return (
       <Link href={`/insights/${a.slug}`}
-        className="group block rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500 md:col-span-2"
+        className="group flex flex-col rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500 h-full"
       >
         <div className="flex flex-col sm:flex-row h-full">
           <div className="relative sm:w-2/5 h-52 sm:h-full overflow-hidden">
@@ -320,9 +320,9 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
   if (size === 'tall') {
     return (
       <Link href={`/insights/${a.slug}`}
-        className="group block rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500 md:row-span-2"
+        className="group flex flex-col rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500 h-full"
       >
-        <div className="relative h-56 md:h-72 overflow-hidden">
+        <div className="relative h-56 md:h-[60%] overflow-hidden flex-shrink-0">
           <Image src={a.image} alt={a.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px) 100vw, 33vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
           <div className="absolute top-3 left-3">
@@ -346,9 +346,9 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
   // small (default)
   return (
     <Link href={`/insights/${a.slug}`}
-      className="group block rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-lg transition-all duration-500"
+      className="group flex flex-col rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-lg transition-all duration-500 h-full"
     >
-      <div className="relative h-44 overflow-hidden">
+      <div className="relative h-44 overflow-hidden flex-shrink-0">
         <Image src={a.image} alt={a.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px) 100vw, 33vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute inset-0 bg-[#007cf4]/0 group-hover:bg-[#007cf4]/10 transition-colors duration-500" />
@@ -377,7 +377,7 @@ function BentoGrid({ items }: { items: Article[] }) {
   ]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[280px]">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[280px]">
       {items.map((a, i) => (
         <motion.div
           key={a.slug}
@@ -386,7 +386,7 @@ function BentoGrid({ items }: { items: Article[] }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.97 }}
           transition={{ duration: 0.45, delay: i * 0.04 }}
-          className={`
+          className={`h-full
             ${sizeMap[i] === 'hero' ? 'md:col-span-2 md:row-span-2' : ''}
             ${sizeMap[i] === 'wide' ? 'md:col-span-2' : ''}
             ${sizeMap[i] === 'tall' ? 'md:row-span-2' : ''}
