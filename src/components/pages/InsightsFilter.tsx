@@ -512,40 +512,6 @@ export default function InsightsFilter() {
           </div>
         )}
 
-        {/* Newsletter */}
-        <motion.div
-          className="mt-16 bg-gradient-to-br from-[#007cf4]/8 to-[#36c5f0]/8 border border-[#007cf4]/20 rounded-3xl p-8 md:p-12 text-center max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-2">Get Insights in Your Inbox</h3>
-          <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">Join 5,000+ business leaders receiving weekly insights on AI, automation, and operational excellence.</p>
-          {subscribed ? (
-            <p className="text-[#007cf4] font-semibold">Thank you for subscribing!</p>
-          ) : (
-            <form
-              className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-              onSubmit={e => { e.preventDefault(); setSubscribed(true) }}
-            >
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-full border border-[#007cf4]/20 bg-white dark:bg-[#050f2e] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 rounded-full bg-[#007cf4] text-white font-semibold text-sm hover:bg-[#36c5f0] transition-colors whitespace-nowrap"
-              >
-                Subscribe
-              </button>
-            </form>
-          )}
-        </motion.div>
       </div>
     </section>
   )
