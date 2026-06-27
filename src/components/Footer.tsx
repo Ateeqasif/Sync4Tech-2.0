@@ -162,20 +162,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Certifications */}
-        <div className="border-t border-white/10">
-          <div className="section-container py-10">
-            <div className="flex flex-wrap gap-3 justify-center">
-              {certs.map(c => (
-                <div key={c.label} className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2">
-                  <span className="text-sm">{c.icon}</span>
-                  <span className="text-xs font-semibold text-white/70">{c.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* Bottom bar */}
         <div className="border-t border-white/10">
           <div className="section-container py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
