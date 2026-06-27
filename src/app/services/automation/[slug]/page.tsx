@@ -352,8 +352,8 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {/* Challenges */}
             <div
-              className="relative overflow-hidden rounded-3xl flex flex-col"
-              style={{ background: 'linear-gradient(135deg, #1a0008, #2d0a0a)' }}
+              className="relative overflow-hidden rounded-3xl flex flex-col bg-white border border-gray-100"
+              style={{ boxShadow: '0 0 0 0' }}
             >
               <svg
                 className="absolute right-4 bottom-4 opacity-[0.05] pointer-events-none select-none"
@@ -364,18 +364,18 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
               <div className="p-8 flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 mb-7">
                   <span className="text-4xl">&#9888;</span>
-                  <h3 className="font-inter-tight font-black text-white text-xl">Common Challenges</h3>
+                  <h3 className="font-inter-tight font-black text-gray-900 text-xl">Common Challenges</h3>
                 </div>
                 <ul className="flex flex-col gap-4 flex-1">
                   {svc.challenges.map((item, i) => (
                     <li key={i} className="flex items-start gap-4">
                       <span
-                        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-inter-tight font-black text-xs text-white"
+                        className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-inter-tight font-black text-xs text-red-500"
                         style={{ background: 'rgba(239,68,68,0.25)', borderLeft: '3px solid #ef4444' }}
                       >
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                      <span className="text-white/75 text-sm leading-relaxed pt-1">{item}</span>
+                      <span className="text-gray-600 text-sm leading-relaxed pt-1">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -385,7 +385,7 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
             {/* Outcomes */}
             <div
               className="relative overflow-hidden rounded-3xl flex flex-col"
-              style={{ background: 'linear-gradient(135deg, #020c1e, #033a9d)' }}
+              style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
             >
               <svg
                 className="absolute right-4 bottom-4 opacity-[0.05] pointer-events-none select-none"
@@ -425,13 +425,13 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
       </section>
 
       {/* 3. Features */}
-      <section className="py-section bg-[#050f2e]">
+      <section className="py-section bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <p className="text-sm font-semibold uppercase tracking-widest text-[#36c5f0] mb-3">
               What We Build
             </p>
-            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-white">
+            <h2 className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900">
               Key Capabilities
             </h2>
           </div>
@@ -450,8 +450,8 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
                   key={feature.title}
                   className="group relative overflow-hidden rounded-2xl flex flex-col"
                   style={{
-                    background: 'linear-gradient(145deg, #060d24 0%, #020c1e 100%)',
-                    boxShadow: '0 0 0 1px rgba(255,255,255,0.06)',
+                    background: 'white',
+                    boxShadow: '0 0 0 1px rgba(0,0,0,0.07)',
                   }}
                 >
                   <span
@@ -479,7 +479,7 @@ export default function AutomationSubPage({ params }: { params: { slug: string }
                         <path d="M2 8l4 4 8-8" stroke={grad.from} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <h3 className="font-inter-tight font-black text-lg text-white mb-2.5">{feature.title}</h3>
+                    <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2.5">{feature.title}</h3>
                     <p className="text-gray-500 text-sm leading-relaxed flex-1">{feature.desc}</p>
                   </div>
                 </div>
