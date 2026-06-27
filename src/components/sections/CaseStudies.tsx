@@ -233,30 +233,13 @@ export default function CaseStudies() {
                 </h3>
 
                 <div className="flex flex-col gap-7">
-                  <div className="flex gap-4">
-                    <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 border border-red-500/20"
-                      style={{ background: 'rgba(239,68,68,0.08)' }}>
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M7 1v6M7 9.5V10" stroke="#ef4444" strokeWidth="1.8" strokeLinecap="round"/>
-                        <circle cx="7" cy="7" r="6" stroke="#ef4444" strokeWidth="1.2" opacity="0.5"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black text-red-500 uppercase tracking-[0.2em] mb-2">The Challenge</p>
-                      <p className="text-gray-500 text-sm leading-relaxed">{c.challenge}</p>
-                    </div>
+                  <div>
+                    <p className="text-[10px] font-black text-red-500 uppercase tracking-[0.2em] mb-2">The Challenge</p>
+                    <p className="text-gray-500 text-sm leading-relaxed">{c.challenge}</p>
                   </div>
-                  <div className="flex gap-4">
-                    <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 border border-[#36c5f0]/20"
-                      style={{ background: 'rgba(54,197,240,0.08)' }}>
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M2 7l3.5 3.5L12 4" stroke="#36c5f0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black text-[#007cf4] uppercase tracking-[0.2em] mb-2">Our Solution</p>
-                      <p className="text-gray-500 text-sm leading-relaxed">{c.solution}</p>
-                    </div>
+                  <div>
+                    <p className="text-[10px] font-black text-[#007cf4] uppercase tracking-[0.2em] mb-2">Our Solution</p>
+                    <p className="text-gray-500 text-sm leading-relaxed">{c.solution}</p>
                   </div>
                 </div>
               </div>
