@@ -94,7 +94,7 @@ export default function TeamPage() {
               className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease }}
             >
               Who We Are
@@ -103,7 +103,7 @@ export default function TeamPage() {
               className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Built by practitioners,<br />not generalists
@@ -112,7 +112,7 @@ export default function TeamPage() {
               className="text-gray-500 dark:text-gray-400 text-sm max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: 0.15, ease }}
             >
               Every person on this team has built production AI systems, automated real business workflows, or architected data infrastructure that organisations depend on daily. We do not sell strategy decks we build things that work.
@@ -126,7 +126,7 @@ export default function TeamPage() {
                 className="group bg-white dark:bg-[#0a1628] rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-lg"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease }}
               >
                 <div className="relative h-64 overflow-hidden bg-[#f0f4ff] dark:bg-[#0d1f3c]">
@@ -168,7 +168,7 @@ export default function TeamPage() {
               className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease }}
             >
               How We Work
@@ -177,7 +177,7 @@ export default function TeamPage() {
               className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               The principles that guide us
@@ -190,7 +190,7 @@ export default function TeamPage() {
                 className="bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-[#007cf4]/10"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease }}
               >
                 <div className="w-8 h-8 rounded-lg bg-[#007cf4]/10 flex items-center justify-center mb-4">
@@ -211,7 +211,7 @@ export default function TeamPage() {
             className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, ease }}
           >
             Join Us
@@ -220,7 +220,7 @@ export default function TeamPage() {
             className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.9, ease }}
           >
             Want to build with us?
@@ -229,7 +229,7 @@ export default function TeamPage() {
             className="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.15, ease }}
           >
             We are always looking for exceptional people who are obsessed with outcomes. If you are an AI engineer, automation consultant, or data specialist who wants to work on high-impact problems, we would love to hear from you.
@@ -237,7 +237,7 @@ export default function TeamPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, delay: 0.25, ease }}
           >
             <Link

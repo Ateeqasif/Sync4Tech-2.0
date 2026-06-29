@@ -62,7 +62,7 @@ export default function InsightContent({ a, related }: Props) {
             className="relative h-80 rounded-2xl overflow-hidden mb-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image src={a.image} alt={a.imageAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 800px" priority />
@@ -77,7 +77,7 @@ export default function InsightContent({ a, related }: Props) {
                 className="mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 {section.heading && (
@@ -103,7 +103,7 @@ export default function InsightContent({ a, related }: Props) {
             className="mt-12 relative overflow-hidden rounded-2xl border border-[#007cf4]/20 shadow-lg shadow-[#007cf4]/5"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(0,124,244,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,124,244,0.03) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
@@ -118,7 +118,7 @@ export default function InsightContent({ a, related }: Props) {
                     className="flex items-start gap-4"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: '-80px' }}
                     transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <div className="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-black" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>{i + 1}</div>
@@ -145,7 +145,7 @@ export default function InsightContent({ a, related }: Props) {
         className="py-12 bg-[#f8faff] dark:bg-[#060d24]"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="section-container max-w-2xl mx-auto text-center">
@@ -164,7 +164,7 @@ export default function InsightContent({ a, related }: Props) {
             className="text-center mb-10"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Keep Reading</p>
@@ -176,7 +176,7 @@ export default function InsightContent({ a, related }: Props) {
                 key={r.slug}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 <Link href={`/insights/${r.slug}`} className="group block bg-white dark:bg-[#0a1628] rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 hover:shadow-lg transition-all">

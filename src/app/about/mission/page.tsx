@@ -64,7 +64,7 @@ export default function MissionPage() {
               className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease }}
             >
               Our Mission
@@ -73,7 +73,7 @@ export default function MissionPage() {
               className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl leading-tight mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               &ldquo;To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy mid-market businesses across the UK, US, and beyond.&rdquo;
@@ -82,7 +82,7 @@ export default function MissionPage() {
               className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: 0.15, ease }}
             >
               This is not a tagline. It shapes every decision we make: the engagements we take on, the tools we build, the talent we hire, and the way we price our services. If we are not moving this mission forward, we are wasting everyone&apos;s time.
@@ -97,7 +97,7 @@ export default function MissionPage() {
                 className="bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-8 border border-[#007cf4]/10"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i % 2 === 0 ? 0 : 0.15, ease }}
               >
                 <div className="flex items-center gap-3 mb-4">
@@ -119,7 +119,7 @@ export default function MissionPage() {
               className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease }}
             >
               Our Story
@@ -128,7 +128,7 @@ export default function MissionPage() {
               className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               How we got here
@@ -147,7 +147,7 @@ export default function MissionPage() {
                     className="flex gap-8 items-start"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: '-80px' }}
                     transition={{ duration: 0.6, delay: i * 0.09, ease }}
                   >
                     <div className="shrink-0 w-16 text-right hidden sm:block">
@@ -179,7 +179,7 @@ export default function MissionPage() {
                 className="text-center"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease }}
               >
                 <div className="font-inter-tight font-black text-4xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-[#033a9d] to-[#007cf4] mb-2">{stat}</div>
@@ -197,7 +197,7 @@ export default function MissionPage() {
             className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.9, ease }}
           >
             Ready to close your gap?
@@ -206,7 +206,7 @@ export default function MissionPage() {
             className="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.15, ease }}
           >
             Whether you&apos;re just starting to explore AI and automation, or you have a specific transformation programme in mind, we&apos;d like to understand your situation and tell you honestly whether we can help.
@@ -215,7 +215,7 @@ export default function MissionPage() {
             className="flex flex-col sm:flex-row gap-3 justify-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, delay: 0.25, ease }}
           >
             <Link

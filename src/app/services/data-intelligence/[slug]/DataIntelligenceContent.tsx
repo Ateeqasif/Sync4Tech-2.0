@@ -31,7 +31,7 @@ export default function DataIntelligenceContent({ service }: Props) {
               className="bg-white border border-gray-100 rounded-2xl p-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0, ease: EASE }}
             >
               <h2 className="font-inter-tight font-black text-2xl text-gray-900 mb-6">
@@ -53,7 +53,7 @@ export default function DataIntelligenceContent({ service }: Props) {
               style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
             >
               <h2 className="font-inter-tight font-black text-2xl text-white mb-6">
@@ -79,7 +79,7 @@ export default function DataIntelligenceContent({ service }: Props) {
             className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: EASE }}
           >
             What We Deliver
@@ -91,7 +91,7 @@ export default function DataIntelligenceContent({ service }: Props) {
                 className="bg-[#f8faff] border border-gray-100 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: EASE }}
               >
                 <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2">
@@ -111,7 +111,7 @@ export default function DataIntelligenceContent({ service }: Props) {
             className="font-inter-tight font-black text-2xl text-gray-900 mb-8 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: EASE }}
           >
             Technologies We Use
@@ -120,7 +120,7 @@ export default function DataIntelligenceContent({ service }: Props) {
             className="flex flex-wrap justify-center gap-3"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
           >
             {service.tools.map((tool, i) => (
@@ -142,7 +142,7 @@ export default function DataIntelligenceContent({ service }: Props) {
             className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: EASE }}
           >
             How We Work
@@ -154,7 +154,7 @@ export default function DataIntelligenceContent({ service }: Props) {
                 className="relative"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.09, ease: EASE }}
               >
                 <div className="mb-4">
@@ -185,7 +185,7 @@ export default function DataIntelligenceContent({ service }: Props) {
             className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: EASE }}
           >
             Frequently Asked Questions
@@ -197,7 +197,7 @@ export default function DataIntelligenceContent({ service }: Props) {
                 className="bg-white border border-gray-100 rounded-2xl p-6 group open:border-[#007cf4]/30"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.07, ease: EASE }}
               >
                 <summary className="font-inter-tight font-black text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4">

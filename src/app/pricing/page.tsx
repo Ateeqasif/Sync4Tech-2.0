@@ -113,7 +113,7 @@ export default function PricingPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Engagement Models</span>
@@ -122,7 +122,7 @@ export default function PricingPage() {
               className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               Choose Your Starting Point
@@ -131,7 +131,7 @@ export default function PricingPage() {
               className="text-gray-500 dark:text-gray-400 mt-4 max-w-xl mx-auto text-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
               Every engagement is scoped to your specific needs. These tiers give you a clear starting framework.
@@ -149,7 +149,7 @@ export default function PricingPage() {
                 }`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 {tier.badge && (
@@ -211,7 +211,7 @@ export default function PricingPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Every Engagement</span>
@@ -220,7 +220,7 @@ export default function PricingPage() {
               className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               All Plans Include
@@ -233,7 +233,7 @@ export default function PricingPage() {
                 className="bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-5 text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="w-8 h-8 bg-[#007cf4]/10 rounded-lg flex items-center justify-center mx-auto mb-3">
@@ -255,7 +255,7 @@ export default function PricingPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Common Questions</span>
@@ -264,7 +264,7 @@ export default function PricingPage() {
               className="font-inter-tight font-black text-black dark:text-white text-3xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               Pricing FAQ
@@ -277,7 +277,7 @@ export default function PricingPage() {
                 className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-6"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               >
                 <h3 className="font-semibold text-black dark:text-white text-base mb-2">{faq.q}</h3>
@@ -295,7 +295,7 @@ export default function PricingPage() {
             className="flex flex-wrap justify-center gap-8 text-center"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             {[

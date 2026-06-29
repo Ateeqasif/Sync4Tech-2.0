@@ -33,7 +33,7 @@ export default function IndustryOrbitSection({
     return () => clearInterval(id)
   }, [nodes.length])
 
-  const R1 = 90, R2 = 148, cx = 190, cy = 190
+  const R1 = 90, R2 = 140, cx = 200, cy = 200
 
   return (
     <section ref={ref} className="py-20 md:py-28 bg-white dark:bg-[#050f2e] overflow-hidden">
@@ -47,7 +47,7 @@ export default function IndustryOrbitSection({
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            <svg width="380" height="380" viewBox="0 0 380 380" className="w-full h-auto">
+            <svg width="400" height="400" viewBox="-60 -50 520 500" overflow="visible" className="w-full h-auto">
               {/* Background grid */}
               <defs>
                 <radialGradient id={`bg-${eyebrow}`} cx="50%" cy="50%" r="50%">
@@ -55,10 +55,10 @@ export default function IndustryOrbitSection({
                   <stop offset="100%" stopColor="#007cf4" stopOpacity="0" />
                 </radialGradient>
               </defs>
-              <circle cx={cx} cy={cy} r="185" fill={`url(#bg-${eyebrow})`} />
+              <circle cx={cx} cy={cy} r="195" fill={`url(#bg-${eyebrow})`} />
 
               {/* Grid lines */}
-              {[50, 90, 130, 148, 180].map(r => (
+              {[50, 90, 130, 140, 175].map(r => (
                 <circle key={r} cx={cx} cy={cy} r={r}
                   fill="none" stroke="#007cf4" strokeWidth="0.5" strokeOpacity="0.15"
                   strokeDasharray={r > 100 ? "none" : "4 4"}
@@ -125,15 +125,22 @@ export default function IndustryOrbitSection({
                       transition={{ duration: 0.4 }}
                     />
                     {/* Label */}
-                    <text
-                      x={nx + (Math.cos(rad) > 0 ? 18 : -18)}
-                      y={ny + (Math.sin(rad) > 0.5 ? 18 : Math.sin(rad) < -0.5 ? -10 : 5)}
-                      textAnchor={Math.cos(rad) > 0 ? 'start' : 'end'}
-                      fontSize="11" fontWeight="600" fill="#033a9d"
-                      className="dark:fill-white/70 fill-[#033a9d]"
-                    >
-                      {node.label}
-                    </text>
+                    {(() => {
+                      const lx = nx + (Math.cos(rad) > 0.2 ? 22 : Math.cos(rad) < -0.2 ? -22 : 0)
+                      const ly = ny + (Math.sin(rad) > 0.3 ? 24 : Math.sin(rad) < -0.3 ? -14 : 5)
+                      const anchor = Math.cos(rad) > 0.2 ? 'start' : Math.cos(rad) < -0.2 ? 'end' : 'middle'
+                      return (
+                        <text
+                          x={lx} y={ly}
+                          textAnchor={anchor}
+                          fontSize="12" fontWeight="700"
+                          fill={isActive ? '#007cf4' : '#374151'}
+                          className="dark:fill-white/80"
+                        >
+                          {node.label}
+                        </text>
+                      )
+                    })()}
                   </g>
                 )
               })}

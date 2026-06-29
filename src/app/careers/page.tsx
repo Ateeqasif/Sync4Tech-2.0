@@ -70,7 +70,7 @@ export default function CareersPage() {
             className="text-center mb-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Why Join Us</span>
@@ -82,7 +82,7 @@ export default function CareersPage() {
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="group relative overflow-hidden bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
               >
@@ -108,7 +108,7 @@ export default function CareersPage() {
             className="text-center mb-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Our Culture</span>
@@ -120,7 +120,7 @@ export default function CareersPage() {
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md transition-all text-center p-8"
               >

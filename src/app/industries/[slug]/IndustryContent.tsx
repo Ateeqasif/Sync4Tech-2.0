@@ -75,7 +75,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease }}
             >
               The Problem
@@ -84,7 +84,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               The Challenge in {ind.name}
@@ -98,7 +98,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               style={{ boxShadow: '0 0 0 0' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               <svg
@@ -134,7 +134,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0.15, ease }}
             >
               <svg
@@ -189,7 +189,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="text-sm font-semibold uppercase tracking-widest text-[#36c5f0] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease }}
             >
               Our Solutions
@@ -198,7 +198,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Solutions We Deploy
@@ -219,7 +219,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
                   key={sol.slug}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.6, delay: i * 0.08, ease }}
                 >
                   <Link
@@ -289,7 +289,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease }}
             >
               Proven Impact
@@ -298,7 +298,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Results
@@ -313,7 +313,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
                   className="p-10 text-center relative overflow-hidden"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.5, delay: i * 0.1, ease }}
                 >
                   <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
@@ -336,7 +336,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease }}
             >
               Case Study
@@ -345,7 +345,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Real Results, Real Clients
@@ -358,7 +358,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0.15, ease }}
             >
               <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
@@ -383,7 +383,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease }}
             >
               Tech Stack
@@ -392,7 +392,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Tools &amp; Technologies
@@ -403,7 +403,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
             className="flex flex-wrap justify-center gap-3"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2, ease }}
           >
             {ind.tools.map((tool) => (
@@ -426,7 +426,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease }}
             >
               FAQ
@@ -435,7 +435,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Frequently Asked Questions

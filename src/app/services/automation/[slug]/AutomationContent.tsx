@@ -27,7 +27,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               The Problem
@@ -36,7 +36,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Challenges We Solve
@@ -50,7 +50,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               style={{ boxShadow: '0 0 0 0' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               <svg
@@ -85,7 +85,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0.15, ease }}
             >
               <svg
@@ -125,7 +125,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               className="text-sm font-semibold uppercase tracking-widest text-[#36c5f0] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               What We Build
@@ -134,7 +134,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Key Capabilities
@@ -160,7 +160,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                   }}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.6, delay: i * 0.08, ease }}
                 >
                   <span
@@ -206,7 +206,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               How We Work
@@ -215,7 +215,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Our Delivery Process
@@ -229,7 +229,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                 className="bg-white dark:bg-[#0a1628] border border-gray-100 dark:border-white/8 rounded-2xl p-6 flex flex-col gap-3"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.09, ease }}
               >
                 <span
@@ -259,7 +259,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               Tech Stack
@@ -268,7 +268,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Tools &amp; Technologies
@@ -279,7 +279,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             className="flex flex-wrap justify-center gap-3"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2, ease }}
           >
             {svc.tools.map((tool) => (
@@ -302,7 +302,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               className="text-sm font-semibold uppercase tracking-widest text-[#007cf4] mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               FAQ
@@ -311,7 +311,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               Frequently Asked Questions

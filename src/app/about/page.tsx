@@ -64,7 +64,7 @@ export default function AboutPage() {
               style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
@@ -82,7 +82,7 @@ export default function AboutPage() {
               className="relative overflow-hidden rounded-2xl p-8 bg-white dark:bg-[#0a1628] border border-[#007cf4]/20 shadow-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0.15, ease }}
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007cf4] to-[#36c5f0]" />
@@ -112,7 +112,7 @@ export default function AboutPage() {
                   className="p-8 text-center relative overflow-hidden"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.5, delay: i * 0.1, ease }}
                 >
                   <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '18px 18px' }} />
@@ -134,7 +134,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Our Story</span>
@@ -142,7 +142,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Built to Solve the Execution Gap</h2>
@@ -156,7 +156,7 @@ export default function AboutPage() {
                 className="flex gap-5 relative items-start"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.09, ease }}
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 z-10 shadow-md" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
@@ -179,7 +179,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">What We Stand For</span>
@@ -187,7 +187,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Our Values</h2>
@@ -200,7 +200,7 @@ export default function AboutPage() {
                 className="group relative overflow-hidden bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease }}
               >
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -220,7 +220,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">The Team</span>
@@ -228,7 +228,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Our Experts Are Our Product</h2>
@@ -237,7 +237,7 @@ export default function AboutPage() {
               className="text-gray-500 dark:text-gray-400 mt-4 max-w-xl mx-auto text-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: 0.15, ease }}
             >
               Every engagement is led by a senior specialist with deep domain expertise. No juniors, no outsourcing.
@@ -250,7 +250,7 @@ export default function AboutPage() {
                 className="group bg-white dark:bg-[#0a1628] rounded-2xl p-6 text-center border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-md transition-all overflow-hidden relative"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease }}
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0]" />
@@ -277,7 +277,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Where We Are</span>
@@ -285,7 +285,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Global Presence</h2>
@@ -298,7 +298,7 @@ export default function AboutPage() {
                 className="relative overflow-hidden rounded-2xl border border-[#007cf4]/15 bg-white dark:bg-[#0a1628] p-7 hover:border-[#007cf4]/40 hover:shadow-md transition-all group"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease }}
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0]" />
@@ -320,7 +320,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">FAQ</span>
@@ -328,7 +328,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
               <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">About Sync4Tech</h2>
@@ -341,7 +341,7 @@ export default function AboutPage() {
                 className="bg-white dark:bg-[#0a1628] rounded-2xl p-6 border-l-4 border-[#007cf4]/40 hover:border-[#007cf4] shadow-sm hover:shadow-md transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.07, ease }}
               >
                 <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2">{faq.q}</h3>

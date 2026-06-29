@@ -79,7 +79,7 @@ export default function PartnersPage() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Our Approach</p>
@@ -100,7 +100,7 @@ export default function PartnersPage() {
                   className="bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-5 border border-[#007cf4]/10"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.6, delay: 0.15 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <h3 className="font-inter-tight font-bold text-black dark:text-white text-sm mb-2">{b.title}</h3>
@@ -118,7 +118,7 @@ export default function PartnersPage() {
                   className="flex items-center gap-4 mb-8"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <h2 className="font-inter-tight font-bold text-black dark:text-white text-xl">{group.category}</h2>
@@ -131,7 +131,7 @@ export default function PartnersPage() {
                       className="group bg-white dark:bg-[#0a1628] rounded-2xl p-6 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-all"
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: true, margin: '-80px' }}
                       transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <div className="flex items-start justify-between mb-3">
@@ -157,7 +157,7 @@ export default function PartnersPage() {
               className="bg-white dark:bg-[#0a1628] rounded-3xl p-10 border border-[#007cf4]/20 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Technology Vendors</p>

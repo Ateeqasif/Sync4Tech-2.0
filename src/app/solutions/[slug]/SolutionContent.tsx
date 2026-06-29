@@ -31,7 +31,7 @@ export default function SolutionContent({ s, slug }: Props) {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, delay: 0, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Overview</span>
@@ -45,7 +45,7 @@ export default function SolutionContent({ s, slug }: Props) {
             style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
@@ -73,7 +73,7 @@ export default function SolutionContent({ s, slug }: Props) {
             className="text-center max-w-2xl mx-auto mb-14"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Process</span>
@@ -86,7 +86,7 @@ export default function SolutionContent({ s, slug }: Props) {
                 className="group bg-white dark:bg-[#0a1628] rounded-2xl p-7 border-l-4 border-[#007cf4]/30 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-black text-lg mb-5 shadow-lg" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
@@ -106,7 +106,7 @@ export default function SolutionContent({ s, slug }: Props) {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Technology</span>
@@ -119,7 +119,7 @@ export default function SolutionContent({ s, slug }: Props) {
                 className="px-4 py-2 rounded-full bg-[#f8faff] dark:bg-[#060d24] border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0]"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 {t}
@@ -136,7 +136,7 @@ export default function SolutionContent({ s, slug }: Props) {
             className="text-center max-w-2xl mx-auto mb-14"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Results</span>
@@ -150,7 +150,7 @@ export default function SolutionContent({ s, slug }: Props) {
                   className="p-8 text-center relative overflow-hidden"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
                   <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '18px 18px' }} />
@@ -171,7 +171,7 @@ export default function SolutionContent({ s, slug }: Props) {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Case Study</span>
@@ -182,7 +182,7 @@ export default function SolutionContent({ s, slug }: Props) {
             style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
@@ -205,7 +205,7 @@ export default function SolutionContent({ s, slug }: Props) {
             className="text-center max-w-2xl mx-auto mb-14"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">FAQ</span>

@@ -40,7 +40,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
               key={k}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-1">{k}</div>
@@ -56,7 +56,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">The Challenge</span>
@@ -68,7 +68,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
               className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
               {p}
@@ -84,7 +84,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             className="text-center max-w-2xl mx-auto mb-14"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Approach</span>
@@ -97,7 +97,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
                 className="group bg-white dark:bg-[#0a1628] rounded-2xl p-7 border-l-4 border-[#007cf4]/30 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-black text-base mb-5 shadow-lg" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
@@ -118,7 +118,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             className="text-center max-w-2xl mx-auto mb-14"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">The Results</span>
@@ -132,7 +132,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
                   className="p-10 text-center relative overflow-hidden"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
                   <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
@@ -156,7 +156,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             className="flex flex-wrap justify-center gap-3"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             {cs.tools.map(t => (
@@ -172,7 +172,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <svg width="40" height="32" viewBox="0 0 40 32" fill="none" className="mx-auto mb-6 opacity-30"><path d="M0 32V20C0 8.954 6.716 2.238 20.148 0L22 4.148C15.716 5.48 12.334 9.096 11.852 15H18V32H0zm22 0V20C22 8.954 28.716 2.238 42.148 0L44 4.148C37.716 5.48 34.334 9.096 33.852 15H40V32H22z" fill="#007cf4"/></svg>
@@ -189,7 +189,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             className="text-center max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Solutions Used</span>
@@ -199,7 +199,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             className="flex flex-wrap justify-center gap-4"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             {cs.relatedSolutions.map(s => (
@@ -218,7 +218,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             className="font-inter-tight font-black text-black dark:text-white text-2xl mb-8 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             More Case Studies
@@ -231,7 +231,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
                   key={s}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <Link href={`/case-studies/${s}`} className="group block bg-white dark:bg-[#0a1628] rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-md transition-all">

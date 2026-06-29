@@ -29,7 +29,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
               className="bg-white border border-gray-100 rounded-2xl p-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0, ease: [0.22, 1, 0.36, 1] }}
             >
               <h2 className="font-inter-tight font-black text-2xl text-gray-900 mb-6">
@@ -51,7 +51,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
               style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
               <h2 className="font-inter-tight font-black text-2xl text-white mb-6">
@@ -77,7 +77,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
             className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             What We Deliver
@@ -89,7 +89,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
                 className="bg-[#f8faff] border border-gray-100 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2">
@@ -109,7 +109,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
             className="font-inter-tight font-black text-2xl text-gray-900 mb-8 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             Technologies We Use
@@ -118,7 +118,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
             className="flex flex-wrap justify-center gap-3"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             {svc.tools.map((tool, i) => (
@@ -140,7 +140,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
             className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             How We Work
@@ -152,7 +152,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
                 className="relative"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="mb-4">
@@ -183,7 +183,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
             className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             Frequently Asked Questions
@@ -195,7 +195,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
                 className="bg-white border border-gray-100 rounded-2xl p-6 group open:border-[#007cf4]/30"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               >
                 <summary className="font-inter-tight font-black text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4">
