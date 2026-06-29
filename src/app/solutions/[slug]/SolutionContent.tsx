@@ -56,9 +56,7 @@ export default function SolutionContent({ s, slug }: Props) {
               <ul className="flex flex-col gap-3">
                 {s.benefits.map((b, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-white/90">
-                    <div className="shrink-0 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center mt-0.5">
-                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
+                    <span className="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-white/70" />
                     {b}
                   </li>
                 ))}

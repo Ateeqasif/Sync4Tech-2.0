@@ -38,9 +38,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
               <ul className="space-y-4">
                 {svc.challenges.map((challenge, i) => (
                   <li key={i} className="flex gap-3">
-                    <span className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center">
-                      <span className="w-2 h-2 rounded-full bg-[#007cf4] block" />
-                    </span>
+                    <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#007cf4]" />
                     <span className="text-gray-600 text-sm leading-relaxed">{challenge}</span>
                   </li>
                 ))}
@@ -62,11 +60,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
               <ul className="space-y-4">
                 {svc.outcomes.map((outcome, i) => (
                   <li key={i} className="flex gap-3">
-                    <span className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
-                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
+                    <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-white/70" />
                     <span className="text-white/90 text-sm leading-relaxed">{outcome}</span>
                   </li>
                 ))}
