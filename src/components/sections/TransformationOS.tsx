@@ -9,24 +9,28 @@ const pillars = [
     subtitle: 'Intelligence Layer',
     description: 'Deploy purpose-built AI agents, copilots, and decision engines trained on your business context.',
     features: ['Custom LLM fine-tuning', 'AI workflow orchestration', 'Predictive analytics'],
+    href: '/services/automation/ai-automation',
   },
   {
     title: 'Business Automation',
     subtitle: 'Execution Layer',
     description: 'End-to-end process automation that eliminates manual work across every business function.',
     features: ['RPA + intelligent automation', 'Cross-system orchestration', 'Human-in-the-loop design'],
+    href: '/services/automation',
   },
   {
     title: 'Data Transformation',
     subtitle: 'Intelligence Layer',
     description: 'Modern data infrastructure that turns fragmented data into real-time strategic intelligence.',
     features: ['Data lakehouse architecture', 'Real-time pipelines', 'Self-serve analytics'],
+    href: '/services/data-intelligence',
   },
   {
     title: 'Execution Excellence',
     subtitle: 'Change Layer',
     description: 'Change management and adoption programs that ensure transformation sticks.',
     features: ['Digital adoption programs', 'KPI frameworks', 'Continuous improvement'],
+    href: '/services/consulting',
   },
 ]
 
@@ -80,13 +84,15 @@ export default function TransformationOS() {
             return (
               <motion.div
                 key={i}
-                className="group relative rounded-3xl overflow-hidden cursor-default"
+                className="group relative rounded-3xl overflow-hidden"
                 style={{ minHeight: '320px', border: '1.5px solid rgba(54,197,240,0.35)' }}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -4, boxShadow: '0 20px 48px rgba(0,124,244,0.18)' }}
               >
+                <Link href={p.href} className="absolute inset-0 z-20" aria-label={`Learn more about ${p.title}`} />
                 {/* Default face */}
                 <div
                   className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0"
@@ -145,7 +151,7 @@ export default function TransformationOS() {
                   </p>
 
                   {/* Feature pills */}
-                  <div className="flex flex-wrap gap-2 mt-auto">
+                  <div className="flex flex-wrap gap-2 mt-auto mb-6">
                     {p.features.map((f) => (
                       <span
                         key={f}
@@ -159,6 +165,17 @@ export default function TransformationOS() {
                         {f}
                       </span>
                     ))}
+                  </div>
+
+                  {/* Learn more link */}
+                  <div
+                    className="flex items-center gap-2 text-xs font-bold tracking-wide uppercase transition-all duration-300 group-hover:gap-3"
+                    style={{ color: dark ? 'rgba(255,255,255,0.85)' : '#007cf4' }}
+                  >
+                    Learn more
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-300 group-hover:translate-x-0.5">
+                      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </div>
                 </div>
               </motion.div>
