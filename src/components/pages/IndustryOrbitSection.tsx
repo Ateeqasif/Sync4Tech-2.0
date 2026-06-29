@@ -58,7 +58,7 @@ export default function IndustryOrbitSection({
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            <svg width="400" height="400" viewBox="-60 -50 520 500" overflow="visible" className="w-full h-auto">
+            <svg width="400" height="400" viewBox="-90 -80 580 560" overflow="visible" className="w-full h-auto">
               <defs>
                 {/* Blue gradient for center circle — same as landing page */}
                 <radialGradient id={gradId} cx="50%" cy="50%" r="50%">
@@ -111,9 +111,11 @@ export default function IndustryOrbitSection({
                 const ny = cy + Math.sin(rad) * R2
                 const isActive = i === active
 
-                const lx = nx + (Math.cos(rad) > 0.2 ? 22 : Math.cos(rad) < -0.2 ? -22 : 0)
-                const ly = ny + (Math.sin(rad) > 0.3 ? 24 : Math.sin(rad) < -0.3 ? -14 : 5)
-                const anchor = Math.cos(rad) > 0.2 ? 'start' : Math.cos(rad) < -0.2 ? 'end' : 'middle'
+                // Push label radially outward from center — avoids node overlap
+                const labelR = R2 + 32
+                const lx = cx + Math.cos(rad) * labelR
+                const ly = cy + Math.sin(rad) * labelR + (Math.abs(Math.sin(rad)) < 0.25 ? 4 : 0)
+                const anchor = Math.cos(rad) > 0.15 ? 'start' : Math.cos(rad) < -0.15 ? 'end' : 'middle'
 
                 return (
                   <g key={i}>
