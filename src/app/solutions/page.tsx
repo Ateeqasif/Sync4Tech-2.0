@@ -236,7 +236,7 @@ export default function SolutionsPage() {
       />
 
       {/* Solutions Bento Grid */}
-      <section className="py-section bg-[#f5f5f7] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f5f5f7] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[320px]">
 

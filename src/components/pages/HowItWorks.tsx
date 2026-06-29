@@ -78,7 +78,7 @@ export default function HowItWorks() {
   const inView = useInView(ref, { once: true, margin: '-10%' })
 
   return (
-    <section ref={ref} className="relative overflow-hidden py-24 md:py-32 bg-[#f8faff] dark:bg-[#050f2e]" style={{}}>
+    <section ref={ref} className="relative overflow-hidden py-24 md:py-32 bg-[#f8faff]" style={{}}>
       {/* Background grid */}
       <div className="absolute inset-0 pointer-events-none" style={{
         backgroundImage: 'linear-gradient(rgba(0,124,244,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,124,244,0.04) 1px, transparent 1px)',

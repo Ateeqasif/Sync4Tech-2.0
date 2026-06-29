@@ -40,7 +40,7 @@ const outcomes = [
 
 export default function BusinessOutcomes() {
   return (
-    <section className="py-section bg-white dark:bg-[#050f2e]" id="outcomes">
+    <section className="py-section bg-white" id="outcomes">
       <div className="section-container">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-20"
@@ -61,7 +61,7 @@ export default function BusinessOutcomes() {
           {outcomes.map((o, i) => (
             <motion.div
               key={i}
-              className="group bg-white dark:bg-[#0a1a4a] p-10 relative overflow-hidden cursor-default transition-colors duration-500 hover:bg-[#007cf4]"
+              className="group bg-white p-10 relative overflow-hidden cursor-default transition-colors duration-500 hover:bg-[#007cf4]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
         breadcrumb={[{ label: 'Privacy Policy', href: '/privacy-policy' }]}
       />
 
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <article className="max-w-3xl mx-auto prose prose-gray dark:prose-invert prose-sm md:prose-base">
             <p className="text-gray-400 text-sm mb-8">Last updated: June 2025</p>

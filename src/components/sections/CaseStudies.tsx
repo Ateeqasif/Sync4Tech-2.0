@@ -149,7 +149,7 @@ export default function CaseStudies() {
   const c = cases[active]
 
   return (
-    <section className="py-section bg-white dark:bg-[#050f2e]" id="case-studies">
+    <section className="py-section bg-white" id="case-studies">
       <div className="section-container">
 
         {/* Header */}

@@ -76,7 +76,7 @@ export default function FAQ() {
   const visibleFaqs = expanded ? faqs : faqs.slice(0, INITIAL_COUNT)
 
   return (
-    <section className="py-section bg-[#f8faff] dark:bg-[#050f2e]" id="faq" aria-label="Frequently Asked Questions">
+    <section className="py-section bg-[#f8faff]" id="faq" aria-label="Frequently Asked Questions">
       <div className="section-container">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16"

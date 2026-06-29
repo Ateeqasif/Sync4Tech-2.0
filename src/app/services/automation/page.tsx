@@ -62,7 +62,7 @@ export default function AutomationPage() {
         ]}
       />
 
-      <section className="bg-[#f8faff] dark:bg-[#060d24] py-20">
+      <section className="bg-[#f8faff] dark:bg-[#f8faff] py-20">
         <div className="section-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, i) => (
@@ -75,12 +75,12 @@ export default function AutomationPage() {
               >
                 <Link
                   href={`/services/automation/${service.slug}`}
-                  className="bg-white dark:bg-[#0a1628] border border-gray-100 dark:border-white/8 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
+                  className="bg-white dark:bg-white border border-gray-100  rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
                 >
                   <h3 className="text-gray-900 dark:text-white font-black font-inter-tight text-lg leading-tight">
                     {service.name}
                   </h3>
-                  <p className="text-gray-500 dark:text-white/60 text-sm leading-relaxed flex-1">{service.desc}</p>
+                  <p className="text-gray-500 text-gray-500 text-sm leading-relaxed flex-1">{service.desc}</p>
                   <span className="text-[#007cf4] text-sm font-semibold mt-1">Explore →</span>
                 </Link>
               </motion.div>

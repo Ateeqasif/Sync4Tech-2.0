@@ -131,7 +131,7 @@ function TiltCard({ industry, i }: { industry: typeof industries[0]; i: number }
     <Link href={href}>
     <motion.div
       ref={ref}
-      className="group relative bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/10 dark:border-white/10 rounded-2xl p-6 overflow-hidden cursor-pointer"
+      className="group relative bg-white border border-[#007cf4]/10 dark:border-white/10 rounded-2xl p-6 overflow-hidden cursor-pointer"
       style={{ rotateX, rotateY, transformPerspective: 800, transformStyle: 'preserve-3d' }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -183,7 +183,7 @@ function TiltCard({ industry, i }: { industry: typeof industries[0]; i: number }
 
 export default function Industries() {
   return (
-    <section className="py-section bg-white dark:bg-[#050f2e]" id="industries">
+    <section className="py-section bg-white" id="industries">
       <div className="section-container">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-20"

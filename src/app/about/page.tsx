@@ -55,7 +55,7 @@ export default function AboutPage() {
       />
 
       {/* Mission / Vision */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* Mission */}
@@ -79,7 +79,7 @@ export default function AboutPage() {
             </motion.div>
             {/* Vision */}
             <motion.div
-              className="relative overflow-hidden rounded-2xl p-8 bg-white dark:bg-[#0a1628] border border-[#007cf4]/20 shadow-sm"
+              className="relative overflow-hidden rounded-2xl p-8 bg-white dark:bg-white border border-[#007cf4]/20 shadow-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -90,14 +90,14 @@ export default function AboutPage() {
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" stroke="#007cf4" strokeWidth="1.5" strokeLinejoin="round" /></svg>
               </div>
               <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3">Our Vision</h2>
-              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">A world where every organisation regardless of size or sector can operate at its full potential, freed from the friction of manual processes and siloed data.</p>
+              <p className="text-gray-500  text-sm leading-relaxed">A world where every organisation regardless of size or sector can operate at its full potential, freed from the friction of manual processes and siloed data.</p>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Stats bar */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="rounded-3xl overflow-hidden shadow-xl max-w-3xl mx-auto" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
             <div className="grid grid-cols-2 md:grid-cols-4 divide-y-0 md:divide-x divide-white/20">
@@ -128,7 +128,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Timeline */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container max-w-3xl mx-auto">
           <div className="text-center mb-14">
             <motion.div
@@ -162,9 +162,9 @@ export default function AboutPage() {
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 z-10 shadow-md" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
                   <span className="text-white font-inter-tight font-black text-xs">{item.year.slice(2)}</span>
                 </div>
-                <div className="bg-white dark:bg-[#0a1628] border border-[#007cf4]/10 hover:border-[#007cf4]/30 rounded-xl p-5 flex-1 transition-all group">
+                <div className="bg-white dark:bg-white border border-[#007cf4]/10 hover:border-[#007cf4]/30 rounded-xl p-5 flex-1 transition-all group">
                   <div className="font-bold text-[#007cf4] text-xs mb-1 uppercase tracking-widest">{item.year}</div>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{item.milestone}</p>
+                  <p className="text-gray-600  text-sm leading-relaxed">{item.milestone}</p>
                 </div>
               </motion.div>
             ))}
@@ -173,7 +173,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="text-center mb-12">
             <motion.div
@@ -197,7 +197,7 @@ export default function AboutPage() {
             {values.map((v, i) => (
               <motion.div
                 key={i}
-                className="group relative overflow-hidden bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
+                className="group relative overflow-hidden bg-white dark:bg-white rounded-2xl p-7 border border-black/8  hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -206,7 +206,7 @@ export default function AboutPage() {
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-black text-sm mb-5 shadow-md" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>{v.icon}</div>
                 <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{v.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{v.desc}</p>
+                <p className="text-gray-500  text-sm leading-relaxed">{v.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -214,7 +214,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="text-center mb-12">
             <motion.div
@@ -234,7 +234,7 @@ export default function AboutPage() {
               <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Our Experts Are Our Product</h2>
             </motion.div>
             <motion.p
-              className="text-gray-500 dark:text-gray-400 mt-4 max-w-xl mx-auto text-sm"
+              className="text-gray-500  mt-4 max-w-xl mx-auto text-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -247,7 +247,7 @@ export default function AboutPage() {
             {team.map((member, i) => (
               <motion.div
                 key={i}
-                className="group bg-white dark:bg-[#0a1628] rounded-2xl p-6 text-center border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-md transition-all overflow-hidden relative"
+                className="group bg-white dark:bg-white rounded-2xl p-6 text-center border border-black/8  hover:border-[#007cf4]/40 hover:shadow-md transition-all overflow-hidden relative"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -271,7 +271,7 @@ export default function AboutPage() {
       </section>
 
       {/* Offices */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="text-center mb-12">
             <motion.div
@@ -295,7 +295,7 @@ export default function AboutPage() {
             {offices.map((o, i) => (
               <motion.div
                 key={i}
-                className="relative overflow-hidden rounded-2xl border border-[#007cf4]/15 bg-white dark:bg-[#0a1628] p-7 hover:border-[#007cf4]/40 hover:shadow-md transition-all group"
+                className="relative overflow-hidden rounded-2xl border border-[#007cf4]/15 bg-white dark:bg-white p-7 hover:border-[#007cf4]/40 hover:shadow-md transition-all group"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -305,8 +305,8 @@ export default function AboutPage() {
                 <div className="text-3xl mb-3">{o.flag}</div>
                 <div className="font-inter-tight font-black text-black dark:text-white text-xl mb-0.5">{o.city}</div>
                 <div className="text-[#007cf4] text-sm font-semibold mb-3">{o.country}</div>
-                <div className="text-gray-500 dark:text-gray-400 text-xs mb-1">{o.addr}</div>
-                <div className="text-gray-400 dark:text-gray-500 text-xs">{o.tz}</div>
+                <div className="text-gray-500  text-xs mb-1">{o.addr}</div>
+                <div className="text-gray-400  text-xs">{o.tz}</div>
               </motion.div>
             ))}
           </div>
@@ -314,7 +314,7 @@ export default function AboutPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <motion.div
@@ -338,14 +338,14 @@ export default function AboutPage() {
             {aboutFAQ.map((faq, i) => (
               <motion.div
                 key={i}
-                className="bg-white dark:bg-[#0a1628] rounded-2xl p-6 border-l-4 border-[#007cf4]/40 hover:border-[#007cf4] shadow-sm hover:shadow-md transition-all"
+                className="bg-white dark:bg-white rounded-2xl p-6 border-l-4 border-[#007cf4]/40 hover:border-[#007cf4] shadow-sm hover:shadow-md transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.07, ease }}
               >
                 <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2">{faq.q}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{faq.a}</p>
+                <p className="text-gray-500  text-sm leading-relaxed">{faq.a}</p>
               </motion.div>
             ))}
           </div>

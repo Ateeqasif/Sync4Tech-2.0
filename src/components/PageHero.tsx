@@ -79,7 +79,7 @@ interface PageHeroProps {
 
 export default function PageHero({ eyebrow, title, highlight, subtitle, breadcrumb }: PageHeroProps) {
   return (
-    <section className="relative pt-40 pb-20 bg-white dark:bg-[#050f2e] flex flex-col items-center justify-center">
+    <section className="relative pt-40 pb-20 bg-white flex flex-col items-center justify-center">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 opacity-60">

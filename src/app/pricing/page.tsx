@@ -107,7 +107,7 @@ export default function PricingPage() {
       />
 
       {/* Pricing tiers */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="text-center mb-14">
             <motion.div
@@ -128,7 +128,7 @@ export default function PricingPage() {
               Choose Your Starting Point
             </motion.h2>
             <motion.p
-              className="text-gray-500 dark:text-gray-400 mt-4 max-w-xl mx-auto text-sm"
+              className="text-gray-500  mt-4 max-w-xl mx-auto text-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -145,7 +145,7 @@ export default function PricingPage() {
                 className={`relative rounded-2xl flex flex-col ${
                   tier.highlight
                     ? 'bg-gradient-to-b from-[#007cf4]/10 to-[#36c5f0]/5 border-2 border-[#007cf4]/40 shadow-lg shadow-[#007cf4]/10'
-                    : 'bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15'
+                    : 'bg-white dark:bg-white border border-[#007cf4]/15'
                 }`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -173,7 +173,7 @@ export default function PricingPage() {
 
                   <ul className="space-y-2.5 mb-6 flex-1">
                     {tier.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm text-gray-600 dark:text-gray-400">
+                      <li key={f} className="flex items-start gap-2.5 text-sm text-gray-600 ">
                         <svg className="w-4 h-4 text-[#007cf4] mt-0.5 shrink-0" fill="none" viewBox="0 0 16 16">
                           <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -184,7 +184,7 @@ export default function PricingPage() {
 
                   <div className="bg-[#007cf4]/5 border border-[#007cf4]/10 rounded-xl p-4 mb-6">
                     <span className="text-[#007cf4] text-xs font-semibold uppercase tracking-wide">Best for: </span>
-                    <span className="text-gray-500 dark:text-gray-400 text-xs">{tier.bestFor}</span>
+                    <span className="text-gray-500  text-xs">{tier.bestFor}</span>
                   </div>
 
                   <Link
@@ -205,7 +205,7 @@ export default function PricingPage() {
       </section>
 
       {/* All plans include */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="text-center mb-12">
             <motion.div
@@ -241,7 +241,7 @@ export default function PricingPage() {
                     <path d="M3 8l3.5 3.5L13 4.5" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 text-xs font-semibold leading-tight">{item}</p>
+                <p className="text-gray-700  text-xs font-semibold leading-tight">{item}</p>
               </motion.div>
             ))}
           </div>
@@ -249,7 +249,7 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing FAQ */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <motion.div
@@ -274,14 +274,14 @@ export default function PricingPage() {
             {pricingFAQ.map((faq, i) => (
               <motion.div
                 key={i}
-                className="bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/15 rounded-2xl p-6"
+                className="bg-white dark:bg-white border border-[#007cf4]/15 rounded-2xl p-6"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               >
                 <h3 className="font-semibold text-black dark:text-white text-base mb-2">{faq.q}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{faq.a}</p>
+                <p className="text-gray-500  text-sm leading-relaxed">{faq.a}</p>
               </motion.div>
             ))}
           </div>
@@ -289,7 +289,7 @@ export default function PricingPage() {
       </section>
 
       {/* Trust strip */}
-      <section className="py-10 bg-white dark:bg-[#050f2e] border-t border-[#007cf4]/10">
+      <section className="py-10 bg-white dark:bg-[#f8faff] border-t border-[#007cf4]/10">
         <div className="section-container">
           <motion.div
             className="flex flex-wrap justify-center gap-8 text-center"
@@ -304,7 +304,7 @@ export default function PricingPage() {
               'NDA on request',
               'Delivery across UK, US & Pakistan',
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm">
+              <div key={i} className="flex items-center gap-2 text-gray-500  text-sm">
                 <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
                   <path d="M3 8l3.5 3.5L13 4.5" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

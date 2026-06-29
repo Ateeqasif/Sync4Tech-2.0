@@ -26,7 +26,7 @@ export default function SolutionContent({ s, slug }: Props) {
   return (
     <>
       {/* What It Is */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container grid md:grid-cols-2 gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -37,7 +37,7 @@ export default function SolutionContent({ s, slug }: Props) {
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Overview</span>
             <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-6 leading-tight">What is {s.name}?</h2>
             {s.description.map((p, i) => (
-              <p key={i} className="text-gray-500 dark:text-gray-400 leading-relaxed mb-4 text-sm">{p}</p>
+              <p key={i} className="text-gray-500  leading-relaxed mb-4 text-sm">{p}</p>
             ))}
           </motion.div>
           <motion.div
@@ -67,7 +67,7 @@ export default function SolutionContent({ s, slug }: Props) {
       </section>
 
       {/* How We Deliver It */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-14"
@@ -83,7 +83,7 @@ export default function SolutionContent({ s, slug }: Props) {
             {s.steps.map((step, i) => (
               <motion.div
                 key={i}
-                className="group bg-white dark:bg-[#0a1628] rounded-2xl p-7 border-l-4 border-[#007cf4]/30 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
+                className="group bg-white dark:bg-white rounded-2xl p-7 border-l-4 border-[#007cf4]/30 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -93,7 +93,7 @@ export default function SolutionContent({ s, slug }: Props) {
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{step.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
+                <p className="text-gray-500  text-sm leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -101,7 +101,7 @@ export default function SolutionContent({ s, slug }: Props) {
       </section>
 
       {/* Tools */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -116,7 +116,7 @@ export default function SolutionContent({ s, slug }: Props) {
             {s.tools.map((t, i) => (
               <motion.span
                 key={t}
-                className="px-4 py-2 rounded-full bg-[#f8faff] dark:bg-[#060d24] border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0]"
+                className="px-4 py-2 rounded-full bg-[#f8faff] dark:bg-[#f8faff] border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0]"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -130,7 +130,7 @@ export default function SolutionContent({ s, slug }: Props) {
       </section>
 
       {/* Metrics */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-14"
@@ -166,7 +166,7 @@ export default function SolutionContent({ s, slug }: Props) {
       </section>
 
       {/* Related Case Study */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container max-w-2xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -199,7 +199,7 @@ export default function SolutionContent({ s, slug }: Props) {
       </section>
 
       {/* FAQ */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-14"

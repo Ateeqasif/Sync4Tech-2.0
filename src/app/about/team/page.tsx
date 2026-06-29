@@ -87,7 +87,7 @@ export default function TeamPage() {
       />
 
       {/* Team grid */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="text-center mb-16">
             <motion.p
@@ -109,7 +109,7 @@ export default function TeamPage() {
               Built by practitioners,<br />not generalists
             </motion.h2>
             <motion.p
-              className="text-gray-500 dark:text-gray-400 text-sm max-w-2xl mx-auto"
+              className="text-gray-500  text-sm max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -123,7 +123,7 @@ export default function TeamPage() {
             {team.map((member, i) => (
               <motion.div
                 key={member.name}
-                className="group bg-white dark:bg-[#0a1628] rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-lg"
+                className="group bg-white dark:bg-white rounded-2xl overflow-hidden border border-black/8  hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-lg"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -147,7 +147,7 @@ export default function TeamPage() {
                     <h3 className="font-inter-tight font-bold text-black dark:text-white text-lg">{member.name}</h3>
                     <p className="text-[#007cf4] text-sm font-semibold">{member.role}</p>
                   </div>
-                  <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed mb-4">{member.bio}</p>
+                  <p className="text-gray-500  text-xs leading-relaxed mb-4">{member.bio}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {member.expertise.map(tag => (
                       <span key={tag} className="bg-[#f0f4ff] dark:bg-[#0d1f3c] text-[#007cf4] text-xs font-medium px-2.5 py-1 rounded-full">{tag}</span>
@@ -161,7 +161,7 @@ export default function TeamPage() {
       </section>
 
       {/* Values */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="text-center mb-16">
             <motion.p
@@ -187,7 +187,7 @@ export default function TeamPage() {
             {values.map((v, i) => (
               <motion.div
                 key={i}
-                className="bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-[#007cf4]/10"
+                className="bg-white dark:bg-white rounded-2xl p-7 border border-[#007cf4]/10"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -197,7 +197,7 @@ export default function TeamPage() {
                   <span className="text-[#007cf4] font-bold text-sm">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2">{v.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{v.body}</p>
+                <p className="text-gray-500  text-sm leading-relaxed">{v.body}</p>
               </motion.div>
             ))}
           </div>
@@ -205,7 +205,7 @@ export default function TeamPage() {
       </section>
 
       {/* Join CTA */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container text-center">
           <motion.p
             className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3"
@@ -226,7 +226,7 @@ export default function TeamPage() {
             Want to build with us?
           </motion.h2>
           <motion.p
-            className="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mb-8"
+            className="text-gray-500  text-sm max-w-xl mx-auto mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}

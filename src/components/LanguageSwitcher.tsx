@@ -39,7 +39,7 @@ export default function LanguageSwitcher() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="absolute top-full mt-2 right-0 bg-white dark:bg-[#0a1a4a] border border-black/8 dark:border-white/10 rounded-2xl shadow-xl overflow-hidden z-50 min-w-[150px]"
+            className="absolute top-full mt-2 right-0 bg-white border border-black/8 dark:border-white/10 rounded-2xl shadow-xl overflow-hidden z-50 min-w-[150px]"
           >
             {(Object.entries(localeConfig) as [Locale, typeof localeConfig[Locale]][]).map(([key, cfg]) => (
               <button

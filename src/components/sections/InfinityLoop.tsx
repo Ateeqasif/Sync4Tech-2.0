@@ -26,7 +26,7 @@ export default function InfinityLoop() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="py-section bg-[#f8faff] dark:bg-[#060d24]" id="ecosystem">
+    <section className="py-section bg-[#f8faff]" id="ecosystem">
       <div className="section-container" ref={ref}>
 
         {/* Header */}

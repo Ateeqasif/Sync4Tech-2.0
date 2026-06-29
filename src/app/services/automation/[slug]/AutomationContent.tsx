@@ -20,7 +20,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
   return (
     <>
       {/* 2. Challenges & Outcomes */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -199,7 +199,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
       </section>
 
       {/* 4. Process */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -226,7 +226,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             {svc.process.map((step, i) => (
               <motion.div
                 key={step.step}
-                className="bg-white dark:bg-[#0a1628] border border-gray-100 dark:border-white/8 rounded-2xl p-6 flex flex-col gap-3"
+                className="bg-white dark:bg-white border border-gray-100  rounded-2xl p-6 flex flex-col gap-3"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -244,7 +244,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                   {step.step}
                 </span>
                 <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-lg leading-tight">{step.title}</h3>
-                <p className="text-gray-500 dark:text-white/60 text-sm leading-relaxed">{step.desc}</p>
+                <p className="text-gray-500 text-gray-500 text-sm leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -252,7 +252,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
       </section>
 
       {/* 5. Tools & Technologies */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -285,7 +285,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             {svc.tools.map((tool) => (
               <span
                 key={tool}
-                className="inline-flex px-4 py-2 bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300"
+                className="inline-flex px-4 py-2 bg-white dark:bg-white border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 "
               >
                 {tool}
               </span>
@@ -295,7 +295,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
       </section>
 
       {/* 6. FAQ */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p

@@ -26,7 +26,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
   return (
     <>
       {/* Details bar */}
-      <div className="bg-[#f8faff] dark:bg-[#060d24] border-b border-[#007cf4]/10">
+      <div className="bg-[#f8faff] border-b border-[#007cf4]/10">
         <div className="section-container py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
           {([['Department', j.department], ['Location', j.location], ['Type', j.type], ['Salary', j.salary]] as [string, string][]).map(([k, v], i) => (
             <motion.div
@@ -43,7 +43,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
         </div>
       </div>
 
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white">
         <div className="section-container grid md:grid-cols-3 gap-16">
           {/* Main content */}
           <div className="md:col-span-2 flex flex-col gap-12">
@@ -135,7 +135,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-6 border border-[#007cf4]/10"
+              className="bg-[#f8faff] rounded-2xl p-6 border border-[#007cf4]/10"
             >
               <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-4">What We Offer</h3>
               <ul className="flex flex-col gap-3">
@@ -160,7 +160,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white dark:bg-[#0a1628] rounded-2xl p-6 border border-[#007cf4]/20 text-center"
+              className="bg-whitebg-white rounded-2xl p-6 border border-[#007cf4]/20 text-center"
             >
               <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2">Apply for this role</h3>
               <p className="text-gray-400 text-xs mb-4">Send your CV and a short note about why you're interested.</p>

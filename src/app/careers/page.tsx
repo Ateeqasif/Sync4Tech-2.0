@@ -64,7 +64,7 @@ export default function CareersPage() {
       />
 
       {/* Why Sync4Tech */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <motion.div
             className="text-center mb-12"
@@ -84,14 +84,14 @@ export default function CareersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative overflow-hidden bg-white dark:bg-[#0a1628] rounded-2xl p-7 border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
+                className="group relative overflow-hidden bg-white dark:bg-white rounded-2xl p-7 border border-black/8  hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
               >
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shadow-md" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
                   <div className="text-white [&>svg]:stroke-white">{perk.icon}</div>
                 </div>
                 <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{perk.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{perk.desc}</p>
+                <p className="text-gray-500  text-sm leading-relaxed">{perk.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -102,7 +102,7 @@ export default function CareersPage() {
       <CareersList />
 
       {/* Culture */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <motion.div
             className="text-center mb-12"
@@ -122,14 +122,14 @@ export default function CareersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#0a1628] border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 shadow-sm hover:shadow-md transition-all text-center p-8"
+                className="group relative overflow-hidden rounded-2xl bg-white dark:bg-white border border-black/8  hover:border-[#007cf4]/40 shadow-sm hover:shadow-md transition-all text-center p-8"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0]" />
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg text-white font-inter-tight font-black text-sm" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 <h3 className="font-inter-tight font-black text-black dark:text-white text-lg mb-2 group-hover:text-[#007cf4] transition-colors">{c.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.desc}</p>
+                <p className="text-gray-500  text-sm leading-relaxed">{c.desc}</p>
               </motion.div>
             ))}
           </div>

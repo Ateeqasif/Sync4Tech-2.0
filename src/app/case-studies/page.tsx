@@ -30,7 +30,7 @@ export default function CaseStudiesPage() {
       />
 
       {/* Stats bar */}
-      <section className="py-12 bg-white dark:bg-[#050f2e] border-b border-[#007cf4]/10">
+      <section className="py-12 bg-white dark:bg-[#f8faff] border-b border-[#007cf4]/10">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             {[
@@ -46,7 +46,7 @@ export default function CaseStudiesPage() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl mb-1">{s.v}</div>
-                <div className="text-gray-500 dark:text-gray-400 text-sm">{s.l}</div>
+                <div className="text-gray-500  text-sm">{s.l}</div>
               </motion.div>
             ))}
           </div>
@@ -57,7 +57,7 @@ export default function CaseStudiesPage() {
       <CaseStudiesFilter />
 
       {/* Testimonials */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container max-w-4xl mx-auto">
           <motion.div
             className="text-center mb-12"
@@ -80,7 +80,7 @@ export default function CaseStudiesPage() {
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="text-[#007cf4] text-3xl font-black mb-4 leading-none">"</div>
-                <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed mb-6 italic">{t.quote}</p>
+                <p className="text-gray-700  text-base leading-relaxed mb-6 italic">{t.quote}</p>
                 <footer>
                   <div className="font-semibold text-black dark:text-white text-sm">{t.author}</div>
                   <div className="text-gray-400 text-xs mt-0.5">{t.org}</div>

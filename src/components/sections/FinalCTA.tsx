@@ -30,7 +30,7 @@ function SectionGrid() {
 export default function FinalCTA() {
   const { t } = useLanguage()
   return (
-    <section className="py-section bg-white dark:bg-[#050f2e] relative overflow-hidden" id="contact">
+    <section className="py-section bg-white relative overflow-hidden" id="contact">
       <SectionGrid />
 
       <div className="section-container relative z-10 text-center">

@@ -41,7 +41,7 @@ function CrossIcon() {
 
 export default function WhySync4Tech() {
   return (
-    <section className="py-section bg-white dark:bg-[#050f2e] relative overflow-hidden" id="why">
+    <section className="py-section bg-white relative overflow-hidden" id="why">
       {/* Oversized brand icon centered watermark, slow breathe + rotate */}
       <motion.div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"

@@ -19,7 +19,7 @@ function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boo
         {[...items, ...items].map((t, i) => (
           <span
             key={i}
-            className="inline-flex items-center bg-white dark:bg-[#0a1a4a] border border-black/10 dark:border-white/10 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4] transition-colors duration-300 cursor-default whitespace-nowrap"
+            className="inline-flex items-center bg-white border border-black/10 dark:border-white/10 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4] transition-colors duration-300 cursor-default whitespace-nowrap"
           >
             {t}
           </span>

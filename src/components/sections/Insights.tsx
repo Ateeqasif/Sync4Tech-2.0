@@ -75,7 +75,7 @@ export default function Insights() {
   const filtered = activeTag === 'All' ? articles : articles.filter(a => a.tag === activeTag)
 
   return (
-    <section className="py-section bg-white dark:bg-[#050f2e]" id="insights">
+    <section className="py-section bg-white" id="insights">
       <div className="section-container">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16"
@@ -159,7 +159,7 @@ export default function Insights() {
                     <span className="bg-[#007cf4] text-white text-xs font-bold px-3 py-1 rounded-full">{filtered[0].tag}</span>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col justify-center bg-white dark:bg-[#0a1628]">
+                <div className="p-8 flex flex-col justify-center bg-whitebg-white">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-xs text-gray-400">{filtered[0].date}</span>
                     <span className="w-1 h-1 rounded-full bg-gray-300" />
@@ -186,7 +186,7 @@ export default function Insights() {
                   <Link
                     key={article.slug}
                     href={`/insights/${article.slug}`}
-                    className="group cursor-pointer rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md bg-white dark:bg-[#0a1628]"
+                    className="group cursor-pointer rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-colors duration-300 shadow-sm hover:shadow-md bg-whitebg-white"
                   >
                     <div className="relative h-48 overflow-hidden">
                       <Image

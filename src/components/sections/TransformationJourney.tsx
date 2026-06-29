@@ -48,7 +48,7 @@ export default function TransformationJourney() {
   }, [active, go])
 
   return (
-    <section className="py-section bg-white dark:bg-[#050f2e] relative overflow-hidden" id="journey">
+    <section className="py-section bg-white relative overflow-hidden" id="journey">
       <SectionGrid />
 
       <div className="section-container relative z-10">
@@ -77,7 +77,7 @@ export default function TransformationJourney() {
                 className={`text-left px-6 py-4 rounded-xl border transition-all duration-300 group ${
                   i === active
                     ? 'border-[#007cf4]/40 bg-[#007cf4]/8 shadow-sm'
-                    : 'border-black/8 dark:border-white/10 bg-white dark:bg-[#0a1a4a] hover:bg-[#007cf4]/4 hover:border-[#007cf4]/25'
+                    : 'border-black/8 dark:border-white/10 bg-white hover:bg-[#007cf4]/4 hover:border-[#007cf4]/25'
                 }`}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}

@@ -98,7 +98,7 @@ export default function ServicesPage() {
       />
 
       {/* Three pillars */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="flex flex-col gap-8">
             {pillars.map((pillar, i) => (
@@ -132,17 +132,17 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Services list panel */}
-                <div className="bg-white dark:bg-[#0a1628] p-10 md:[direction:ltr]">
+                <div className="bg-white dark:bg-white p-10 md:[direction:ltr]">
                   <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-6">Services included</p>
                   <div className="grid grid-cols-1 gap-2">
                     {pillar.services.map((svc) => (
                       <Link
                         key={svc.href}
                         href={svc.href}
-                        className="group flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-100 dark:border-white/8 hover:border-[#007cf4]/30 hover:bg-[#007cf4]/4 transition-all duration-200"
+                        className="group flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-100  hover:border-[#007cf4]/30 hover:bg-[#007cf4]/4 transition-all duration-200"
                       >
                         <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: `linear-gradient(135deg, ${pillar.color}, #36c5f0)` }} />
-                        <span className="text-sm text-gray-700 dark:text-white/70 group-hover:text-[#007cf4] transition-colors">{svc.label}</span>
+                        <span className="text-sm text-gray-700 text-gray-600 group-hover:text-[#007cf4] transition-colors">{svc.label}</span>
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
                           <path d="M2 6h8M6 2l4 4-4 4" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
@@ -157,7 +157,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Technology partners */}
-      <section className="py-16 bg-white dark:bg-[#050f2e] border-t border-gray-100 dark:border-white/8">
+      <section className="py-16 bg-white dark:bg-[#f8faff] border-t border-gray-100 ">
         <div className="section-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -175,7 +175,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             {tools.map(tool => (
-              <span key={tool} className="inline-flex items-center bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full px-4 py-2 text-sm font-semibold text-gray-600 dark:text-white/60 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-colors cursor-default">
+              <span key={tool} className="inline-flex items-center bg-gray-50 dark:bg-white/5 border border-gray-200  rounded-full px-4 py-2 text-sm font-semibold text-gray-600 text-gray-500 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-colors cursor-default">
                 {tool}
               </span>
             ))}

@@ -36,7 +36,7 @@ export default function IndustryOrbitSection({
   const R1 = 90, R2 = 140, cx = 200, cy = 200
 
   return (
-    <section ref={ref} className="py-20 md:py-28 bg-white dark:bg-[#050f2e] overflow-hidden">
+    <section ref={ref} className="py-20 md:py-28 bg-white overflow-hidden">
       <div className="section-container">
         <div className={`flex flex-col ${flip ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16 lg:gap-20`}>
 
@@ -152,7 +152,7 @@ export default function IndustryOrbitSection({
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               />
               <circle cx={cx} cy={cy} r="44" fill="white" stroke="#007cf4" strokeWidth="1.5" strokeOpacity="0.4"
-                className="dark:fill-[#0a1628]"
+                className="fill-white"
               />
               {/* Center label */}
               <text x={cx} y={cy - 6} textAnchor="middle" fontSize="9" fontWeight="700"

@@ -128,9 +128,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
       />
 
       {/* Category nav */}
-      <div className="bg-[#f8faff] dark:bg-[#060d24] border-b border-[#007cf4]/10">
+      <div className="bg-[#f8faff] dark:bg-[#f8faff] border-b border-[#007cf4]/10">
         <div className="section-container py-4 flex flex-wrap gap-2">
-          <Link href="/insights" className="px-4 py-1.5 rounded-full text-xs font-semibold border border-black/15 dark:border-white/15 text-gray-500 dark:text-gray-400 hover:border-[#007cf4] hover:text-[#007cf4] transition-colors">
+          <Link href="/insights" className="px-4 py-1.5 rounded-full text-xs font-semibold border border-black/15  text-gray-500  hover:border-[#007cf4] hover:text-[#007cf4] transition-colors">
             All
           </Link>
           {categories.map(cat => (
@@ -140,7 +140,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
               className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
                 cat === category
                   ? 'bg-[#007cf4] text-white border-[#007cf4]'
-                  : 'border-black/15 dark:border-white/15 text-gray-500 dark:text-gray-400 hover:border-[#007cf4] hover:text-[#007cf4]'
+                  : 'border-black/15  text-gray-500  hover:border-[#007cf4] hover:text-[#007cf4]'
               }`}
             >
               {categoryMeta[cat].label}
@@ -150,7 +150,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
       </div>
 
       {/* Articles in this category */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <p className="text-gray-400 text-sm mb-10">{filtered.length} article{filtered.length !== 1 ? 's' : ''} in <span className="text-[#007cf4] font-semibold">{meta.label}</span></p>
 
@@ -162,7 +162,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map(article => (
-                <Link key={article.slug} href={`/insights/${article.slug}`} className="group block rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-md bg-white dark:bg-[#0a1628]">
+                <Link key={article.slug} href={`/insights/${article.slug}`} className="group block rounded-2xl overflow-hidden border border-black/8  hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-md bg-white dark:bg-white">
                   <div className="relative h-48 overflow-hidden">
                     <Image src={article.image} alt={article.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 640px) 100vw, 33vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -173,12 +173,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                   </div>
                   <div className="p-5">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-xs text-gray-400 dark:text-gray-500">{article.date}</span>
+                      <span className="text-xs text-gray-400 ">{article.date}</span>
                       <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
-                      <span className="text-xs text-gray-400 dark:text-gray-500">{article.readTime}</span>
+                      <span className="text-xs text-gray-400 ">{article.readTime}</span>
                     </div>
                     <h3 className="font-inter-tight font-bold text-black dark:text-white text-base leading-snug mb-2 group-hover:text-[#007cf4] transition-colors">{article.title}</h3>
-                    <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-3">{article.excerpt}</p>
+                    <p className="text-gray-500  text-xs leading-relaxed line-clamp-3">{article.excerpt}</p>
                     <div className="mt-4 flex items-center gap-1.5 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                       Read article →
                     </div>
@@ -192,7 +192,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
       {/* Other categories teaser */}
       {others.length > 0 && (
-        <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+        <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
           <div className="section-container">
             <div className="flex items-center justify-between mb-8">
               <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl">More Insights</h2>
@@ -200,7 +200,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {others.slice(0, 3).map(article => (
-                <Link key={article.slug} href={`/insights/${article.slug}`} className="group block bg-white dark:bg-[#0a1628] rounded-2xl p-5 border border-[#007cf4]/10 hover:border-[#007cf4]/30 transition-all">
+                <Link key={article.slug} href={`/insights/${article.slug}`} className="group block bg-white dark:bg-white rounded-2xl p-5 border border-[#007cf4]/10 hover:border-[#007cf4]/30 transition-all">
                   <span className="text-[#007cf4] text-xs font-bold uppercase tracking-widest">{article.tag}</span>
                   <h3 className="font-inter-tight font-bold text-black dark:text-white text-sm mt-2 mb-1 group-hover:text-[#007cf4] transition-colors">{article.title}</h3>
                   <p className="text-gray-400 text-xs">{article.readTime}</p>

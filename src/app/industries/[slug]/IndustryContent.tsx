@@ -68,7 +68,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
   return (
     <>
       {/* 2. The Challenge */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -282,7 +282,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
       </section>
 
       {/* 4. Results */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -329,7 +329,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
       </section>
 
       {/* 5. Mini Case Study */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -376,7 +376,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
       </section>
 
       {/* 6. Tools & Technologies */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -409,7 +409,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
             {ind.tools.map((tool) => (
               <span
                 key={tool}
-                className="inline-flex px-4 py-2 bg-white dark:bg-[#0a1a4a] border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300"
+                className="inline-flex px-4 py-2 bg-white dark:bg-white border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 "
               >
                 {tool}
               </span>
@@ -419,7 +419,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
       </section>
 
       {/* 7. FAQ */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p

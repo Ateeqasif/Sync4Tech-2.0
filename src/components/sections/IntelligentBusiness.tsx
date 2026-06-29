@@ -38,7 +38,7 @@ export default function IntelligentBusiness() {
   const r = 140
 
   return (
-    <section className="py-section bg-white dark:bg-[#050f2e] relative overflow-hidden" id="intelligent">
+    <section className="py-section bg-white relative overflow-hidden" id="intelligent">
       <SectionGrid />
 
       <div className="section-container relative z-10">

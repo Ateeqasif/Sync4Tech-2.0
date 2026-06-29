@@ -57,7 +57,7 @@ export default function MissionPage() {
       />
 
       {/* Mission statement */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="max-w-3xl mx-auto text-center mb-20">
             <motion.p
@@ -79,7 +79,7 @@ export default function MissionPage() {
               &ldquo;To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy mid-market businesses across the UK, US, and beyond.&rdquo;
             </motion.blockquote>
             <motion.p
-              className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed"
+              className="text-gray-500  text-sm leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -94,7 +94,7 @@ export default function MissionPage() {
             {beliefs.map((b, i) => (
               <motion.div
                 key={i}
-                className="bg-[#f8faff] dark:bg-[#060d24] rounded-2xl p-8 border border-[#007cf4]/10"
+                className="bg-[#f8faff] dark:bg-[#f8faff] rounded-2xl p-8 border border-[#007cf4]/10"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -104,7 +104,7 @@ export default function MissionPage() {
                   <div className="w-1 h-8 rounded-full bg-gradient-to-b from-[#033a9d] to-[#007cf4]" />
                   <h3 className="font-inter-tight font-bold text-black dark:text-white text-lg">{b.heading}</h3>
                 </div>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{b.body}</p>
+                <p className="text-gray-500  text-sm leading-relaxed">{b.body}</p>
               </motion.div>
             ))}
           </div>
@@ -112,7 +112,7 @@ export default function MissionPage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="text-center mb-16">
             <motion.p
@@ -156,10 +156,10 @@ export default function MissionPage() {
                     <div className="relative shrink-0 hidden sm:flex items-center justify-center">
                       <div className="w-3 h-3 rounded-full bg-[#007cf4] ring-4 ring-[#007cf4]/20 mt-1" />
                     </div>
-                    <div className="bg-white dark:bg-[#0a1628] rounded-2xl p-6 border border-[#007cf4]/10 flex-1">
+                    <div className="bg-white dark:bg-white rounded-2xl p-6 border border-[#007cf4]/10 flex-1">
                       <span className="sm:hidden text-[#007cf4] font-bold text-xs">{m.year} · </span>
                       <span className="font-inter-tight font-bold text-black dark:text-white text-base">{m.label}</span>
-                      <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mt-2">{m.detail}</p>
+                      <p className="text-gray-500  text-sm leading-relaxed mt-2">{m.detail}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -170,7 +170,7 @@ export default function MissionPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-section bg-white dark:bg-[#050f2e]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {stats.map(({ stat, label }, i) => (
@@ -183,7 +183,7 @@ export default function MissionPage() {
                 transition={{ duration: 0.5, delay: i * 0.1, ease }}
               >
                 <div className="font-inter-tight font-black text-4xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-[#033a9d] to-[#007cf4] mb-2">{stat}</div>
-                <p className="text-gray-500 dark:text-gray-400 text-xs leading-snug">{label}</p>
+                <p className="text-gray-500  text-xs leading-snug">{label}</p>
               </motion.div>
             ))}
           </div>
@@ -191,7 +191,7 @@ export default function MissionPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#060d24]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
         <div className="section-container text-center">
           <motion.h2
             className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4"
@@ -203,7 +203,7 @@ export default function MissionPage() {
             Ready to close your gap?
           </motion.h2>
           <motion.p
-            className="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mb-8"
+            className="text-gray-500  text-sm max-w-xl mx-auto mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}

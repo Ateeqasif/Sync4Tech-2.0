@@ -124,7 +124,7 @@ export default function AIChatBot() {
             </div>
 
             {/* Messages */}
-            <div className="bg-white dark:bg-[#0a1a4a] p-4 min-h-[220px] max-h-72 overflow-y-auto flex flex-col gap-3">
+            <div className="bg-white p-4 min-h-[220px] max-h-72 overflow-y-auto flex flex-col gap-3">
               {/* Typing dots */}
               {typing && (
                 <div className="flex items-center gap-1 bg-gray-100 dark:bg-[#071540] rounded-2xl rounded-bl-sm px-4 py-3 w-fit">
@@ -160,7 +160,7 @@ export default function AIChatBot() {
 
             {/* Input */}
             {!done && (
-              <div className="bg-white dark:bg-[#0a1a4a] border-t border-gray-100 dark:border-white/10 flex items-center gap-2 px-3 py-2">
+              <div className="bg-white border-t border-gray-100 dark:border-white/10 flex items-center gap-2 px-3 py-2">
                 <input
                   ref={inputRef}
                   type="text"
