@@ -1,67 +1,92 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 
-const team = [
+type Member = { name: string; role: string; linkedin?: string }
+
+const teamGroups: { category: string; members: Member[] }[] = [
   {
-    name: 'Ateeq Asif',
-    role: 'Founder & CEO',
-    location: 'UK',
-    bio: 'Former enterprise architect with 12 years of experience building large-scale automation systems. Founded Sync4Tech to bring enterprise-grade AI and automation capability to mid-market companies that cannot afford the Big Four.',
-    expertise: ['AI Strategy', 'Enterprise Architecture', 'Client Relationships'],
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop',
-    linkedin: 'https://pk.linkedin.com/in/ateeqasif',
+    category: 'Leadership / Founders',
+    members: [
+      { name: 'Ateeq Ur Rehman Asif', role: 'Co-Founder & CEO', linkedin: 'https://pk.linkedin.com/in/ateeqasif' },
+      { name: 'Abdul Rehman', role: 'Co-Founder' },
+      { name: 'Khalil Ahmad', role: 'Co-Founder' },
+      { name: 'Nasir Ali', role: 'Co-Founder' },
+    ],
   },
   {
-    name: 'Sarah Chen',
-    role: 'Head of AI Engineering',
-    location: 'US',
-    bio: 'PhD in Machine Learning from Carnegie Mellon. Led AI deployment programmes at two Fortune 500 companies before joining Sync4Tech. Specialises in LLM applications and production AI systems that actually stay reliable.',
-    expertise: ['LLM Systems', 'RAG Pipelines', 'MLOps'],
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80&auto=format&fit=crop',
-    linkedin: '#',
+    category: 'Department Heads / Managers',
+    members: [
+      { name: 'Mohsin Ali', role: 'IT Head | SEO Head & Strategist' },
+      { name: 'Syed Mohsin Ali', role: 'Lead HR Operations' },
+      { name: 'Usama Rana', role: 'Assistant Manager HR' },
+      { name: 'Irtaza Adil', role: 'Admin Manager' },
+      { name: 'Hifza Nasreen', role: 'Product Owner | BA Team Lead' },
+      { name: 'Hassan Ali', role: 'Customer Success Manager' },
+    ],
   },
   {
-    name: 'Omar Khalid',
-    role: 'Lead Automation Consultant',
-    location: 'Pakistan',
-    bio: 'Certified automation architect with deep expertise in Zapier, Make.com, and HubSpot ecosystems. Has designed and deployed over 200 automation workflows across healthcare, legal, and financial services clients.',
-    expertise: ['Workflow Automation', 'HubSpot', 'Process Design'],
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&auto=format&fit=crop',
-    linkedin: '#',
+    category: 'Mid-Level / Specialist Roles',
+    members: [
+      { name: 'Syeda Farwa', role: 'Scrum Master' },
+      { name: 'Faisal Qadir', role: 'Project Coordinator' },
+      { name: 'Adeel Ahmed', role: 'Project Coordinator' },
+      { name: 'Hassan Chaudhry', role: 'Business Automation Engineer' },
+      { name: 'Bilal Manzoor', role: 'Business Automation Engineer' },
+      { name: 'Taimoor Akmal', role: 'Data Engineer' },
+      { name: 'Aiza Rashid', role: 'Software Quality Enablement Engineer' },
+      { name: 'Maryam Bashir', role: 'Software Business Analyst' },
+      { name: 'Syed Awais Ahmed Jilani', role: 'Business Analyst' },
+      { name: 'Syeda Amna Hassan', role: 'Business Analyst' },
+      { name: 'Shabir Ahmed Kasuri', role: 'Accounts Officer' },
+      { name: 'Muhammad Anas', role: 'Data Analyst' },
+      { name: 'Uzair Ashraf', role: 'BD' },
+    ],
   },
   {
-    name: 'Priya Sharma',
-    role: 'Senior Data Engineer',
-    location: 'UK',
-    bio: 'Former data platform lead at a FTSE 250 fintech. Built data warehouses processing billions of events daily. Brings that enterprise rigour to Sync4Tech clients who need data infrastructure that scales without breaking.',
-    expertise: ['Snowflake', 'dbt', 'Data Architecture'],
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80&auto=format&fit=crop',
-    linkedin: '#',
+    category: 'Associate-Level Staff',
+    members: [
+      { name: 'Rimsha Sharif', role: 'Associate Business Analyst' },
+      { name: 'Nimra Abid', role: 'Associate Business Analyst' },
+      { name: 'Sarah Gohar', role: 'Associate Business Analyst' },
+      { name: 'Aqsa Jaan', role: 'Associate Business Analyst' },
+      { name: 'Muhammad Usman Rehman', role: 'Associate Business Developer' },
+      { name: 'Ans Mohiuddin', role: 'Associate Business Developer' },
+      { name: 'Raza Nadeem', role: 'Associate Business Developer' },
+      { name: 'Memona Zafar', role: 'Associate Data Analyst' },
+      { name: 'Ali Hamza Sarfraz', role: 'Associate Data Analyst' },
+      { name: 'Anas Awais', role: 'Associate Data Engineer' },
+      { name: 'Usman Malik', role: 'Associate SQA Engineer' },
+      { name: 'Harris Nadeem', role: 'Associate Project Manager' },
+      { name: 'Hamza Aslam', role: 'Associate Project Manager' },
+      { name: 'Hamza Shoukat', role: 'Associate Accounts Officer' },
+      { name: 'Ayyan Iqbal', role: 'Customer Success Associate' },
+      { name: 'Ayesha Aziz', role: 'Talent Acquisition Associate' },
+      { name: 'Rumman Rana', role: 'HR Associate' },
+    ],
   },
   {
-    name: 'James Morrison',
-    role: 'Business Development Director',
-    location: 'UK',
-    bio: 'Previously VP of Sales at a digital transformation consultancy where he built and scaled the UK enterprise practice from £2M to £18M ARR. Joined Sync4Tech to help mid-market companies access transformation they could never access before.',
-    expertise: ['Enterprise Sales', 'Partnership Strategy', 'Market Expansion'],
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&auto=format&fit=crop',
-    linkedin: '#',
-  },
-  {
-    name: 'Fatima Malik',
-    role: 'AI Research Lead',
-    location: 'Pakistan',
-    bio: 'Researcher turned practitioner with a focus on applied NLP and document intelligence. Leads Sync4Tech\'s internal R&D on emerging LLM capabilities and translates cutting-edge research into production-ready client solutions.',
-    expertise: ['NLP', 'Document AI', 'Prompt Engineering'],
-    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&q=80&auto=format&fit=crop',
-    linkedin: '#',
+    category: 'Interns / Trainees',
+    members: [
+      { name: 'Maria Khan', role: 'Business Automation Intern' },
+      { name: 'Aqsa Nadeem', role: 'Business Automation Intern' },
+      { name: 'Muhammad Ahmad', role: 'Business Automation Workflow Intern' },
+      { name: 'Huzaifa Tariq', role: 'Business Developer Intern' },
+      { name: 'Usman Ghani', role: 'Business Development Intern' },
+      { name: 'Mehmood Ahmad Raza', role: 'Business Development Intern' },
+      { name: 'Alishba Javaid Khan', role: 'Automation Trainee' },
+      { name: 'Farheen', role: 'Social Media Intern' },
+      { name: 'Khadija Mohsin', role: 'Social Media Marketing Intern' },
+    ],
   },
 ]
+
+function initials(name: string) {
+  return name.split(' ').filter(Boolean).slice(0, 2).map(p => p[0]).join('').toUpperCase()
+}
 
 const values = [
   { title: 'Outcomes over outputs', body: 'We are measured by what changes in your business, not what we deliver in a zip file. Every engagement starts with defining what success looks like in numbers.' },
@@ -119,57 +144,52 @@ export default function TeamPage() {
             </motion.p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {team.map((member, i) => (
-              <motion.div
-                key={member.name}
-                className="group bg-white dark:bg-white rounded-2xl overflow-hidden border border-black/8  hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-lg"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6, delay: i * 0.08, ease }}
-              >
-                <div className="relative h-64 overflow-hidden bg-[#f0f4ff] dark:bg-[#0d1f3c]">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <span className="bg-[#007cf4]/90 text-white text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">{member.location}</span>
-                  </div>
+          <div className="flex flex-col gap-16">
+            {teamGroups.map((group, gi) => (
+              <div key={group.category}>
+                <motion.h3
+                  className="font-inter-tight font-bold text-black dark:text-white text-lg mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.5, ease }}
+                >
+                  {group.category}
+                </motion.h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {group.members.map((member, i) => (
+                    <motion.div
+                      key={member.name}
+                      className="group flex items-center gap-5 bg-white dark:bg-white rounded-2xl p-7 border border-black/8 hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-lg"
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-80px' }}
+                      transition={{ duration: 0.5, delay: (gi * 0.05) + i * 0.04, ease }}
+                    >
+                      <div className="shrink-0 w-16 h-16 rounded-full bg-[#f0f4ff] flex items-center justify-center">
+                        <span className="font-inter-tight font-bold text-[#007cf4] text-lg">{initials(member.name)}</span>
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <h4 className="font-inter-tight font-bold text-black dark:text-white text-base truncate">{member.name}</h4>
+                        <p className="text-gray-500 text-sm truncate">{member.role}</p>
+                      </div>
+                      {member.linkedin && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${member.name} on LinkedIn`}
+                          className="shrink-0 w-9 h-9 rounded-full bg-[#f0f4ff] hover:bg-[#007cf4] flex items-center justify-center text-[#007cf4] hover:text-white transition-colors"
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.89 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                          </svg>
+                        </a>
+                      )}
+                    </motion.div>
+                  ))}
                 </div>
-                <div className="p-6">
-                  <div className="mb-4 flex items-start justify-between gap-2">
-                    <div>
-                      <h3 className="font-inter-tight font-bold text-black dark:text-white text-lg">{member.name}</h3>
-                      <p className="text-[#007cf4] text-sm font-semibold">{member.role}</p>
-                    </div>
-                    {member.linkedin !== '#' && (
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${member.name} on LinkedIn`}
-                        className="shrink-0 w-8 h-8 rounded-full bg-[#f0f4ff] hover:bg-[#007cf4] flex items-center justify-center text-[#007cf4] hover:text-white transition-colors"
-                      >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.89 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
-                        </svg>
-                      </a>
-                    )}
-                  </div>
-                  <p className="text-gray-500  text-xs leading-relaxed mb-4">{member.bio}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {member.expertise.map(tag => (
-                      <span key={tag} className="bg-[#f0f4ff] dark:bg-[#0d1f3c] text-[#007cf4] text-xs font-medium px-2.5 py-1 rounded-full">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
