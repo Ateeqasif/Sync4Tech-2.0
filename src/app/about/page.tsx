@@ -55,42 +55,32 @@ export default function AboutPage() {
       />
 
       {/* Mission / Vision */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-white">
         <div className="section-container">
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 max-w-4xl mx-auto">
             {/* Mission */}
             <motion.div
-              className="relative overflow-hidden rounded-2xl p-8 shadow-xl shadow-[#007cf4]/10"
-              style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0, ease }}
             >
-              <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-              <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-white/10 pointer-events-none" />
-              <div className="relative">
-                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center mb-4">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="white" strokeWidth="1.5" /><path d="M10 6v4l3 2" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></svg>
-                </div>
-                <h2 className="font-inter-tight font-black text-white text-xl mb-3">Our Mission</h2>
-                <p className="text-white/80 text-sm leading-relaxed">To eliminate the execution gap the painful distance between what organisations intend to do and what they actually achieve through intelligent automation and AI-powered systems.</p>
-              </div>
+              <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Mission</span>
+              <p className="font-inter-tight font-black text-black text-2xl md:text-3xl leading-snug">
+                To eliminate the execution gap the painful distance between what organisations intend to do and what they actually achieve through intelligent automation and AI-powered systems.
+              </p>
             </motion.div>
             {/* Vision */}
             <motion.div
-              className="relative overflow-hidden rounded-2xl p-8 bg-white dark:bg-white border border-[#007cf4]/20 shadow-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: 0.15, ease }}
             >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007cf4] to-[#36c5f0]" />
-              <div className="w-10 h-10 bg-[#007cf4]/10 rounded-xl flex items-center justify-center mb-4">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" stroke="#007cf4" strokeWidth="1.5" strokeLinejoin="round" /></svg>
-              </div>
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3">Our Vision</h2>
-              <p className="text-gray-500  text-sm leading-relaxed">A world where every organisation regardless of size or sector can operate at its full potential, freed from the friction of manual processes and siloed data.</p>
+              <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Vision</span>
+              <p className="font-inter-tight font-black text-black text-2xl md:text-3xl leading-snug">
+                A world where every organisation regardless of size or sector can operate at its full potential, freed from the friction of manual processes and siloed data.
+              </p>
             </motion.div>
           </div>
         </div>
