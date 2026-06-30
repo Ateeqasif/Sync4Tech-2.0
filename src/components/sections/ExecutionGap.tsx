@@ -51,11 +51,6 @@ export default function ExecutionGap() {
             <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #007cf4, #36c5f0)' }} />
             <div className="relative z-10 p-10">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: 'rgba(0,124,244,0.08)', border: '1px solid rgba(0,124,244,0.2)' }}>
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 2l8 8M10 2L2 10" stroke="#007cf4" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </div>
                 <span className="text-xs font-black text-gray-800 dark:text-white/70 uppercase tracking-[0.2em]">{t.executionGap.beforeLabel}</span>
               </div>
 
@@ -110,11 +105,6 @@ export default function ExecutionGap() {
             <div className="absolute top-0 left-0 right-0 h-1 bg-white/30" />
             <div className="relative z-10 p-10">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-8 h-8 rounded-full bg-white/20 border border-white/30 flex items-center justify-center">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
                 <span className="text-xs font-black text-white/80 uppercase tracking-[0.2em]">{t.executionGap.afterLabel}</span>
               </div>
 
