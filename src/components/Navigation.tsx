@@ -5,8 +5,6 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Logo from './Logo'
-import ThemeToggle from './ThemeToggle'
-import LanguageSwitcher from './LanguageSwitcher'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 const servicesMega = [
@@ -280,8 +278,6 @@ export default function Navigation() {
 
           {/* Right side controls */}
           <div className="hidden md:flex items-center gap-3">
-            <ThemeToggle />
-            <LanguageSwitcher />
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 hover:scale-[1.03]"
@@ -379,9 +375,6 @@ export default function Navigation() {
                 </Link>
               ))}
 
-              <div className="mt-2 pt-3 border-t border-[#007cf4]/10 flex items-center gap-3">
-                <LanguageSwitcher />
-              </div>
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center px-5 py-3 rounded-full text-sm font-semibold text-white mt-2"
