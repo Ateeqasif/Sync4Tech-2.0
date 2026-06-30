@@ -55,38 +55,152 @@ export default function AboutPage() {
       />
 
       {/* Mission */}
-      <section className="py-section bg-white dark:bg-white">
+      <section className="py-section bg-white dark:bg-white overflow-hidden">
         <div className="section-container">
-          <motion.div
-            className="max-w-2xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, ease }}
-          >
-            <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Mission</span>
-            <p className="font-inter font-normal text-black text-xl md:text-2xl leading-relaxed">
-              To eliminate the execution gap the painful distance between what organisations intend to do and what they actually achieve through intelligent automation and AI-powered systems.
-            </p>
-          </motion.div>
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <motion.div
+              className="flex-1 max-w-xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6, ease }}
+            >
+              <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Mission</span>
+              <p className="font-inter font-normal text-black text-xl md:text-2xl leading-relaxed">
+                To eliminate the execution gap the painful distance between what organisations intend to do and what they actually achieve through intelligent automation and AI-powered systems.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="flex-1 w-full max-w-md"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, delay: 0.15, ease }}
+            >
+              <svg viewBox="0 0 400 260" className="w-full h-auto">
+                <defs>
+                  <linearGradient id="missionLine" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#007cf4" />
+                    <stop offset="100%" stopColor="#36c5f0" />
+                  </linearGradient>
+                </defs>
+
+                {/* Intent node */}
+                <circle cx="60" cy="130" r="40" fill="#f0f4ff" stroke="#007cf4" strokeWidth="1.5" />
+                <text x="60" y="126" textAnchor="middle" fontSize="11" fontWeight="700" fill="#033a9d">Intent</text>
+                <text x="60" y="140" textAnchor="middle" fontSize="9" fill="#007cf4">Strategy</text>
+
+                {/* Execution node */}
+                <circle cx="340" cy="130" r="40" fill="#007cf4" />
+                <text x="340" y="126" textAnchor="middle" fontSize="11" fontWeight="700" fill="white">Execution</text>
+                <text x="340" y="140" textAnchor="middle" fontSize="9" fill="white" opacity="0.85">Results</text>
+
+                {/* Connecting path representing the gap being closed */}
+                <path d="M 100 130 L 300 130" stroke="#007cf4" strokeWidth="1.5" strokeDasharray="4 6" opacity="0.35" />
+                <motion.circle
+                  cy="130" r="6"
+                  fill="url(#missionLine)"
+                  animate={{ cx: [100, 300] }}
+                  transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                />
+
+                {/* Pulse rings on the execution node showing momentum */}
+                {[0, 1].map(k => (
+                  <motion.circle
+                    key={k}
+                    cx="340" cy="130" r="40"
+                    fill="none" stroke="#007cf4" strokeWidth="1.5"
+                    initial={{ scale: 1, opacity: 0.5 }}
+                    animate={{ scale: 1.4, opacity: 0 }}
+                    transition={{ duration: 2.4, delay: k * 1.2, repeat: Infinity, ease: 'easeOut' }}
+                    style={{ transformOrigin: '340px 130px' }}
+                  />
+                ))}
+              </svg>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Vision */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff] overflow-hidden">
         <div className="section-container">
-          <motion.div
-            className="max-w-2xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, ease }}
-          >
-            <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Vision</span>
-            <p className="font-inter font-normal text-black text-xl md:text-2xl leading-relaxed">
-              A world where every organisation regardless of size or sector can operate at its full potential, freed from the friction of manual processes and siloed data.
-            </p>
-          </motion.div>
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <motion.div
+              className="flex-1 max-w-xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6, ease }}
+            >
+              <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Vision</span>
+              <p className="font-inter font-normal text-black text-xl md:text-2xl leading-relaxed">
+                A world where every organisation regardless of size or sector can operate at its full potential, freed from the friction of manual processes and siloed data.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="flex-1 w-full max-w-md"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, delay: 0.15, ease }}
+            >
+              <svg viewBox="0 0 400 320" className="w-full h-auto">
+                <defs>
+                  <radialGradient id="visionGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#007cf4" />
+                    <stop offset="100%" stopColor="#033a9d" />
+                  </radialGradient>
+                </defs>
+
+                {/* Expanding potential rings */}
+                {[60, 100, 140].map((r, i) => (
+                  <motion.circle
+                    key={r}
+                    cx="200" cy="160" r={r}
+                    fill="none" stroke="rgba(0,124,244,0.18)" strokeWidth="1"
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1, delay: i * 0.15, ease }}
+                  />
+                ))}
+
+                {/* Orbiting nodes representing organisations of every size, reaching full potential */}
+                {[0, 72, 144, 216, 288].map((angle, i) => {
+                  const rad = (angle * Math.PI) / 180
+                  const r = 140
+                  const x = 200 + Math.cos(rad) * r
+                  const y = 160 + Math.sin(rad) * r
+                  return (
+                    <motion.circle
+                      key={angle}
+                      cx={x} cy={y} r="6"
+                      fill="#36c5f0"
+                      animate={{ r: [5, 8, 5], opacity: [0.7, 1, 0.7] }}
+                      transition={{ duration: 2.5, delay: i * 0.3, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                  )
+                })}
+
+                {/* Slowly rotating connector ring */}
+                <motion.g
+                  style={{ transformOrigin: '200px 160px' }}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
+                >
+                  <circle cx="200" cy="160" r="140" fill="none" stroke="#007cf4" strokeWidth="1" strokeDasharray="2 10" opacity="0.5" />
+                </motion.g>
+
+                {/* Center glow representing full potential */}
+                <circle cx="200" cy="160" r="50" fill="url(#visionGlow)" opacity="0.15" />
+                <circle cx="200" cy="160" r="36" fill="url(#visionGlow)" />
+                <text x="200" y="156" textAnchor="middle" fontSize="9" fontWeight="700" fill="white">Full</text>
+                <text x="200" y="168" textAnchor="middle" fontSize="9" fontWeight="700" fill="white">Potential</text>
+              </svg>
+            </motion.div>
+          </div>
         </div>
       </section>
 
