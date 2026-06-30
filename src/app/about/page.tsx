@@ -22,10 +22,10 @@ const values = [
 ]
 
 const team = [
-  { name: 'Ateeq Asif', role: 'CEO & Founder', initials: 'AA' },
-  { name: 'Sarah Chen', role: 'Head of AI Engineering', initials: 'SC' },
-  { name: 'James O\'Brien', role: 'Director of Consulting', initials: 'JO' },
-  { name: 'Fatima Malik', role: 'Head of Data Intelligence', initials: 'FM' },
+  { name: 'Ateeq Ur Rehman Asif', role: 'Co-Founder & CEO', initials: 'AU' },
+  { name: 'Abdul Rehman', role: 'Co-Founder', initials: 'AR' },
+  { name: 'Khalil Ahmad', role: 'Co-Founder', initials: 'KA' },
+  { name: 'Nasir Ali', role: 'Co-Founder', initials: 'NA' },
 ]
 
 const offices = [

@@ -144,9 +144,16 @@ export default function TeamPage() {
             </motion.p>
           </div>
 
-          <div className="flex flex-col gap-16">
+          <div className="relative flex flex-col gap-16 pl-9 md:pl-14">
+            {/* Tree trunk line */}
+            <div className="absolute left-2.5 md:left-5 top-2 bottom-2 w-px bg-gradient-to-b from-[#007cf4]/50 via-[#007cf4]/25 to-[#007cf4]/5" />
+
             {teamGroups.map((group, gi) => (
-              <div key={group.category}>
+              <div key={group.category} className="relative">
+                {/* Branch node + connector */}
+                <span className="absolute -left-9 md:-left-14 top-1.5 w-4 h-4 rounded-full bg-[#007cf4] ring-4 ring-[#f0f4ff] shadow-sm" />
+                <span className="absolute -left-[26px] md:-left-[42px] top-3 w-6 md:w-9 h-px bg-[#007cf4]/40" />
+
                 <motion.h3
                   className="font-inter-tight font-bold text-black dark:text-white text-lg mb-6"
                   initial={{ opacity: 0, y: 20 }}
