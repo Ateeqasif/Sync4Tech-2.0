@@ -54,35 +54,39 @@ export default function AboutPage() {
         breadcrumb={[{ label: 'About', href: '/about' }]}
       />
 
-      {/* Mission / Vision */}
+      {/* Mission */}
       <section className="py-section bg-white dark:bg-white">
         <div className="section-container">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-16 max-w-4xl mx-auto">
-            {/* Mission */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: 0, ease }}
-            >
-              <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Mission</span>
-              <p className="font-inter-tight font-black text-black text-2xl md:text-3xl leading-snug">
-                To eliminate the execution gap the painful distance between what organisations intend to do and what they actually achieve through intelligent automation and AI-powered systems.
-              </p>
-            </motion.div>
-            {/* Vision */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: 0.15, ease }}
-            >
-              <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Vision</span>
-              <p className="font-inter-tight font-black text-black text-2xl md:text-3xl leading-snug">
-                A world where every organisation regardless of size or sector can operate at its full potential, freed from the friction of manual processes and siloed data.
-              </p>
-            </motion.div>
-          </div>
+          <motion.div
+            className="max-w-2xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, ease }}
+          >
+            <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Mission</span>
+            <p className="font-inter font-normal text-black text-xl md:text-2xl leading-relaxed">
+              To eliminate the execution gap the painful distance between what organisations intend to do and what they actually achieve through intelligent automation and AI-powered systems.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Vision */}
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+        <div className="section-container">
+          <motion.div
+            className="max-w-2xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, ease }}
+          >
+            <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Vision</span>
+            <p className="font-inter font-normal text-black text-xl md:text-2xl leading-relaxed">
+              A world where every organisation regardless of size or sector can operate at its full potential, freed from the friction of manual processes and siloed data.
+            </p>
+          </motion.div>
         </div>
       </section>
 
