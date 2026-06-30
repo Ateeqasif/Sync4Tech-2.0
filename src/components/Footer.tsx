@@ -141,9 +141,19 @@ export default function Footer() {
                 AI, Automation & Business Transformation for ambitious organizations.
               </p>
               <div className="flex gap-2">
-                {['in', 'X', 'yt'].map(s => (
-                  <a key={s} href="#" className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/50 transition-colors text-[10px] font-bold">
-                    {s}
+                {[
+                  { label: 'in', href: 'https://pk.linkedin.com/in/ateeqasif' },
+                  { label: 'X', href: '#' },
+                  { label: 'yt', href: '#' },
+                ].map(s => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target={s.href !== '#' ? '_blank' : undefined}
+                    rel={s.href !== '#' ? 'noopener noreferrer' : undefined}
+                    className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/50 transition-colors text-[10px] font-bold"
+                  >
+                    {s.label}
                   </a>
                 ))}
               </div>

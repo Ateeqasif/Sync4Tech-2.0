@@ -14,7 +14,7 @@ const team = [
     bio: 'Former enterprise architect with 12 years of experience building large-scale automation systems. Founded Sync4Tech to bring enterprise-grade AI and automation capability to mid-market companies that cannot afford the Big Four.',
     expertise: ['AI Strategy', 'Enterprise Architecture', 'Client Relationships'],
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop',
-    linkedin: '#',
+    linkedin: 'https://pk.linkedin.com/in/ateeqasif',
   },
   {
     name: 'Sarah Chen',
@@ -143,9 +143,24 @@ export default function TeamPage() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="mb-4">
-                    <h3 className="font-inter-tight font-bold text-black dark:text-white text-lg">{member.name}</h3>
-                    <p className="text-[#007cf4] text-sm font-semibold">{member.role}</p>
+                  <div className="mb-4 flex items-start justify-between gap-2">
+                    <div>
+                      <h3 className="font-inter-tight font-bold text-black dark:text-white text-lg">{member.name}</h3>
+                      <p className="text-[#007cf4] text-sm font-semibold">{member.role}</p>
+                    </div>
+                    {member.linkedin !== '#' && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${member.name} on LinkedIn`}
+                        className="shrink-0 w-8 h-8 rounded-full bg-[#f0f4ff] hover:bg-[#007cf4] flex items-center justify-center text-[#007cf4] hover:text-white transition-colors"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.89 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                        </svg>
+                      </a>
+                    )}
                   </div>
                   <p className="text-gray-500  text-xs leading-relaxed mb-4">{member.bio}</p>
                   <div className="flex flex-wrap gap-1.5">
