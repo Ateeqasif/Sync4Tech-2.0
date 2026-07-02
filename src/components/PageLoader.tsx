@@ -10,13 +10,13 @@ export default function PageLoader() {
 
   useEffect(() => {
     const start = Date.now()
-    const duration = 1600
+    const duration = 800
     const tick = () => {
       const elapsed = Date.now() - start
       const p = Math.min(elapsed / duration, 1)
       setProgress(p)
       if (p < 1) requestAnimationFrame(tick)
-      else setTimeout(() => setVisible(false), 200)
+      else setTimeout(() => setVisible(false), 100)
     }
     requestAnimationFrame(tick)
   }, [])
@@ -28,7 +28,7 @@ export default function PageLoader() {
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
           style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 50%, #36c5f0 100%)' }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          transition={{ duration: 0.25, ease: 'easeInOut' }}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
