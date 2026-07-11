@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 function ParticleCanvas() {
@@ -105,93 +105,214 @@ const metricValues: { value: number; suffix: string; duration?: number }[] = [
   { value: 12, suffix: '+' },
 ]
 
+const slides = [
+  {
+    badge: 'Business Automation',
+    accentColor: '#007cf4',
+    h1Line1: 'Automate What',
+    h1Line2: 'Slows You Down',
+    h1Line3: '',
+    subtitle: 'We design and deploy intelligent automation systems that eliminate manual bottlenecks, cut operational costs, and let your team focus on high-impact work.',
+    cta1: { label: 'Explore Automation', href: '/solutions' },
+    cta2: { label: 'See Case Studies', href: '/case-studies' },
+    icon: (
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+        <rect width="52" height="52" rx="14" fill="rgba(0,124,244,0.12)" />
+        <path d="M16 26c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" />
+        <path d="M26 20v6l3.5 3.5" stroke="#36c5f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="16" cy="26" r="2.5" fill="#007cf4" />
+        <path d="M13.5 26H10M16 23.5V20" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    badge: 'Data Solutions',
+    accentColor: '#36c5f0',
+    h1Line1: 'Turn Data Into',
+    h1Line2: 'Decisive Action',
+    h1Line3: '',
+    subtitle: 'From data pipelines to real-time dashboards and AI-powered analytics, we help you extract meaning from noise and make confident, evidence-based decisions.',
+    cta1: { label: 'Explore Data Solutions', href: '/solutions' },
+    cta2: { label: 'Talk to an Expert', href: '/contact' },
+    icon: (
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+        <rect width="52" height="52" rx="14" fill="rgba(54,197,240,0.12)" />
+        <rect x="14" y="32" width="4" height="8" rx="1" fill="#007cf4" />
+        <rect x="21" y="26" width="4" height="14" rx="1" fill="#36c5f0" />
+        <rect x="28" y="20" width="4" height="20" rx="1" fill="#007cf4" />
+        <rect x="35" y="14" width="4" height="26" rx="1" fill="#36c5f0" />
+        <path d="M16 24l7-6 7 4 7-8" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    badge: 'Business Strategy',
+    accentColor: '#033a9d',
+    h1Line1: 'Strategy That',
+    h1Line2: 'Scales With You',
+    h1Line3: '',
+    subtitle: 'Our consultants embed alongside your leadership to align technology investments with real business outcomes — building roadmaps that create measurable, lasting growth.',
+    cta1: { label: 'Start Your Strategy', href: '/contact' },
+    cta2: { label: 'About Our Experts', href: '/about' },
+    icon: (
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+        <rect width="52" height="52" rx="14" fill="rgba(3,58,157,0.12)" />
+        <path d="M18 34l4-8 5 4 4-10 5 8" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="36" cy="18" r="4" fill="rgba(54,197,240,0.3)" stroke="#36c5f0" strokeWidth="1.5" />
+        <path d="M34.5 18h3M36 16.5v3" stroke="#36c5f0" strokeWidth="1.2" strokeLinecap="round" />
+        <path d="M16 38h20" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+]
+
 export default function Hero() {
   const { t } = useLanguage()
   const metricLabels = [t.hero.metric1Label, t.hero.metric2Label, t.hero.metric3Label, t.hero.metric4Label]
+  const [current, setCurrent] = useState(0)
+  const [direction, setDirection] = useState(1)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const goTo = useCallback((idx: number) => {
+    setDirection(idx > current ? 1 : -1)
+    setCurrent(idx)
+  }, [current])
+
+  const next = useCallback(() => {
+    const idx = (current + 1) % slides.length
+    setDirection(1)
+    setCurrent(idx)
+  }, [current])
+
+  // Auto-advance every 5s
+  useEffect(() => {
+    intervalRef.current = setInterval(next, 5000)
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
+  }, [next])
+
+  const resetTimer = (idx: number) => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    goTo(idx)
+    intervalRef.current = setInterval(next, 5000)
+  }
+
+  const slide = slides[current]
+
+  const variants = {
+    enter: (d: number) => ({ opacity: 0, x: d > 0 ? 60 : -60 }),
+    center: { opacity: 1, x: 0 },
+    exit: (d: number) => ({ opacity: 0, x: d > 0 ? -60 : 60 }),
+  }
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-white" id="home">
-      {/* Background layers overflow-hidden scoped here so text is never clipped */}
+      {/* Background layers */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Particle bg */}
         <div className="absolute inset-0 opacity-70">
           <ParticleCanvas />
         </div>
-
-        {/* Gradient mesh */}
         <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full opacity-10"
-          style={{ background: 'radial-gradient(ellipse, #007cf4 0%, transparent 70%)' }} />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] rounded-full opacity-8"
-          style={{ background: 'radial-gradient(ellipse, #36c5f0 0%, transparent 70%)' }} />
-      </div>
-
-        {/* Grid */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full opacity-10"
+            style={{ background: 'radial-gradient(ellipse, #007cf4 0%, transparent 70%)' }} />
+          <div className="absolute bottom-0 right-0 w-[600px] h-[400px] rounded-full opacity-8"
+            style={{ background: 'radial-gradient(ellipse, #36c5f0 0%, transparent 70%)' }} />
+        </div>
         <div className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage: 'linear-gradient(#007cf4 1px, transparent 1px), linear-gradient(90deg, #007cf4 1px, transparent 1px)',
             backgroundSize: '80px 80px',
           }}
         />
-      </div>{/* end overflow-hidden bg wrapper */}
+      </div>
 
-      <div className="relative z-10 section-container text-center pt-32 pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-4 px-8 py-2.5 mb-10"
-        >
-          <span className="w-2.5 h-2.5 bg-[#007cf4] rounded-full animate-pulse shrink-0" />
-          <span className="text-sm text-[#033a9d] dark:text-[#36c5f0] font-medium tracking-widest uppercase">{t.hero.badge}</span>
-          <span className="w-2.5 h-2.5 bg-[#36c5f0] rounded-full animate-pulse shrink-0" style={{ animationDelay: '0.5s' }} />
-        </motion.div>
-
-        <motion.h1
-          className="font-inter-tight font-black leading-[0.95] tracking-tight mb-8 mx-auto"
-          style={{ fontSize: 'clamp(48px, 8vw, 120px)', maxWidth: '1000px' }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <span className="text-black dark:text-white">{t.hero.h1Line1}</span>
-          <br />
-          <span className="gradient-text-animated" style={{ paddingLeft: '0.05em', paddingRight: '0.08em' }}>{t.hero.h1Line2}</span>
-          <br />
-          <span className="text-black dark:text-white">{t.hero.h1Line3}</span>
-        </motion.h1>
-
-        <motion.p
-          className="text-gray-500 dark:text-gray-400 text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {t.hero.subtitle}
-        </motion.p>
-
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2.5 text-white px-8 py-4 rounded-full font-semibold text-base btn-glow transition-all duration-300 group"
-            style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }}
+      <div className="relative z-10 section-container text-center pt-32 pb-28">
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={current}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            {t.hero.cta1}
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-          <a
-            href="/solutions"
-            className="inline-flex items-center gap-2.5 bg-black/5 dark:bg-white/10 text-black dark:text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-black/10 dark:hover:bg-white/15 transition-all duration-300 border border-black/10 dark:border-white/20 group"
-          >
-            {t.hero.cta2}
-          </a>
-        </motion.div>
+            {/* Icon + badge */}
+            <div className="flex flex-col items-center gap-3 mb-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+              >
+                {slide.icon}
+              </motion.div>
+              <div className="inline-flex items-center gap-4 px-8 py-2.5">
+                <span className="w-2.5 h-2.5 rounded-full animate-pulse shrink-0" style={{ background: slide.accentColor }} />
+                <span className="text-sm font-medium tracking-widest uppercase" style={{ color: slide.accentColor }}>{slide.badge}</span>
+                <span className="w-2.5 h-2.5 bg-[#36c5f0] rounded-full animate-pulse shrink-0" style={{ animationDelay: '0.5s' }} />
+              </div>
+            </div>
+
+            {/* Headline */}
+            <h1
+              className="font-inter-tight font-black leading-[0.95] tracking-tight mb-8 mx-auto"
+              style={{ fontSize: 'clamp(48px, 8vw, 110px)', maxWidth: '1000px' }}
+            >
+              <span className="text-black dark:text-white">{slide.h1Line1}</span>
+              <br />
+              <span className="gradient-text-animated" style={{ paddingLeft: '0.05em', paddingRight: '0.08em' }}>{slide.h1Line2}</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-gray-500 dark:text-gray-400 text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+              {slide.subtitle}
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+              <a
+                href={slide.cta1.href}
+                className="inline-flex items-center gap-2.5 text-white px-8 py-4 rounded-full font-semibold text-base btn-glow transition-all duration-300 group"
+                style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }}
+              >
+                {slide.cta1.label}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+              <a
+                href={slide.cta2.href}
+                className="inline-flex items-center gap-2.5 bg-black/5 dark:bg-white/10 text-black dark:text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-black/10 dark:hover:bg-white/15 transition-all duration-300 border border-black/10 dark:border-white/20 group"
+              >
+                {slide.cta2.label}
+              </a>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Slide dots */}
+        <div className="flex items-center justify-center gap-3 mb-16">
+          {slides.map((s, i) => (
+            <button
+              key={i}
+              onClick={() => resetTimer(i)}
+              aria-label={`Go to slide ${i + 1}: ${s.badge}`}
+              className="group flex items-center gap-2 transition-all duration-300"
+            >
+              <span
+                className="block rounded-full transition-all duration-300"
+                style={{
+                  width: i === current ? '32px' : '8px',
+                  height: '8px',
+                  background: i === current ? slide.accentColor : 'rgba(0,124,244,0.25)',
+                }}
+              />
+              <span className={`text-xs font-medium tracking-wide transition-all duration-300 ${i === current ? 'opacity-100' : 'opacity-0 w-0 overflow-hidden'}`}
+                style={{ color: slide.accentColor }}>
+                {s.badge}
+              </span>
+            </button>
+          ))}
+        </div>
 
         {/* Metrics */}
         <motion.div
