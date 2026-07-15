@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import {
-  AreaChart, Area, LineChart, Line, BarChart, Bar,
+  LineChart, Line, BarChart, Bar,
   XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
 } from 'recharts'
 
@@ -130,10 +130,9 @@ export default function LiveDashboard() {
   const [tasks,    setTasks]    = useState(() => buildSeries(MAX_POINTS, 460, 14, 380, 560))
   const [accuracy, setAccuracy] = useState(() => buildSeries(MAX_POINTS, 97.2, 0.35, 93.5, 99.5))
   const [queue,    setQueue]    = useState(() => buildSeries(MAX_POINTS, 18, 3, 4, 40))
-  const [latency,  setLatency]  = useState(() => buildSeries(MAX_POINTS, 210, 18, 90, 380))
 
-  const prevKpi = useRef({ tasks: 460, accuracy: 97.2, queue: 18, latency: 210 })
-  const [kpi, setKpi] = useState({ tasks: 460, accuracy: 97.2, queue: 18, latency: 210 })
+  const prevKpi = useRef({ tasks: 460, accuracy: 97.2, queue: 18 })
+  const [kpi, setKpi] = useState({ tasks: 460, accuracy: 97.2, queue: 18 })
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -151,10 +150,6 @@ export default function LiveDashboard() {
         const v = clamp(ou(d[d.length - 1].v, 18, 0.14, 3), 4, 40)
         return [...d.slice(-MAX_POINTS + 1), { ts, v: Math.round(v) }]
       })
-      setLatency(d => {
-        const v = clamp(ou(d[d.length - 1].v, 210, 0.12, 18), 90, 380)
-        return [...d.slice(-MAX_POINTS + 1), { ts, v: Math.round(v) }]
-      })
 
       setKpi(prev => {
         prevKpi.current = { ...prev }
@@ -162,7 +157,6 @@ export default function LiveDashboard() {
           tasks:    clamp(Math.round(ou(prev.tasks,    460,  0.15, 14)),   380, 560),
           accuracy: clamp(Math.round(ou(prev.accuracy, 97.2, 0.22, 0.35) * 10) / 10, 93.5, 99.5),
           queue:    clamp(Math.round(ou(prev.queue,    18,   0.14, 3)),     4,   40),
-          latency:  clamp(Math.round(ou(prev.latency,  210,  0.12, 18)),    90,  380),
         }
       })
     }, TICK_MS)
@@ -204,17 +198,16 @@ export default function LiveDashboard() {
 
         {/* KPI row */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: EASE }}
         >
           {([
-            { label: 'Tasks / min',  value: kpi.tasks,    prev: prevKpi.current.tasks,    suffix: '',      color: '#007cf4', decimals: 0, inv: false },
-            { label: 'AI Accuracy',  value: kpi.accuracy, prev: prevKpi.current.accuracy, suffix: '%',     color: '#22c55e', decimals: 1, inv: false },
-            { label: 'Queue Depth',  value: kpi.queue,    prev: prevKpi.current.queue,    suffix: ' jobs', color: '#f59e0b', decimals: 0, inv: true  },
-            { label: 'Avg Response', value: kpi.latency,  prev: prevKpi.current.latency,  suffix: ' ms',   color: '#8b5cf6', decimals: 0, inv: true  },
+            { label: 'Tasks / min', value: kpi.tasks,    prev: prevKpi.current.tasks,    suffix: '',      color: '#007cf4', decimals: 0, inv: false },
+            { label: 'AI Accuracy', value: kpi.accuracy, prev: prevKpi.current.accuracy, suffix: '%',     color: '#22c55e', decimals: 1, inv: false },
+            { label: 'Queue Depth', value: kpi.queue,    prev: prevKpi.current.queue,    suffix: ' jobs', color: '#f59e0b', decimals: 0, inv: true  },
           ]).map((k, i) => (
             <div key={i} className="rounded-2xl p-5 bg-[#f8faff] border border-[#007cf4]/10">
               <div className="flex items-center justify-between mb-3">
@@ -231,48 +224,42 @@ export default function LiveDashboard() {
           ))}
         </motion.div>
 
-        {/* Charts */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Charts — 2 line + 1 bar */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-          {/* Workflow throughput */}
+          {/* Workflow throughput — line */}
           <Card delay={0}>
             <div className="flex items-center justify-between mb-5">
               <div>
                 <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Tasks per minute</p>
-                <p className="text-gray-900 font-inter-tight font-black text-lg">Workflow Throughput</p>
+                <p className="text-gray-900 font-inter-tight font-black text-lg">Throughput</p>
               </div>
               <Pulse color="#007cf4" />
             </div>
-            <ResponsiveContainer width="100%" height={170}>
-              <AreaChart data={tasks} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="gTask" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%"  stopColor="#007cf4" stopOpacity={0.15} />
-                    <stop offset="100%" stopColor="#007cf4" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
+            <ResponsiveContainer width="100%" height={180}>
+              <LineChart data={tasks} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
-                <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 5)} tickLine={false} axisLine={false} />
+                <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 4)} tickLine={false} axisLine={false} />
                 <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={['auto', 'auto']} />
                 <Tooltip content={<ChartTip unit=" tasks" />} />
-                <Area type="monotoneX" dataKey="v" stroke="#007cf4" strokeWidth={2} fill="url(#gTask)" dot={false} isAnimationActive={false} />
-              </AreaChart>
+                <Line type="monotoneX" dataKey="v" stroke="#007cf4" strokeWidth={2.5} dot={false} isAnimationActive={false} />
+              </LineChart>
             </ResponsiveContainer>
           </Card>
 
-          {/* AI Accuracy */}
+          {/* AI Accuracy — line */}
           <Card delay={0.08}>
             <div className="flex items-center justify-between mb-5">
               <div>
                 <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Accuracy %</p>
-                <p className="text-gray-900 font-inter-tight font-black text-lg">AI Processing Accuracy</p>
+                <p className="text-gray-900 font-inter-tight font-black text-lg">AI Accuracy</p>
               </div>
               <Pulse color="#22c55e" />
             </div>
-            <ResponsiveContainer width="100%" height={170}>
-              <LineChart data={accuracy} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
+            <ResponsiveContainer width="100%" height={180}>
+              <LineChart data={accuracy} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
-                <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 5)} tickLine={false} axisLine={false} />
+                <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 4)} tickLine={false} axisLine={false} />
                 <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={[92, 100]} />
                 <Tooltip content={<ChartTip unit="%" />} />
                 <Line type="monotoneX" dataKey="v" stroke="#22c55e" strokeWidth={2.5} dot={false} isAnimationActive={false} />
@@ -280,55 +267,29 @@ export default function LiveDashboard() {
             </ResponsiveContainer>
           </Card>
 
-          {/* Queue depth */}
+          {/* Queue depth — bar */}
           <Card delay={0.16}>
             <div className="flex items-center justify-between mb-5">
               <div>
                 <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Jobs pending</p>
-                <p className="text-gray-900 font-inter-tight font-black text-lg">Process Queue Depth</p>
+                <p className="text-gray-900 font-inter-tight font-black text-lg">Queue Depth</p>
               </div>
               <Pulse color="#f59e0b" />
             </div>
-            <ResponsiveContainer width="100%" height={170}>
-              <BarChart data={queue.slice(-18)} margin={{ top: 4, right: 4, left: -16, bottom: 0 }} barSize={8}>
+            <ResponsiveContainer width="100%" height={180}>
+              <BarChart data={queue.slice(-16)} margin={{ top: 4, right: 4, left: -20, bottom: 0 }} barSize={9}>
                 <defs>
                   <linearGradient id="gQueue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%"  stopColor="#f59e0b" stopOpacity={0.9} />
-                    <stop offset="100%" stopColor="#f59e0b" stopOpacity={0.5} />
+                    <stop offset="0%"   stopColor="#f59e0b" stopOpacity={0.9} />
+                    <stop offset="100%" stopColor="#f59e0b" stopOpacity={0.45} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
-                <XAxis dataKey="ts" tick={axisStyle} interval={5} tickLine={false} axisLine={false} />
+                <XAxis dataKey="ts" tick={axisStyle} interval={4} tickLine={false} axisLine={false} />
                 <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={[0, 'auto']} />
                 <Tooltip content={<ChartTip unit=" jobs" />} />
                 <Bar dataKey="v" fill="url(#gQueue)" radius={[3, 3, 0, 0]} isAnimationActive={false} />
               </BarChart>
-            </ResponsiveContainer>
-          </Card>
-
-          {/* Response latency */}
-          <Card delay={0.24}>
-            <div className="flex items-center justify-between mb-5">
-              <div>
-                <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Milliseconds</p>
-                <p className="text-gray-900 font-inter-tight font-black text-lg">Avg. Response Latency</p>
-              </div>
-              <Pulse color="#8b5cf6" />
-            </div>
-            <ResponsiveContainer width="100%" height={170}>
-              <AreaChart data={latency} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="gLatency" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%"  stopColor="#8b5cf6" stopOpacity={0.15} />
-                    <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
-                <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 5)} tickLine={false} axisLine={false} />
-                <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={['auto', 'auto']} />
-                <Tooltip content={<ChartTip unit=" ms" />} />
-                <Area type="monotoneX" dataKey="v" stroke="#8b5cf6" strokeWidth={2} fill="url(#gLatency)" dot={false} isAnimationActive={false} />
-              </AreaChart>
             </ResponsiveContainer>
           </Card>
 
