@@ -224,40 +224,42 @@ export default function LiveDashboard() {
           ))}
         </motion.div>
 
-        {/* Charts — 2 line + 1 bar */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Charts — full-width line, then 50/50 line + bar */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-          {/* Workflow throughput — line */}
-          <Card delay={0}>
-            <div className="flex items-center justify-between mb-5">
-              <div>
-                <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Tasks per minute</p>
-                <p className="text-gray-900 font-inter-tight font-black text-lg">Throughput</p>
+          {/* Workflow throughput — full width line */}
+          <div className="md:col-span-2">
+            <Card delay={0}>
+              <div className="flex items-center justify-between mb-5">
+                <div>
+                  <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Tasks per minute</p>
+                  <p className="text-gray-900 font-inter-tight font-black text-xl">Workflow Throughput</p>
+                </div>
+                <Pulse color="#007cf4" />
               </div>
-              <Pulse color="#007cf4" />
-            </div>
-            <ResponsiveContainer width="100%" height={180}>
-              <LineChart data={tasks} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
-                <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 4)} tickLine={false} axisLine={false} />
-                <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={['auto', 'auto']} />
-                <Tooltip content={<ChartTip unit=" tasks" />} />
-                <Line type="monotoneX" dataKey="v" stroke="#007cf4" strokeWidth={2.5} dot={false} isAnimationActive={false} />
-              </LineChart>
-            </ResponsiveContainer>
-          </Card>
+              <ResponsiveContainer width="100%" height={220}>
+                <LineChart data={tasks} margin={{ top: 4, right: 8, left: -16, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
+                  <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 6)} tickLine={false} axisLine={false} />
+                  <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={['auto', 'auto']} />
+                  <Tooltip content={<ChartTip unit=" tasks" />} />
+                  <Line type="monotoneX" dataKey="v" stroke="#007cf4" strokeWidth={2.5} dot={false} isAnimationActive={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </Card>
+          </div>
 
-          {/* AI Accuracy — line */}
-          <Card delay={0.08}>
+          {/* AI Accuracy — 50% line */}
+          <Card delay={0.1}>
             <div className="flex items-center justify-between mb-5">
               <div>
                 <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Accuracy %</p>
-                <p className="text-gray-900 font-inter-tight font-black text-lg">AI Accuracy</p>
+                <p className="text-gray-900 font-inter-tight font-black text-xl">AI Accuracy</p>
               </div>
               <Pulse color="#22c55e" />
             </div>
-            <ResponsiveContainer width="100%" height={180}>
-              <LineChart data={accuracy} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
+            <ResponsiveContainer width="100%" height={200}>
+              <LineChart data={accuracy} margin={{ top: 4, right: 8, left: -16, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
                 <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 4)} tickLine={false} axisLine={false} />
                 <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={[92, 100]} />
@@ -267,21 +269,21 @@ export default function LiveDashboard() {
             </ResponsiveContainer>
           </Card>
 
-          {/* Queue depth — bar */}
-          <Card delay={0.16}>
+          {/* Queue depth — 50% bar */}
+          <Card delay={0.2}>
             <div className="flex items-center justify-between mb-5">
               <div>
                 <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Jobs pending</p>
-                <p className="text-gray-900 font-inter-tight font-black text-lg">Queue Depth</p>
+                <p className="text-gray-900 font-inter-tight font-black text-xl">Queue Depth</p>
               </div>
               <Pulse color="#f59e0b" />
             </div>
-            <ResponsiveContainer width="100%" height={180}>
-              <BarChart data={queue.slice(-16)} margin={{ top: 4, right: 4, left: -20, bottom: 0 }} barSize={9}>
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={queue.slice(-18)} margin={{ top: 4, right: 8, left: -16, bottom: 0 }} barSize={11}>
                 <defs>
                   <linearGradient id="gQueue" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%"   stopColor="#f59e0b" stopOpacity={0.9} />
-                    <stop offset="100%" stopColor="#f59e0b" stopOpacity={0.45} />
+                    <stop offset="100%" stopColor="#f59e0b" stopOpacity={0.4} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
