@@ -8,6 +8,7 @@ const articles: Record<string, {
   date: string; readTime: string; image: string; imageAlt: string
   body: { heading?: string; content: string; bullets?: string[] }[]
   takeaways: string[]
+  faqs?: { q: string; a: string }[]
 }> = {
   'why-ai-agents-will-replace-workflows': {
     tag: 'AI', title: 'Why AI Agents Will Replace 40% of Business', highlight: 'Workflows by 2026',
