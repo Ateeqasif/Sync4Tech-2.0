@@ -22,32 +22,88 @@ const fmtBtc = (v: number) => `$${(v / 1000).toFixed(1)}k`
 const fmtEth = (v: number) => v >= 1000 ? `$${(v / 1000).toFixed(2)}k` : `$${v.toFixed(0)}`
 const fmtPct = (v: number) => (v >= 0 ? '+' : '') + v.toFixed(3) + '%'
 
-const CG = 'https://api.coingecko.com/api/v3'
+// ─── Market data fetching (multi-source with simulation fallback) ─────────────
+const CB = 'https://api.exchange.coinbase.com'
 
-// Simple client-side cache so both hooks share one fetch per minute
-const _cgCache: { data: { btc: number[]; eth: number[]; live: { btc: number; eth: number; btcChange: number; ethChange: number } } | null; ts: number } = { data: null, ts: 0 }
+type MarketData = {
+  btc: number[]; eth: number[]
+  live: { btc: number; eth: number; btcChange: number; ethChange: number }
+  simulated?: boolean
+}
 
-async function fetchMarket() {
-  if (_cgCache.data && Date.now() - _cgCache.ts < 58_000) return _cgCache.data
-  const [btcChart, ethChart, prices] = await Promise.all([
-    fetch(`${CG}/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=minutely`).then(r => r.json()),
-    fetch(`${CG}/coins/ethereum/market_chart?vs_currency=usd&days=1&interval=minutely`).then(r => r.json()),
-    fetch(`${CG}/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true`).then(r => r.json()),
-  ])
-  const btc = (btcChart.prices as [number, number][]).slice(-80).map(p => p[1])
-  const eth = (ethChart.prices as [number, number][]).slice(-80).map(p => p[1])
-  const data = {
-    btc, eth,
-    live: {
-      btc:       prices.bitcoin?.usd              ?? btc.at(-1) ?? 0,
-      eth:       prices.ethereum?.usd             ?? eth.at(-1) ?? 0,
-      btcChange: prices.bitcoin?.usd_24h_change   ?? 0,
-      ethChange: prices.ethereum?.usd_24h_change  ?? 0,
-    },
+const _cache: { data: MarketData | null; ts: number } = { data: null, ts: 0 }
+
+// Realistic simulation seeded at approximate current price levels
+function simulateHistory(mean: number, sigma: number): number[] {
+  const buf: number[] = [mean]
+  for (let i = 1; i < 80; i++) {
+    buf.push(clamp(ou(buf[i - 1], mean, 0.12, sigma), mean * 0.96, mean * 1.04))
   }
-  _cgCache.data = data
-  _cgCache.ts   = Date.now()
-  return data
+  return buf
+}
+
+async function fetchCoinbase(product: 'BTC-USD' | 'ETH-USD') {
+  const end   = new Date()
+  const start = new Date(end.getTime() - 82 * 60 * 1000)
+  const url   = `${CB}/products/${product}/candles?granularity=60&start=${start.toISOString()}&end=${end.toISOString()}`
+  const raw   = await fetch(url, { signal: AbortSignal.timeout(7000) }).then(r => r.json())
+  // [timestamp, low, high, open, close, volume] — newest first
+  const prices = (raw as number[][]).reverse().map(c => c[4]).filter(Boolean)
+  if (prices.length < 10) throw new Error('insufficient')
+
+  const statsUrl = `${CB}/products/${product}/stats`
+  const stats    = await fetch(statsUrl, { signal: AbortSignal.timeout(5000) }).then(r => r.json())
+  const last     = parseFloat(stats.last)
+  const open24   = parseFloat(stats.open)
+  const change24 = open24 ? ((last - open24) / open24) * 100 : 0
+  return { prices: prices.slice(-80), last, change24 }
+}
+
+async function fetchMarket(): Promise<MarketData> {
+  if (_cache.data && Date.now() - _cache.ts < 58_000) return _cache.data
+
+  try {
+    const [btcRes, ethRes] = await Promise.all([
+      fetchCoinbase('BTC-USD'),
+      fetchCoinbase('ETH-USD'),
+    ])
+    const data: MarketData = {
+      btc: btcRes.prices,
+      eth: ethRes.prices,
+      live: { btc: btcRes.last, eth: ethRes.last, btcChange: btcRes.change24, ethChange: ethRes.change24 },
+    }
+    _cache.data = data; _cache.ts = Date.now()
+    return data
+  } catch {
+    // Try CoinGecko as second source
+    try {
+      const CG = 'https://api.coingecko.com/api/v3'
+      const [btcChart, ethChart, prices] = await Promise.all([
+        fetch(`${CG}/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=minutely`, { signal: AbortSignal.timeout(7000) }).then(r => r.json()),
+        fetch(`${CG}/coins/ethereum/market_chart?vs_currency=usd&days=1&interval=minutely`, { signal: AbortSignal.timeout(7000) }).then(r => r.json()),
+        fetch(`${CG}/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true`, { signal: AbortSignal.timeout(5000) }).then(r => r.json()),
+      ])
+      const btc = (btcChart.prices as [number, number][]).slice(-80).map(p => p[1])
+      const eth = (ethChart.prices as [number, number][]).slice(-80).map(p => p[1])
+      const data: MarketData = {
+        btc, eth,
+        live: { btc: prices.bitcoin?.usd ?? btc.at(-1) ?? 0, eth: prices.ethereum?.usd ?? eth.at(-1) ?? 0, btcChange: prices.bitcoin?.usd_24h_change ?? 0, ethChange: prices.ethereum?.usd_24h_change ?? 0 },
+      }
+      _cache.data = data; _cache.ts = Date.now()
+      return data
+    } catch {
+      // Simulation fallback — realistic BTC/ETH price ranges
+      const data: MarketData = {
+        btc:  simulateHistory(67500, 120),
+        eth:  simulateHistory(3250,  18),
+        live: { btc: 67500, eth: 3250, btcChange: 0, ethChange: 0 },
+        simulated: true,
+      }
+      // Only cache simulation for 10s so real data is retried soon
+      _cache.data = data; _cache.ts = Date.now() - 50_000
+      return data
+    }
+  }
 }
 
 // ─── Real-data stream hook ────────────────────────────────────────────────────
@@ -57,10 +113,10 @@ function useMarketStream(key: 'btc' | 'eth') {
   const curRef    = useRef(0)
   const loadedRef = useRef(false)
 
-  const [display,  setDisplay]  = useState(0)
-  const [change24, setChange24] = useState(0)
-  const [loaded,   setLoaded]   = useState(false)
-  const [error,    setError]    = useState(false)
+  const [display,   setDisplay]   = useState(0)
+  const [change24,  setChange24]  = useState(0)
+  const [loaded,    setLoaded]    = useState(false)
+  const [simulated, setSimulated] = useState(false)
 
   const refresh = useCallback(async () => {
     try {
@@ -72,7 +128,7 @@ function useMarketStream(key: 'btc' | 'eth') {
       meanRef.current = last
       setChange24(key === 'btc' ? d.live.btcChange : d.live.ethChange)
       setDisplay(key === 'btc' ? d.live.btc : d.live.eth)
-      setError(false)
+      setSimulated(!!d.simulated)
 
       if (!loadedRef.current) {
         bufRef.current    = [...prices]
@@ -83,9 +139,7 @@ function useMarketStream(key: 'btc' | 'eth') {
         curRef.current = last
         bufRef.current = [...bufRef.current.slice(-(BUFFER - 1)), last]
       }
-    } catch {
-      setError(true)
-    }
+    } catch { /* fetchMarket never throws — always returns data */ }
   }, [key])
 
   // Initial fetch + periodic refresh
@@ -108,7 +162,7 @@ function useMarketStream(key: 'btc' | 'eth') {
     return () => clearInterval(id)
   }, [loaded])
 
-  return { bufRef, display, change24, loaded, error }
+  return { bufRef, display, change24, loaded, simulated }
 }
 
 // ─── Animated price ticker ────────────────────────────────────────────────────
@@ -474,7 +528,8 @@ function Card({ children, delay = 0, className = '' }:
 export default function LiveDashboard() {
   const btc = useMarketStream('btc')
   const eth = useMarketStream('eth')
-  const isLoading = !btc.loaded || !eth.loaded
+  const isLoading  = !btc.loaded || !eth.loaded
+  const isSimulated = btc.simulated
   const ratio = btc.display && eth.display ? btc.display / eth.display : 0
 
   return (
@@ -492,7 +547,7 @@ export default function LiveDashboard() {
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 border border-[#007cf4]/20 bg-[#007cf4]/6">
             <Pulse color="#007cf4" />
             <span className="text-xs font-semibold tracking-widest uppercase text-[#007cf4]">
-              Live Market Data · CoinGecko
+              {isLoading ? 'Loading Market Data…' : isSimulated ? 'Market Intelligence · Simulated' : 'Live Market Data · Coinbase'}
             </span>
           </div>
           <h2
@@ -614,14 +669,10 @@ export default function LiveDashboard() {
           </div>
         )}
 
-        {btc.error && !btc.loaded && (
-          <p className="text-center text-red-400 text-xs mt-6">
-            Market data unavailable — CoinGecko API unreachable. Try refreshing.
-          </p>
-        )}
-
         <p className="text-center text-gray-300 text-xs mt-8">
-          Real BTC &amp; ETH prices via CoinGecko · Smoothed with micro-noise for fluid 60fps animation · Refreshes every 60 s
+          {isSimulated
+            ? 'Simulated BTC & ETH price data · Live feed unavailable in this environment · Representative of real-time pipelines Sync4Tech builds'
+            : 'Real BTC & ETH prices via Coinbase Exchange · Smoothed with micro-noise for fluid 60fps animation · Refreshes every 60 s'}
         </p>
       </div>
     </section>
