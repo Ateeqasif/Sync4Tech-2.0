@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
@@ -138,6 +138,31 @@ const slides = [
   },
 ]
 
+function useTypewriter(text: string, speed = 38) {
+  const [displayed, setDisplayed] = useState('')
+  const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    setDisplayed('')
+    setDone(false)
+    if (!text) return
+    let i = 0
+    const tick = () => {
+      i += 1
+      setDisplayed(text.slice(0, i))
+      if (i < text.length) {
+        timer = setTimeout(tick, speed)
+      } else {
+        setDone(true)
+      }
+    }
+    let timer = setTimeout(tick, speed)
+    return () => clearTimeout(timer)
+  }, [text, speed])
+
+  return { displayed, done }
+}
+
 export default function Hero() {
   const { t } = useLanguage()
   const metricLabels = [t.hero.metric1Label, t.hero.metric2Label, t.hero.metric3Label, t.hero.metric4Label]
@@ -169,6 +194,9 @@ export default function Hero() {
   }
 
   const slide = slides[current]
+
+  const line1 = useTypewriter(slide.h1Line1, 42)
+  const line2 = useTypewriter(line1.done ? slide.h1Line2 : '', 42)
 
   const variants = {
     enter: (d: number) => ({ opacity: 0, x: d > 0 ? 60 : -60 }),
@@ -222,9 +250,29 @@ export default function Hero() {
               className="font-inter-tight font-black leading-[0.95] tracking-tight mb-8 mx-auto"
               style={{ fontSize: 'clamp(48px, 8vw, 110px)', maxWidth: '1000px' }}
             >
-              <span className="text-black dark:text-white">{slide.h1Line1}</span>
+              <span className="text-black dark:text-white">
+                {line1.displayed}
+                {!line1.done && (
+                  <motion.span
+                    className="inline-block w-[3px] ml-[2px] align-middle rounded-sm"
+                    style={{ height: '0.85em', background: '#007cf4', verticalAlign: 'middle' }}
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
+                  />
+                )}
+              </span>
               <br />
-              <span className="gradient-text-animated" style={{ paddingLeft: '0.05em', paddingRight: '0.08em' }}>{slide.h1Line2}</span>
+              <span className="gradient-text-animated" style={{ paddingLeft: '0.05em', paddingRight: '0.08em' }}>
+                {line2.displayed}
+                {line1.done && !line2.done && (
+                  <motion.span
+                    className="inline-block w-[3px] ml-[2px] align-middle rounded-sm"
+                    style={{ height: '0.85em', background: '#36c5f0', verticalAlign: 'middle' }}
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
+                  />
+                )}
+              </span>
             </h1>
 
             {/* Subtitle */}
