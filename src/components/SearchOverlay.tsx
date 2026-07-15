@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -142,7 +143,13 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
     el?.scrollIntoView({ block: 'nearest' })
   }, [active])
 
-  return (
+  // Portal ensures fixed positioning is relative to the viewport,
+  // not the transformed motion.header ancestor
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  if (!mounted) return null
+
+  return createPortal(
     <AnimatePresence>
       {open && (
         <motion.div
@@ -352,7 +359,8 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
           </div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   )
 }
 
