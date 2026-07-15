@@ -251,56 +251,74 @@ function FilterBar({
   allSeries: NpmSeries[]
 }) {
   const catTabs: { value: Category; label: string }[] = [
-    { value: 'all',  label: 'All Tools'  },
-    { value: 'ai',   label: 'AI & LLM'   },
+    { value: 'all',  label: 'All'        },
+    { value: 'ai',   label: 'AI & LLM'  },
     { value: 'auto', label: 'Automation' },
   ]
-  const pillBase  = 'px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer select-none'
-  const pillOff   = 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-  const pillOn    = 'bg-[#050f2e] text-white'
 
   return (
-    <div className="rounded-2xl p-4 mb-6 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between border border-gray-100 bg-[#f8faff]/60">
-      {/* Category tabs */}
-      <div className="flex items-center gap-1.5">
-        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mr-1 shrink-0">Category</span>
-        {catTabs.map(t => (
-          <button key={t.value}
-            className={`${pillBase} ${category === t.value ? pillOn : pillOff}`}
-            onClick={() => setCategory(t.value)}
-          >{t.label}</button>
-        ))}
+    <div className="mb-7 flex flex-col gap-3">
+      {/* Row 1: Category + Range on the same line */}
+      <div className="flex items-center justify-between gap-4 flex-wrap">
+        {/* Category segment */}
+        <div className="flex items-center gap-1 p-1 bg-gray-100 rounded-full">
+          {catTabs.map(t => (
+            <button
+              key={t.value}
+              onClick={() => setCategory(t.value)}
+              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer select-none ${
+                category === t.value
+                  ? 'bg-[#050f2e] text-white shadow-sm'
+                  : 'text-gray-500 hover:text-gray-800'
+              }`}
+            >{t.label}</button>
+          ))}
+        </div>
+
+        {/* Range segment */}
+        <div className="flex items-center gap-1 p-1 bg-gray-100 rounded-full">
+          {DAY_OPTIONS.map(d => (
+            <button
+              key={d}
+              onClick={() => setDayRange(d)}
+              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer select-none ${
+                dayRange === d
+                  ? 'bg-[#050f2e] text-white shadow-sm'
+                  : 'text-gray-500 hover:text-gray-800'
+              }`}
+            >{d}d</button>
+          ))}
+        </div>
       </div>
 
-      {/* Tool toggles */}
-      <div className="flex items-center gap-1.5 flex-wrap">
-        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mr-1 shrink-0">Tools</span>
+      {/* Row 2: Tool toggles — single clean line */}
+      <div className="flex items-center gap-2 flex-wrap">
+        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest shrink-0">Visibility</span>
+        <div className="w-px h-3 bg-gray-200 shrink-0" />
         {allSeries.map(s => {
           const on = !hidden.has(s.label)
           return (
             <button
               key={s.label}
               onClick={() => toggleHidden(s.label)}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200 cursor-pointer select-none ${on ? 'text-gray-700 border-transparent' : 'text-gray-400 border-gray-200 bg-white opacity-50'}`}
-              style={on ? { backgroundColor: s.color + '18', borderColor: s.color + '40' } : {}}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200 cursor-pointer select-none ${
+                on
+                  ? 'bg-white text-gray-700 shadow-sm'
+                  : 'bg-transparent text-gray-400 border-dashed'
+              }`}
+              style={on
+                ? { borderColor: s.color + '60', boxShadow: `0 0 0 1px ${s.color}30` }
+                : { borderColor: '#d1d5db' }
+              }
             >
-              <span className="w-2 h-2 rounded-full shrink-0 transition-opacity"
-                style={{ backgroundColor: on ? s.color : '#d1d5db' }} />
+              <span
+                className="w-2 h-2 rounded-full shrink-0 transition-all"
+                style={{ backgroundColor: on ? s.color : '#d1d5db', opacity: on ? 1 : 0.5 }}
+              />
               {s.label}
             </button>
           )
         })}
-      </div>
-
-      {/* Day range */}
-      <div className="flex items-center gap-1.5 shrink-0">
-        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mr-1">Range</span>
-        {DAY_OPTIONS.map(d => (
-          <button key={d}
-            className={`${pillBase} ${dayRange === d ? pillOn : pillOff}`}
-            onClick={() => setDayRange(d)}
-          >{d}d</button>
-        ))}
       </div>
     </div>
   )
