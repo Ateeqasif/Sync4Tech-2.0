@@ -169,30 +169,28 @@ export default function AboutPage() {
                   />
                 ))}
 
-                {/* Orbiting nodes representing organisations of every size, reaching full potential */}
-                {[0, 72, 144, 216, 288].map((angle, i) => {
-                  const rad = (angle * Math.PI) / 180
-                  const r = 140
-                  const x = 200 + Math.cos(rad) * r
-                  const y = 160 + Math.sin(rad) * r
-                  return (
-                    <motion.circle
-                      key={angle}
-                      cx={x} cy={y} r="6"
-                      fill="#36c5f0"
-                      animate={{ r: [5, 8, 5], opacity: [0.7, 1, 0.7] }}
-                      transition={{ duration: 2.5, delay: i * 0.3, repeat: Infinity, ease: 'easeInOut' }}
-                    />
-                  )
-                })}
-
-                {/* Slowly rotating connector ring */}
+                {/* Rotating ring with orbiting dots */}
                 <motion.g
                   style={{ transformOrigin: '200px 160px' }}
                   animate={{ rotate: 360 }}
                   transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
                 >
                   <circle cx="200" cy="160" r="140" fill="none" stroke="#007cf4" strokeWidth="1" strokeDasharray="2 10" opacity="0.5" />
+                  {[0, 72, 144, 216, 288].map((angle, i) => {
+                    const rad = (angle * Math.PI) / 180
+                    const r = 140
+                    const x = 200 + Math.cos(rad) * r
+                    const y = 160 + Math.sin(rad) * r
+                    return (
+                      <motion.circle
+                        key={angle}
+                        cx={x} cy={y} r="6"
+                        fill="#36c5f0"
+                        animate={{ r: [5, 8, 5], opacity: [0.7, 1, 0.7] }}
+                        transition={{ duration: 2.5, delay: i * 0.3, repeat: Infinity, ease: 'easeInOut' }}
+                      />
+                    )
+                  })}
                 </motion.g>
 
                 {/* Center glow representing full potential */}
