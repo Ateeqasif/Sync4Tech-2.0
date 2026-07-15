@@ -206,7 +206,7 @@ export default function FAQ() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <p className="font-inter-tight font-bold text-[#050f2e] text-lg mb-1">Still have questions?</p>
-          <p className="text-gray-400 text-sm mb-6">Talk to one of our specialists — no sales pitch, just straight answers.</p>
+          <p className="text-gray-400 text-sm mb-6">Talk to one of our specialists. No sales pitch, just straight answers.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="/contact"

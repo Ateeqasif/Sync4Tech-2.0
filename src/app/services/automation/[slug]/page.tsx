@@ -32,7 +32,7 @@ const services = {
     ],
     benefits: [
       { role: 'Operations Teams', desc: 'Eliminate repetitive handoffs and gain real-time visibility across every running process without manual status chasing.' },
-      { role: 'Management', desc: 'Monitor SLA compliance and spot bottlenecks instantly — without waiting for someone to compile a report.' },
+      { role: 'Management', desc: 'Monitor SLA compliance and spot bottlenecks instantly. without waiting for someone to compile a report.' },
       { role: 'IT & Developers', desc: 'Deploy powerful automated workflows without writing custom code or consuming engineering sprint capacity.' },
     ],
     tools: ['n8n', 'Make.com', 'Zapier', 'Microsoft Power Automate', 'Monday.com', 'Jira', 'Slack', 'Microsoft Teams'],
@@ -79,9 +79,9 @@ const services = {
       { title: 'Pipeline Automation', desc: 'Move deals through stages automatically based on activity, time, or custom triggers no manual dragging required.' },
     ],
     benefits: [
-      { role: 'Sales Representatives', desc: 'Spend more time selling — zero manual CRM updates, follow-up reminders, or data entry to manage.' },
+      { role: 'Sales Representatives', desc: 'Spend more time selling. zero manual CRM updates, follow-up reminders, or data entry to manage.' },
       { role: 'Sales Managers', desc: 'Accurate pipeline data and performance metrics without asking the team to update a single record.' },
-      { role: 'Marketing Teams', desc: 'Lead data automatically captured, enriched, and routed to sales — no manual handoffs or data quality issues.' },
+      { role: 'Marketing Teams', desc: 'Lead data automatically captured, enriched, and routed to sales. no manual handoffs or data quality issues.' },
     ],
     tools: ['HubSpot', 'Salesforce', 'GoHighLevel', 'Zoho', 'Pipedrive', 'Make.com', 'Zapier', 'n8n', 'Clearbit'],
     process: [
@@ -97,7 +97,7 @@ const services = {
       { q: 'How long to automate our CRM?', a: 'Basic lead capture and follow-up automation can be live in 2–3 weeks. A full CRM automation overhaul including enrichment, scoring, and pipeline automation typically takes 6–8 weeks.' },
       { q: 'Can automation feel personalised to leads?', a: 'Yes. We build dynamic personalisation into every communication using the lead\'s name, company, industry, and behaviour to make automated messages feel genuinely relevant.' },
       { q: 'Will automation work with our existing CRM without a full migration?', a: 'Yes. We build automation on top of your current CRM rather than replacing it. You keep your existing data, records, and workflows while adding automation layers on top.' },
-      { q: 'Can you set up lead scoring without a data science team?', a: 'Absolutely. We build rule-based and AI-assisted lead scoring models using the data already in your CRM. No data science team required — scoring runs automatically and updates in real time.' },
+      { q: 'Can you set up lead scoring without a data science team?', a: 'Absolutely. We build rule-based and AI-assisted lead scoring models using the data already in your CRM. No data science team required. scoring runs automatically and updates in real time.' },
     ],
   },
   'sales-automation': {
@@ -128,7 +128,7 @@ const services = {
     ],
     benefits: [
       { role: 'Sales Executives', desc: 'Focus entirely on high-value conversations while automation handles every admin task, follow-up, and scheduling.' },
-      { role: 'Revenue Leaders', desc: 'Consistent, on-brand outreach execution across every rep — regardless of individual habits or experience level.' },
+      { role: 'Revenue Leaders', desc: 'Consistent, on-brand outreach execution across every rep. regardless of individual habits or experience level.' },
       { role: 'Sales Operations', desc: 'Real-time pipeline data, activity metrics, and forecasting without any manual report compilation.' },
     ],
     tools: ['HubSpot', 'Salesforce', 'Apollo.io', 'Outreach', 'Lemlist', 'DocuSign', 'Calendly', 'Make.com', 'Zapier'],
@@ -144,7 +144,7 @@ const services = {
       { q: 'Can we automate LinkedIn outreach?', a: 'Yes. We integrate LinkedIn outreach into multi-channel sequences alongside email and phone, respecting LinkedIn usage policies and platform limits.' },
       { q: 'How quickly can we see results?', a: 'Most clients see measurable improvements in lead response rates and pipeline volume within the first 30 days. Full optimisation of sequences typically takes 60–90 days of data.' },
       { q: 'Do you work with B2B or B2C sales teams?', a: 'Both. B2B sales automation typically focuses on outbound sequences and deal management. B2C focuses more on CRM automation, lead nurture, and conversion optimisation. We tailor the approach to your sales model.' },
-      { q: 'Can proposals be generated automatically from CRM data?', a: 'Yes. We connect your CRM directly to proposal templates so a branded, accurate proposal is generated in seconds from the deal record — including client name, scope, pricing, and terms — with no manual drafting.' },
+      { q: 'Can proposals be generated automatically from CRM data?', a: 'Yes. We connect your CRM directly to proposal templates so a branded, accurate proposal is generated in seconds from the deal record. including client name, scope, pricing, and terms. with no manual drafting.' },
       { q: 'How do you handle objections or replies in automated sequences?', a: 'Replies and objections automatically pause the sequence and alert the rep with full context. The rep takes over for the human conversation; automation re-engages only when the rep marks it ready or a new trigger fires.' },
     ],
   },
@@ -192,8 +192,8 @@ const services = {
       { q: 'How do you personalise at scale?', a: 'Dynamic content personalised by name, company, industry, behaviour, and purchase history delivered automatically. Every contact receives relevant communications without a human deciding what to send to whom.' },
       { q: 'How long to see results from marketing automation?', a: 'Lead nurture improvements are typically visible within 30–60 days. Full funnel optimisation and measurable conversion rate improvement usually materialises in 90–120 days.' },
       { q: 'Can you integrate with our ad platforms?', a: 'Yes. We integrate Google Ads, Meta, and LinkedIn ad data with your CRM and automation platform enabling remarketing audiences, lead sync, and closed-loop attribution from ad click to customer.' },
-      { q: 'How do we align marketing and sales handoffs automatically?', a: 'We define the lead scoring threshold at which a contact becomes sales-ready, then automate the handoff — creating a CRM record, notifying the assigned rep, and enrolling the lead in a sales follow-up sequence automatically.' },
-      { q: 'Can automation handle event and webinar follow-up?', a: 'Yes. We build automated pre-event reminders, live-event communications, and post-event nurture sequences tailored by attendance status — live attendees, no-shows, and replay viewers each receive different journeys.' },
+      { q: 'How do we align marketing and sales handoffs automatically?', a: 'We define the lead scoring threshold at which a contact becomes sales-ready, then automate the handoff. creating a CRM record, notifying the assigned rep, and enrolling the lead in a sales follow-up sequence automatically.' },
+      { q: 'Can automation handle event and webinar follow-up?', a: 'Yes. We build automated pre-event reminders, live-event communications, and post-event nurture sequences tailored by attendance status. live attendees, no-shows, and replay viewers each receive different journeys.' },
     ],
   },
   'ai-automation': {
@@ -271,8 +271,8 @@ const services = {
       { title: 'Finance Automation', desc: 'Automate invoice processing, purchase order matching, payment approvals, and reconciliation workflows.' },
     ],
     benefits: [
-      { role: 'Finance & Accounting', desc: 'Reconciliation runs automatically at the end of every period — no more multi-day spreadsheet marathons at month end.' },
-      { role: 'Operations & Logistics', desc: 'Order, inventory, and fulfilment data consistent across all platforms in real time — no manual cross-checking.' },
+      { role: 'Finance & Accounting', desc: 'Reconciliation runs automatically at the end of every period. no more multi-day spreadsheet marathons at month end.' },
+      { role: 'Operations & Logistics', desc: 'Order, inventory, and fulfilment data consistent across all platforms in real time. no manual cross-checking.' },
       { role: 'IT & Systems Teams', desc: 'Maintain one source of truth without building or maintaining fragile point-to-point custom integrations.' },
     ],
     tools: ['SAP', 'Oracle', 'Microsoft Dynamics', 'NetSuite', 'Sage', 'Make.com', 'n8n', 'Power BI', 'Fivetran', 'dbt'],
@@ -319,9 +319,9 @@ const services = {
       { title: 'Inventory & Asset Management', desc: 'Automated stock alerts, procurement workflows, and asset tracking integrated with your existing systems.' },
     ],
     benefits: [
-      { role: 'HR Teams', desc: 'Onboarding, leave management, and compliance tracking handled automatically — no spreadsheets, no chasing, no manual coordination.' },
+      { role: 'HR Teams', desc: 'Onboarding, leave management, and compliance tracking handled automatically. no spreadsheets, no chasing, no manual coordination.' },
       { role: 'Finance & Procurement', desc: 'Purchase approvals and expense workflows with automated routing, spend limits, and full audit trails for every decision.' },
-      { role: 'Employees', desc: 'Self-service requests with instant acknowledgement, clear timelines, and automatic status updates — no chasing required.' },
+      { role: 'Employees', desc: 'Self-service requests with instant acknowledgement, clear timelines, and automatic status updates. no chasing required.' },
     ],
     tools: ['BambooHR', 'Workday', 'Sage HR', 'Xero', 'QuickBooks', 'Make.com', 'n8n', 'Zapier', 'Monday.com', 'Notion'],
     process: [
@@ -336,8 +336,8 @@ const services = {
       { q: 'How do approval workflows handle out-of-office scenarios?', a: 'We build escalation paths and delegation rules into every approval workflow. If an approver is unavailable, the request routes to the next authorised approver automatically no request is ever stuck.' },
       { q: 'Can employee onboarding automation handle different departments?', a: 'Yes. We build role-based onboarding workflows each department sees the checklist, tasks, and documents relevant to them, triggered automatically when an employee record is created for their department.' },
       { q: 'Is our employee data secure?', a: 'Absolutely. We design all people data workflows with strict access controls, encryption, and GDPR compliance. Employee data is only accessible to authorised systems and individuals, with full audit trails.' },
-      { q: 'Can we automate IT provisioning as part of onboarding?', a: 'Yes. We connect your HR system to your IT tools — creating user accounts, assigning licences, and provisioning hardware requests automatically when a new hire record is created. IT teams receive structured requests with no manual input required.' },
-      { q: 'How do we handle offboarding automation?', a: 'We build offboarding workflows that trigger on an employee\'s last day — revoking system access, archiving accounts, collecting equipment, and completing compliance tasks automatically across every system the employee had access to.' },
+      { q: 'Can we automate IT provisioning as part of onboarding?', a: 'Yes. We connect your HR system to your IT tools. creating user accounts, assigning licences, and provisioning hardware requests automatically when a new hire record is created. IT teams receive structured requests with no manual input required.' },
+      { q: 'How do we handle offboarding automation?', a: 'We build offboarding workflows that trigger on an employee\'s last day. revoking system access, archiving accounts, collecting equipment, and completing compliance tasks automatically across every system the employee had access to.' },
     ],
   },
   'document-automation': {
@@ -367,7 +367,7 @@ const services = {
       { title: 'Document Archive', desc: 'Automatic filing, version control, and full-text search across your entire document archive.' },
     ],
     benefits: [
-      { role: 'Sales & Account Teams', desc: 'Proposals and contracts generated in seconds from deal data — no drafting from scratch, no version confusion.' },
+      { role: 'Sales & Account Teams', desc: 'Proposals and contracts generated in seconds from deal data. no drafting from scratch, no version confusion.' },
       { role: 'Legal & Compliance', desc: 'Standardised templates and approval workflows ensure every document meets requirements before it leaves the building.' },
       { role: 'Finance & Admin', desc: 'Invoice processing, compliance filing, and approval documents handled automatically on schedule with full audit trails.' },
     ],
@@ -385,7 +385,7 @@ const services = {
       { q: 'Can we automate compliance document production?', a: 'Yes. Compliance reports, data subject access request responses, and regulatory filings can all be automated pulling live data, applying formatting rules, and delivering on schedule with full audit trails.' },
       { q: 'What document formats do you support?', a: 'PDF, Word, Excel, PowerPoint, and HTML. We can generate documents in any format your process requires and convert between formats automatically as part of the workflow.' },
       { q: 'How do we handle document versioning and amendments?', a: 'We build version control into every document workflow. Amendments create new versions rather than overwriting originals, with a full change history and the ability to compare versions side by side.' },
-      { q: 'Can document automation work with our existing storage like SharePoint or Google Drive?', a: 'Yes. We build filing workflows that automatically save documents to the correct folder in SharePoint, Google Drive, or any other storage platform based on document type, client, date, or any other field — with zero manual filing.' },
+      { q: 'Can document automation work with our existing storage like SharePoint or Google Drive?', a: 'Yes. We build filing workflows that automatically save documents to the correct folder in SharePoint, Google Drive, or any other storage platform based on document type, client, date, or any other field. with zero manual filing.' },
     ],
   },
 } as const

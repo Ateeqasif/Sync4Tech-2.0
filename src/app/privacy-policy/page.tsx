@@ -3,7 +3,7 @@ import PageHero from '@/components/PageHero'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Sync4Tech',
-  description: 'Sync4Tech Privacy Policy — how we collect, use, and protect your personal data. Compliant with GDPR, CCPA, and international data protection standards.',
+  description: 'Sync4Tech Privacy Policy: how we collect, use, and protect your personal data. Compliant with GDPR, CCPA, and international data protection standards.',
   openGraph: {
     title: 'Privacy Policy | Sync4Tech',
     url: 'https://sync4tech.com/privacy-policy',

@@ -41,11 +41,11 @@ const services: Record<string, ServiceData> = {
     features: [
       {
         title: 'Pipeline Architecture',
-        desc: 'Design and build scalable, fault-tolerant data pipelines from any source to any destination — batch, micro-batch, or real-time.',
+        desc: 'Design and build scalable, fault-tolerant data pipelines from any source to any destination, batch, micro-batch, or real-time.',
       },
       {
         title: 'Real-Time Streaming',
-        desc: 'Apache Kafka and cloud streaming solutions for data that cannot wait for batch processing — events, transactions, and sensor feeds.',
+        desc: 'Apache Kafka and cloud streaming solutions for data that cannot wait for batch processing, events, transactions, and sensor feeds.',
       },
       {
         title: 'Data Transformation',
@@ -53,7 +53,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'Monitoring & Alerting',
-        desc: 'Full observability on every pipeline — failures, latency breaches, and data quality issues flagged instantly before they affect downstream teams.',
+        desc: 'Full observability on every pipeline, failures, latency breaches, and data quality issues flagged instantly before they affect downstream teams.',
       },
     ],
     useCases: [
@@ -89,7 +89,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Do you use open-source or proprietary tools?',
-        a: 'Both — we select the right tool for your requirements and budget. We are expert in dbt, Airflow, Fivetran, and cloud-native services on AWS, Azure, and GCP.',
+        a: 'Both, we select the right tool for your requirements and budget. We are expert in dbt, Airflow, Fivetran, and cloud-native services on AWS, Azure, and GCP.',
       },
       {
         q: 'What happens when a pipeline fails?',
@@ -97,7 +97,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Can you modernise our existing legacy pipelines?',
-        a: 'Yes. We regularly replace fragile legacy ETL scripts, SSIS packages, and undocumented ad-hoc processes with robust, monitored, fully documented modern pipelines — with zero downtime migration plans.',
+        a: 'Yes. We regularly replace fragile legacy ETL scripts, SSIS packages, and undocumented ad-hoc processes with robust, monitored, fully documented modern pipelines, with zero downtime migration plans.',
       },
       {
         q: 'How do you handle data security and compliance?',
@@ -129,7 +129,7 @@ const services: Record<string, ServiceData> = {
     features: [
       {
         title: 'Master Data Management',
-        desc: 'Define and enforce the golden record for customers, products, suppliers, and all core entities — eliminating duplicates and conflicting versions across systems.',
+        desc: 'Define and enforce the golden record for customers, products, suppliers, and all core entities, eliminating duplicates and conflicting versions across systems.',
       },
       {
         title: 'Data Governance Framework',
@@ -141,7 +141,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'Data Catalogue',
-        desc: 'A searchable inventory of all your data assets — what exists, where it lives, who owns it, how it is defined, and who is allowed to use it.',
+        desc: 'A searchable inventory of all your data assets, what exists, where it lives, who owns it, how it is defined, and who is allowed to use it.',
       },
     ],
     useCases: [
@@ -173,11 +173,11 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'How long does a data governance programme take?',
-        a: 'A foundational governance framework — policies, ownership, and tooling — typically takes 8–12 weeks. Building a mature programme with full data quality management is a 6–12 month journey we support incrementally.',
+        a: 'A foundational governance framework, policies, ownership, and tooling, typically takes 8–12 weeks. Building a mature programme with full data quality management is a 6–12 month journey we support incrementally.',
       },
       {
         q: 'Can you clean our existing messy data?',
-        a: 'Yes. Data cleansing is a core part of every data management engagement. We profile, deduplicate, standardise, and enrich your existing data as part of the implementation — not as a precondition of starting.',
+        a: 'Yes. Data cleansing is a core part of every data management engagement. We profile, deduplicate, standardise, and enrich your existing data as part of the implementation, not as a precondition of starting.',
       },
       {
         q: 'Do we need a dedicated data team?',
@@ -185,7 +185,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'How do you handle data governance across multiple systems?',
-        a: 'We implement a federated governance model — central policies and standards with distributed stewardship. The data catalogue connects all systems so governance is applied consistently regardless of where data lives.',
+        a: 'We implement a federated governance model, central policies and standards with distributed stewardship. The data catalogue connects all systems so governance is applied consistently regardless of where data lives.',
       },
       {
         q: 'What compliance standards do you support?',
@@ -205,7 +205,7 @@ const services: Record<string, ServiceData> = {
     ],
     outcomes: [
       'Live executive dashboards updated in real time, accessible anywhere',
-      'Analysts freed to focus on insight — reports generate themselves',
+      'Analysts freed to focus on insight, reports generate themselves',
       'Single performance view across finance, ops, sales, and marketing',
       'Board packs generated automatically on schedule with zero manual effort',
     ],
@@ -217,15 +217,15 @@ const services: Record<string, ServiceData> = {
     features: [
       {
         title: 'Executive Dashboards',
-        desc: 'Real-time KPI dashboards designed for leadership decision-making — clear, fast, and accessible on any device, with drill-down capability to the detail level.',
+        desc: 'Real-time KPI dashboards designed for leadership decision-making, clear, fast, and accessible on any device, with drill-down capability to the detail level.',
       },
       {
         title: 'Self-Service Analytics',
-        desc: 'Empower every team to explore their own data without needing a data analyst for every question — governed self-service with guardrails to prevent incorrect conclusions.',
+        desc: 'Empower every team to explore their own data without needing a data analyst for every question, governed self-service with guardrails to prevent incorrect conclusions.',
       },
       {
         title: 'Automated Reporting',
-        desc: 'Scheduled reports delivered to inboxes automatically — daily, weekly, or monthly — with no manual effort and data quality validation before every send.',
+        desc: 'Scheduled reports delivered to inboxes automatically, daily, weekly, or monthly, with no manual effort and data quality validation before every send.',
       },
       {
         title: 'Data Visualisation',
@@ -239,11 +239,11 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'Sales Team Self-Service Analytics',
-        desc: 'Deployed a self-service Looker environment for 120 sales reps, enabling instant pipeline and performance analysis without analyst support — reducing analysis request backlog by 85%.',
+        desc: 'Deployed a self-service Looker environment for 120 sales reps, enabling instant pipeline and performance analysis without analyst support, reducing analysis request backlog by 85%.',
       },
       {
         title: 'Automated Board Reporting',
-        desc: 'Automated a monthly board pack that previously took the finance team 4 days to compile — now generated and distributed overnight with full data validation and commentary.',
+        desc: 'Automated a monthly board pack that previously took the finance team 4 days to compile, now generated and distributed overnight with full data validation and commentary.',
       },
     ],
     tools: ['Power BI', 'Tableau', 'Looker', 'Metabase', 'Snowflake', 'dbt', 'Excel', 'Google Looker Studio'],
@@ -273,11 +273,11 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Can you migrate our existing dashboards to a new BI tool?',
-        a: 'Yes. We regularly migrate from legacy BI tools — Crystal Reports, SSRS, older Tableau versions — to modern platforms, rebuilding and often improving the original functionality.',
+        a: 'Yes. We regularly migrate from legacy BI tools, Crystal Reports, SSRS, older Tableau versions, to modern platforms, rebuilding and often improving the original functionality.',
       },
       {
         q: 'How do you handle row-level security for different users?',
-        a: 'We implement role-based access and row-level security so each user sees only the data relevant to their role, region, or department — all from a single set of reports and dashboards.',
+        a: 'We implement role-based access and row-level security so each user sees only the data relevant to their role, region, or department, all from a single set of reports and dashboards.',
       },
     ],
   },
@@ -288,7 +288,7 @@ const services: Record<string, ServiceData> = {
     challenges: [
       'Finance and ops teams spending days each month producing manual reports',
       'Inconsistent reporting across teams using different numbers for the same metric',
-      'No automated distribution — reports sit in inboxes unread or never arrive',
+      'No automated distribution, reports sit in inboxes unread or never arrive',
       'Compliance and regulatory reporting consuming senior resource every quarter',
     ],
     outcomes: [
@@ -305,15 +305,15 @@ const services: Record<string, ServiceData> = {
     features: [
       {
         title: 'Report Automation',
-        desc: 'Any report that runs on a schedule can be automated — daily ops reports, weekly management packs, monthly board decks, quarterly regulatory submissions.',
+        desc: 'Any report that runs on a schedule can be automated, daily ops reports, weekly management packs, monthly board decks, quarterly regulatory submissions.',
       },
       {
         title: 'Metric Standardisation',
-        desc: 'One consistent definition for every KPI across every team, tool, and report in the business — eliminating the "different numbers in the same meeting" problem.',
+        desc: 'One consistent definition for every KPI across every team, tool, and report in the business, eliminating the "different numbers in the same meeting" problem.',
       },
       {
         title: 'Automated Distribution',
-        desc: 'Reports delivered via email, Slack, or Teams on schedule to the right audience, in the right format — PDF, Excel, PowerPoint, or interactive dashboard link.',
+        desc: 'Reports delivered via email, Slack, or Teams on schedule to the right audience, in the right format, PDF, Excel, PowerPoint, or interactive dashboard link.',
       },
       {
         title: 'Compliance Reporting',
@@ -323,11 +323,11 @@ const services: Record<string, ServiceData> = {
     useCases: [
       {
         title: 'Finance Monthly Close Automation',
-        desc: 'Automated 34 monthly finance reports for a 500-person business, replacing a 5-day manual process with overnight automated generation — saving the CFO team 40+ hours each month.',
+        desc: 'Automated 34 monthly finance reports for a 500-person business, replacing a 5-day manual process with overnight automated generation, saving the CFO team 40+ hours each month.',
       },
       {
         title: 'Multi-Site Operations Reporting',
-        desc: 'Built automated daily ops reports for 18 retail sites, delivering personalised performance summaries to each site manager at 7am — replaced a spreadsheet the head office compiled each morning.',
+        desc: 'Built automated daily ops reports for 18 retail sites, delivering personalised performance summaries to each site manager at 7am, replaced a spreadsheet the head office compiled each morning.',
       },
       {
         title: 'Regulatory Submission Automation',
@@ -345,7 +345,7 @@ const services: Record<string, ServiceData> = {
     faq: [
       {
         q: 'Can you automate reports from any data source?',
-        a: 'Yes. We connect to your databases, CRMs, ERPs, marketing platforms, spreadsheets, and cloud services to source the data for any report — regardless of where it currently lives.',
+        a: 'Yes. We connect to your databases, CRMs, ERPs, marketing platforms, spreadsheets, and cloud services to source the data for any report, regardless of where it currently lives.',
       },
       {
         q: 'How long to automate our reporting?',
@@ -357,7 +357,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Can reports be customised per recipient?',
-        a: 'Yes. We build personalised report distribution — each recipient gets the view relevant to their role, region, or team, all from one automated system.',
+        a: 'Yes. We build personalised report distribution, each recipient gets the view relevant to their role, region, or team, all from one automated system.',
       },
       {
         q: 'What formats can automated reports be delivered in?',
@@ -365,7 +365,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'How do you handle report failures?',
-        a: 'Every automated report has quality checks built in — data completeness validation, freshness checks, and anomaly detection. Failed checks trigger an alert before the report is sent, never after.',
+        a: 'Every automated report has quality checks built in, data completeness validation, freshness checks, and anomaly detection. Failed checks trigger an alert before the report is sent, never after.',
       },
     ],
   },
@@ -374,7 +374,7 @@ const services: Record<string, ServiceData> = {
     name: 'Data Science & AI',
     subtitle: 'Machine learning that predicts, optimises, and transforms how you operate.',
     challenges: [
-      'Decisions based on historical data and gut feel — no predictive capability',
+      'Decisions based on historical data and gut feel, no predictive capability',
       'Customer churn and demand fluctuations caught too late to respond',
       'Manual processes that could be handled by intelligent AI models',
       'Data exists but no internal capability to extract predictive value from it',
@@ -397,7 +397,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'Customer Segmentation',
-        desc: 'AI-powered customer clustering that uncovers behavioural segments and lifetime value cohorts your team would never find manually — and keeps them updated automatically.',
+        desc: 'AI-powered customer clustering that uncovers behavioural segments and lifetime value cohorts your team would never find manually, and keeps them updated automatically.',
       },
       {
         title: 'Natural Language Processing',
@@ -405,17 +405,17 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'ML Operations',
-        desc: 'Production-grade ML pipelines with automated monitoring, drift detection, retraining triggers, and model performance dashboards — keeping models accurate over time.',
+        desc: 'Production-grade ML pipelines with automated monitoring, drift detection, retraining triggers, and model performance dashboards, keeping models accurate over time.',
       },
     ],
     useCases: [
       {
         title: 'Churn Prediction for SaaS',
-        desc: 'Built a customer health scoring model for a SaaS platform that flagged at-risk accounts 45 days before cancellation, enabling the CS team to intervene — reducing monthly churn rate by 28%.',
+        desc: 'Built a customer health scoring model for a SaaS platform that flagged at-risk accounts 45 days before cancellation, enabling the CS team to intervene, reducing monthly churn rate by 28%.',
       },
       {
         title: 'Demand Forecasting for Retail',
-        desc: 'Deployed a demand forecasting model across 3,000 SKUs for a retailer, achieving 92% accuracy vs a previous manual process at 71% — reducing overstock by £1.4M annually.',
+        desc: 'Deployed a demand forecasting model across 3,000 SKUs for a retailer, achieving 92% accuracy vs a previous manual process at 71%, reducing overstock by £1.4M annually.',
       },
       {
         title: 'Document Intelligence for Financial Services',
@@ -433,15 +433,15 @@ const services: Record<string, ServiceData> = {
     faq: [
       {
         q: 'Do we need a lot of data to use AI?',
-        a: 'Not always. Many high-value ML use cases work with moderate data volumes — 12–24 months of historical data is often sufficient. We assess data readiness in discovery and recommend the right approach for your situation.',
+        a: 'Not always. Many high-value ML use cases work with moderate data volumes, 12–24 months of historical data is often sufficient. We assess data readiness in discovery and recommend the right approach for your situation.',
       },
       {
         q: 'How long to build an ML model?',
-        a: 'A focused predictive model — churn, demand, or risk — typically takes 6–10 weeks from data assessment to production deployment. More complex models or multi-output systems take longer.',
+        a: 'A focused predictive model, churn, demand, or risk, typically takes 6–10 weeks from data assessment to production deployment. More complex models or multi-output systems take longer.',
       },
       {
         q: 'How do we know if the model is working?',
-        a: 'We deploy full MLOps monitoring — accuracy metrics, drift detection, and business outcome tracking. You can see model performance in real time and receive alerts when retraining is needed.',
+        a: 'We deploy full MLOps monitoring, accuracy metrics, drift detection, and business outcome tracking. You can see model performance in real time and receive alerts when retraining is needed.',
       },
       {
         q: 'Will AI replace our analysts?',
@@ -449,7 +449,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Can AI models integrate with our existing tools?',
-        a: 'Yes. Model outputs can be fed directly into your CRM, ERP, BI dashboards, or operational systems via API — so predictions flow automatically into the decisions they are designed to inform.',
+        a: 'Yes. Model outputs can be fed directly into your CRM, ERP, BI dashboards, or operational systems via API, so predictions flow automatically into the decisions they are designed to inform.',
       },
       {
         q: 'How do you ensure AI models are fair and explainable?',
@@ -481,7 +481,7 @@ const services: Record<string, ServiceData> = {
     features: [
       {
         title: 'Extract',
-        desc: 'Connect to any source — APIs, databases, files, SaaS platforms, IoT feeds — with native connectors, managed connectors, or fully custom-built extractors.',
+        desc: 'Connect to any source, APIs, databases, files, SaaS platforms, IoT feeds, with native connectors, managed connectors, or fully custom-built extractors.',
       },
       {
         title: 'Transform',
@@ -489,7 +489,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'Load',
-        desc: 'Deliver clean, structured data to your warehouse, data lake, CRM, BI tool, or any downstream system — in the format and frequency they require.',
+        desc: 'Deliver clean, structured data to your warehouse, data lake, CRM, BI tool, or any downstream system, in the format and frequency they require.',
       },
       {
         title: 'Orchestrate',
@@ -499,11 +499,11 @@ const services: Record<string, ServiceData> = {
     useCases: [
       {
         title: 'Legacy ETL Modernisation',
-        desc: 'Replaced 180 SSIS packages and fragile SQL scripts at a manufacturing company with a modern Airflow + dbt stack — reducing pipeline failures from 15/month to zero and cutting maintenance time by 80%.',
+        desc: 'Replaced 180 SSIS packages and fragile SQL scripts at a manufacturing company with a modern Airflow + dbt stack, reducing pipeline failures from 15/month to zero and cutting maintenance time by 80%.',
       },
       {
         title: 'Multi-Platform Marketing Data Consolidation',
-        desc: 'Connected 22 marketing platforms — paid, organic, CRM, and attribution tools — into a single unified marketing data warehouse, enabling cross-channel ROI analysis for the first time.',
+        desc: 'Connected 22 marketing platforms, paid, organic, CRM, and attribution tools, into a single unified marketing data warehouse, enabling cross-channel ROI analysis for the first time.',
       },
       {
         title: 'Real-Time Inventory Sync',
@@ -525,11 +525,11 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Can you replace our existing pipelines?',
-        a: 'Yes. We regularly modernise legacy ETL built in SQL scripts, SSIS, Informatica, or custom code — replacing fragile, undocumented processes with robust, monitored, maintainable pipelines.',
+        a: 'Yes. We regularly modernise legacy ETL built in SQL scripts, SSIS, Informatica, or custom code, replacing fragile, undocumented processes with robust, monitored, maintainable pipelines.',
       },
       {
         q: 'How do you handle API rate limits?',
-        a: 'We design pipelines with rate limit awareness built in — request throttling, retry logic, and backoff strategies so pipelines run reliably regardless of API constraints.',
+        a: 'We design pipelines with rate limit awareness built in, request throttling, retry logic, and backoff strategies so pipelines run reliably regardless of API constraints.',
       },
       {
         q: 'What if a source system changes its API?',
@@ -557,9 +557,9 @@ const services: Record<string, ServiceData> = {
     ],
     outcomes: [
       'Cloud-native data warehouse that scales infinitely without infrastructure overhead',
-      'Analytics fully isolated from production systems — zero performance impact',
+      'Analytics fully isolated from production systems, zero performance impact',
       'Optimised storage and compute costs with pay-as-you-go cloud architecture',
-      'Clean data layers — raw, staging, and mart — for reliable, governed analytics',
+      'Clean data layers, raw, staging, and mart, for reliable, governed analytics',
     ],
     stats: [
       { value: '40%', label: 'Average reduction in cloud data costs post-optimisation' },
@@ -581,13 +581,13 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'Security & Access Control',
-        desc: 'Row-level security, dynamic column masking, and role-based access policies so the right people see exactly the right data — and nothing they should not.',
+        desc: 'Row-level security, dynamic column masking, and role-based access policies so the right people see exactly the right data, and nothing they should not.',
       },
     ],
     useCases: [
       {
         title: 'On-Premise to Cloud Migration',
-        desc: 'Migrated a 12TB on-premise SQL Server warehouse to Snowflake for a professional services firm — reducing infrastructure costs by 55%, cutting query times from minutes to seconds, and eliminating maintenance overhead.',
+        desc: 'Migrated a 12TB on-premise SQL Server warehouse to Snowflake for a professional services firm, reducing infrastructure costs by 55%, cutting query times from minutes to seconds, and eliminating maintenance overhead.',
       },
       {
         title: 'Data Warehouse for a Scaling SaaS',
@@ -595,7 +595,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'BigQuery Cost Reduction',
-        desc: 'Reduced a retail group\'s BigQuery bill by 48% through partition pruning, clustering, query rewrites, and materialised view implementation — without any reduction in analytics capability.',
+        desc: 'Reduced a retail group\'s BigQuery bill by 48% through partition pruning, clustering, query rewrites, and materialised view implementation, without any reduction in analytics capability.',
       },
     ],
     tools: ['Snowflake', 'Google BigQuery', 'Amazon Redshift', 'Azure Synapse', 'dbt', 'Fivetran', 'Airbyte', 'Power BI'],
@@ -609,7 +609,7 @@ const services: Record<string, ServiceData> = {
     faq: [
       {
         q: 'Which cloud warehouse do you recommend?',
-        a: 'Snowflake for most mid-market clients — it separates compute and storage elegantly and integrates well with the modern data stack. BigQuery for GCP-first organisations. Redshift for existing AWS-heavy environments. We assess your stack and recommend accordingly.',
+        a: 'Snowflake for most mid-market clients, it separates compute and storage elegantly and integrates well with the modern data stack. BigQuery for GCP-first organisations. Redshift for existing AWS-heavy environments. We assess your stack and recommend accordingly.',
       },
       {
         q: 'How long to set up a data warehouse?',
@@ -617,7 +617,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Can we migrate from an on-premise warehouse?',
-        a: 'Yes. We handle migrations from on-premise SQL Server, Oracle, and Teradata to cloud warehouses — including schema translation, data migration, and validation.',
+        a: 'Yes. We handle migrations from on-premise SQL Server, Oracle, and Teradata to cloud warehouses, including schema translation, data migration, and validation.',
       },
       {
         q: 'How do you control costs?',
@@ -625,7 +625,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'What is the difference between a data warehouse and a data lake?',
-        a: 'A data warehouse stores structured, processed data optimised for querying and reporting. A data lake stores raw data of any format at lower cost. We often recommend a lakehouse architecture — combining both — for clients with diverse data types and use cases.',
+        a: 'A data warehouse stores structured, processed data optimised for querying and reporting. A data lake stores raw data of any format at lower cost. We often recommend a lakehouse architecture, combining both, for clients with diverse data types and use cases.',
       },
       {
         q: 'How do you handle sensitive data in the warehouse?',
@@ -657,7 +657,7 @@ const services: Record<string, ServiceData> = {
     features: [
       {
         title: 'Demand Forecasting',
-        desc: 'AI models that predict future demand using historical patterns, seasonality, promotions, and external market signals — updated automatically as new data arrives.',
+        desc: 'AI models that predict future demand using historical patterns, seasonality, promotions, and external market signals, updated automatically as new data arrives.',
       },
       {
         title: 'Churn Prediction',
@@ -665,7 +665,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         title: 'Anomaly Detection',
-        desc: 'Automatic identification of unusual patterns in operations, finance, or customer behaviour — catching issues before they become crises.',
+        desc: 'Automatic identification of unusual patterns in operations, finance, or customer behaviour, catching issues before they become crises.',
       },
       {
         title: 'Scenario Modelling',
@@ -675,15 +675,15 @@ const services: Record<string, ServiceData> = {
     useCases: [
       {
         title: 'Inventory Optimisation for Retail',
-        desc: 'Deployed a demand forecasting model across 8,000 SKUs for a fashion retailer — reducing overstock by 35%, cutting stockouts by 42%, and freeing £2.1M in working capital previously tied up in excess inventory.',
+        desc: 'Deployed a demand forecasting model across 8,000 SKUs for a fashion retailer, reducing overstock by 35%, cutting stockouts by 42%, and freeing £2.1M in working capital previously tied up in excess inventory.',
       },
       {
         title: 'Churn Prediction for a Subscription Business',
-        desc: 'Built a weekly churn risk scoring model for a B2C subscription service — enabling the retention team to intervene 6 weeks earlier than previously, reducing monthly churn rate from 4.2% to 2.9%.',
+        desc: 'Built a weekly churn risk scoring model for a B2C subscription service, enabling the retention team to intervene 6 weeks earlier than previously, reducing monthly churn rate from 4.2% to 2.9%.',
       },
       {
         title: 'Fraud Detection for Financial Services',
-        desc: 'Implemented a real-time anomaly detection model processing 50,000 transactions per day for a payment processor — detecting fraudulent patterns with 94% precision and reducing false positives by 60% vs the previous rule-based system.',
+        desc: 'Implemented a real-time anomaly detection model processing 50,000 transactions per day for a payment processor, detecting fraudulent patterns with 94% precision and reducing false positives by 60% vs the previous rule-based system.',
       },
     ],
     tools: ['Python', 'Prophet', 'scikit-learn', 'TensorFlow', 'Snowflake', 'Power BI', 'AWS SageMaker', 'Databricks'],
@@ -709,7 +709,7 @@ const services: Record<string, ServiceData> = {
       },
       {
         q: 'Can predictions integrate with our existing systems?',
-        a: 'Yes. Prediction outputs can feed directly into your ERP, CRM, inventory system, or BI tool via API or direct database integration — so model output flows into the decisions it is designed to inform.',
+        a: 'Yes. Prediction outputs can feed directly into your ERP, CRM, inventory system, or BI tool via API or direct database integration, so model output flows into the decisions it is designed to inform.',
       },
       {
         q: 'How do you handle seasonality and one-off events?',

@@ -421,7 +421,7 @@ export default function LiveDashboard() {
             <span className="gradient-text">Tool Adoption Trends</span>
           </h2>
           <p className="text-gray-400 text-sm mt-4 max-w-lg mx-auto leading-relaxed">
-            Daily npm download counts for the exact tools Sync4Tech deploys — showing the explosive, real-world growth in AI and automation adoption.
+            Daily npm download counts for the exact tools Sync4Tech deploys, showing the explosive, real-world growth in AI and automation adoption.
           </p>
         </motion.div>
 
@@ -448,7 +448,7 @@ export default function LiveDashboard() {
             {loaded
               ? visKpi.length
                 ? visKpi.map(s => <KpiTile key={s.label} s={s} />)
-                : <p className="col-span-full text-center text-gray-400 text-sm py-4">No tools selected — click a tool above to show it.</p>
+                : <p className="col-span-full text-center text-gray-400 text-sm py-4">No tools selected. Click a tool above to show it.</p>
               : Array.from({ length: 7 }).map((_, i) => (
                   <div key={i} className="animate-pulse h-[108px] rounded-2xl bg-gray-100" />
                 ))}
@@ -506,7 +506,7 @@ export default function LiveDashboard() {
                 )}
 
                 {(!showAi || visAi.length === 0) && (!showAuto || visAuto.length === 0) && (
-                  <p className="text-center text-gray-400 text-sm py-8">No data to display — adjust the filters above.</p>
+                  <p className="text-center text-gray-400 text-sm py-8">No data to display. Adjust the filters above.</p>
                 )}
               </>
             ) : (
@@ -525,7 +525,7 @@ export default function LiveDashboard() {
           <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
               <p className="font-semibold text-gray-800 text-sm">We deploy all of these tools for clients.</p>
-              <p className="text-gray-400 text-xs mt-0.5">From strategy to production — end to end.</p>
+              <p className="text-gray-400 text-xs mt-0.5">From strategy to production, end to end.</p>
             </div>
             <div className="flex items-center gap-3 shrink-0">
               <a

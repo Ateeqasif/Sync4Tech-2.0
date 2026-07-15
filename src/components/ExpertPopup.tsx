@@ -107,7 +107,7 @@ export default function ExpertPopup() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25, duration: 0.6 }}
               >
-                Our experts understand your unique challenges and craft a tailored strategy — no generic pitches, just real answers.
+                Our experts understand your unique challenges and craft a tailored strategy. No generic pitches, just real answers.
               </motion.p>
             </div>
 

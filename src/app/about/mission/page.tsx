@@ -78,7 +78,7 @@ export default function MissionPage() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
-              &ldquo;To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy — mid-market businesses worldwide.&rdquo;
+              &ldquo;To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy, mid-market businesses worldwide.&rdquo;
             </motion.blockquote>
             <motion.p
               className="text-gray-500  text-sm leading-relaxed"

@@ -36,7 +36,7 @@ const offices = [
 ]
 
 const aboutFAQ = [
-  { q: 'Where is Sync4Tech based?', a: 'Sync4Tech operates across three global hubs — London, New York, and Lahore — giving us coverage across all major time zones without compromise on responsiveness.' },
+  { q: 'Where is Sync4Tech based?', a: 'Sync4Tech operates across three global hubs: London, New York, and Lahore, giving us coverage across all major time zones without compromise on responsiveness.' },
   { q: 'How big is the Sync4Tech team?', a: 'We are a focused team of 40+ specialists across engineering, data science, consulting, and design. We deliberately stay lean to maintain quality every client engagement is led by a senior specialist, not a junior analyst.' },
   { q: 'What types of clients do you work with?', a: 'We work with ambitious organisations from Series B startups to FTSE 250 enterprises. What they have in common: a desire to operate more intelligently and a willingness to invest in transformation.' },
   { q: 'Are you a software company or consultancy?', a: 'We are a delivery-first consultancy that builds real software. We design strategy and then build and deploy the systems to execute it unlike traditional consultancies who hand off implementation to others.' },

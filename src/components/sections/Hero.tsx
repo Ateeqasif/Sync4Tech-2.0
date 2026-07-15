@@ -132,7 +132,7 @@ const slides = [
     h1Line1: 'Strategy That',
     h1Line2: 'Scales With You',
     h1Line3: '',
-    subtitle: 'Our consultants embed alongside your leadership to align technology investments with real business outcomes — building roadmaps that create measurable, lasting growth.',
+    subtitle: 'Our consultants embed alongside your leadership to align technology investments with real business outcomes, building roadmaps that create measurable, lasting growth.',
     cta1: { label: 'Start Your Strategy', href: '/contact' },
     cta2: { label: 'About Our Experts', href: '/about' },
   },
