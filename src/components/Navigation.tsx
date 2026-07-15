@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Logo from './Logo'
 import ThemeToggle from './ThemeToggle'
 import { useLanguage } from '@/contexts/LanguageContext'
+import SearchOverlay from './SearchOverlay'
 
 const servicesMega = [
   {
@@ -99,6 +100,19 @@ export default function Navigation() {
   const [megaOpen, setMegaOpen] = useState<'services' | 'industries' | null>(null)
   const [scrolled, setScrolled] = useState(false)
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
+  const [searchOpen, setSearchOpen] = useState(false)
+
+  // Cmd/Ctrl+K shortcut
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setSearchOpen(o => !o)
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [])
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { scrollY } = useScroll()
   const { t } = useLanguage()
@@ -279,6 +293,18 @@ export default function Navigation() {
 
           {/* Right side controls */}
           <div className="hidden md:flex items-center gap-3">
+            {/* Search trigger */}
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="w-9 h-9 flex items-center justify-center rounded-full text-[#033a9d]/60 hover:text-[#007cf4] hover:bg-[#007cf4]/8 transition-all duration-200"
+              aria-label="Search"
+              title="Search  ⌘K"
+            >
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+                <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" strokeWidth="1.7"/>
+                <path d="M12 12L15.5 15.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/>
+              </svg>
+            </button>
             <ThemeToggle />
             <Link
               href="/contact"
@@ -379,6 +405,16 @@ export default function Navigation() {
 
               <div className="mt-2 pt-3 border-t border-[#007cf4]/10 flex items-center gap-3">
                 <ThemeToggle />
+                <button
+                  onClick={() => { setMobileOpen(false); setSearchOpen(true) }}
+                  className="w-9 h-9 flex items-center justify-center rounded-full text-[#033a9d]/60 hover:text-[#007cf4] hover:bg-[#007cf4]/10 transition-all"
+                  aria-label="Search"
+                >
+                  <svg width="16" height="16" viewBox="0 0 17 17" fill="none">
+                    <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" strokeWidth="1.7"/>
+                    <path d="M12 12L15.5 15.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/>
+                  </svg>
+                </button>
               </div>
               <Link
                 href="/contact"
@@ -392,6 +428,8 @@ export default function Navigation() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </motion.header>
   )
 }
