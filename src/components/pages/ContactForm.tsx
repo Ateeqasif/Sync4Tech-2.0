@@ -30,7 +30,7 @@ export default function ContactForm() {
       {/* Two-col layout */}
       <section className="py-section bg-[#f8faff]">
         <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
             {/* LEFT Form */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
@@ -102,7 +102,7 @@ export default function ContactForm() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-6"
+              className="flex flex-col gap-6"
             >
               {/* Email + badge */}
               <div className="bg-white border border-[#007cf4]/15 rounded-2xl p-6">
@@ -134,7 +134,7 @@ export default function ContactForm() {
               ))}
 
               {/* What happens next */}
-              <div className="bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-6">
+              <div className="mt-auto bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-6">
                 <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-4">What happens next</h3>
                 <div className="space-y-3">
                   {[
