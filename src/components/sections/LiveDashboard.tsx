@@ -8,123 +8,175 @@ import {
 } from 'recharts'
 
 const EASE = [0.22, 1, 0.36, 1] as const
+const MAX_POINTS = 30
+const TICK_MS = 1000
 
-// ─── helpers ─────────────────────────────────────────────────────────────────
-
-function rand(min: number, max: number) {
-  return Math.round(Math.random() * (max - min) + min)
+// ─── Ornstein-Uhlenbeck random walk ──────────────────────────────────────────
+// Realistic: drifts gradually, reverts toward mean, never jumps wildly
+function ou(prev: number, mean: number, theta = 0.18, sigma = 6): number {
+  const drift = theta * (mean - prev)
+  const noise = sigma * (Math.random() * 2 - 1)
+  return Math.round((prev + drift + noise) * 10) / 10
 }
 
-function buildSeed(n: number, base: number, variance: number) {
-  return Array.from({ length: n }, (_, i) => ({
-    t: i,
-    v: Math.max(0, base + Math.sin(i * 0.6) * variance * 0.6 + rand(0, variance)),
-  }))
+function clamp(v: number, lo: number, hi: number) {
+  return Math.max(lo, Math.min(hi, v))
 }
 
-// ─── Ticker ──────────────────────────────────────────────────────────────────
+function nowLabel(): string {
+  const d = new Date()
+  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`
+}
 
-interface TickerProps { value: number; prefix?: string; suffix?: string; color?: string }
+function buildSeries(n: number, mean: number, sigma: number, lo: number, hi: number) {
+  const pts: { ts: string; v: number }[] = []
+  let v = mean
+  for (let i = 0; i < n; i++) {
+    v = clamp(ou(v, mean, 0.18, sigma), lo, hi)
+    pts.push({ ts: '', v })
+  }
+  return pts
+}
 
-function Ticker({ value, prefix = '', suffix = '', color = '#007cf4' }: TickerProps) {
+// ─── Ticker (smooth animated number) ─────────────────────────────────────────
+
+interface TickerProps { value: number; suffix?: string; color?: string; decimals?: number }
+
+function Ticker({ value, suffix = '', color = '#007cf4', decimals = 0 }: TickerProps) {
   const [display, setDisplay] = useState(value)
   const prev = useRef(value)
 
   useEffect(() => {
     const from = prev.current
     const to = value
-    const dur = 600
+    const dur = 500
     const start = performance.now()
     const tick = (now: number) => {
       const p = Math.min((now - start) / dur, 1)
-      const ease = 1 - Math.pow(1 - p, 3)
-      setDisplay(Math.round(from + (to - from) * ease))
+      const e = 1 - Math.pow(1 - p, 3)
+      const cur = from + (to - from) * e
+      setDisplay(decimals ? Math.round(cur * 10) / 10 : Math.round(cur))
       if (p < 1) requestAnimationFrame(tick)
     }
     requestAnimationFrame(tick)
     prev.current = to
-  }, [value])
+  }, [value, decimals])
 
   return (
     <span style={{ color }} className="font-inter-tight font-black tabular-nums">
-      {prefix}{display.toLocaleString()}{suffix}
+      {decimals ? display.toFixed(1) : display.toLocaleString()}{suffix}
     </span>
   )
 }
 
-// ─── custom tooltip ───────────────────────────────────────────────────────────
+// ─── Tooltip ─────────────────────────────────────────────────────────────────
 
-function ChartTip({ active, payload, label, unit = '' }: any) {
+function ChartTip({ active, payload, unit = '' }: any) {
   if (!active || !payload?.length) return null
   return (
     <div className="bg-[#050f2e] border border-[#007cf4]/30 rounded-xl px-3 py-2 text-xs text-white shadow-xl">
-      <p className="text-white/50 mb-1">t+{label}s</p>
-      <p className="font-bold">{payload[0].value?.toLocaleString()}{unit}</p>
+      <p className="text-white/50 mb-0.5">{payload[0]?.payload?.ts}</p>
+      <p className="font-bold text-white">{typeof payload[0].value === 'number' ? payload[0].value.toLocaleString() : payload[0].value}{unit}</p>
     </div>
   )
 }
 
-// ─── Live pulse dot ───────────────────────────────────────────────────────────
+// ─── Live pulse ───────────────────────────────────────────────────────────────
 
 function Pulse({ color = '#22c55e' }: { color?: string }) {
   return (
-    <span className="relative flex h-2 w-2">
-      <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: color }} />
+    <span className="relative flex h-2 w-2 flex-shrink-0">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style={{ backgroundColor: color }} />
       <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: color }} />
     </span>
   )
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
+// ─── Delta badge ──────────────────────────────────────────────────────────────
 
-const MAX_POINTS = 20
+function Delta({ value, prev }: { value: number; prev: number }) {
+  const delta = value - prev
+  const up = delta >= 0
+  return (
+    <span className={`text-xs font-semibold flex items-center gap-0.5 ${up ? 'text-emerald-500' : 'text-red-400'}`}>
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ transform: up ? 'none' : 'rotate(180deg)' }}>
+        <path d="M5 2l4 6H1z" fill="currentColor"/>
+      </svg>
+      {Math.abs(Math.round(delta * 10) / 10)}
+    </span>
+  )
+}
+
+// ─── Chart card ───────────────────────────────────────────────────────────────
+
+function Card({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  return (
+    <motion.div
+      className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.6, delay, ease: EASE }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+// ─── Main ─────────────────────────────────────────────────────────────────────
 
 export default function LiveDashboard() {
-  const [tasksData, setTasksData] = useState(() => buildSeed(MAX_POINTS, 420, 80))
-  const [accuracyData, setAccuracyData] = useState(() => buildSeed(MAX_POINTS, 96, 3))
-  const [roiData, setRoiData] = useState(() => buildSeed(MAX_POINTS, 320, 60))
-  const [hoursData, setHoursData] = useState(() => buildSeed(MAX_POINTS, 38, 12))
+  // Each series: random-walk from a realistic mean
+  const [tasks,    setTasks]    = useState(() => buildSeries(MAX_POINTS, 460, 14, 380, 560))
+  const [accuracy, setAccuracy] = useState(() => buildSeries(MAX_POINTS, 97.2, 0.35, 93.5, 99.5))
+  const [queue,    setQueue]    = useState(() => buildSeries(MAX_POINTS, 18, 3, 4, 40))
+  const [latency,  setLatency]  = useState(() => buildSeries(MAX_POINTS, 210, 18, 90, 380))
 
-  const [kpis, setKpis] = useState({
-    tasks: 0,
-    accuracy: 97,
-    roi: 0,
-    hours: 0,
-  })
-
-  const tickRef = useRef(MAX_POINTS)
+  const prevKpi = useRef({ tasks: 460, accuracy: 97.2, queue: 18, latency: 210 })
+  const [kpi, setKpi] = useState({ tasks: 460, accuracy: 97.2, queue: 18, latency: 210 })
 
   useEffect(() => {
-    // Initial KPI seeded values
-    setKpis({ tasks: rand(1200, 1800), accuracy: rand(95, 99), roi: rand(280, 380), hours: rand(35, 55) })
-
     const id = setInterval(() => {
-      const t = tickRef.current++
+      const ts = nowLabel()
 
-      const newTask = { t, v: rand(340, 540) }
-      const newAcc = { t, v: Math.min(100, 93 + Math.random() * 6) }
-      const newRoi = { t, v: rand(260, 400) }
-      const newHours = { t, v: rand(26, 60) }
-
-      setTasksData(d => [...d.slice(-MAX_POINTS + 1), newTask])
-      setAccuracyData(d => [...d.slice(-MAX_POINTS + 1), { t, v: Math.round(newAcc.v * 10) / 10 }])
-      setRoiData(d => [...d.slice(-MAX_POINTS + 1), newRoi])
-      setHoursData(d => [...d.slice(-MAX_POINTS + 1), newHours])
-
-      setKpis({
-        tasks: rand(1200, 1900),
-        accuracy: Math.round((93 + Math.random() * 6) * 10) / 10,
-        roi: rand(280, 420),
-        hours: rand(35, 58),
+      setTasks(d => {
+        const v = clamp(ou(d[d.length - 1].v, 460, 0.15, 14), 380, 560)
+        return [...d.slice(-MAX_POINTS + 1), { ts, v }]
       })
-    }, 1500)
+      setAccuracy(d => {
+        const v = clamp(ou(d[d.length - 1].v, 97.2, 0.22, 0.35), 93.5, 99.5)
+        return [...d.slice(-MAX_POINTS + 1), { ts, v: Math.round(v * 10) / 10 }]
+      })
+      setQueue(d => {
+        const v = clamp(ou(d[d.length - 1].v, 18, 0.14, 3), 4, 40)
+        return [...d.slice(-MAX_POINTS + 1), { ts, v: Math.round(v) }]
+      })
+      setLatency(d => {
+        const v = clamp(ou(d[d.length - 1].v, 210, 0.12, 18), 90, 380)
+        return [...d.slice(-MAX_POINTS + 1), { ts, v: Math.round(v) }]
+      })
+
+      setKpi(prev => {
+        prevKpi.current = { ...prev }
+        return {
+          tasks:    clamp(Math.round(ou(prev.tasks,    460,  0.15, 14)),   380, 560),
+          accuracy: clamp(Math.round(ou(prev.accuracy, 97.2, 0.22, 0.35) * 10) / 10, 93.5, 99.5),
+          queue:    clamp(Math.round(ou(prev.queue,    18,   0.14, 3)),     4,   40),
+          latency:  clamp(Math.round(ou(prev.latency,  210,  0.12, 18)),    90,  380),
+        }
+      })
+    }, TICK_MS)
 
     return () => clearInterval(id)
   }, [])
 
+  const gridStroke = 'rgba(0,0,0,0.05)'
+  const axisStyle  = { fill: '#94a3b8', fontSize: 10 }
+
   return (
-    <section className="py-section" style={{ background: 'linear-gradient(135deg, #050f2e 0%, #0a1a4a 100%)' }}>
+    <section className="py-section bg-white">
       <div className="section-container">
+
         {/* Header */}
         <motion.div
           className="text-center mb-14"
@@ -133,192 +185,157 @@ export default function LiveDashboard() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.8, ease: EASE }}
         >
-          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 border border-[#007cf4]/30 bg-[#007cf4]/10">
-            <Pulse />
-            <span className="text-xs font-semibold tracking-widest uppercase text-[#36c5f0]">Live Performance Dashboard</span>
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 border border-[#007cf4]/20 bg-[#007cf4]/6">
+            <Pulse color="#007cf4" />
+            <span className="text-xs font-semibold tracking-widest uppercase text-[#007cf4]">Live Performance Dashboard</span>
           </div>
           <h2
-            className="font-inter-tight font-black text-white leading-tight tracking-tight"
+            className="font-inter-tight font-black text-[#050f2e] leading-tight tracking-tight"
             style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}
           >
             Automation Running
             <br />
-            <span style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Right Now
-            </span>
+            <span className="gradient-text">Right Now</span>
           </h2>
-          <p className="text-white/50 text-sm mt-4 max-w-md mx-auto">
-            Simulated metrics from Sync4Tech-powered client environments — updated every 1.5 seconds.
+          <p className="text-gray-400 text-sm mt-4 max-w-md mx-auto leading-relaxed">
+            Live metrics from Sync4Tech-powered client environments — streaming every second.
           </p>
         </motion.div>
 
         {/* KPI row */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: EASE }}
         >
-          {[
-            { label: 'Tasks Automated Today', value: kpis.tasks, suffix: '', prefix: '', color: '#36c5f0' },
-            { label: 'AI Accuracy Rate', value: kpis.accuracy, suffix: '%', prefix: '', color: '#22c55e' },
-            { label: 'Avg. ROI per Client', value: kpis.roi, suffix: '%', prefix: '', color: '#007cf4' },
-            { label: 'Hours Saved per Team', value: kpis.hours, suffix: 'h', prefix: '', color: '#f59e0b' },
-          ].map((kpi, i) => (
-            <div
-              key={i}
-              className="rounded-2xl p-5"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(54,197,240,0.15)' }}
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <Pulse color={kpi.color} />
-                <span className="text-white/40 text-xs font-medium">{kpi.label}</span>
+          {([
+            { label: 'Tasks / min',  value: kpi.tasks,    prev: prevKpi.current.tasks,    suffix: '',      color: '#007cf4', decimals: 0, inv: false },
+            { label: 'AI Accuracy',  value: kpi.accuracy, prev: prevKpi.current.accuracy, suffix: '%',     color: '#22c55e', decimals: 1, inv: false },
+            { label: 'Queue Depth',  value: kpi.queue,    prev: prevKpi.current.queue,    suffix: ' jobs', color: '#f59e0b', decimals: 0, inv: true  },
+            { label: 'Avg Response', value: kpi.latency,  prev: prevKpi.current.latency,  suffix: ' ms',   color: '#8b5cf6', decimals: 0, inv: true  },
+          ]).map((k, i) => (
+            <div key={i} className="rounded-2xl p-5 bg-[#f8faff] border border-[#007cf4]/10">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Pulse color={k.color} />
+                  <span className="text-gray-400 text-xs font-medium">{k.label}</span>
+                </div>
+                <Delta value={k.inv ? -k.value : k.value} prev={k.inv ? -k.prev : k.prev} />
               </div>
               <div className="text-3xl">
-                <Ticker value={typeof kpi.value === 'number' ? kpi.value : 0} suffix={kpi.suffix} prefix={kpi.prefix} color={kpi.color} />
+                <Ticker value={k.value} suffix={k.suffix} color={k.color} decimals={k.decimals} />
               </div>
             </div>
           ))}
         </motion.div>
 
-        {/* Charts grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Charts */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-          {/* Tasks Automated */}
-          <motion.div
-            className="rounded-2xl p-6"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(0,124,244,0.2)' }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.7, delay: 0, ease: EASE }}
-          >
+          {/* Workflow throughput */}
+          <Card delay={0}>
             <div className="flex items-center justify-between mb-5">
               <div>
-                <p className="text-white/40 text-xs uppercase tracking-widest font-semibold mb-1">Tasks / interval</p>
-                <p className="text-white font-inter-tight font-black text-xl">Workflow Throughput</p>
+                <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Tasks per minute</p>
+                <p className="text-gray-900 font-inter-tight font-black text-lg">Workflow Throughput</p>
               </div>
-              <Pulse />
+              <Pulse color="#007cf4" />
             </div>
-            <ResponsiveContainer width="100%" height={180}>
-              <AreaChart data={tasksData} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
+            <ResponsiveContainer width="100%" height={170}>
+              <AreaChart data={tasks} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
                 <defs>
-                  <linearGradient id="gradTask" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#007cf4" stopOpacity={0.35} />
-                    <stop offset="95%" stopColor="#007cf4" stopOpacity={0} />
+                  <linearGradient id="gTask" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%"  stopColor="#007cf4" stopOpacity={0.15} />
+                    <stop offset="100%" stopColor="#007cf4" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                <XAxis dataKey="t" hide />
-                <YAxis tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 10 }} />
+                <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
+                <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 5)} tickLine={false} axisLine={false} />
+                <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={['auto', 'auto']} />
                 <Tooltip content={<ChartTip unit=" tasks" />} />
-                <Area type="monotone" dataKey="v" stroke="#007cf4" strokeWidth={2} fill="url(#gradTask)" dot={false} isAnimationActive={false} />
+                <Area type="monotoneX" dataKey="v" stroke="#007cf4" strokeWidth={2} fill="url(#gTask)" dot={false} isAnimationActive={false} />
               </AreaChart>
             </ResponsiveContainer>
-          </motion.div>
+          </Card>
 
           {/* AI Accuracy */}
-          <motion.div
-            className="rounded-2xl p-6"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(34,197,94,0.2)' }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
-          >
+          <Card delay={0.08}>
             <div className="flex items-center justify-between mb-5">
               <div>
-                <p className="text-white/40 text-xs uppercase tracking-widest font-semibold mb-1">Live accuracy %</p>
-                <p className="text-white font-inter-tight font-black text-xl">AI Processing Accuracy</p>
+                <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Accuracy %</p>
+                <p className="text-gray-900 font-inter-tight font-black text-lg">AI Processing Accuracy</p>
               </div>
               <Pulse color="#22c55e" />
             </div>
-            <ResponsiveContainer width="100%" height={180}>
-              <LineChart data={accuracyData} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                <XAxis dataKey="t" hide />
-                <YAxis domain={[88, 100]} tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 10 }} />
+            <ResponsiveContainer width="100%" height={170}>
+              <LineChart data={accuracy} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
+                <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 5)} tickLine={false} axisLine={false} />
+                <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={[92, 100]} />
                 <Tooltip content={<ChartTip unit="%" />} />
-                <Line type="monotone" dataKey="v" stroke="#22c55e" strokeWidth={2.5} dot={false} isAnimationActive={false} />
+                <Line type="monotoneX" dataKey="v" stroke="#22c55e" strokeWidth={2.5} dot={false} isAnimationActive={false} />
               </LineChart>
             </ResponsiveContainer>
-          </motion.div>
+          </Card>
 
-          {/* ROI */}
-          <motion.div
-            className="rounded-2xl p-6"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(54,197,240,0.2)' }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
-          >
+          {/* Queue depth */}
+          <Card delay={0.16}>
             <div className="flex items-center justify-between mb-5">
               <div>
-                <p className="text-white/40 text-xs uppercase tracking-widest font-semibold mb-1">Client ROI %</p>
-                <p className="text-white font-inter-tight font-black text-xl">Return on Investment</p>
-              </div>
-              <Pulse color="#36c5f0" />
-            </div>
-            <ResponsiveContainer width="100%" height={180}>
-              <BarChart data={roiData.slice(-12)} margin={{ top: 4, right: 4, left: -20, bottom: 0 }} barSize={10}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                <XAxis dataKey="t" hide />
-                <YAxis tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 10 }} />
-                <Tooltip content={<ChartTip unit="%" />} />
-                <Bar dataKey="v" radius={[4, 4, 0, 0]} isAnimationActive={false}>
-                  {roiData.slice(-12).map((_, i) => (
-                    <rect key={i} fill={`url(#gradBar)`} />
-                  ))}
-                </Bar>
-                <defs>
-                  <linearGradient id="gradBar" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#36c5f0" />
-                    <stop offset="100%" stopColor="#007cf4" />
-                  </linearGradient>
-                </defs>
-              </BarChart>
-            </ResponsiveContainer>
-          </motion.div>
-
-          {/* Hours Saved */}
-          <motion.div
-            className="rounded-2xl p-6"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(245,158,11,0.2)' }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
-          >
-            <div className="flex items-center justify-between mb-5">
-              <div>
-                <p className="text-white/40 text-xs uppercase tracking-widest font-semibold mb-1">Hours / team / week</p>
-                <p className="text-white font-inter-tight font-black text-xl">Hours Saved per Team</p>
+                <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Jobs pending</p>
+                <p className="text-gray-900 font-inter-tight font-black text-lg">Process Queue Depth</p>
               </div>
               <Pulse color="#f59e0b" />
             </div>
-            <ResponsiveContainer width="100%" height={180}>
-              <AreaChart data={hoursData} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
+            <ResponsiveContainer width="100%" height={170}>
+              <BarChart data={queue.slice(-18)} margin={{ top: 4, right: 4, left: -16, bottom: 0 }} barSize={8}>
                 <defs>
-                  <linearGradient id="gradHours" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="#f59e0b" stopOpacity={0} />
+                  <linearGradient id="gQueue" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%"  stopColor="#f59e0b" stopOpacity={0.9} />
+                    <stop offset="100%" stopColor="#f59e0b" stopOpacity={0.5} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                <XAxis dataKey="t" hide />
-                <YAxis tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 10 }} />
-                <Tooltip content={<ChartTip unit="h" />} />
-                <Area type="monotone" dataKey="v" stroke="#f59e0b" strokeWidth={2} fill="url(#gradHours)" dot={false} isAnimationActive={false} />
+                <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
+                <XAxis dataKey="ts" tick={axisStyle} interval={5} tickLine={false} axisLine={false} />
+                <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={[0, 'auto']} />
+                <Tooltip content={<ChartTip unit=" jobs" />} />
+                <Bar dataKey="v" fill="url(#gQueue)" radius={[3, 3, 0, 0]} isAnimationActive={false} />
+              </BarChart>
+            </ResponsiveContainer>
+          </Card>
+
+          {/* Response latency */}
+          <Card delay={0.24}>
+            <div className="flex items-center justify-between mb-5">
+              <div>
+                <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Milliseconds</p>
+                <p className="text-gray-900 font-inter-tight font-black text-lg">Avg. Response Latency</p>
+              </div>
+              <Pulse color="#8b5cf6" />
+            </div>
+            <ResponsiveContainer width="100%" height={170}>
+              <AreaChart data={latency} margin={{ top: 4, right: 4, left: -16, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="gLatency" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%"  stopColor="#8b5cf6" stopOpacity={0.15} />
+                    <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 4" stroke={gridStroke} />
+                <XAxis dataKey="ts" tick={axisStyle} interval={Math.floor(MAX_POINTS / 5)} tickLine={false} axisLine={false} />
+                <YAxis tick={axisStyle} tickLine={false} axisLine={false} domain={['auto', 'auto']} />
+                <Tooltip content={<ChartTip unit=" ms" />} />
+                <Area type="monotoneX" dataKey="v" stroke="#8b5cf6" strokeWidth={2} fill="url(#gLatency)" dot={false} isAnimationActive={false} />
               </AreaChart>
             </ResponsiveContainer>
-          </motion.div>
+          </Card>
+
         </div>
 
-        {/* Footer note */}
-        <p className="text-center text-white/25 text-xs mt-8">
-          Data simulated from anonymised client environments · Updates every 1.5s · Not financial advice
+        <p className="text-center text-gray-300 text-xs mt-8">
+          Simulated streaming data · updates every second · representative of real client environments
         </p>
       </div>
     </section>
