@@ -109,12 +109,20 @@ export default function WhySync4Tech() {
         </div>
 
         <motion.div
-          className="text-center mt-14"
+          className="text-center mt-14 flex flex-col sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-semibold text-sm btn-glow hover:opacity-90 transition-opacity"
+            style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+          >
+            Book a Free Strategy Session
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </a>
           <a href="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all duration-200 group">
             Learn more about us
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">

@@ -149,7 +149,7 @@ export default function ExecutionGap() {
 
         {/* Stat strip */}
         <motion.div
-          className="grid grid-cols-3 gap-4"
+          className="grid grid-cols-3 gap-4 mb-10"
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -173,6 +173,24 @@ export default function ExecutionGap() {
               <p className="text-gray-400 dark:text-white/45 text-xs leading-snug">{stat.label}</p>
             </div>
           ))}
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-sm btn-glow hover:opacity-90 transition-opacity"
+            style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+          >
+            Close Your Execution Gap
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </a>
+          <p className="text-gray-400 text-xs mt-3">Free strategy session · No commitment required</p>
         </motion.div>
 
       </div>

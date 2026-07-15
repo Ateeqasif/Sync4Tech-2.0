@@ -155,6 +155,32 @@ export default function TransformationJourney() {
           </div>
         </div>
       </div>
+      {/* CTA */}
+      <motion.div
+        className="text-center mt-14"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <p className="text-gray-400 text-sm mb-5">Your transformation starts with a single conversation.</p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-sm btn-glow hover:opacity-90 transition-opacity"
+            style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+          >
+            Start Your Journey
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </a>
+          <a
+            href="/case-studies"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-gray-700 bg-white border border-black/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-all"
+          >
+            See Client Results
+          </a>
+        </div>
+      </motion.div>
     </section>
   )
 }

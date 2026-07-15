@@ -520,6 +520,30 @@ export default function LiveDashboard() {
           <p className="text-gray-300 text-xs mt-8 text-center">
             Source: npmjs.org public registry · Updates daily · Tools shown are actively deployed by Sync4Tech
           </p>
+
+          {/* CTA */}
+          <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <p className="font-semibold text-gray-800 text-sm">We deploy all of these tools for clients.</p>
+              <p className="text-gray-400 text-xs mt-0.5">From strategy to production — end to end.</p>
+            </div>
+            <div className="flex items-center gap-3 shrink-0">
+              <a
+                href="/services"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors"
+              >
+                Our Services
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white font-semibold text-sm hover:opacity-90 transition-opacity"
+                style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+              >
+                Work With Us
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </a>
+            </div>
+          </div>
         </motion.div>
 
       </div>

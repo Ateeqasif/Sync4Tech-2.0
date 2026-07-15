@@ -196,6 +196,34 @@ export default function FAQ() {
             </button>
           </motion.div>
         )}
+
+        {/* Bottom CTA */}
+        <motion.div
+          className="mt-14 rounded-2xl border border-[#007cf4]/15 bg-[#f8faff] p-8 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <p className="font-inter-tight font-bold text-[#050f2e] text-lg mb-1">Still have questions?</p>
+          <p className="text-gray-400 text-sm mb-6">Talk to one of our specialists — no sales pitch, just straight answers.</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-semibold text-sm btn-glow hover:opacity-90 transition-opacity"
+              style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+            >
+              Talk to an Expert
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </a>
+            <a
+              href="/case-studies"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-gray-700 bg-white border border-black/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-all"
+            >
+              See Our Work
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

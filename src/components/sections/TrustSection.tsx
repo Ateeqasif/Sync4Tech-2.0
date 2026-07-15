@@ -89,6 +89,30 @@ export default function TrustSection() {
             </div>
           ))}
         </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          className="text-center mt-14"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <a
+            href="/services"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-gray-700 bg-white border border-black/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-all mr-3"
+          >
+            Explore Our Stack
+          </a>
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-semibold text-sm btn-glow hover:opacity-90 transition-opacity"
+            style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+          >
+            Start a Project
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   )
