@@ -146,27 +146,28 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[9999] flex flex-col overflow-hidden"
+          className="fixed inset-0 z-[9999] overflow-y-auto"
           style={{
             background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 55%, #36c5f0 100%)',
           }}
-          initial={{ opacity: 0, scale: 1.03 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.03 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.2, ease: 'easeInOut' }}
           onClick={onClose}
         >
-          {/* Noise texture overlay for depth */}
+          {/* Depth overlay */}
           <div
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none fixed inset-0"
             style={{
-              background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.12) 0%, transparent 70%), radial-gradient(ellipse 60% 80% at 80% 100%, rgba(3,58,157,0.35) 0%, transparent 60%)',
+              background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.10) 0%, transparent 70%), radial-gradient(ellipse 60% 80% at 80% 100%, rgba(3,58,157,0.30) 0%, transparent 60%)',
             }}
           />
 
-          {/* Top bar: logo area + close */}
+          {/* Top bar: sticky so close button is always reachable */}
           <div
-            className="relative z-10 flex items-center justify-between px-6 md:px-10 pt-5 pb-4"
+            className="sticky top-0 z-20 flex items-center justify-between px-6 md:px-10 pt-5 pb-4"
+            style={{ background: 'linear-gradient(to bottom, rgba(3,58,157,0.6) 0%, transparent 100%)', backdropFilter: 'blur(2px)' }}
             onClick={e => e.stopPropagation()}
           >
             <span className="text-white/50 text-xs font-bold tracking-[0.25em] uppercase">Search Sync4Tech</span>
@@ -187,7 +188,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
 
           {/* Main search area */}
           <div
-            className="relative z-10 flex-1 flex flex-col items-center px-4 pt-[8vh] overflow-y-auto"
+            className="relative z-10 flex flex-col items-center px-4 pt-10 pb-16 min-h-[80vh]"
             onClick={e => e.stopPropagation()}
           >
             {/* Input */}
