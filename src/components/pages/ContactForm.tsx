@@ -159,7 +159,7 @@ export default function ContactForm() {
         <div className="section-container flex flex-wrap items-center justify-center gap-8 text-gray-400 dark:text-gray-500 text-sm">
           {['No commitment required', 'NDA available', 'Serving clients globally'].map((t, i) => (
             <span key={i} className="flex items-center gap-2">
-              {i > 0 && <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />}
+              {i > 0 && <span className="w-2 h-2 rounded-full bg-[#007cf4] animate-pulse shrink-0" />}
               {t}
             </span>
           ))}
