@@ -33,9 +33,11 @@ html.dark {
   --nav-border: rgba(54, 197, 240, 0.2);
 }
 
-/* Custom cursor hide on non-touch */
+/* Custom cursor hide on non-touch — restored inside search overlay */
 @media (pointer: fine) {
   * { cursor: none !important; }
+  [data-search-overlay], [data-search-overlay] * { cursor: auto !important; }
+  [data-search-overlay] a, [data-search-overlay] button { cursor: pointer !important; }
 }
 
 /* Dark-mode background overrides.

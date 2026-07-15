@@ -154,6 +154,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
       {open && (
         <motion.div
           className="fixed inset-0 z-[9999] overflow-y-auto"
+          data-search-overlay="true"
           style={{
             background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 55%, #36c5f0 100%)',
           }}
