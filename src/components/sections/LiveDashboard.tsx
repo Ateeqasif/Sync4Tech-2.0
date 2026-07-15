@@ -26,8 +26,9 @@ const AI_PKGS = [
   { pkg: '@pinecone-database/pinecone', label: 'Pinecone',  color: '#06b6d4', sim: 28_000  },
 ]
 const AUTO_PKGS = [
-  { pkg: 'n8n',                  label: 'n8n',    color: '#EA4B71', sim: 42_000 },
-  { pkg: 'zapier-platform-core', label: 'Zapier', color: '#FF4A00', sim: 14_000 },
+  { pkg: 'n8n',                  label: 'n8n',          color: '#EA4B71', sim: 42_000 },
+  { pkg: 'zapier-platform-core', label: 'Zapier',        color: '#FF4A00', sim: 14_000 },
+  { pkg: 'highlevel-api',        label: 'GoHighLevel',   color: '#F97316', sim: 8_000  },
 ]
 
 type NpmSeries = { label: string; color: string; days: string[]; data: number[] }
@@ -303,7 +304,7 @@ export default function LiveDashboard() {
 
         {/* KPI tiles — all 6 tools */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
@@ -311,7 +312,7 @@ export default function LiveDashboard() {
         >
           {loaded
             ? allSeries.map(s => <KpiTile key={s.label} s={s} />)
-            : Array.from({ length: 6 }).map((_, i) => (
+            : Array.from({ length: 7 }).map((_, i) => (
                 <div key={i} className="animate-pulse h-[108px] rounded-2xl bg-gray-100" />
               ))}
         </motion.div>
