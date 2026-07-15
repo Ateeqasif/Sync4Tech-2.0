@@ -4,6 +4,7 @@ import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 import { motion } from 'framer-motion'
+import BrandWatermark from '@/components/BrandWatermark'
 
 const timeline = [
   { year: '2020', milestone: 'Founded to solve the execution gap between business strategy and operational reality.' },
@@ -55,8 +56,9 @@ export default function AboutPage() {
       />
 
       {/* Mission */}
-      <section className="py-section bg-white dark:bg-white overflow-hidden">
-        <div className="section-container">
+      <section className="py-section bg-white dark:bg-white relative overflow-hidden">
+        <BrandWatermark position="top-right" size={500} opacity={0.045} />
+        <div className="section-container relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <motion.div
               className="flex-1 max-w-xl"

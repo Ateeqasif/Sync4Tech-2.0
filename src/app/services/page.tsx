@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 import ToolPill from '@/components/ToolPill'
+import BrandWatermark from '@/components/BrandWatermark'
 
 const pillars = [
   {
@@ -99,8 +100,9 @@ export default function ServicesPage() {
       />
 
       {/* Three pillars */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
-        <div className="section-container">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff] relative overflow-hidden">
+        <BrandWatermark position="right" size={580} opacity={0.045} />
+        <div className="section-container relative z-10">
           <div className="flex flex-col gap-8">
             {pillars.map((pillar, i) => (
               <motion.div

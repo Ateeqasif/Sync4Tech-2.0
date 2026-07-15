@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
+import BrandWatermark from '@/components/BrandWatermark'
 
 const milestones = [
   { year: '2021', label: 'Founded', detail: 'Sync4Tech launched with a simple thesis: mid-market companies need enterprise-grade AI and automation capability, but cannot access it through the existing consulting market.' },
@@ -57,8 +58,9 @@ export default function MissionPage() {
       />
 
       {/* Mission statement */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
-        <div className="section-container">
+      <section className="py-section bg-white dark:bg-[#f8faff] relative overflow-hidden">
+        <BrandWatermark position="bottom-left" size={540} opacity={0.05} />
+        <div className="section-container relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-20">
             <motion.p
               className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4"

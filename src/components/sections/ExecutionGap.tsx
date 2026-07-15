@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import BrandWatermark from '@/components/BrandWatermark'
 
 export default function ExecutionGap() {
   const ref = useRef<HTMLDivElement>(null)
@@ -18,6 +19,8 @@ export default function ExecutionGap() {
         style={{ background: 'radial-gradient(ellipse, #007cf4, transparent 70%)' }} />
       <div className="absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full opacity-8 dark:opacity-15 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, #36c5f0, transparent 70%)' }} />
+
+      <BrandWatermark position="left" size={560} opacity={0.05} />
 
       <div className="section-container relative z-10" ref={ref}>
 

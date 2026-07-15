@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
+import BrandWatermark from '@/components/BrandWatermark'
 
 function SectionGrid() {
   return (
@@ -32,6 +33,7 @@ export default function FinalCTA() {
   return (
     <section className="py-section bg-white relative overflow-hidden" id="contact">
       <SectionGrid />
+      <BrandWatermark position="right" size={600} opacity={0.045} />
 
       <div className="section-container relative z-10 text-center">
         <motion.div

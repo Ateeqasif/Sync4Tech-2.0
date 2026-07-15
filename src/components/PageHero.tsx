@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import BrandWatermark from '@/components/BrandWatermark'
 
 function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -79,8 +80,9 @@ interface PageHeroProps {
 
 export default function PageHero({ eyebrow, title, highlight, subtitle, breadcrumb }: PageHeroProps) {
   return (
-    <section className="relative pt-40 pb-20 bg-white flex flex-col items-center justify-center">
+    <section className="relative pt-40 pb-20 bg-white flex flex-col items-center justify-center overflow-hidden">
       {/* Background */}
+      <BrandWatermark position="bottom-right" size={520} opacity={0.04} rotate={false} />
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 opacity-60">
           <ParticleCanvas />

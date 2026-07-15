@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
+import BrandWatermark from '@/components/BrandWatermark'
 
 const tiers = [
   {
@@ -107,8 +108,9 @@ export default function PricingPage() {
       />
 
       {/* Pricing tiers */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
-        <div className="section-container">
+      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff] relative overflow-hidden">
+        <BrandWatermark position="center" size={700} opacity={0.04} />
+        <div className="section-container relative z-10">
           <div className="text-center mb-14">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
