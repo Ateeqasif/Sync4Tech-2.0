@@ -13,6 +13,7 @@ import TrustSection from '@/components/sections/TrustSection'
 import Insights from '@/components/sections/Insights'
 import FAQ from '@/components/sections/FAQ'
 import FinalCTA from '@/components/sections/FinalCTA'
+import ClientLogoScroller from '@/components/sections/ClientLogoScroller'
 import PageLoader from '@/components/PageLoader'
 import ScrollProgress from '@/components/ScrollProgress'
 import ClickEffect from '@/components/ClickEffect'
@@ -33,6 +34,7 @@ export default function Home() {
       <AccessibilityPanel />
       <main>
         <Hero />
+        <ClientLogoScroller />
         <TransformationOS />
         <BusinessOutcomes />
         <LiveDashboard />

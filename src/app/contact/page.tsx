@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import PageHero from '@/components/PageHero'
 import ContactForm from '@/components/pages/ContactForm'
+import ClientLogoScroller from '@/components/sections/ClientLogoScroller'
 
 export const metadata: Metadata = {
   title: 'Contact Sync4Tech | Book a Strategy Session',
@@ -23,6 +24,7 @@ export default function ContactPage() {
         subtitle="Tell us about your biggest operational challenge and we'll show you exactly how to solve it."
         breadcrumb={[{ label: 'Contact', href: '/contact' }]}
       />
+      <ClientLogoScroller />
       <ContactForm />
     </main>
   )
