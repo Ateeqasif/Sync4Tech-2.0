@@ -24,7 +24,7 @@ export default function TermsOfServicePage() {
       <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <article className="max-w-3xl mx-auto prose prose-gray dark:prose-invert prose-sm md:prose-base">
-            <p className="text-gray-400 text-sm mb-8">Last updated: June 2025</p>
+            <p className="text-gray-400 text-sm mb-8">Last updated: January 2026</p>
 
             <h2>1. Services</h2>
             <p>These Terms of Service ("Terms") govern access to and use of the Sync4Tech website at sync4tech.com and any professional services provided by Sync4Tech Ltd, a company registered in England and Wales.</p>

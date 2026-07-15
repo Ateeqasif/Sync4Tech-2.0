@@ -97,7 +97,7 @@ export const fr = {
     subscribePlaceholder: "Entrez votre email",
     subscribeBtn: "S'abonner",
     successMsg: "Merci pour votre abonnement!",
-    copyright: "© 2025 Sync4Tech. Tous droits réservés."
+    copyright: "© 2026 Sync4Tech. Tous droits réservés."
   },
   faq: {
     eyebrow: "FAQ",

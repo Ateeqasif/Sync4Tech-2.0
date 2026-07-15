@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
       <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <article className="max-w-3xl mx-auto prose prose-gray dark:prose-invert prose-sm md:prose-base">
-            <p className="text-gray-400 text-sm mb-8">Last updated: June 2025</p>
+            <p className="text-gray-400 text-sm mb-8">Last updated: January 2026</p>
 
             <h2>1. Data We Collect</h2>
             <p>Sync4Tech Ltd ("we", "us", "our") collects the following categories of personal data when you interact with our website or services:</p>

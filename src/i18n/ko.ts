@@ -97,7 +97,7 @@ export const ko = {
     subscribePlaceholder: "이메일을 입력하세요",
     subscribeBtn: "구독",
     successMsg: "구독해 주셔서 감사합니다!",
-    copyright: "© 2025 Sync4Tech. 모든 권리 보유."
+    copyright: "© 2026 Sync4Tech. 모든 권리 보유."
   },
   faq: {
     eyebrow: "자주 묻는 질문",

@@ -24,7 +24,7 @@ export default function CookiePolicyPage() {
       <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <article className="max-w-3xl mx-auto prose prose-gray dark:prose-invert prose-sm md:prose-base">
-            <p className="text-gray-400 text-sm mb-8">Last updated: June 2025</p>
+            <p className="text-gray-400 text-sm mb-8">Last updated: January 2026</p>
 
             <h2>1. What Are Cookies?</h2>
             <p>Cookies are small text files placed on your device when you visit a website. They allow the website to recognise your device on subsequent visits and remember your preferences. Similar technologies include web beacons, pixel tags, and local storage.</p>
