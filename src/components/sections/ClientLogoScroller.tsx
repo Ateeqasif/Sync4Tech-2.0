@@ -229,7 +229,10 @@ const track = [...logos, ...logos]
 
 export default function ClientLogoScroller() {
   return (
-    <section className="py-10 bg-white border-y border-black/[0.06] overflow-hidden">
+    <section
+      className="py-10 overflow-hidden"
+      style={{ background: 'linear-gradient(to bottom, #ffffff 0%, #f8faff 100%)' }}
+    >
       {/* Label */}
       <motion.p
         className="text-center text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 mb-8"
@@ -243,9 +246,9 @@ export default function ClientLogoScroller() {
 
       {/* Marquee */}
       <div className="relative">
-        {/* Edge fade masks */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-28 bg-gradient-to-r from-white to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-28 bg-gradient-to-l from-white to-transparent" />
+        {/* Edge fade masks — match top/bottom gradient midpoint */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-28" style={{ background: 'linear-gradient(to right, #fafcff, transparent)' }} />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-28" style={{ background: 'linear-gradient(to left, #f8faff, transparent)' }} />
 
         <div className="flex overflow-hidden">
           <motion.div
