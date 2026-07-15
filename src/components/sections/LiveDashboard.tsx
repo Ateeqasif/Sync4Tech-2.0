@@ -1,47 +1,106 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 
-const EASE = [0.22, 1, 0.36, 1] as const
-const TICK_MS   = 1000   // new data point every second
-const PX_PER_SEC = 55    // how fast the chart scrolls (px per second)
-const BUFFER    = 80     // keep 80s of history
+const EASE        = [0.22, 1, 0.36, 1] as const
+const TICK_MS     = 1000      // smooth OU tick every second
+const PX_PER_SEC  = 55        // canvas scroll speed (px / data-point)
+const BUFFER      = 80        // keep 80 history points
+const REFRESH_MS  = 60_000    // re-fetch real prices every 60 s
+const Y_LABEL_W   = 68        // left margin for price labels
+const X_LABEL_H   = 24        // bottom margin for time labels
 
-// ─── Ornstein-Uhlenbeck random walk ──────────────────────────────────────────
-function ou(prev: number, mean: number, theta = 0.18, sigma = 6): number {
-  return (prev + theta * (mean - prev) + sigma * (Math.random() * 2 - 1))
+// ─── Ornstein-Uhlenbeck micro-noise ──────────────────────────────────────────
+function ou(prev: number, mean: number, theta: number, sigma: number) {
+  return prev + theta * (mean - prev) + sigma * (Math.random() * 2 - 1)
 }
 function clamp(v: number, lo: number, hi: number) { return Math.max(lo, Math.min(hi, v)) }
 
-// ─── Shared live value streams ────────────────────────────────────────────────
-function useStream(mean: number, theta: number, sigma: number, lo: number, hi: number) {
-  const bufRef  = useRef<number[]>(Array.from({ length: 20 }, () => mean))
-  const cur     = useRef(mean)
-  const [display, setDisplay] = useState(mean)
+// ─── Y-axis formatters (module-level = stable references in useEffect deps) ──
+const fmtBtc = (v: number) => `$${(v / 1000).toFixed(1)}k`
+const fmtEth = (v: number) => v >= 1000 ? `$${(v / 1000).toFixed(2)}k` : `$${v.toFixed(0)}`
+const fmtPct = (v: number) => (v >= 0 ? '+' : '') + v.toFixed(3) + '%'
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      const next = clamp(ou(cur.current, mean, theta, sigma), lo, hi)
-      cur.current = next
-      bufRef.current = [...bufRef.current.slice(-(BUFFER - 1)), next]
-      setDisplay(Math.round(next * 10) / 10)
-    }, TICK_MS)
-    return () => clearInterval(id)
-  }, [mean, theta, sigma, lo, hi])
-
-  return { bufRef, display }
+// ─── API response shape ───────────────────────────────────────────────────────
+interface MarketPayload {
+  btc: number[]; eth: number[]; timestamps: number[]
+  live: { btc: number; eth: number; btcChange: number; ethChange: number }
 }
 
-// ─── Animated ticker ──────────────────────────────────────────────────────────
-function Ticker({ value, suffix = '', color = '#007cf4', dec = 0 }:
-  { value: number; suffix?: string; color?: string; dec?: number }) {
+// ─── Real-data stream hook ────────────────────────────────────────────────────
+function useMarketStream(key: 'btc' | 'eth') {
+  const bufRef    = useRef<number[]>([])
+  const meanRef   = useRef(0)
+  const curRef    = useRef(0)
+  const loadedRef = useRef(false)
+
+  const [display,  setDisplay]  = useState(0)
+  const [change24, setChange24] = useState(0)
+  const [loaded,   setLoaded]   = useState(false)
+  const [error,    setError]    = useState(false)
+
+  const refresh = useCallback(async () => {
+    try {
+      const res = await fetch('/api/market')
+      if (!res.ok) throw new Error('bad response')
+      const d: MarketPayload = await res.json()
+      const prices = d[key]
+      if (!prices?.length) throw new Error('empty')
+
+      const last = prices.at(-1)!
+      meanRef.current = last
+      setChange24(key === 'btc' ? d.live.btcChange : d.live.ethChange)
+      setDisplay(key === 'btc' ? d.live.btc : d.live.eth)
+      setError(false)
+
+      if (!loadedRef.current) {
+        bufRef.current  = [...prices]
+        curRef.current  = last
+        loadedRef.current = true
+        setLoaded(true)
+      } else {
+        // Anchor the walk to the freshly fetched real price
+        curRef.current = last
+        bufRef.current = [...bufRef.current.slice(-(BUFFER - 1)), last]
+      }
+    } catch {
+      setError(true)
+    }
+  }, [key])
+
+  // Initial fetch + periodic refresh
+  useEffect(() => {
+    refresh()
+    const id = setInterval(refresh, REFRESH_MS)
+    return () => clearInterval(id)
+  }, [refresh])
+
+  // Smooth OU animation between real updates (σ ≈ 0.04 % → realistic micro-movement)
+  useEffect(() => {
+    if (!loaded) return
+    const id = setInterval(() => {
+      const m    = meanRef.current
+      if (!m) return
+      const next = ou(curRef.current, m, 0.12, m * 0.0004)
+      curRef.current = next
+      bufRef.current = [...bufRef.current.slice(-(BUFFER - 1)), next]
+    }, TICK_MS)
+    return () => clearInterval(id)
+  }, [loaded])
+
+  return { bufRef, display, change24, loaded, error }
+}
+
+// ─── Animated price ticker ────────────────────────────────────────────────────
+function PriceTicker({ value, color = '#007cf4' }: { value: number; color?: string }) {
   const [d, setD] = useState(value)
   const prev = useRef(value)
   useEffect(() => {
-    const from = prev.current, to = value, t0 = performance.now()
+    if (!value) return
+    const from = prev.current || value, to = value, t0 = performance.now()
     const tick = (now: number) => {
-      const p = Math.min((now - t0) / 450, 1)
+      const p = Math.min((now - t0) / 600, 1)
       const e = 1 - Math.pow(1 - p, 3)
       setD(from + (to - from) * e)
       if (p < 1) requestAnimationFrame(tick)
@@ -51,30 +110,29 @@ function Ticker({ value, suffix = '', color = '#007cf4', dec = 0 }:
   }, [value])
   return (
     <span style={{ color }} className="font-inter-tight font-black tabular-nums">
-      {dec ? d.toFixed(1) : Math.round(d).toLocaleString()}{suffix}
+      ${d >= 1000 ? d.toLocaleString('en-US', { maximumFractionDigits: 0 }) : d.toFixed(2)}
     </span>
   )
 }
 
-// ─── Delta badge ──────────────────────────────────────────────────────────────
-function Delta({ cur, prev }: { cur: number; prev: number }) {
-  const d = cur - prev
-  const up = d >= 0
+// ─── 24 h change badge ────────────────────────────────────────────────────────
+function ChangeBadge({ pct }: { pct: number }) {
+  const up = pct >= 0
   return (
     <span className={`text-[11px] font-bold flex items-center gap-0.5 ${up ? 'text-emerald-500' : 'text-red-400'}`}>
       <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"
         style={{ transform: up ? 'none' : 'rotate(180deg)' }}>
         <path d="M4 1l3.5 6H.5z"/>
       </svg>
-      {Math.abs(Math.round(d * 10) / 10)}
+      {Math.abs(pct).toFixed(2)}%
     </span>
   )
 }
 
-// ─── Live pulse dot ───────────────────────────────────────────────────────────
+// ─── Pulse dot ────────────────────────────────────────────────────────────────
 function Pulse({ color = '#22c55e' }: { color?: string }) {
   return (
-    <span className="relative flex h-2 w-2 flex-shrink-0">
+    <span className="relative flex h-2 w-2 shrink-0">
       <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
         style={{ backgroundColor: color }} />
       <span className="relative inline-flex rounded-full h-2 w-2"
@@ -83,189 +141,24 @@ function Pulse({ color = '#22c55e' }: { color?: string }) {
   )
 }
 
-const Y_LABEL_W = 52   // reserved left margin for Y-axis labels
-const X_LABEL_H = 24   // reserved bottom margin for X-axis labels
-
-// ─── Canvas streaming line chart ──────────────────────────────────────────────
-function StreamLine({
-  bufRef, color, min, max, height = 200, unit = '',
-}: {
-  bufRef: React.MutableRefObject<number[]>
-  color: string; min: number; max: number; height?: number; unit?: string
-}) {
-  const wrapRef   = useRef<HTMLDivElement>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-
-  useEffect(() => {
-    const wrap   = wrapRef.current
-    const canvas = canvasRef.current
-    if (!wrap || !canvas) return
-
-    const dpr = window.devicePixelRatio || 1
-    let animId: number
-    const t0 = performance.now()
-
-    const resize = () => {
-      const w = wrap.clientWidth
-      canvas.width  = w * dpr
-      canvas.height = height * dpr
-      canvas.style.width  = w + 'px'
-      canvas.style.height = height + 'px'
-    }
-    resize()
-    const ro = new ResizeObserver(resize)
-    ro.observe(wrap)
-
-    const draw = (now: number) => {
-      const ctx = canvas.getContext('2d')
-      if (!ctx) { animId = requestAnimationFrame(draw); return }
-
-      const elapsed  = (now - t0) / 1000
-      const W = canvas.width  / dpr
-      const H = canvas.height / dpr
-      // chart area (excludes axis margins)
-      const cL = Y_LABEL_W, cT = 6, cW = W - cL, cH = H - X_LABEL_H - cT
-      const buf = bufRef.current
-      const scrollOffset = (elapsed % 1) * PX_PER_SEC
-
-      ctx.save()
-      ctx.scale(dpr, dpr)
-      ctx.clearRect(0, 0, W, H)
-
-      const norm  = (v: number) => 1 - clamp((v - min) / (max - min), 0, 1)
-      const yPx   = (v: number) => cT + norm(v) * cH
-
-      // ── Y-axis labels + grid lines ────────────────────────────
-      ctx.font = '10px system-ui, sans-serif'
-      ctx.textAlign = 'right'
-      ctx.textBaseline = 'middle'
-      const yTicks = 4
-      for (let i = 0; i <= yTicks; i++) {
-        const f = i / yTicks
-        const v = min + (1 - f) * (max - min)
-        const y = cT + f * cH
-        // grid
-        ctx.strokeStyle = 'rgba(0,0,0,0.06)'
-        ctx.lineWidth = 1
-        ctx.setLineDash([])
-        ctx.beginPath(); ctx.moveTo(cL, y); ctx.lineTo(W, y); ctx.stroke()
-        // label
-        ctx.fillStyle = '#9ca3af'
-        const label = v >= 1000 ? (v / 1000).toFixed(1) + 'k' : Number.isInteger(v) ? String(Math.round(v)) : v.toFixed(1)
-        ctx.fillText(label + (unit === '%' ? '%' : ''), cL - 6, y)
-      }
-
-      // ── X-axis time labels + vertical grid ───────────────────
-      ctx.textAlign = 'center'
-      ctx.textBaseline = 'top'
-      ctx.fillStyle = '#9ca3af'
-      const vGap = PX_PER_SEC * 5          // label every 5 s
-      const vOff = scrollOffset % vGap
-      const totalSecs = Math.ceil(elapsed)
-      for (let x = W - vOff; x > cL - vGap; x -= vGap) {
-        if (x < cL) continue
-        // vertical grid
-        ctx.strokeStyle = 'rgba(0,0,0,0.045)'
-        ctx.lineWidth = 1
-        ctx.beginPath(); ctx.moveTo(x, cT); ctx.lineTo(x, cT + cH); ctx.stroke()
-        // time label
-        const secsAgo = Math.round((W - x + vOff) / PX_PER_SEC)
-        const t = totalSecs - secsAgo
-        const label = t >= 0 ? `${t}s` : ''
-        ctx.fillText(label, x, cT + cH + 5)
-      }
-
-      // ── Build point list ──────────────────────────────────────
-      const pts: { x: number; y: number }[] = []
-      for (let i = 0; i < buf.length; i++) {
-        const fromEnd = buf.length - 1 - i
-        const x = W - fromEnd * PX_PER_SEC + scrollOffset
-        if (x < cL - PX_PER_SEC * 2 || x > W + PX_PER_SEC) continue
-        pts.push({ x, y: yPx(buf[i]) })
-      }
-
-      if (pts.length < 2) { ctx.restore(); animId = requestAnimationFrame(draw); return }
-
-      // clip chart area
-      ctx.save()
-      ctx.beginPath(); ctx.rect(cL, cT, cW, cH); ctx.clip()
-
-      // ── Gradient fill ─────────────────────────────────────────
-      const grad = ctx.createLinearGradient(0, cT, 0, cT + cH)
-      grad.addColorStop(0,   color + '28')
-      grad.addColorStop(0.7, color + '08')
-      grad.addColorStop(1,   color + '00')
-      ctx.fillStyle = grad
-      ctx.beginPath()
-      ctx.moveTo(pts[0].x, cT + cH)
-      pts.forEach(p => ctx.lineTo(p.x, p.y))
-      ctx.lineTo(pts[pts.length - 1].x, cT + cH)
-      ctx.closePath()
-      ctx.fill()
-
-      // ── Glow ─────────────────────────────────────────────────
-      ctx.strokeStyle = color + '35'
-      ctx.lineWidth = 7
-      ctx.lineJoin = 'round'; ctx.lineCap = 'round'
-      ctx.beginPath()
-      pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y))
-      ctx.stroke()
-
-      // ── Line ─────────────────────────────────────────────────
-      ctx.strokeStyle = color
-      ctx.lineWidth = 2.5
-      ctx.beginPath()
-      pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y))
-      ctx.stroke()
-
-      // ── Live head dot + pulse ring ────────────────────────────
-      if (buf.length >= 2) {
-        const frac  = clamp(scrollOffset / PX_PER_SEC, 0, 1)
-        const headV = buf[buf.length - 2] + frac * (buf[buf.length - 1] - buf[buf.length - 2])
-        const hx    = W - PX_PER_SEC + scrollOffset
-        const hy    = yPx(headV)
-
-        const pulse = (elapsed * 2.5) % 1
-        const alpha = Math.round((1 - pulse) * 200).toString(16).padStart(2, '0')
-        ctx.strokeStyle = color + alpha
-        ctx.lineWidth = 1.5
-        ctx.beginPath(); ctx.arc(hx, hy, 4 + pulse * 10, 0, Math.PI * 2); ctx.stroke()
-
-        ctx.fillStyle = '#ffffff'
-        ctx.beginPath(); ctx.arc(hx, hy, 4, 0, Math.PI * 2); ctx.fill()
-        ctx.fillStyle = color
-        ctx.beginPath(); ctx.arc(hx, hy, 3, 0, Math.PI * 2); ctx.fill()
-      }
-
-      ctx.restore() // unclip
-      ctx.restore()
-      animId = requestAnimationFrame(draw)
-    }
-
-    animId = requestAnimationFrame(draw)
-    return () => { cancelAnimationFrame(animId); ro.disconnect() }
-  }, [bufRef, color, min, max, height, unit])
-
-  return (
-    <div ref={wrapRef} className="w-full">
-      <canvas ref={canvasRef} style={{ display: 'block' }} />
-    </div>
-  )
+// ─── Skeleton loader ──────────────────────────────────────────────────────────
+function Skeleton({ className = '' }: { className?: string }) {
+  return <div className={`animate-pulse rounded-xl bg-gray-100 ${className}`} />
 }
 
-// ─── Canvas streaming bar chart ───────────────────────────────────────────────
-function StreamBar({
-  bufRef, color, min, max, height = 200, unit = '',
+// ─── Streaming price line chart ───────────────────────────────────────────────
+function StreamLine({
+  bufRef, color, height = 200, formatY,
 }: {
   bufRef: React.MutableRefObject<number[]>
-  color: string; min: number; max: number; height?: number; unit?: string
+  color: string; height?: number
+  formatY?: (v: number) => string
 }) {
   const wrapRef   = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    const wrap   = wrapRef.current
-    const canvas = canvasRef.current
+    const wrap = wrapRef.current, canvas = canvasRef.current
     if (!wrap || !canvas) return
 
     const dpr = window.devicePixelRatio || 1
@@ -273,10 +166,9 @@ function StreamBar({
     const t0 = performance.now()
 
     const resize = () => {
-      const w = wrap.clientWidth
-      canvas.width  = w * dpr
-      canvas.height = height * dpr
-      canvas.style.width  = w + 'px'
+      canvas.width        = wrap.clientWidth * dpr
+      canvas.height       = height * dpr
+      canvas.style.width  = wrap.clientWidth + 'px'
       canvas.style.height = height + 'px'
     }
     resize()
@@ -288,82 +180,103 @@ function StreamBar({
       if (!ctx) { animId = requestAnimationFrame(draw); return }
 
       const elapsed = (now - t0) / 1000
-      const W = canvas.width  / dpr
-      const H = canvas.height / dpr
-      const cL = Y_LABEL_W, cT = 6, cW = W - cL, cH = H - X_LABEL_H - cT
+      const W = canvas.width / dpr, H = canvas.height / dpr
+      const cL = Y_LABEL_W, cT = 8, cW = W - cL, cH = H - X_LABEL_H - cT
       const buf = bufRef.current
+      if (buf.length < 2) { animId = requestAnimationFrame(draw); return }
+
       const scrollOffset = (elapsed % 1) * PX_PER_SEC
-      const barW = PX_PER_SEC * 0.55
+
+      // Visible window: auto-scale Y to what's actually on screen
+      const visible = buf.slice(-Math.ceil(cW / PX_PER_SEC) - 4)
+      const minV  = Math.min(...visible) * 0.9997
+      const maxV  = Math.max(...visible) * 1.0003
+      const range = maxV - minV || 1
 
       ctx.save()
       ctx.scale(dpr, dpr)
       ctx.clearRect(0, 0, W, H)
 
-      const norm  = (v: number) => clamp((v - min) / (max - min), 0, 1)
+      const norm = (v: number) => 1 - clamp((v - minV) / range, 0, 1)
+      const yPx  = (v: number) => cT + norm(v) * cH
 
-      // ── Y-axis labels + grid ──────────────────────────────────
+      // ── Y axis labels + horizontal grid ──────────────────────
       ctx.font = '10px system-ui, sans-serif'
-      ctx.textAlign = 'right'
-      ctx.textBaseline = 'middle'
-      const yTicks = 4
-      for (let i = 0; i <= yTicks; i++) {
-        const f = i / yTicks
-        const v = min + (1 - f) * (max - min)
+      ctx.textAlign = 'right'; ctx.textBaseline = 'middle'
+      for (let i = 0; i <= 4; i++) {
+        const f = i / 4
+        const v = minV + (1 - f) * range
         const y = cT + f * cH
-        ctx.strokeStyle = 'rgba(0,0,0,0.06)'
-        ctx.lineWidth = 1
+        ctx.strokeStyle = 'rgba(0,0,0,0.055)'; ctx.lineWidth = 1; ctx.setLineDash([])
         ctx.beginPath(); ctx.moveTo(cL, y); ctx.lineTo(W, y); ctx.stroke()
         ctx.fillStyle = '#9ca3af'
-        const label = v >= 1000 ? (v / 1000).toFixed(1) + 'k' : String(Math.round(v))
-        ctx.fillText(label, cL - 6, y)
+        ctx.fillText(formatY ? formatY(v) : v.toLocaleString(), cL - 6, y)
       }
 
-      // ── X-axis time labels ────────────────────────────────────
-      ctx.textAlign = 'center'
-      ctx.textBaseline = 'top'
-      ctx.fillStyle = '#9ca3af'
-      const vGap = PX_PER_SEC * 5
-      const vOff = scrollOffset % vGap
+      // ── X axis time labels + vertical grid ───────────────────
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillStyle = '#9ca3af'
+      const vGap = PX_PER_SEC * 5, vOff = scrollOffset % vGap
       const totalSecs = Math.ceil(elapsed)
       for (let x = W - vOff; x > cL - vGap; x -= vGap) {
         if (x < cL) continue
-        ctx.strokeStyle = 'rgba(0,0,0,0.045)'
-        ctx.lineWidth = 1
+        ctx.strokeStyle = 'rgba(0,0,0,0.04)'; ctx.lineWidth = 1
         ctx.beginPath(); ctx.moveTo(x, cT); ctx.lineTo(x, cT + cH); ctx.stroke()
         const secsAgo = Math.round((W - x + vOff) / PX_PER_SEC)
         const t = totalSecs - secsAgo
         if (t >= 0) ctx.fillText(`${t}s`, x, cT + cH + 5)
       }
 
-      // ── Bars (clipped to chart area) ──────────────────────────
+      // ── Build point list ──────────────────────────────────────
+      const pts: { x: number; y: number }[] = []
+      for (let i = 0; i < buf.length; i++) {
+        const fromEnd = buf.length - 1 - i
+        const x = W - fromEnd * PX_PER_SEC + scrollOffset
+        if (x < cL - PX_PER_SEC * 2 || x > W + PX_PER_SEC) continue
+        pts.push({ x, y: yPx(buf[i]) })
+      }
+      if (pts.length < 2) { ctx.restore(); animId = requestAnimationFrame(draw); return }
+
+      // Clip to chart area
       ctx.save()
       ctx.beginPath(); ctx.rect(cL, cT, cW, cH); ctx.clip()
 
-      for (let i = 0; i < buf.length; i++) {
-        const fromEnd = buf.length - 1 - i
-        const cx = W - fromEnd * PX_PER_SEC + scrollOffset - barW / 2
-        if (cx + barW < cL || cx > W) continue
+      // Gradient fill
+      const grad = ctx.createLinearGradient(0, cT, 0, cT + cH)
+      grad.addColorStop(0,   color + '28')
+      grad.addColorStop(0.7, color + '08')
+      grad.addColorStop(1,   color + '00')
+      ctx.fillStyle = grad
+      ctx.beginPath()
+      ctx.moveTo(pts[0].x, cT + cH)
+      pts.forEach(p => ctx.lineTo(p.x, p.y))
+      ctx.lineTo(pts.at(-1)!.x, cT + cH)
+      ctx.closePath(); ctx.fill()
 
-        const barH  = norm(buf[i]) * cH
-        const bx    = cx
-        const by    = cT + cH - barH
-        const radius = 3
+      // Glow
+      ctx.strokeStyle = color + '30'; ctx.lineWidth = 7
+      ctx.lineJoin = 'round'; ctx.lineCap = 'round'
+      ctx.beginPath()
+      pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y))
+      ctx.stroke()
 
-        const grad = ctx.createLinearGradient(0, by, 0, cT + cH)
-        grad.addColorStop(0,   color + 'ee')
-        grad.addColorStop(1,   color + '55')
-        ctx.fillStyle = grad
+      // Line
+      ctx.strokeStyle = color; ctx.lineWidth = 2.5
+      ctx.beginPath()
+      pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y))
+      ctx.stroke()
 
-        ctx.beginPath()
-        ctx.moveTo(bx + radius, by)
-        ctx.lineTo(bx + barW - radius, by)
-        ctx.quadraticCurveTo(bx + barW, by, bx + barW, by + radius)
-        ctx.lineTo(bx + barW, cT + cH)
-        ctx.lineTo(bx, cT + cH)
-        ctx.lineTo(bx, by + radius)
-        ctx.quadraticCurveTo(bx, by, bx + radius, by)
-        ctx.closePath()
-        ctx.fill()
+      // Live head dot + pulse ring
+      if (buf.length >= 2) {
+        const frac  = clamp(scrollOffset / PX_PER_SEC, 0, 1)
+        const headV = buf[buf.length - 2] + frac * (buf[buf.length - 1] - buf[buf.length - 2])
+        const hx    = W - PX_PER_SEC + scrollOffset
+        const hy    = yPx(headV)
+        const pulse = (elapsed * 2.5) % 1
+        const alpha = Math.round((1 - pulse) * 200).toString(16).padStart(2, '0')
+        ctx.strokeStyle = color + alpha; ctx.lineWidth = 1.5
+        ctx.beginPath(); ctx.arc(hx, hy, 4 + pulse * 10, 0, Math.PI * 2); ctx.stroke()
+        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(hx, hy, 4, 0, Math.PI * 2); ctx.fill()
+        ctx.fillStyle = color;  ctx.beginPath(); ctx.arc(hx, hy, 3, 0, Math.PI * 2); ctx.fill()
       }
 
       ctx.restore() // unclip
@@ -373,7 +286,7 @@ function StreamBar({
 
     animId = requestAnimationFrame(draw)
     return () => { cancelAnimationFrame(animId); ro.disconnect() }
-  }, [bufRef, color, min, max, height])
+  }, [bufRef, color, height, formatY])
 
   return (
     <div ref={wrapRef} className="w-full">
@@ -382,7 +295,147 @@ function StreamBar({
   )
 }
 
-// ─── Chart card wrapper ───────────────────────────────────────────────────────
+// ─── BTC minute-return bar chart (green/red) ──────────────────────────────────
+function StreamDeltaBar({
+  bufRef, height = 200,
+}: {
+  bufRef: React.MutableRefObject<number[]>
+  height?: number
+}) {
+  const wrapRef   = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const wrap = wrapRef.current, canvas = canvasRef.current
+    if (!wrap || !canvas) return
+
+    const dpr = window.devicePixelRatio || 1
+    let animId: number
+    const t0 = performance.now()
+
+    const resize = () => {
+      canvas.width        = wrap.clientWidth * dpr
+      canvas.height       = height * dpr
+      canvas.style.width  = wrap.clientWidth + 'px'
+      canvas.style.height = height + 'px'
+    }
+    resize()
+    const ro = new ResizeObserver(resize)
+    ro.observe(wrap)
+
+    const draw = (now: number) => {
+      const ctx = canvas.getContext('2d')
+      if (!ctx) { animId = requestAnimationFrame(draw); return }
+
+      const elapsed = (now - t0) / 1000
+      const W = canvas.width / dpr, H = canvas.height / dpr
+      const cL = Y_LABEL_W, cT = 8, cW = W - cL, cH = H - X_LABEL_H - cT
+      const buf = bufRef.current
+      if (buf.length < 2) { animId = requestAnimationFrame(draw); return }
+
+      const scrollOffset = (elapsed % 1) * PX_PER_SEC
+      const barW = PX_PER_SEC * 0.6
+
+      // Compute % deltas
+      const deltas = buf.map((v, i) =>
+        i === 0 ? 0 : (v - buf[i - 1]) / buf[i - 1] * 100
+      )
+      const absMax = Math.max(0.005, ...deltas.map(d => Math.abs(d))) * 1.25
+
+      ctx.save(); ctx.scale(dpr, dpr)
+      ctx.clearRect(0, 0, W, H)
+
+      // Y axis labels + grid
+      ctx.font = '10px system-ui, sans-serif'
+      ctx.textAlign = 'right'; ctx.textBaseline = 'middle'
+      for (let i = 0; i <= 4; i++) {
+        const f = i / 4
+        const v = absMax - f * 2 * absMax   // +absMax → 0 → −absMax
+        const y = cT + f * cH
+        const isZero = Math.abs(v) < absMax * 0.01
+        ctx.strokeStyle = isZero ? 'rgba(0,0,0,0.14)' : 'rgba(0,0,0,0.05)'
+        ctx.lineWidth   = isZero ? 1.5 : 1
+        ctx.beginPath(); ctx.moveTo(cL, y); ctx.lineTo(W, y); ctx.stroke()
+        ctx.fillStyle = '#9ca3af'
+        ctx.fillText(fmtPct(v), cL - 6, y)
+      }
+
+      // X axis time labels
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillStyle = '#9ca3af'
+      const vGap = PX_PER_SEC * 5, vOff = scrollOffset % vGap
+      const totalSecs = Math.ceil(elapsed)
+      for (let x = W - vOff; x > cL - vGap; x -= vGap) {
+        if (x < cL) continue
+        ctx.strokeStyle = 'rgba(0,0,0,0.04)'; ctx.lineWidth = 1
+        ctx.beginPath(); ctx.moveTo(x, cT); ctx.lineTo(x, cT + cH); ctx.stroke()
+        const secsAgo = Math.round((W - x + vOff) / PX_PER_SEC)
+        const t = totalSecs - secsAgo
+        if (t >= 0) ctx.fillText(`${t}s`, x, cT + cH + 5)
+      }
+
+      // Bars (clipped)
+      ctx.save()
+      ctx.beginPath(); ctx.rect(cL, cT, cW, cH); ctx.clip()
+
+      const zeroY = cT + cH / 2
+
+      for (let i = 1; i < deltas.length; i++) {
+        const fromEnd = deltas.length - 1 - i
+        const cx = W - fromEnd * PX_PER_SEC + scrollOffset - barW / 2
+        if (cx + barW < cL || cx > W) continue
+
+        const d    = deltas[i]
+        const barH = Math.abs(d) / absMax * (cH / 2)
+        const pos  = d >= 0
+        const col  = pos ? '#22c55e' : '#f87171'
+        const by   = pos ? zeroY - barH : zeroY
+        const r    = Math.min(3, barH * 0.5)
+
+        if (barH < 0.5) {
+          ctx.fillStyle = col + 'aa'
+          ctx.fillRect(cx, zeroY - 1, barW, 2)
+          continue
+        }
+
+        const grad = ctx.createLinearGradient(0, by, 0, by + barH)
+        grad.addColorStop(0, col + 'ee'); grad.addColorStop(1, col + '66')
+        ctx.fillStyle = grad
+
+        ctx.beginPath()
+        if (pos) {
+          ctx.moveTo(cx + r, by)
+          ctx.lineTo(cx + barW - r, by)
+          ctx.quadraticCurveTo(cx + barW, by, cx + barW, by + r)
+          ctx.lineTo(cx + barW, by + barH); ctx.lineTo(cx, by + barH)
+          ctx.lineTo(cx, by + r)
+          ctx.quadraticCurveTo(cx, by, cx + r, by)
+        } else {
+          ctx.moveTo(cx, by); ctx.lineTo(cx + barW, by)
+          ctx.lineTo(cx + barW, by + barH - r)
+          ctx.quadraticCurveTo(cx + barW, by + barH, cx + barW - r, by + barH)
+          ctx.lineTo(cx + r, by + barH)
+          ctx.quadraticCurveTo(cx, by + barH, cx, by + barH - r)
+          ctx.lineTo(cx, by)
+        }
+        ctx.closePath(); ctx.fill()
+      }
+
+      ctx.restore(); ctx.restore()
+      animId = requestAnimationFrame(draw)
+    }
+
+    animId = requestAnimationFrame(draw)
+    return () => { cancelAnimationFrame(animId); ro.disconnect() }
+  }, [bufRef, height])
+
+  return (
+    <div ref={wrapRef} className="w-full">
+      <canvas ref={canvasRef} style={{ display: 'block' }} />
+    </div>
+  )
+}
+
+// ─── Card ─────────────────────────────────────────────────────────────────────
 function Card({ children, delay = 0, className = '' }:
   { children: React.ReactNode; delay?: number; className?: string }) {
   return (
@@ -398,15 +451,12 @@ function Card({ children, delay = 0, className = '' }:
   )
 }
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
+// ─── Main dashboard ───────────────────────────────────────────────────────────
 export default function LiveDashboard() {
-  const tasks    = useStream(460,  0.15, 14,   380, 560)
-  const accuracy = useStream(97.2, 0.22, 0.35, 93.5, 99.5)
-  const queue    = useStream(18,   0.14, 3,    4,   42)
-
-  const prevTasks    = useRef(460)
-  const prevAccuracy = useRef(97.2)
-  const prevQueue    = useRef(18)
+  const btc = useMarketStream('btc')
+  const eth = useMarketStream('eth')
+  const isLoading = !btc.loaded || !eth.loaded
+  const ratio = btc.display && eth.display ? btc.display / eth.display : 0
 
   return (
     <section className="py-section bg-white">
@@ -423,23 +473,23 @@ export default function LiveDashboard() {
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 border border-[#007cf4]/20 bg-[#007cf4]/6">
             <Pulse color="#007cf4" />
             <span className="text-xs font-semibold tracking-widest uppercase text-[#007cf4]">
-              Live Performance Dashboard
+              Live Market Data · CoinGecko
             </span>
           </div>
           <h2
             className="font-inter-tight font-black text-[#050f2e] leading-tight tracking-tight"
             style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}
           >
-            Automation Running
+            Real-Time Market
             <br />
-            <span className="gradient-text">Right Now</span>
+            <span className="gradient-text">Intelligence Feed</span>
           </h2>
-          <p className="text-gray-400 text-sm mt-4 max-w-md mx-auto leading-relaxed">
-            Live metrics streaming from Sync4Tech-powered client environments — 60fps canvas, updated every second.
+          <p className="text-gray-400 text-sm mt-4 max-w-lg mx-auto leading-relaxed">
+            Live Bitcoin &amp; Ethereum prices streamed from CoinGecko — the kind of real-time data pipeline Sync4Tech builds for financial services clients.
           </p>
         </motion.div>
 
-        {/* KPI row */}
+        {/* KPI tiles */}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"
           initial={{ opacity: 0, y: 20 }}
@@ -447,75 +497,112 @@ export default function LiveDashboard() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: EASE }}
         >
-          {[
-            { label: 'Tasks / min', stream: tasks,    color: '#007cf4', suffix: '',      dec: 0, prev: prevTasks    },
-            { label: 'AI Accuracy', stream: accuracy, color: '#22c55e', suffix: '%',     dec: 1, prev: prevAccuracy },
-            { label: 'Queue Depth', stream: queue,    color: '#f59e0b', suffix: ' jobs', dec: 0, prev: prevQueue    },
-          ].map((k, i) => {
-            const p = k.prev.current
-            k.prev.current = k.stream.display
-            return (
-              <div key={i} className="rounded-2xl p-5 bg-[#f8faff] border border-[#007cf4]/10">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <Pulse color={k.color} />
-                    <span className="text-gray-400 text-xs font-medium">{k.label}</span>
-                  </div>
-                  <Delta cur={k.stream.display} prev={p} />
+          {([
+            { label: 'Bitcoin (BTC)',    color: '#f59e0b', stream: btc },
+            { label: 'Ethereum (ETH)',   color: '#6366f1', stream: eth },
+          ] as const).map((k, i) => (
+            <div key={i} className="rounded-2xl p-5 bg-[#f8faff] border border-[#007cf4]/10">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Pulse color={k.color} />
+                  <span className="text-gray-400 text-xs font-medium">{k.label}</span>
                 </div>
-                <div className="text-3xl">
-                  <Ticker value={k.stream.display} suffix={k.suffix} color={k.color} dec={k.dec} />
-                </div>
+                {!isLoading && <ChangeBadge pct={k.stream.change24} />}
               </div>
-            )
-          })}
+              <div className="text-3xl">
+                {isLoading
+                  ? <div className="animate-pulse h-8 w-32 bg-gray-100 rounded-lg" />
+                  : <PriceTicker value={k.stream.display} color={k.color} />}
+              </div>
+              {!isLoading && (
+                <p className="text-[10px] text-gray-300 mt-1.5">24h change</p>
+              )}
+            </div>
+          ))}
+
+          {/* BTC / ETH ratio */}
+          <div className="rounded-2xl p-5 bg-[#f8faff] border border-[#007cf4]/10">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <Pulse color="#007cf4" />
+                <span className="text-gray-400 text-xs font-medium">BTC / ETH Ratio</span>
+              </div>
+            </div>
+            <div className="text-3xl">
+              {isLoading
+                ? <div className="animate-pulse h-8 w-24 bg-gray-100 rounded-lg" />
+                : <span className="font-inter-tight font-black tabular-nums text-[#007cf4]">
+                    {ratio.toFixed(1)}x
+                  </span>}
+            </div>
+            {!isLoading && <p className="text-[10px] text-gray-300 mt-1.5">live ratio</p>}
+          </div>
         </motion.div>
 
         {/* Charts */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {isLoading ? (
+          <div className="flex flex-col gap-5">
+            <div className="animate-pulse h-[278px] w-full rounded-2xl bg-gray-100" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="animate-pulse h-[268px] rounded-2xl bg-gray-100" />
+              <div className="animate-pulse h-[268px] rounded-2xl bg-gray-100" />
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-          {/* Throughput — full width line */}
-          <div className="md:col-span-2">
-            <Card delay={0}>
+            {/* BTC — full width */}
+            <div className="md:col-span-2">
+              <Card delay={0}>
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">USD / BTC</p>
+                    <p className="text-gray-900 font-inter-tight font-black text-xl">Bitcoin Price</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Pulse color="#f59e0b" />
+                    <span className="text-[11px] text-gray-300">Live · CoinGecko</span>
+                  </div>
+                </div>
+                <StreamLine bufRef={btc.bufRef} color="#f59e0b" height={210} formatY={fmtBtc} />
+              </Card>
+            </div>
+
+            {/* ETH — 50 % */}
+            <Card delay={0.1}>
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Tasks per minute</p>
-                  <p className="text-gray-900 font-inter-tight font-black text-xl">Workflow Throughput</p>
+                  <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">USD / ETH</p>
+                  <p className="text-gray-900 font-inter-tight font-black text-xl">Ethereum Price</p>
                 </div>
-                <Pulse color="#007cf4" />
+                <Pulse color="#6366f1" />
               </div>
-              <StreamLine bufRef={tasks.bufRef} color="#007cf4" min={340} max={600} height={210} unit=" tasks" />
+              <StreamLine bufRef={eth.bufRef} color="#6366f1" height={200} formatY={fmtEth} />
             </Card>
+
+            {/* BTC returns bar — 50 % */}
+            <Card delay={0.2}>
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">% change per update</p>
+                  <p className="text-gray-900 font-inter-tight font-black text-xl">BTC Price Returns</p>
+                </div>
+                <Pulse color="#22c55e" />
+              </div>
+              <StreamDeltaBar bufRef={btc.bufRef} height={200} />
+            </Card>
+
           </div>
+        )}
 
-          {/* AI Accuracy — 50% line */}
-          <Card delay={0.1}>
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Accuracy %</p>
-                <p className="text-gray-900 font-inter-tight font-black text-xl">AI Accuracy</p>
-              </div>
-              <Pulse color="#22c55e" />
-            </div>
-            <StreamLine bufRef={accuracy.bufRef} color="#22c55e" min={91} max={100} height={200} unit="%" />
-          </Card>
-
-          {/* Queue Depth — 50% bar */}
-          <Card delay={0.2}>
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">Jobs pending</p>
-                <p className="text-gray-900 font-inter-tight font-black text-xl">Queue Depth</p>
-              </div>
-              <Pulse color="#f59e0b" />
-            </div>
-            <StreamBar bufRef={queue.bufRef} color="#f59e0b" min={0} max={50} height={200} unit=" jobs" />
-          </Card>
-
-        </div>
+        {btc.error && !btc.loaded && (
+          <p className="text-center text-red-400 text-xs mt-6">
+            Market data unavailable — CoinGecko API unreachable. Try refreshing.
+          </p>
+        )}
 
         <p className="text-center text-gray-300 text-xs mt-8">
-          Simulated streaming data · 60fps canvas rendering · representative of real client environments
+          Real BTC &amp; ETH prices via CoinGecko · Smoothed with micro-noise for fluid 60fps animation · Refreshes every 60 s
         </p>
       </div>
     </section>
