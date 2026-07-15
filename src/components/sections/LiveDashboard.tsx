@@ -22,10 +22,32 @@ const fmtBtc = (v: number) => `$${(v / 1000).toFixed(1)}k`
 const fmtEth = (v: number) => v >= 1000 ? `$${(v / 1000).toFixed(2)}k` : `$${v.toFixed(0)}`
 const fmtPct = (v: number) => (v >= 0 ? '+' : '') + v.toFixed(3) + '%'
 
-// ─── API response shape ───────────────────────────────────────────────────────
-interface MarketPayload {
-  btc: number[]; eth: number[]; timestamps: number[]
-  live: { btc: number; eth: number; btcChange: number; ethChange: number }
+const CG = 'https://api.coingecko.com/api/v3'
+
+// Simple client-side cache so both hooks share one fetch per minute
+const _cgCache: { data: { btc: number[]; eth: number[]; live: { btc: number; eth: number; btcChange: number; ethChange: number } } | null; ts: number } = { data: null, ts: 0 }
+
+async function fetchMarket() {
+  if (_cgCache.data && Date.now() - _cgCache.ts < 58_000) return _cgCache.data
+  const [btcChart, ethChart, prices] = await Promise.all([
+    fetch(`${CG}/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=minutely`).then(r => r.json()),
+    fetch(`${CG}/coins/ethereum/market_chart?vs_currency=usd&days=1&interval=minutely`).then(r => r.json()),
+    fetch(`${CG}/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true`).then(r => r.json()),
+  ])
+  const btc = (btcChart.prices as [number, number][]).slice(-80).map(p => p[1])
+  const eth = (ethChart.prices as [number, number][]).slice(-80).map(p => p[1])
+  const data = {
+    btc, eth,
+    live: {
+      btc:       prices.bitcoin?.usd              ?? btc.at(-1) ?? 0,
+      eth:       prices.ethereum?.usd             ?? eth.at(-1) ?? 0,
+      btcChange: prices.bitcoin?.usd_24h_change   ?? 0,
+      ethChange: prices.ethereum?.usd_24h_change  ?? 0,
+    },
+  }
+  _cgCache.data = data
+  _cgCache.ts   = Date.now()
+  return data
 }
 
 // ─── Real-data stream hook ────────────────────────────────────────────────────
@@ -42,9 +64,7 @@ function useMarketStream(key: 'btc' | 'eth') {
 
   const refresh = useCallback(async () => {
     try {
-      const res = await fetch('/api/market')
-      if (!res.ok) throw new Error('bad response')
-      const d: MarketPayload = await res.json()
+      const d = await fetchMarket()
       const prices = d[key]
       if (!prices?.length) throw new Error('empty')
 
@@ -55,12 +75,11 @@ function useMarketStream(key: 'btc' | 'eth') {
       setError(false)
 
       if (!loadedRef.current) {
-        bufRef.current  = [...prices]
-        curRef.current  = last
+        bufRef.current    = [...prices]
+        curRef.current    = last
         loadedRef.current = true
         setLoaded(true)
       } else {
-        // Anchor the walk to the freshly fetched real price
         curRef.current = last
         bufRef.current = [...bufRef.current.slice(-(BUFFER - 1)), last]
       }
