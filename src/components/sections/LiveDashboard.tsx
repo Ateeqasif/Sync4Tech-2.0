@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 
 const EASE      = [0.22, 1, 0.36, 1] as const
@@ -235,18 +235,84 @@ function KpiTile({ s }: { s: NpmSeries }) {
   )
 }
 
-// ─── Chart card ───────────────────────────────────────────────────────────────
-function ChartCard({ title, sub, series, delay = 0 }: {
-  title: string; sub: string; series: NpmSeries[]; delay?: number
+// ─── Filter bar ───────────────────────────────────────────────────────────────
+type Category = 'all' | 'ai' | 'auto'
+const DAY_OPTIONS = [7, 14, 30] as const
+
+function FilterBar({
+  category, setCategory,
+  dayRange, setDayRange,
+  hidden, toggleHidden,
+  allSeries,
+}: {
+  category: Category; setCategory: (c: Category) => void
+  dayRange: number;   setDayRange:  (d: number)   => void
+  hidden: Set<string>; toggleHidden: (label: string) => void
+  allSeries: NpmSeries[]
 }) {
+  const catTabs: { value: Category; label: string }[] = [
+    { value: 'all',  label: 'All Tools'  },
+    { value: 'ai',   label: 'AI & LLM'   },
+    { value: 'auto', label: 'Automation' },
+  ]
+  const pillBase  = 'px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer select-none'
+  const pillOff   = 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+  const pillOn    = 'bg-[#050f2e] text-white'
+
   return (
-    <motion.div
-      className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.6, delay, ease: EASE }}
-    >
+    <div className="bg-[#f8faff] border border-[#007cf4]/10 rounded-2xl p-4 mb-6 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+      {/* Category tabs */}
+      <div className="flex items-center gap-1.5">
+        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mr-1 shrink-0">Category</span>
+        {catTabs.map(t => (
+          <button key={t.value}
+            className={`${pillBase} ${category === t.value ? pillOn : pillOff}`}
+            onClick={() => setCategory(t.value)}
+          >{t.label}</button>
+        ))}
+      </div>
+
+      {/* Tool toggles */}
+      <div className="flex items-center gap-1.5 flex-wrap">
+        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mr-1 shrink-0">Tools</span>
+        {allSeries.map(s => {
+          const on = !hidden.has(s.label)
+          return (
+            <button
+              key={s.label}
+              onClick={() => toggleHidden(s.label)}
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200 cursor-pointer select-none ${on ? 'text-gray-700 border-transparent' : 'text-gray-400 border-gray-200 bg-white opacity-50'}`}
+              style={on ? { backgroundColor: s.color + '18', borderColor: s.color + '40' } : {}}
+            >
+              <span className="w-2 h-2 rounded-full shrink-0 transition-opacity"
+                style={{ backgroundColor: on ? s.color : '#d1d5db' }} />
+              {s.label}
+            </button>
+          )
+        })}
+      </div>
+
+      {/* Day range */}
+      <div className="flex items-center gap-1.5 shrink-0">
+        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mr-1">Range</span>
+        {DAY_OPTIONS.map(d => (
+          <button key={d}
+            className={`${pillBase} ${dayRange === d ? pillOn : pillOff}`}
+            onClick={() => setDayRange(d)}
+          >{d}d</button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Chart card ───────────────────────────────────────────────────────────────
+function ChartCard({ title, sub, series, chartKey }: {
+  title: string; sub: string; series: NpmSeries[]; chartKey: string
+}) {
+  if (!series.length) return null
+  return (
+    <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
       <div className="flex items-start justify-between mb-4">
         <div>
           <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">{sub}</p>
@@ -261,15 +327,54 @@ function ChartCard({ title, sub, series, delay = 0 }: {
           ))}
         </div>
       </div>
-      <NpmChart series={series} height={230} />
-    </motion.div>
+      <NpmChart key={chartKey} series={series} height={230} />
+    </div>
   )
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export default function LiveDashboard() {
   const { ai, auto, loaded } = useNpmGroups()
-  const allSeries = [...ai, ...auto]
+
+  const [category,   setCategory]   = useState<Category>('all')
+  const [dayRange,   setDayRange]   = useState(30)
+  const [hidden,     setHidden]     = useState<Set<string>>(new Set())
+
+  const toggleHidden = (label: string) =>
+    setHidden(prev => {
+      const next = new Set(prev)
+      next.has(label) ? next.delete(label) : next.add(label)
+      return next
+    })
+
+  const slice = (s: NpmSeries) => ({
+    ...s,
+    data: s.data.slice(-dayRange),
+    days: s.days.slice(-dayRange),
+  })
+
+  const visAi = useMemo(
+    () => ai.filter(s => !hidden.has(s.label)).map(slice),
+    [ai, hidden, dayRange] // eslint-disable-line react-hooks/exhaustive-deps
+  )
+  const visAuto = useMemo(
+    () => auto.filter(s => !hidden.has(s.label)).map(slice),
+    [auto, hidden, dayRange] // eslint-disable-line react-hooks/exhaustive-deps
+  )
+  const allSeries = useMemo(() => [...ai, ...auto], [ai, auto])
+  const visKpi    = useMemo(
+    () => allSeries.filter(s => {
+      if (hidden.has(s.label)) return false
+      if (category === 'ai')   return ai.some(a => a.label === s.label)
+      if (category === 'auto') return auto.some(a => a.label === s.label)
+      return true
+    }),
+    [allSeries, hidden, category, ai, auto]
+  )
+
+  const showAi   = category !== 'auto'
+  const showAuto = category !== 'ai'
+  const chartKey = `${dayRange}-${Array.from(hidden).join(',')}`
 
   return (
     <section className="py-section bg-white">
@@ -302,7 +407,17 @@ export default function LiveDashboard() {
           </p>
         </motion.div>
 
-        {/* KPI tiles — all 6 tools */}
+        {/* Filter bar */}
+        {loaded && (
+          <FilterBar
+            category={category}   setCategory={setCategory}
+            dayRange={dayRange}   setDayRange={setDayRange}
+            hidden={hidden}       toggleHidden={toggleHidden}
+            allSeries={allSeries}
+          />
+        )}
+
+        {/* KPI tiles */}
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-8"
           initial={{ opacity: 0, y: 20 }}
@@ -311,7 +426,9 @@ export default function LiveDashboard() {
           transition={{ duration: 0.7, ease: EASE }}
         >
           {loaded
-            ? allSeries.map(s => <KpiTile key={s.label} s={s} />)
+            ? visKpi.length
+              ? visKpi.map(s => <KpiTile key={s.label} s={s} />)
+              : <p className="col-span-full text-center text-gray-400 text-sm py-4">No tools selected — click a tool above to show it.</p>
             : Array.from({ length: 7 }).map((_, i) => (
                 <div key={i} className="animate-pulse h-[108px] rounded-2xl bg-gray-100" />
               ))}
@@ -321,18 +438,25 @@ export default function LiveDashboard() {
         <div className="flex flex-col gap-5">
           {loaded ? (
             <>
-              <ChartCard
-                title="AI & LLM Frameworks"
-                sub="Daily downloads · Last 30 days"
-                series={ai}
-                delay={0}
-              />
-              <ChartCard
-                title="Automation Platforms"
-                sub="Daily downloads · Last 30 days"
-                series={auto}
-                delay={0.1}
-              />
+              {showAi && (
+                <ChartCard
+                  title="AI & LLM Frameworks"
+                  sub={`Daily downloads · Last ${dayRange} days`}
+                  series={visAi}
+                  chartKey={`ai-${chartKey}`}
+                />
+              )}
+              {showAuto && (
+                <ChartCard
+                  title="Automation Platforms"
+                  sub={`Daily downloads · Last ${dayRange} days`}
+                  series={visAuto}
+                  chartKey={`auto-${chartKey}`}
+                />
+              )}
+              {!showAi && !showAuto && (
+                <p className="text-center text-gray-400 text-sm py-8">Select a category to view charts.</p>
+              )}
             </>
           ) : (
             <>
