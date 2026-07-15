@@ -138,7 +138,7 @@ export default function ExpertPopup() {
                 <motion.a
                   href="#contact"
                   onClick={close}
-                  className="flex-1 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl text-white font-semibold text-sm relative overflow-hidden"
+                  className="flex-1 flex items-center justify-center gap-2 py-3.5 px-6 rounded-full text-white font-semibold text-sm relative overflow-hidden"
                   style={{ background: 'linear-gradient(135deg, #033a9d, #007cf4)', boxShadow: '0 4px 20px rgba(0,124,244,0.35)' }}
                   whileHover={{ scale: 1.02, y: -2, boxShadow: '0 8px 28px rgba(0,124,244,0.45)' }}
                   whileTap={{ scale: 0.98 }}
@@ -160,7 +160,7 @@ export default function ExpertPopup() {
                 <motion.a
                   href="/services"
                   onClick={close}
-                  className="flex-1 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-semibold text-sm text-[#007cf4] relative overflow-hidden"
+                  className="flex-1 flex items-center justify-center gap-2 py-3.5 px-6 rounded-full font-semibold text-sm text-[#007cf4] relative overflow-hidden"
                   style={{
                     border: '1.5px solid rgba(0,124,244,0.3)',
                     background: 'rgba(0,124,244,0.04)',

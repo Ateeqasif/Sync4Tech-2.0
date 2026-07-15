@@ -262,7 +262,7 @@ export default function AccessibilityPanel() {
                 {/* Reset */}
                 <button
                   onClick={resetAll}
-                  className="w-full border border-[#007cf4] text-[#007cf4] rounded-xl py-2 text-sm hover:bg-[#007cf4]/10 transition-colors"
+                  className="w-full border border-[#007cf4] text-[#007cf4] rounded-full py-2 text-sm hover:bg-[#007cf4]/10 transition-colors"
                 >
                   ↺ Reset All Settings
                 </button>
