@@ -83,6 +83,9 @@ function Pulse({ color = '#22c55e' }: { color?: string }) {
   )
 }
 
+const Y_LABEL_W = 52   // reserved left margin for Y-axis labels
+const X_LABEL_H = 24   // reserved bottom margin for X-axis labels
+
 // ─── Canvas streaming line chart ──────────────────────────────────────────────
 function StreamLine({
   bufRef, color, min, max, height = 200, unit = '',
@@ -117,59 +120,93 @@ function StreamLine({
       const ctx = canvas.getContext('2d')
       if (!ctx) { animId = requestAnimationFrame(draw); return }
 
-      const elapsed  = (now - t0) / 1000           // total seconds elapsed
-      const w = canvas.width  / dpr
-      const h = canvas.height / dpr
+      const elapsed  = (now - t0) / 1000
+      const W = canvas.width  / dpr
+      const H = canvas.height / dpr
+      // chart area (excludes axis margins)
+      const cL = Y_LABEL_W, cT = 6, cW = W - cL, cH = H - X_LABEL_H - cT
       const buf = bufRef.current
-      const scrollOffset = (elapsed % 1) * PX_PER_SEC // sub-second scroll (0 → PX_PER_SEC)
+      const scrollOffset = (elapsed % 1) * PX_PER_SEC
 
       ctx.save()
       ctx.scale(dpr, dpr)
-      ctx.clearRect(0, 0, w, h)
+      ctx.clearRect(0, 0, W, H)
 
-      const norm = (v: number) => 1 - clamp((v - min) / (max - min), 0, 1)
+      const norm  = (v: number) => 1 - clamp((v - min) / (max - min), 0, 1)
+      const yPx   = (v: number) => cT + norm(v) * cH
 
-      // ── Scrolling grid ────────────────────────────────────────
-      ctx.strokeStyle = 'rgba(0,0,0,0.055)'
-      ctx.lineWidth = 1
-      ;[0.25, 0.5, 0.75, 1].forEach(f => {
-        ctx.beginPath(); ctx.moveTo(0, f * h); ctx.lineTo(w, f * h); ctx.stroke()
-      })
-      const vGap = PX_PER_SEC * 5
+      // ── Y-axis labels + grid lines ────────────────────────────
+      ctx.font = '10px system-ui, sans-serif'
+      ctx.textAlign = 'right'
+      ctx.textBaseline = 'middle'
+      const yTicks = 4
+      for (let i = 0; i <= yTicks; i++) {
+        const f = i / yTicks
+        const v = min + (1 - f) * (max - min)
+        const y = cT + f * cH
+        // grid
+        ctx.strokeStyle = 'rgba(0,0,0,0.06)'
+        ctx.lineWidth = 1
+        ctx.setLineDash([])
+        ctx.beginPath(); ctx.moveTo(cL, y); ctx.lineTo(W, y); ctx.stroke()
+        // label
+        ctx.fillStyle = '#9ca3af'
+        const label = v >= 1000 ? (v / 1000).toFixed(1) + 'k' : Number.isInteger(v) ? String(Math.round(v)) : v.toFixed(1)
+        ctx.fillText(label + (unit === '%' ? '%' : ''), cL - 6, y)
+      }
+
+      // ── X-axis time labels + vertical grid ───────────────────
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'top'
+      ctx.fillStyle = '#9ca3af'
+      const vGap = PX_PER_SEC * 5          // label every 5 s
       const vOff = scrollOffset % vGap
-      for (let x = w - vOff; x > -vGap; x -= vGap) {
-        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke()
+      const totalSecs = Math.ceil(elapsed)
+      for (let x = W - vOff; x > cL - vGap; x -= vGap) {
+        if (x < cL) continue
+        // vertical grid
+        ctx.strokeStyle = 'rgba(0,0,0,0.045)'
+        ctx.lineWidth = 1
+        ctx.beginPath(); ctx.moveTo(x, cT); ctx.lineTo(x, cT + cH); ctx.stroke()
+        // time label
+        const secsAgo = Math.round((W - x + vOff) / PX_PER_SEC)
+        const t = totalSecs - secsAgo
+        const label = t >= 0 ? `${t}s` : ''
+        ctx.fillText(label, x, cT + cH + 5)
       }
 
       // ── Build point list ──────────────────────────────────────
       const pts: { x: number; y: number }[] = []
       for (let i = 0; i < buf.length; i++) {
         const fromEnd = buf.length - 1 - i
-        const x = w - fromEnd * PX_PER_SEC + scrollOffset
-        if (x < -PX_PER_SEC * 2 || x > w + PX_PER_SEC) continue
-        pts.push({ x, y: norm(buf[i]) * h })
+        const x = W - fromEnd * PX_PER_SEC + scrollOffset
+        if (x < cL - PX_PER_SEC * 2 || x > W + PX_PER_SEC) continue
+        pts.push({ x, y: yPx(buf[i]) })
       }
 
       if (pts.length < 2) { ctx.restore(); animId = requestAnimationFrame(draw); return }
 
+      // clip chart area
+      ctx.save()
+      ctx.beginPath(); ctx.rect(cL, cT, cW, cH); ctx.clip()
+
       // ── Gradient fill ─────────────────────────────────────────
-      const grad = ctx.createLinearGradient(0, 0, 0, h)
+      const grad = ctx.createLinearGradient(0, cT, 0, cT + cH)
       grad.addColorStop(0,   color + '28')
       grad.addColorStop(0.7, color + '08')
       grad.addColorStop(1,   color + '00')
       ctx.fillStyle = grad
       ctx.beginPath()
-      ctx.moveTo(pts[0].x, h)
+      ctx.moveTo(pts[0].x, cT + cH)
       pts.forEach(p => ctx.lineTo(p.x, p.y))
-      ctx.lineTo(pts[pts.length - 1].x, h)
+      ctx.lineTo(pts[pts.length - 1].x, cT + cH)
       ctx.closePath()
       ctx.fill()
 
       // ── Glow ─────────────────────────────────────────────────
       ctx.strokeStyle = color + '35'
       ctx.lineWidth = 7
-      ctx.lineJoin = 'round'
-      ctx.lineCap  = 'round'
+      ctx.lineJoin = 'round'; ctx.lineCap = 'round'
       ctx.beginPath()
       pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y))
       ctx.stroke()
@@ -182,36 +219,32 @@ function StreamLine({
       ctx.stroke()
 
       // ── Live head dot + pulse ring ────────────────────────────
-      // Interpolate the head position: between last two buffer values
       if (buf.length >= 2) {
-        const frac = clamp(scrollOffset / PX_PER_SEC, 0, 1)
+        const frac  = clamp(scrollOffset / PX_PER_SEC, 0, 1)
         const headV = buf[buf.length - 2] + frac * (buf[buf.length - 1] - buf[buf.length - 2])
-        const hx = w - PX_PER_SEC + scrollOffset
-        const hy = norm(headV) * h
+        const hx    = W - PX_PER_SEC + scrollOffset
+        const hy    = yPx(headV)
 
-        // Pulse ring
         const pulse = (elapsed * 2.5) % 1
         const alpha = Math.round((1 - pulse) * 200).toString(16).padStart(2, '0')
         ctx.strokeStyle = color + alpha
         ctx.lineWidth = 1.5
-        ctx.beginPath()
-        ctx.arc(hx, hy, 4 + pulse * 10, 0, Math.PI * 2)
-        ctx.stroke()
+        ctx.beginPath(); ctx.arc(hx, hy, 4 + pulse * 10, 0, Math.PI * 2); ctx.stroke()
 
-        // Solid dot
         ctx.fillStyle = '#ffffff'
         ctx.beginPath(); ctx.arc(hx, hy, 4, 0, Math.PI * 2); ctx.fill()
         ctx.fillStyle = color
         ctx.beginPath(); ctx.arc(hx, hy, 3, 0, Math.PI * 2); ctx.fill()
       }
 
+      ctx.restore() // unclip
       ctx.restore()
       animId = requestAnimationFrame(draw)
     }
 
     animId = requestAnimationFrame(draw)
     return () => { cancelAnimationFrame(animId); ro.disconnect() }
-  }, [bufRef, color, min, max, height])
+  }, [bufRef, color, min, max, height, unit])
 
   return (
     <div ref={wrapRef} className="w-full">
@@ -255,56 +288,85 @@ function StreamBar({
       if (!ctx) { animId = requestAnimationFrame(draw); return }
 
       const elapsed = (now - t0) / 1000
-      const w = canvas.width  / dpr
-      const h = canvas.height / dpr
+      const W = canvas.width  / dpr
+      const H = canvas.height / dpr
+      const cL = Y_LABEL_W, cT = 6, cW = W - cL, cH = H - X_LABEL_H - cT
       const buf = bufRef.current
       const scrollOffset = (elapsed % 1) * PX_PER_SEC
       const barW = PX_PER_SEC * 0.55
-      const gap  = PX_PER_SEC - barW
 
       ctx.save()
       ctx.scale(dpr, dpr)
-      ctx.clearRect(0, 0, w, h)
+      ctx.clearRect(0, 0, W, H)
 
-      const norm = (v: number) => clamp((v - min) / (max - min), 0, 1)
+      const norm  = (v: number) => clamp((v - min) / (max - min), 0, 1)
 
-      // Grid
-      ctx.strokeStyle = 'rgba(0,0,0,0.055)'
-      ctx.lineWidth = 1
-      ;[0.25, 0.5, 0.75, 1].forEach(f => {
-        ctx.beginPath(); ctx.moveTo(0, f * h); ctx.lineTo(w, f * h); ctx.stroke()
-      })
+      // ── Y-axis labels + grid ──────────────────────────────────
+      ctx.font = '10px system-ui, sans-serif'
+      ctx.textAlign = 'right'
+      ctx.textBaseline = 'middle'
+      const yTicks = 4
+      for (let i = 0; i <= yTicks; i++) {
+        const f = i / yTicks
+        const v = min + (1 - f) * (max - min)
+        const y = cT + f * cH
+        ctx.strokeStyle = 'rgba(0,0,0,0.06)'
+        ctx.lineWidth = 1
+        ctx.beginPath(); ctx.moveTo(cL, y); ctx.lineTo(W, y); ctx.stroke()
+        ctx.fillStyle = '#9ca3af'
+        const label = v >= 1000 ? (v / 1000).toFixed(1) + 'k' : String(Math.round(v))
+        ctx.fillText(label, cL - 6, y)
+      }
 
-      // Bars
+      // ── X-axis time labels ────────────────────────────────────
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'top'
+      ctx.fillStyle = '#9ca3af'
+      const vGap = PX_PER_SEC * 5
+      const vOff = scrollOffset % vGap
+      const totalSecs = Math.ceil(elapsed)
+      for (let x = W - vOff; x > cL - vGap; x -= vGap) {
+        if (x < cL) continue
+        ctx.strokeStyle = 'rgba(0,0,0,0.045)'
+        ctx.lineWidth = 1
+        ctx.beginPath(); ctx.moveTo(x, cT); ctx.lineTo(x, cT + cH); ctx.stroke()
+        const secsAgo = Math.round((W - x + vOff) / PX_PER_SEC)
+        const t = totalSecs - secsAgo
+        if (t >= 0) ctx.fillText(`${t}s`, x, cT + cH + 5)
+      }
+
+      // ── Bars (clipped to chart area) ──────────────────────────
+      ctx.save()
+      ctx.beginPath(); ctx.rect(cL, cT, cW, cH); ctx.clip()
+
       for (let i = 0; i < buf.length; i++) {
         const fromEnd = buf.length - 1 - i
-        const cx = w - fromEnd * PX_PER_SEC + scrollOffset - barW / 2
-        if (cx + barW < 0 || cx > w) continue
+        const cx = W - fromEnd * PX_PER_SEC + scrollOffset - barW / 2
+        if (cx + barW < cL || cx > W) continue
 
-        const barH = norm(buf[i]) * h
-        const bx   = cx
-        const by   = h - barH
+        const barH  = norm(buf[i]) * cH
+        const bx    = cx
+        const by    = cT + cH - barH
         const radius = 3
 
-        // Gradient
-        const grad = ctx.createLinearGradient(0, by, 0, h)
+        const grad = ctx.createLinearGradient(0, by, 0, cT + cH)
         grad.addColorStop(0,   color + 'ee')
         grad.addColorStop(1,   color + '55')
         ctx.fillStyle = grad
 
-        // Rounded top
         ctx.beginPath()
         ctx.moveTo(bx + radius, by)
         ctx.lineTo(bx + barW - radius, by)
         ctx.quadraticCurveTo(bx + barW, by, bx + barW, by + radius)
-        ctx.lineTo(bx + barW, h)
-        ctx.lineTo(bx, h)
+        ctx.lineTo(bx + barW, cT + cH)
+        ctx.lineTo(bx, cT + cH)
         ctx.lineTo(bx, by + radius)
         ctx.quadraticCurveTo(bx, by, bx + radius, by)
         ctx.closePath()
         ctx.fill()
       }
 
+      ctx.restore() // unclip
       ctx.restore()
       animId = requestAnimationFrame(draw)
     }
