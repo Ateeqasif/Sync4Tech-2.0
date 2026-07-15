@@ -2,12 +2,18 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 
 interface ArticleSection {
   heading?: string
   content: string
   bullets?: string[]
+}
+
+interface FAQ {
+  q: string
+  a: string
 }
 
 interface Article {
@@ -21,6 +27,7 @@ interface Article {
   imageAlt: string
   body: ArticleSection[]
   takeaways: string[]
+  faqs?: FAQ[]
 }
 
 interface RelatedArticle {
@@ -37,6 +44,70 @@ interface RelatedArticle {
 interface Props {
   a: Article
   related: RelatedArticle[]
+}
+
+function ArticleFAQ({ faqs }: { faqs: FAQ[] }) {
+  const [open, setOpen] = useState<number | null>(null)
+  return (
+    <motion.div
+      className="mt-12"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-2">FAQ</p>
+      <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-6">Frequently Asked Questions</h2>
+      <div className="flex flex-col gap-2">
+        {faqs.map((faq, i) => (
+          <div
+            key={i}
+            className="rounded-2xl border transition-all duration-200"
+            style={{
+              boxShadow: open === i ? '0 0 0 1.5px rgba(0,124,244,0.35)' : '0 0 0 1px rgba(0,0,0,0.07)',
+            }}
+          >
+            <button
+              className="w-full flex items-center gap-4 px-5 py-4 text-left"
+              onClick={() => setOpen(open === i ? null : i)}
+              aria-expanded={open === i}
+            >
+              <span className="font-inter-tight font-black text-xs tabular-nums" style={{ color: open === i ? '#007cf4' : 'rgba(0,0,0,0.2)' }}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span className={`flex-1 font-semibold text-sm leading-snug ${open === i ? 'text-[#050f2e]' : 'text-gray-600'}`}>{faq.q}</span>
+              <motion.span
+                animate={{ rotate: open === i ? 45 : 0 }}
+                transition={{ duration: 0.22 }}
+                className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center"
+                style={{
+                  background: open === i ? 'linear-gradient(135deg,#007cf4,#36c5f0)' : 'rgba(0,0,0,0.05)',
+                  boxShadow: open === i ? '0 0 12px rgba(0,124,244,0.3)' : 'none',
+                }}
+              >
+                <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                  <path d="M5 1v8M1 5h8" stroke={open === i ? '#fff' : '#888'} strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+              </motion.span>
+            </button>
+            <AnimatePresence initial={false}>
+              {open === i && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <p className="pl-14 pr-5 pb-5 text-gray-500 text-sm leading-relaxed">{faq.a}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  )
 }
 
 export default function InsightContent({ a, related }: Props) {
@@ -128,6 +199,9 @@ export default function InsightContent({ a, related }: Props) {
               </ul>
             </div>
           </motion.div>
+
+          {/* FAQs */}
+          {a.faqs && a.faqs.length > 0 && <ArticleFAQ faqs={a.faqs} />}
 
           {/* Author */}
           <div className="mt-10 flex items-center gap-4 pt-8 border-t border-black/8 ">

@@ -682,6 +682,52 @@ const INDEX: SearchEntry[] = [
     breadcrumb: 'Home › FAQ',
     content: 'why Sync4Tech large consultancies sell strategy hand off implementation junior teams specialist firm senior practitioners working systems not reports accountable outcomes not hours results in weeks not quarters',
   },
+  // ─── Insights articles ────────────────────────────────────────────────────
+  {
+    id: 'insight-automate-business-processes',
+    title: 'How to Automate Your Business Processes',
+    section: 'Insights',
+    href: '/insights/how-to-automate-business-processes',
+    category: 'Insights',
+    breadcrumb: 'Insights › Automation',
+    content: 'business process automation BPA automate workflows eliminate manual work increase efficiency reduce costs ROI which processes to automate first repetitive tasks data entry approvals notifications CRM ERP integration how long does automation take how much does it cost SMB small business automation ROI payback period AI automation vs BPA RPA robotic process automation step by step guide',
+  },
+  {
+    id: 'insight-what-is-ai-automation',
+    title: 'What Is AI Automation? A Plain-English Explainer',
+    section: 'Insights',
+    href: '/insights/what-is-ai-automation',
+    category: 'Insights',
+    breadcrumb: 'Insights › AI',
+    content: 'what is AI automation artificial intelligence machine learning how does AI automation work difference between AI automation and RPA robotic process automation which industries benefit from AI automation healthcare finance retail manufacturing logistics how much does AI automation cost how to get started with AI automation does AI automation replace workers jobs future of work AI tools platforms',
+  },
+  {
+    id: 'insight-connect-crm-to-other-tools',
+    title: 'How to Connect Your CRM to Other Business Tools',
+    section: 'Insights',
+    href: '/insights/how-to-connect-crm-to-other-tools',
+    category: 'Insights',
+    breadcrumb: 'Insights › Operations',
+    content: 'CRM integration connect HubSpot Salesforce Pipedrive to other tools ERP email marketing accounting invoicing helpdesk Zapier Make native integrations API webhooks how to connect HubSpot to other tools how to connect Salesforce to other tools CRM integration cost how long does CRM integration take best CRM for small business what data to sync between CRM and other systems bidirectional sync data consistency',
+  },
+  {
+    id: 'insight-data-driven-decision-making',
+    title: 'Data-Driven Decision Making: A Practical Guide',
+    section: 'Insights',
+    href: '/insights/data-driven-decision-making-guide',
+    category: 'Insights',
+    breadcrumb: 'Insights › Data',
+    content: 'data driven decision making DDDM business intelligence BI analytics how to build BI from scratch dashboards KPI metrics Power BI Tableau Looker data warehouse analytics platform how long to see results from business intelligence what is BI difference between analytics and BI how to get team to use data culture change data literacy data engineering data lakehouse real time analytics',
+  },
+  {
+    id: 'insight-choose-automation-consultant',
+    title: 'How to Choose an Automation Consultant',
+    section: 'Insights',
+    href: '/insights/how-to-choose-automation-consultant',
+    category: 'Insights',
+    breadcrumb: 'Insights › Transformation',
+    content: 'how to choose automation consultant what to look for in automation consultant red flags 10 questions to ask automation consultant how much does an automation consultant cost consultant vs agency vs in-house automation team how long does it take to work with automation consultant digital transformation consultant process automation specialist RPA consultant AI consultant credentials certifications case studies ROI outcomes',
+  },
 ]
 
 export default INDEX
