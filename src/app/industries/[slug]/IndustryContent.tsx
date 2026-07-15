@@ -95,7 +95,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {/* Common Challenges */}
             <motion.div
-              className="relative overflow-hidden rounded-3xl flex flex-col bg-white border border-gray-100"
+              className="relative overflow-hidden rounded-2xl flex flex-col bg-white border border-gray-100"
               style={{ boxShadow: '0 0 0 0' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -260,7 +260,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
   if (size === 'hero') {
     return (
       <Link href={`/insights/${a.slug}`}
-        className="group block rounded-3xl overflow-hidden border border-[#007cf4]/15 hover:border-[#007cf4]/50 hover:shadow-2xl transition-all duration-500 h-full"
+        className="group block rounded-2xl overflow-hidden border border-[#007cf4]/15 hover:border-[#007cf4]/50 hover:shadow-2xl transition-all duration-500 h-full"
       >
         <div className="flex flex-col md:flex-row h-full">
           <div className="relative md:w-[55%] h-64 md:h-full overflow-hidden">
@@ -292,7 +292,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
   if (size === 'wide') {
     return (
       <Link href={`/insights/${a.slug}`}
-        className="group flex flex-col rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500 h-full"
+        className="group flex flex-col rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500 h-full"
       >
         <div className="flex flex-col sm:flex-row h-full">
           <div className="relative sm:w-2/5 h-52 sm:h-full overflow-hidden">
@@ -320,7 +320,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
   if (size === 'tall') {
     return (
       <Link href={`/insights/${a.slug}`}
-        className="group flex flex-col rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500 h-full"
+        className="group flex flex-col rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-xl transition-all duration-500 h-full"
       >
         <div className="relative h-56 md:h-[60%] overflow-hidden flex-shrink-0">
           <Image src={a.image} alt={a.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px) 100vw, 33vw" />
@@ -346,7 +346,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
   // small (default)
   return (
     <Link href={`/insights/${a.slug}`}
-      className="group flex flex-col rounded-3xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-lg transition-all duration-500 h-full"
+      className="group flex flex-col rounded-2xl overflow-hidden border border-black/8 dark:border-white/10 hover:border-[#007cf4]/40 hover:shadow-lg transition-all duration-500 h-full"
     >
       <div className="relative h-44 overflow-hidden flex-shrink-0">
         <Image src={a.image} alt={a.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:768px) 100vw, 33vw" />

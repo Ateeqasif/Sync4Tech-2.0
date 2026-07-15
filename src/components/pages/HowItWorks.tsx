@@ -118,7 +118,7 @@ export default function HowItWorks() {
 
               {/* Card */}
               <div
-                className="group relative overflow-hidden rounded-3xl h-full flex flex-col border border-[#007cf4]/15 dark:border-white/8 hover:border-[#007cf4]/40 dark:hover:border-white/20 transition-all duration-500 bg-white dark:bg-transparent"
+                className="group relative overflow-hidden rounded-2xl h-full flex flex-col border border-[#007cf4]/15 dark:border-white/8 hover:border-[#007cf4]/40 dark:hover:border-white/20 transition-all duration-500 bg-white dark:bg-transparent"
                 style={{
                   background: undefined,
                   transform: i === 1 ? 'translateY(-12px)' : 'none',
