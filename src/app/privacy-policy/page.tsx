@@ -3,7 +3,7 @@ import PageHero from '@/components/PageHero'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Sync4Tech',
-  description: 'Sync4Tech Privacy Policy how we collect, use, and protect your personal data. Compliant with GDPR (UK & EU), CCPA, and Pakistan data protection regulations.',
+  description: 'Sync4Tech Privacy Policy — how we collect, use, and protect your personal data. Compliant with GDPR, CCPA, and international data protection standards.',
   openGraph: {
     title: 'Privacy Policy | Sync4Tech',
     url: 'https://sync4tech.com/privacy-policy',
@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
               <li>Comply with our legal and regulatory obligations.</li>
               <li>Detect and prevent fraud or other harmful activity.</li>
             </ul>
-            <p>Our lawful bases for processing under UK GDPR are: contract performance, legitimate interests, consent (for marketing), and legal obligation.</p>
+            <p>Our lawful bases for processing under applicable data protection law (including GDPR) are: contract performance, legitimate interests, consent (for marketing), and legal obligation.</p>
 
             <h2>3. Third Parties</h2>
             <p>We share data with the following categories of third parties only where necessary:</p>
@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
             <p>We do not sell, rent, or trade your personal data to third parties for marketing purposes.</p>
 
             <h2>4. Your Rights</h2>
-            <p>Under UK GDPR and applicable data protection laws (including CCPA for California residents), you have the following rights:</p>
+            <p>Under applicable data protection laws (including GDPR and CCPA for California residents), you have the following rights:</p>
             <ul>
               <li><strong>Access</strong> request a copy of the personal data we hold about you.</li>
               <li><strong>Rectification</strong> request correction of inaccurate or incomplete data.</li>
@@ -72,13 +72,13 @@ export default function PrivacyPolicyPage() {
             <p>We retain personal data only as long as necessary for the purposes described above, or as required by law. Contact enquiry data is retained for 24 months after the last interaction. Client engagement data is retained for 7 years for legal and compliance purposes.</p>
 
             <h2>6. International Transfers</h2>
-            <p>As an international team with operations in the UK, US, and Pakistan, some personal data may be transferred across borders. Where data is transferred outside the UK/EEA, we ensure appropriate safeguards are in place (Standard Contractual Clauses or adequacy decisions).</p>
+            <p>As a globally distributed team, some personal data may be transferred across borders. Where data is transferred internationally, we ensure appropriate safeguards are in place (Standard Contractual Clauses or adequacy decisions) in accordance with applicable data protection law.</p>
 
             <h2>7. Contact Us</h2>
             <p>Sync4Tech Ltd is the data controller for personal data processed through this website. For privacy enquiries, contact us at:</p>
             <p><strong>Email:</strong> <a href="mailto:privacy@sync4tech.com" className="text-[#007cf4]">privacy@sync4tech.com</a><br />
-            <strong>Post:</strong> Sync4Tech Ltd, 1 Canada Square, Canary Wharf, London, UK</p>
-            <p>You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) in the UK at <a href="https://ico.org.uk" className="text-[#007cf4]">ico.org.uk</a>.</p>
+            <strong>Post:</strong> Sync4Tech Ltd, 1 Canada Square, Canary Wharf, London</p>
+            <p>You also have the right to lodge a complaint with the relevant supervisory authority in your jurisdiction.</p>
           </article>
         </div>
       </section>

@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: 'Do you have experience in regulated industries?',
-    a: 'Yes. We have extensive experience in HIPAA-compliant healthcare automation, FCA/SEC-regulated financial services, and GDPR-compliant data handling across the UK, US, and Pakistan markets. Our solutions include built-in audit trails, access controls, and compliance reporting frameworks.'
+    a: 'Yes. We have extensive experience in HIPAA-compliant healthcare automation, FCA/SEC-regulated financial services, and GDPR-compliant data handling across global markets. Our solutions include built-in audit trails, access controls, and compliance reporting frameworks.'
   },
   {
     q: 'Can solutions be customised per industry?',

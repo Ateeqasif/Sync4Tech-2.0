@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer'
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
-const SYSTEM_PROMPT = `You are the AI assistant for Sync4Tech, a UK-based data intelligence, automation, and consulting company. You are friendly, professional, and concise.
+const SYSTEM_PROMPT = `You are the AI assistant for Sync4Tech, a global data intelligence, automation, and consulting company. You are friendly, professional, and concise.
 
 Your goal is to have a natural conversation to collect these four pieces of information from the visitor:
 1. Full name

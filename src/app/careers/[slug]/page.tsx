@@ -11,11 +11,11 @@ const jobs: Record<string, {
 }> = {
   'senior-ai-ml-engineer': {
     title: 'Senior AI/ML Engineer', department: 'Engineering',
-    location: 'Remote (UK/US/Pakistan)', type: 'Full-time', salary: '£70,000–£90,000',
+    location: 'Remote / Global', type: 'Full-time', salary: '£70,000–£90,000',
     about: [
       'Sync4Tech is looking for a Senior AI/ML Engineer to design, build, and deploy production AI systems across our client portfolio. You will work directly with clients across healthcare, financial services, legal, and e-commerce to build AI-powered automation that delivers measurable business outcomes.',
       'This is a high-impact, client-facing engineering role. You will own the technical architecture of AI solutions from discovery to deployment, working alongside automation consultants and data engineers in a fast-moving, outcome-focused environment.',
-      'We are a remote-first team with members across the UK, US, and Pakistan. You will work with colleagues across all three regions and directly with client stakeholders from day one.',
+      'We are a globally distributed, remote-first team. You will collaborate with colleagues across all time zones and directly with client stakeholders from day one.',
     ],
     responsibilities: [
       'Design and deploy production AI/ML systems including LLM-powered automation, RAG pipelines, and AI agents',
@@ -35,12 +35,12 @@ const jobs: Record<string, {
       'Production deployment experience (AWS, GCP, or Azure)',
       'Comfortable with ambiguity and able to scope technical solutions from business requirements',
     ],
-    niceToHave: ['LangChain or LlamaIndex experience', 'Fine-tuning or RLHF experience', 'Consulting or client-facing background', 'Knowledge of the UK or US AI regulatory landscape'],
+    niceToHave: ['LangChain or LlamaIndex experience', 'Fine-tuning or RLHF experience', 'Consulting or client-facing background', 'Knowledge of international AI regulatory landscapes'],
     perks: ['Remote-first with flexible hours', 'Competitive salary + performance bonus', '£2,000 annual learning and conference budget', 'High-impact work on live client deployments', 'Fast-growing company with equity upside potential'],
   },
   'automation-consultant': {
     title: 'Automation Consultant', department: 'Consulting',
-    location: 'UK or Pakistan', type: 'Full-time', salary: '£45,000–£65,000',
+    location: 'Remote / Global', type: 'Full-time', salary: '£45,000–£65,000',
     about: [
       'Sync4Tech is hiring an Automation Consultant to lead client engagements from discovery to deployment. You will be the primary point of contact for clients during their automation journey running workshops, designing workflows, building automations, and training teams.',
       'This role sits at the intersection of technology and business strategy. You do not need to be a developer, but you need to be technically confident with no-code and low-code automation tools and able to understand and communicate technical concepts clearly.',
@@ -64,11 +64,11 @@ const jobs: Record<string, {
       'A structured, analytical approach to problem-solving',
     ],
     niceToHave: ['HubSpot CRM administration or certification', 'SQL or basic data skills', 'Background in a specific industry (healthcare, finance, legal, or logistics)', 'Previous consulting firm experience'],
-    perks: ['Hybrid working (UK offices in London, Pakistan office in Lahore)', 'Competitive salary + client bonus', 'Rapid career progression in a growing company', 'Work across multiple industries and use cases', '£1,500 annual training budget'],
+    perks: ['Hybrid working across our global office hubs', 'Competitive salary + client bonus', 'Rapid career progression in a growing company', 'Work across multiple industries and use cases', '£1,500 annual training budget'],
   },
   'data-engineer': {
     title: 'Data Engineer', department: 'Data',
-    location: 'Remote (UK/US/Pakistan)', type: 'Full-time', salary: '£55,000–£75,000',
+    location: 'Remote / Global', type: 'Full-time', salary: '£55,000–£75,000',
     about: [
       'Sync4Tech is looking for a Data Engineer to build and maintain the data infrastructure that powers our clients\' analytics and AI capabilities. You will design data pipelines, build cloud data warehouses, and create the reliable data foundations that our dashboards and AI systems depend on.',
       'This is a hands-on engineering role. You will work directly with client data teams and our in-house analytics consultants to deliver data infrastructure that is production-grade, well-documented, and built to last.',
@@ -96,9 +96,9 @@ const jobs: Record<string, {
   },
   'business-development-manager': {
     title: 'Business Development Manager', department: 'Sales',
-    location: 'UK or US', type: 'Full-time', salary: '£50,000–£70,000 + OTE',
+    location: 'Remote / Global', type: 'Full-time', salary: '£50,000–£70,000 + OTE',
     about: [
-      'Sync4Tech is hiring a Business Development Manager to drive new client acquisition across the UK and US markets. You will own the full sales cycle from outbound prospecting through to signed contract, working with warm inbound leads alongside building your own pipeline.',
+      'Sync4Tech is hiring a Business Development Manager to drive new client acquisition across global markets. You will own the full sales cycle from outbound prospecting through to signed contract, working with warm inbound leads alongside building your own pipeline.',
       'This is a consultative sales role you are selling transformation outcomes, not software licences. You need to be genuinely curious about how businesses operate, comfortable discussing AI and automation at a strategic level, and able to build trust with senior decision-makers.',
       'You will work closely with our consulting team to scope engagements accurately and with our marketing team to develop compelling outreach. OTE is achievable with consistent pipeline management.',
     ],
@@ -162,7 +162,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!j) return {}
   return {
     title: `${j.title} | Careers at Sync4Tech`,
-    description: `Sync4Tech is hiring a ${j.title} (${j.location}). ${j.type} · ${j.salary}. Join our AI and automation consultancy serving UK, US and Pakistan.`,
+    description: `Sync4Tech is hiring a ${j.title} (${j.location}). ${j.type} · ${j.salary}. Join our global AI and automation consultancy serving ambitious organisations worldwide.`,
     openGraph: { title: `${j.title} | Sync4Tech Careers`, url: `https://sync4tech.com/careers/${slug}` },
   }
 }

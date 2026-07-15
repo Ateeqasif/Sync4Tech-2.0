@@ -104,7 +104,7 @@ export default function TeamPage() {
         eyebrow="About"
         title="The people behind "
         highlight="Sync4Tech"
-        subtitle="A remote-first team of AI engineers, automation specialists, and data engineers working across the UK, US and Pakistan united by a belief that mid-market companies deserve enterprise-grade technology transformation."
+        subtitle="A globally distributed, remote-first team of AI engineers, automation specialists, and data engineers united by a belief that mid-market companies deserve enterprise-grade technology transformation."
         breadcrumb={[
           { label: 'About', href: '/about' },
           { label: 'Our Team', href: '/about/team' },

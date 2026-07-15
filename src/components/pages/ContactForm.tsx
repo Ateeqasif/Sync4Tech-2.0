@@ -117,9 +117,9 @@ export default function ContactForm() {
 
               {/* Office cards */}
               {[
-                { city: 'London', country: 'UK', tz: 'GMT / BST', addr: '1 Canada Square, Canary Wharf, London' },
-                { city: 'New York', country: 'US', tz: 'EST / EDT', addr: '101 Avenue of the Americas, New York' },
-                { city: 'Lahore', country: 'Pakistan', tz: 'PKT (UTC+5)', addr: 'Arfa Software Technology Park, Lahore' },
+                { city: 'London', country: 'Europe Hub', tz: 'GMT / BST', addr: '1 Canada Square, Canary Wharf' },
+                { city: 'New York', country: 'Americas Hub', tz: 'EST / EDT', addr: '101 Avenue of the Americas' },
+                { city: 'Lahore', country: 'Asia Hub', tz: 'PKT (UTC+5)', addr: 'Arfa Software Technology Park' },
               ].map(office => (
                 <div key={office.city} className="bg-white border border-[#007cf4]/15 rounded-2xl p-5 flex items-start gap-4">
                   <div className="w-8 h-8 bg-[#007cf4]/10 rounded-lg flex items-center justify-center shrink-0">
@@ -157,7 +157,7 @@ export default function ContactForm() {
       {/* Trust signals */}
       <section className="py-8 bg-white border-t border-[#007cf4]/10">
         <div className="section-container flex flex-wrap items-center justify-center gap-8 text-gray-400 dark:text-gray-500 text-sm">
-          {['No commitment required', 'NDA available', 'Serving UK, US & Pakistan'].map((t, i) => (
+          {['No commitment required', 'NDA available', 'Serving clients globally'].map((t, i) => (
             <span key={i} className="flex items-center gap-2">
               {i > 0 && <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />}
               {t}

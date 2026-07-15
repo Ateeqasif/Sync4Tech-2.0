@@ -6,9 +6,9 @@ import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 
 const milestones = [
-  { year: '2021', label: 'Founded', detail: 'Sync4Tech incorporated in the UK with a simple thesis: mid-market companies need enterprise-grade AI and automation capability, but cannot access it through the existing consulting market.' },
+  { year: '2021', label: 'Founded', detail: 'Sync4Tech launched with a simple thesis: mid-market companies need enterprise-grade AI and automation capability, but cannot access it through the existing consulting market.' },
   { year: '2022', label: 'First 10 Clients', detail: 'Signed our first ten clients across healthcare, legal, and financial services. Learned that the biggest barrier to transformation is not technology it is change management and clear ROI measurement.' },
-  { year: '2023', label: 'Pakistan Office', detail: 'Opened our Lahore office to expand engineering capacity and deliver 24/7 coverage across client time zones. Pakistan became a core part of our remote-first culture, not just a delivery centre.' },
+  { year: '2023', label: 'Asia Hub', detail: 'Opened our Lahore office to expand engineering capacity and deliver 24/7 coverage across client time zones. This hub became a core part of our global remote-first culture, not just a delivery centre.' },
   { year: '2024', label: 'US Expansion', detail: 'Expanded into the US market with a focus on mid-market healthcare and logistics companies. AI agent deployments became our fastest-growing service line as LLM capability matured.' },
   { year: '2025', label: '50+ Organisations', detail: 'Crossed 50 client organisations served, with an average measurable ROI of 340% across automation and AI deployments. Launched our proprietary TransformationOS methodology.' },
   { year: '2026', label: 'What\'s Next', detail: 'Building toward becoming the defining AI and automation consultancy for the global mid-market the partner that makes enterprise-grade transformation genuinely accessible.' },
@@ -29,7 +29,7 @@ const beliefs = [
   },
   {
     heading: 'Global teams build better solutions',
-    body: 'Our team spans the UK, US and Pakistan deliberately. Cross-cultural teams spot edge cases that homogeneous teams miss, deliver across time zones without degradation, and bring intellectual diversity that produces better solutions.',
+    body: 'Our globally distributed team spans three continents deliberately. Cross-cultural teams spot edge cases that homogeneous teams miss, deliver across time zones without degradation, and bring intellectual diversity that produces better solutions.',
   },
 ]
 
@@ -39,7 +39,7 @@ const stats = [
   { stat: '50+', label: 'Client organisations served' },
   { stat: '340%', label: 'Average ROI across deployments' },
   { stat: '3', label: 'Continents our team spans' },
-  { stat: '2021', label: 'Founded in the UK' },
+  { stat: '2021', label: 'Year Founded' },
 ]
 
 export default function MissionPage() {
@@ -76,7 +76,7 @@ export default function MissionPage() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
-              &ldquo;To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy mid-market businesses across the UK, US, and beyond.&rdquo;
+              &ldquo;To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy — mid-market businesses worldwide.&rdquo;
             </motion.blockquote>
             <motion.p
               className="text-gray-500  text-sm leading-relaxed"

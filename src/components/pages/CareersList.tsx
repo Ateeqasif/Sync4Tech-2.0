@@ -14,7 +14,7 @@ const roles = [
   {
     title: 'Automation Consultant',
     dept: 'Consulting',
-    location: 'UK / Pakistan',
+    location: 'Remote / Global',
     type: 'Full-time',
     description: 'Lead client engagements end-to-end: process discovery, automation design, tool configuration, and change management. You will work with leading RPA and workflow platforms and serve as the primary client contact through delivery. Deep knowledge of business processes and strong communication skills required.',
   },
@@ -28,9 +28,9 @@ const roles = [
   {
     title: 'Business Development Manager',
     dept: 'Sales',
-    location: 'UK / US',
+    location: 'Remote / Global',
     type: 'Full-time',
-    description: 'Own the full sales cycle for new enterprise clients across the UK and US markets. Identify target accounts, lead discovery conversations, work closely with delivery teams on proposals, and close deals. Experience selling technology or consulting services is essential.',
+    description: 'Own the full sales cycle for new enterprise clients across global markets. Identify target accounts, lead discovery conversations, work closely with delivery teams on proposals, and close deals. Experience selling technology or consulting services is essential.',
   },
   {
     title: 'UI/UX Designer',

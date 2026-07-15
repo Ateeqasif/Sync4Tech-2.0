@@ -5,7 +5,7 @@ import InsightsFilter from '@/components/pages/InsightsFilter'
 
 export const metadata: Metadata = {
   title: 'AI & Automation Insights | Sync4Tech Blog',
-  description: 'Practical guides, expert perspectives, and deep dives on AI, automation, data intelligence, and digital transformation for businesses in UK, US, and Pakistan.',
+  description: 'Practical guides, expert perspectives, and deep dives on AI, automation, data intelligence, and digital transformation for ambitious businesses worldwide.',
   keywords: ['AI insights', 'automation blog', 'business transformation', 'digital transformation articles', 'process automation guides', 'AI strategy', 'data intelligence'],
   openGraph: {
     title: 'AI & Automation Insights | Sync4Tech Blog',

@@ -49,7 +49,7 @@ const industries = {
     ],
     caseStudy: {
       slug: 'healthcare-patient-intake',
-      snippet: 'NHS-affiliated clinic, 12 sites, UK',
+      snippet: 'Healthcare Provider Network, 12 sites',
       outcome:
         'Automated patient intake across 12 clinics, reducing admin time by 74% and errors to near zero. Staff now spend their time with patients, not paperwork.',
     },
@@ -61,7 +61,7 @@ const industries = {
       },
       {
         q: 'Can you integrate with our EMR system?',
-        a: 'We have experience integrating with major EMR platforms used across UK healthcare, as well as custom EMR systems via API. We always conduct a technical assessment in the discovery phase to confirm feasibility.',
+        a: 'We have experience integrating with major EMR platforms used globally, as well as custom EMR systems via API. We always conduct a technical assessment in the discovery phase to confirm feasibility.',
       },
       {
         q: 'How long does implementation take?',
@@ -118,7 +118,7 @@ const industries = {
     ],
     caseStudy: {
       slug: 'financial-risk-dashboard',
-      snippet: 'UK Financial Services Firm',
+      snippet: 'Financial Services Firm',
       outcome:
         'Replaced 3-day manual risk reporting with real-time dashboards, achieving 18x faster reporting and 100% accuracy for month-end compliance submissions.',
     },
@@ -256,9 +256,9 @@ const industries = {
     ],
     caseStudy: {
       slug: 'ecommerce-inventory-ai',
-      snippet: 'UK E-Commerce Retailer',
+      snippet: 'E-Commerce Retailer',
       outcome:
-        'Deployed AI demand forecasting and automated customer journey workflows for a UK retailer, cutting stockouts by 89% and unlocking £340K in annual savings within the first year.',
+        'Deployed AI demand forecasting and automated customer journey workflows for a retailer, cutting stockouts by 89% and unlocking £340K in annual savings within the first year.',
     },
     tools: ['Shopify', 'HubSpot', 'Klaviyo', 'Snowflake', 'Make.com', 'OpenAI'],
     faq: [
@@ -325,9 +325,9 @@ const industries = {
     ],
     caseStudy: {
       slug: 'real-estate-crm-automation',
-      snippet: 'UK Real Estate Agency',
+      snippet: 'Real Estate Agency',
       outcome:
-        'Automated the full lead nurture cycle for a UK estate agency from portal lead capture through to viewing booking and follow-up tripling conversion rates and freeing agents for client-facing work.',
+        'Automated the full lead nurture cycle for an estate agency from portal lead capture through to viewing booking and follow-up tripling conversion rates and freeing agents for client-facing work.',
     },
     tools: ['GoHighLevel', 'HubSpot', 'Zapier', 'Make.com', 'Monday.com', 'Twilio'],
     faq: [
@@ -337,7 +337,7 @@ const industries = {
       },
       {
         q: 'Can you automate WhatsApp follow-ups?',
-        a: 'Yes. We integrate WhatsApp Business API into automated lead nurture sequences, sending personalised follow-ups based on lead actions and timing triggers. This is particularly effective for UK and international property markets.',
+        a: 'Yes. We integrate WhatsApp Business API into automated lead nurture sequences, sending personalised follow-ups based on lead actions and timing triggers. This is particularly effective for international property markets.',
       },
       {
         q: 'Do you work with lettings and sales agencies?',
@@ -394,9 +394,9 @@ const industries = {
     ],
     caseStudy: {
       slug: 'logistics-route-optimisation',
-      snippet: 'UK Logistics Company',
+      snippet: 'Logistics Provider',
       outcome:
-        'Deployed AI route optimisation and automated dispatch for a UK logistics provider, cutting fuel costs by 31% and achieving 99.2% on-time delivery with fuel savings alone covering the project cost in the first quarter.',
+        'Deployed AI route optimisation and automated dispatch for a logistics provider, cutting fuel costs by 31% and achieving 99.2% on-time delivery with fuel savings alone covering the project cost in the first quarter.',
     },
     tools: ['Google Maps API', 'AWS', 'n8n', 'Twilio', 'Monday.com', 'Python'],
     faq: [
@@ -463,9 +463,9 @@ const industries = {
     ],
     caseStudy: {
       slug: 'healthcare-patient-intake',
-      snippet: 'UK Educational Institution',
+      snippet: 'Educational Institution',
       outcome:
-        'Automated the full admissions workflow for a UK institution, cutting the admissions cycle from 3 weeks to 3 days and freeing administrative staff for learner support activities.',
+        'Automated the full admissions workflow for an institution, cutting the admissions cycle from 3 weeks to 3 days and freeing administrative staff for learner support activities.',
     },
     tools: ['Salesforce', 'HubSpot', 'Zapier', 'Power BI', 'Monday.com', 'Notion'],
     faq: [
@@ -475,11 +475,11 @@ const industries = {
       },
       {
         q: 'Can you integrate with our MIS?',
-        a: 'We have experience integrating with major Management Information Systems used across UK education, as well as custom institutional databases. We assess integration feasibility during discovery.',
+        a: 'We have experience integrating with major Management Information Systems used globally, as well as custom institutional databases. We assess integration feasibility during discovery.',
       },
       {
         q: 'Is student data kept secure?',
-        a: 'Absolutely. We design all systems with data protection legislation compliance (UK GDPR) built in appropriate access controls, data minimisation, retention policies, and full audit trails for all student data handling.',
+        a: 'Absolutely. We design all systems with data protection legislation compliance (GDPR) built in appropriate access controls, data minimisation, retention policies, and full audit trails for all student data handling.',
       },
       {
         q: 'Do you support UCAS integrations?',
@@ -532,9 +532,9 @@ const industries = {
     ],
     caseStudy: {
       slug: 'legal-document-automation',
-      snippet: 'UK Law Firm',
+      snippet: 'Law Firm',
       outcome:
-        'Deployed AI document assembly and automated billing workflows for a UK law firm, reducing non-billable hours by 60% and compressing the billing cycle from 14 days to 48 hours.',
+        'Deployed AI document assembly and automated billing workflows for a law firm, reducing non-billable hours by 60% and compressing the billing cycle from 14 days to 48 hours.',
     },
     tools: ['Clio', 'HubSpot', 'Zapier', 'DocuSign', 'Make.com', 'OpenAI'],
     faq: [
@@ -544,7 +544,7 @@ const industries = {
       },
       {
         q: 'Can you integrate with Clio or PracticePanther?',
-        a: 'Yes. We integrate with Clio, PracticePanther, LEAP, and other major practice management systems used by UK and US law firms. We confirm integration feasibility in the discovery phase.',
+        a: 'Yes. We integrate with Clio, PracticePanther, LEAP, and other major practice management systems used by leading law firms globally. We confirm integration feasibility in the discovery phase.',
       },
       {
         q: 'Do you work with law firms of all sizes?',
@@ -584,7 +584,7 @@ const industries = {
     ],
     caseStudy: {
       slug: 'saas-onboarding-automation',
-      snippet: 'B2B SaaS Platform, UK',
+      snippet: 'B2B SaaS Platform',
       outcome: 'Automated the full customer onboarding journey and deployed churn prediction models, reducing churn by 60% and cutting time-to-value from 3 weeks to under 5 days.',
     },
     tools: ['HubSpot', 'Segment', 'Snowflake', 'OpenAI', 'n8n', 'Intercom'],
@@ -623,8 +623,8 @@ const industries = {
     ],
     caseStudy: {
       slug: 'professional-services-automation',
-      snippet: 'UK Management Consultancy',
-      outcome: 'Automated project reporting and client onboarding workflows for a UK consultancy, reducing non-billable admin by 45% and recovering over £200K in previously lost billable hours annually.',
+      snippet: 'Management Consultancy',
+      outcome: 'Automated project reporting and client onboarding workflows for a consultancy, reducing non-billable admin by 45% and recovering over £200K in previously lost billable hours annually.',
     },
     tools: ['Monday.com', 'HubSpot', 'Zapier', 'Harvest', 'DocuSign', 'Power BI'],
     faq: [
@@ -662,8 +662,8 @@ const industries = {
     ],
     caseStudy: {
       slug: 'hospitality-revenue-automation',
-      snippet: 'Boutique Hotel Group, UK',
-      outcome: 'Deployed automated revenue management and guest communication workflows for a UK hotel group, increasing RevPAR by 28% and achieving a 4.8-star average rating through consistent, personalised guest experiences.',
+      snippet: 'Boutique Hotel Group',
+      outcome: 'Deployed automated revenue management and guest communication workflows for a hotel group, increasing RevPAR by 28% and achieving a 4.8-star average rating through consistent, personalised guest experiences.',
     },
     tools: ['Mews', 'HubSpot', 'Zapier', 'Twilio', 'OpenAI', 'Power BI'],
     faq: [
@@ -701,14 +701,14 @@ const industries = {
     ],
     caseStudy: {
       slug: 'nonprofit-impact-automation',
-      snippet: 'UK Non-Profit Organisation',
-      outcome: 'Automated grant reporting and donor stewardship workflows for a UK charity, cutting quarterly reporting time by 70% and enabling the team to manage 3x more donor relationships with the same headcount.',
+      snippet: 'Non-Profit Organisation',
+      outcome: 'Automated grant reporting and donor stewardship workflows for a non-profit, cutting quarterly reporting time by 70% and enabling the team to manage 3x more donor relationships with the same headcount.',
     },
     tools: ['Salesforce Nonprofit', 'HubSpot', 'Zapier', 'Power BI', 'Airtable', 'Make.com'],
     faq: [
       { q: 'Do you offer discounts for non-profits?', a: 'Yes. We offer preferential pricing for registered charities and non-profit organisations. We believe automation should be accessible to mission-driven organisations, and we structure our engagements to deliver maximum impact within constrained budgets.' },
       { q: 'Can you integrate with Salesforce Nonprofit?', a: 'Yes. Salesforce Nonprofit (NPSP) is one of our most common integration targets in this sector. We build automation layers on top of NPSP and connect it with your programme management, communications, and reporting tools.' },
-      { q: 'How do you handle sensitive beneficiary data?', a: 'We design all systems with data protection at the core appropriate access controls, encryption, consent management, and audit trails. All systems comply with UK GDPR and relevant sector-specific data handling requirements.' },
+      { q: 'How do you handle sensitive beneficiary data?', a: 'We design all systems with data protection at the core appropriate access controls, encryption, consent management, and audit trails. All systems comply with GDPR and relevant sector-specific data handling requirements.' },
       { q: 'Do you work with public sector organisations?', a: 'Yes. We work with local authorities, NHS bodies, housing associations, and other public sector organisations. We understand the procurement, information governance, and change management requirements of public sector projects.' },
     ],
   },

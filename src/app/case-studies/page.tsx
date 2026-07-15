@@ -9,12 +9,12 @@ const testimonials = [
   {
     quote: 'Sync4Tech delivered what three previous agencies could not. We went from a 14-day billing cycle to 48 hours in under two months. The ROI was immediate and the team was exceptional throughout.',
     author: 'Managing Partner',
-    org: 'Mid-market Legal Firm, London',
+    org: 'Global Legal Firm',
   },
   {
     quote: 'The AI inventory system has transformed our supply chain. We have not had a material stockout in six months. That alone has recovered millions in lost revenue we did not even know we were losing.',
     author: 'Head of Operations',
-    org: 'E-Commerce Retailer, New York',
+    org: 'E-Commerce Retailer',
   },
 ]
 

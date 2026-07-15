@@ -46,7 +46,7 @@ const partners = [
     items: [
       { name: 'AWS', tier: 'Partner', description: 'Amazon Web Services for AI model hosting, serverless automation, and scalable data infrastructure across our client deployments.', icon: '🌐' },
       { name: 'Google Cloud', tier: 'Partner', description: 'Google Cloud Platform for BigQuery data warehousing, Vertex AI deployments, and clients with existing GCP infrastructure.', icon: '☁️' },
-      { name: 'Microsoft Azure', tier: 'Partner', description: 'Azure OpenAI Service, Azure Data Factory, and Power BI for clients within the Microsoft ecosystem, particularly in regulated UK and US industries.', icon: '🔷' },
+      { name: 'Microsoft Azure', tier: 'Partner', description: 'Azure OpenAI Service, Azure Data Factory, and Power BI for clients within the Microsoft ecosystem, particularly in regulated industries globally.', icon: '🔷' },
     ],
   },
 ]

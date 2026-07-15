@@ -6,9 +6,9 @@ import FinalCTA from '@/components/sections/FinalCTA'
 import { motion } from 'framer-motion'
 
 const timeline = [
-  { year: '2020', milestone: 'Founded in London to solve the execution gap between business strategy and operational reality.' },
-  { year: '2021', milestone: 'Launched first AI-powered process automation suite. Delivered 20+ engagements across UK and US.' },
-  { year: '2022', milestone: 'Opened Lahore office, expanding delivery capacity and talent pool. Reached 100 clients.' },
+  { year: '2020', milestone: 'Founded to solve the execution gap between business strategy and operational reality.' },
+  { year: '2021', milestone: 'Launched first AI-powered process automation suite. Delivered 20+ engagements across multiple industries globally.' },
+  { year: '2022', milestone: 'Expanded delivery capacity and talent pool with additional hubs. Reached 100 clients.' },
   { year: '2023', milestone: 'Launched Data Intelligence practice. Recognised as a top AI consultancy by Clutch.co.' },
   { year: '2024', milestone: 'Crossed 200 successful deployments. Expanded to serve 12+ industries across three continents.' },
   { year: '2025', milestone: 'Launched AI Enablement and Predictive Analytics practices. Now 280+ clients worldwide.' },
@@ -29,13 +29,13 @@ const team = [
 ]
 
 const offices = [
-  { city: 'London', country: 'United Kingdom', flag: '🇬🇧', addr: '1 Canada Square, Canary Wharf', tz: 'GMT / BST' },
-  { city: 'New York', country: 'United States', flag: '🇺🇸', addr: '101 Avenue of the Americas', tz: 'EST / EDT' },
-  { city: 'Lahore', country: 'Pakistan', flag: '🇵🇰', addr: 'Arfa Software Technology Park', tz: 'PKT (UTC+5)' },
+  { city: 'London', country: 'Europe Hub', flag: '🌍', addr: '1 Canada Square, Canary Wharf', tz: 'GMT / BST' },
+  { city: 'New York', country: 'Americas Hub', flag: '🌎', addr: '101 Avenue of the Americas', tz: 'EST / EDT' },
+  { city: 'Lahore', country: 'Asia Hub', flag: '🌏', addr: 'Arfa Software Technology Park', tz: 'PKT (UTC+5)' },
 ]
 
 const aboutFAQ = [
-  { q: 'Where is Sync4Tech based?', a: 'Sync4Tech has offices in London (UK), New York (US), and Lahore (Pakistan). Our distributed model means we can serve clients across all time zones without compromise on responsiveness.' },
+  { q: 'Where is Sync4Tech based?', a: 'Sync4Tech operates across three global hubs — London, New York, and Lahore — giving us coverage across all major time zones without compromise on responsiveness.' },
   { q: 'How big is the Sync4Tech team?', a: 'We are a focused team of 40+ specialists across engineering, data science, consulting, and design. We deliberately stay lean to maintain quality every client engagement is led by a senior specialist, not a junior analyst.' },
   { q: 'What types of clients do you work with?', a: 'We work with ambitious organisations from Series B startups to FTSE 250 enterprises. What they have in common: a desire to operate more intelligently and a willingness to invest in transformation.' },
   { q: 'Are you a software company or consultancy?', a: 'We are a delivery-first consultancy that builds real software. We design strategy and then build and deploy the systems to execute it unlike traditional consultancies who hand off implementation to others.' },

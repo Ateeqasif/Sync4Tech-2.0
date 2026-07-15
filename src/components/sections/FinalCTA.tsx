@@ -83,7 +83,7 @@ export default function FinalCTA() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {['No commitment required', 'Response within 24 hours', 'Serving US, UK & Pakistan'].map((t, i) => (
+            {['No commitment required', 'Response within 24 hours', 'Serving clients globally'].map((t, i) => (
               <>
                 {i > 0 && <span key={`dot-${i}`} className="w-1 h-1 rounded-full bg-gray-300" />}
                 <span key={t}>{t}</span>

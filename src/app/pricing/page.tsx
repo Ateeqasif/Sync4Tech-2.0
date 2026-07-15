@@ -73,7 +73,7 @@ const included = [
   'Full documentation & handover',
   'Post-launch support period',
   'NDA available on request',
-  'UK / US / Pakistan delivery',
+  'Global delivery capability',
 ]
 
 const pricingFAQ = [
@@ -302,7 +302,7 @@ export default function PricingPage() {
               'Free strategy session no commitment',
               'Fixed-price projects available',
               'NDA on request',
-              'Delivery across UK, US & Pakistan',
+              'Global delivery across all time zones',
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-gray-500  text-sm">
                 <svg width="16" height="16" fill="none" viewBox="0 0 16 16">

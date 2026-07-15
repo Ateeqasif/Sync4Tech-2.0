@@ -134,7 +134,7 @@ export default function InsightContent({ a, related }: Props) {
             <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white text-sm shrink-0" style={{ background: 'linear-gradient(135deg,#007cf4,#36c5f0)' }}>S4T</div>
             <div>
               <div className="font-semibold text-black dark:text-white text-sm">Sync4Tech Editorial Team</div>
-              <div className="text-gray-400 text-xs">AI & Automation specialists across UK, US and Pakistan</div>
+              <div className="text-gray-400 text-xs">AI & Automation specialists operating globally</div>
             </div>
           </div>
         </div>

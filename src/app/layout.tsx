@@ -24,7 +24,7 @@ const interTight = Inter_Tight({
 
 export const metadata: Metadata = {
   title: 'Sync4Tech | Business Automation, Data & AI Solutions',
-  description: 'Transform operations with business automation, workflow automation, data engineering, analytics, and AI enablement solutions designed for growing organizations. Serving US, UK & Pakistan.',
+  description: 'Transform operations with business automation, workflow automation, data engineering, analytics, and AI enablement solutions designed for growing organizations worldwide.',
   keywords: [
     'business automation',
     'workflow automation',

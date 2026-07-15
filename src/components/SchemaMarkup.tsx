@@ -19,7 +19,7 @@ export default function SchemaMarkup() {
       "minValue": 10,
       "maxValue": 50
     },
-    "areaServed": ["United States", "United Kingdom", "Pakistan"],
+    "areaServed": "Worldwide",
     "serviceType": [
       "Business Automation",
       "Workflow Automation",
@@ -100,7 +100,7 @@ export default function SchemaMarkup() {
     "url": "https://sync4tech.com",
     "description": "Sync4Tech provides business automation, workflow automation, CRM automation, data engineering, data analytics, and AI enablement services to help organizations reduce manual effort, increase operational efficiency, and accelerate revenue operations.",
     "provider": { "@id": "https://sync4tech.com/#organization" },
-    "areaServed": ["United States", "United Kingdom", "Pakistan"],
+    "areaServed": "Worldwide",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Sync4Tech Services",
@@ -166,7 +166,7 @@ export default function SchemaMarkup() {
         "name": "What does Sync4Tech do?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sync4Tech helps organizations automate workflows, improve operational efficiency, and activate business data through business automation, workflow automation, CRM automation, data engineering, data analytics, and AI enablement services. We serve organizations across the US, UK, and Pakistan."
+          "text": "Sync4Tech helps organizations automate workflows, improve operational efficiency, and activate business data through business automation, workflow automation, CRM automation, data engineering, data analytics, and AI enablement services. We serve ambitious organizations globally across 12+ industries."
         }
       },
       {
@@ -270,7 +270,7 @@ export default function SchemaMarkup() {
         "name": "What locations does Sync4Tech serve?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sync4Tech serves organizations across the United States, United Kingdom, and Pakistan, with delivery capability for remote and hybrid engagement models. Contact us at hello@sync4tech.com to discuss your requirements."
+          "text": "Sync4Tech serves organizations globally, with delivery capability for fully remote and hybrid engagement models across all time zones. Contact us at hello@sync4tech.com to discuss your requirements."
         }
       }
     ]
