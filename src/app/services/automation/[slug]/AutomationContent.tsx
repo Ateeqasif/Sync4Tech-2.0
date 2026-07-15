@@ -12,6 +12,9 @@ type ServiceData = {
   tools: readonly string[]
   process: readonly { step: string; title: string; desc: string }[]
   faq: readonly { q: string; a: string }[]
+  stats: readonly { value: string; label: string }[]
+  benefits: readonly { role: string; desc: string }[]
+  industries: readonly string[]
 }
 
 export default function AutomationContent({ svc }: { svc: ServiceData }) {
@@ -117,6 +120,43 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
         </div>
       </section>
 
+      {/* ROI Impact Stats */}
+      <section className="py-16" style={{ background: 'linear-gradient(135deg, #050f2e 0%, #033a9d 100%)' }}>
+        <div className="section-container">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease }}
+          >
+            <span className="text-[#36c5f0] text-sm font-semibold tracking-widest uppercase mb-3 block">Proven Results</span>
+            <h2 className="font-inter-tight font-black text-3xl text-white">The ROI in Numbers</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            {svc.stats.map((stat, i) => (
+              <motion.div
+                key={i}
+                className="text-center p-8 rounded-2xl"
+                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(54,197,240,0.2)' }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease }}
+              >
+                <div
+                  className="font-inter-tight font-black text-5xl mb-2"
+                  style={{ background: 'linear-gradient(135deg, #36c5f0, #007cf4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+                >
+                  {stat.value}
+                </div>
+                <p className="text-white/60 text-sm leading-snug">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 3. Features */}
       <section className="py-section bg-[#f8faff]">
         <div className="section-container">
@@ -194,6 +234,50 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                 </motion.div>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Who Benefits */}
+      <section className="py-20 bg-white">
+        <div className="section-container">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease }}
+          >
+            <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Built For Your Team</span>
+            <h2 className="font-inter-tight font-black text-3xl text-gray-900">Who Benefits Most</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {svc.benefits.map((b, i) => (
+              <motion.div
+                key={i}
+                className="relative bg-[#f8faff] rounded-2xl p-7 overflow-hidden"
+                style={{ border: '1px solid rgba(0,124,244,0.1)' }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease }}
+              >
+                <div
+                  className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl"
+                  style={{ background: 'linear-gradient(180deg, #007cf4, #36c5f0)' }}
+                />
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                  style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 2a3 3 0 100 6 3 3 0 000-6zM3 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-3">{b.role}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{b.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -294,8 +378,43 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
         </div>
       </section>
 
+      {/* Industries We Serve */}
+      <section className="py-16 bg-[#f8faff]">
+        <div className="section-container">
+          <motion.div
+            className="text-center mb-10"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease }}
+          >
+            <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Sector Experience</span>
+            <h2 className="font-inter-tight font-black text-2xl text-gray-900">Industries We Serve</h2>
+            <p className="text-gray-500 text-sm mt-2">Deep domain expertise across these sectors</p>
+          </motion.div>
+          <motion.div
+            className="flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, delay: 0.15, ease }}
+          >
+            {svc.industries.map((ind, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-sm font-semibold text-gray-700"
+                style={{ border: '1px solid rgba(0,124,244,0.15)' }}
+              >
+                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }} />
+                {ind}
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* 6. FAQ */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-[#f8faff]">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
