@@ -156,10 +156,12 @@ export default function ContactForm() {
 
       {/* Trust signals */}
       <section className="py-8 bg-white border-t border-[#007cf4]/10">
-        <div className="section-container flex flex-wrap items-center justify-center gap-8 text-gray-400 dark:text-gray-500 text-sm">
+        <div className="section-container flex flex-wrap items-center justify-center text-gray-400 dark:text-gray-500 text-sm">
           {['No commitment required', 'NDA available', 'Serving clients globally'].map((t, i) => (
-            <span key={i} className="flex items-center gap-2">
-              {i > 0 && <span className="w-2 h-2 rounded-full bg-[#007cf4] animate-pulse shrink-0" />}
+            <span key={i} className="flex items-center">
+              {i > 0 && (
+                <span className="w-2 h-2 rounded-full bg-[#007cf4] animate-pulse shrink-0 mx-6" />
+              )}
               {t}
             </span>
           ))}
