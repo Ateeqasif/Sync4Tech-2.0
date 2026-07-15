@@ -212,7 +212,7 @@ function KpiTile({ s }: { s: NpmSeries }) {
   const up    = pct >= 0
 
   return (
-    <div className="rounded-2xl p-4 bg-[#f8faff] border border-[#007cf4]/10 flex flex-col gap-2">
+    <div className="rounded-2xl p-4 bg-[#f8faff] border border-gray-100 flex flex-col gap-2">
       <div className="flex items-center gap-2">
         <Pulse color={s.color} />
         <span className="text-xs font-semibold text-gray-500 truncate">{s.label}</span>
@@ -260,7 +260,7 @@ function FilterBar({
   const pillOn    = 'bg-[#050f2e] text-white'
 
   return (
-    <div className="bg-[#f8faff] border border-[#007cf4]/10 rounded-2xl p-4 mb-6 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+    <div className="rounded-2xl p-4 mb-6 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between border border-gray-100 bg-[#f8faff]/60">
       {/* Category tabs */}
       <div className="flex items-center gap-1.5">
         <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mr-1 shrink-0">Category</span>
@@ -377,12 +377,12 @@ export default function LiveDashboard() {
   const chartKey = `${dayRange}-${Array.from(hidden).join(',')}`
 
   return (
-    <section className="py-section bg-white">
+    <section className="py-section bg-[#f8faff]">
       <div className="section-container">
 
         {/* Header */}
         <motion.div
-          className="text-center mb-14"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
@@ -407,68 +407,103 @@ export default function LiveDashboard() {
           </p>
         </motion.div>
 
-        {/* Filter bar */}
-        {loaded && (
-          <FilterBar
-            category={category}   setCategory={setCategory}
-            dayRange={dayRange}   setDayRange={setDayRange}
-            hidden={hidden}       toggleHidden={toggleHidden}
-            allSeries={allSeries}
-          />
-        )}
-
-        {/* KPI tiles */}
+        {/* Single unified panel */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-8"
-          initial={{ opacity: 0, y: 20 }}
+          className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: EASE }}
         >
-          {loaded
-            ? visKpi.length
-              ? visKpi.map(s => <KpiTile key={s.label} s={s} />)
-              : <p className="col-span-full text-center text-gray-400 text-sm py-4">No tools selected — click a tool above to show it.</p>
-            : Array.from({ length: 7 }).map((_, i) => (
-                <div key={i} className="animate-pulse h-[108px] rounded-2xl bg-gray-100" />
-              ))}
+          {/* Filter bar */}
+          {loaded && (
+            <FilterBar
+              category={category}   setCategory={setCategory}
+              dayRange={dayRange}   setDayRange={setDayRange}
+              hidden={hidden}       toggleHidden={toggleHidden}
+              allSeries={allSeries}
+            />
+          )}
+
+          {/* KPI tiles */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-8">
+            {loaded
+              ? visKpi.length
+                ? visKpi.map(s => <KpiTile key={s.label} s={s} />)
+                : <p className="col-span-full text-center text-gray-400 text-sm py-4">No tools selected — click a tool above to show it.</p>
+              : Array.from({ length: 7 }).map((_, i) => (
+                  <div key={i} className="animate-pulse h-[108px] rounded-2xl bg-gray-100" />
+                ))}
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-gray-100 mb-8" />
+
+          {/* Charts */}
+          <div className="flex flex-col gap-8">
+            {loaded ? (
+              <>
+                {showAi && visAi.length > 0 && (
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-0.5">Daily downloads · Last {dayRange} days</p>
+                        <p className="text-gray-900 font-inter-tight font-black text-lg">AI &amp; LLM Frameworks</p>
+                      </div>
+                      <div className="flex gap-3 flex-wrap justify-end">
+                        {visAi.map(s => (
+                          <span key={s.label} className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-500">
+                            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: s.color }} />
+                            {s.label}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <NpmChart key={`ai-${chartKey}`} series={visAi} height={230} />
+                  </div>
+                )}
+
+                {showAi && showAuto && visAi.length > 0 && visAuto.length > 0 && (
+                  <div className="border-t border-gray-100" />
+                )}
+
+                {showAuto && visAuto.length > 0 && (
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-0.5">Daily downloads · Last {dayRange} days</p>
+                        <p className="text-gray-900 font-inter-tight font-black text-lg">Automation Platforms</p>
+                      </div>
+                      <div className="flex gap-3 flex-wrap justify-end">
+                        {visAuto.map(s => (
+                          <span key={s.label} className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-500">
+                            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: s.color }} />
+                            {s.label}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <NpmChart key={`auto-${chartKey}`} series={visAuto} height={230} />
+                  </div>
+                )}
+
+                {(!showAi || visAi.length === 0) && (!showAuto || visAuto.length === 0) && (
+                  <p className="text-center text-gray-400 text-sm py-8">No data to display — adjust the filters above.</p>
+                )}
+              </>
+            ) : (
+              <>
+                <div className="animate-pulse h-[310px] rounded-2xl bg-gray-50" />
+                <div className="animate-pulse h-[310px] rounded-2xl bg-gray-50" />
+              </>
+            )}
+          </div>
+
+          <p className="text-gray-300 text-xs mt-8 text-center">
+            Source: npmjs.org public registry · Updates daily · Tools shown are actively deployed by Sync4Tech
+          </p>
         </motion.div>
 
-        {/* Charts */}
-        <div className="flex flex-col gap-5">
-          {loaded ? (
-            <>
-              {showAi && (
-                <ChartCard
-                  title="AI & LLM Frameworks"
-                  sub={`Daily downloads · Last ${dayRange} days`}
-                  series={visAi}
-                  chartKey={`ai-${chartKey}`}
-                />
-              )}
-              {showAuto && (
-                <ChartCard
-                  title="Automation Platforms"
-                  sub={`Daily downloads · Last ${dayRange} days`}
-                  series={visAuto}
-                  chartKey={`auto-${chartKey}`}
-                />
-              )}
-              {!showAi && !showAuto && (
-                <p className="text-center text-gray-400 text-sm py-8">Select a category to view charts.</p>
-              )}
-            </>
-          ) : (
-            <>
-              <div className="animate-pulse h-[326px] rounded-2xl bg-gray-100" />
-              <div className="animate-pulse h-[326px] rounded-2xl bg-gray-100" />
-            </>
-          )}
-        </div>
-
-        <p className="text-center text-gray-300 text-xs mt-8">
-          Source: npmjs.org public registry · Updates daily · Tools shown are actively deployed by Sync4Tech
-        </p>
       </div>
     </section>
   )
