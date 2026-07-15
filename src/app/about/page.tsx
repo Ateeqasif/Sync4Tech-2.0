@@ -270,7 +270,7 @@ export default function AboutPage() {
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 z-10 shadow-md" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
                   <span className="text-white font-inter-tight font-black text-xs">{item.year.slice(2)}</span>
                 </div>
-                <div className="bg-white dark:bg-white border border-[#007cf4]/10 hover:border-[#007cf4]/30 rounded-xl p-5 flex-1 transition-all group">
+                <div className="bg-white dark:bg-white border border-[#007cf4]/10 hover:border-[#007cf4]/30 rounded-2xl p-5 flex-1 transition-all group">
                   <div className="font-bold text-[#007cf4] text-xs mb-1 uppercase tracking-widest">{item.year}</div>
                   <p className="text-gray-600  text-sm leading-relaxed">{item.milestone}</p>
                 </div>
