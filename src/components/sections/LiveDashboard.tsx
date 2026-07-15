@@ -20,15 +20,15 @@ function fmtDl(v: number) {
 
 // ─── Package definitions ──────────────────────────────────────────────────────
 const AI_PKGS = [
-  { pkg: 'openai',                   label: 'OpenAI SDK',   color: '#007cf4', sim: 650_000 },
-  { pkg: '@anthropic-ai/sdk',        label: 'Anthropic',    color: '#6366f1', sim: 95_000  },
-  { pkg: '@langchain/core',          label: 'LangChain',    color: '#22c55e', sim: 270_000 },
-  { pkg: '@pinecone-database/pinecone', label: 'Pinecone',  color: '#06b6d4', sim: 28_000  },
+  { pkg: 'openai',                      label: 'OpenAI SDK', color: '#10A37F', sim: 650_000 }, // OpenAI green
+  { pkg: '@anthropic-ai/sdk',           label: 'Anthropic',  color: '#D97757', sim: 95_000  }, // Anthropic clay
+  { pkg: '@langchain/core',             label: 'LangChain',  color: '#1A7F64', sim: 270_000 }, // LangChain forest green
+  { pkg: '@pinecone-database/pinecone', label: 'Pinecone',   color: '#00C47C', sim: 28_000  }, // Pinecone pine green
 ]
 const AUTO_PKGS = [
-  { pkg: 'n8n',                  label: 'n8n',          color: '#EA4B71', sim: 42_000 },
-  { pkg: 'zapier-platform-core', label: 'Zapier',        color: '#FF4A00', sim: 14_000 },
-  { pkg: 'highlevel-api',        label: 'GoHighLevel',   color: '#F97316', sim: 8_000  },
+  { pkg: 'n8n',                  label: 'n8n',        color: '#F05C35', sim: 42_000 }, // n8n orange
+  { pkg: 'zapier-platform-core', label: 'Zapier',     color: '#FF4A00', sim: 14_000 }, // Zapier orange
+  { pkg: 'highlevel-api',        label: 'GoHighLevel', color: '#0891B2', sim: 8_000  }, // GHL teal-blue
 ]
 
 type NpmSeries = { label: string; color: string; days: string[]; data: number[] }
