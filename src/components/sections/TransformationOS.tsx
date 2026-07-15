@@ -124,29 +124,20 @@ export default function TransformationOS() {
                 {/* Content */}
                 <div className="relative z-10 p-10 flex flex-col h-full" style={{ minHeight: '320px' }}>
                   {/* Eyebrow */}
-                  <p
-                    className="text-xs font-bold uppercase tracking-[0.25em] mb-4 transition-colors duration-500"
-                    style={{ color: dark ? 'rgba(255,255,255,0.75)' : '#007cf4' }}
-                  >
+                  <p className={`text-xs font-bold uppercase tracking-[0.25em] mb-4 transition-colors duration-500 ${dark ? 'text-white/75' : 'text-[#007cf4] group-hover:text-white/75'}`}>
                     {p.subtitle}
                   </p>
 
                   {/* Title */}
                   <h3
-                    className="font-inter-tight font-black mb-4 leading-tight transition-colors duration-500"
-                    style={{
-                      fontSize: 'clamp(28px, 3vw, 40px)',
-                      color: dark ? '#ffffff' : '#050f2e',
-                    }}
+                    className={`font-inter-tight font-black mb-4 leading-tight transition-colors duration-500 ${dark ? 'text-white' : 'text-[#050f2e] group-hover:text-white'}`}
+                    style={{ fontSize: 'clamp(28px, 3vw, 40px)' }}
                   >
                     {p.title}
                   </h3>
 
                   {/* Description */}
-                  <p
-                    className="text-base leading-relaxed mb-8 max-w-sm transition-colors duration-500"
-                    style={{ color: dark ? 'rgba(255,255,255,0.70)' : '#374151' }}
-                  >
+                  <p className={`text-base leading-relaxed mb-8 max-w-sm transition-colors duration-500 ${dark ? 'text-white/70' : 'text-[#374151] group-hover:text-white/70'}`}>
                     {p.description}
                   </p>
 
@@ -155,12 +146,11 @@ export default function TransformationOS() {
                     {p.features.map((f) => (
                       <span
                         key={f}
-                        className="rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-500"
-                        style={{
-                          background: dark ? 'rgba(255,255,255,0.15)' : 'rgba(0,124,244,0.08)',
-                          color: dark ? '#ffffff' : '#007cf4',
-                          border: `1px solid ${dark ? 'rgba(255,255,255,0.25)' : 'rgba(0,124,244,0.20)'}`,
-                        }}
+                        className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-500 ${
+                          dark
+                            ? 'bg-white/15 text-white border border-white/25'
+                            : 'bg-[#007cf4]/8 text-[#007cf4] border border-[#007cf4]/20 group-hover:bg-white/15 group-hover:text-white group-hover:border-white/25'
+                        }`}
                       >
                         {f}
                       </span>
@@ -168,10 +158,7 @@ export default function TransformationOS() {
                   </div>
 
                   {/* Learn more link */}
-                  <div
-                    className="flex items-center gap-2 text-xs font-bold tracking-wide uppercase transition-all duration-300 group-hover:gap-3"
-                    style={{ color: dark ? 'rgba(255,255,255,0.85)' : '#007cf4' }}
-                  >
+                  <div className={`flex items-center gap-2 text-xs font-bold tracking-wide uppercase transition-all duration-300 group-hover:gap-3 ${dark ? 'text-white/85' : 'text-[#007cf4] group-hover:text-white/85'}`}>
                     Learn more
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-300 group-hover:translate-x-0.5">
                       <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

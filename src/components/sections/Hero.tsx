@@ -115,15 +115,6 @@ const slides = [
     subtitle: 'We design and deploy intelligent automation systems that eliminate manual bottlenecks, cut operational costs, and let your team focus on high-impact work.',
     cta1: { label: 'Explore Automation', href: '/solutions' },
     cta2: { label: 'See Case Studies', href: '/case-studies' },
-    icon: (
-      <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-        <rect width="52" height="52" rx="14" fill="rgba(0,124,244,0.12)" />
-        <path d="M16 26c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" />
-        <path d="M26 20v6l3.5 3.5" stroke="#36c5f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="16" cy="26" r="2.5" fill="#007cf4" />
-        <path d="M13.5 26H10M16 23.5V20" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
   },
   {
     badge: 'Data Solutions',
@@ -134,16 +125,6 @@ const slides = [
     subtitle: 'From data pipelines to real-time dashboards and AI-powered analytics, we help you extract meaning from noise and make confident, evidence-based decisions.',
     cta1: { label: 'Explore Data Solutions', href: '/solutions' },
     cta2: { label: 'Talk to an Expert', href: '/contact' },
-    icon: (
-      <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-        <rect width="52" height="52" rx="14" fill="rgba(54,197,240,0.12)" />
-        <rect x="14" y="32" width="4" height="8" rx="1" fill="#007cf4" />
-        <rect x="21" y="26" width="4" height="14" rx="1" fill="#36c5f0" />
-        <rect x="28" y="20" width="4" height="20" rx="1" fill="#007cf4" />
-        <rect x="35" y="14" width="4" height="26" rx="1" fill="#36c5f0" />
-        <path d="M16 24l7-6 7 4 7-8" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
   },
   {
     badge: 'Business Strategy',
@@ -154,15 +135,6 @@ const slides = [
     subtitle: 'Our consultants embed alongside your leadership to align technology investments with real business outcomes — building roadmaps that create measurable, lasting growth.',
     cta1: { label: 'Start Your Strategy', href: '/contact' },
     cta2: { label: 'About Our Experts', href: '/about' },
-    icon: (
-      <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-        <rect width="52" height="52" rx="14" fill="rgba(3,58,157,0.12)" />
-        <path d="M18 34l4-8 5 4 4-10 5 8" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="36" cy="18" r="4" fill="rgba(54,197,240,0.3)" stroke="#36c5f0" strokeWidth="1.5" />
-        <path d="M34.5 18h3M36 16.5v3" stroke="#36c5f0" strokeWidth="1.2" strokeLinecap="round" />
-        <path d="M16 38h20" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
   },
 ]
 
@@ -236,15 +208,8 @@ export default function Hero() {
             exit="exit"
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Icon + badge */}
+            {/* Badge */}
             <div className="flex flex-col items-center gap-3 mb-8">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-              >
-                {slide.icon}
-              </motion.div>
               <div className="inline-flex items-center gap-4 px-8 py-2.5">
                 <span className="w-2.5 h-2.5 rounded-full animate-pulse shrink-0" style={{ background: slide.accentColor }} />
                 <span className="text-sm font-medium tracking-widest uppercase" style={{ color: slide.accentColor }}>{slide.badge}</span>
