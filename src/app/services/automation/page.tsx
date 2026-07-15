@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import PageHero from '@/components/PageHero';
 import FinalCTA from '@/components/sections/FinalCTA';
+import LiveStatsBar from '@/components/LiveStatsBar';
 
 const services = [
   {
@@ -61,6 +62,13 @@ export default function AutomationPage() {
           { label: 'Business Process Automation', href: '/services/automation' },
         ]}
       />
+
+      <LiveStatsBar stats={[
+        { label: 'Workflows Active', suffix: '', min: 600, max: 1400, color: '#007cf4' },
+        { label: 'Tasks / Hour', suffix: '', min: 200, max: 600, color: '#36c5f0' },
+        { label: 'Hours Saved', suffix: 'h', min: 30, max: 65, color: '#22c55e' },
+        { label: 'Error Rate', suffix: '%', min: 0, max: 2, color: '#f59e0b' },
+      ]} />
 
       <section className="bg-[#f8faff] dark:bg-[#f8faff] py-20">
         <div className="section-container">

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import PageHero from '@/components/PageHero';
 import FinalCTA from '@/components/sections/FinalCTA';
+import LiveStatsBar from '@/components/LiveStatsBar';
 
 const services = [
   {
@@ -61,6 +62,13 @@ export default function DataIntelligencePage() {
           { label: 'Data Intelligence Suite', href: '/services/data-intelligence' },
         ]}
       />
+
+      <LiveStatsBar stats={[
+        { label: 'Records Processed', suffix: 'K', min: 400, max: 900, color: '#007cf4' },
+        { label: 'Pipeline Uptime', suffix: '%', min: 98, max: 100, color: '#22c55e' },
+        { label: 'Data Quality Score', suffix: '%', min: 92, max: 99, color: '#36c5f0' },
+        { label: 'Query Speed', suffix: 'ms', min: 8, max: 60, color: '#f59e0b' },
+      ]} />
 
       <section className="bg-[#f8faff] py-20">
         <div className="section-container">
