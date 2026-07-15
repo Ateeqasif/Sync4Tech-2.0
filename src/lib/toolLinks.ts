@@ -1,0 +1,140 @@
+export const TOOL_LINKS: Record<string, string> = {
+  // Automation & workflow
+  'n8n': 'https://n8n.io',
+  'Make.com': 'https://www.make.com',
+  'Make': 'https://www.make.com',
+  'Zapier': 'https://zapier.com',
+  'UiPath': 'https://www.uipath.com',
+  'Power Automate': 'https://powerautomate.microsoft.com',
+  'Microsoft Power Automate': 'https://powerautomate.microsoft.com',
+
+  // CRM & sales
+  'HubSpot': 'https://www.hubspot.com',
+  'Salesforce': 'https://www.salesforce.com',
+  'Salesforce Nonprofit': 'https://www.salesforce.org',
+  'GoHighLevel': 'https://www.gohighlevel.com',
+  'Zoho': 'https://www.zoho.com',
+  'Pipedrive': 'https://www.pipedrive.com',
+  'Clearbit': 'https://clearbit.com',
+  'Apollo.io': 'https://www.apollo.io',
+  'Outreach': 'https://www.outreach.io',
+  'Lemlist': 'https://lemlist.com',
+
+  // Scheduling & docs
+  'DocuSign': 'https://www.docusign.com',
+  'Adobe Sign': 'https://acrobat.adobe.com/us/en/sign.html',
+  'PandaDoc': 'https://www.pandadoc.com',
+  'Calendly': 'https://calendly.com',
+  'Typeform': 'https://www.typeform.com',
+  'Loom': 'https://www.loom.com',
+
+  // Marketing
+  'Klaviyo': 'https://www.klaviyo.com',
+  'ActiveCampaign': 'https://www.activecampaign.com',
+  'Mailchimp': 'https://mailchimp.com',
+  'Twilio': 'https://www.twilio.com',
+
+  // AI / ML
+  'OpenAI': 'https://openai.com',
+  'Anthropic': 'https://www.anthropic.com',
+  'LangChain': 'https://www.langchain.com',
+  'Pinecone': 'https://www.pinecone.io',
+  'Qdrant': 'https://qdrant.tech',
+  'Voiceflow': 'https://www.voiceflow.com',
+  'ElevenLabs': 'https://elevenlabs.io',
+  'Hugging Face': 'https://huggingface.co',
+  'scikit-learn': 'https://scikit-learn.org',
+  'TensorFlow': 'https://www.tensorflow.org',
+  'PyTorch': 'https://pytorch.org',
+  'Prophet': 'https://facebook.github.io/prophet',
+  'FastAPI': 'https://fastapi.tiangolo.com',
+
+  // Cloud
+  'AWS': 'https://aws.amazon.com',
+  'AWS Bedrock': 'https://aws.amazon.com/bedrock',
+  'AWS SageMaker': 'https://aws.amazon.com/sagemaker',
+  'AWS Glue': 'https://aws.amazon.com/glue',
+  'AWS IoT': 'https://aws.amazon.com/iot',
+  'AWS Lambda': 'https://aws.amazon.com/lambda',
+  'Amazon Redshift': 'https://aws.amazon.com/redshift',
+  'Azure': 'https://azure.microsoft.com',
+  'Azure Data Factory': 'https://azure.microsoft.com/en-us/products/data-factory',
+  'Azure ML': 'https://azure.microsoft.com/en-us/products/machine-learning',
+  'Azure Synapse': 'https://azure.microsoft.com/en-us/products/synapse-analytics',
+  'Google Cloud': 'https://cloud.google.com',
+  'GCP': 'https://cloud.google.com',
+  'Google Maps API': 'https://developers.google.com/maps',
+  'Kubernetes': 'https://kubernetes.io',
+  'Terraform': 'https://www.terraform.io',
+
+  // ERP & finance
+  'SAP': 'https://www.sap.com',
+  'Oracle': 'https://www.oracle.com',
+  'Microsoft Dynamics': 'https://dynamics.microsoft.com',
+  'NetSuite': 'https://www.netsuite.com',
+  'Sage': 'https://www.sage.com',
+  'Sage HR': 'https://www.sage.com/en-gb/products/sage-hr',
+  'Xero': 'https://www.xero.com',
+  'QuickBooks': 'https://quickbooks.intuit.com',
+  'Workday': 'https://www.workday.com',
+  'BambooHR': 'https://www.bamboohr.com',
+  'Harvest': 'https://www.getharvest.com',
+
+  // Data & analytics
+  'Snowflake': 'https://www.snowflake.com',
+  'BigQuery': 'https://cloud.google.com/bigquery',
+  'Google BigQuery': 'https://cloud.google.com/bigquery',
+  'Databricks': 'https://www.databricks.com',
+  'Fivetran': 'https://www.fivetran.com',
+  'Airbyte': 'https://airbyte.com',
+  'dbt': 'https://www.getdbt.com',
+  'Apache Airflow': 'https://airflow.apache.org',
+  'Prefect': 'https://www.prefect.io',
+  'Kafka': 'https://kafka.apache.org',
+  'Apache Atlas': 'https://atlas.apache.org',
+  'Spark': 'https://spark.apache.org',
+  'Python': 'https://www.python.org',
+  'Node.js': 'https://nodejs.org',
+
+  // BI & visualisation
+  'Power BI': 'https://powerbi.microsoft.com',
+  'Tableau': 'https://www.tableau.com',
+  'Looker': 'https://looker.com',
+  'Metabase': 'https://www.metabase.com',
+  'Google Looker Studio': 'https://lookerstudio.google.com',
+
+  // Data governance
+  'Collibra': 'https://www.collibra.com',
+  'Atlan': 'https://atlan.com',
+  'Great Expectations': 'https://greatexpectations.io',
+  'Talend': 'https://www.talend.com',
+  'OneTrust': 'https://www.onetrust.com',
+  'Microsoft Purview': 'https://www.microsoft.com/en-us/security/business/microsoft-purview',
+  'ServiceNow': 'https://www.servicenow.com',
+
+  // Productivity & PM
+  'Slack': 'https://slack.com',
+  'Microsoft Teams': 'https://www.microsoft.com/en-us/microsoft-teams',
+  'Microsoft 365': 'https://www.microsoft365.com',
+  'Microsoft Project': 'https://www.microsoft.com/en-us/microsoft-365/project',
+  'Microsoft Visio': 'https://www.microsoft.com/en-us/microsoft-365/visio',
+  'Monday.com': 'https://monday.com',
+  'Notion': 'https://www.notion.so',
+  'Jira': 'https://www.atlassian.com/software/jira',
+  'Confluence': 'https://www.atlassian.com/software/confluence',
+  'Asana': 'https://asana.com',
+  'SharePoint': 'https://www.microsoft.com/en-us/microsoft-365/sharepoint',
+  'Google Drive': 'https://drive.google.com',
+  'Google Sheets': 'https://workspace.google.com/products/sheets',
+  'Excel': 'https://www.microsoft.com/en-us/microsoft-365/excel',
+  'Airtable': 'https://airtable.com',
+
+  // Design & diagramming
+  'Miro': 'https://miro.com',
+  'Lucidchart': 'https://www.lucidchart.com',
+
+  // E-commerce & industry-specific
+  'Shopify': 'https://www.shopify.com',
+  'Mews': 'https://www.mewssystems.com',
+  'Clio': 'https://www.clio.com',
+}

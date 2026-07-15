@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { TOOL_LINKS } from '@/lib/toolLinks'
 
 const row1 = ['Zapier', 'Make', 'n8n', 'HubSpot', 'Salesforce', 'Snowflake', 'dbt', 'Power BI', 'Tableau']
 const row2 = ['AWS', 'Azure', 'Google Cloud', 'OpenAI', 'Anthropic', 'LangChain', 'Pinecone', 'Databricks', 'Fivetran']
@@ -16,14 +17,27 @@ function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boo
       <div
         className={`flex gap-3 shrink-0 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'} group-hover:[animation-play-state:paused]`}
       >
-        {[...items, ...items].map((t, i) => (
-          <span
-            key={i}
-            className="inline-flex items-center bg-white border border-black/10 dark:border-white/10 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4] transition-colors duration-300 cursor-default whitespace-nowrap"
-          >
-            {t}
-          </span>
-        ))}
+        {[...items, ...items].map((t, i) => {
+          const url = TOOL_LINKS[t]
+          const cls = "inline-flex items-center gap-1.5 bg-white border border-black/10 dark:border-white/10 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4] transition-colors duration-300 whitespace-nowrap"
+          return url ? (
+            <a
+              key={i}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${cls} cursor-pointer group/item`}
+              onClick={e => e.stopPropagation()}
+            >
+              {t}
+              <svg className="opacity-0 group-hover/item:opacity-100 transition-opacity flex-shrink-0" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M1.5 8.5l7-7M8.5 8.5V1.5H1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+          ) : (
+            <span key={i} className={`${cls} cursor-default`}>{t}</span>
+          )
+        })}
       </div>
     </div>
   )

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import DetailFAQ from '@/components/pages/DetailFAQ'
+import ToolPill from '@/components/ToolPill'
 import IndustryOrbitSection from '@/components/pages/IndustryOrbitSection'
 
 interface IndustrySolution {
@@ -407,12 +408,11 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
             transition={{ duration: 0.7, delay: 0.2, ease }}
           >
             {ind.tools.map((tool) => (
-              <span
+              <ToolPill
                 key={tool}
-                className="inline-flex px-4 py-2 bg-white dark:bg-white border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 "
-              >
-                {tool}
-              </span>
+                name={tool}
+                className="px-4 py-2 bg-white dark:bg-white border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
+              />
             ))}
           </motion.div>
         </div>

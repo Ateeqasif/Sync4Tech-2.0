@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import ToolPill from '@/components/ToolPill'
 
 interface Step { title: string; desc: string }
 interface Metric { value: string; label: string; context: string }
@@ -160,7 +161,11 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             {cs.tools.map(t => (
-              <span key={t} className="px-4 py-2 rounded-full bg-white dark:bg-white border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0]">{t}</span>
+              <ToolPill
+                key={t}
+                name={t}
+                className="px-4 py-2 rounded-full bg-white dark:bg-white border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0] hover:border-[#007cf4]/50 hover:shadow-sm"
+              />
             ))}
           </motion.div>
         </div>

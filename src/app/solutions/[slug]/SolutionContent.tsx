@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import DetailFAQ from '@/components/pages/DetailFAQ'
+import ToolPill from '@/components/ToolPill'
 
 interface SolutionData {
   name: string
@@ -114,16 +115,18 @@ export default function SolutionContent({ s, slug }: Props) {
           </motion.div>
           <div className="flex flex-wrap justify-center gap-3">
             {s.tools.map((t, i) => (
-              <motion.span
+              <motion.div
                 key={t}
-                className="px-4 py-2 rounded-full bg-[#f8faff] dark:bg-[#f8faff] border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0]"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
-                {t}
-              </motion.span>
+                <ToolPill
+                  name={t}
+                  className="px-4 py-2 rounded-full bg-[#f8faff] dark:bg-[#f8faff] border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0] hover:border-[#007cf4]/50 hover:shadow-sm"
+                />
+              </motion.div>
             ))}
           </div>
         </div>

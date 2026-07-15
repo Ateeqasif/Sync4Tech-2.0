@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { TOOL_LINKS } from '@/lib/toolLinks'
 
 const CX = 490, CY = 320
 
@@ -128,28 +129,38 @@ export default function InfinityLoop() {
               style={{ fontFamily: 'system-ui, sans-serif', letterSpacing: '0.1em' }}>HUB</text>
 
             {/* ── Tool node cards ── */}
-            {tools.map((t, i) => (
-              <motion.g
-                key={t.id}
-                animate={{ y: [0, t.floatY, 0] }}
-                transition={{ duration: 3.5 + i * 0.3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 }}
-                filter="url(#cardShadow)"
-              >
-                {/* Card background */}
-                <rect
-                  x={t.x - 58} y={t.y - 22}
-                  width="116" height="44" rx="22"
-                  fill="white" stroke="#007cf4" strokeOpacity="0.18" strokeWidth="1.2"
-                />
-                {/* Color dot */}
-                <circle cx={t.x - 36} cy={t.y} r="6" fill={t.color} opacity="0.9" />
-                {/* Label */}
-                <text x={t.x - 24} y={t.y - 3} fill="#0f172a" fontSize="12" fontWeight="700"
-                  style={{ fontFamily: 'system-ui, sans-serif' }}>{t.label}</text>
-                <text x={t.x - 24} y={t.y + 11} fill="#94a3b8" fontSize="9" fontWeight="500"
-                  style={{ fontFamily: 'system-ui, sans-serif' }}>{t.cat}</text>
-              </motion.g>
-            ))}
+            {tools.map((t, i) => {
+              const url = TOOL_LINKS[t.label]
+              const cardContent = (
+                <>
+                  {/* Card background */}
+                  <rect
+                    x={t.x - 58} y={t.y - 22}
+                    width="116" height="44" rx="22"
+                    fill="white" stroke="#007cf4" strokeOpacity="0.18" strokeWidth="1.2"
+                  />
+                  {/* Color dot */}
+                  <circle cx={t.x - 36} cy={t.y} r="6" fill={t.color} opacity="0.9" />
+                  {/* Label */}
+                  <text x={t.x - 24} y={t.y - 3} fill="#0f172a" fontSize="12" fontWeight="700"
+                    style={{ fontFamily: 'system-ui, sans-serif' }}>{t.label}</text>
+                  <text x={t.x - 24} y={t.y + 11} fill="#94a3b8" fontSize="9" fontWeight="500"
+                    style={{ fontFamily: 'system-ui, sans-serif' }}>{t.cat}</text>
+                </>
+              )
+              return (
+                <motion.g
+                  key={t.id}
+                  animate={{ y: [0, t.floatY, 0] }}
+                  transition={{ duration: 3.5 + i * 0.3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 }}
+                  filter="url(#cardShadow)"
+                  style={{ cursor: url ? 'pointer' : 'default' }}
+                  onClick={() => url && window.open(url, '_blank', 'noopener,noreferrer')}
+                >
+                  {cardContent}
+                </motion.g>
+              )
+            })}
 
           </svg>
         </motion.div>

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
+import ToolPill from '@/components/ToolPill'
 
 const pillars = [
   {
@@ -175,9 +176,11 @@ export default function ServicesPage() {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             {tools.map(tool => (
-              <span key={tool} className="inline-flex items-center bg-gray-50 dark:bg-white/5 border border-gray-200  rounded-full px-4 py-2 text-sm font-semibold text-gray-600 text-gray-500 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-colors cursor-default">
-                {tool}
-              </span>
+              <ToolPill
+                key={tool}
+                name={tool}
+                className="bg-gray-50 dark:bg-white/5 border border-gray-200 rounded-full px-4 py-2 text-sm font-semibold text-gray-600 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
+              />
             ))}
           </motion.div>
         </div>

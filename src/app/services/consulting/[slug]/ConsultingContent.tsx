@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import ToolPill from '@/components/ToolPill';
 
 interface ServiceData {
   name: string;
@@ -122,12 +123,11 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             {svc.tools.map((tool, i) => (
-              <span
+              <ToolPill
                 key={i}
-                className="inline-block bg-white border border-gray-200 rounded-full px-4 py-2 text-sm font-semibold text-gray-700 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition"
-              >
-                {tool}
-              </span>
+                name={tool}
+                className="bg-white border border-gray-200 rounded-full px-4 py-2 text-sm font-semibold text-gray-700 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
+              />
             ))}
           </motion.div>
         </div>
