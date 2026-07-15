@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Logo from './Logo'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { TOOL_LINKS } from '@/lib/toolLinks'
 
 const solutions = [
   { label: 'Data Intelligence Suite', href: '/services/data-intelligence' },
@@ -124,11 +125,20 @@ export default function Footer() {
         <div className="border-b border-white/10 py-6 overflow-hidden">
           <p className="text-center text-[10px] text-white/40 font-semibold uppercase tracking-widest mb-4">Technology Partners</p>
           <div className="flex gap-4 animate-marquee whitespace-nowrap">
-            {[...techStack, ...techStack].map((t, i) => (
-              <span key={i} className="inline-flex items-center bg-white/10 border border-white/15 rounded-full px-4 py-1.5 text-xs font-semibold text-white/60 hover:text-[#36c5f0] hover:border-[#36c5f0]/40 transition-colors cursor-default shrink-0">
-                {t}
-              </span>
-            ))}
+            {[...techStack, ...techStack].map((t, i) => {
+              const url = TOOL_LINKS[t]
+              const cls = "inline-flex items-center gap-1.5 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 text-xs font-semibold text-white/60 hover:text-[#36c5f0] hover:border-[#36c5f0]/40 transition-colors shrink-0"
+              return url ? (
+                <a key={i} href={url} target="_blank" rel="noopener noreferrer" className={`${cls} cursor-pointer group`} onClick={e => e.stopPropagation()}>
+                  {t}
+                  <svg className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" width="9" height="9" viewBox="0 0 10 10" fill="none">
+                    <path d="M1.5 8.5l7-7M8.5 8.5V1.5H1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              ) : (
+                <span key={i} className={`${cls} cursor-default`}>{t}</span>
+              )
+            })}
           </div>
         </div>
 
