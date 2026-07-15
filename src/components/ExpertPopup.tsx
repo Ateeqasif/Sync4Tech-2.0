@@ -51,13 +51,10 @@ export default function ExpertPopup() {
           onClick={close}
         >
           <motion.div
-            className="relative w-full max-w-2xl overflow-hidden rounded-3xl"
+            className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white"
             style={{
-              background: 'rgba(255,255,255,0.72)',
-              backdropFilter: 'blur(24px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-              border: '1px solid rgba(255,255,255,0.9)',
-              boxShadow: '0 32px 80px rgba(3,58,157,0.18), 0 0 0 1px rgba(0,124,244,0.08), inset 0 1px 0 rgba(255,255,255,0.9)',
+              border: '1px solid rgba(0,124,244,0.12)',
+              boxShadow: '0 32px 80px rgba(3,58,157,0.14), 0 0 0 1px rgba(0,124,244,0.06)',
             }}
             initial={{ scale: 0.88, opacity: 0, y: 32 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -65,107 +62,57 @@ export default function ExpertPopup() {
             transition={{ type: 'spring', stiffness: 280, damping: 24 }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Glass top panel */}
-            <div
-              className="relative px-10 pt-10 pb-8 overflow-hidden"
-              style={{
-                background: 'linear-gradient(135deg, rgba(3,58,157,0.88) 0%, rgba(0,124,244,0.82) 60%, rgba(54,197,240,0.78) 100%)',
-                backdropFilter: 'blur(20px)',
-              }}
-            >
-              {/* Inner glass shine */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 60%)' }}
-              />
-
-              {/* Shimmer sweep */}
-              <motion.div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: 'linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.1) 50%, transparent 65%)' }}
-                animate={{ x: ['-100%', '200%'] }}
-                transition={{ duration: 3.5, repeat: Infinity, repeatDelay: 4, ease: 'easeInOut' }}
-              />
-
-              {/* Floating orb */}
-              <div
-                className="absolute -top-16 -right-16 w-56 h-56 rounded-full pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse, rgba(54,197,240,0.35), transparent 70%)' }}
-              />
-              <div
-                className="absolute -bottom-12 -left-12 w-40 h-40 rounded-full pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse, rgba(0,124,244,0.25), transparent 70%)' }}
-              />
-
-              {/* Animated dots */}
-              {DOT_POSITIONS.map((dot, i) => (
-                <motion.span
-                  key={i}
-                  className="absolute rounded-full pointer-events-none"
-                  style={{
-                    left: dot.x, top: dot.y,
-                    width: i % 3 === 0 ? '6px' : '4px',
-                    height: i % 3 === 0 ? '6px' : '4px',
-                    background: i % 2 === 0 ? 'rgba(255,255,255,0.55)' : 'rgba(54,197,240,0.8)',
-                  }}
-                  animate={{ opacity: [0.2, 1, 0.2], scale: [1, 1.6, 1] }}
-                  transition={{ duration: 2.5, repeat: Infinity, delay: dot.delay, ease: 'easeInOut' }}
-                />
-              ))}
+            {/* Single white panel */}
+            <div className="relative px-10 pt-10 pb-8">
+              {/* Top accent bar */}
+              <div className="absolute top-0 left-0 right-0 h-1 rounded-t-3xl" style={{ background: 'linear-gradient(90deg, #007cf4, #36c5f0)' }} />
 
               {/* Close button */}
               <motion.button
                 onClick={close}
-                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full z-10"
-                style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)' }}
-                whileHover={{ scale: 1.1, background: 'rgba(255,255,255,0.3)' }}
+                className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full z-10 bg-gray-100 hover:bg-gray-200 transition-colors"
+                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M1 1l12 12M13 1L1 13" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                  <path d="M1 1l12 12M13 1L1 13" stroke="#374151" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </motion.button>
 
-              <div className="relative z-10">
-                {/* Badge */}
-                <motion.div
-                  className="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-5"
-                  style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)' }}
-                  whileHover={{ background: 'rgba(255,255,255,0.25)' }}
-                >
-                  <motion.span
-                    className="w-1.5 h-1.5 rounded-full bg-[#36c5f0]"
-                    animate={{ opacity: [1, 0.3, 1] }}
-                    transition={{ duration: 1.2, repeat: Infinity }}
-                  />
-                  <span className="text-xs font-semibold tracking-widest uppercase text-white/90">We Value Your Time</span>
-                </motion.div>
+              {/* Badge */}
+              <motion.div
+                className="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-5 bg-[#007cf4]/8 border border-[#007cf4]/20"
+                whileHover={{ background: 'rgba(0,124,244,0.12)' }}
+              >
+                <motion.span
+                  className="w-1.5 h-1.5 rounded-full bg-[#007cf4]"
+                  animate={{ opacity: [1, 0.3, 1] }}
+                  transition={{ duration: 1.2, repeat: Infinity }}
+                />
+                <span className="text-xs font-semibold tracking-widest uppercase text-[#007cf4]">We Value Your Time</span>
+              </motion.div>
 
-                <motion.h2
-                  className="text-3xl font-black leading-tight tracking-tight text-white mb-3"
-                  style={{ fontFamily: 'var(--font-inter-tight)', textShadow: '0 1px 16px rgba(0,0,0,0.12)' }}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15, duration: 0.6 }}
-                >
-                  Let's Find the Right<br />Solution for You
-                </motion.h2>
-                <motion.p
-                  className="text-white/80 text-sm leading-relaxed max-w-md"
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.25, duration: 0.6 }}
-                >
-                  Our experts understand your unique challenges and craft a tailored strategy — no generic pitches, just real answers.
-                </motion.p>
-              </div>
+              <motion.h2
+                className="text-3xl font-black leading-tight tracking-tight text-[#050f2e] mb-3"
+                style={{ fontFamily: 'var(--font-inter-tight)' }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.6 }}
+              >
+                Let's Find the Right<br />Solution for You
+              </motion.h2>
+              <motion.p
+                className="text-gray-500 text-sm leading-relaxed max-w-md"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25, duration: 0.6 }}
+              >
+                Our experts understand your unique challenges and craft a tailored strategy — no generic pitches, just real answers.
+              </motion.p>
             </div>
 
-            {/* Bottom white glass panel */}
-            <div
-              className="px-10 py-8"
-              style={{ background: 'rgba(255,255,255,0.85)' }}
-            >
+            {/* Bottom section */}
+            <div className="px-10 py-8 border-t border-gray-100">
               {/* Trust indicators */}
               <div className="flex items-center gap-6 mb-7">
                 {TRUST.map((item, idx) => (
