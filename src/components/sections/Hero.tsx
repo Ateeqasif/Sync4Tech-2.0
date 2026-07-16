@@ -247,7 +247,7 @@ export default function Hero() {
 
             {/* Headline */}
             <h1
-              className="font-inter-tight font-black leading-[0.95] tracking-tight mb-8 mx-auto"
+              className="font-inter-tight font-semibold leading-[0.95] tracking-tight mb-8 mx-auto"
               style={{ fontSize: 'clamp(48px, 8vw, 110px)', maxWidth: '1000px' }}
             >
               <span className="text-black dark:text-white">
