@@ -15,35 +15,49 @@ const solutions = [
     theme: 'light' as const,
     bg: 'bg-[#e8f4ff]',
     visual: (
-      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
-        <circle cx="130" cy="100" r="70" stroke="#007cf4" strokeWidth="1.5" strokeDasharray="6 4" opacity="0.25" />
-        <circle cx="130" cy="100" r="48" stroke="#007cf4" strokeWidth="1.5" opacity="0.15" />
-        {/* Gear outer */}
-        {[0,45,90,135,180,225,270,315].map((deg, i) => (
-          <rect key={i} x="126" y="44" width="8" height="14" rx="3"
-            fill="#007cf4" opacity="0.7"
-            transform={`rotate(${deg} 130 100)`} />
+      <svg width="320" height="220" viewBox="0 0 320 220" fill="none">
+        <defs>
+          <linearGradient id="pa-node" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#033a9d" />
+            <stop offset="100%" stopColor="#007cf4" />
+          </linearGradient>
+          <linearGradient id="pa-node2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#007cf4" />
+            <stop offset="100%" stopColor="#36c5f0" />
+          </linearGradient>
+        </defs>
+        {/* Pipeline track */}
+        <rect x="24" y="98" width="272" height="4" rx="2" fill="#007cf4" opacity="0.12" />
+        <rect x="24" y="98" width="200" height="4" rx="2" fill="url(#pa-node)" opacity="0.5" />
+        {/* Step nodes */}
+        {[
+          { x: 56, icon: 'M34 10h12M34 14h8M34 18h10', label: 'Input' },
+          { x: 128, icon: 'M40 8l4 4-4 4M36 12h8', label: 'Route' },
+          { x: 200, icon: 'M33 12l4 4 8-8', label: 'Check' },
+          { x: 272, icon: 'M34 10h12M34 14h12M34 18h8', label: 'Output' },
+        ].map((n, i) => (
+          <g key={i} transform={`translate(${n.x - 28}, 74)`}>
+            <rect width="56" height="52" rx="14" fill={i < 3 ? 'url(#pa-node)' : 'url(#pa-node2)'} opacity={i < 3 ? 1 : 0.55} />
+            <rect width="56" height="52" rx="14" fill="white" opacity="0.12" />
+            <path d={n.icon} stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" transform="translate(0,0)" />
+            <text x="28" y="65" textAnchor="middle" fill="#007cf4" fontSize="9" fontWeight="600" opacity="0.7">{n.label}</text>
+          </g>
         ))}
-        <circle cx="130" cy="100" r="28" fill="white" stroke="#007cf4" strokeWidth="2" />
-        <circle cx="130" cy="100" r="16" fill="#007cf4" opacity="0.15" />
-        {/* Arrow loop */}
-        <path d="M114 100 Q114 82 130 82 Q146 82 146 100" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" fill="none" />
-        <path d="M143 95l3 5-5 1" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        {/* Nodes */}
-        <circle cx="60" cy="60" r="20" fill="white" stroke="#007cf4" strokeWidth="1.5" />
-        <path d="M53 60h14M60 53v14" stroke="#007cf4" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="200" cy="60" r="20" fill="white" stroke="#36c5f0" strokeWidth="1.5" />
-        <path d="M194 60l4 4 8-8" stroke="#36c5f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="60" cy="140" r="20" fill="white" stroke="#36c5f0" strokeWidth="1.5" />
-        <path d="M53 140h14M53 136h10" stroke="#36c5f0" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="200" cy="140" r="20" fill="white" stroke="#007cf4" strokeWidth="1.5" />
-        <circle cx="200" cy="140" r="7" fill="#007cf4" opacity="0.2" />
-        <circle cx="200" cy="140" r="3" fill="#007cf4" />
-        {/* Connectors */}
-        <line x1="80" y1="65" x2="105" y2="78" stroke="#007cf4" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
-        <line x1="180" y1="65" x2="155" y2="78" stroke="#36c5f0" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
-        <line x1="80" y1="135" x2="105" y2="122" stroke="#36c5f0" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
-        <line x1="180" y1="135" x2="155" y2="122" stroke="#007cf4" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
+        {/* Arrow between nodes */}
+        {[92, 164, 236].map(x => (
+          <path key={x} d={`M${x} 100l6 0`} stroke="#007cf4" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
+        ))}
+        {/* KPI badges */}
+        <rect x="60" y="148" width="72" height="28" rx="8" fill="white" />
+        <text x="96" y="162" textAnchor="middle" fill="#033a9d" fontSize="10" fontWeight="700">94% fewer errors</text>
+        <rect x="188" y="148" width="68" height="28" rx="8" fill="white" />
+        <text x="222" y="162" textAnchor="middle" fill="#007cf4" fontSize="10" fontWeight="700">3x faster</text>
+        {/* Decorative dots */}
+        <circle cx="24" cy="100" r="6" fill="url(#pa-node)" />
+        <circle cx="296" cy="100" r="6" fill="url(#pa-node2)" opacity="0.5" />
+        <circle cx="56" cy="30" r="4" fill="#007cf4" opacity="0.2" />
+        <circle cx="272" cy="34" r="3" fill="#36c5f0" opacity="0.3" />
+        <circle cx="160" cy="192" r="3" fill="#007cf4" opacity="0.2" />
       </svg>
     ),
   },
@@ -55,24 +69,48 @@ const solutions = [
     bg: 'bg-[#f0f7ff]',
     visual: (
       <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
-        {/* Bar chart */}
-        <rect x="30" y="120" width="28" height="60" rx="4" fill="#007cf4" opacity="0.5" />
-        <rect x="70" y="90" width="28" height="90" rx="4" fill="#007cf4" opacity="0.7" />
-        <rect x="110" y="60" width="28" height="120" rx="4" fill="#007cf4" />
-        <rect x="150" y="75" width="28" height="105" rx="4" fill="#36c5f0" opacity="0.8" />
-        <rect x="190" y="40" width="28" height="140" rx="4" fill="#36c5f0" />
+        <defs>
+          <linearGradient id="di-b1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#033a9d" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#033a9d" stopOpacity="0.5" />
+          </linearGradient>
+          <linearGradient id="di-b2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#007cf4" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#007cf4" stopOpacity="0.5" />
+          </linearGradient>
+          <linearGradient id="di-b3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#36c5f0" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#36c5f0" stopOpacity="0.5" />
+          </linearGradient>
+          <linearGradient id="di-line" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#033a9d" />
+            <stop offset="100%" stopColor="#36c5f0" />
+          </linearGradient>
+        </defs>
+        {/* Grid lines */}
+        {[50, 90, 130, 170].map(y => (
+          <line key={y} x1="32" y1={y} x2="240" y2={y} stroke="#007cf4" strokeWidth="0.5" opacity="0.1" />
+        ))}
+        {/* Bars */}
+        <rect x="40"  y="130" width="24" height="50" rx="5" fill="url(#di-b1)" />
+        <rect x="76"  y="105" width="24" height="75" rx="5" fill="url(#di-b2)" opacity="0.7" />
+        <rect x="112" y="75"  width="24" height="105" rx="5" fill="url(#di-b2)" />
+        <rect x="148" y="88"  width="24" height="92"  rx="5" fill="url(#di-b3)" opacity="0.8" />
+        <rect x="184" y="52"  width="24" height="128" rx="5" fill="url(#di-b3)" />
         {/* Trend line */}
-        <path d="M44 115 L84 85 L124 58 L164 70 L204 38" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0" fill="none" />
-        {[{x:44,y:115},{x:84,y:85},{x:124,y:58},{x:164,y:70},{x:204,y:38}].map((p,i)=>(
-          <circle key={i} cx={p.x} cy={p.y} r="5" fill="white" stroke="#007cf4" strokeWidth="2" />
+        <path d="M52 126 L88 100 L124 72 L160 84 L196 50"
+          stroke="url(#di-line)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        {/* Dots on line */}
+        {[{x:52,y:126},{x:88,y:100},{x:124,y:72},{x:160,y:84},{x:196,y:50}].map((p,i) => (
+          <g key={i}>
+            <circle cx={p.x} cy={p.y} r="5" fill="white" stroke={i < 3 ? '#007cf4' : '#36c5f0'} strokeWidth="2" />
+          </g>
         ))}
-        {/* Glow dots */}
-        <circle cx="204" cy="38" r="10" fill="#36c5f0" opacity="0.2" />
-        <circle cx="204" cy="38" r="5" fill="#36c5f0" />
-        {/* Grid */}
-        {[20,80,140].map(y=>(
-          <line key={y} x1="20" y1={y} x2="240" y2={y} stroke="white" strokeWidth="0.5" opacity="0.08" />
-        ))}
+        {/* Highlight last point */}
+        <circle cx="196" cy="50" r="10" fill="#36c5f0" opacity="0.15" />
+        <circle cx="196" cy="50" r="5" fill="#36c5f0" />
+        {/* Baseline */}
+        <line x1="32" y1="180" x2="240" y2="180" stroke="#007cf4" strokeWidth="1" opacity="0.15" />
       </svg>
     ),
   },
@@ -81,30 +119,33 @@ const solutions = [
     title: 'Workflow Orchestration',
     subtitle: 'Connect your tools, teams, and processes into seamless automated workflows that scale without friction.',
     theme: 'dark' as const,
-    bg: 'bg-gradient-to-br from-[#007cf4] to-[#36c5f0]',
+    bg: 'bg-gradient-to-br from-[#033a9d] via-[#007cf4] to-[#36c5f0]',
     visual: (
       <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
-        {/* Central hub */}
-        <circle cx="130" cy="100" r="30" fill="white" opacity="0.15" />
-        <circle cx="130" cy="100" r="18" fill="white" opacity="0.25" />
+        {/* Outer pulse rings */}
+        <circle cx="130" cy="100" r="78" stroke="white" strokeWidth="0.5" opacity="0.1" />
+        <circle cx="130" cy="100" r="58" stroke="white" strokeWidth="1" opacity="0.15" strokeDasharray="4 6" />
+        {/* Hub */}
+        <circle cx="130" cy="100" r="26" fill="white" opacity="0.18" />
+        <circle cx="130" cy="100" r="16" fill="white" opacity="0.3" />
         <circle cx="130" cy="100" r="8" fill="white" />
-        {/* Spokes and nodes */}
+        {/* Spoke nodes */}
         {[
-          {x:50, y:50, label:'CRM'},
-          {x:210, y:50, label:'ERP'},
-          {x:50, y:150, label:'HR'},
-          {x:210, y:150, label:'BI'},
-          {x:130, y:20, label:'AI'},
-        ].map((node, i) => (
+          { x: 50,  y: 52,  label: 'CRM' },
+          { x: 210, y: 52,  label: 'ERP' },
+          { x: 50,  y: 148, label: 'HR'  },
+          { x: 210, y: 148, label: 'BI'  },
+          { x: 130, y: 22,  label: 'AI'  },
+        ].map((n, i) => (
           <g key={i}>
-            <line x1={130} y1={100} x2={node.x} y2={node.y} stroke="white" strokeWidth="1.5" opacity="0.4" strokeDasharray="5 3" />
-            <circle cx={node.x} cy={node.y} r="22" fill="white" opacity="0.12" stroke="white" strokeWidth="1" strokeOpacity="0.3" />
-            <text x={node.x} y={node.y+5} textAnchor="middle" fill="white" fontSize="10" fontWeight="bold" opacity="0.9">{node.label}</text>
+            <line x1={130} y1={100} x2={n.x} y2={n.y}
+              stroke="white" strokeWidth="1" opacity="0.25" strokeDasharray="4 4" />
+            <circle cx={n.x} cy={n.y} r="20" fill="white" opacity="0.14" />
+            <circle cx={n.x} cy={n.y} r="20" stroke="white" strokeWidth="1" strokeOpacity="0.25" />
+            <text x={n.x} y={n.y + 4} textAnchor="middle" fill="white"
+              fontSize="10" fontWeight="700" opacity="0.95">{n.label}</text>
           </g>
         ))}
-        {/* Pulse rings */}
-        <circle cx="130" cy="100" r="45" stroke="white" strokeWidth="1" opacity="0.15" />
-        <circle cx="130" cy="100" r="62" stroke="white" strokeWidth="0.5" opacity="0.08" />
       </svg>
     ),
   },
@@ -116,39 +157,44 @@ const solutions = [
     bg: 'bg-[#f0f7ff]',
     visual: (
       <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
-        {/* Area chart */}
         <defs>
-          <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#007cf4" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#007cf4" stopOpacity="0.02" />
+          <linearGradient id="pa2-hist" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#033a9d" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#033a9d" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="predictGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#36c5f0" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#36c5f0" stopOpacity="0.02" />
+          <linearGradient id="pa2-pred" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#36c5f0" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#36c5f0" stopOpacity="0" />
           </linearGradient>
         </defs>
-        {/* Historical area */}
-        <path d="M20 160 L60 130 L100 140 L140 100 L140 180 L20 180Z" fill="url(#areaGrad)" />
-        <path d="M20 160 L60 130 L100 140 L140 100" stroke="#007cf4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        {/* Prediction area */}
-        <path d="M140 100 L180 70 L220 45 L220 180 L140 180Z" fill="url(#predictGrad)" />
-        <path d="M140 100 L180 70 L220 45" stroke="#36c5f0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="7 4" fill="none" />
-        {/* Divider */}
-        <line x1="140" y1="30" x2="140" y2="175" stroke="#007cf4" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
-        <text x="145" y="28" fill="#007cf4" fontSize="9" fontWeight="bold" opacity="0.7">Forecast →</text>
-        {/* Data points */}
-        {[{x:20,y:160},{x:60,y:130},{x:100,y:140},{x:140,y:100}].map((p,i)=>(
-          <circle key={i} cx={p.x} cy={p.y} r="5" fill="white" stroke="#007cf4" strokeWidth="2" />
-        ))}
-        {[{x:180,y:70},{x:220,y:45}].map((p,i)=>(
-          <circle key={i} cx={p.x} cy={p.y} r="5" fill="white" stroke="#36c5f0" strokeWidth="2" strokeDasharray="3 2" />
-        ))}
-        {/* Confidence band */}
-        <path d="M140 95 L180 62 L220 37 L220 53 L180 78 L140 105Z" fill="#36c5f0" opacity="0.08" />
         {/* Grid */}
-        {[80,120,160].map(y=>(
-          <line key={y} x1="15" y1={y} x2="235" y2={y} stroke="#007cf4" strokeWidth="0.5" opacity="0.15" />
+        {[60, 100, 140, 175].map(y => (
+          <line key={y} x1="20" y1={y} x2="240" y2={y} stroke="#007cf4" strokeWidth="0.5" opacity="0.1" />
         ))}
+        {/* Historical area + line */}
+        <path d="M24 165 L64 138 L104 148 L144 110 L144 182 L24 182Z" fill="url(#pa2-hist)" />
+        <path d="M24 165 L64 138 L104 148 L144 110"
+          stroke="#033a9d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        {/* Forecast area + dashed line */}
+        <path d="M144 110 L184 78 L224 52 L224 182 L144 182Z" fill="url(#pa2-pred)" />
+        <path d="M144 110 L184 78 L224 52"
+          stroke="#36c5f0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="7 4" fill="none" />
+        {/* Confidence band */}
+        <path d="M144 106 L184 72 L224 46 L224 58 L184 84 L144 114Z"
+          fill="#36c5f0" opacity="0.1" />
+        {/* Divider */}
+        <line x1="144" y1="38" x2="144" y2="178" stroke="#007cf4" strokeWidth="1" strokeDasharray="3 3" opacity="0.35" />
+        <rect x="147" y="32" width="56" height="16" rx="4" fill="#007cf4" opacity="0.1" />
+        <text x="175" y="43" fill="#007cf4" fontSize="8.5" fontWeight="700" opacity="0.7">Forecast →</text>
+        {/* Historical dots */}
+        {[{x:24,y:165},{x:64,y:138},{x:104,y:148},{x:144,y:110}].map((p,i) => (
+          <circle key={i} cx={p.x} cy={p.y} r="5" fill="white" stroke="#033a9d" strokeWidth="2" />
+        ))}
+        {/* Forecast dots */}
+        {[{x:184,y:78},{x:224,y:52}].map((p,i) => (
+          <circle key={i} cx={p.x} cy={p.y} r="5" fill="white" stroke="#36c5f0" strokeWidth="2" />
+        ))}
+        <circle cx="224" cy="52" r="10" fill="#36c5f0" opacity="0.15" />
       </svg>
     ),
   },
@@ -160,32 +206,44 @@ const solutions = [
     bg: 'bg-[#f0f7ff]',
     visual: (
       <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
-        {/* Brain/neural network */}
-        <circle cx="130" cy="100" r="55" stroke="#007cf4" strokeWidth="1" opacity="0.2" strokeDasharray="3 3" />
+        <defs>
+          <radialGradient id="ai-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#007cf4" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#007cf4" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        {/* Glow bg */}
+        <circle cx="130" cy="100" r="60" fill="url(#ai-glow)" />
+        {/* Outer ring */}
+        <circle cx="130" cy="100" r="72" stroke="#007cf4" strokeWidth="1" opacity="0.12" strokeDasharray="3 5" />
+        {/* Connection lines first (behind nodes) */}
+        {([
+          [130,38, 78,72],[130,38,182,72],
+          [78,72, 58,112],[78,72,130,108],[182,72,130,108],[182,72,202,112],
+          [58,112, 88,152],[130,108, 88,152],[130,108,172,152],[202,112,172,152],
+        ] as [number,number,number,number][]).map(([x1,y1,x2,y2],i) => (
+          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+            stroke="#007cf4" strokeWidth="1.5" opacity="0.2" />
+        ))}
         {/* Nodes */}
-        {[
-          {cx:130,cy:45},{cx:80,cy:75},{cx:180,cy:75},
-          {cx:60,cy:115},{cx:130,cy:110},{cx:200,cy:115},
-          {cx:85,cy:150},{cx:175,cy:150},
-        ].map((n,i)=>(
+        {([
+          {cx:130,cy:38, r:10, fill:'#033a9d'},
+          {cx:78, cy:72, r:8,  fill:'#007cf4'},
+          {cx:182,cy:72, r:8,  fill:'#007cf4'},
+          {cx:58, cy:112,r:7,  fill:'#36c5f0'},
+          {cx:130,cy:108,r:14, fill:'#007cf4'},
+          {cx:202,cy:112,r:7,  fill:'#36c5f0'},
+          {cx:88, cy:152,r:7,  fill:'#007cf4'},
+          {cx:172,cy:152,r:7,  fill:'#033a9d'},
+        ]).map((n,i) => (
           <g key={i}>
-            <circle cx={n.cx} cy={n.cy} r="10" fill="#007cf4" opacity={0.15+i*0.05} />
-            <circle cx={n.cx} cy={n.cy} r="5" fill={i%2===0?'#007cf4':'#36c5f0'} />
+            <circle cx={n.cx} cy={n.cy} r={n.r + 5} fill={n.fill} opacity="0.1" />
+            <circle cx={n.cx} cy={n.cy} r={n.r} fill={n.fill} />
+            {i === 4 && <circle cx={n.cx} cy={n.cy} r={n.r + 10} stroke="#36c5f0" strokeWidth="1.5" opacity="0.3" />}
           </g>
         ))}
-        {/* Connections */}
-        {[
-          [130,45,80,75],[130,45,180,75],
-          [80,75,60,115],[80,75,130,110],[180,75,130,110],[180,75,200,115],
-          [60,115,85,150],[130,110,85,150],[130,110,175,150],[200,115,175,150],
-        ].map(([x1,y1,x2,y2],i)=>(
-          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#007cf4" strokeWidth="1.5" opacity="0.3" />
-        ))}
-        {/* Pulse on center node */}
-        <circle cx="130" cy="110" r="18" stroke="#36c5f0" strokeWidth="1" opacity="0.3" />
-        <circle cx="130" cy="110" r="26" stroke="#36c5f0" strokeWidth="0.5" opacity="0.15" />
-        {/* Label */}
-        <text x="130" y="185" textAnchor="middle" fill="#36c5f0" fontSize="9" opacity="0.6" fontWeight="600">NEURAL INTELLIGENCE</text>
+        {/* Center label */}
+        <text x="130" y="113" textAnchor="middle" fill="white" fontSize="8" fontWeight="800" letterSpacing="0.5">AI</text>
       </svg>
     ),
   },
@@ -196,28 +254,42 @@ const solutions = [
     theme: 'light' as const,
     bg: 'bg-[#eef5ff]',
     visual: (
-      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
-        {/* Progress arcs */}
-        <circle cx="130" cy="105" r="65" stroke="#e0eeff" strokeWidth="12" fill="none" />
-        <path d="M130 40 A65 65 0 1 1 73 162" stroke="#007cf4" strokeWidth="12" strokeLinecap="round" fill="none" />
-        <circle cx="130" cy="105" r="45" stroke="#e0eeff" strokeWidth="10" fill="none" />
-        <path d="M130 60 A45 45 0 0 1 175 105" stroke="#36c5f0" strokeWidth="10" strokeLinecap="round" fill="none" />
-        {/* Center */}
-        <circle cx="130" cy="105" r="28" fill="white" stroke="#007cf4" strokeWidth="1.5" strokeOpacity="0.3" />
-        <text x="130" y="100" textAnchor="middle" fill="#007cf4" fontSize="18" fontWeight="900">87%</text>
-        <text x="130" y="116" textAnchor="middle" fill="#007cf4" fontSize="8" opacity="0.6" fontWeight="600">ADOPTION</text>
-        {/* Milestones */}
+      <svg width="420" height="200" viewBox="0 0 420 200" fill="none">
+        <defs>
+          <linearGradient id="cm-arc1" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#033a9d" />
+            <stop offset="100%" stopColor="#007cf4" />
+          </linearGradient>
+          <linearGradient id="cm-arc2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#007cf4" />
+            <stop offset="100%" stopColor="#36c5f0" />
+          </linearGradient>
+        </defs>
+        {/* Donut */}
+        <circle cx="110" cy="105" r="65" stroke="#e0eeff" strokeWidth="14" fill="none" />
+        <path d="M110 40 A65 65 0 1 1 57 163" stroke="url(#cm-arc1)" strokeWidth="14" strokeLinecap="round" fill="none" />
+        <circle cx="110" cy="105" r="44" stroke="#e0eeff" strokeWidth="10" fill="none" />
+        <path d="M110 61 A44 44 0 0 1 154 105" stroke="url(#cm-arc2)" strokeWidth="10" strokeLinecap="round" fill="none" />
+        <circle cx="110" cy="105" r="28" fill="white" />
+        <text x="110" y="100" textAnchor="middle" fill="#033a9d" fontSize="18" fontWeight="900">87%</text>
+        <text x="110" y="116" textAnchor="middle" fill="#007cf4" fontSize="8" fontWeight="700" opacity="0.7">ADOPTION</text>
+        {/* Steps — horizontal to the right */}
         {[
-          {x:55, y:55, label:'Plan'},
-          {x:205, y:55, label:'Train'},
-          {x:55, y:155, label:'Deploy'},
-          {x:205, y:155, label:'Scale'},
-        ].map((m,i)=>(
+          { x: 218, label: '01', title: 'Plan',   color: '#033a9d' },
+          { x: 286, label: '02', title: 'Train',  color: '#007cf4' },
+          { x: 354, label: '03', title: 'Deploy', color: '#36c5f0' },
+        ].map((s, i) => (
           <g key={i}>
-            <circle cx={m.x} cy={m.y} r="16" fill="white" stroke="#007cf4" strokeWidth="1.5" strokeOpacity="0.4" />
-            <text x={m.x} y={m.y+4} textAnchor="middle" fill="#007cf4" fontSize="8" fontWeight="700" opacity="0.8">{m.label}</text>
+            <rect x={s.x - 26} y="72" width="52" height="62" rx="14"
+              fill={s.color} opacity={1 - i * 0.15} />
+            <rect x={s.x - 26} y="72" width="52" height="62" rx="14" fill="white" opacity="0.1" />
+            <text x={s.x} y="103" textAnchor="middle" fill="white" fontSize="14" fontWeight="900" opacity="0.9">{s.label}</text>
+            <text x={s.x} y="122" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" opacity="0.75">{s.title}</text>
+            {i < 2 && <path d={`M${s.x + 26} 103 l8 0`} stroke={s.color} strokeWidth="2" strokeLinecap="round" opacity="0.5" />}
           </g>
         ))}
+        {/* Connector line from donut to steps */}
+        <line x1="175" y1="103" x2="192" y2="103" stroke="#007cf4" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.35" />
       </svg>
     ),
   },
@@ -263,7 +335,7 @@ export default function SolutionsPage() {
                         <span className={`px-5 py-2 rounded-full text-sm font-semibold border group-hover:border-[#007cf4]/60 ${sol.theme === 'dark' ? 'border-white/25 text-white' : 'border-black/20 text-black'}`}>Explore →</span>
                       </div>
                     </div>
-                    <div className="flex-1 flex items-center justify-center p-8 scale-125">{sol.visual}</div>
+                    <div className="flex-1 flex items-center justify-center p-8">{sol.visual}</div>
                     <div className={`absolute bottom-0 left-0 right-0 h-20 ${sol.theme === 'dark' ? 'bg-gradient-to-t from-black/20 to-transparent' : 'bg-gradient-to-t from-white/20 to-transparent'}`} />
                   </Link>
                 </motion.div>
@@ -393,7 +465,7 @@ export default function SolutionsPage() {
                         <span className={`px-5 py-2 rounded-full text-sm font-semibold border group-hover:border-[#007cf4]/60 ${sol.theme === 'dark' ? 'border-white/25 text-white' : 'border-black/20 text-black'}`}>Explore →</span>
                       </div>
                     </div>
-                    <div className="flex-1 flex items-center justify-center p-6 scale-110">{sol.visual}</div>
+                    <div className="flex-1 flex items-center justify-center p-6">{sol.visual}</div>
                     <div className={`absolute bottom-0 left-0 right-0 h-16 ${sol.theme === 'dark' ? 'bg-gradient-to-t from-black/20 to-transparent' : 'bg-gradient-to-t from-white/20 to-transparent'}`} />
                   </Link>
                 </motion.div>
