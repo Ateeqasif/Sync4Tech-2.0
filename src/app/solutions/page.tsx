@@ -1,409 +1,360 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import PageHero from '@/components/PageHero'
+import { motion, AnimatePresence } from 'framer-motion'
 import FinalCTA from '@/components/sections/FinalCTA'
-import SolutionsFAQ from '@/components/pages/SolutionsFAQ'
 import HowItWorks from '@/components/pages/HowItWorks'
 
+const EASE = [0.22, 1, 0.36, 1] as const
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
 const solutions = [
   {
     slug: 'process-automation',
+    tag: 'Automation',
     title: 'Process Automation',
-    subtitle: 'Eliminate manual bottlenecks with intelligent automation that learns and adapts to your business workflows.',
-    theme: 'light' as const,
-    bg: 'bg-[#e8f4ff]',
-    visual: (
-      <svg viewBox="0 0 440 260" className="w-full h-full" fill="none">
-        <defs>
-          <linearGradient id="pa-g1" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#033a9d"/><stop offset="1" stopColor="#007cf4"/></linearGradient>
-          <linearGradient id="pa-g2" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#007cf4"/><stop offset="1" stopColor="#36c5f0"/></linearGradient>
-        </defs>
-        {/* Track */}
-        <rect x="40" y="126" width="360" height="6" rx="3" fill="#007cf4" opacity="0.1"/>
-        <rect x="40" y="126" width="270" height="6" rx="3" fill="url(#pa-g1)" opacity="0.4"/>
-        {/* Steps */}
-        {[
-          { x: 68,  g: 'pa-g1', icon: <><rect x="55" y="108" width="26" height="3" rx="1.5" fill="white" opacity="0.9"/><rect x="55" y="115" width="20" height="3" rx="1.5" fill="white" opacity="0.7"/><rect x="55" y="122" width="23" height="3" rx="1.5" fill="white" opacity="0.6"/></> },
-          { x: 178, g: 'pa-g1', icon: <><path d="M168 116l6 6 6-6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M162 116h24" stroke="white" strokeWidth="2.5" strokeLinecap="round"/></> },
-          { x: 288, g: 'pa-g1', icon: <><path d="M277 116l5 6 10-10" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></> },
-          { x: 372, g: 'pa-g2', icon: <><rect x="362" y="108" width="26" height="3" rx="1.5" fill="white" opacity="0.9"/><rect x="362" y="115" width="26" height="3" rx="1.5" fill="white" opacity="0.7"/><rect x="362" y="122" width="18" height="3" rx="1.5" fill="white" opacity="0.5"/></> },
-        ].map((n, i) => (
-          <g key={i}>
-            <rect x={n.x - 40} y="96" width="80" height="54" rx="16" fill={`url(#${n.g})`} opacity={i === 3 ? 0.5 : 1}/>
-            <rect x={n.x - 40} y="96" width="80" height="54" rx="16" fill="white" opacity="0.08"/>
-            {n.icon}
-          </g>
-        ))}
-        {/* Arrows */}
-        {[118, 228, 332].map(x => (
-          <g key={x}>
-            <path d={`M${x} 129 l10 0`} stroke="#007cf4" strokeWidth="2" strokeLinecap="round" opacity="0.35"/>
-            <path d={`M${x+7} 126 l3 3 -3 3`} stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
-          </g>
-        ))}
-        {/* Labels below */}
-        {[{x:68,t:'Input'},{x:178,t:'Route'},{x:288,t:'Validate'},{x:372,t:'Output'}].map((l,i)=>(
-          <text key={i} x={l.x} y="168" textAnchor="middle" fill="#007cf4" fontSize="11" fontWeight="600" opacity="0.6">{l.t}</text>
-        ))}
-        {/* KPI chips */}
-        <rect x="88" y="192" width="110" height="32" rx="10" fill="white" opacity="0.85"/>
-        <text x="143" y="213" textAnchor="middle" fill="#033a9d" fontSize="11" fontWeight="700">94% fewer errors</text>
-        <rect x="242" y="192" width="90" height="32" rx="10" fill="white" opacity="0.85"/>
-        <text x="287" y="213" textAnchor="middle" fill="#007cf4" fontSize="11" fontWeight="700">3× faster</text>
-      </svg>
-    ),
+    subtitle: 'Eliminate manual bottlenecks. Automate every rule-based, repeatable workflow end-to-end.',
+    bullets: ['Invoice & document processing', 'Approval chains & notifications', 'Cross-system data sync', 'Compliance reporting'],
+    metric: { v: '94%', l: 'Error Reduction' },
+    color: '#033a9d',
   },
   {
     slug: 'data-intelligence',
+    tag: 'Data',
     title: 'Data Intelligence',
-    subtitle: 'Unify your scattered data into actionable insights that drive confident, real-time decision making.',
-    theme: 'light' as const,
-    bg: 'bg-[#f0f7ff]',
-    visual: (
-      <svg viewBox="0 0 220 180" className="w-full h-full" fill="none">
-        <defs>
-          <linearGradient id="di-b1" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#033a9d" stopOpacity="0.85"/><stop offset="1" stopColor="#033a9d" stopOpacity="0.4"/></linearGradient>
-          <linearGradient id="di-b2" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#007cf4" stopOpacity="0.9"/><stop offset="1" stopColor="#007cf4" stopOpacity="0.4"/></linearGradient>
-          <linearGradient id="di-b3" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#36c5f0" stopOpacity="0.9"/><stop offset="1" stopColor="#36c5f0" stopOpacity="0.4"/></linearGradient>
-          <linearGradient id="di-tl" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#033a9d"/><stop offset="1" stopColor="#36c5f0"/></linearGradient>
-        </defs>
-        {/* Grid */}
-        {[40,70,100,130].map(y=><line key={y} x1="20" y1={y} x2="200" y2={y} stroke="#007cf4" strokeWidth="0.5" opacity="0.09"/>)}
-        {/* Bars */}
-        <rect x="28"  y="110" width="22" height="45" rx="5" fill="url(#di-b1)"/>
-        <rect x="60"  y="90"  width="22" height="65" rx="5" fill="url(#di-b2)" opacity="0.75"/>
-        <rect x="92"  y="62"  width="22" height="93" rx="5" fill="url(#di-b2)"/>
-        <rect x="124" y="76"  width="22" height="79" rx="5" fill="url(#di-b3)" opacity="0.8"/>
-        <rect x="156" y="42"  width="22" height="113" rx="5" fill="url(#di-b3)"/>
-        {/* Trend line */}
-        <path d="M39 106 L71 86 L103 58 L135 72 L167 40" stroke="url(#di-tl)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        {/* Dots */}
-        {[{x:39,y:106,c:'#033a9d'},{x:71,y:86,c:'#007cf4'},{x:103,y:58,c:'#007cf4'},{x:135,y:72,c:'#36c5f0'},{x:167,y:40,c:'#36c5f0'}].map((p,i)=>(
-          <g key={i}><circle cx={p.x} cy={p.y} r="4.5" fill="white" stroke={p.c} strokeWidth="2"/></g>
-        ))}
-        <circle cx="167" cy="40" r="9" fill="#36c5f0" opacity="0.15"/>
-        <circle cx="167" cy="40" r="4.5" fill="#36c5f0"/>
-        <line x1="20" y1="155" x2="200" y2="155" stroke="#007cf4" strokeWidth="1" opacity="0.12"/>
-      </svg>
-    ),
+    subtitle: 'Unify scattered data into a single source of truth with real-time dashboards your whole team can use.',
+    bullets: ['Cloud data warehouses', 'Automated ETL/ELT pipelines', 'Self-serve BI dashboards', 'Predictive models'],
+    metric: { v: '18×', l: 'Faster Reporting' },
+    color: '#007cf4',
   },
   {
     slug: 'workflow-orchestration',
+    tag: 'Integration',
     title: 'Workflow Orchestration',
-    subtitle: 'Connect your tools, teams, and processes into seamless automated workflows that scale without friction.',
-    theme: 'dark' as const,
-    bg: 'bg-gradient-to-br from-[#033a9d] via-[#007cf4] to-[#36c5f0]',
-    visual: (
-      <svg viewBox="0 0 220 180" className="w-full h-full" fill="none">
-        <circle cx="110" cy="90" r="70" stroke="white" strokeWidth="0.5" opacity="0.08"/>
-        <circle cx="110" cy="90" r="50" stroke="white" strokeWidth="1" opacity="0.12" strokeDasharray="4 6"/>
-        {/* Lines to nodes */}
-        {[[110,30],[170,58],[170,122],[110,150],[50,122],[50,58]].map(([nx,ny],i)=>(
-          <line key={i} x1="110" y1="90" x2={nx} y2={ny} stroke="white" strokeWidth="1" opacity="0.2" strokeDasharray="4 4"/>
-        ))}
-        {/* Hub */}
-        <circle cx="110" cy="90" r="22" fill="white" opacity="0.15"/>
-        <circle cx="110" cy="90" r="13" fill="white" opacity="0.25"/>
-        <circle cx="110" cy="90" r="6" fill="white"/>
-        {/* Outer nodes */}
-        {[{x:110,y:30,l:'AI'},{x:170,y:58,l:'ERP'},{x:170,y:122,l:'BI'},{x:110,y:150,l:'CRM'},{x:50,y:122,l:'HR'},{x:50,y:58,l:'API'}].map((n,i)=>(
-          <g key={i}>
-            <circle cx={n.x} cy={n.y} r="18" fill="white" opacity="0.12"/>
-            <circle cx={n.x} cy={n.y} r="18" stroke="white" strokeWidth="1" strokeOpacity="0.22"/>
-            <text x={n.x} y={n.y+4} textAnchor="middle" fill="white" fontSize="9" fontWeight="700" opacity="0.9">{n.l}</text>
-          </g>
-        ))}
-      </svg>
-    ),
+    subtitle: 'Connect every tool, team, and system into seamless automated workflows that scale without friction.',
+    bullets: ['API & webhook integrations', 'Cross-platform triggers', 'Human-in-the-loop design', 'Real-time monitoring'],
+    metric: { v: '3×', l: 'Process Speed' },
+    color: '#36c5f0',
   },
   {
     slug: 'predictive-analytics',
+    tag: 'AI',
     title: 'Predictive Analytics',
-    subtitle: 'Anticipate market shifts and operational needs before they impact your bottom line with AI forecasting.',
-    theme: 'light' as const,
-    bg: 'bg-[#f0f7ff]',
-    visual: (
-      <svg viewBox="0 0 220 170" className="w-full h-full" fill="none">
-        <defs>
-          <linearGradient id="pa-ah" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#033a9d" stopOpacity="0.22"/><stop offset="1" stopColor="#033a9d" stopOpacity="0"/></linearGradient>
-          <linearGradient id="pa-af" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#36c5f0" stopOpacity="0.18"/><stop offset="1" stopColor="#36c5f0" stopOpacity="0"/></linearGradient>
-        </defs>
-        {[50,90,130].map(y=><line key={y} x1="16" y1={y} x2="204" y2={y} stroke="#007cf4" strokeWidth="0.5" opacity="0.09"/>)}
-        {/* Historical */}
-        <path d="M20 148 L60 124 L100 134 L130 100 L130 158 L20 158Z" fill="url(#pa-ah)"/>
-        <path d="M20 148 L60 124 L100 134 L130 100" stroke="#033a9d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        {/* Forecast */}
-        <path d="M130 100 L168 70 L204 46 L204 158 L130 158Z" fill="url(#pa-af)"/>
-        <path d="M130 100 L168 70 L204 46" stroke="#36c5f0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="7 4"/>
-        {/* Band */}
-        <path d="M130 96 L168 64 L204 40 L204 52 L168 76 L130 104Z" fill="#36c5f0" opacity="0.1"/>
-        {/* Divider */}
-        <line x1="130" y1="30" x2="130" y2="154" stroke="#007cf4" strokeWidth="1" strokeDasharray="3 3" opacity="0.3"/>
-        {/* Historical dots */}
-        {[{x:20,y:148},{x:60,y:124},{x:100,y:134},{x:130,y:100}].map((p,i)=>(
-          <circle key={i} cx={p.x} cy={p.y} r="4.5" fill="white" stroke="#033a9d" strokeWidth="2"/>
-        ))}
-        {/* Forecast dots */}
-        {[{x:168,y:70},{x:204,y:46}].map((p,i)=>(
-          <circle key={i} cx={p.x} cy={p.y} r="4.5" fill="white" stroke="#36c5f0" strokeWidth="2"/>
-        ))}
-        <circle cx="204" cy="46" r="9" fill="#36c5f0" opacity="0.15"/>
-        <circle cx="204" cy="46" r="4.5" fill="#36c5f0"/>
-      </svg>
-    ),
+    subtitle: 'Anticipate market shifts and operational needs before they impact your bottom line.',
+    bullets: ['ML forecasting models', 'Anomaly detection', 'Demand planning', 'Risk scoring'],
+    metric: { v: '99.9%', l: 'Data Accuracy' },
+    color: '#0550c8',
   },
   {
     slug: 'ai-enablement',
+    tag: 'AI',
     title: 'AI Enablement',
-    subtitle: 'Embed practical AI capabilities across your organisation from LLM integrations to intelligent decision engines.',
-    theme: 'light' as const,
-    bg: 'bg-[#f0f7ff]',
-    visual: (
-      <svg viewBox="0 0 220 180" className="w-full h-full" fill="none">
-        <defs>
-          <radialGradient id="ai-glo" cx="50%" cy="50%" r="50%"><stop stopColor="#007cf4" stopOpacity="0.25"/><stop offset="1" stopColor="#007cf4" stopOpacity="0"/></radialGradient>
-        </defs>
-        <circle cx="110" cy="90" r="55" fill="url(#ai-glo)"/>
-        <circle cx="110" cy="90" r="68" stroke="#007cf4" strokeWidth="1" opacity="0.1" strokeDasharray="3 5"/>
-        {/* Edges */}
-        {([[110,32,80,66],[110,32,140,66],[80,66,62,100],[80,66,110,96],[140,66,110,96],[140,66,158,100],[62,100,80,136],[110,96,80,136],[110,96,140,136],[158,100,140,136]] as [number,number,number,number][]).map(([x1,y1,x2,y2],i)=>(
-          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#007cf4" strokeWidth="1.5" opacity="0.18"/>
-        ))}
-        {/* Nodes */}
-        {([{cx:110,cy:32,r:9,c:'#033a9d'},{cx:80,cy:66,r:8,c:'#007cf4'},{cx:140,cy:66,r:8,c:'#007cf4'},{cx:62,cy:100,r:7,c:'#36c5f0'},{cx:110,cy:96,r:14,c:'#007cf4'},{cx:158,cy:100,r:7,c:'#36c5f0'},{cx:80,cy:136,r:7,c:'#007cf4'},{cx:140,cy:136,r:7,c:'#033a9d'}] as {cx:number;cy:number;r:number;c:string}[]).map((n,i)=>(
-          <g key={i}>
-            <circle cx={n.cx} cy={n.cy} r={n.r+5} fill={n.c} opacity="0.1"/>
-            <circle cx={n.cx} cy={n.cy} r={n.r} fill={n.c}/>
-            {i===4 && <circle cx={n.cx} cy={n.cy} r={n.r+10} stroke="#36c5f0" strokeWidth="1.5" opacity="0.28"/>}
-          </g>
-        ))}
-        <text x="110" y="101" textAnchor="middle" fill="white" fontSize="8" fontWeight="800">AI</text>
-      </svg>
-    ),
+    subtitle: 'Embed practical AI capabilities across your organisation — from LLM integrations to decision engines.',
+    bullets: ['Custom LLM fine-tuning', 'AI agent deployment', 'Document Q&A systems', 'Intelligent copilots'],
+    metric: { v: '85%', l: 'Workflow Steps Automated' },
+    color: '#007cf4',
   },
   {
     slug: 'change-management',
+    tag: 'Consulting',
     title: 'Change Management',
-    subtitle: 'Ensure adoption and lasting ROI with our proven transformation methodology and expert guidance.',
-    theme: 'light' as const,
-    bg: 'bg-[#eef5ff]',
-    visual: (
-      <svg viewBox="0 0 380 200" className="w-full h-full" fill="none">
-        <defs>
-          <linearGradient id="cm-g1" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#033a9d"/><stop offset="1" stopColor="#007cf4"/></linearGradient>
-          <linearGradient id="cm-g2" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#007cf4"/><stop offset="1" stopColor="#36c5f0"/></linearGradient>
-        </defs>
-        {/* Donut */}
-        <circle cx="96" cy="100" r="62" stroke="#ddeeff" strokeWidth="13" fill="none"/>
-        <path d="M96 38 A62 62 0 1 1 46 158" stroke="url(#cm-g1)" strokeWidth="13" strokeLinecap="round" fill="none"/>
-        <circle cx="96" cy="100" r="42" stroke="#ddeeff" strokeWidth="9" fill="none"/>
-        <path d="M96 58 A42 42 0 0 1 138 100" stroke="url(#cm-g2)" strokeWidth="9" strokeLinecap="round" fill="none"/>
-        <circle cx="96" cy="100" r="26" fill="white"/>
-        <text x="96" y="95" textAnchor="middle" fill="#033a9d" fontSize="16" fontWeight="900">87%</text>
-        <text x="96" y="110" textAnchor="middle" fill="#007cf4" fontSize="7.5" fontWeight="700" opacity="0.65">ADOPTION</text>
-        {/* Connector */}
-        <line x1="158" y1="100" x2="182" y2="100" stroke="#007cf4" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.3"/>
-        {/* Steps */}
-        {[{x:210,c:'#033a9d',n:'01',l:'Plan'},{x:286,c:'#007cf4',n:'02',l:'Train'},{x:362,c:'#36c5f0',n:'03',l:'Deploy'}].map((s,i)=>(
-          <g key={i}>
-            <rect x={s.x-34} y="68" width="68" height="64" rx="16" fill={s.c} opacity={1-i*0.12}/>
-            <rect x={s.x-34} y="68" width="68" height="64" rx="16" fill="white" opacity="0.08"/>
-            <text x={s.x} y="103" textAnchor="middle" fill="white" fontSize="16" fontWeight="900" opacity="0.85">{s.n}</text>
-            <text x={s.x} y="120" textAnchor="middle" fill="white" fontSize="9.5" fontWeight="600" opacity="0.7">{s.l}</text>
-            {i<2 && <path d={`M${s.x+34} 100 l10 0`} stroke={s.c} strokeWidth="2" strokeLinecap="round" opacity="0.45"/>}
-          </g>
-        ))}
-      </svg>
-    ),
+    subtitle: 'Ensure lasting ROI with expert-led adoption programmes, training, and continuous optimisation.',
+    bullets: ['Stakeholder alignment', 'Role-specific training', 'Adoption tracking', 'KPI frameworks'],
+    metric: { v: '87%', l: 'Adoption Rate' },
+    color: '#033a9d',
   },
 ]
 
+const metrics = [
+  { v: '94%', l: 'Error Reduction' },
+  { v: '3×',  l: 'Faster Execution' },
+  { v: '68%', l: 'Avg Cost Reduction' },
+  { v: '280+', l: 'Clients Served' },
+]
 
+const faqs = [
+  { q: 'How long does an automation engagement take?', a: 'Simple workflow automations go live in 2–4 weeks. Complex multi-system programmes take 8–16 weeks. We always begin with a scoped discovery sprint so you know exactly what you are getting before we build.' },
+  { q: 'Do we need technical staff to maintain automations?', a: 'No. We build automations to be self-maintaining with monitoring and alerts. We also provide training so your team can make minor adjustments, and our support team handles anything significant.' },
+  { q: 'Can you connect our existing tools?', a: 'Yes. We connect any system with an API or database — Salesforce, HubSpot, Shopify, PostgreSQL, QuickBooks, Xero, and 500+ more. If it stores data, we can connect it.' },
+  { q: 'What is the typical ROI?', a: 'Across our engagements the true ROI averages 3–8× the cost of implementation, typically realised within the first 6 months. We calculate this across labour savings, error reduction, delay costs, and opportunity gains.' },
+  { q: 'Do you work with startups or only enterprise?', a: 'Both. We work with funded startups building scalable operations, mid-market companies optimising for growth, and enterprise clients needing complex multi-system transformation.' },
+]
+
+const INDUSTRIES = ['Healthcare', 'Financial Services', 'Manufacturing', 'Retail & E-Commerce', 'Real Estate', 'Logistics', 'Education', 'Legal']
+const SIZES = ['1–10', '11–50', '51–200', '201–500', '500+']
+
+// ─── Inline contact form ───────────────────────────────────────────────────────
+function InlineContact() {
+  const [form, setForm] = useState({ name: '', email: '', company: '', size: '', industry: '', challenge: '' })
+  const [sent, setSent] = useState(false)
+  const set = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }))
+
+  return (
+    <motion.div
+      className="bg-white rounded-3xl border border-[#007cf4]/15 p-8 shadow-xl shadow-[#007cf4]/5"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.8, ease: EASE }}
+    >
+      {sent ? (
+        <div className="text-center py-10">
+          <div className="w-16 h-16 bg-[#007cf4]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M5 14l7 7L23 7" stroke="#007cf4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
+          <h3 className="font-inter-tight font-black text-black text-xl mb-2">Message sent!</h3>
+          <p className="text-gray-500 text-sm">We will be in touch within 24 hours.</p>
+        </div>
+      ) : (
+        <>
+          <h3 className="font-inter-tight font-black text-black text-xl mb-6">Tell us about your challenge</h3>
+          <form onSubmit={e => { e.preventDefault(); setSent(true) }} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1.5">Full Name *</label>
+                <input required value={form.name} onChange={e => set('name', e.target.value)} type="text" placeholder="Jane Smith"
+                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1.5">Work Email *</label>
+                <input required value={form.email} onChange={e => set('email', e.target.value)} type="email" placeholder="jane@company.com"
+                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 mb-1.5">Company Name *</label>
+              <input required value={form.company} onChange={e => set('company', e.target.value)} type="text" placeholder="Acme Corp"
+                className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1.5">Company Size</label>
+                <select value={form.size} onChange={e => set('size', e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors">
+                  <option value="">Select size</option>
+                  {SIZES.map(s => <option key={s}>{s} employees</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1.5">Industry</label>
+                <select value={form.industry} onChange={e => set('industry', e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors">
+                  <option value="">Select industry</option>
+                  {INDUSTRIES.map(ind => <option key={ind}>{ind}</option>)}
+                </select>
+              </div>
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 mb-1.5">Your biggest operational challenge *</label>
+              <textarea required value={form.challenge} onChange={e => set('challenge', e.target.value)} rows={4} placeholder="Describe the process or problem you want to solve..."
+                className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors resize-none" />
+            </div>
+            <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+              className="w-full py-4 rounded-full text-white font-semibold text-sm transition-all"
+              style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+              Send Message →
+            </motion.button>
+          </form>
+        </>
+      )}
+    </motion.div>
+  )
+}
+
+// ─── FAQ accordion ─────────────────────────────────────────────────────────────
+function FAQAccordion() {
+  const [open, setOpen] = useState<number | null>(null)
+  return (
+    <div className="flex flex-col gap-2">
+      {faqs.map((f, i) => (
+        <motion.div key={i} className="rounded-2xl border overflow-hidden"
+          style={{ borderColor: open === i ? 'rgba(0,124,244,0.3)' : 'rgba(0,0,0,0.07)' }}>
+          <button className="w-full flex items-center gap-4 px-5 py-4 text-left" onClick={() => setOpen(open === i ? null : i)}>
+            <span className="font-inter-tight font-black text-xs tabular-nums" style={{ color: open === i ? '#007cf4' : 'rgba(0,0,0,0.2)' }}>
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <span className={`flex-1 font-semibold text-sm leading-snug ${open === i ? 'text-[#050f2e]' : 'text-gray-600'}`}>{f.q}</span>
+            <motion.span animate={{ rotate: open === i ? 45 : 0 }} transition={{ duration: 0.2 }}
+              className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center"
+              style={{ background: open === i ? 'linear-gradient(135deg,#007cf4,#36c5f0)' : 'rgba(0,0,0,0.05)' }}>
+              <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                <path d="M5 1v8M1 5h8" stroke={open === i ? '#fff' : '#888'} strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </motion.span>
+          </button>
+          <AnimatePresence initial={false}>
+            {open === i && (
+              <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: EASE }} className="overflow-hidden">
+                <p className="pl-14 pr-5 pb-5 text-gray-500 text-sm leading-relaxed">{f.a}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
+// ─── Page ──────────────────────────────────────────────────────────────────────
 export default function SolutionsPage() {
   return (
     <main>
-      <PageHero
-        eyebrow="Our Solutions"
-        title="Intelligent Solutions for"
-        highlight="Modern Business"
-        subtitle="Six integrated capabilities that eliminate operational bottlenecks and accelerate growth."
-        breadcrumb={[{ label: 'Solutions', href: '/solutions' }]}
-      />
 
-      {/* Solutions Bento Grid */}
-      <section className="py-section bg-[#f5f5f7] dark:bg-[#f8faff]">
+      {/* ── Hero ── */}
+      <section className="relative min-h-[72vh] flex items-center bg-white overflow-hidden">
+        {/* Background grid + orbs */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 opacity-[0.04]"
+            style={{ backgroundImage: 'linear-gradient(#007cf4 1px,transparent 1px),linear-gradient(90deg,#007cf4 1px,transparent 1px)', backgroundSize: '80px 80px' }} />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full opacity-10"
+            style={{ background: 'radial-gradient(ellipse,#007cf4 0%,transparent 70%)' }} />
+        </div>
+        <div className="section-container relative z-10 py-32 text-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE }}>
+            <span className="inline-flex items-center gap-2 bg-[#007cf4]/8 border border-[#007cf4]/20 text-[#007cf4] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#007cf4] animate-pulse" />
+              Our Solutions
+            </span>
+          </motion.div>
+          <motion.h1 className="font-inter-tight font-semibold leading-tight tracking-tight text-black mb-6 mx-auto"
+            style={{ fontSize: 'clamp(40px,6vw,88px)', maxWidth: '900px' }}
+            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: EASE }}>
+            Intelligent Solutions for{' '}
+            <span className="gradient-text-animated">Modern Business</span>
+          </motion.h1>
+          <motion.p className="text-gray-500 text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2, ease: EASE }}>
+            Six integrated capabilities that eliminate operational bottlenecks, unify your data, and accelerate growth with AI automation.
+          </motion.p>
+          <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3, ease: EASE }}>
+            <a href="#contact-form" className="inline-flex items-center gap-2 text-white px-8 py-4 rounded-full font-semibold text-sm btn-glow transition-all"
+              style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+              Get Started →
+            </a>
+            <a href="#solutions" className="inline-flex items-center gap-2 border border-black/15 text-black px-8 py-4 rounded-full font-semibold text-sm hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-all">
+              Explore Solutions
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Metrics bar ── */}
+      <section className="py-10 bg-[#f8faff]">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[320px]">
-
-            {/* Card 0 Process Automation wide (2col) + tall (2row) */}
-            {(() => {
-              const sol = solutions[0]
-              return (
-                <motion.div
-                  key={sol.slug}
-                  className="md:col-span-2 md:row-span-2"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <Link href={`/solutions/${sol.slug}`}
-                    className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col h-full transition-all duration-500 hover:scale-[1.012] hover:shadow-2xl`}
-                  >
-                    <div className="p-10 pb-0 flex flex-col items-center text-center z-10">
-                      <h2 className={`font-inter-tight font-black text-3xl md:text-4xl mb-3 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
-                      <p className={`text-sm leading-relaxed max-w-sm ${sol.theme === 'dark' ? 'text-white/70' : 'text-gray-500'}`}>{sol.subtitle}</p>
-                      <div className="mt-5 flex items-center gap-3">
-                        <span className="px-5 py-2 rounded-full text-sm font-semibold" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)', color: 'white' }}>Learn more</span>
-                        <span className={`px-5 py-2 rounded-full text-sm font-semibold border group-hover:border-[#007cf4]/60 ${sol.theme === 'dark' ? 'border-white/25 text-white' : 'border-black/20 text-black'}`}>Explore →</span>
-                      </div>
-                    </div>
-                    <div className="flex-1 flex items-end justify-center px-6 pb-6">{sol.visual}</div>
-                    <div className={`absolute bottom-0 left-0 right-0 h-20 ${sol.theme === 'dark' ? 'bg-gradient-to-t from-black/20 to-transparent' : 'bg-gradient-to-t from-white/20 to-transparent'}`} />
-                  </Link>
+          <div className="rounded-3xl overflow-hidden shadow-xl" style={{ background: 'linear-gradient(135deg,#033a9d 0%,#007cf4 60%,#36c5f0 100%)' }}>
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20">
+              {metrics.map((m, i) => (
+                <motion.div key={i} className="p-8 text-center relative overflow-hidden"
+                  initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }}>
+                  <div className="absolute inset-0 opacity-10 pointer-events-none"
+                    style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '18px 18px' }} />
+                  <div className="relative">
+                    <div className="font-inter-tight font-black text-white text-4xl md:text-5xl mb-1 leading-none">{m.v}</div>
+                    <div className="text-white/70 text-xs font-medium">{m.l}</div>
+                  </div>
                 </motion.div>
-              )
-            })()}
-
-            {/* Card 1 Data Intelligence 1col, 1row */}
-            {(() => {
-              const sol = solutions[1]
-              return (
-                <motion.div
-                  key={sol.slug}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <Link href={`/solutions/${sol.slug}`}
-                    className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col h-full transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl`}
-                  >
-                    <div className="p-7 pb-0 flex flex-col items-center text-center z-10">
-                      <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
-                      <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
-                    </div>
-                    <div className="flex-1 flex items-end justify-center px-4 pb-4">{sol.visual}</div>
-                    <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  </Link>
-                </motion.div>
-              )
-            })()}
-
-            {/* Card 2 Workflow Orchestration 1col, 1row */}
-            {(() => {
-              const sol = solutions[2]
-              return (
-                <motion.div
-                  key={sol.slug}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <Link href={`/solutions/${sol.slug}`}
-                    className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col h-full transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl`}
-                  >
-                    <div className="p-7 pb-0 flex flex-col items-center text-center z-10">
-                      <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
-                      <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
-                    </div>
-                    <div className="flex-1 flex items-end justify-center px-4 pb-4">{sol.visual}</div>
-                    <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  </Link>
-                </motion.div>
-              )
-            })()}
-
-            {/* Card 3 Predictive Analytics 1col, 1row */}
-            {(() => {
-              const sol = solutions[3]
-              return (
-                <motion.div
-                  key={sol.slug}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <Link href={`/solutions/${sol.slug}`}
-                    className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col h-full transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl`}
-                  >
-                    <div className="p-7 pb-0 flex flex-col items-center text-center z-10">
-                      <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
-                      <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
-                    </div>
-                    <div className="flex-1 flex items-end justify-center px-4 pb-4">{sol.visual}</div>
-                    <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#007cf4] opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  </Link>
-                </motion.div>
-              )
-            })()}
-
-            {/* Card 4 AI Enablement 1col, 1row */}
-            {(() => {
-              const sol = solutions[4]
-              return (
-                <motion.div
-                  key={sol.slug}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <Link href={`/solutions/${sol.slug}`}
-                    className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex flex-col h-full transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl`}
-                  >
-                    <div className="p-7 pb-0 flex flex-col items-center text-center z-10">
-                      <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
-                      <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
-                    </div>
-                    <div className="flex-1 flex items-end justify-center px-4 pb-4">{sol.visual}</div>
-                    <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  </Link>
-                </motion.div>
-              )
-            })()}
-
-            {/* Card 5 Change Management wide (2col), 1row */}
-            {(() => {
-              const sol = solutions[5]
-              return (
-                <motion.div
-                  key={sol.slug}
-                  className="md:col-span-2"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <Link href={`/solutions/${sol.slug}`}
-                    className={`group relative overflow-hidden rounded-3xl ${sol.bg} flex md:flex-row flex-col h-full transition-all duration-500 hover:scale-[1.012] hover:shadow-2xl`}
-                  >
-                    <div className="flex flex-col justify-center p-10 z-10 md:w-1/2">
-                      <h2 className={`font-inter-tight font-black text-2xl md:text-3xl mb-3 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
-                      <p className={`text-sm leading-relaxed max-w-xs mb-5 ${sol.theme === 'dark' ? 'text-white/70' : 'text-gray-500'}`}>{sol.subtitle}</p>
-                      <div className="flex items-center gap-3">
-                        <span className="px-5 py-2 rounded-full text-sm font-semibold" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)', color: 'white' }}>Learn more</span>
-                        <span className={`px-5 py-2 rounded-full text-sm font-semibold border group-hover:border-[#007cf4]/60 ${sol.theme === 'dark' ? 'border-white/25 text-white' : 'border-black/20 text-black'}`}>Explore →</span>
-                      </div>
-                    </div>
-                    <div className="flex-1 flex items-end justify-center px-6 pb-5">{sol.visual}</div>
-                    <div className={`absolute bottom-0 left-0 right-0 h-16 ${sol.theme === 'dark' ? 'bg-gradient-to-t from-black/20 to-transparent' : 'bg-gradient-to-t from-white/20 to-transparent'}`} />
-                  </Link>
-                </motion.div>
-              )
-            })()}
-
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
+      {/* ── Solutions grid ── */}
+      <section className="py-section bg-white" id="solutions">
+        <div className="section-container">
+          <motion.div className="text-center mb-14"
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.8, ease: EASE }}>
+            <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3 block">What We Build</span>
+            <h2 className="font-inter-tight font-black text-black text-3xl md:text-4xl">Six Capabilities. One Transformation.</h2>
+          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {solutions.map((s, i) => (
+              <motion.div key={s.slug}
+                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6, delay: i * 0.07, ease: EASE }}>
+                <Link href={`/solutions/${s.slug}`}
+                  className="group flex flex-col h-full bg-white rounded-2xl border border-black/8 p-7 hover:border-[#007cf4]/30 hover:shadow-xl hover:shadow-[#007cf4]/6 transition-all duration-300">
+                  {/* Top row */}
+                  <div className="flex items-start justify-between mb-5">
+                    <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full"
+                      style={{ background: s.color + '14', color: s.color }}>{s.tag}</span>
+                    <div className="text-right">
+                      <div className="font-inter-tight font-black text-2xl leading-none" style={{ color: s.color }}>{s.metric.v}</div>
+                      <div className="text-gray-400 text-[10px] font-semibold mt-0.5">{s.metric.l}</div>
+                    </div>
+                  </div>
+                  {/* Title & subtitle */}
+                  <h3 className="font-inter-tight font-black text-black text-xl mb-2 group-hover:text-[#007cf4] transition-colors">{s.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-5">{s.subtitle}</p>
+                  {/* Bullets */}
+                  <ul className="flex flex-col gap-2 mt-auto">
+                    {s.bullets.map((b, bi) => (
+                      <li key={bi} className="flex items-center gap-2.5 text-sm text-gray-500">
+                        <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: s.color }} />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                  {/* CTA */}
+                  <div className="mt-6 flex items-center gap-1.5 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: s.color }}>
+                    Explore {s.title} →
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── How We Deliver ── */}
       <HowItWorks />
 
-      <SolutionsFAQ />
+      {/* ── FAQ + Contact form side by side ── */}
+      <section className="py-section bg-[#f8faff]" id="contact-form">
+        <div className="section-container">
+          <motion.div className="text-center mb-14"
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.8, ease: EASE }}>
+            <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3 block">Get Started</span>
+            <h2 className="font-inter-tight font-black text-black text-3xl md:text-4xl">Ready to Transform?</h2>
+            <p className="text-gray-500 text-base mt-4 max-w-lg mx-auto leading-relaxed">
+              Tell us your biggest operational challenge and we will show you exactly how to solve it.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left: FAQ */}
+            <motion.div
+              initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, ease: EASE }}>
+              <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-6">Common Questions</p>
+              <FAQAccordion />
+              {/* Trust strip */}
+              <div className="mt-8 flex flex-wrap items-center gap-6 text-gray-400 text-sm">
+                {['No commitment required', 'NDA available', 'Reply within 24 hours'].map((t, i) => (
+                  <span key={t} className="flex items-center gap-2">
+                    {i > 0 && <span className="w-1.5 h-1.5 rounded-full bg-[#007cf4] animate-pulse" />}
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right: Contact form */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.1, ease: EASE }}>
+              <InlineContact />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <FinalCTA />
     </main>
   )
