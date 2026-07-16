@@ -112,7 +112,7 @@ function InlineContact() {
           <h3 className="font-inter-tight font-black text-black text-xl mb-6">Tell us about your challenge</h3>
           <form onSubmit={async e => {
             e.preventDefault(); setLoading(true)
-            try { await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...form, source: 'Solutions Page' }) }) } catch {}
+            try { await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY, subject: `New enquiry from ${form.name} - ${form.company || 'Sync4Tech'}`, from_name: 'Sync4Tech Solutions Form', ...form, source: 'Solutions Page' }) }) } catch {}
             setLoading(false); setSent(true)
           }} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

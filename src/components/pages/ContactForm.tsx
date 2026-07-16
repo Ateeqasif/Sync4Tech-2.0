@@ -25,10 +25,17 @@ export default function ContactForm() {
     e.preventDefault()
     setLoading(true)
     try {
-      await fetch('/api/contact', {
+      await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, source: 'Contact Page' }),
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `New enquiry from ${form.name} - ${form.company || 'Sync4Tech'}`,
+          from_name: 'Sync4Tech Contact Form',
+          replyto: form.email,
+          ...form,
+          source: 'Contact Page',
+        }),
       })
     } catch {}
     setLoading(false)

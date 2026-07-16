@@ -70,10 +70,16 @@ export default function Footer() {
     if (!email) return
     setSubmitting(true)
     try {
-      await fetch('/api/newsletter', {
+      await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `New newsletter subscriber: ${email}`,
+          from_name: 'Sync4Tech Newsletter',
+          email,
+          source: 'Footer Newsletter',
+        }),
       })
     } catch {}
     setSubmitting(false)
