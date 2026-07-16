@@ -18,17 +18,29 @@ function fmtDl(v: number) {
   return String(Math.round(v))
 }
 
+// ─── Brand palette shades ─────────────────────────────────────────────────────
+// navy → blue → sky · each series gets its own distinct shade
+const BRAND = {
+  navy:      '#033a9d', // darkest
+  navyMid:   '#0550c8', // navy-blue mid
+  blue:      '#007cf4', // primary blue
+  blueMid:   '#3399f7', // lighter blue
+  sky:       '#36c5f0', // sky / cyan
+  skyLight:  '#7adaf8', // light sky
+  teal:      '#0ea5c9', // teal shade
+}
+
 // ─── Package definitions ──────────────────────────────────────────────────────
 const AI_PKGS = [
-  { pkg: 'openai',                      label: 'OpenAI SDK', color: '#10A37F', sim: 650_000 }, // OpenAI green
-  { pkg: '@anthropic-ai/sdk',           label: 'Anthropic',  color: '#D97757', sim: 95_000  }, // Anthropic clay
-  { pkg: '@langchain/core',             label: 'LangChain',  color: '#1A7F64', sim: 270_000 }, // LangChain forest green
-  { pkg: '@pinecone-database/pinecone', label: 'Pinecone',   color: '#00C47C', sim: 28_000  }, // Pinecone pine green
+  { pkg: 'openai',                      label: 'OpenAI SDK', color: BRAND.navy,    sim: 650_000 },
+  { pkg: '@anthropic-ai/sdk',           label: 'Anthropic',  color: BRAND.blue,    sim: 95_000  },
+  { pkg: '@langchain/core',             label: 'LangChain',  color: BRAND.sky,     sim: 270_000 },
+  { pkg: '@pinecone-database/pinecone', label: 'Pinecone',   color: BRAND.navyMid, sim: 28_000  },
 ]
 const AUTO_PKGS = [
-  { pkg: 'n8n',                  label: 'n8n',        color: '#F05C35', sim: 42_000 }, // n8n orange
-  { pkg: 'zapier-platform-core', label: 'Zapier',     color: '#FF4A00', sim: 14_000 }, // Zapier orange
-  { pkg: 'highlevel-api',        label: 'GoHighLevel', color: '#0891B2', sim: 8_000  }, // GHL teal-blue
+  { pkg: 'n8n',                  label: 'n8n',         color: BRAND.blueMid,  sim: 42_000 },
+  { pkg: 'zapier-platform-core', label: 'Zapier',      color: BRAND.teal,     sim: 14_000 },
+  { pkg: 'highlevel-api',        label: 'GoHighLevel', color: BRAND.skyLight, sim: 8_000  },
 ]
 
 type NpmSeries = { label: string; color: string; days: string[]; data: number[] }
@@ -212,17 +224,20 @@ function KpiTile({ s }: { s: NpmSeries }) {
   const up    = pct >= 0
 
   return (
-    <div className="rounded-2xl p-4 bg-[#f8faff] border border-gray-100 flex flex-col gap-2">
+    <div
+      className="rounded-2xl p-4 flex flex-col gap-2 border"
+      style={{ background: s.color + '0d', borderColor: s.color + '30' }}
+    >
       <div className="flex items-center gap-2">
         <Pulse color={s.color} />
-        <span className="text-xs font-semibold text-gray-500 truncate">{s.label}</span>
+        <span className="text-xs font-semibold truncate" style={{ color: s.color }}>{s.label}</span>
       </div>
       <div className="font-inter-tight font-black text-2xl tabular-nums" style={{ color: s.color }}>
         {fmtDl(Math.round(avg))}
-        <span className="text-gray-400 text-xs font-medium ml-1">/day</span>
+        <span className="text-xs font-medium ml-1" style={{ color: s.color + '80' }}>/day</span>
       </div>
       <div className="flex items-center justify-between">
-        <span className="text-[10px] text-gray-400">{fmtDl(total)} total</span>
+        <span className="text-[10px]" style={{ color: s.color + '99' }}>{fmtDl(total)} total</span>
         <span className={`text-[11px] font-bold flex items-center gap-0.5 ${up ? 'text-emerald-500' : 'text-red-400'}`}>
           <svg width="7" height="7" viewBox="0 0 8 8" fill="currentColor"
             style={{ transform: up ? 'none' : 'rotate(180deg)' }}>
@@ -261,31 +276,31 @@ function FilterBar({
       {/* Row 1: Category + Range on the same line */}
       <div className="flex items-center justify-between gap-4 flex-wrap">
         {/* Category segment */}
-        <div className="flex items-center gap-1 p-1 bg-gray-100 rounded-full">
+        <div className="flex items-center gap-1 p-1 rounded-full" style={{ background: 'rgba(0,124,244,0.08)' }}>
           {catTabs.map(t => (
             <button
               key={t.value}
               onClick={() => setCategory(t.value)}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer select-none ${
-                category === t.value
-                  ? 'bg-[#050f2e] text-white shadow-sm'
-                  : 'text-gray-500 hover:text-gray-800'
-              }`}
+              className="px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer select-none"
+              style={category === t.value
+                ? { background: 'linear-gradient(135deg,#033a9d,#007cf4)', color: '#fff', boxShadow: '0 1px 6px rgba(0,124,244,0.35)' }
+                : { color: '#007cf4' }
+              }
             >{t.label}</button>
           ))}
         </div>
 
         {/* Range segment */}
-        <div className="flex items-center gap-1 p-1 bg-gray-100 rounded-full">
+        <div className="flex items-center gap-1 p-1 rounded-full" style={{ background: 'rgba(0,124,244,0.08)' }}>
           {DAY_OPTIONS.map(d => (
             <button
               key={d}
               onClick={() => setDayRange(d)}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer select-none ${
-                dayRange === d
-                  ? 'bg-[#050f2e] text-white shadow-sm'
-                  : 'text-gray-500 hover:text-gray-800'
-              }`}
+              className="px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer select-none"
+              style={dayRange === d
+                ? { background: 'linear-gradient(135deg,#007cf4,#36c5f0)', color: '#fff', boxShadow: '0 1px 6px rgba(54,197,240,0.35)' }
+                : { color: '#007cf4' }
+              }
             >{d}d</button>
           ))}
         </div>
@@ -530,7 +545,8 @@ export default function LiveDashboard() {
             <div className="flex items-center gap-3 shrink-0">
               <a
                 href="/services"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-semibold transition-colors"
+                style={{ color: '#007cf4', background: 'rgba(0,124,244,0.08)', border: '1px solid rgba(0,124,244,0.2)' }}
               >
                 Our Services
               </a>
