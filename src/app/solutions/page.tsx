@@ -15,49 +15,43 @@ const solutions = [
     theme: 'light' as const,
     bg: 'bg-[#e8f4ff]',
     visual: (
-      <svg width="320" height="220" viewBox="0 0 320 220" fill="none">
+      <svg viewBox="0 0 440 260" className="w-full h-full" fill="none">
         <defs>
-          <linearGradient id="pa-node" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#033a9d" />
-            <stop offset="100%" stopColor="#007cf4" />
-          </linearGradient>
-          <linearGradient id="pa-node2" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#007cf4" />
-            <stop offset="100%" stopColor="#36c5f0" />
-          </linearGradient>
+          <linearGradient id="pa-g1" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#033a9d"/><stop offset="1" stopColor="#007cf4"/></linearGradient>
+          <linearGradient id="pa-g2" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#007cf4"/><stop offset="1" stopColor="#36c5f0"/></linearGradient>
         </defs>
-        {/* Pipeline track */}
-        <rect x="24" y="98" width="272" height="4" rx="2" fill="#007cf4" opacity="0.12" />
-        <rect x="24" y="98" width="200" height="4" rx="2" fill="url(#pa-node)" opacity="0.5" />
-        {/* Step nodes */}
+        {/* Track */}
+        <rect x="40" y="126" width="360" height="6" rx="3" fill="#007cf4" opacity="0.1"/>
+        <rect x="40" y="126" width="270" height="6" rx="3" fill="url(#pa-g1)" opacity="0.4"/>
+        {/* Steps */}
         {[
-          { x: 56, icon: 'M34 10h12M34 14h8M34 18h10', label: 'Input' },
-          { x: 128, icon: 'M40 8l4 4-4 4M36 12h8', label: 'Route' },
-          { x: 200, icon: 'M33 12l4 4 8-8', label: 'Check' },
-          { x: 272, icon: 'M34 10h12M34 14h12M34 18h8', label: 'Output' },
+          { x: 68,  g: 'pa-g1', icon: <><rect x="55" y="108" width="26" height="3" rx="1.5" fill="white" opacity="0.9"/><rect x="55" y="115" width="20" height="3" rx="1.5" fill="white" opacity="0.7"/><rect x="55" y="122" width="23" height="3" rx="1.5" fill="white" opacity="0.6"/></> },
+          { x: 178, g: 'pa-g1', icon: <><path d="M168 116l6 6 6-6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M162 116h24" stroke="white" strokeWidth="2.5" strokeLinecap="round"/></> },
+          { x: 288, g: 'pa-g1', icon: <><path d="M277 116l5 6 10-10" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></> },
+          { x: 372, g: 'pa-g2', icon: <><rect x="362" y="108" width="26" height="3" rx="1.5" fill="white" opacity="0.9"/><rect x="362" y="115" width="26" height="3" rx="1.5" fill="white" opacity="0.7"/><rect x="362" y="122" width="18" height="3" rx="1.5" fill="white" opacity="0.5"/></> },
         ].map((n, i) => (
-          <g key={i} transform={`translate(${n.x - 28}, 74)`}>
-            <rect width="56" height="52" rx="14" fill={i < 3 ? 'url(#pa-node)' : 'url(#pa-node2)'} opacity={i < 3 ? 1 : 0.55} />
-            <rect width="56" height="52" rx="14" fill="white" opacity="0.12" />
-            <path d={n.icon} stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" transform="translate(0,0)" />
-            <text x="28" y="65" textAnchor="middle" fill="#007cf4" fontSize="9" fontWeight="600" opacity="0.7">{n.label}</text>
+          <g key={i}>
+            <rect x={n.x - 40} y="96" width="80" height="54" rx="16" fill={`url(#${n.g})`} opacity={i === 3 ? 0.5 : 1}/>
+            <rect x={n.x - 40} y="96" width="80" height="54" rx="16" fill="white" opacity="0.08"/>
+            {n.icon}
           </g>
         ))}
-        {/* Arrow between nodes */}
-        {[92, 164, 236].map(x => (
-          <path key={x} d={`M${x} 100l6 0`} stroke="#007cf4" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
+        {/* Arrows */}
+        {[118, 228, 332].map(x => (
+          <g key={x}>
+            <path d={`M${x} 129 l10 0`} stroke="#007cf4" strokeWidth="2" strokeLinecap="round" opacity="0.35"/>
+            <path d={`M${x+7} 126 l3 3 -3 3`} stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
+          </g>
         ))}
-        {/* KPI badges */}
-        <rect x="60" y="148" width="72" height="28" rx="8" fill="white" />
-        <text x="96" y="162" textAnchor="middle" fill="#033a9d" fontSize="10" fontWeight="700">94% fewer errors</text>
-        <rect x="188" y="148" width="68" height="28" rx="8" fill="white" />
-        <text x="222" y="162" textAnchor="middle" fill="#007cf4" fontSize="10" fontWeight="700">3x faster</text>
-        {/* Decorative dots */}
-        <circle cx="24" cy="100" r="6" fill="url(#pa-node)" />
-        <circle cx="296" cy="100" r="6" fill="url(#pa-node2)" opacity="0.5" />
-        <circle cx="56" cy="30" r="4" fill="#007cf4" opacity="0.2" />
-        <circle cx="272" cy="34" r="3" fill="#36c5f0" opacity="0.3" />
-        <circle cx="160" cy="192" r="3" fill="#007cf4" opacity="0.2" />
+        {/* Labels below */}
+        {[{x:68,t:'Input'},{x:178,t:'Route'},{x:288,t:'Validate'},{x:372,t:'Output'}].map((l,i)=>(
+          <text key={i} x={l.x} y="168" textAnchor="middle" fill="#007cf4" fontSize="11" fontWeight="600" opacity="0.6">{l.t}</text>
+        ))}
+        {/* KPI chips */}
+        <rect x="88" y="192" width="110" height="32" rx="10" fill="white" opacity="0.85"/>
+        <text x="143" y="213" textAnchor="middle" fill="#033a9d" fontSize="11" fontWeight="700">94% fewer errors</text>
+        <rect x="242" y="192" width="90" height="32" rx="10" fill="white" opacity="0.85"/>
+        <text x="287" y="213" textAnchor="middle" fill="#007cf4" fontSize="11" fontWeight="700">3× faster</text>
       </svg>
     ),
   },
@@ -68,49 +62,30 @@ const solutions = [
     theme: 'light' as const,
     bg: 'bg-[#f0f7ff]',
     visual: (
-      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
+      <svg viewBox="0 0 220 180" className="w-full h-full" fill="none">
         <defs>
-          <linearGradient id="di-b1" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#033a9d" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#033a9d" stopOpacity="0.5" />
-          </linearGradient>
-          <linearGradient id="di-b2" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#007cf4" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#007cf4" stopOpacity="0.5" />
-          </linearGradient>
-          <linearGradient id="di-b3" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#36c5f0" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#36c5f0" stopOpacity="0.5" />
-          </linearGradient>
-          <linearGradient id="di-line" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#033a9d" />
-            <stop offset="100%" stopColor="#36c5f0" />
-          </linearGradient>
+          <linearGradient id="di-b1" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#033a9d" stopOpacity="0.85"/><stop offset="1" stopColor="#033a9d" stopOpacity="0.4"/></linearGradient>
+          <linearGradient id="di-b2" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#007cf4" stopOpacity="0.9"/><stop offset="1" stopColor="#007cf4" stopOpacity="0.4"/></linearGradient>
+          <linearGradient id="di-b3" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#36c5f0" stopOpacity="0.9"/><stop offset="1" stopColor="#36c5f0" stopOpacity="0.4"/></linearGradient>
+          <linearGradient id="di-tl" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#033a9d"/><stop offset="1" stopColor="#36c5f0"/></linearGradient>
         </defs>
-        {/* Grid lines */}
-        {[50, 90, 130, 170].map(y => (
-          <line key={y} x1="32" y1={y} x2="240" y2={y} stroke="#007cf4" strokeWidth="0.5" opacity="0.1" />
-        ))}
+        {/* Grid */}
+        {[40,70,100,130].map(y=><line key={y} x1="20" y1={y} x2="200" y2={y} stroke="#007cf4" strokeWidth="0.5" opacity="0.09"/>)}
         {/* Bars */}
-        <rect x="40"  y="130" width="24" height="50" rx="5" fill="url(#di-b1)" />
-        <rect x="76"  y="105" width="24" height="75" rx="5" fill="url(#di-b2)" opacity="0.7" />
-        <rect x="112" y="75"  width="24" height="105" rx="5" fill="url(#di-b2)" />
-        <rect x="148" y="88"  width="24" height="92"  rx="5" fill="url(#di-b3)" opacity="0.8" />
-        <rect x="184" y="52"  width="24" height="128" rx="5" fill="url(#di-b3)" />
+        <rect x="28"  y="110" width="22" height="45" rx="5" fill="url(#di-b1)"/>
+        <rect x="60"  y="90"  width="22" height="65" rx="5" fill="url(#di-b2)" opacity="0.75"/>
+        <rect x="92"  y="62"  width="22" height="93" rx="5" fill="url(#di-b2)"/>
+        <rect x="124" y="76"  width="22" height="79" rx="5" fill="url(#di-b3)" opacity="0.8"/>
+        <rect x="156" y="42"  width="22" height="113" rx="5" fill="url(#di-b3)"/>
         {/* Trend line */}
-        <path d="M52 126 L88 100 L124 72 L160 84 L196 50"
-          stroke="url(#di-line)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        {/* Dots on line */}
-        {[{x:52,y:126},{x:88,y:100},{x:124,y:72},{x:160,y:84},{x:196,y:50}].map((p,i) => (
-          <g key={i}>
-            <circle cx={p.x} cy={p.y} r="5" fill="white" stroke={i < 3 ? '#007cf4' : '#36c5f0'} strokeWidth="2" />
-          </g>
+        <path d="M39 106 L71 86 L103 58 L135 72 L167 40" stroke="url(#di-tl)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        {/* Dots */}
+        {[{x:39,y:106,c:'#033a9d'},{x:71,y:86,c:'#007cf4'},{x:103,y:58,c:'#007cf4'},{x:135,y:72,c:'#36c5f0'},{x:167,y:40,c:'#36c5f0'}].map((p,i)=>(
+          <g key={i}><circle cx={p.x} cy={p.y} r="4.5" fill="white" stroke={p.c} strokeWidth="2"/></g>
         ))}
-        {/* Highlight last point */}
-        <circle cx="196" cy="50" r="10" fill="#36c5f0" opacity="0.15" />
-        <circle cx="196" cy="50" r="5" fill="#36c5f0" />
-        {/* Baseline */}
-        <line x1="32" y1="180" x2="240" y2="180" stroke="#007cf4" strokeWidth="1" opacity="0.15" />
+        <circle cx="167" cy="40" r="9" fill="#36c5f0" opacity="0.15"/>
+        <circle cx="167" cy="40" r="4.5" fill="#36c5f0"/>
+        <line x1="20" y1="155" x2="200" y2="155" stroke="#007cf4" strokeWidth="1" opacity="0.12"/>
       </svg>
     ),
   },
@@ -121,29 +96,23 @@ const solutions = [
     theme: 'dark' as const,
     bg: 'bg-gradient-to-br from-[#033a9d] via-[#007cf4] to-[#36c5f0]',
     visual: (
-      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
-        {/* Outer pulse rings */}
-        <circle cx="130" cy="100" r="78" stroke="white" strokeWidth="0.5" opacity="0.1" />
-        <circle cx="130" cy="100" r="58" stroke="white" strokeWidth="1" opacity="0.15" strokeDasharray="4 6" />
+      <svg viewBox="0 0 220 180" className="w-full h-full" fill="none">
+        <circle cx="110" cy="90" r="70" stroke="white" strokeWidth="0.5" opacity="0.08"/>
+        <circle cx="110" cy="90" r="50" stroke="white" strokeWidth="1" opacity="0.12" strokeDasharray="4 6"/>
+        {/* Lines to nodes */}
+        {[[110,30],[170,58],[170,122],[110,150],[50,122],[50,58]].map(([nx,ny],i)=>(
+          <line key={i} x1="110" y1="90" x2={nx} y2={ny} stroke="white" strokeWidth="1" opacity="0.2" strokeDasharray="4 4"/>
+        ))}
         {/* Hub */}
-        <circle cx="130" cy="100" r="26" fill="white" opacity="0.18" />
-        <circle cx="130" cy="100" r="16" fill="white" opacity="0.3" />
-        <circle cx="130" cy="100" r="8" fill="white" />
-        {/* Spoke nodes */}
-        {[
-          { x: 50,  y: 52,  label: 'CRM' },
-          { x: 210, y: 52,  label: 'ERP' },
-          { x: 50,  y: 148, label: 'HR'  },
-          { x: 210, y: 148, label: 'BI'  },
-          { x: 130, y: 22,  label: 'AI'  },
-        ].map((n, i) => (
+        <circle cx="110" cy="90" r="22" fill="white" opacity="0.15"/>
+        <circle cx="110" cy="90" r="13" fill="white" opacity="0.25"/>
+        <circle cx="110" cy="90" r="6" fill="white"/>
+        {/* Outer nodes */}
+        {[{x:110,y:30,l:'AI'},{x:170,y:58,l:'ERP'},{x:170,y:122,l:'BI'},{x:110,y:150,l:'CRM'},{x:50,y:122,l:'HR'},{x:50,y:58,l:'API'}].map((n,i)=>(
           <g key={i}>
-            <line x1={130} y1={100} x2={n.x} y2={n.y}
-              stroke="white" strokeWidth="1" opacity="0.25" strokeDasharray="4 4" />
-            <circle cx={n.x} cy={n.y} r="20" fill="white" opacity="0.14" />
-            <circle cx={n.x} cy={n.y} r="20" stroke="white" strokeWidth="1" strokeOpacity="0.25" />
-            <text x={n.x} y={n.y + 4} textAnchor="middle" fill="white"
-              fontSize="10" fontWeight="700" opacity="0.95">{n.label}</text>
+            <circle cx={n.x} cy={n.y} r="18" fill="white" opacity="0.12"/>
+            <circle cx={n.x} cy={n.y} r="18" stroke="white" strokeWidth="1" strokeOpacity="0.22"/>
+            <text x={n.x} y={n.y+4} textAnchor="middle" fill="white" fontSize="9" fontWeight="700" opacity="0.9">{n.l}</text>
           </g>
         ))}
       </svg>
@@ -156,45 +125,32 @@ const solutions = [
     theme: 'light' as const,
     bg: 'bg-[#f0f7ff]',
     visual: (
-      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
+      <svg viewBox="0 0 220 170" className="w-full h-full" fill="none">
         <defs>
-          <linearGradient id="pa2-hist" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#033a9d" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#033a9d" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="pa2-pred" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#36c5f0" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#36c5f0" stopOpacity="0" />
-          </linearGradient>
+          <linearGradient id="pa-ah" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#033a9d" stopOpacity="0.22"/><stop offset="1" stopColor="#033a9d" stopOpacity="0"/></linearGradient>
+          <linearGradient id="pa-af" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#36c5f0" stopOpacity="0.18"/><stop offset="1" stopColor="#36c5f0" stopOpacity="0"/></linearGradient>
         </defs>
-        {/* Grid */}
-        {[60, 100, 140, 175].map(y => (
-          <line key={y} x1="20" y1={y} x2="240" y2={y} stroke="#007cf4" strokeWidth="0.5" opacity="0.1" />
-        ))}
-        {/* Historical area + line */}
-        <path d="M24 165 L64 138 L104 148 L144 110 L144 182 L24 182Z" fill="url(#pa2-hist)" />
-        <path d="M24 165 L64 138 L104 148 L144 110"
-          stroke="#033a9d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        {/* Forecast area + dashed line */}
-        <path d="M144 110 L184 78 L224 52 L224 182 L144 182Z" fill="url(#pa2-pred)" />
-        <path d="M144 110 L184 78 L224 52"
-          stroke="#36c5f0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="7 4" fill="none" />
-        {/* Confidence band */}
-        <path d="M144 106 L184 72 L224 46 L224 58 L184 84 L144 114Z"
-          fill="#36c5f0" opacity="0.1" />
+        {[50,90,130].map(y=><line key={y} x1="16" y1={y} x2="204" y2={y} stroke="#007cf4" strokeWidth="0.5" opacity="0.09"/>)}
+        {/* Historical */}
+        <path d="M20 148 L60 124 L100 134 L130 100 L130 158 L20 158Z" fill="url(#pa-ah)"/>
+        <path d="M20 148 L60 124 L100 134 L130 100" stroke="#033a9d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        {/* Forecast */}
+        <path d="M130 100 L168 70 L204 46 L204 158 L130 158Z" fill="url(#pa-af)"/>
+        <path d="M130 100 L168 70 L204 46" stroke="#36c5f0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="7 4"/>
+        {/* Band */}
+        <path d="M130 96 L168 64 L204 40 L204 52 L168 76 L130 104Z" fill="#36c5f0" opacity="0.1"/>
         {/* Divider */}
-        <line x1="144" y1="38" x2="144" y2="178" stroke="#007cf4" strokeWidth="1" strokeDasharray="3 3" opacity="0.35" />
-        <rect x="147" y="32" width="56" height="16" rx="4" fill="#007cf4" opacity="0.1" />
-        <text x="175" y="43" fill="#007cf4" fontSize="8.5" fontWeight="700" opacity="0.7">Forecast →</text>
+        <line x1="130" y1="30" x2="130" y2="154" stroke="#007cf4" strokeWidth="1" strokeDasharray="3 3" opacity="0.3"/>
         {/* Historical dots */}
-        {[{x:24,y:165},{x:64,y:138},{x:104,y:148},{x:144,y:110}].map((p,i) => (
-          <circle key={i} cx={p.x} cy={p.y} r="5" fill="white" stroke="#033a9d" strokeWidth="2" />
+        {[{x:20,y:148},{x:60,y:124},{x:100,y:134},{x:130,y:100}].map((p,i)=>(
+          <circle key={i} cx={p.x} cy={p.y} r="4.5" fill="white" stroke="#033a9d" strokeWidth="2"/>
         ))}
         {/* Forecast dots */}
-        {[{x:184,y:78},{x:224,y:52}].map((p,i) => (
-          <circle key={i} cx={p.x} cy={p.y} r="5" fill="white" stroke="#36c5f0" strokeWidth="2" />
+        {[{x:168,y:70},{x:204,y:46}].map((p,i)=>(
+          <circle key={i} cx={p.x} cy={p.y} r="4.5" fill="white" stroke="#36c5f0" strokeWidth="2"/>
         ))}
-        <circle cx="224" cy="52" r="10" fill="#36c5f0" opacity="0.15" />
+        <circle cx="204" cy="46" r="9" fill="#36c5f0" opacity="0.15"/>
+        <circle cx="204" cy="46" r="4.5" fill="#36c5f0"/>
       </svg>
     ),
   },
@@ -205,45 +161,25 @@ const solutions = [
     theme: 'light' as const,
     bg: 'bg-[#f0f7ff]',
     visual: (
-      <svg width="260" height="200" viewBox="0 0 260 200" fill="none">
+      <svg viewBox="0 0 220 180" className="w-full h-full" fill="none">
         <defs>
-          <radialGradient id="ai-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#007cf4" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#007cf4" stopOpacity="0" />
-          </radialGradient>
+          <radialGradient id="ai-glo" cx="50%" cy="50%" r="50%"><stop stopColor="#007cf4" stopOpacity="0.25"/><stop offset="1" stopColor="#007cf4" stopOpacity="0"/></radialGradient>
         </defs>
-        {/* Glow bg */}
-        <circle cx="130" cy="100" r="60" fill="url(#ai-glow)" />
-        {/* Outer ring */}
-        <circle cx="130" cy="100" r="72" stroke="#007cf4" strokeWidth="1" opacity="0.12" strokeDasharray="3 5" />
-        {/* Connection lines first (behind nodes) */}
-        {([
-          [130,38, 78,72],[130,38,182,72],
-          [78,72, 58,112],[78,72,130,108],[182,72,130,108],[182,72,202,112],
-          [58,112, 88,152],[130,108, 88,152],[130,108,172,152],[202,112,172,152],
-        ] as [number,number,number,number][]).map(([x1,y1,x2,y2],i) => (
-          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-            stroke="#007cf4" strokeWidth="1.5" opacity="0.2" />
+        <circle cx="110" cy="90" r="55" fill="url(#ai-glo)"/>
+        <circle cx="110" cy="90" r="68" stroke="#007cf4" strokeWidth="1" opacity="0.1" strokeDasharray="3 5"/>
+        {/* Edges */}
+        {([[110,32,80,66],[110,32,140,66],[80,66,62,100],[80,66,110,96],[140,66,110,96],[140,66,158,100],[62,100,80,136],[110,96,80,136],[110,96,140,136],[158,100,140,136]] as [number,number,number,number][]).map(([x1,y1,x2,y2],i)=>(
+          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#007cf4" strokeWidth="1.5" opacity="0.18"/>
         ))}
         {/* Nodes */}
-        {([
-          {cx:130,cy:38, r:10, fill:'#033a9d'},
-          {cx:78, cy:72, r:8,  fill:'#007cf4'},
-          {cx:182,cy:72, r:8,  fill:'#007cf4'},
-          {cx:58, cy:112,r:7,  fill:'#36c5f0'},
-          {cx:130,cy:108,r:14, fill:'#007cf4'},
-          {cx:202,cy:112,r:7,  fill:'#36c5f0'},
-          {cx:88, cy:152,r:7,  fill:'#007cf4'},
-          {cx:172,cy:152,r:7,  fill:'#033a9d'},
-        ]).map((n,i) => (
+        {([{cx:110,cy:32,r:9,c:'#033a9d'},{cx:80,cy:66,r:8,c:'#007cf4'},{cx:140,cy:66,r:8,c:'#007cf4'},{cx:62,cy:100,r:7,c:'#36c5f0'},{cx:110,cy:96,r:14,c:'#007cf4'},{cx:158,cy:100,r:7,c:'#36c5f0'},{cx:80,cy:136,r:7,c:'#007cf4'},{cx:140,cy:136,r:7,c:'#033a9d'}] as {cx:number;cy:number;r:number;c:string}[]).map((n,i)=>(
           <g key={i}>
-            <circle cx={n.cx} cy={n.cy} r={n.r + 5} fill={n.fill} opacity="0.1" />
-            <circle cx={n.cx} cy={n.cy} r={n.r} fill={n.fill} />
-            {i === 4 && <circle cx={n.cx} cy={n.cy} r={n.r + 10} stroke="#36c5f0" strokeWidth="1.5" opacity="0.3" />}
+            <circle cx={n.cx} cy={n.cy} r={n.r+5} fill={n.c} opacity="0.1"/>
+            <circle cx={n.cx} cy={n.cy} r={n.r} fill={n.c}/>
+            {i===4 && <circle cx={n.cx} cy={n.cy} r={n.r+10} stroke="#36c5f0" strokeWidth="1.5" opacity="0.28"/>}
           </g>
         ))}
-        {/* Center label */}
-        <text x="130" y="113" textAnchor="middle" fill="white" fontSize="8" fontWeight="800" letterSpacing="0.5">AI</text>
+        <text x="110" y="101" textAnchor="middle" fill="white" fontSize="8" fontWeight="800">AI</text>
       </svg>
     ),
   },
@@ -254,42 +190,31 @@ const solutions = [
     theme: 'light' as const,
     bg: 'bg-[#eef5ff]',
     visual: (
-      <svg width="420" height="200" viewBox="0 0 420 200" fill="none">
+      <svg viewBox="0 0 380 200" className="w-full h-full" fill="none">
         <defs>
-          <linearGradient id="cm-arc1" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#033a9d" />
-            <stop offset="100%" stopColor="#007cf4" />
-          </linearGradient>
-          <linearGradient id="cm-arc2" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#007cf4" />
-            <stop offset="100%" stopColor="#36c5f0" />
-          </linearGradient>
+          <linearGradient id="cm-g1" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#033a9d"/><stop offset="1" stopColor="#007cf4"/></linearGradient>
+          <linearGradient id="cm-g2" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#007cf4"/><stop offset="1" stopColor="#36c5f0"/></linearGradient>
         </defs>
         {/* Donut */}
-        <circle cx="110" cy="105" r="65" stroke="#e0eeff" strokeWidth="14" fill="none" />
-        <path d="M110 40 A65 65 0 1 1 57 163" stroke="url(#cm-arc1)" strokeWidth="14" strokeLinecap="round" fill="none" />
-        <circle cx="110" cy="105" r="44" stroke="#e0eeff" strokeWidth="10" fill="none" />
-        <path d="M110 61 A44 44 0 0 1 154 105" stroke="url(#cm-arc2)" strokeWidth="10" strokeLinecap="round" fill="none" />
-        <circle cx="110" cy="105" r="28" fill="white" />
-        <text x="110" y="100" textAnchor="middle" fill="#033a9d" fontSize="18" fontWeight="900">87%</text>
-        <text x="110" y="116" textAnchor="middle" fill="#007cf4" fontSize="8" fontWeight="700" opacity="0.7">ADOPTION</text>
-        {/* Steps — horizontal to the right */}
-        {[
-          { x: 218, label: '01', title: 'Plan',   color: '#033a9d' },
-          { x: 286, label: '02', title: 'Train',  color: '#007cf4' },
-          { x: 354, label: '03', title: 'Deploy', color: '#36c5f0' },
-        ].map((s, i) => (
+        <circle cx="96" cy="100" r="62" stroke="#ddeeff" strokeWidth="13" fill="none"/>
+        <path d="M96 38 A62 62 0 1 1 46 158" stroke="url(#cm-g1)" strokeWidth="13" strokeLinecap="round" fill="none"/>
+        <circle cx="96" cy="100" r="42" stroke="#ddeeff" strokeWidth="9" fill="none"/>
+        <path d="M96 58 A42 42 0 0 1 138 100" stroke="url(#cm-g2)" strokeWidth="9" strokeLinecap="round" fill="none"/>
+        <circle cx="96" cy="100" r="26" fill="white"/>
+        <text x="96" y="95" textAnchor="middle" fill="#033a9d" fontSize="16" fontWeight="900">87%</text>
+        <text x="96" y="110" textAnchor="middle" fill="#007cf4" fontSize="7.5" fontWeight="700" opacity="0.65">ADOPTION</text>
+        {/* Connector */}
+        <line x1="158" y1="100" x2="182" y2="100" stroke="#007cf4" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.3"/>
+        {/* Steps */}
+        {[{x:210,c:'#033a9d',n:'01',l:'Plan'},{x:286,c:'#007cf4',n:'02',l:'Train'},{x:362,c:'#36c5f0',n:'03',l:'Deploy'}].map((s,i)=>(
           <g key={i}>
-            <rect x={s.x - 26} y="72" width="52" height="62" rx="14"
-              fill={s.color} opacity={1 - i * 0.15} />
-            <rect x={s.x - 26} y="72" width="52" height="62" rx="14" fill="white" opacity="0.1" />
-            <text x={s.x} y="103" textAnchor="middle" fill="white" fontSize="14" fontWeight="900" opacity="0.9">{s.label}</text>
-            <text x={s.x} y="122" textAnchor="middle" fill="white" fontSize="9" fontWeight="600" opacity="0.75">{s.title}</text>
-            {i < 2 && <path d={`M${s.x + 26} 103 l8 0`} stroke={s.color} strokeWidth="2" strokeLinecap="round" opacity="0.5" />}
+            <rect x={s.x-34} y="68" width="68" height="64" rx="16" fill={s.c} opacity={1-i*0.12}/>
+            <rect x={s.x-34} y="68" width="68" height="64" rx="16" fill="white" opacity="0.08"/>
+            <text x={s.x} y="103" textAnchor="middle" fill="white" fontSize="16" fontWeight="900" opacity="0.85">{s.n}</text>
+            <text x={s.x} y="120" textAnchor="middle" fill="white" fontSize="9.5" fontWeight="600" opacity="0.7">{s.l}</text>
+            {i<2 && <path d={`M${s.x+34} 100 l10 0`} stroke={s.c} strokeWidth="2" strokeLinecap="round" opacity="0.45"/>}
           </g>
         ))}
-        {/* Connector line from donut to steps */}
-        <line x1="175" y1="103" x2="192" y2="103" stroke="#007cf4" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.35" />
       </svg>
     ),
   },
@@ -335,7 +260,7 @@ export default function SolutionsPage() {
                         <span className={`px-5 py-2 rounded-full text-sm font-semibold border group-hover:border-[#007cf4]/60 ${sol.theme === 'dark' ? 'border-white/25 text-white' : 'border-black/20 text-black'}`}>Explore →</span>
                       </div>
                     </div>
-                    <div className="flex-1 flex items-center justify-center p-8">{sol.visual}</div>
+                    <div className="flex-1 flex items-end justify-center px-6 pb-6">{sol.visual}</div>
                     <div className={`absolute bottom-0 left-0 right-0 h-20 ${sol.theme === 'dark' ? 'bg-gradient-to-t from-black/20 to-transparent' : 'bg-gradient-to-t from-white/20 to-transparent'}`} />
                   </Link>
                 </motion.div>
@@ -360,7 +285,7 @@ export default function SolutionsPage() {
                       <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
                       <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
                     </div>
-                    <div className="flex-1 flex items-center justify-center p-4">{sol.visual}</div>
+                    <div className="flex-1 flex items-end justify-center px-4 pb-4">{sol.visual}</div>
                     <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity`} />
                   </Link>
                 </motion.div>
@@ -385,7 +310,7 @@ export default function SolutionsPage() {
                       <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
                       <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
                     </div>
-                    <div className="flex-1 flex items-center justify-center p-4">{sol.visual}</div>
+                    <div className="flex-1 flex items-end justify-center px-4 pb-4">{sol.visual}</div>
                     <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity`} />
                   </Link>
                 </motion.div>
@@ -410,7 +335,7 @@ export default function SolutionsPage() {
                       <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
                       <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
                     </div>
-                    <div className="flex-1 flex items-center justify-center p-4">{sol.visual}</div>
+                    <div className="flex-1 flex items-end justify-center px-4 pb-4">{sol.visual}</div>
                     <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#007cf4] opacity-0 group-hover:opacity-100 transition-opacity`} />
                   </Link>
                 </motion.div>
@@ -435,7 +360,7 @@ export default function SolutionsPage() {
                       <h2 className={`font-inter-tight font-black text-xl md:text-2xl mb-2 ${sol.theme === 'dark' ? 'text-white' : 'text-black'}`}>{sol.title}</h2>
                       <p className={`text-xs leading-relaxed max-w-[200px] ${sol.theme === 'dark' ? 'text-white/60' : 'text-gray-500'}`}>{sol.subtitle}</p>
                     </div>
-                    <div className="flex-1 flex items-center justify-center p-4">{sol.visual}</div>
+                    <div className="flex-1 flex items-end justify-center px-4 pb-4">{sol.visual}</div>
                     <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity`} />
                   </Link>
                 </motion.div>
@@ -465,7 +390,7 @@ export default function SolutionsPage() {
                         <span className={`px-5 py-2 rounded-full text-sm font-semibold border group-hover:border-[#007cf4]/60 ${sol.theme === 'dark' ? 'border-white/25 text-white' : 'border-black/20 text-black'}`}>Explore →</span>
                       </div>
                     </div>
-                    <div className="flex-1 flex items-center justify-center p-6">{sol.visual}</div>
+                    <div className="flex-1 flex items-end justify-center px-6 pb-5">{sol.visual}</div>
                     <div className={`absolute bottom-0 left-0 right-0 h-16 ${sol.theme === 'dark' ? 'bg-gradient-to-t from-black/20 to-transparent' : 'bg-gradient-to-t from-white/20 to-transparent'}`} />
                   </Link>
                 </motion.div>
