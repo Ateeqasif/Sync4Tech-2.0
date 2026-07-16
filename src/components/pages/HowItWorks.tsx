@@ -48,26 +48,18 @@ const steps = [
   },
 ]
 
-function FlowLine({ flipped }: { flipped?: boolean }) {
+function FlowArrow() {
   return (
-    <div className={`hidden lg:block absolute top-1/2 -translate-y-1/2 w-24 z-10 ${flipped ? 'right-0 translate-x-12' : 'left-0 -translate-x-12'}`}>
-      <svg width="96" height="40" viewBox="0 0 96 40" fill="none">
-        <path
-          d={flipped ? 'M0 20 Q30 4 60 20 Q80 32 96 20' : 'M0 20 Q16 8 36 20 Q66 36 96 20'}
-          stroke="url(#flowGrad)"
-          strokeWidth="2"
-          fill="none"
-          strokeDasharray="6 4"
-          opacity="0.5"
-        />
+    <div className="hidden lg:flex items-center justify-center shrink-0 w-10">
+      <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
         <defs>
-          <linearGradient id="flowGrad" x1="0" y1="0" x2="1" y2="0">
+          <linearGradient id="arrowGrad" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="#007cf4" />
             <stop offset="100%" stopColor="#36c5f0" />
           </linearGradient>
         </defs>
-        {/* Arrow head */}
-        <path d={flipped ? 'M88 14l8 6-8 6' : 'M88 14l8 6-8 6'} stroke="#36c5f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.7" />
+        <line x1="0" y1="12" x2="30" y2="12" stroke="url(#arrowGrad)" strokeWidth="2" strokeDasharray="5 3" opacity="0.6" />
+        <path d="M26 7l6 5-6 5" stroke="#36c5f0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" />
       </svg>
     </div>
   )
@@ -97,24 +89,23 @@ export default function HowItWorks() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#36c5f0] text-xs font-bold tracking-[0.3em] uppercase mb-4 block">The Process</span>
+          <span className="text-[#007cf4] text-xs font-bold tracking-[0.3em] uppercase mb-4 block">The Process</span>
           <h2 className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl lg:text-6xl leading-tight">
             How It <span style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(135deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}>Works</span>
           </h2>
         </motion.div>
 
         {/* Steps */}
-        <div className="relative flex flex-col lg:flex-row items-stretch gap-6 lg:gap-4">
+        <div className="relative flex flex-col lg:flex-row items-stretch gap-0 lg:gap-0">
           {steps.map((step, i) => (
-            <motion.div
-              key={i}
-              className="relative flex-1"
-              initial={{ opacity: 0, y: 60 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.15 + i * 0.18, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {/* Flow connector between cards */}
-              {i < steps.length - 1 && <FlowLine flipped={i % 2 === 1} />}
+            <>
+              <motion.div
+                key={i}
+                className="relative flex-1"
+                initial={{ opacity: 0, y: 60 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.15 + i * 0.18, ease: [0.22, 1, 0.36, 1] }}
+              >
 
               {/* Card */}
               <div
@@ -180,6 +171,8 @@ export default function HowItWorks() {
                 />
               </div>
             </motion.div>
+            {i < steps.length - 1 && <FlowArrow key={`arrow-${i}`} />}
+            </>
           ))}
         </div>
 
