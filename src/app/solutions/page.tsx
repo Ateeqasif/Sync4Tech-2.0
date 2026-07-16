@@ -88,6 +88,7 @@ const SIZES = ['1–10', '11–50', '51–200', '201–500', '500+']
 function InlineContact() {
   const [form, setForm] = useState({ name: '', email: '', company: '', size: '', industry: '', challenge: '' })
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
   const set = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }))
 
   return (
@@ -109,7 +110,11 @@ function InlineContact() {
       ) : (
         <>
           <h3 className="font-inter-tight font-black text-black text-xl mb-6">Tell us about your challenge</h3>
-          <form onSubmit={e => { e.preventDefault(); setSent(true) }} className="space-y-4">
+          <form onSubmit={async e => {
+            e.preventDefault(); setLoading(true)
+            try { await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...form, source: 'Solutions Page' }) }) } catch {}
+            setLoading(false); setSent(true)
+          }} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 mb-1.5">Full Name *</label>
@@ -150,10 +155,10 @@ function InlineContact() {
               <textarea required value={form.challenge} onChange={e => set('challenge', e.target.value)} rows={4} placeholder="Describe the process or problem you want to solve..."
                 className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors resize-none" />
             </div>
-            <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-              className="w-full py-4 rounded-full text-white font-semibold text-sm transition-all"
+            <motion.button type="submit" disabled={loading} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+              className="w-full py-4 rounded-full text-white font-semibold text-sm transition-all disabled:opacity-60"
               style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
-              Send Message →
+              {loading ? 'Sending…' : 'Send Message →'}
             </motion.button>
           </form>
         </>

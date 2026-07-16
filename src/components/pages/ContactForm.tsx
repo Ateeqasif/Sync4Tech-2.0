@@ -16,12 +16,22 @@ const FAQ = [
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', company: '', size: '', industry: '', challenge: '' })
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
 
   const set = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }))
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setLoading(true)
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, source: 'Contact Page' }),
+      })
+    } catch {}
+    setLoading(false)
     setSent(true)
   }
 
@@ -86,10 +96,11 @@ export default function ContactForm() {
                     </div>
                     <button
                       type="submit"
-                      className="w-full py-4 rounded-full font-semibold text-white text-base btn-glow transition-all duration-300 hover:opacity-90"
+                      disabled={loading}
+                      className="w-full py-4 rounded-full font-semibold text-white text-base btn-glow transition-all duration-300 hover:opacity-90 disabled:opacity-60"
                       style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
                     >
-                      Send Message →
+                      {loading ? 'Sending…' : 'Send Message →'}
                     </button>
                   </form>
                 )}

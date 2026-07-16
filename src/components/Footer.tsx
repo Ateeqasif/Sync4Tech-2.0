@@ -63,9 +63,21 @@ export default function Footer() {
   const [submitted, setSubmitted] = useState(false)
   const { t } = useLanguage()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email) setSubmitted(true)
+    if (!email) return
+    setSubmitting(true)
+    try {
+      await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+    } catch {}
+    setSubmitting(false)
+    setSubmitted(true)
   }
 
   return (
@@ -108,10 +120,11 @@ export default function Footer() {
                 />
                 <button
                   type="submit"
-                  className="text-white font-semibold text-sm px-6 py-3.5 rounded-full transition-all whitespace-nowrap hover:opacity-90"
+                  disabled={submitting}
+                  className="text-white font-semibold text-sm px-6 py-3.5 rounded-full transition-all whitespace-nowrap hover:opacity-90 disabled:opacity-60"
                   style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }}
                 >
-                  {t.footer.subscribeBtn}
+                  {submitting ? '…' : t.footer.subscribeBtn}
                 </button>
               </>
             )}
