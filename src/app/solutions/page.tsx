@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import FinalCTA from '@/components/sections/FinalCTA'
 import HowItWorks from '@/components/pages/HowItWorks'
@@ -89,7 +90,20 @@ function InlineContact() {
   const [form, setForm] = useState({ name: '', email: '', company: '', size: '', industry: '', challenge: '' })
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [countdown, setCountdown] = useState(5)
+  const router = useRouter()
   const set = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }))
+
+  useEffect(() => {
+    if (!sent) return
+    const timer = setInterval(() => {
+      setCountdown(c => {
+        if (c <= 1) { clearInterval(timer); router.push('/contact'); return 0 }
+        return c - 1
+      })
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [sent, router])
 
   return (
     <motion.div
@@ -100,13 +114,27 @@ function InlineContact() {
       transition={{ duration: 0.8, ease: EASE }}
     >
       {sent ? (
-        <div className="text-center py-10">
-          <div className="w-16 h-16 bg-[#007cf4]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M5 14l7 7L23 7" stroke="#007cf4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center py-14 px-4"
+        >
+          <div className="relative w-20 h-20 mx-auto mb-6">
+            <div className="absolute inset-0 rounded-full bg-[#007cf4]/10 animate-ping" style={{ animationDuration: '2s' }} />
+            <div className="relative w-20 h-20 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 16l8 8L26 8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </div>
           </div>
-          <h3 className="font-inter-tight font-black text-black text-xl mb-2">Message sent!</h3>
-          <p className="text-gray-500 text-sm">We will be in touch within 24 hours.</p>
-        </div>
+          <h3 className="font-inter-tight font-black text-black text-2xl mb-3">Message received!</h3>
+          <p className="text-gray-500 text-sm leading-relaxed max-w-xs mx-auto mb-6">
+            Thank you for reaching out. Our team will review your challenge and get back to you within 24 hours.
+          </p>
+          <div className="flex items-center justify-center gap-2 text-xs text-gray-400">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#007cf4" strokeWidth="1.2"/><path d="M7 4v3.5l2 1.5" stroke="#007cf4" strokeWidth="1.2" strokeLinecap="round"/></svg>
+            Redirecting in {countdown}s...
+          </div>
+        </motion.div>
       ) : (
         <>
           <h3 className="font-inter-tight font-black text-black text-xl mb-6">Tell us about your challenge</h3>
