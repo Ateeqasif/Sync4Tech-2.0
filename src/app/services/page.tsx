@@ -11,8 +11,8 @@ const pillars = [
   {
     slug: 'data-intelligence',
     name: 'Data Intelligence Suite',
-    tagline: 'Turn raw data into competitive advantage.',
-    description: 'We design and build the full data layer for your business from ingestion and integration through to analytics, reporting, and AI-powered forecasting. Stop making decisions in the dark.',
+    tagline: 'Stop making decisions on incomplete or delayed information.',
+    description: 'Connect fragmented data sources, build reliable pipelines, and give leadership accurate information for reporting, planning, and performance management. One trusted view of the business.',
     color: '#007cf4',
     gradient: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)',
     services: [
@@ -36,7 +36,7 @@ const pillars = [
     slug: 'automation',
     name: 'Business Process Automation',
     tagline: 'Eliminate manual work. Scale without headcount.',
-    description: 'We automate the repetitive workflows, CRM processes, sales sequences, and internal operations that consume your team\'s time. Systems do the heavy lifting your people do the thinking.',
+    description: 'Eliminate manual bottlenecks across every business function. Connect teams, tools, and workflows to reduce repetitive work, improve consistency, and build operations that scale without adding headcount.',
     color: '#36c5f0',
     gradient: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)',
     services: [
@@ -60,8 +60,8 @@ const pillars = [
   {
     slug: 'consulting',
     name: 'Consulting & Strategy',
-    tagline: 'Expert guidance from discovery to delivery.',
-    description: 'We don\'t just build we think alongside you. From discovery workshops and digital transformation roadmaps through to fractional CDO and CAO advisory, we bring senior expertise to every stage.',
+    tagline: 'Strategy before technology. Execution with governance.',
+    description: 'Define priorities, architecture, implementation plans, KPIs, and governance before investing in technology. From AI readiness assessments to fractional CDO advisory, senior expertise at every stage.',
     color: '#007cf4',
     gradient: 'linear-gradient(135deg, #050f2e 0%, #033a9d 100%)',
     services: [
@@ -93,9 +93,9 @@ export default function ServicesPage() {
     <main>
       <PageHero
         eyebrow="Services"
-        title="Everything You Need to"
-        highlight="Transform"
-        subtitle="Data Intelligence, Business Process Automation, and Strategic Consulting delivered by senior practitioners who are accountable to outcomes, not hours."
+        title="Build Efficient, Connected, and"
+        highlight="Scalable Business Operations"
+        subtitle="Data intelligence, business process automation, and strategic consulting delivered by senior practitioners accountable to outcomes, not hours."
         breadcrumb={[{ label: 'Services', href: '/services' }]}
       />
 
@@ -168,7 +168,7 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">Technologies We Deploy</p>
+            <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">Technology Selected Around Your Requirements</p>
           </motion.div>
           <motion.div
             className="flex flex-wrap gap-3 justify-center"

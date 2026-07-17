@@ -7,7 +7,7 @@ const rows = [
   { criterion: 'Delivery Speed', us: 'Weeks, not months', them: 'Multi-quarter engagements' },
   { criterion: 'Technology', us: 'Best-of-breed stack, vendor-agnostic', them: 'Tied to proprietary tools' },
   { criterion: 'Team Structure', us: 'Embedded specialists', them: 'Rotating junior consultants' },
-  { criterion: 'Outcomes Focus', us: 'ROI-guaranteed milestones', them: 'Effort-based billing' },
+  { criterion: 'Outcomes Focus', us: 'KPI-driven milestones', them: 'Effort-based billing' },
   { criterion: 'AI Capability', us: 'Native AI-first delivery', them: 'AI bolted on to old methods' },
   { criterion: 'Transparency', us: 'Weekly demos & live dashboards', them: 'Monthly status reports' },
 ]
@@ -76,7 +76,7 @@ export default function WhySync4Tech() {
             <span className="gradient-text">Difference</span>
           </h2>
           <p className="text-gray-500 dark:text-gray-400 leading-relaxed text-sm">
-            Traditional consultancies sell time. We sell outcomes. Every engagement is structured around measurable business impact, with clear milestones and guaranteed results.
+            Every engagement begins with business objectives, operational constraints, and clearly defined success measures. Strategy before technology.
           </p>
         </motion.div>
 
@@ -124,7 +124,7 @@ export default function WhySync4Tech() {
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </a>
           <a href="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all duration-200 group">
-            Learn more about us
+            About our approach
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
               <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
