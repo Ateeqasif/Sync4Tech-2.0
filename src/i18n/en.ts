@@ -6,7 +6,7 @@ export const en = {
     insights: "Insights",
     about: "About",
     careers: "Careers",
-    cta: "Meet Our Experts"
+    cta: "Book a Strategy Call"
   },
   hero: {
     badge: "AI-Powered Business Transformation",
@@ -16,17 +16,17 @@ export const en = {
     subtitle: "We help forward-thinking companies eliminate operational bottlenecks, automate workflows, and scale with precision using cutting-edge AI solutions.",
     cta1: "Meet Our Experts",
     cta2: "Explore Business Automation Solutions",
-    metric1Label: "Faster Execution",
-    metric2Label: "Cost Reduction",
+    metric1Label: "Faster Workflow Execution",
+    metric2Label: "Reduction in Operational Costs",
     metric3Label: "Clients Served",
-    metric4Label: "Industries Served"
+    metric4Label: "Industries Supported"
   },
   executionGap: {
     eyebrow: "The Execution Gap",
-    h2Line1: "The Gap Between",
-    h2Line2: "Strategy & Results",
-    beforeLabel: "Before Transformation",
-    afterLabel: "After Transformation",
+    h2Line1: "Your Business Has Grown.",
+    h2Line2: "Have Your Systems Kept Up?",
+    beforeLabel: "Common Operational Challenges",
+    afterLabel: "With Connected Systems",
     beforeItems: [
       "Manual processes slow everything down",
       "Data silos block decision-making",
@@ -85,18 +85,18 @@ export const en = {
   },
   finalCta: {
     eyebrow: "Get Started",
-    h2: "Ready to Close Your Execution Gap?",
-    subtitle: "Join 200+ companies that have transformed their operations with Sync4Tech. Your transformation starts with a single conversation.",
-    cta1: "Meet Our Experts",
-    cta2: "Explore Business Automation Solutions"
+    h2: "Ready to Build More Intelligent Operations?",
+    subtitle: "Tell us your biggest operational challenge. We will show you a practical path to solving it.",
+    cta1: "Book a Strategy Call",
+    cta2: "Explore Our Solutions"
   },
   footer: {
     stayAhead: "Stay Ahead",
-    heading: "Get transformation insights delivered to your inbox",
-    subtitle: "Join 5,000+ business leaders receiving our weekly insights on AI, automation, and operational excellence.",
+    heading: "Operational insights delivered to your inbox",
+    subtitle: "Practical insights on automation, data, and AI delivered to senior operators.",
     subscribePlaceholder: "Enter your email",
-    subscribeBtn: "Subscribe",
-    successMsg: "Thank you for subscribing!",
+    subscribeBtn: "Subscribe to Insights",
+    successMsg: "Subscribed. You will hear from us soon.",
     copyright: "© 2026 Sync4Tech. All rights reserved."
   },
   faq: {

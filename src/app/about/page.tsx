@@ -18,8 +18,8 @@ const timeline = [
 const values = [
   { title: 'Client Outcomes First', desc: 'Every decision is measured against its impact on your business results. We are not satisfied until you are.', icon: '01' },
   { title: 'Radical Transparency', desc: 'No hidden scope, no surprise costs. Weekly demos, live dashboards, and honest progress reporting.', icon: '02' },
-  { title: 'Continuous Innovation', desc: 'We never stop learning. Our methodologies evolve constantly to reflect the latest AI capabilities.', icon: '03' },
-  { title: 'Deep Expertise', desc: 'Specialists, not generalists. Every team member is a domain expert with hands-on delivery experience.', icon: '04' },
+  { title: 'Practical Implementation', desc: 'We focus on solutions that work in production, not just in presentations. Every recommendation is grounded in what is achievable with your team, tools, and timeline.', icon: '03' },
+  { title: 'Deep Expertise', desc: 'Cross-functional expertise across data, automation, AI, strategy, and delivery governance.', icon: '04' },
 ]
 
 const team = [
@@ -49,9 +49,9 @@ export default function AboutPage() {
     <main>
       <PageHero
         eyebrow="About Us"
-        title="The Team Behind"
-        highlight="Your Transformation"
-        subtitle="We are a specialist AI and automation consultancy helping ambitious organisations bridge the gap between strategy and execution."
+        title="Business Transformation"
+        highlight="Consultancy"
+        subtitle="Sync4Tech is a business transformation consultancy specialising in data engineering, business process automation, and practical AI implementation. We work with organisations across the UK, US, and Pakistan to automate operations, connect systems, and build the data infrastructure that supports confident decision-making."
         breadcrumb={[{ label: 'About', href: '/about' }]}
       />
 
@@ -69,7 +69,7 @@ export default function AboutPage() {
             >
               <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Mission</span>
               <p className="font-inter font-normal text-black dark:text-white text-xl md:text-2xl leading-relaxed">
-                To eliminate the execution gap the painful distance between what organisations intend to do and what they actually achieve through intelligent automation and AI-powered systems.
+                To help organisations automate repetitive operations, connect fragmented systems, improve data visibility, and build scalable business infrastructure that supports confident decision-making.
               </p>
             </motion.div>
 

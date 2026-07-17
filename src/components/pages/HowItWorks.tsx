@@ -8,7 +8,7 @@ const steps = [
     n: '01',
     title: 'Discover',
     tag: '3 Days',
-    desc: 'We audit your current processes, identify automation opportunities, and map your data landscape to build a clear picture of the ROI available.',
+    desc: 'We assess your current processes, identify the highest-value automation and data opportunities, and map the operational gaps costing your business time and money.',
     accent: '#007cf4',
     icon: (
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -22,7 +22,7 @@ const steps = [
     n: '02',
     title: 'Design',
     tag: '2 Days',
-    desc: 'Our architects design a bespoke automation and AI strategy tailored to your exact workflows, tools, and business objectives.',
+    desc: 'We design a practical automation and data strategy built around your specific workflows, tools, and business objectives, with clear KPIs, a phased roadmap, and defined success measures.',
     accent: '#36c5f0',
     icon: (
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -37,7 +37,7 @@ const steps = [
     n: '03',
     title: 'Deploy',
     tag: '4–5 Weeks',
-    desc: 'We build, test, and deploy your solution in as little as 4–5 weeks with live prototypes in the first week and measurable results within 30 days of go-live.',
+    desc: 'We build, test, and deploy your solution with live prototypes in the first week and measurable operational results within 30 days of go-live. Structured delivery with full documentation and team handover.',
     accent: '#007cf4',
     icon: (
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
