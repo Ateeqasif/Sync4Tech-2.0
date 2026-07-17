@@ -110,8 +110,8 @@ const slides = [
     badge: 'Business Automation',
     accentColor: '#007cf4',
     h1Line1: 'Build an Intelligent',
-    h1Line2: 'Business That Scales',
-    h1Line3: '',
+    h1Line2: 'Business',
+    h1Line3: 'That Scales',
     subtitle: 'Stop losing time and revenue to manual processes. Sync4Tech automates operations, connects systems, and eliminates bottlenecks so your team can focus on what grows the business.',
     cta1: { label: 'Book a Strategy Call', href: '/contact' },
     cta2: { label: 'Explore Our Solutions', href: '/solutions' },
@@ -119,9 +119,9 @@ const slides = [
   {
     badge: 'Data Intelligence',
     accentColor: '#36c5f0',
-    h1Line1: 'Connect Scattered Data.',
-    h1Line2: 'Make Better Decisions.',
-    h1Line3: '',
+    h1Line1: 'Connect Scattered',
+    h1Line2: 'Data. Make Better',
+    h1Line3: 'Decisions.',
     subtitle: 'Disconnected data costs decisions. Unify every source, build reliable reporting pipelines, and give leadership one trusted view of business performance in real time.',
     cta1: { label: 'Discuss Your Data Challenges', href: '/contact' },
     cta2: { label: 'View Our Capabilities', href: '/solutions' },
@@ -130,8 +130,8 @@ const slides = [
     badge: 'Consulting and Strategy',
     accentColor: '#033a9d',
     h1Line1: 'Strategy That',
-    h1Line2: 'Delivers Results',
-    h1Line3: '',
+    h1Line2: 'Delivers',
+    h1Line3: 'Results',
     subtitle: 'Turn transformation goals into a practical roadmap. We define priorities, architecture, KPIs, and governance before a single line of code is written.',
     cta1: { label: 'Request an Assessment', href: '/contact' },
     cta2: { label: 'View Our Capabilities', href: '/solutions' },
@@ -197,6 +197,7 @@ export default function Hero() {
 
   const line1 = useTypewriter(slide.h1Line1, 42)
   const line2 = useTypewriter(line1.done ? slide.h1Line2 : '', 42)
+  const line3 = useTypewriter(line2.done ? (slide.h1Line3 || '') : '', 42)
 
   const variants = {
     enter: (d: number) => ({ opacity: 0, x: d > 0 ? 60 : -60 }),
@@ -273,6 +274,22 @@ export default function Hero() {
                   />
                 )}
               </span>
+              {slide.h1Line3 && (
+                <>
+                  <br />
+                  <span className="gradient-text-animated" style={{ paddingLeft: '0.05em', paddingRight: '0.08em' }}>
+                    {line3.displayed}
+                    {line2.done && !line3.done && (
+                      <motion.span
+                        className="inline-block w-[3px] ml-[2px] align-middle rounded-sm"
+                        style={{ height: '0.85em', background: '#36c5f0', verticalAlign: 'middle' }}
+                        animate={{ opacity: [1, 0, 1] }}
+                        transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
+                      />
+                    )}
+                  </span>
+                </>
+              )}
             </h1>
 
             {/* Subtitle */}
