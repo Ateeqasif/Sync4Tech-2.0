@@ -8,10 +8,10 @@ const INDUSTRIES = ['Healthcare', 'Financial Services', 'Manufacturing', 'Retail
 const SIZES = ['1–10', '11–50', '51–200', '201–500', '500+']
 
 const FAQ = [
-  { q: 'How quickly will I hear back?', a: 'We respond to all enquiries within 24 business hours. For urgent matters, email hello@sync4tech.com directly.' },
-  { q: 'Is the initial consultation free?', a: 'Yes. The discovery call and initial strategy session are completely free with no obligation. We want to understand your challenge before recommending anything.' },
-  { q: 'What information should I prepare?', a: 'The more context the better current tools, team size, biggest operational pain points, and any budget or timeline constraints. Even rough numbers help us tailor the conversation.' },
-  { q: 'Do you work with startups or only enterprise?', a: 'We work with ambitious organisations of all sizes from funded startups looking to build scalable operations, to mid-market companies optimising for growth, to enterprise clients needing complex multi-system automation.' },
+  { q: 'How quickly will I hear back?', a: 'We review all enquiries and respond within one business day. For urgent requirements, email hello@sync4tech.com directly.' },
+  { q: 'Is the initial consultation free?', a: 'Yes. The discovery conversation and initial strategy session carry no cost and no obligation. We want to understand your challenge before recommending anything.' },
+  { q: 'What information should I prepare?', a: 'The more context the better. Current tools in use, team size, the biggest operational pain points, and any budget or timeline considerations. Even rough information helps us make the conversation more useful.' },
+  { q: 'Do you work with startups or only enterprise?', a: 'We work with ambitious organisations of all sizes from funded startups building scalable operations, to mid-market companies optimising for growth, to enterprise clients requiring complex multi-system automation and data infrastructure.' },
 ]
 
 export default function ContactForm() {
@@ -69,7 +69,7 @@ export default function ContactForm() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="bg-white border border-[#007cf4]/15 rounded-3xl p-8">
-                <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-6">Tell us about your challenge</h2>
+                <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-6">Tell Us About Your Business Challenge</h2>
                 {sent ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.92 }}
@@ -126,7 +126,7 @@ export default function ContactForm() {
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1.5">What is your biggest operational challenge? *</label>
-                      <textarea required value={form.challenge} onChange={e => set('challenge', e.target.value)} rows={4} placeholder="Describe the challenge you are trying to solve..." className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors resize-none" />
+                      <textarea required value={form.challenge} onChange={e => set('challenge', e.target.value)} rows={4} placeholder="Describe the operational, data, automation, or AI challenge you are trying to solve..." className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors resize-none" />
                     </div>
                     <button
                       type="submit"
@@ -134,7 +134,7 @@ export default function ContactForm() {
                       className="w-full py-4 rounded-full font-semibold text-white text-base btn-glow transition-all duration-300 hover:opacity-90 disabled:opacity-60"
                       style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
                     >
-                      {loading ? 'Sending…' : 'Send Message →'}
+                      {loading ? 'Sending…' : 'Send Your Requirements'}
                     </button>
                   </form>
                 )}
@@ -183,9 +183,9 @@ export default function ContactForm() {
                 <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-4">What happens next</h3>
                 <div className="space-y-3">
                   {[
-                    'We review your operational challenge',
-                    'Schedule a focused 30-minute discovery call',
-                    'Deliver a tailored transformation roadmap',
+                    'We review your requirements and operational context',
+                    'Arrange a focused 30-minute discovery conversation',
+                    'Present a clear path toward measurable improvement',
                   ].map((step, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <span className="w-6 h-6 rounded-full bg-[#007cf4] text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">{i + 1}</span>
