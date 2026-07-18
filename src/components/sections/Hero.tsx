@@ -112,7 +112,7 @@ const slides = [
     h1Line1: 'Scale Without',
     h1Line2: 'Adding Headcount',
     h1Line3: '',
-    subtitle: 'Stop losing time and revenue to manual processes. Sync4Tech automates operations, connects systems, and eliminates bottlenecks so your team can focus on what grows the business.',
+    subtitle: 'Stop losing time and revenue to manual processes. Sync4Tech automates CRM workflows, connects business systems, and eliminates bottlenecks across sales, marketing, and operations so your team can focus on what grows the business.',
     cta1: { label: 'Book a Strategy Call', href: '/contact' },
     cta2: { label: 'Explore Our Solutions', href: '/solutions' },
   },
