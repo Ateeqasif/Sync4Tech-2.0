@@ -293,7 +293,7 @@ export default function Hero() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-gray-500 dark:text-gray-400 text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+            <p className="text-gray-500 dark:text-gray-400 text-xl max-w-4xl mx-auto mb-12 leading-relaxed" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
               {slide.subtitle}
             </p>
 
