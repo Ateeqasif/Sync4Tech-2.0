@@ -91,7 +91,7 @@ export default function FAQ() {
             <br />
             <span className="gradient-text">Questions</span>
           </h2>
-          <p className="text-gray-500 mt-4 text-base leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 mt-4 text-base leading-relaxed">
             Everything you need to know about business automation, data engineering, and AI enablement with Sync4Tech.
           </p>
         </motion.div>
@@ -128,8 +128,7 @@ export default function FAQ() {
               >
                 {/* Number */}
                 <span
-                  className="shrink-0 font-inter-tight font-black text-xs tabular-nums transition-colors duration-200"
-                  style={{ color: open === i ? '#007cf4' : 'rgba(0,0,0,0.2)' }}
+                  className={`shrink-0 font-inter-tight font-black text-xs tabular-nums transition-colors duration-200 ${open === i ? 'text-[#007cf4]' : 'text-black/20 dark:text-white/30'}`}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>

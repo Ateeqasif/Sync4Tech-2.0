@@ -234,11 +234,11 @@ export default function CaseStudies() {
                 <div className="flex flex-col gap-7">
                   <div>
                     <p className="text-[10px] font-black text-[#007cf4] uppercase tracking-[0.2em] mb-2">The Challenge</p>
-                    <p className="text-gray-500 text-sm leading-relaxed">{c.challenge}</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.challenge}</p>
                   </div>
                   <div>
                     <p className="text-[10px] font-black text-[#007cf4] uppercase tracking-[0.2em] mb-2">Our Solution</p>
-                    <p className="text-gray-500 text-sm leading-relaxed">{c.solution}</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.solution}</p>
                   </div>
                 </div>
               </div>

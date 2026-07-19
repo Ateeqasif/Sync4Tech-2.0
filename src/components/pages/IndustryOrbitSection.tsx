@@ -206,7 +206,7 @@ export default function IndustryOrbitSection({
                   <div className="w-8 h-8 rounded-full bg-[#007cf4]/10 border border-[#007cf4]/20 flex items-center justify-center shrink-0 group-hover:bg-[#007cf4]/20 transition-colors">
                     <div className="w-2 h-2 rounded-full bg-[#007cf4]" />
                   </div>
-                  <span className="text-gray-700 text-sm font-medium leading-relaxed">{b}</span>
+                  <span className="text-gray-700 dark:text-gray-300 text-sm font-medium leading-relaxed">{b}</span>
                 </motion.li>
               ))}
             </ul>

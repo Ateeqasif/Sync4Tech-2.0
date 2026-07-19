@@ -428,7 +428,7 @@ export default function LiveDashboard() {
             </span>
           </div>
           <h2
-            className="font-inter-tight font-black text-[#050f2e] leading-tight tracking-tight"
+            className="font-inter-tight font-black text-[#050f2e] dark:text-white leading-tight tracking-tight"
             style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}
           >
             AI &amp; Automation
@@ -465,7 +465,7 @@ export default function LiveDashboard() {
                 ? visKpi.map(s => <KpiTile key={s.label} s={s} />)
                 : <p className="col-span-full text-center text-gray-400 text-sm py-4">No tools selected. Click a tool above to show it.</p>
               : Array.from({ length: 7 }).map((_, i) => (
-                  <div key={i} className="animate-pulse h-[108px] rounded-2xl bg-gray-100" />
+                  <div key={i} className="animate-pulse h-[108px] rounded-2xl bg-gray-100 dark:bg-gray-700" />
                 ))}
           </div>
 

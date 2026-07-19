@@ -227,8 +227,7 @@ export default function IndustriesPage() {
 
                     <div className="relative z-10 mt-auto">
                       <h2
-                        className="font-inter-tight font-black text-2xl mb-1 leading-tight"
-                        style={{ color: isGradient ? '#fff' : '#050f2e' }}
+                        className={`font-inter-tight font-black text-2xl mb-1 leading-tight ${isGradient ? 'text-white' : 'text-[#050f2e] dark:text-white'}`}
                       >
                         {ind.name}
                       </h2>

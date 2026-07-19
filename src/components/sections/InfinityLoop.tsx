@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { TOOL_LINKS } from '@/lib/toolLinks'
 
 const CX = 490, CY = 320
@@ -25,6 +25,14 @@ const tools = [
 export default function InfinityLoop() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const [isDark, setIsDark] = useState(false)
+  useEffect(() => {
+    const update = () => setIsDark(document.documentElement.classList.contains('dark'))
+    update()
+    const observer = new MutationObserver(update)
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="py-section bg-[#f8faff] dark:bg-gray-900" id="ecosystem">
