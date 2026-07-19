@@ -552,7 +552,7 @@ const INDEX: SearchEntry[] = [
     href: '/contact',
     category: 'Page',
     breadcrumb: 'Contact',
-    content: 'Contact get in touch start transformation tell us biggest operational challenge strategy session book consultation hello@sync4tech.com response within 24 hours London New York Lahore offices free strategy session no commitment',
+    content: 'Contact get in touch start transformation tell us biggest operational challenge strategy session book consultation hello@sync4tech.co response within 24 hours London New York Lahore offices free strategy session no commitment',
   },
 
   // ─── FAQ entries ───────────────────────────────────────────────────────────

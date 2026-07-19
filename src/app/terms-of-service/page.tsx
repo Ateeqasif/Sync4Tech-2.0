@@ -62,7 +62,7 @@ export default function TermsOfServicePage() {
             <p>We may update these Terms from time to time. Material changes will be notified via a notice on our website or by email to active clients. Continued use of our services after any update constitutes acceptance of the revised Terms.</p>
 
             <h2>8. Contact</h2>
-            <p>For questions about these Terms, contact us at <a href="mailto:legal@sync4tech.com" className="text-[#007cf4]">legal@sync4tech.com</a>.</p>
+            <p>For questions about these Terms, contact us at <a href="mailto:legal@sync4tech.co" className="text-[#007cf4]">legal@sync4tech.co</a>.</p>
           </article>
         </div>
       </section>

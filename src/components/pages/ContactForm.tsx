@@ -8,7 +8,7 @@ const INDUSTRIES = ['Healthcare', 'Financial Services', 'Manufacturing', 'Retail
 const SIZES = ['1–10', '11–50', '51–200', '201–500', '500+']
 
 const FAQ = [
-  { q: 'How quickly will I hear back?', a: 'We review all enquiries and respond within one business day. For urgent requirements, email hello@sync4tech.com directly.' },
+  { q: 'How quickly will I hear back?', a: 'We review all enquiries and respond within one business day. For urgent requirements, email hello@sync4tech.co directly.' },
   { q: 'Is the initial consultation free?', a: 'Yes. The discovery conversation and initial strategy session carry no cost and no obligation. We want to understand your challenge before recommending anything.' },
   { q: 'What information should I prepare?', a: 'The more context the better. Current tools in use, team size, the biggest operational pain points, and any budget or timeline considerations. Even rough information helps us make the conversation more useful.' },
   { q: 'Do you work with startups or only enterprise?', a: 'We work with ambitious organisations of all sizes from funded startups building scalable operations, to mid-market companies optimising for growth, to enterprise clients requiring complex multi-system automation and data infrastructure.' },
@@ -155,7 +155,7 @@ export default function ContactForm() {
                   <div className="w-8 h-8 bg-[#007cf4]/10 rounded-lg flex items-center justify-center">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 4l7 5 7-5M1 4v8a1 1 0 001 1h12a1 1 0 001-1V4" stroke="#007cf4" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                   </div>
-                  <span className="text-[#007cf4] font-semibold text-sm">hello@sync4tech.com</span>
+                  <span className="text-[#007cf4] font-semibold text-sm">hello@sync4tech.co</span>
                 </div>
                 <span className="ml-11 text-xs text-gray-400 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 px-2 py-0.5 rounded-full font-medium">Response within 24 hours</span>
               </div>

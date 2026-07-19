@@ -95,7 +95,7 @@ export default function CareersList() {
                     <div className="px-6 pb-6 border-t border-[#007cf4]/10 pt-4">
                       <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-5">{role.description}</p>
                       <a
-                        href={`mailto:careers@sync4tech.com?subject=Application: ${role.title}`}
+                        href={`mailto:careers@sync4tech.co?subject=Application: ${role.title}`}
                         className="inline-flex items-center gap-2 bg-[#007cf4] text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-[#36c5f0] transition-colors btn-glow"
                       >
                         Apply Now →
@@ -119,7 +119,7 @@ export default function CareersList() {
           <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2">Do not see a role that fits?</h3>
           <p className="text-gray-500 dark:text-gray-400 text-sm mb-5">We are always looking for exceptional people. Send us your CV and tell us how you would contribute.</p>
           <a
-            href="mailto:careers@sync4tech.com?subject=Speculative Application"
+            href="mailto:careers@sync4tech.co?subject=Speculative Application"
             className="inline-flex items-center gap-2 border border-[#007cf4]/40 text-[#007cf4] px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-[#007cf4] hover:text-white transition-all duration-200"
           >
             Send a Speculative Application

@@ -66,7 +66,7 @@ export default function PrivacyPolicyPage() {
               <li><strong>Objection</strong> object to processing based on legitimate interests or for direct marketing.</li>
               <li><strong>Withdraw consent</strong> where processing is based on consent, withdraw it at any time.</li>
             </ul>
-            <p>To exercise any of these rights, contact us at <a href="mailto:privacy@sync4tech.com" className="text-[#007cf4]">privacy@sync4tech.com</a>. We will respond within 30 days.</p>
+            <p>To exercise any of these rights, contact us at <a href="mailto:privacy@sync4tech.co" className="text-[#007cf4]">privacy@sync4tech.co</a>. We will respond within 30 days.</p>
 
             <h2>5. Data Retention</h2>
             <p>We retain personal data only as long as necessary for the purposes described above, or as required by law. Contact enquiry data is retained for 24 months after the last interaction. Client engagement data is retained for 7 years for legal and compliance purposes.</p>
@@ -76,7 +76,7 @@ export default function PrivacyPolicyPage() {
 
             <h2>7. Contact Us</h2>
             <p>Sync4Tech Ltd is the data controller for personal data processed through this website. For privacy enquiries, contact us at:</p>
-            <p><strong>Email:</strong> <a href="mailto:privacy@sync4tech.com" className="text-[#007cf4]">privacy@sync4tech.com</a><br />
+            <p><strong>Email:</strong> <a href="mailto:privacy@sync4tech.co" className="text-[#007cf4]">privacy@sync4tech.co</a><br />
             <strong>Post:</strong> Sync4Tech Ltd, 1 Canada Square, Canary Wharf, London</p>
             <p>You also have the right to lodge a complaint with the relevant supervisory authority in your jurisdiction.</p>
           </article>

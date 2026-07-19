@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     `
 
     const { error } = await resend.emails.send({
-      from: 'Sync4Tech Forms <forms@sync4tech.com>',
+      from: 'Sync4Tech Forms <forms@sync4tech.co>',
       to: TO,
       subject: `New newsletter subscriber: ${email}`,
       html,

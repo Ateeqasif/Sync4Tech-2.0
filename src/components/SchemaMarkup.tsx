@@ -33,7 +33,7 @@ export default function SchemaMarkup() {
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
-      "email": "hello@sync4tech.com",
+      "email": "hello@sync4tech.co",
       "availableLanguage": "English"
     },
     "sameAs": [
@@ -270,7 +270,7 @@ export default function SchemaMarkup() {
         "name": "What locations does Sync4Tech serve?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sync4Tech serves organizations globally, with delivery capability for fully remote and hybrid engagement models across all time zones. Contact us at hello@sync4tech.com to discuss your requirements."
+          "text": "Sync4Tech serves organizations globally, with delivery capability for fully remote and hybrid engagement models across all time zones. Contact us at hello@sync4tech.co to discuss your requirements."
         }
       }
     ]

@@ -65,7 +65,7 @@ export default function CookiePolicyPage() {
             <p>We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date. We recommend reviewing this page periodically to stay informed about our use of cookies.</p>
 
             <h2>6. Contact Us</h2>
-            <p>If you have questions about our use of cookies, contact us at <a href="mailto:privacy@sync4tech.com" className="text-[#007cf4]">privacy@sync4tech.com</a>.</p>
+            <p>If you have questions about our use of cookies, contact us at <a href="mailto:privacy@sync4tech.co" className="text-[#007cf4]">privacy@sync4tech.co</a>.</p>
           </article>
         </div>
       </section>

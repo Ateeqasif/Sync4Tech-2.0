@@ -165,7 +165,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
               <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2">Apply for this role</h3>
               <p className="text-gray-400 text-xs mb-4">Send your CV and a short note about why you're interested.</p>
               <a
-                href={`mailto:careers@sync4tech.com?subject=Application: ${j.title}`}
+                href={`mailto:careers@sync4tech.co?subject=Application: ${j.title}`}
                 className="inline-flex items-center justify-center gap-2 text-white w-full px-6 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-90"
                 style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}
               >

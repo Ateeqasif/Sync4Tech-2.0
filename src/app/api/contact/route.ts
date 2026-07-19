@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
     `
 
     const { error } = await resend.emails.send({
-      from: 'Sync4Tech Forms <forms@sync4tech.com>',
+      from: 'Sync4Tech Forms <forms@sync4tech.co>',
       to: TO,
       replyTo: email,
       subject: `New enquiry from ${name} — ${company || 'Sync4Tech'}`,
