@@ -100,7 +100,7 @@ export default function ServicesPage() {
       />
 
       {/* Three pillars */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff] relative overflow-hidden">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900 relative overflow-hidden">
         <BrandWatermark position="right" size={580} opacity={0.045} />
         <div className="section-container relative z-10">
           <div className="flex flex-col gap-8">
@@ -135,17 +135,17 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Services list panel */}
-                <div className="bg-white dark:bg-white p-10 md:[direction:ltr]">
+                <div className="bg-white dark:bg-gray-800 p-10 md:[direction:ltr]">
                   <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-6">Services included</p>
                   <div className="grid grid-cols-1 gap-2">
                     {pillar.services.map((svc) => (
                       <Link
                         key={svc.href}
                         href={svc.href}
-                        className="group flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-100  hover:border-[#007cf4]/30 hover:bg-[#007cf4]/4 transition-all duration-200"
+                        className="group flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-[#007cf4]/30 hover:bg-[#007cf4]/4 transition-all duration-200"
                       >
                         <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: `linear-gradient(135deg, ${pillar.color}, #36c5f0)` }} />
-                        <span className="text-sm text-gray-700 text-gray-600 group-hover:text-[#007cf4] transition-colors">{svc.label}</span>
+                        <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors">{svc.label}</span>
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
                           <path d="M2 6h8M6 2l4 4-4 4" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
@@ -160,7 +160,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Technology partners */}
-      <section className="py-16 bg-white dark:bg-[#f8faff] border-t border-gray-100 ">
+      <section className="py-16 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-700">
         <div className="section-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -181,7 +181,7 @@ export default function ServicesPage() {
               <ToolPill
                 key={tool}
                 name={tool}
-                className="bg-gray-50 dark:bg-white/5 border border-gray-200 rounded-full px-4 py-2 text-sm font-semibold text-gray-600 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
+                className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full px-4 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:border-[#007cf4]/60 hover:text-[#007cf4] dark:hover:text-[#36c5f0] hover:shadow-sm"
               />
             ))}
           </motion.div>

@@ -108,7 +108,7 @@ export default function PricingPage() {
       />
 
       {/* Pricing tiers */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff] relative overflow-hidden">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900 relative overflow-hidden">
         <BrandWatermark position="center" size={700} opacity={0.04} />
         <div className="section-container relative z-10">
           <div className="text-center mb-14">
@@ -147,7 +147,7 @@ export default function PricingPage() {
                 className={`relative rounded-2xl flex flex-col ${
                   tier.highlight
                     ? 'bg-gradient-to-b from-[#007cf4]/10 to-[#36c5f0]/5 border-2 border-[#007cf4]/40 shadow-lg shadow-[#007cf4]/10'
-                    : 'bg-white dark:bg-white border border-[#007cf4]/15'
+                    : 'bg-white dark:bg-gray-800 border border-[#007cf4]/15'
                 }`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -207,7 +207,7 @@ export default function PricingPage() {
       </section>
 
       {/* All plans include */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <div className="text-center mb-12">
             <motion.div
@@ -251,7 +251,7 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing FAQ */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <motion.div
@@ -276,7 +276,7 @@ export default function PricingPage() {
             {pricingFAQ.map((faq, i) => (
               <motion.div
                 key={i}
-                className="bg-white dark:bg-white border border-[#007cf4]/15 rounded-2xl p-6"
+                className="bg-white dark:bg-gray-800 border border-[#007cf4]/15 dark:border-[#007cf4]/25 rounded-2xl p-6"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -291,7 +291,7 @@ export default function PricingPage() {
       </section>
 
       {/* Trust strip */}
-      <section className="py-10 bg-white dark:bg-[#f8faff] border-t border-[#007cf4]/10">
+      <section className="py-10 bg-white dark:bg-gray-900 border-t border-[#007cf4]/10">
         <div className="section-container">
           <motion.div
             className="flex flex-wrap justify-center gap-8 text-center"

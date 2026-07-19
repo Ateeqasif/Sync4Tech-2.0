@@ -149,7 +149,7 @@ export default function CaseStudies() {
   const c = cases[active]
 
   return (
-    <section className="py-section bg-white" id="case-studies">
+    <section className="py-section bg-white dark:bg-gray-900" id="case-studies">
       <div className="section-container">
 
         {/* Header */}
@@ -213,8 +213,7 @@ export default function CaseStudies() {
           >
             {/* Left content 3 cols */}
             <div
-              className="lg:col-span-3 p-10 flex flex-col justify-between relative overflow-hidden"
-              style={{ background: 'white' }}
+              className="lg:col-span-3 p-10 flex flex-col justify-between relative overflow-hidden bg-white dark:bg-gray-800"
             >
               {/* Corner glow */}
               <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full pointer-events-none"
@@ -228,7 +227,7 @@ export default function CaseStudies() {
                   <span className="text-xs text-gray-400 font-medium">{c.company}</span>
                 </div>
 
-                <h3 className="font-inter-tight font-black text-gray-900 text-2xl md:text-3xl leading-tight mb-10">
+                <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-2xl md:text-3xl leading-tight mb-10">
                   {c.headline}
                 </h3>
 
@@ -245,8 +244,8 @@ export default function CaseStudies() {
               </div>
 
               {/* Bottom CTA */}
-              <div className="mt-10 pt-8 border-t border-gray-100 flex items-center justify-between flex-wrap gap-4 relative z-10">
-                <a href="/case-studies" className="text-xs text-gray-600 hover:text-[#36c5f0] transition-colors font-medium">View all case studies →</a>
+              <div className="mt-10 pt-8 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between flex-wrap gap-4 relative z-10">
+                <a href="/case-studies" className="text-xs text-gray-600 dark:text-gray-400 hover:text-[#36c5f0] transition-colors font-medium">View all case studies →</a>
                 <motion.a
                   href="/contact"
                   className="inline-flex items-center gap-2 text-sm font-bold text-white bg-gradient-to-r from-[#033a9d] to-[#007cf4] px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-[#007cf4]/30 transition-all duration-200"
@@ -327,7 +326,7 @@ export default function CaseStudies() {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`rounded-full transition-all duration-300 ${active === i ? 'w-6 h-2 bg-[#007cf4] shadow-sm shadow-[#007cf4]/50' : 'w-2 h-2 bg-white/10 hover:bg-[#007cf4]/40'}`}
+              className={`rounded-full transition-all duration-300 ${active === i ? 'w-6 h-2 bg-[#007cf4] shadow-sm shadow-[#007cf4]/50' : 'w-2 h-2 bg-black/10 dark:bg-white/10 hover:bg-[#007cf4]/40'}`}
             />
           ))}
         </div>

@@ -206,7 +206,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-white" id="home">
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-900" id="home">
       {/* Background layers */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 opacity-70">

@@ -76,7 +76,7 @@ export default function FAQ() {
   const visibleFaqs = expanded ? faqs : faqs.slice(0, INITIAL_COUNT)
 
   return (
-    <section className="py-section bg-[#f8faff]" id="faq" aria-label="Frequently Asked Questions">
+    <section className="py-section bg-[#f8faff] dark:bg-gray-900" id="faq" aria-label="Frequently Asked Questions">
       <div className="section-container">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16"
@@ -100,9 +100,8 @@ export default function FAQ() {
           {visibleFaqs.map((faq, i) => (
             <motion.div
               key={i}
-              className="group relative overflow-hidden rounded-2xl"
+              className="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800"
               style={{
-                background: open === i ? 'white' : 'white',
                 boxShadow: open === i
                   ? '0 0 0 1.5px rgba(0,124,244,0.4), 0 8px 32px rgba(0,124,244,0.08)'
                   : '0 0 0 1px rgba(0,0,0,0.07)',
@@ -135,7 +134,7 @@ export default function FAQ() {
                   {String(i + 1).padStart(2, '0')}
                 </span>
 
-                <span className={`flex-1 font-semibold text-sm leading-snug transition-colors duration-200 ${open === i ? 'text-[#050f2e]' : 'text-gray-600 group-hover:text-[#007cf4]'}`}>
+                <span className={`flex-1 font-semibold text-sm leading-snug transition-colors duration-200 ${open === i ? 'text-[#050f2e] dark:text-white' : 'text-gray-600 dark:text-gray-300 group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0]'}`}>
                   {faq.q}
                 </span>
 
@@ -199,13 +198,13 @@ export default function FAQ() {
 
         {/* Bottom CTA */}
         <motion.div
-          className="mt-14 rounded-2xl border border-[#007cf4]/15 bg-[#f8faff] p-8 text-center"
+          className="mt-14 rounded-2xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-800 p-8 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <p className="font-inter-tight font-bold text-[#050f2e] text-lg mb-1">Still have questions?</p>
+          <p className="font-inter-tight font-bold text-[#050f2e] dark:text-white text-lg mb-1">Still have questions?</p>
           <p className="text-gray-400 text-sm mb-6">Talk to one of our specialists. No sales pitch, just straight answers.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
@@ -218,7 +217,7 @@ export default function FAQ() {
             </a>
             <a
               href="/case-studies"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-gray-700 bg-white border border-black/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-black/10 dark:border-white/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-all"
             >
               See Our Work
             </a>

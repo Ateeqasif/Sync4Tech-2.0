@@ -94,7 +94,7 @@ export default function CaseStudiesFilter() {
   const filtered = active === 'All' ? cases : cases.filter(c => c.category === active)
 
   return (
-    <section className="py-section bg-[#f8faff]">
+    <section className="py-section bg-[#f8faff] dark:bg-gray-900">
       <div className="section-container">
         {/* Filter tabs */}
         <div className="flex flex-wrap gap-2 justify-center mb-14">

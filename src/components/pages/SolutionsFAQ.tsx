@@ -30,7 +30,7 @@ export default function SolutionsFAQ() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="py-section bg-[#f8faff]">
+    <section className="py-section bg-[#f8faff] dark:bg-gray-900">
       <div className="section-container max-w-3xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -47,7 +47,7 @@ export default function SolutionsFAQ() {
           {faqs.map((faq, i) => (
             <motion.div
               key={i}
-              className="bg-white border border-[#007cf4]/15 rounded-2xl overflow-hidden"
+              className="bg-white dark:bg-gray-800 border border-[#007cf4]/15 dark:border-[#007cf4]/25 rounded-2xl overflow-hidden"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

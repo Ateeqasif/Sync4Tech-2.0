@@ -13,7 +13,7 @@ export default function ExecutionGap() {
   const after = t.executionGap.afterItems
 
   return (
-    <section className="py-section bg-[#f0f7ff] relative overflow-hidden" id="execution-gap">
+    <section className="py-section bg-[#f0f7ff] dark:bg-gray-900 relative overflow-hidden" id="execution-gap">
       {/* Background orbs */}
       <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full opacity-10 dark:opacity-20 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, #007cf4, transparent 70%)' }} />

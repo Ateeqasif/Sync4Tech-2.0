@@ -48,7 +48,7 @@ export default function TransformationJourney() {
   }, [active, go])
 
   return (
-    <section className="py-section bg-white relative overflow-hidden" id="journey">
+    <section className="py-section bg-white dark:bg-gray-900 relative overflow-hidden" id="journey">
       <SectionGrid />
 
       <div className="section-container relative z-10">
@@ -77,7 +77,7 @@ export default function TransformationJourney() {
                 className={`text-left px-6 py-4 rounded-xl border transition-all duration-300 group ${
                   i === active
                     ? 'border-[#007cf4]/40 bg-[#007cf4]/8 shadow-sm'
-                    : 'border-black/8 dark:border-white/10 bg-white hover:bg-[#007cf4]/4 hover:border-[#007cf4]/25'
+                    : 'border-black/8 dark:border-white/10 bg-white dark:bg-gray-800 hover:bg-[#007cf4]/4 dark:hover:bg-[#007cf4]/10 hover:border-[#007cf4]/25'
                 }`}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -175,7 +175,7 @@ export default function TransformationJourney() {
           </a>
           <a
             href="/case-studies"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-gray-700 bg-white border border-black/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-black/10 dark:border-white/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-all"
           >
             See Client Results
           </a>

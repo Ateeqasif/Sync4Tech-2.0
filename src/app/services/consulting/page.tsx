@@ -62,7 +62,7 @@ export default function ConsultingPage() {
         ]}
       />
 
-      <section className="bg-[#f8faff] py-20">
+      <section className="bg-[#f8faff] dark:bg-gray-900 py-20">
         <div className="section-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, i) => (
@@ -75,7 +75,7 @@ export default function ConsultingPage() {
               >
                 <Link
                   href={`/services/consulting/${service.slug}`}
-                  className="bg-white border border-gray-100 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
+                  className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
                 >
                   <h3 className="text-gray-900 font-black font-inter-tight text-lg leading-tight">
                     {service.name}

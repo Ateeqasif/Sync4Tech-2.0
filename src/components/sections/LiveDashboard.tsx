@@ -345,7 +345,7 @@ function ChartCard({ title, sub, series, chartKey }: {
 }) {
   if (!series.length) return null
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm">
       <div className="flex items-start justify-between mb-4">
         <div>
           <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">{sub}</p>
@@ -410,7 +410,7 @@ export default function LiveDashboard() {
   const chartKey = `${dayRange}-${Array.from(hidden).join(',')}`
 
   return (
-    <section className="py-section bg-[#f8faff]">
+    <section className="py-section bg-[#f8faff] dark:bg-gray-900">
       <div className="section-container">
 
         {/* Header */}
@@ -442,7 +442,7 @@ export default function LiveDashboard() {
 
         {/* Single unified panel */}
         <motion.div
-          className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8"
+          className="bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-sm p-6 md:p-8"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}

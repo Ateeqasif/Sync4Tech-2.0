@@ -166,7 +166,7 @@ export default function IndustriesPage() {
       />
 
       {/* Industries bento grid */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <div
             className="grid grid-cols-1 md:grid-cols-3 gap-5"
@@ -254,7 +254,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* Why industry expertise matters */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <div className="text-center mb-12">
             <motion.div

@@ -27,7 +27,7 @@ export default function SolutionContent({ s, slug }: Props) {
   return (
     <>
       {/* What It Is */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container grid md:grid-cols-2 gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -68,7 +68,7 @@ export default function SolutionContent({ s, slug }: Props) {
       </section>
 
       {/* How We Deliver It */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-14"
@@ -84,7 +84,7 @@ export default function SolutionContent({ s, slug }: Props) {
             {s.steps.map((step, i) => (
               <motion.div
                 key={i}
-                className="group bg-white dark:bg-white rounded-2xl p-7 border-l-4 border-[#007cf4]/30 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
+                className="group bg-white dark:bg-gray-800 rounded-2xl p-7 border-l-4 border-[#007cf4]/30 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -102,7 +102,7 @@ export default function SolutionContent({ s, slug }: Props) {
       </section>
 
       {/* Tools */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -124,7 +124,7 @@ export default function SolutionContent({ s, slug }: Props) {
               >
                 <ToolPill
                   name={t}
-                  className="px-4 py-2 rounded-full bg-[#f8faff] dark:bg-[#f8faff] border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0] hover:border-[#007cf4]/50 hover:shadow-sm"
+                  className="px-4 py-2 rounded-full bg-[#f8faff] dark:bg-gray-900 border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0] hover:border-[#007cf4]/50 hover:shadow-sm"
                 />
               </motion.div>
             ))}
@@ -133,7 +133,7 @@ export default function SolutionContent({ s, slug }: Props) {
       </section>
 
       {/* Metrics */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-14"
@@ -169,7 +169,7 @@ export default function SolutionContent({ s, slug }: Props) {
       </section>
 
       {/* Related Case Study */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container max-w-2xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -202,7 +202,7 @@ export default function SolutionContent({ s, slug }: Props) {
       </section>
 
       {/* FAQ */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-14"

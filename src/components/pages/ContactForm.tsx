@@ -58,7 +58,7 @@ export default function ContactForm() {
   return (
     <>
       {/* Two-col layout */}
-      <section className="py-section bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
             {/* LEFT Form */}
@@ -68,7 +68,7 @@ export default function ContactForm() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="bg-white border border-[#007cf4]/15 rounded-3xl p-8">
+              <div className="bg-white dark:bg-gray-800 border border-[#007cf4]/15 dark:border-[#007cf4]/25 rounded-3xl p-8">
                 <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-6">Tell Us About Your Business Challenge</h2>
                 {sent ? (
                   <motion.div
@@ -97,28 +97,28 @@ export default function ContactForm() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1.5">Full Name *</label>
-                        <input required value={form.name} onChange={e => set('name', e.target.value)} type="text" placeholder="Jane Smith" className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
+                        <input required value={form.name} onChange={e => set('name', e.target.value)} type="text" placeholder="Jane Smith" className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1.5">Work Email *</label>
-                        <input required value={form.email} onChange={e => set('email', e.target.value)} type="email" placeholder="jane@company.com" className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
+                        <input required value={form.email} onChange={e => set('email', e.target.value)} type="email" placeholder="jane@company.com" className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
                       </div>
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1.5">Company Name *</label>
-                      <input required value={form.company} onChange={e => set('company', e.target.value)} type="text" placeholder="Acme Corp" className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
+                      <input required value={form.company} onChange={e => set('company', e.target.value)} type="text" placeholder="Acme Corp" className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1.5">Company Size</label>
-                        <select value={form.size} onChange={e => set('size', e.target.value)} className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors">
+                        <select value={form.size} onChange={e => set('size', e.target.value)} className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors">
                           <option value="">Select size</option>
                           {SIZES.map(s => <option key={s} value={s}>{s} employees</option>)}
                         </select>
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1.5">Industry</label>
-                        <select value={form.industry} onChange={e => set('industry', e.target.value)} className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors">
+                        <select value={form.industry} onChange={e => set('industry', e.target.value)} className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors">
                           <option value="">Select industry</option>
                           {INDUSTRIES.map(ind => <option key={ind} value={ind}>{ind}</option>)}
                         </select>
@@ -126,7 +126,7 @@ export default function ContactForm() {
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1.5">What is your biggest operational challenge? *</label>
-                      <textarea required value={form.challenge} onChange={e => set('challenge', e.target.value)} rows={4} placeholder="Describe the operational, data, automation, or AI challenge you are trying to solve..." className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors resize-none" />
+                      <textarea required value={form.challenge} onChange={e => set('challenge', e.target.value)} rows={4} placeholder="Describe the operational, data, automation, or AI challenge you are trying to solve..." className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors resize-none" />
                     </div>
                     <button
                       type="submit"
@@ -150,7 +150,7 @@ export default function ContactForm() {
               className="flex flex-col gap-6"
             >
               {/* Email + badge */}
-              <div className="bg-white border border-[#007cf4]/15 rounded-2xl p-6">
+              <div className="bg-white dark:bg-gray-800 border border-[#007cf4]/15 dark:border-[#007cf4]/25 rounded-2xl p-6">
                 <div className="flex items-center gap-3 mb-1">
                   <div className="w-8 h-8 bg-[#007cf4]/10 rounded-lg flex items-center justify-center">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 4l7 5 7-5M1 4v8a1 1 0 001 1h12a1 1 0 001-1V4" stroke="#007cf4" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -166,7 +166,7 @@ export default function ContactForm() {
                 { city: 'New York', country: 'Americas Hub', tz: 'EST / EDT', addr: '101 Avenue of the Americas' },
                 { city: 'Lahore', country: 'Asia Hub', tz: 'PKT (UTC+5)', addr: 'Arfa Software Technology Park' },
               ].map(office => (
-                <div key={office.city} className="bg-white border border-[#007cf4]/15 rounded-2xl p-5 flex items-start gap-4">
+                <div key={office.city} className="bg-white dark:bg-gray-800 border border-[#007cf4]/15 dark:border-[#007cf4]/25 rounded-2xl p-5 flex items-start gap-4">
                   <div className="w-8 h-8 bg-[#007cf4]/10 rounded-lg flex items-center justify-center shrink-0">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="#007cf4" /></svg>
                   </div>
@@ -200,7 +200,7 @@ export default function ContactForm() {
       </section>
 
       {/* Trust signals */}
-      <section className="py-8 bg-white border-t border-[#007cf4]/10">
+      <section className="py-8 bg-white dark:bg-gray-900 border-t border-[#007cf4]/10">
         <div className="section-container flex flex-wrap items-center justify-center text-gray-400 dark:text-gray-500 text-sm">
           {['No commitment required', 'NDA available', 'Serving clients globally'].map((t, i) => (
             <span key={i} className="flex items-center">
@@ -214,7 +214,7 @@ export default function ContactForm() {
       </section>
 
       {/* Contact FAQ */}
-      <section className="py-section bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">FAQ</span>
@@ -222,7 +222,7 @@ export default function ContactForm() {
           </div>
           <div className="space-y-3">
             {FAQ.map((faq, i) => (
-              <div key={i} className="bg-white border border-[#007cf4]/15 rounded-2xl overflow-hidden">
+              <div key={i} className="bg-white dark:bg-gray-800 border border-[#007cf4]/15 dark:border-[#007cf4]/25 rounded-2xl overflow-hidden">
                 <button className="w-full text-left px-6 py-5 flex items-center justify-between gap-4" onClick={() => setOpenFAQ(openFAQ === i ? null : i)}>
                   <span className="font-semibold text-black dark:text-white text-sm">{faq.q}</span>
                   <span className={`text-[#007cf4] transition-transform duration-300 shrink-0 ${openFAQ === i ? 'rotate-180' : ''}`}>

@@ -51,7 +51,7 @@ export default function ExpertPopup() {
           onClick={close}
         >
           <motion.div
-            className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white"
+            className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white dark:bg-gray-900"
             style={{
               border: '1px solid rgba(0,124,244,0.12)',
               boxShadow: '0 32px 80px rgba(3,58,157,0.14), 0 0 0 1px rgba(0,124,244,0.06)',
@@ -93,7 +93,7 @@ export default function ExpertPopup() {
               </motion.div>
 
               <motion.h2
-                className="text-3xl font-black leading-tight tracking-tight text-[#050f2e] mb-3"
+                className="text-3xl font-black leading-tight tracking-tight text-[#050f2e] dark:text-white mb-3"
                 style={{ fontFamily: 'var(--font-inter-tight)' }}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -112,7 +112,7 @@ export default function ExpertPopup() {
             </div>
 
             {/* Bottom section */}
-            <div className="px-10 py-8 border-t border-gray-100">
+            <div className="px-10 py-8 border-t border-gray-100 dark:border-gray-700">
               {/* Trust indicators */}
               <div className="flex items-center gap-6 mb-7">
                 {TRUST.map((item, idx) => (

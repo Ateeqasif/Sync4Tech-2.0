@@ -326,7 +326,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
               <span className="bg-black/40 backdrop-blur text-white text-xs font-semibold px-3 py-1.5 rounded-full">{a.tag}</span>
             </div>
           </div>
-          <div className="flex-1 bg-whitebg-white p-8 md:p-10 flex flex-col justify-center">
+          <div className="flex-1 bg-white dark:bg-gray-800 p-8 md:p-10 flex flex-col justify-center">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-xs text-gray-400">{a.date}</span>
               <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
@@ -357,7 +357,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
               <span className="bg-[#007cf4] text-white text-xs font-bold px-2.5 py-1 rounded-full">{a.tag}</span>
             </div>
           </div>
-          <div className="flex-1 bg-whitebg-white p-7 flex flex-col justify-center">
+          <div className="flex-1 bg-white dark:bg-gray-800 p-7 flex flex-col justify-center">
             <div className="flex items-center gap-2 mb-3">
               <span className="text-xs text-gray-400">{a.date}</span>
               <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
@@ -384,7 +384,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
             <span className="bg-[#007cf4] text-white text-xs font-bold px-2.5 py-1 rounded-full">{a.tag}</span>
           </div>
         </div>
-        <div className="bg-whitebg-white p-6 flex flex-col flex-1">
+        <div className="bg-white dark:bg-gray-800 p-6 flex flex-col flex-1">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-xs text-gray-400">{a.date}</span>
             <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
@@ -411,7 +411,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
           <span className="bg-[#007cf4] text-white text-xs font-bold px-2.5 py-1 rounded-full">{a.tag}</span>
         </div>
       </div>
-      <div className="bg-whitebg-white p-5">
+      <div className="bg-white dark:bg-gray-800 p-5">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-xs text-gray-400">{a.date}</span>
           <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
@@ -490,7 +490,7 @@ export default function InsightsFilter() {
   }
 
   return (
-    <section className="py-section bg-[#f8faff]">
+    <section className="py-section bg-[#f8faff] dark:bg-gray-900">
       <div className="section-container">
         {/* Filter tags */}
         <div className="flex flex-wrap gap-2 justify-center mb-12">

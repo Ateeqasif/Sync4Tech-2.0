@@ -80,7 +80,7 @@ interface PageHeroProps {
 
 export default function PageHero({ eyebrow, title, highlight, subtitle, breadcrumb }: PageHeroProps) {
   return (
-    <section className="relative pt-40 pb-20 bg-white flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative pt-40 pb-20 bg-white dark:bg-gray-900 flex flex-col items-center justify-center overflow-hidden">
       {/* Background */}
       <BrandWatermark position="bottom-right" size={520} opacity={0.04} rotate={false} />
       <div className="absolute inset-0 overflow-hidden">

@@ -128,7 +128,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
       />
 
       {/* Category nav */}
-      <div className="bg-[#f8faff] dark:bg-[#f8faff] border-b border-[#007cf4]/10">
+      <div className="bg-[#f8faff] dark:bg-gray-900 border-b border-[#007cf4]/10">
         <div className="section-container py-4 flex flex-wrap gap-2">
           <Link href="/insights" className="px-4 py-1.5 rounded-full text-xs font-semibold border border-black/15  text-gray-500  hover:border-[#007cf4] hover:text-[#007cf4] transition-colors">
             All
@@ -150,7 +150,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
       </div>
 
       {/* Articles in this category */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <p className="text-gray-400 text-sm mb-10">{filtered.length} article{filtered.length !== 1 ? 's' : ''} in <span className="text-[#007cf4] font-semibold">{meta.label}</span></p>
 
@@ -162,7 +162,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map(article => (
-                <Link key={article.slug} href={`/insights/${article.slug}`} className="group block rounded-2xl overflow-hidden border border-black/8  hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-md bg-white dark:bg-white">
+                <Link key={article.slug} href={`/insights/${article.slug}`} className="group block rounded-2xl overflow-hidden border border-black/8  hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-md bg-white dark:bg-gray-800">
                   <div className="relative h-48 overflow-hidden">
                     <Image src={article.image} alt={article.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 640px) 100vw, 33vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -192,7 +192,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
       {/* Other categories teaser */}
       {others.length > 0 && (
-        <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+        <section className="py-section bg-[#f8faff] dark:bg-gray-900">
           <div className="section-container">
             <div className="flex items-center justify-between mb-8">
               <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl">More Insights</h2>
@@ -200,7 +200,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {others.slice(0, 3).map(article => (
-                <Link key={article.slug} href={`/insights/${article.slug}`} className="group block bg-white dark:bg-white rounded-2xl p-5 border border-[#007cf4]/10 hover:border-[#007cf4]/30 transition-all">
+                <Link key={article.slug} href={`/insights/${article.slug}`} className="group block bg-white dark:bg-gray-800 rounded-2xl p-5 border border-[#007cf4]/10 hover:border-[#007cf4]/30 transition-all">
                   <span className="text-[#007cf4] text-xs font-bold uppercase tracking-widest">{article.tag}</span>
                   <h3 className="font-inter-tight font-bold text-black dark:text-white text-sm mt-2 mb-1 group-hover:text-[#007cf4] transition-colors">{article.title}</h3>
                   <p className="text-gray-400 text-xs">{article.readTime}</p>

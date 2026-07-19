@@ -38,7 +38,7 @@ export default function IndustryOrbitSection({
   const clipId = `radarClip-${eyebrow.replace(/\s/g, '')}`
 
   return (
-    <section ref={ref} className="py-20 md:py-28 bg-white overflow-hidden relative">
+    <section ref={ref} className="py-20 md:py-28 bg-white dark:bg-gray-900 overflow-hidden relative">
       {/* Subtle grid background matching landing page */}
       <div
         className="absolute inset-0 pointer-events-none"

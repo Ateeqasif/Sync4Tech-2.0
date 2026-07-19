@@ -89,7 +89,7 @@ export default function Footer() {
   return (
     <footer>
       {/* ── Top newsletter band: white + continuous grid ── */}
-      <div className="relative overflow-hidden bg-[#f3f4f6]">
+      <div className="relative overflow-hidden bg-[#f3f4f6] dark:bg-gray-900">
         {/* Continuous grid same spec as FinalCTA so it flows seamlessly */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -122,7 +122,7 @@ export default function Footer() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder={t.footer.subscribePlaceholder}
-                  className="flex-1 bg-white border border-black/15 dark:border-white/20 rounded-full px-5 py-3.5 text-gray-800 dark:text-gray-200 text-sm placeholder-gray-400 focus:outline-none focus:border-[#007cf4]/60 transition-colors shadow-sm"
+                  className="flex-1 bg-white dark:bg-gray-800 border border-black/15 dark:border-white/20 rounded-full px-5 py-3.5 text-gray-800 dark:text-gray-200 text-sm placeholder-gray-400 focus:outline-none focus:border-[#007cf4]/60 transition-colors shadow-sm"
                 />
                 <button
                   type="submit"

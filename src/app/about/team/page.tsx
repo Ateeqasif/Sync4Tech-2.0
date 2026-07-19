@@ -112,7 +112,7 @@ export default function TeamPage() {
       />
 
       {/* Team grid */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <div className="text-center mb-16">
             <motion.p
@@ -167,7 +167,7 @@ export default function TeamPage() {
                   {group.members.map((member, i) => (
                     <motion.div
                       key={member.name}
-                      className="group flex items-center gap-5 bg-white dark:bg-white rounded-2xl p-7 border border-black/8 hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-lg"
+                      className="group flex items-center gap-5 bg-white dark:bg-gray-800 rounded-2xl p-7 border border-black/8 hover:border-[#007cf4]/30 transition-all shadow-sm hover:shadow-lg"
                       initial={{ opacity: 0, y: 24 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: '-80px' }}
@@ -203,7 +203,7 @@ export default function TeamPage() {
       </section>
 
       {/* Values */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <div className="text-center mb-16">
             <motion.p
@@ -229,7 +229,7 @@ export default function TeamPage() {
             {values.map((v, i) => (
               <motion.div
                 key={i}
-                className="bg-white dark:bg-white rounded-2xl p-7 border border-[#007cf4]/10"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-7 border border-[#007cf4]/10"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -247,7 +247,7 @@ export default function TeamPage() {
       </section>
 
       {/* Join CTA */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container text-center">
           <motion.p
             className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3"

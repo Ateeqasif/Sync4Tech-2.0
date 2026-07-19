@@ -31,7 +31,7 @@ function SectionGrid() {
 export default function FinalCTA() {
   const { t } = useLanguage()
   return (
-    <section className="py-section bg-white relative overflow-hidden" id="contact">
+    <section className="py-section bg-white dark:bg-gray-900 relative overflow-hidden" id="contact">
       <SectionGrid />
       <BrandWatermark position="right" size={600} opacity={0.045} />
 

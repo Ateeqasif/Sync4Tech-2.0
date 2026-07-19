@@ -19,7 +19,7 @@ function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boo
       >
         {[...items, ...items].map((t, i) => {
           const url = TOOL_LINKS[t]
-          const cls = "inline-flex items-center gap-1.5 bg-white border border-black/10 dark:border-white/10 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4] transition-colors duration-300 whitespace-nowrap"
+          const cls = "inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 border border-black/10 dark:border-white/10 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-colors duration-300 whitespace-nowrap"
           return url ? (
             <a
               key={i}
@@ -100,7 +100,7 @@ export default function TrustSection() {
         >
           <a
             href="/services"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-gray-700 bg-white border border-black/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-all mr-3"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-black/10 dark:border-white/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-all mr-3"
           >
             Explore Our Stack
           </a>

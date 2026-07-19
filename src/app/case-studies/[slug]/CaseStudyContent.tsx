@@ -34,7 +34,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
   return (
     <>
       {/* Overview bar */}
-      <section className="bg-[#f8faff] dark:bg-[#f8faff] border-b border-[#007cf4]/10">
+      <section className="bg-[#f8faff] dark:bg-gray-900 border-b border-[#007cf4]/10">
         <div className="section-container py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[['Industry', cs.industry], ['Challenge', cs.challenge], ['Solution', cs.solution], ['Timeline', cs.timeline]].map(([k, v], i) => (
             <motion.div
@@ -52,7 +52,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
       </section>
 
       {/* Challenge */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -79,7 +79,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
       </section>
 
       {/* Approach */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-14"
@@ -95,7 +95,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             {cs.steps.map((step, i) => (
               <motion.div
                 key={i}
-                className="group bg-white dark:bg-white rounded-2xl p-7 border-l-4 border-[#007cf4]/30 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
+                className="group bg-white dark:bg-gray-800 rounded-2xl p-7 border-l-4 border-[#007cf4]/30 hover:border-[#007cf4] shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -113,7 +113,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
       </section>
 
       {/* Results */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-14"
@@ -150,7 +150,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
       </section>
 
       {/* Tools */}
-      <section className="py-12 bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-12 bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container text-center">
           <p className="text-gray-400 text-xs font-semibold uppercase tracking-widest mb-4">Technologies Used</p>
           <motion.div
@@ -164,7 +164,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
               <ToolPill
                 key={t}
                 name={t}
-                className="px-4 py-2 rounded-full bg-white dark:bg-white border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0] hover:border-[#007cf4]/50 hover:shadow-sm"
+                className="px-4 py-2 rounded-full bg-white dark:bg-gray-800 border border-[#007cf4]/15 text-sm font-semibold text-[#033a9d] dark:text-[#36c5f0] hover:border-[#007cf4]/50 hover:shadow-sm"
               />
             ))}
           </motion.div>
@@ -172,7 +172,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
       </section>
 
       {/* Quote */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container max-w-2xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -188,7 +188,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
       </section>
 
       {/* Related Solutions */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-10"
@@ -208,7 +208,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             {cs.relatedSolutions.map(s => (
-              <Link key={s.slug} href={`/solutions/${s.slug}`} className="px-6 py-3 rounded-full border border-[#007cf4]/25 bg-white dark:bg-white text-[#007cf4] font-semibold text-sm hover:border-[#007cf4]/60 hover:shadow-sm transition-all">
+              <Link key={s.slug} href={`/solutions/${s.slug}`} className="px-6 py-3 rounded-full border border-[#007cf4]/25 bg-white dark:bg-gray-800 text-[#007cf4] font-semibold text-sm hover:border-[#007cf4]/60 hover:shadow-sm transition-all">
                 {s.name} →
               </Link>
             ))}
@@ -217,7 +217,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
       </section>
 
       {/* More Case Studies */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <motion.h2
             className="font-inter-tight font-black text-black dark:text-white text-2xl mb-8 text-center"
@@ -239,7 +239,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <Link href={`/case-studies/${s}`} className="group block bg-white dark:bg-white rounded-2xl overflow-hidden border border-black/8  hover:border-[#007cf4]/40 hover:shadow-md transition-all">
+                  <Link href={`/case-studies/${s}`} className="group block bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-black/8  hover:border-[#007cf4]/40 hover:shadow-md transition-all">
                     <div className="h-1 w-full" style={{ background: gradients[idx % 3] }} />
                     <div className="p-6">
                       <span className="inline-block bg-[#007cf4]/10 text-[#007cf4] text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-widest mb-3">{r.industry}</span>

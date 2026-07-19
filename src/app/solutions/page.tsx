@@ -107,7 +107,7 @@ function InlineContact() {
 
   return (
     <motion.div
-      className="bg-white rounded-3xl border border-[#007cf4]/15 p-8 shadow-xl shadow-[#007cf4]/5"
+      className="bg-white dark:bg-gray-800 rounded-3xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 p-8 shadow-xl shadow-[#007cf4]/5"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
@@ -126,8 +126,8 @@ function InlineContact() {
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 16l8 8L26 8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
           </div>
-          <h3 className="font-inter-tight font-black text-black text-2xl mb-3">Message received!</h3>
-          <p className="text-gray-500 text-sm leading-relaxed max-w-xs mx-auto mb-6">
+          <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-3">Message received!</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-xs mx-auto mb-6">
             Thank you for reaching out. Our team will review your challenge and get back to you within 24 hours.
           </p>
           <div className="flex items-center justify-center gap-2 text-xs text-gray-400">
@@ -137,7 +137,7 @@ function InlineContact() {
         </motion.div>
       ) : (
         <>
-          <h3 className="font-inter-tight font-black text-black text-xl mb-6">Tell us about your challenge</h3>
+          <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-6">Tell us about your challenge</h3>
           <form onSubmit={async e => {
             e.preventDefault(); setLoading(true)
             try { await fetch('https://formsubmit.co/ajax/ateeqasif1168@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ _subject: `New enquiry from ${form.name} - ${form.company || 'Sync4Tech'}`, _cc: 'hassan.ali02468@gmail.com', _captcha: 'false', ...form, source: 'Solutions Page' }) }) } catch {}
@@ -145,34 +145,34 @@ function InlineContact() {
           }} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1.5">Full Name *</label>
+                <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Full Name *</label>
                 <input required value={form.name} onChange={e => set('name', e.target.value)} type="text" placeholder="Jane Smith"
-                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
+                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1.5">Work Email *</label>
+                <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Work Email *</label>
                 <input required value={form.email} onChange={e => set('email', e.target.value)} type="email" placeholder="jane@company.com"
-                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
+                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
               </div>
             </div>
             <div>
               <label className="block text-xs font-semibold text-gray-500 mb-1.5">Company Name *</label>
               <input required value={form.company} onChange={e => set('company', e.target.value)} type="text" placeholder="Acme Corp"
-                className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
+                className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1.5">Company Size</label>
+                <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Company Size</label>
                 <select value={form.size} onChange={e => set('size', e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors">
+                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors">
                   <option value="">Select size</option>
                   {SIZES.map(s => <option key={s}>{s} employees</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1.5">Industry</label>
+                <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Industry</label>
                 <select value={form.industry} onChange={e => set('industry', e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors">
+                  className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors">
                   <option value="">Select industry</option>
                   {INDUSTRIES.map(ind => <option key={ind}>{ind}</option>)}
                 </select>
@@ -181,7 +181,7 @@ function InlineContact() {
             <div>
               <label className="block text-xs font-semibold text-gray-500 mb-1.5">Your biggest operational challenge *</label>
               <textarea required value={form.challenge} onChange={e => set('challenge', e.target.value)} rows={4} placeholder="Describe the process or problem you want to solve..."
-                className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 bg-[#f8faff] text-black text-sm outline-none focus:border-[#007cf4]/60 transition-colors resize-none" />
+                className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors resize-none" />
             </div>
             <motion.button type="submit" disabled={loading} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
               className="w-full py-4 rounded-full text-white font-semibold text-sm transition-all disabled:opacity-60"
@@ -201,13 +201,13 @@ function FAQAccordion() {
   return (
     <div className="flex flex-col gap-2">
       {faqs.map((f, i) => (
-        <motion.div key={i} className="rounded-2xl border overflow-hidden"
+        <motion.div key={i} className="rounded-2xl border overflow-hidden dark:border-white/10"
           style={{ borderColor: open === i ? 'rgba(0,124,244,0.3)' : 'rgba(0,0,0,0.07)' }}>
           <button className="w-full flex items-center gap-4 px-5 py-4 text-left" onClick={() => setOpen(open === i ? null : i)}>
             <span className="font-inter-tight font-black text-xs tabular-nums" style={{ color: open === i ? '#007cf4' : 'rgba(0,0,0,0.2)' }}>
               {String(i + 1).padStart(2, '0')}
             </span>
-            <span className={`flex-1 font-semibold text-sm leading-snug ${open === i ? 'text-[#050f2e]' : 'text-gray-600'}`}>{f.q}</span>
+            <span className={`flex-1 font-semibold text-sm leading-snug ${open === i ? 'text-[#050f2e] dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}>{f.q}</span>
             <motion.span animate={{ rotate: open === i ? 45 : 0 }} transition={{ duration: 0.2 }}
               className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center"
               style={{ background: open === i ? 'linear-gradient(135deg,#007cf4,#36c5f0)' : 'rgba(0,0,0,0.05)' }}>
@@ -220,7 +220,7 @@ function FAQAccordion() {
             {open === i && (
               <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.25, ease: EASE }} className="overflow-hidden">
-                <p className="pl-14 pr-5 pb-5 text-gray-500 text-sm leading-relaxed">{f.a}</p>
+                <p className="pl-14 pr-5 pb-5 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{f.a}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -236,7 +236,7 @@ export default function SolutionsPage() {
     <main>
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[72vh] flex items-center bg-white overflow-hidden">
+      <section className="relative min-h-[72vh] flex items-center bg-white dark:bg-gray-900 overflow-hidden">
         {/* Background grid + orbs */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.04]"
@@ -251,7 +251,7 @@ export default function SolutionsPage() {
               Our Solutions
             </span>
           </motion.div>
-          <motion.h1 className="font-inter-tight font-semibold leading-tight tracking-tight text-black mb-6 mx-auto"
+          <motion.h1 className="font-inter-tight font-semibold leading-tight tracking-tight text-black dark:text-white mb-6 mx-auto"
             style={{ fontSize: 'clamp(40px,6vw,88px)', maxWidth: '900px' }}
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: EASE }}>
             Intelligent Solutions for{' '}
@@ -267,7 +267,7 @@ export default function SolutionsPage() {
               style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
               Get Started →
             </a>
-            <a href="#solutions" className="inline-flex items-center gap-2 border border-black/15 text-black px-8 py-4 rounded-full font-semibold text-sm hover:border-[#007cf4]/40 hover:text-[#007cf4] transition-all">
+            <a href="#solutions" className="inline-flex items-center gap-2 border border-black/15 dark:border-white/20 text-black dark:text-white px-8 py-4 rounded-full font-semibold text-sm hover:border-[#007cf4]/40 hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-all">
               Explore Solutions
             </a>
           </motion.div>
@@ -275,7 +275,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* ── Metrics bar ── */}
-      <section className="py-10 bg-[#f8faff]">
+      <section className="py-10 bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <div className="rounded-3xl overflow-hidden shadow-xl" style={{ background: 'linear-gradient(135deg,#033a9d 0%,#007cf4 60%,#36c5f0 100%)' }}>
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20">
@@ -297,13 +297,13 @@ export default function SolutionsPage() {
       </section>
 
       {/* ── Solutions grid ── */}
-      <section className="py-section bg-white" id="solutions">
+      <section className="py-section bg-white dark:bg-gray-900" id="solutions">
         <div className="section-container">
           <motion.div className="text-center mb-14"
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.8, ease: EASE }}>
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3 block">What We Build</span>
-            <h2 className="font-inter-tight font-black text-black text-3xl md:text-4xl">Six Capabilities. One Transformation.</h2>
+            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Six Capabilities. One Transformation.</h2>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {solutions.map((s, i) => (
@@ -311,7 +311,7 @@ export default function SolutionsPage() {
                 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6, delay: i * 0.07, ease: EASE }}>
                 <Link href={`/solutions/${s.slug}`}
-                  className="group flex flex-col h-full bg-white rounded-2xl border border-black/8 p-7 hover:border-[#007cf4]/30 hover:shadow-xl hover:shadow-[#007cf4]/6 transition-all duration-300">
+                  className="group flex flex-col h-full bg-white dark:bg-gray-800 rounded-2xl border border-black/8 dark:border-white/10 p-7 hover:border-[#007cf4]/30 hover:shadow-xl hover:shadow-[#007cf4]/6 transition-all duration-300">
                   {/* Top row */}
                   <div className="flex items-start justify-between mb-5">
                     <span className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full"
@@ -322,7 +322,7 @@ export default function SolutionsPage() {
                     </div>
                   </div>
                   {/* Title & subtitle */}
-                  <h3 className="font-inter-tight font-black text-black text-xl mb-2 group-hover:text-[#007cf4] transition-colors">{s.title}</h3>
+                  <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2 group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors">{s.title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed mb-5">{s.subtitle}</p>
                   {/* Bullets */}
                   <ul className="flex flex-col gap-2 mt-auto">
@@ -348,14 +348,14 @@ export default function SolutionsPage() {
       <HowItWorks />
 
       {/* ── FAQ + Contact form side by side ── */}
-      <section className="py-section bg-[#f8faff]" id="contact-form">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900" id="contact-form">
         <div className="section-container">
           <motion.div className="text-center mb-14"
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.8, ease: EASE }}>
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3 block">Get Started</span>
-            <h2 className="font-inter-tight font-black text-black text-3xl md:text-4xl">Ready to Transform?</h2>
-            <p className="text-gray-500 text-base mt-4 max-w-lg mx-auto leading-relaxed">
+            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Ready to Transform?</h2>
+            <p className="text-gray-500 dark:text-gray-400 text-base mt-4 max-w-lg mx-auto leading-relaxed">
               Tell us your biggest operational challenge and we will show you exactly how to solve it.
             </p>
           </motion.div>

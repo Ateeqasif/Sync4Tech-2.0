@@ -30,7 +30,7 @@ export default function CaseStudiesPage() {
       />
 
       {/* Stats bar */}
-      <section className="py-12 bg-white dark:bg-[#f8faff] border-b border-[#007cf4]/10">
+      <section className="py-12 bg-white dark:bg-gray-900 border-b border-[#007cf4]/10">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             {[
@@ -57,7 +57,7 @@ export default function CaseStudiesPage() {
       <CaseStudiesFilter />
 
       {/* Testimonials */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container max-w-4xl mx-auto">
           <motion.div
             className="text-center mb-12"

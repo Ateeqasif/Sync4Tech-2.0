@@ -163,7 +163,7 @@ export default function Navigation() {
                 className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${
                   megaOpen === 'services' || isActive('/services')
                     ? 'text-[#007cf4]'
-                    : 'text-[#033a9d]/80 hover:text-[#007cf4]'
+                    : 'text-[#033a9d]/80 hover:text-[#007cf4] dark:text-white/80 dark:hover:text-[#36c5f0]'
                 }`}
               >
                 Services
@@ -179,29 +179,28 @@ export default function Navigation() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[780px] rounded-2xl overflow-hidden shadow-2xl border border-black/8"
-                    style={{ background: 'white' }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[780px] rounded-2xl overflow-hidden shadow-2xl border border-black/8 dark:border-white/10 bg-white dark:bg-gray-900"
                     onMouseEnter={keepOpen}
                     onMouseLeave={closeMega}
                   >
                     {/* Top bar */}
-                    <div className="px-6 py-3 border-b border-gray-100 flex items-center justify-between">
+                    <div className="px-6 py-3 border-b border-gray-100 dark:border-gray-700 flex items-center justify-between">
                       <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Our Services</span>
                       <Link href="/services" className="text-xs text-[#007cf4] font-semibold hover:underline">View all →</Link>
                     </div>
 
-                    <div className="grid grid-cols-3 divide-x divide-gray-100">
+                    <div className="grid grid-cols-3 divide-x divide-gray-100 dark:divide-gray-700">
                       {servicesMega.map((col) => (
                         <div key={col.label} className="p-5">
                           <Link href={col.href} className="block mb-3 group">
-                            <span className="text-xs font-black text-gray-800 uppercase tracking-wide group-hover:text-[#007cf4] transition-colors">{col.label}</span>
+                            <span className="text-xs font-black text-gray-800 dark:text-gray-200 uppercase tracking-wide group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors">{col.label}</span>
                           </Link>
                           <ul className="flex flex-col">
                             {col.items.map((item) => (
                               <li key={item.href}>
                                 <Link
                                   href={item.href}
-                                  className="block px-0 py-1.5 text-sm text-gray-500 hover:text-[#007cf4] transition-colors duration-150"
+                                  className="block px-0 py-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-colors duration-150"
                                   onClick={() => setMegaOpen(null)}
                                 >
                                   {item.label}
@@ -227,7 +226,7 @@ export default function Navigation() {
                 className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${
                   megaOpen === 'industries' || isActive('/industries')
                     ? 'text-[#007cf4]'
-                    : 'text-[#033a9d]/80 hover:text-[#007cf4]'
+                    : 'text-[#033a9d]/80 hover:text-[#007cf4] dark:text-white/80 dark:hover:text-[#36c5f0]'
                 }`}
               >
                 Industries
@@ -243,12 +242,11 @@ export default function Navigation() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[780px] rounded-2xl overflow-hidden shadow-2xl border border-black/8"
-                    style={{ background: 'white' }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[780px] rounded-2xl overflow-hidden shadow-2xl border border-black/8 dark:border-white/10 bg-white dark:bg-gray-900"
                     onMouseEnter={keepOpen}
                     onMouseLeave={closeMega}
                   >
-                    <div className="px-6 py-3 border-b border-gray-100 flex items-center justify-between">
+                    <div className="px-6 py-3 border-b border-gray-100 dark:border-gray-700 flex items-center justify-between">
                       <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Industry Solutions</span>
                       <Link href="/industries" className="text-xs text-[#007cf4] font-semibold hover:underline">View all →</Link>
                     </div>
@@ -257,7 +255,7 @@ export default function Navigation() {
                         <Link
                           key={ind.href}
                           href={ind.href}
-                          className="block py-1.5 text-sm text-gray-500 hover:text-[#007cf4] transition-colors duration-150"
+                          className="block py-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-colors duration-150"
                           onClick={() => setMegaOpen(null)}
                         >
                           {ind.label}
@@ -296,7 +294,7 @@ export default function Navigation() {
             {/* Search trigger */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="w-9 h-9 flex items-center justify-center rounded-full text-[#033a9d]/60 hover:text-[#007cf4] hover:bg-[#007cf4]/8 transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-full text-[#033a9d]/60 dark:text-white/60 hover:text-[#007cf4] dark:hover:text-[#36c5f0] hover:bg-[#007cf4]/8 transition-all duration-200"
               aria-label="Search"
               title="Search  ⌘K"
             >
@@ -335,14 +333,13 @@ export default function Navigation() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden border-t border-[#007cf4]/15"
-            style={{ background: 'rgba(224,242,254,0.97)', backdropFilter: 'blur(20px)' }}
+            className="md:hidden overflow-hidden border-t border-[#007cf4]/15 bg-[rgba(224,242,254,0.97)] dark:bg-[rgba(10,20,50,0.97)] backdrop-blur-xl"
           >
             <div className="section-container py-5 flex flex-col gap-1">
 
               {/* Services accordion */}
               <button
-                className="flex items-center justify-between py-2.5 text-sm font-semibold text-[#033a9d]"
+                className="flex items-center justify-between py-2.5 text-sm font-semibold text-[#033a9d] dark:text-white"
                 onClick={() => setMobileExpanded(mobileExpanded === 'services' ? null : 'services')}
               >
                 Services
@@ -359,7 +356,7 @@ export default function Navigation() {
                           <Link href={col.href} className="text-xs font-black text-[#007cf4] uppercase tracking-wider mb-1 block" onClick={() => setMobileOpen(false)}>{col.label}</Link>
                           <div className="flex flex-col gap-0.5">
                             {col.items.map(item => (
-                              <Link key={item.href} href={item.href} className="text-sm text-gray-600 py-1 hover:text-[#007cf4]" onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                              <Link key={item.href} href={item.href} className="text-sm text-gray-600 dark:text-gray-300 py-1 hover:text-[#007cf4] dark:hover:text-[#36c5f0]" onClick={() => setMobileOpen(false)}>{item.label}</Link>
                             ))}
                           </div>
                         </div>
@@ -371,7 +368,7 @@ export default function Navigation() {
 
               {/* Industries accordion */}
               <button
-                className="flex items-center justify-between py-2.5 text-sm font-semibold text-[#033a9d]"
+                className="flex items-center justify-between py-2.5 text-sm font-semibold text-[#033a9d] dark:text-white"
                 onClick={() => setMobileExpanded(mobileExpanded === 'industries' ? null : 'industries')}
               >
                 Industries
@@ -384,7 +381,7 @@ export default function Navigation() {
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} className="overflow-hidden">
                     <div className="pl-4 pb-2 grid grid-cols-2 gap-0.5">
                       {industriesMega.map(ind => (
-                        <Link key={ind.href} href={ind.href} className="text-sm text-gray-600 py-1.5 hover:text-[#007cf4]" onClick={() => setMobileOpen(false)}>{ind.label}</Link>
+                        <Link key={ind.href} href={ind.href} className="text-sm text-gray-600 dark:text-gray-300 py-1.5 hover:text-[#007cf4] dark:hover:text-[#36c5f0]" onClick={() => setMobileOpen(false)}>{ind.label}</Link>
                       ))}
                     </div>
                   </motion.div>
@@ -396,7 +393,7 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-semibold py-2.5 border-t border-[#007cf4]/10 transition-colors ${isActive(link.href) ? 'text-[#007cf4]' : 'text-[#033a9d]/80 hover:text-[#007cf4]'}`}
+                  className={`text-sm font-semibold py-2.5 border-t border-[#007cf4]/10 transition-colors ${isActive(link.href) ? 'text-[#007cf4]' : 'text-[#033a9d]/80 hover:text-[#007cf4] dark:text-white/80 dark:hover:text-[#36c5f0]'}`}
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
@@ -407,7 +404,7 @@ export default function Navigation() {
                 <ThemeToggle />
                 <button
                   onClick={() => { setMobileOpen(false); setSearchOpen(true) }}
-                  className="w-9 h-9 flex items-center justify-center rounded-full text-[#033a9d]/60 hover:text-[#007cf4] hover:bg-[#007cf4]/10 transition-all"
+                  className="w-9 h-9 flex items-center justify-center rounded-full text-[#033a9d]/60 dark:text-white/60 hover:text-[#007cf4] dark:hover:text-[#36c5f0] hover:bg-[#007cf4]/10 transition-all"
                   aria-label="Search"
                 >
                   <svg width="16" height="16" viewBox="0 0 17 17" fill="none">

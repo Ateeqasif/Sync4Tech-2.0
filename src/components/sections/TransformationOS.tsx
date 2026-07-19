@@ -54,7 +54,7 @@ function TechGrid() {
 
 export default function TransformationOS() {
   return (
-    <section className="py-section bg-white relative" id="solutions">
+    <section className="py-section bg-white dark:bg-gray-900 relative" id="solutions">
       <TechGrid />
 
       <div className="section-container relative z-10">

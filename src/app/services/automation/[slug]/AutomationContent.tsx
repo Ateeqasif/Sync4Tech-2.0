@@ -24,7 +24,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
   return (
     <>
       {/* 2. Challenges & Outcomes */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -50,7 +50,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {/* Challenges */}
             <motion.div
-              className="relative overflow-hidden rounded-2xl flex flex-col bg-white border border-gray-100"
+              className="relative overflow-hidden rounded-2xl flex flex-col bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700"
               style={{ boxShadow: '0 0 0 0' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -159,7 +159,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
       </section>
 
       {/* 3. Features */}
-      <section className="py-section bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -240,7 +240,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
       </section>
 
       {/* Who Benefits */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-900 ">
         <div className="section-container">
           <motion.div
             className="text-center mb-12"
@@ -256,7 +256,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             {svc.benefits.map((b, i) => (
               <motion.div
                 key={i}
-                className="relative bg-[#f8faff] rounded-2xl p-7 overflow-hidden"
+                className="relative bg-[#f8faff] dark:bg-gray-900 rounded-2xl p-7 overflow-hidden"
                 style={{ border: '1px solid rgba(0,124,244,0.1)' }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -284,7 +284,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
       </section>
 
       {/* 4. Process */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -311,7 +311,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             {svc.process.map((step, i) => (
               <motion.div
                 key={step.step}
-                className="bg-white dark:bg-white border border-gray-100  rounded-2xl p-6 flex flex-col gap-3"
+                className="bg-white dark:bg-gray-800 border border-gray-100  rounded-2xl p-6 flex flex-col gap-3"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -337,7 +337,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
       </section>
 
       {/* 5. Tools & Technologies */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p
@@ -371,7 +371,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               <ToolPill
                 key={tool}
                 name={tool}
-                className="px-4 py-2 bg-white dark:bg-white border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
+                className="px-4 py-2 bg-white dark:bg-gray-900 dark:bg-gray-800 border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
               />
             ))}
           </motion.div>
@@ -379,7 +379,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
       </section>
 
       {/* Industries We Serve */}
-      <section className="py-16 bg-[#f8faff]">
+      <section className="py-16 bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <motion.div
             className="text-center mb-10"
@@ -414,7 +414,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
       </section>
 
       {/* 6. FAQ */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <div className="mb-12 text-center">
             <motion.p

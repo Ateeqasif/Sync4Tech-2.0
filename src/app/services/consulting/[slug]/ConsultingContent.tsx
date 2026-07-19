@@ -22,12 +22,12 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
   return (
     <>
       {/* Challenges vs Outcomes */}
-      <section className="bg-[#f8faff] py-20">
+      <section className="bg-[#f8faff] dark:bg-gray-900 py-20">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Challenges */}
             <motion.div
-              className="bg-white border border-gray-100 rounded-2xl p-8"
+              className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -87,7 +87,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
             {svc.features.map((feature, i) => (
               <motion.div
                 key={i}
-                className="bg-[#f8faff] border border-gray-100 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition"
+                className="bg-[#f8faff] dark:bg-gray-900 border border-gray-100 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -104,7 +104,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
       </section>
 
       {/* Tools */}
-      <section className="bg-[#f8faff] py-16">
+      <section className="bg-[#f8faff] dark:bg-gray-900 py-16">
         <div className="section-container">
           <motion.h2
             className="font-inter-tight font-black text-2xl text-gray-900 mb-8 text-center"
@@ -126,7 +126,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
               <ToolPill
                 key={i}
                 name={tool}
-                className="bg-white border border-gray-200 rounded-full px-4 py-2 text-sm font-semibold text-gray-700 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-4 py-2 text-sm font-semibold text-gray-700 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
               />
             ))}
           </motion.div>
@@ -177,7 +177,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#f8faff] py-20">
+      <section className="bg-[#f8faff] dark:bg-gray-900 py-20">
         <div className="section-container">
           <motion.h2
             className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
@@ -192,7 +192,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
             {svc.faq.map((item, i) => (
               <motion.details
                 key={i}
-                className="bg-white border border-gray-100 rounded-2xl p-6 group open:border-[#007cf4]/30"
+                className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-6 group open:border-[#007cf4]/30"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}

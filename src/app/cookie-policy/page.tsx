@@ -21,7 +21,7 @@ export default function CookiePolicyPage() {
         breadcrumb={[{ label: 'Cookie Policy', href: '/cookie-policy' }]}
       />
 
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <article className="max-w-3xl mx-auto prose prose-gray dark:prose-invert prose-sm md:prose-base">
             <p className="text-gray-400 text-sm mb-8">Last updated: January 2026</p>

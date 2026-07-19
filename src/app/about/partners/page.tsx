@@ -73,7 +73,7 @@ export default function PartnersPage() {
       />
 
       {/* Why partners matter */}
-      <section className="py-section bg-white dark:bg-[#f8faff]">
+      <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
             <motion.div
@@ -97,7 +97,7 @@ export default function PartnersPage() {
               {partnerBenefits.map((b, i) => (
                 <motion.div
                   key={i}
-                  className="bg-[#f8faff] dark:bg-[#f8faff] rounded-2xl p-5 border border-[#007cf4]/10"
+                  className="bg-[#f8faff] dark:bg-gray-900 rounded-2xl p-5 border border-[#007cf4]/10"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
@@ -128,7 +128,7 @@ export default function PartnersPage() {
                   {group.items.map((p, i) => (
                     <motion.div
                       key={p.name}
-                      className="group bg-white dark:bg-white rounded-2xl p-6 border border-black/8  hover:border-[#007cf4]/30 transition-all"
+                      className="group bg-white dark:bg-gray-800 rounded-2xl p-6 border border-black/8  hover:border-[#007cf4]/30 transition-all"
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: '-80px' }}
@@ -150,11 +150,11 @@ export default function PartnersPage() {
       </section>
 
       {/* Become a partner */}
-      <section className="py-section bg-[#f8faff] dark:bg-[#f8faff]">
+      <section className="py-section bg-[#f8faff] dark:bg-gray-900">
         <div className="section-container">
           <div className="max-w-3xl mx-auto">
             <motion.div
-              className="bg-white dark:bg-white rounded-3xl p-10 border border-[#007cf4]/20 text-center"
+              className="bg-white dark:bg-gray-800 rounded-3xl p-10 border border-[#007cf4]/20 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
