@@ -129,7 +129,7 @@ export default function ExecutionGap() {
               </div>
 
               <motion.a
-                href="#contact"
+                href="/contact"
                 className="mt-8 inline-flex items-center gap-3 group"
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}

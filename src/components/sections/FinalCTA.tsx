@@ -57,7 +57,7 @@ export default function FinalCTA() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a
-              href="mailto:hello@sync4tech.com"
+              href="/contact"
               className="inline-flex items-center gap-2.5 text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 group btn-glow"
               style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
               whileHover={{ scale: 1.03, y: -2 }}
