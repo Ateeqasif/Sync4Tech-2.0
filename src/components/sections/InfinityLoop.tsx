@@ -145,12 +145,12 @@ export default function InfinityLoop() {
                   <rect
                     x={t.x - 58} y={t.y - 22}
                     width="116" height="44" rx="22"
-                    fill="white" stroke="#007cf4" strokeOpacity="0.18" strokeWidth="1.2"
+                    fill={isDark ? '#1f2937' : 'white'} stroke="#007cf4" strokeOpacity="0.18" strokeWidth="1.2"
                   />
                   {/* Color dot */}
                   <circle cx={t.x - 36} cy={t.y} r="6" fill={t.color} opacity="0.9" />
                   {/* Label */}
-                  <text x={t.x - 24} y={t.y - 3} fill="#0f172a" fontSize="12" fontWeight="700"
+                  <text x={t.x - 24} y={t.y - 3} fill={isDark ? '#e5e7eb' : '#0f172a'} fontSize="12" fontWeight="700"
                     style={{ fontFamily: 'system-ui, sans-serif' }}>{t.label}</text>
                   <text x={t.x - 24} y={t.y + 11} fill="#94a3b8" fontSize="9" fontWeight="500"
                     style={{ fontFamily: 'system-ui, sans-serif' }}>{t.cat}</text>

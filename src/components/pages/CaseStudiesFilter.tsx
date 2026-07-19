@@ -105,7 +105,7 @@ export default function CaseStudiesFilter() {
               className={`px-6 py-2.5 rounded-full text-xs font-black tracking-widest uppercase transition-all duration-200 ${
                 active === cat
                   ? 'text-white shadow-lg shadow-[#007cf4]/30'
-                  : 'text-gray-500 border border-black/10 hover:border-[#007cf4]/40 hover:text-[#007cf4]'
+                  : 'text-gray-500 dark:text-gray-400 border border-black/10 dark:border-white/10 hover:border-[#007cf4]/40 hover:text-[#007cf4]'
               }`}
               style={active === cat ? { background: 'linear-gradient(135deg, #033a9d, #007cf4)' } : {}}
             >
@@ -125,9 +125,8 @@ export default function CaseStudiesFilter() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92 }}
                 transition={{ duration: 0.4, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative flex flex-col overflow-hidden rounded-2xl"
+                className="group relative flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-gray-800"
                 style={{
-                  background: 'white',
                   boxShadow: '0 0 0 1px rgba(0,0,0,0.07)',
                 }}
               >
@@ -174,9 +173,9 @@ export default function CaseStudiesFilter() {
                 <div className="px-7 pt-5 pb-6 flex flex-col flex-1">
                   {/* Company type + industry */}
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">{c.companyType}</span>
+                    <span className="text-[10px] text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider">{c.companyType}</span>
                     <span className="text-gray-700 dark:text-gray-300">·</span>
-                    <span className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">{c.industry}</span>
+                    <span className="text-[10px] text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider">{c.industry}</span>
                   </div>
 
                   <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-base leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300">
