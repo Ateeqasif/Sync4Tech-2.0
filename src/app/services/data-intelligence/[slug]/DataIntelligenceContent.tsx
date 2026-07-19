@@ -98,7 +98,7 @@ export default function DataIntelligenceContent({ service }: Props) {
                 >
                   {stat.value}
                 </div>
-                <p className="text-gray-500 text-sm leading-snug">{stat.label}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-snug">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -133,7 +133,7 @@ export default function DataIntelligenceContent({ service }: Props) {
                   </svg>
                 </div>
                 <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{feature.desc}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -165,7 +165,7 @@ export default function DataIntelligenceContent({ service }: Props) {
               >
                 <div className="text-xs font-bold tracking-widest uppercase text-[#007cf4] mb-3">Case {String(i + 1).padStart(2, '0')}</div>
                 <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-3 group-hover:text-[#007cf4] transition-colors">{uc.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{uc.desc}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{uc.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -213,7 +213,7 @@ export default function DataIntelligenceContent({ service }: Props) {
             transition={{ duration: 0.8, ease: EASE }}
           >
             <h2 className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white">Industries We Serve</h2>
-            <p className="text-gray-500 text-sm mt-2">We bring deep domain knowledge across these sectors</p>
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">We bring deep domain knowledge across these sectors</p>
           </motion.div>
           <motion.div
             className="flex flex-wrap justify-center gap-4"
@@ -266,7 +266,7 @@ export default function DataIntelligenceContent({ service }: Props) {
                   </span>
                 </div>
                 <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2">{step.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
                 {i < service.process.length - 1 && (
                   <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-gradient-to-r from-[#007cf4]/30 to-transparent -translate-x-6" />
                 )}
@@ -306,7 +306,7 @@ export default function DataIntelligenceContent({ service }: Props) {
                     </svg>
                   </span>
                 </summary>
-                <p className="mt-4 text-gray-500 text-sm leading-relaxed">{item.a}</p>
+                <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{item.a}</p>
               </motion.details>
             ))}
           </div>

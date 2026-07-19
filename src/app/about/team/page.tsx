@@ -134,7 +134,7 @@ export default function TeamPage() {
               Built by practitioners,<br />not generalists
             </motion.h2>
             <motion.p
-              className="text-gray-500  text-sm max-w-2xl mx-auto"
+              className="text-gray-500 dark:text-gray-400 text-sm max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -178,7 +178,7 @@ export default function TeamPage() {
                       </div>
                       <div className="min-w-0 flex-1">
                         <h4 className="font-inter-tight font-bold text-black dark:text-white text-base truncate">{member.name}</h4>
-                        <p className="text-gray-500 text-sm truncate">{member.role}</p>
+                        <p className="text-gray-500 dark:text-gray-400 text-sm truncate">{member.role}</p>
                       </div>
                       {member.linkedin && (
                         <a
@@ -239,7 +239,7 @@ export default function TeamPage() {
                   <span className="text-[#007cf4] font-bold text-sm">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2">{v.title}</h3>
-                <p className="text-gray-500  text-sm leading-relaxed">{v.body}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{v.body}</p>
               </motion.div>
             ))}
           </div>
@@ -268,7 +268,7 @@ export default function TeamPage() {
             Want to build with us?
           </motion.h2>
           <motion.p
-            className="text-gray-500  text-sm max-w-xl mx-auto mb-8"
+            className="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}

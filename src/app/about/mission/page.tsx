@@ -81,7 +81,7 @@ export default function MissionPage() {
               &ldquo;To make enterprise-grade AI and automation genuinely accessible to the companies that drive the real economy, mid-market businesses worldwide.&rdquo;
             </motion.blockquote>
             <motion.p
-              className="text-gray-500  text-sm leading-relaxed"
+              className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -106,7 +106,7 @@ export default function MissionPage() {
                   <div className="w-1 h-8 rounded-full bg-gradient-to-b from-[#033a9d] to-[#007cf4]" />
                   <h3 className="font-inter-tight font-bold text-black dark:text-white text-lg">{b.heading}</h3>
                 </div>
-                <p className="text-gray-500  text-sm leading-relaxed">{b.body}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{b.body}</p>
               </motion.div>
             ))}
           </div>
@@ -161,7 +161,7 @@ export default function MissionPage() {
                     <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-[#007cf4]/10 flex-1">
                       <span className="sm:hidden text-[#007cf4] font-bold text-xs">{m.year} · </span>
                       <span className="font-inter-tight font-bold text-black dark:text-white text-base">{m.label}</span>
-                      <p className="text-gray-500  text-sm leading-relaxed mt-2">{m.detail}</p>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mt-2">{m.detail}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -185,7 +185,7 @@ export default function MissionPage() {
                 transition={{ duration: 0.5, delay: i * 0.1, ease }}
               >
                 <div className="font-inter-tight font-black text-4xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-[#033a9d] to-[#007cf4] mb-2">{stat}</div>
-                <p className="text-gray-500  text-xs leading-snug">{label}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-xs leading-snug">{label}</p>
               </motion.div>
             ))}
           </div>
@@ -205,7 +205,7 @@ export default function MissionPage() {
             Ready to close your gap?
           </motion.h2>
           <motion.p
-            className="text-gray-500  text-sm max-w-xl mx-auto mb-8"
+            className="text-gray-500 dark:text-gray-400 text-sm max-w-xl mx-auto mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}

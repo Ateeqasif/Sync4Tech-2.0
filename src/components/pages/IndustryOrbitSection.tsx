@@ -190,7 +190,7 @@ export default function IndustryOrbitSection({
                 {highlight}.
               </span>
             </h2>
-            <p className="text-gray-500 leading-relaxed text-base mb-8 max-w-md">
+            <p className="text-gray-500 dark:text-gray-400 leading-relaxed text-base mb-8 max-w-md">
               {description}
             </p>
             <ul className="flex flex-col gap-4">

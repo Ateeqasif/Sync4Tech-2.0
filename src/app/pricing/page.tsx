@@ -130,7 +130,7 @@ export default function PricingPage() {
               Choose Your Starting Point
             </motion.h2>
             <motion.p
-              className="text-gray-500  mt-4 max-w-xl mx-auto text-sm"
+              className="text-gray-500 dark:text-gray-400 mt-4 max-w-xl mx-auto text-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -186,7 +186,7 @@ export default function PricingPage() {
 
                   <div className="bg-[#007cf4]/5 border border-[#007cf4]/10 rounded-xl p-4 mb-6">
                     <span className="text-[#007cf4] text-xs font-semibold uppercase tracking-wide">Best for: </span>
-                    <span className="text-gray-500  text-xs">{tier.bestFor}</span>
+                    <span className="text-gray-500 dark:text-gray-400 text-xs">{tier.bestFor}</span>
                   </div>
 
                   <Link
@@ -283,7 +283,7 @@ export default function PricingPage() {
                 transition={{ duration: 0.6, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               >
                 <h3 className="font-semibold text-black dark:text-white text-base mb-2">{faq.q}</h3>
-                <p className="text-gray-500  text-sm leading-relaxed">{faq.a}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{faq.a}</p>
               </motion.div>
             ))}
           </div>
@@ -306,7 +306,7 @@ export default function PricingPage() {
               'NDA on request',
               'Global delivery across all time zones',
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-gray-500  text-sm">
+              <div key={i} className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm">
                 <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
                   <path d="M3 8l3.5 3.5L13 4.5" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

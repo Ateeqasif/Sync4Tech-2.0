@@ -194,9 +194,8 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               return (
                 <motion.div
                   key={feature.title}
-                  className="group relative overflow-hidden rounded-2xl flex flex-col"
+                  className="group relative overflow-hidden rounded-2xl flex flex-col bg-white dark:bg-gray-800"
                   style={{
-                    background: 'white',
                     boxShadow: '0 0 0 1px rgba(0,0,0,0.07)',
                   }}
                   initial={{ opacity: 0, y: 30 }}
@@ -230,7 +229,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                       </svg>
                     </div>
                     <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2.5">{feature.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed flex-1">{feature.desc}</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{feature.desc}</p>
                   </div>
                 </motion.div>
               )
@@ -276,7 +275,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                   </svg>
                 </div>
                 <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-3">{b.role}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{b.desc}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -329,7 +328,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                   {step.step}
                 </span>
                 <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-lg leading-tight">{step.title}</h3>
-                <p className="text-gray-500 text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -390,7 +389,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Sector Experience</span>
             <h2 className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white">Industries We Serve</h2>
-            <p className="text-gray-500 text-sm mt-2">Deep domain expertise across these sectors</p>
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Deep domain expertise across these sectors</p>
           </motion.div>
           <motion.div
             className="flex flex-wrap justify-center gap-4"

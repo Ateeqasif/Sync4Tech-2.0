@@ -342,7 +342,7 @@ export default function AboutPage() {
               <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Our Experts Are Our Product</h2>
             </motion.div>
             <motion.p
-              className="text-gray-500  mt-4 max-w-xl mx-auto text-sm"
+              className="text-gray-500 dark:text-gray-400 mt-4 max-w-xl mx-auto text-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -413,7 +413,7 @@ export default function AboutPage() {
                 <div className="text-3xl mb-3">{o.flag}</div>
                 <div className="font-inter-tight font-black text-black dark:text-white text-xl mb-0.5">{o.city}</div>
                 <div className="text-[#007cf4] text-sm font-semibold mb-3">{o.country}</div>
-                <div className="text-gray-500  text-xs mb-1">{o.addr}</div>
+                <div className="text-gray-500 dark:text-gray-400 text-xs mb-1">{o.addr}</div>
                 <div className="text-gray-400  text-xs">{o.tz}</div>
               </motion.div>
             ))}

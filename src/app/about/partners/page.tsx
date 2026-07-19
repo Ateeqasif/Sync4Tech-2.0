@@ -86,10 +86,10 @@ export default function PartnersPage() {
               <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-6">
                 Partner-certified,<br />outcome-driven
               </h2>
-              <p className="text-gray-500  text-sm leading-relaxed mb-4">
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">
                 We do not recommend tools because we have a reseller agreement. We recommend tools because they are the right fit for the problem then we pursue the deepest possible partnership with those tools to serve our clients better.
               </p>
-              <p className="text-gray-500  text-sm leading-relaxed">
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                 Our technology recommendations are always independent. Our expertise with those tools is not. We invest heavily in certifications, training, and partner relationships because it makes us better at what we do for our clients.
               </p>
             </motion.div>
@@ -104,7 +104,7 @@ export default function PartnersPage() {
                   transition={{ duration: 0.6, delay: 0.15 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <h3 className="font-inter-tight font-bold text-black dark:text-white text-sm mb-2">{b.title}</h3>
-                  <p className="text-gray-500  text-xs leading-relaxed">{b.body}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">{b.body}</p>
                 </motion.div>
               ))}
             </div>
@@ -139,7 +139,7 @@ export default function PartnersPage() {
                         <span className="text-[#007cf4] text-xs font-bold bg-[#007cf4]/10 px-2 py-0.5 rounded-full whitespace-nowrap">{p.tier}</span>
                       </div>
                       <h3 className="font-inter-tight font-bold text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{p.name}</h3>
-                      <p className="text-gray-500  text-xs leading-relaxed">{p.description}</p>
+                      <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">{p.description}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -164,7 +164,7 @@ export default function PartnersPage() {
               <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl md:text-3xl mb-4">
                 Interested in partnering with Sync4Tech?
               </h2>
-              <p className="text-gray-500  text-sm leading-relaxed max-w-xl mx-auto mb-8">
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-xl mx-auto mb-8">
                 If you build technology that helps mid-market companies operate more effectively and you would like to explore how Sync4Tech can bring your platform to our client base, we would like to hear from you.
               </p>
               <Link

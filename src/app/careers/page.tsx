@@ -91,7 +91,7 @@ export default function CareersPage() {
                   <div className="text-white [&>svg]:stroke-white">{perk.icon}</div>
                 </div>
                 <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{perk.title}</h3>
-                <p className="text-gray-500  text-sm leading-relaxed">{perk.desc}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{perk.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -129,7 +129,7 @@ export default function CareersPage() {
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 <h3 className="font-inter-tight font-black text-black dark:text-white text-lg mb-2 group-hover:text-[#007cf4] transition-colors">{c.title}</h3>
-                <p className="text-gray-500  text-sm leading-relaxed">{c.desc}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.desc}</p>
               </motion.div>
             ))}
           </div>

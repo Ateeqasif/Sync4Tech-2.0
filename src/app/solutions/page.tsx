@@ -156,7 +156,7 @@ function InlineContact() {
               </div>
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-500 mb-1.5">Company Name *</label>
+              <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Company Name *</label>
               <input required value={form.company} onChange={e => set('company', e.target.value)} type="text" placeholder="Acme Corp"
                 className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors" />
             </div>
@@ -179,7 +179,7 @@ function InlineContact() {
               </div>
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-500 mb-1.5">Your biggest operational challenge *</label>
+              <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Your biggest operational challenge *</label>
               <textarea required value={form.challenge} onChange={e => set('challenge', e.target.value)} rows={4} placeholder="Describe the process or problem you want to solve..."
                 className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors resize-none" />
             </div>
@@ -204,7 +204,7 @@ function FAQAccordion() {
         <motion.div key={i} className="rounded-2xl border overflow-hidden dark:border-white/10"
           style={{ borderColor: open === i ? 'rgba(0,124,244,0.3)' : 'rgba(0,0,0,0.07)' }}>
           <button className="w-full flex items-center gap-4 px-5 py-4 text-left" onClick={() => setOpen(open === i ? null : i)}>
-            <span className="font-inter-tight font-black text-xs tabular-nums" style={{ color: open === i ? '#007cf4' : 'rgba(0,0,0,0.2)' }}>
+            <span className={`font-inter-tight font-black text-xs tabular-nums ${open === i ? 'text-[#007cf4]' : 'text-black/20 dark:text-white/30'}`}>
               {String(i + 1).padStart(2, '0')}
             </span>
             <span className={`flex-1 font-semibold text-sm leading-snug ${open === i ? 'text-[#050f2e] dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-300'}`}>{f.q}</span>
@@ -257,7 +257,7 @@ export default function SolutionsPage() {
             Intelligent Solutions for{' '}
             <span className="gradient-text-animated">Modern Business</span>
           </motion.h1>
-          <motion.p className="text-gray-500 text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          <motion.p className="text-gray-500 dark:text-gray-400 text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2, ease: EASE }}>
             Six integrated capabilities that eliminate operational bottlenecks, unify your data, and accelerate growth with AI automation.
           </motion.p>
@@ -323,11 +323,11 @@ export default function SolutionsPage() {
                   </div>
                   {/* Title & subtitle */}
                   <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2 group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors">{s.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-5">{s.subtitle}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-5">{s.subtitle}</p>
                   {/* Bullets */}
                   <ul className="flex flex-col gap-2 mt-auto">
                     {s.bullets.map((b, bi) => (
-                      <li key={bi} className="flex items-center gap-2.5 text-sm text-gray-500">
+                      <li key={bi} className="flex items-center gap-2.5 text-sm text-gray-500 dark:text-gray-400">
                         <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: s.color }} />
                         {b}
                       </li>

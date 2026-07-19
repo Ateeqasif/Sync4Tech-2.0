@@ -72,7 +72,7 @@ function ArticleFAQ({ faqs }: { faqs: FAQ[] }) {
               onClick={() => setOpen(open === i ? null : i)}
               aria-expanded={open === i}
             >
-              <span className="font-inter-tight font-black text-xs tabular-nums" style={{ color: open === i ? '#007cf4' : 'rgba(0,0,0,0.2)' }}>
+              <span className={`font-inter-tight font-black text-xs tabular-nums ${open === i ? 'text-[#007cf4]' : 'text-black/20 dark:text-white/30'}`}>
                 {String(i + 1).padStart(2, '0')}
               </span>
               <span className={`flex-1 font-semibold text-sm leading-snug ${open === i ? 'text-[#050f2e] dark:text-white' : 'text-gray-600 dark:text-gray-400'}`}>{faq.q}</span>
@@ -99,7 +99,7 @@ function ArticleFAQ({ faqs }: { faqs: FAQ[] }) {
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <p className="pl-14 pr-5 pb-5 text-gray-500 text-sm leading-relaxed">{faq.a}</p>
+                  <p className="pl-14 pr-5 pb-5 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{faq.a}</p>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -224,7 +224,7 @@ export default function InsightContent({ a, related }: Props) {
       >
         <div className="section-container max-w-2xl mx-auto text-center">
           <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-3">Ready to automate your operations?</h3>
-          <p className="text-gray-500  text-sm mb-6">Tell us your biggest operational challenge and we will show you exactly how to solve it.</p>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">Tell us your biggest operational challenge and we will show you exactly how to solve it.</p>
           <Link href="/contact" className="inline-flex items-center gap-2 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all hover:opacity-90" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
             Get in touch →
           </Link>

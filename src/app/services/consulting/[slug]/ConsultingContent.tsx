@@ -96,7 +96,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
                 <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{feature.desc}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -166,7 +166,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
                 <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2">
                   {step.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
                 {i < svc.process.length - 1 && (
                   <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-gradient-to-r from-[#007cf4]/30 to-transparent -translate-x-6" />
                 )}
@@ -216,7 +216,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
                     </svg>
                   </span>
                 </summary>
-                <p className="mt-4 text-gray-500 text-sm leading-relaxed">{item.a}</p>
+                <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{item.a}</p>
               </motion.details>
             ))}
           </div>

@@ -225,9 +225,8 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
                 >
                   <Link
                     href={`/solutions/${sol.slug}`}
-                    className="group relative overflow-hidden rounded-2xl flex flex-col"
+                    className="group relative overflow-hidden rounded-2xl flex flex-col bg-white dark:bg-gray-800"
                     style={{
-                      background: 'white',
                       boxShadow: '0 0 0 1px rgba(0,0,0,0.07)',
                     }}
                   >
@@ -262,7 +261,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
                       <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2.5 group-hover:text-[#007cf4] transition-colors duration-300">
                         {sol.name}
                       </h3>
-                      <p className="text-gray-500 text-sm leading-relaxed flex-1">{sol.desc}</p>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{sol.desc}</p>
 
                       <div className="mt-5 flex items-center gap-2">
                         <span className="text-xs font-bold transition-colors duration-200"

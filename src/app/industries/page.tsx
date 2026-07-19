@@ -284,7 +284,7 @@ export default function IndustriesPage() {
                 className="text-center bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-8"
               >
                 <div className="font-inter-tight font-black text-black dark:text-white text-5xl mb-2">{stat.value}{stat.suffix}</div>
-                <div className="text-gray-500  text-sm">{stat.label}</div>
+                <div className="text-gray-500 dark:text-gray-400 text-sm">{stat.label}</div>
               </motion.div>
             ))}
           </div>

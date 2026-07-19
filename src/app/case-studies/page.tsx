@@ -46,7 +46,7 @@ export default function CaseStudiesPage() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl mb-1">{s.v}</div>
-                <div className="text-gray-500  text-sm">{s.l}</div>
+                <div className="text-gray-500 dark:text-gray-400 text-sm">{s.l}</div>
               </motion.div>
             ))}
           </div>

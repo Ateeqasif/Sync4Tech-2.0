@@ -88,7 +88,7 @@ export default function AutomationPage() {
                   <h3 className="text-gray-900 dark:text-white font-black font-inter-tight text-lg leading-tight">
                     {service.name}
                   </h3>
-                  <p className="text-gray-500 text-gray-500 text-sm leading-relaxed flex-1">{service.desc}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{service.desc}</p>
                   <span className="text-[#007cf4] text-sm font-semibold mt-1">Explore →</span>
                 </Link>
               </motion.div>

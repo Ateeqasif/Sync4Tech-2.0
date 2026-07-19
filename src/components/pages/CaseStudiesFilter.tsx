@@ -181,7 +181,7 @@ export default function CaseStudiesFilter() {
                   <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-base leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300">
                     {c.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed flex-1">{c.description}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{c.description}</p>
 
                   <div className="mt-5 flex items-center gap-2">
                     <span
