@@ -83,7 +83,7 @@ export default function AutomationPage() {
               >
                 <Link
                   href={`/services/automation/${service.slug}`}
-                  className="bg-white dark:bg-gray-800 border border-gray-100  rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
+                  className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700  rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
                 >
                   <h3 className="text-gray-900 dark:text-white font-black font-inter-tight text-lg leading-tight">
                     {service.name}

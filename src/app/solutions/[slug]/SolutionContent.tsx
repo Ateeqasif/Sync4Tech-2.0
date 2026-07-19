@@ -193,7 +193,7 @@ export default function SolutionContent({ s, slug }: Props) {
             <div className="relative p-8">
               <span className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">{s.caseStudy.industry}</span>
               <p className="font-inter-tight font-bold text-white text-xl leading-snug mb-6">{s.caseStudy.result}</p>
-              <Link href={`/case-studies/${s.caseStudy.slug}`} className="inline-flex items-center gap-2 bg-white text-[#007cf4] font-semibold text-sm px-5 py-2.5 rounded-full hover:shadow-lg transition-all hover:gap-3">
+              <Link href={`/case-studies/${s.caseStudy.slug}`} className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 text-[#007cf4] font-semibold text-sm px-5 py-2.5 rounded-full hover:shadow-lg transition-all hover:gap-3">
                 Read the full case study →
               </Link>
             </div>

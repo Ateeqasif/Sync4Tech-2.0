@@ -54,7 +54,7 @@ export default function ExecutionGap() {
             <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #007cf4, #36c5f0)' }} />
             <div className="relative z-10 p-10">
               <div className="flex items-center gap-3 mb-8">
-                <span className="text-xs font-black text-gray-800 dark:text-white/70 uppercase tracking-[0.2em]">{t.executionGap.beforeLabel}</span>
+                <span className="text-xs font-black text-gray-800 dark:text-gray-100 dark:text-white/70 uppercase tracking-[0.2em]">{t.executionGap.beforeLabel}</span>
               </div>
 
               <div className="flex flex-col gap-4">
@@ -68,7 +68,7 @@ export default function ExecutionGap() {
                   >
                     <span className="text-gray-300 dark:text-white/20 font-mono text-xs font-bold w-5 shrink-0">{String(i + 1).padStart(2, '0')}</span>
                     <div className="flex-1 bg-gray-50 border border-gray-200 dark:bg-white/5 dark:border-white/10 rounded-xl px-4 py-3">
-                      <p className="text-gray-700 dark:text-white/60 text-sm leading-relaxed">{item}</p>
+                      <p className="text-gray-700 dark:text-gray-300 dark:text-white/60 text-sm leading-relaxed">{item}</p>
                     </div>
                   </motion.div>
                 ))}

@@ -77,7 +77,7 @@ export default function ConsultingPage() {
                   href={`/services/consulting/${service.slug}`}
                   className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition flex flex-col gap-3"
                 >
-                  <h3 className="text-gray-900 font-black font-inter-tight text-lg leading-tight">
+                  <h3 className="text-gray-900 dark:text-white font-black font-inter-tight text-lg leading-tight">
                     {service.name}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed flex-1">{service.desc}</p>

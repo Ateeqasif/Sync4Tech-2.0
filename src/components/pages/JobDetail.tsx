@@ -72,7 +72,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300"
+                    className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-300"
                   >
                     <CheckIcon />{r}
                   </motion.li>
@@ -95,7 +95,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300"
+                    className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-300"
                   >
                     <CheckIcon />{r}
                   </motion.li>
@@ -146,7 +146,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300"
+                    className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-300"
                   >
                     <CheckIcon />{p}
                   </motion.li>

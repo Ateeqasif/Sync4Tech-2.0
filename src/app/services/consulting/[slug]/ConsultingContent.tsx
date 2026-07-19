@@ -33,14 +33,14 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="font-inter-tight font-black text-2xl text-gray-900 mb-6">
+              <h2 className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white mb-6">
                 Common Challenges
               </h2>
               <ul className="space-y-4">
                 {svc.challenges.map((challenge, i) => (
                   <li key={i} className="flex gap-3">
                     <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#007cf4]" />
-                    <span className="text-gray-600 text-sm leading-relaxed">{challenge}</span>
+                    <span className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{challenge}</span>
                   </li>
                 ))}
               </ul>
@@ -72,10 +72,10 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
       </section>
 
       {/* Features */}
-      <section className="bg-white py-20">
+      <section className="bg-white dark:bg-gray-900 py-20">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
+            className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -87,13 +87,13 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
             {svc.features.map((feature, i) => (
               <motion.div
                 key={i}
-                className="bg-[#f8faff] dark:bg-gray-900 border border-gray-100 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition"
+                className="bg-[#f8faff] dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-2xl p-6 hover:border-[#007cf4]/30 hover:shadow-md transition"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2">
+                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2">
                   {feature.title}
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{feature.desc}</p>
@@ -107,7 +107,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
       <section className="bg-[#f8faff] dark:bg-gray-900 py-16">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-2xl text-gray-900 mb-8 text-center"
+            className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white mb-8 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -126,7 +126,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
               <ToolPill
                 key={i}
                 name={tool}
-                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-4 py-2 text-sm font-semibold text-gray-700 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
               />
             ))}
           </motion.div>
@@ -134,10 +134,10 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
       </section>
 
       {/* Process */}
-      <section className="bg-white py-20">
+      <section className="bg-white dark:bg-gray-900 py-20">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
+            className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -163,7 +163,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
                     {step.step}
                   </span>
                 </div>
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2">
+                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2">
                   {step.title}
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
@@ -180,7 +180,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
       <section className="bg-[#f8faff] dark:bg-gray-900 py-20">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-3xl text-gray-900 mb-12 text-center"
+            className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white mb-12 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -198,9 +198,9 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               >
-                <summary className="font-inter-tight font-black text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4">
+                <summary className="font-inter-tight font-black text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-4">
                   {item.q}
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center group-open:bg-[#007cf4] group-open:border-[#007cf4] transition">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center group-open:bg-[#007cf4] group-open:border-[#007cf4] transition">
                     <svg
                       className="w-3 h-3 text-gray-500 group-open:text-white transition"
                       fill="none"

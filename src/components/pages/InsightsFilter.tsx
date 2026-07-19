@@ -534,7 +534,7 @@ export default function InsightsFilter() {
             <button
               onClick={() => { setPage(p => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
               disabled={page === 1}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border border-[#007cf4]/20 text-gray-600 dark:text-gray-300 hover:border-[#007cf4]/50 hover:text-[#007cf4] transition-all disabled:opacity-30 disabled:cursor-not-allowed bg-white dark:bg-white/5"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border border-[#007cf4]/20 text-gray-600 dark:text-gray-400 dark:text-gray-300 hover:border-[#007cf4]/50 hover:text-[#007cf4] transition-all disabled:opacity-30 disabled:cursor-not-allowed bg-white dark:bg-white/5"
             >
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               Previous
@@ -559,7 +559,7 @@ export default function InsightsFilter() {
             <button
               onClick={() => { setPage(p => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
               disabled={page === totalPages}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border border-[#007cf4]/20 text-gray-600 dark:text-gray-300 hover:border-[#007cf4]/50 hover:text-[#007cf4] transition-all disabled:opacity-30 disabled:cursor-not-allowed bg-white dark:bg-white/5"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border border-[#007cf4]/20 text-gray-600 dark:text-gray-400 dark:text-gray-300 hover:border-[#007cf4]/50 hover:text-[#007cf4] transition-all disabled:opacity-30 disabled:cursor-not-allowed bg-white dark:bg-white/5"
             >
               Next
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>

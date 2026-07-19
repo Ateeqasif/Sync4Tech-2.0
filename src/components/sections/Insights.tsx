@@ -120,7 +120,7 @@ export default function Insights() {
               className={`px-4 py-2 rounded-full text-xs font-semibold border transition-colors duration-200 ${
                 activeTag === tag
                   ? 'bg-[#007cf4] text-white border-[#007cf4]'
-                  : 'border-black/15 dark:border-white/15 text-gray-600 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4]'
+                  : 'border-black/15 dark:border-white/15 text-gray-600 dark:text-gray-400 dark:text-gray-300 hover:border-[#007cf4] hover:text-[#007cf4]'
               }`}
             >
               {tag}

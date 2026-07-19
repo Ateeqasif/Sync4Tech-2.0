@@ -80,7 +80,7 @@ export default function CaseStudiesPage() {
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="text-[#007cf4] text-3xl font-black mb-4 leading-none">"</div>
-                <p className="text-gray-700  text-base leading-relaxed mb-6 italic">{t.quote}</p>
+                <p className="text-gray-700 dark:text-gray-300  text-base leading-relaxed mb-6 italic">{t.quote}</p>
                 <footer>
                   <div className="font-semibold text-black dark:text-white text-sm">{t.author}</div>
                   <div className="text-gray-400 text-xs mt-0.5">{t.org}</div>

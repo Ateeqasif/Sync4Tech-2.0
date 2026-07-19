@@ -134,7 +134,7 @@ export default function FAQ() {
                   {String(i + 1).padStart(2, '0')}
                 </span>
 
-                <span className={`flex-1 font-semibold text-sm leading-snug transition-colors duration-200 ${open === i ? 'text-[#050f2e] dark:text-white' : 'text-gray-600 dark:text-gray-300 group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0]'}`}>
+                <span className={`flex-1 font-semibold text-sm leading-snug transition-colors duration-200 ${open === i ? 'text-[#050f2e] dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-300 group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0]'}`}>
                   {faq.q}
                 </span>
 

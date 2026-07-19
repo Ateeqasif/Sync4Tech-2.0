@@ -207,7 +207,7 @@ function FAQAccordion() {
             <span className="font-inter-tight font-black text-xs tabular-nums" style={{ color: open === i ? '#007cf4' : 'rgba(0,0,0,0.2)' }}>
               {String(i + 1).padStart(2, '0')}
             </span>
-            <span className={`flex-1 font-semibold text-sm leading-snug ${open === i ? 'text-[#050f2e] dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}>{f.q}</span>
+            <span className={`flex-1 font-semibold text-sm leading-snug ${open === i ? 'text-[#050f2e] dark:text-white' : 'text-gray-600 dark:text-gray-400 dark:text-gray-300'}`}>{f.q}</span>
             <motion.span animate={{ rotate: open === i ? 45 : 0 }} transition={{ duration: 0.2 }}
               className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center"
               style={{ background: open === i ? 'linear-gradient(135deg,#007cf4,#36c5f0)' : 'rgba(0,0,0,0.05)' }}>

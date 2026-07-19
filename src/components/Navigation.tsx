@@ -193,7 +193,7 @@ export default function Navigation() {
                       {servicesMega.map((col) => (
                         <div key={col.label} className="p-5">
                           <Link href={col.href} className="block mb-3 group">
-                            <span className="text-xs font-black text-gray-800 dark:text-gray-200 uppercase tracking-wide group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors">{col.label}</span>
+                            <span className="text-xs font-black text-gray-800 dark:text-gray-100 dark:text-gray-200 uppercase tracking-wide group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors">{col.label}</span>
                           </Link>
                           <ul className="flex flex-col">
                             {col.items.map((item) => (
@@ -356,7 +356,7 @@ export default function Navigation() {
                           <Link href={col.href} className="text-xs font-black text-[#007cf4] uppercase tracking-wider mb-1 block" onClick={() => setMobileOpen(false)}>{col.label}</Link>
                           <div className="flex flex-col gap-0.5">
                             {col.items.map(item => (
-                              <Link key={item.href} href={item.href} className="text-sm text-gray-600 dark:text-gray-300 py-1 hover:text-[#007cf4] dark:hover:text-[#36c5f0]" onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                              <Link key={item.href} href={item.href} className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-300 py-1 hover:text-[#007cf4] dark:hover:text-[#36c5f0]" onClick={() => setMobileOpen(false)}>{item.label}</Link>
                             ))}
                           </div>
                         </div>
@@ -381,7 +381,7 @@ export default function Navigation() {
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} className="overflow-hidden">
                     <div className="pl-4 pb-2 grid grid-cols-2 gap-0.5">
                       {industriesMega.map(ind => (
-                        <Link key={ind.href} href={ind.href} className="text-sm text-gray-600 dark:text-gray-300 py-1.5 hover:text-[#007cf4] dark:hover:text-[#36c5f0]" onClick={() => setMobileOpen(false)}>{ind.label}</Link>
+                        <Link key={ind.href} href={ind.href} className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-300 py-1.5 hover:text-[#007cf4] dark:hover:text-[#36c5f0]" onClick={() => setMobileOpen(false)}>{ind.label}</Link>
                       ))}
                     </div>
                   </motion.div>

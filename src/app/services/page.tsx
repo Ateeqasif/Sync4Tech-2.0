@@ -181,7 +181,7 @@ export default function ServicesPage() {
               <ToolPill
                 key={tool}
                 name={tool}
-                className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full px-4 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:border-[#007cf4]/60 hover:text-[#007cf4] dark:hover:text-[#36c5f0] hover:shadow-sm"
+                className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full px-4 py-2 text-sm font-semibold text-gray-600 dark:text-gray-400 dark:text-gray-300 hover:border-[#007cf4]/60 hover:text-[#007cf4] dark:hover:text-[#36c5f0] hover:shadow-sm"
               />
             ))}
           </motion.div>

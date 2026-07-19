@@ -111,7 +111,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
 
               <div className="p-8 flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 mb-7">
-                  <h3 className="font-inter-tight font-black text-gray-900 text-xl">Common Challenges</h3>
+                  <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-xl">Common Challenges</h3>
                 </div>
                 <ul className="flex flex-col gap-4 flex-1">
                   {ind.challenges.map((item, i) => (
@@ -122,7 +122,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
                       >
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                      <span className="text-gray-600 text-sm leading-relaxed pt-1">{item}</span>
+                      <span className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed pt-1">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -196,7 +196,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               Our Solutions
             </motion.p>
             <motion.h2
-              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900"
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -259,7 +259,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
                         </svg>
                       </div>
 
-                      <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2.5 group-hover:text-[#007cf4] transition-colors duration-300">
+                      <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2.5 group-hover:text-[#007cf4] transition-colors duration-300">
                         {sol.name}
                       </h3>
                       <p className="text-gray-500 text-sm leading-relaxed flex-1">{sol.desc}</p>
@@ -367,7 +367,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               <div className="relative p-8 md:p-10">
                 <span className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">{ind.caseStudy.snippet}</span>
                 <p className="text-white font-inter-tight font-bold text-lg md:text-xl leading-relaxed mb-6">{ind.caseStudy.outcome}</p>
-                <Link href={`/case-studies/${ind.caseStudy.slug}`} className="inline-flex items-center gap-2 bg-white text-[#007cf4] font-semibold text-sm px-5 py-2.5 rounded-full hover:shadow-lg transition-all hover:gap-3">
+                <Link href={`/case-studies/${ind.caseStudy.slug}`} className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 text-[#007cf4] font-semibold text-sm px-5 py-2.5 rounded-full hover:shadow-lg transition-all hover:gap-3">
                   Read full case study →
                 </Link>
               </div>
@@ -411,7 +411,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               <ToolPill
                 key={tool}
                 name={tool}
-                className="px-4 py-2 bg-white dark:bg-gray-900 dark:bg-gray-800 border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
+                className="px-4 py-2 bg-white dark:bg-gray-900 dark:bg-gray-800 border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
               />
             ))}
           </motion.div>

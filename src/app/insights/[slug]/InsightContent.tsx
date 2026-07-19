@@ -75,7 +75,7 @@ function ArticleFAQ({ faqs }: { faqs: FAQ[] }) {
               <span className="font-inter-tight font-black text-xs tabular-nums" style={{ color: open === i ? '#007cf4' : 'rgba(0,0,0,0.2)' }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <span className={`flex-1 font-semibold text-sm leading-snug ${open === i ? 'text-[#050f2e]' : 'text-gray-600'}`}>{faq.q}</span>
+              <span className={`flex-1 font-semibold text-sm leading-snug ${open === i ? 'text-[#050f2e]' : 'text-gray-600 dark:text-gray-400'}`}>{faq.q}</span>
               <motion.span
                 animate={{ rotate: open === i ? 45 : 0 }}
                 transition={{ duration: 0.22 }}
@@ -154,11 +154,11 @@ export default function InsightContent({ a, related }: Props) {
                 {section.heading && (
                   <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-4 mt-10">{section.heading}</h2>
                 )}
-                <p className="text-gray-600  leading-relaxed text-base mb-4">{section.content}</p>
+                <p className="text-gray-600 dark:text-gray-400  leading-relaxed text-base mb-4">{section.content}</p>
                 {section.bullets && (
                   <ul className="flex flex-col gap-3 mt-4">
                     {section.bullets.map((b, bi) => (
-                      <li key={bi} className="flex items-start gap-3 text-gray-600  text-sm leading-relaxed">
+                      <li key={bi} className="flex items-start gap-3 text-gray-600 dark:text-gray-400  text-sm leading-relaxed">
                         <span className="text-[#36c5f0] mt-1 shrink-0">▸</span>
                         {b}
                       </li>
@@ -193,7 +193,7 @@ export default function InsightContent({ a, related }: Props) {
                     transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <div className="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-black" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>{i + 1}</div>
-                    <span className="text-gray-600  text-sm leading-relaxed pt-0.5">{t}</span>
+                    <span className="text-gray-600 dark:text-gray-400  text-sm leading-relaxed pt-0.5">{t}</span>
                   </motion.li>
                 ))}
               </ul>

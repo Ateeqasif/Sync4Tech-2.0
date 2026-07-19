@@ -65,7 +65,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               </svg>
               <div className="p-8 flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 mb-7">
-                  <h3 className="font-inter-tight font-black text-gray-900 text-xl">Common Challenges</h3>
+                  <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-xl">Common Challenges</h3>
                 </div>
                 <ul className="flex flex-col gap-4 flex-1">
                   {svc.challenges.map((item, i) => (
@@ -76,7 +76,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                       >
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                      <span className="text-gray-600 text-sm leading-relaxed pt-1">{item}</span>
+                      <span className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed pt-1">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -172,7 +172,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               What We Build
             </motion.p>
             <motion.h2
-              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900"
+              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -229,7 +229,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                         <path d="M2 8l4 4 8-8" stroke={grad.from} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-2.5">{feature.title}</h3>
+                    <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2.5">{feature.title}</h3>
                     <p className="text-gray-500 text-sm leading-relaxed flex-1">{feature.desc}</p>
                   </div>
                 </motion.div>
@@ -250,7 +250,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             transition={{ duration: 0.8, ease }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Built For Your Team</span>
-            <h2 className="font-inter-tight font-black text-3xl text-gray-900">Who Benefits Most</h2>
+            <h2 className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white">Who Benefits Most</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {svc.benefits.map((b, i) => (
@@ -275,7 +275,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                     <path d="M8 2a3 3 0 100 6 3 3 0 000-6zM3 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
                 </div>
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 mb-3">{b.role}</h3>
+                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-3">{b.role}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
@@ -311,7 +311,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             {svc.process.map((step, i) => (
               <motion.div
                 key={step.step}
-                className="bg-white dark:bg-gray-800 border border-gray-100  rounded-2xl p-6 flex flex-col gap-3"
+                className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700  rounded-2xl p-6 flex flex-col gap-3"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
@@ -371,7 +371,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               <ToolPill
                 key={tool}
                 name={tool}
-                className="px-4 py-2 bg-white dark:bg-gray-900 dark:bg-gray-800 border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
+                className="px-4 py-2 bg-white dark:bg-gray-900 dark:bg-gray-800 border border-[#007cf4]/20 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 hover:border-[#007cf4]/60 hover:text-[#007cf4] hover:shadow-sm"
               />
             ))}
           </motion.div>
@@ -389,7 +389,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             transition={{ duration: 0.8, ease }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Sector Experience</span>
-            <h2 className="font-inter-tight font-black text-2xl text-gray-900">Industries We Serve</h2>
+            <h2 className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white">Industries We Serve</h2>
             <p className="text-gray-500 text-sm mt-2">Deep domain expertise across these sectors</p>
           </motion.div>
           <motion.div
@@ -402,7 +402,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             {svc.industries.map((ind, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-sm font-semibold text-gray-700"
+                className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-gray-900 text-sm font-semibold text-gray-700 dark:text-gray-300"
                 style={{ border: '1px solid rgba(0,124,244,0.15)' }}
               >
                 <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }} />

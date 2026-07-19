@@ -318,7 +318,7 @@ function FilterBar({
               onClick={() => toggleHidden(s.label)}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200 cursor-pointer select-none ${
                 on
-                  ? 'bg-white text-gray-700 shadow-sm'
+                  ? 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 shadow-sm'
                   : 'bg-transparent text-gray-400 border-dashed'
               }`}
               style={on
@@ -349,7 +349,7 @@ function ChartCard({ title, sub, series, chartKey }: {
       <div className="flex items-start justify-between mb-4">
         <div>
           <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-1">{sub}</p>
-          <p className="text-gray-900 font-inter-tight font-black text-xl">{title}</p>
+          <p className="text-gray-900 dark:text-white font-inter-tight font-black text-xl">{title}</p>
         </div>
         <div className="flex gap-3 flex-wrap justify-end">
           {series.map(s => (
@@ -470,7 +470,7 @@ export default function LiveDashboard() {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-gray-100 mb-8" />
+          <div className="border-t border-gray-100 dark:border-gray-700 mb-8" />
 
           {/* Charts */}
           <div className="flex flex-col gap-8">
@@ -481,7 +481,7 @@ export default function LiveDashboard() {
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-0.5">Daily downloads · Last {dayRange} days</p>
-                        <p className="text-gray-900 font-inter-tight font-black text-lg">AI &amp; LLM Frameworks</p>
+                        <p className="text-gray-900 dark:text-white font-inter-tight font-black text-lg">AI &amp; LLM Frameworks</p>
                       </div>
                       <div className="flex gap-3 flex-wrap justify-end">
                         {visAi.map(s => (
@@ -497,7 +497,7 @@ export default function LiveDashboard() {
                 )}
 
                 {showAi && showAuto && visAi.length > 0 && visAuto.length > 0 && (
-                  <div className="border-t border-gray-100" />
+                  <div className="border-t border-gray-100 dark:border-gray-700" />
                 )}
 
                 {showAuto && visAuto.length > 0 && (
@@ -505,7 +505,7 @@ export default function LiveDashboard() {
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-0.5">Daily downloads · Last {dayRange} days</p>
-                        <p className="text-gray-900 font-inter-tight font-black text-lg">Automation Platforms</p>
+                        <p className="text-gray-900 dark:text-white font-inter-tight font-black text-lg">Automation Platforms</p>
                       </div>
                       <div className="flex gap-3 flex-wrap justify-end">
                         {visAuto.map(s => (
@@ -526,8 +526,8 @@ export default function LiveDashboard() {
               </>
             ) : (
               <>
-                <div className="animate-pulse h-[310px] rounded-2xl bg-gray-50" />
-                <div className="animate-pulse h-[310px] rounded-2xl bg-gray-50" />
+                <div className="animate-pulse h-[310px] rounded-2xl bg-gray-50 dark:bg-gray-800" />
+                <div className="animate-pulse h-[310px] rounded-2xl bg-gray-50 dark:bg-gray-800" />
               </>
             )}
           </div>
@@ -537,9 +537,9 @@ export default function LiveDashboard() {
           </p>
 
           {/* CTA */}
-          <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-700 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <p className="font-semibold text-gray-800 text-sm">We deploy all of these tools for clients.</p>
+              <p className="font-semibold text-gray-800 dark:text-gray-100 text-sm">We deploy all of these tools for clients.</p>
               <p className="text-gray-400 text-xs mt-0.5">From strategy to production, end to end.</p>
             </div>
             <div className="flex items-center gap-3 shrink-0">

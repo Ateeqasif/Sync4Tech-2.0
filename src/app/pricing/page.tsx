@@ -175,7 +175,7 @@ export default function PricingPage() {
 
                   <ul className="space-y-2.5 mb-6 flex-1">
                     {tier.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm text-gray-600 ">
+                      <li key={f} className="flex items-start gap-2.5 text-sm text-gray-600 dark:text-gray-400 ">
                         <svg className="w-4 h-4 text-[#007cf4] mt-0.5 shrink-0" fill="none" viewBox="0 0 16 16">
                           <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -243,7 +243,7 @@ export default function PricingPage() {
                     <path d="M3 8l3.5 3.5L13 4.5" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <p className="text-gray-700  text-xs font-semibold leading-tight">{item}</p>
+                <p className="text-gray-700 dark:text-gray-300  text-xs font-semibold leading-tight">{item}</p>
               </motion.div>
             ))}
           </div>

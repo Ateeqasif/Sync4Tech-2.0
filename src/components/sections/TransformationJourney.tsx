@@ -90,7 +90,7 @@ export default function TransformationJourney() {
                     i === active ? 'bg-[#007cf4] text-white' : 'bg-black/8 dark:bg-white/10 text-gray-500 dark:text-gray-400'
                   }`}>{s.id}</span>
                   <span className={`font-semibold text-sm transition-colors ${
-                    i === active ? 'text-[#007cf4]' : 'text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white'
+                    i === active ? 'text-[#007cf4]' : 'text-gray-600 dark:text-gray-400 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white'
                   }`}>{s.title}</span>
                   <span className="ml-auto text-[10px] text-gray-400 dark:text-gray-500 shrink-0">{s.duration}</span>
                 </div>

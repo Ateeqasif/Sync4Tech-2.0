@@ -175,11 +175,11 @@ export default function CaseStudiesFilter() {
                   {/* Company type + industry */}
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">{c.companyType}</span>
-                    <span className="text-gray-700">·</span>
+                    <span className="text-gray-700 dark:text-gray-300">·</span>
                     <span className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">{c.industry}</span>
                   </div>
 
-                  <h3 className="font-inter-tight font-black text-gray-900 text-base leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300">
+                  <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-base leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300">
                     {c.title}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed flex-1">{c.description}</p>
