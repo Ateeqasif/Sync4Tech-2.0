@@ -109,8 +109,8 @@ const slides = [
   {
     badge: 'Business Automation',
     accentColor: '#007cf4',
-    h1Line1: 'Scale Without',
-    h1Line2: 'Adding Headcount',
+    h1Line1: 'Automate Work,',
+    h1Line2: 'Scale Business',
     h1Line3: '',
     subtitle: 'Stop losing time and revenue to manual processes. Sync4Tech automates CRM workflows, connects business systems, and eliminates bottlenecks across sales, marketing, and operations so your team can focus on what grows the business.',
     cta1: { label: 'Book a Strategy Call', href: '/contact' },
@@ -119,8 +119,8 @@ const slides = [
   {
     badge: 'Data Intelligence',
     accentColor: '#36c5f0',
-    h1Line1: 'Data Drives',
-    h1Line2: 'Better Decisions',
+    h1Line1: 'One Source,',
+    h1Line2: 'Total Clarity',
     h1Line3: '',
     subtitle: 'Disconnected data costs decisions. Unify every source, build reliable reporting pipelines, and give leadership one trusted view of business performance in real time.',
     cta1: { label: 'Discuss Your Data Challenges', href: '/contact' },
@@ -129,8 +129,8 @@ const slides = [
   {
     badge: 'Consulting and Strategy',
     accentColor: '#033a9d',
-    h1Line1: 'Strategy Before',
-    h1Line2: 'You Build',
+    h1Line1: 'Strategy First,',
+    h1Line2: 'Results Always',
     h1Line3: '',
     subtitle: 'Turn transformation goals into a practical roadmap. We define priorities, architecture, KPIs, and governance before a single line of code is written.',
     cta1: { label: 'Request an Assessment', href: '/contact' },
