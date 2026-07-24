@@ -247,7 +247,7 @@ export default function Hero() {
                 </span>
               ))}
             </span>
-            <span className="text-xs font-semibold text-gray-600 dark:text-gray-300">Trusted by <span className="text-[#007cf4] font-bold">40+ operations teams</span> across UK, US and Pakistan</span>
+            <span className="text-xs font-semibold text-gray-600 dark:text-gray-300">Trusted by <span className="text-[#007cf4] font-bold">150+ businesses</span> worldwide</span>
             <span className="flex items-center gap-0.5 text-amber-400 text-xs">
               {'★★★★★'.split('').map((s,i) => <span key={i}>{s}</span>)}
             </span>
