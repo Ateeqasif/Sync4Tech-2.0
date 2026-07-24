@@ -206,27 +206,54 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-900" id="home">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-gray-900" id="home">
       {/* Background layers */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 opacity-70">
+        <div className="absolute inset-0 opacity-50">
           <ParticleCanvas />
         </div>
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full opacity-10"
-            style={{ background: 'radial-gradient(ellipse, #007cf4 0%, transparent 70%)' }} />
-          <div className="absolute bottom-0 right-0 w-[600px] h-[400px] rounded-full opacity-8"
-            style={{ background: 'radial-gradient(ellipse, #36c5f0 0%, transparent 70%)' }} />
-        </div>
-        <div className="absolute inset-0 opacity-[0.04]"
+        {/* Strong top-center glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[700px] rounded-full opacity-[0.18]"
+          style={{ background: 'radial-gradient(ellipse, #007cf4 0%, transparent 65%)' }} />
+        {/* Bottom-right accent */}
+        <div className="absolute bottom-0 right-0 w-[700px] h-[500px] rounded-full opacity-[0.10]"
+          style={{ background: 'radial-gradient(ellipse, #36c5f0 0%, transparent 65%)' }} />
+        {/* Left accent */}
+        <div className="absolute top-1/3 left-0 w-[400px] h-[400px] rounded-full opacity-[0.07]"
+          style={{ background: 'radial-gradient(ellipse, #033a9d 0%, transparent 70%)' }} />
+        {/* Grid */}
+        <div className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage: 'linear-gradient(#007cf4 1px, transparent 1px), linear-gradient(90deg, #007cf4 1px, transparent 1px)',
-            backgroundSize: '80px 80px',
+            backgroundSize: '60px 60px',
           }}
         />
       </div>
 
-      <div className="relative z-10 section-container text-center pt-32 pb-28">
+      <div className="relative z-10 section-container text-center pt-36 pb-28">
+
+        {/* Social proof bar */}
+        <motion.div
+          className="flex items-center justify-center gap-3 mb-8"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="inline-flex items-center gap-2.5 bg-[#007cf4]/8 dark:bg-[#007cf4]/15 border border-[#007cf4]/20 rounded-full px-5 py-2">
+            <span className="flex -space-x-1.5">
+              {['#033a9d','#007cf4','#36c5f0','#0550c8'].map((c,i) => (
+                <span key={i} className="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 flex items-center justify-center text-white text-[9px] font-bold" style={{ background: c, zIndex: 4-i }}>
+                  {['A','B','C','D'][i]}
+                </span>
+              ))}
+            </span>
+            <span className="text-xs font-semibold text-gray-600 dark:text-gray-300">Trusted by <span className="text-[#007cf4] font-bold">40+ operations teams</span> across UK, US and Pakistan</span>
+            <span className="flex items-center gap-0.5 text-amber-400 text-xs">
+              {'★★★★★'.split('').map((s,i) => <span key={i}>{s}</span>)}
+            </span>
+          </div>
+        </motion.div>
+
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={current}
@@ -238,18 +265,17 @@ export default function Hero() {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
             {/* Badge */}
-            <div className="flex flex-col items-center gap-3 mb-8">
-              <div className="inline-flex items-center gap-4 px-8 py-2.5">
-                <span className="w-2.5 h-2.5 rounded-full animate-pulse shrink-0" style={{ background: slide.accentColor }} />
-                <span className="text-sm font-medium tracking-widest uppercase" style={{ color: slide.accentColor }}>{slide.badge}</span>
-                <span className="w-2.5 h-2.5 bg-[#36c5f0] rounded-full animate-pulse shrink-0" style={{ animationDelay: '0.5s' }} />
+            <div className="flex items-center justify-center mb-6">
+              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#007cf4]/25 bg-[#007cf4]/5 dark:bg-[#007cf4]/10">
+                <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: slide.accentColor }} />
+                <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: slide.accentColor }}>{slide.badge}</span>
               </div>
             </div>
 
             {/* Headline */}
             <h1
-              className="font-inter-tight font-semibold leading-[0.95] tracking-tight mb-8 mx-auto"
-              style={{ fontSize: 'clamp(40px, 7vw, 90px)', maxWidth: '900px', wordBreak: 'keep-all', whiteSpace: 'normal' }}
+              className="font-inter-tight font-black leading-[0.92] tracking-tight mb-6 mx-auto"
+              style={{ fontSize: 'clamp(44px, 7.5vw, 96px)', maxWidth: '900px' }}
             >
               <span className="text-black dark:text-white">
                 {line1.displayed}
@@ -293,34 +319,37 @@ export default function Hero() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-gray-500 dark:text-gray-400 text-2xl max-w-4xl mx-auto mb-12 leading-relaxed" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+            <p className="text-gray-500 dark:text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto mb-10 leading-relaxed" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
               {slide.subtitle}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
               <a
                 href={slide.cta1.href}
-                className="inline-flex items-center gap-2.5 text-white px-8 py-4 rounded-full font-semibold text-base btn-glow transition-all duration-300 group"
-                style={{ background: 'linear-gradient(135deg, #007cf4, #36c5f0)' }}
+                className="inline-flex items-center gap-2.5 text-white px-9 py-4 rounded-full font-bold text-base btn-glow transition-all duration-300 group shadow-lg shadow-[#007cf4]/25"
+                style={{ background: 'linear-gradient(135deg, #033a9d, #007cf4)' }}
               >
                 {slide.cta1.label}
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-1 transition-transform duration-200">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
               <a
                 href={slide.cta2.href}
-                className="inline-flex items-center gap-2.5 bg-black/5 dark:bg-white/10 text-black dark:text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-black/10 dark:hover:bg-white/15 transition-all duration-300 border border-black/10 dark:border-white/20 group"
+                className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm font-semibold hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-colors duration-200 group"
               >
                 {slide.cta2.label}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+                  <path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </a>
             </div>
           </motion.div>
         </AnimatePresence>
 
         {/* Slide dots */}
-        <div className="flex items-center justify-center gap-3 mb-16">
+        <div className="flex items-center justify-center gap-3 mb-16 mt-4">
           {slides.map((s, i) => (
             <button
               key={i}
@@ -333,10 +362,10 @@ export default function Hero() {
                 style={{
                   width: i === current ? '32px' : '8px',
                   height: '8px',
-                  background: i === current ? slide.accentColor : 'rgba(0,124,244,0.25)',
+                  background: i === current ? slide.accentColor : 'rgba(0,124,244,0.2)',
                 }}
               />
-              <span className={`text-xs font-medium tracking-wide transition-all duration-300 ${i === current ? 'opacity-100' : 'opacity-0 w-0 overflow-hidden'}`}
+              <span className={`text-xs font-semibold tracking-wide transition-all duration-300 ${i === current ? 'opacity-100' : 'opacity-0 w-0 overflow-hidden'}`}
                 style={{ color: slide.accentColor }}>
                 {s.badge}
               </span>
@@ -346,35 +375,32 @@ export default function Hero() {
 
         {/* Metrics */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 16 }}
+          className="flex flex-wrap items-center justify-center gap-0 max-w-3xl mx-auto rounded-2xl overflow-hidden border border-[#007cf4]/12 dark:border-[#007cf4]/20 bg-white/70 dark:bg-white/5 backdrop-blur-sm shadow-xl shadow-[#007cf4]/5"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
         >
           {metricValues.map((m, i) => (
-            <motion.div
+            <div
               key={i}
-              className="text-center px-4 py-4 rounded-2xl bg-white/60 dark:bg-white/5 border border-[#007cf4]/10 backdrop-blur-sm"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.3 + i * 0.1 }}
+              className={`flex-1 min-w-[140px] text-center px-6 py-5 ${i < metricValues.length - 1 ? 'border-r border-[#007cf4]/10 dark:border-[#007cf4]/15' : ''}`}
             >
-              <div className="font-inter-tight font-black text-black dark:text-white text-4xl mb-1">
+              <div className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-1">
                 <CountUp end={m.value} suffix={m.suffix} duration={m.duration} />
               </div>
-              <div className="text-gray-400 dark:text-gray-500 text-xs font-medium">{metricLabels[i]}</div>
-            </motion.div>
+              <div className="text-gray-400 dark:text-gray-500 text-xs font-semibold uppercase tracking-wider">{metricLabels[i]}</div>
+            </div>
           ))}
         </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
+          transition={{ delay: 2.2 }}
         >
-          <span className="text-gray-400 text-[10px] tracking-widest uppercase">Scroll</span>
+          <span className="text-gray-300 dark:text-gray-600 text-[10px] tracking-widest uppercase">Scroll</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="animate-bounce-down">
             <path d="M8 3v8M4 8l4 4 4-4" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
