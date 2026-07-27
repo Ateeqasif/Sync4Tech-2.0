@@ -23,18 +23,12 @@ const values = [
 ]
 
 const team = [
-  { name: 'James Hartwell', role: 'Chief Executive Officer', initials: 'JH' },
+  { name: 'Ateeq Ur Rehman', role: 'Chief Executive Officer', initials: 'AU' },
   { name: 'Megan Torres', role: 'Chief Technology Officer', initials: 'MT' },
-  { name: 'Daniel Rowe', role: 'VP of Engineering', initials: 'DR' },
   { name: 'Sophia Chen', role: 'Head of Data Engineering', initials: 'SC' },
   { name: 'Marcus Webb', role: 'Lead Automation Architect', initials: 'MW' },
-  { name: 'Priya Nair', role: 'Senior AI/ML Engineer', initials: 'PN' },
   { name: 'Tyler Brooks', role: 'Principal Solutions Architect', initials: 'TB' },
   { name: 'Rachel Kim', role: 'Senior Data Scientist', initials: 'RK' },
-  { name: 'Ethan Walsh', role: 'Head of Platform Engineering', initials: 'EW' },
-  { name: 'Lauren Simmons', role: 'Senior Integration Engineer', initials: 'LS' },
-  { name: 'Nathan Cole', role: 'Lead DevOps Engineer', initials: 'NC' },
-  { name: 'Alexis Grant', role: 'Senior Business Intelligence Engineer', initials: 'AG' },
 ]
 
 const offices = [
