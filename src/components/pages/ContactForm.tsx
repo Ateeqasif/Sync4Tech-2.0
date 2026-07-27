@@ -128,6 +128,13 @@ export default function ContactForm() {
                       <label className="block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1.5">What is your biggest operational challenge? *</label>
                       <textarea required value={form.challenge} onChange={e => set('challenge', e.target.value)} rows={4} placeholder="Describe the operational, data, automation, or AI challenge you are trying to solve..." className="w-full px-4 py-3 rounded-xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-700 text-black dark:text-white text-sm outline-none focus:border-[#007cf4]/60 transition-colors resize-none" />
                     </div>
+                    <p className="flex items-start gap-2 text-xs text-gray-400 dark:text-gray-500 leading-relaxed">
+                      <svg className="shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                        <circle cx="6.5" cy="6.5" r="6" stroke="currentColor" strokeWidth="1.2" />
+                        <path d="M6.5 5.5v4M6.5 4h.01" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                      </svg>
+                      Your information is strictly confidential. We will never share, sell, or disclose your details to any third party under any circumstances.
+                    </p>
                     <button
                       type="submit"
                       disabled={loading}
