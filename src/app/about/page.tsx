@@ -22,14 +22,6 @@ const values = [
   { title: 'Deep Expertise', desc: 'Cross-functional expertise across data, automation, AI, strategy, and delivery governance.', icon: '04' },
 ]
 
-const team = [
-  { name: 'Ateeq Ur Rehman', role: 'Chief Executive Officer', initials: 'AU' },
-  { name: 'Megan Torres', role: 'Chief Technology Officer', initials: 'MT' },
-  { name: 'Sophia Chen', role: 'Head of Data Engineering', initials: 'SC' },
-  { name: 'Marcus Webb', role: 'Lead Automation Architect', initials: 'MW' },
-  { name: 'Tyler Brooks', role: 'Principal Solutions Architect', initials: 'TB' },
-  { name: 'Rachel Kim', role: 'Senior Data Scientist', initials: 'RK' },
-]
 
 const offices = [
   { city: 'London', country: 'Europe Hub', flag: '🌍', addr: '1 Canada Square, Canary Wharf', tz: 'GMT / BST' },
@@ -323,57 +315,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-section bg-[#f8faff] dark:bg-gray-800">
-        <div className="section-container">
-          <div className="text-center mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: 0, ease }}
-            >
-              <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">The Team</span>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.8, ease }}
-            >
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Our Experts Are Our Product</h2>
-            </motion.div>
-            <motion.p
-              className="text-gray-500 dark:text-gray-400 mt-4 max-w-xl mx-auto text-sm"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.7, delay: 0.15, ease }}
-            >
-              Every engagement is led by a senior specialist with deep domain expertise. No juniors, no outsourcing.
-            </motion.p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
-            {team.map((member, i) => (
-              <motion.div
-                key={i}
-                className="group bg-white dark:bg-gray-800 rounded-2xl p-6 text-center border border-black/8  hover:border-[#007cf4]/40 hover:shadow-md transition-all overflow-hidden relative"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6, delay: i * 0.08, ease }}
-              >
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#033a9d] to-[#36c5f0]" />
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white font-inter-tight font-black text-xl shadow-lg" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
-                  {member.initials}
-                </div>
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-sm mb-1">{member.name}</h3>
-                <p className="text-[#007cf4] text-xs font-medium">{member.role}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Offices */}
       <section className="py-section bg-white dark:bg-gray-900">
