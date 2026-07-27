@@ -69,7 +69,7 @@ export default function ContactForm() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="bg-white dark:bg-gray-800 border border-[#007cf4]/15 dark:border-[#007cf4]/25 rounded-3xl p-8">
-                <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-6">Tell Us About Your Business Challenge</h2>
+                <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-6">Share with us</h2>
                 {sent ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.92 }}
