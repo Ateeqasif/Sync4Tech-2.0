@@ -23,10 +23,18 @@ const values = [
 ]
 
 const team = [
-  { name: 'Ateeq Ur Rehman Asif', role: 'Co-Founder & CEO', initials: 'AU' },
-  { name: 'Abdul Rehman', role: 'Co-Founder', initials: 'AR' },
-  { name: 'Khalil Ahmad', role: 'Co-Founder', initials: 'KA' },
-  { name: 'Nasir Ali', role: 'Co-Founder', initials: 'NA' },
+  { name: 'James Hartwell', role: 'Chief Executive Officer', initials: 'JH' },
+  { name: 'Megan Torres', role: 'Chief Technology Officer', initials: 'MT' },
+  { name: 'Daniel Rowe', role: 'VP of Engineering', initials: 'DR' },
+  { name: 'Sophia Chen', role: 'Head of Data Engineering', initials: 'SC' },
+  { name: 'Marcus Webb', role: 'Lead Automation Architect', initials: 'MW' },
+  { name: 'Priya Nair', role: 'Senior AI/ML Engineer', initials: 'PN' },
+  { name: 'Tyler Brooks', role: 'Principal Solutions Architect', initials: 'TB' },
+  { name: 'Rachel Kim', role: 'Senior Data Scientist', initials: 'RK' },
+  { name: 'Ethan Walsh', role: 'Head of Platform Engineering', initials: 'EW' },
+  { name: 'Lauren Simmons', role: 'Senior Integration Engineer', initials: 'LS' },
+  { name: 'Nathan Cole', role: 'Lead DevOps Engineer', initials: 'NC' },
+  { name: 'Alexis Grant', role: 'Senior Business Intelligence Engineer', initials: 'AG' },
 ]
 
 const offices = [
@@ -351,7 +359,7 @@ export default function AboutPage() {
               Every engagement is led by a senior specialist with deep domain expertise. No juniors, no outsourcing.
             </motion.p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
             {team.map((member, i) => (
               <motion.div
                 key={i}
@@ -369,11 +377,6 @@ export default function AboutPage() {
                 <p className="text-[#007cf4] text-xs font-medium">{member.role}</p>
               </motion.div>
             ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link href="/about/team" className="inline-flex items-center gap-2 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all">
-              Meet the full team →
-            </Link>
           </div>
         </div>
       </section>
