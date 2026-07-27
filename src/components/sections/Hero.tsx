@@ -241,9 +241,14 @@ export default function Hero() {
         >
           <div className="inline-flex items-center gap-2.5 bg-[#007cf4]/8 dark:bg-[#007cf4]/15 border border-[#007cf4]/20 rounded-full px-5 py-2">
             <span className="flex -space-x-1.5">
-              {['#033a9d','#007cf4','#36c5f0','#0550c8'].map((c,i) => (
-                <span key={i} className="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 flex items-center justify-center text-white text-[9px] font-bold" style={{ background: c, zIndex: 4-i }}>
-                  {['A','B','C','D'][i]}
+              {[
+                'https://i.pravatar.cc/40?img=11',
+                'https://i.pravatar.cc/40?img=32',
+                'https://i.pravatar.cc/40?img=47',
+                'https://i.pravatar.cc/40?img=68',
+              ].map((src, i) => (
+                <span key={i} className="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 overflow-hidden block" style={{ zIndex: 4 - i }}>
+                  <img src={src} alt="" className="w-full h-full object-cover" />
                 </span>
               ))}
             </span>
