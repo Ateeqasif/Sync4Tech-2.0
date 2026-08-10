@@ -441,33 +441,31 @@ export default function AboutPage() {
               return (
                 <motion.div
                   key={i}
-                  className={`group relative overflow-hidden rounded-3xl p-8 flex flex-col justify-between min-h-[220px] transition-all duration-300 hover:scale-[1.02] ${isHero ? 'md:col-span-2' : ''}`}
-                  style={{ background: isHero ? 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' : undefined }}
+                  className={`group relative overflow-hidden rounded-3xl flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] ${isHero ? 'md:col-span-2' : ''} ${isHero ? '' : 'bg-white dark:bg-gray-800 border border-[#007cf4]/10 dark:border-[#007cf4]/20 hover:border-[#007cf4]/40'}`}
+                  style={{ background: isHero ? 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' : undefined, minHeight: '220px' }}
                   initial={{ opacity: 0, y: 36 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.07, ease }}
                 >
                   {isHero ? (
-                    <>
+                    <div className="relative z-10 flex flex-col justify-between h-full p-8">
                       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #fff 0%, transparent 60%)' }} />
                       <span className="relative z-10 inline-block text-xs font-bold tracking-widest uppercase text-white/60 border border-white/20 rounded-full px-3 py-1 self-start mb-6">{c.tag}</span>
                       <div className="relative z-10">
                         <h3 className="font-inter-tight font-black text-white text-2xl md:text-3xl mb-3">{c.label}</h3>
                         <p className="text-white/70 text-sm leading-relaxed max-w-md">{c.body}</p>
                       </div>
-                    </>
+                    </div>
                   ) : (
-                    <>
-                      <div className="bg-white dark:bg-gray-800 border border-[#007cf4]/10 dark:border-[#007cf4]/20 rounded-3xl p-8 flex flex-col justify-between min-h-[220px] h-full -m-8 group-hover:border-[#007cf4]/40 transition-colors duration-300">
-                        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl" />
-                        <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#007cf4] border border-[#007cf4]/25 rounded-full px-3 py-1 self-start mb-6">{c.tag}</span>
-                        <div>
-                          <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3 group-hover:text-[#007cf4] transition-colors duration-300">{c.label}</h3>
-                          <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.body}</p>
-                        </div>
+                    <div className="p-8 flex flex-col h-full">
+                      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl" />
+                      <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#007cf4] border border-[#007cf4]/25 rounded-full px-3 py-1 self-start mb-6">{c.tag}</span>
+                      <div>
+                        <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3 group-hover:text-[#007cf4] transition-colors duration-300">{c.label}</h3>
+                        <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.body}</p>
                       </div>
-                    </>
+                    </div>
                   )}
                 </motion.div>
               )
