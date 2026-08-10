@@ -16,10 +16,63 @@ const timeline = [
 ]
 
 const values = [
-  { title: 'Client Outcomes First', desc: 'Every decision is measured against its impact on your business results. We are not satisfied until you are.', icon: '01' },
-  { title: 'Radical Transparency', desc: 'No hidden scope, no surprise costs. Weekly demos, live dashboards, and honest progress reporting.', icon: '02' },
-  { title: 'Practical Implementation', desc: 'We focus on solutions that work in production, not just in presentations. Every recommendation is grounded in what is achievable with your team, tools, and timeline.', icon: '03' },
-  { title: 'Deep Expertise', desc: 'Cross-functional expertise across data, automation, AI, strategy, and delivery governance.', icon: '04' },
+  {
+    num: '01',
+    title: 'Client Outcomes First',
+    desc: 'Every decision we make is measured against one question: does this improve the client\'s business? We are not satisfied until the results are real, measurable, and sustained.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="11" r="9" stroke="white" strokeWidth="1.5" />
+        <path d="M7 11l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    accent: '#007cf4',
+  },
+  {
+    num: '02',
+    title: 'Radical Transparency',
+    desc: 'No hidden scope, no surprise invoices. Weekly demos, live delivery dashboards, and conversations that are honest even when the news is hard.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M11 3v16M3 11h16" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
+        <circle cx="11" cy="11" r="3" fill="white" />
+      </svg>
+    ),
+    accent: '#0550c8',
+  },
+  {
+    num: '03',
+    title: 'Built for Production',
+    desc: 'We design for the real world, not the slide deck. Every solution we recommend is grounded in what will actually work inside your team, tools, and operational constraints.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect x="3" y="7" width="16" height="11" rx="2" stroke="white" strokeWidth="1.5" />
+        <path d="M7 7V5a4 4 0 018 0v2" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+    accent: '#033a9d',
+  },
+  {
+    num: '04',
+    title: 'Deep Domain Expertise',
+    desc: 'We bring cross-functional depth across data engineering, automation, AI strategy, and delivery governance. No generalists, no hand-offs to juniors.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M4 17L11 4l7 13H4z" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M8 13h6" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+    accent: '#36c5f0',
+  },
+]
+
+const culture = [
+  { label: 'Senior-Led Always', body: 'Every engagement is owned and delivered by a senior specialist. We do not staff projects with graduates or outsource delivery.', tag: 'Quality' },
+  { label: 'Bias Toward Action', body: 'We move fast. Strategy without execution is noise. We prototype in days, not months, and ship working solutions into production.', tag: 'Velocity' },
+  { label: 'Relentlessly Curious', body: 'We invest in continuous learning because the technology we work with never stands still. Our team reads, experiments, and challenges its own assumptions constantly.', tag: 'Growth' },
+  { label: 'Radical Ownership', body: 'We own our commitments end to end. If something goes wrong we fix it, learn from it, and make sure it does not happen again. No excuses, no finger-pointing.', tag: 'Accountability' },
+  { label: 'Quietly Confident', body: 'We let results do the talking. No hype, no overselling. We prefer to underpromise and consistently overdeliver.', tag: 'Integrity' },
+  { label: 'Built to Last', body: 'We build relationships, not transactions. Most of our clients have worked with us across multiple engagements because they trust us to deliver, every time.', tag: 'Partnership' },
 ]
 
 
@@ -274,43 +327,145 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-section bg-white dark:bg-gray-900">
+      {/* Values — alternating split layout */}
+      <section className="py-section bg-white dark:bg-gray-900 overflow-hidden">
         <div className="section-container">
-          <div className="text-center mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
+          <div className="text-center mb-16">
+            <motion.span
+              className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: 0, ease }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease }}
             >
-              <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">What We Stand For</span>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              What We Stand For
+            </motion.span>
+            <motion.h2
+              className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl"
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.8, ease }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease }}
             >
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Our Values</h2>
-            </motion.div>
+              Our Values
+            </motion.h2>
+            <motion.p
+              className="text-gray-500 dark:text-gray-400 mt-4 max-w-lg mx-auto text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1, ease }}
+            >
+              Four principles that shape every decision, every engagement, every line of code we ship.
+            </motion.p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {values.map((v, i) => (
-              <motion.div
-                key={i}
-                className="group relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-7 border border-black/8  hover:border-[#007cf4]/40 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6, delay: i * 0.08, ease }}
-              >
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#033a9d] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-black text-sm mb-5 shadow-md" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>{v.icon}</div>
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{v.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{v.desc}</p>
-              </motion.div>
-            ))}
+
+          <div className="space-y-6">
+            {values.map((v, i) => {
+              const isEven = i % 2 === 0
+              return (
+                <motion.div
+                  key={i}
+                  className={`flex flex-col md:flex-row items-stretch gap-0 rounded-3xl overflow-hidden border border-[#007cf4]/10 dark:border-[#007cf4]/20 shadow-sm hover:shadow-lg transition-shadow group ${!isEven ? 'md:flex-row-reverse' : ''}`}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.65, delay: i * 0.08, ease }}
+                >
+                  {/* Colour panel */}
+                  <div
+                    className="md:w-64 shrink-0 flex flex-col items-center justify-center gap-4 p-10 relative overflow-hidden"
+                    style={{ background: `linear-gradient(135deg, #033a9d, ${v.accent})` }}
+                  >
+                    {/* Subtle radial glow */}
+                    <div className="absolute inset-0 opacity-20" style={{ background: 'radial-gradient(circle at 50% 50%, #fff 0%, transparent 70%)' }} />
+                    <div className="relative z-10 w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center">
+                      {v.icon}
+                    </div>
+                    <span className="relative z-10 font-inter-tight font-black text-white/20 text-7xl leading-none select-none">{v.num}</span>
+                  </div>
+                  {/* Text panel */}
+                  <div className="flex-1 bg-white dark:bg-gray-800 p-10 flex flex-col justify-center">
+                    <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-3 group-hover:text-[#007cf4] transition-colors duration-300">{v.title}</h3>
+                    <p className="text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl">{v.desc}</p>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Culture — bento mosaic */}
+      <section className="py-section bg-[#f8faff] dark:bg-gray-800 overflow-hidden">
+        <div className="section-container">
+          <div className="text-center mb-16">
+            <motion.span
+              className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease }}
+            >
+              How We Operate
+            </motion.span>
+            <motion.h2
+              className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease }}
+            >
+              Our Culture
+            </motion.h2>
+            <motion.p
+              className="text-gray-500 dark:text-gray-400 mt-4 max-w-lg mx-auto text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1, ease }}
+            >
+              Culture is not a poster on the wall. It is how we behave when no one is watching and how we show up for clients every single day.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {culture.map((c, i) => {
+              const isHero = i === 0
+              return (
+                <motion.div
+                  key={i}
+                  className={`group relative overflow-hidden rounded-3xl p-8 flex flex-col justify-between min-h-[220px] transition-all duration-300 hover:scale-[1.02] ${isHero ? 'md:col-span-2' : ''}`}
+                  style={{ background: isHero ? 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' : undefined }}
+                  initial={{ opacity: 0, y: 36 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.07, ease }}
+                >
+                  {isHero ? (
+                    <>
+                      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #fff 0%, transparent 60%)' }} />
+                      <span className="relative z-10 inline-block text-xs font-bold tracking-widest uppercase text-white/60 border border-white/20 rounded-full px-3 py-1 self-start mb-6">{c.tag}</span>
+                      <div className="relative z-10">
+                        <h3 className="font-inter-tight font-black text-white text-2xl md:text-3xl mb-3">{c.label}</h3>
+                        <p className="text-white/70 text-sm leading-relaxed max-w-md">{c.body}</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="bg-white dark:bg-gray-800 border border-[#007cf4]/10 dark:border-[#007cf4]/20 rounded-3xl p-8 flex flex-col justify-between min-h-[220px] h-full -m-8 group-hover:border-[#007cf4]/40 transition-colors duration-300">
+                        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl" />
+                        <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#007cf4] border border-[#007cf4]/25 rounded-full px-3 py-1 self-start mb-6">{c.tag}</span>
+                        <div>
+                          <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3 group-hover:text-[#007cf4] transition-colors duration-300">{c.label}</h3>
+                          <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.body}</p>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
