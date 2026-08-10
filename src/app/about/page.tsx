@@ -18,61 +18,66 @@ const timeline = [
 const values = [
   {
     num: '01',
-    title: 'Client Outcomes First',
-    desc: 'Every decision we make is measured against one question: does this improve the client\'s business? We are not satisfied until the results are real, measurable, and sustained.',
+    title: 'We Put Clients at the Centre',
+    desc: 'Client success is the only metric that matters. We define outcomes with you before a single line of code is written, and we are not done until those outcomes are real, measurable, and lasting.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <circle cx="11" cy="11" r="9" stroke="white" strokeWidth="1.5" />
-        <path d="M7 11l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="11" cy="8" r="4" stroke="white" strokeWidth="1.5" />
+        <path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
     accent: '#007cf4',
+    orient: 'Client Value',
   },
   {
     num: '02',
-    title: 'Radical Transparency',
-    desc: 'No hidden scope, no surprise invoices. Weekly demos, live delivery dashboards, and conversations that are honest even when the news is hard.',
+    title: 'We Invest in Our People',
+    desc: 'Our team is our greatest asset. We create an environment where specialists grow, share knowledge freely, and are trusted to do their best work without unnecessary hierarchy.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M11 3v16M3 11h16" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
-        <circle cx="11" cy="11" r="3" fill="white" />
+        <circle cx="8" cy="8" r="3" stroke="white" strokeWidth="1.5" />
+        <circle cx="15" cy="8" r="3" stroke="white" strokeWidth="1.5" />
+        <path d="M2 19c0-3.3 2.7-6 6-6M10 19c0-3.3 2.7-6 6-6" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
     accent: '#0550c8',
+    orient: 'Team Value',
   },
   {
     num: '03',
-    title: 'Built for Production',
-    desc: 'We design for the real world, not the slide deck. Every solution we recommend is grounded in what will actually work inside your team, tools, and operational constraints.',
+    title: 'We Create Business Impact',
+    desc: 'Every engagement is tied to a tangible business outcome: time saved, costs reduced, revenue accelerated. We measure ourselves against what actually changes in your business, not vanity metrics.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <rect x="3" y="7" width="16" height="11" rx="2" stroke="white" strokeWidth="1.5" />
-        <path d="M7 7V5a4 4 0 018 0v2" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M3 16l5-5 4 3 5-7 3 3" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="2" y="2" width="18" height="18" rx="3" stroke="white" strokeWidth="1.5" />
       </svg>
     ),
     accent: '#033a9d',
+    orient: 'Business Value',
   },
   {
     num: '04',
-    title: 'Deep Domain Expertise',
-    desc: 'We bring cross-functional depth across data engineering, automation, AI strategy, and delivery governance. No generalists, no hand-offs to juniors.',
+    title: 'We Give Back to Society',
+    desc: 'We believe technology should expand access, not restrict it. We support skills development, responsible AI practices, and initiatives that help communities benefit from the digital economy.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M4 17L11 4l7 13H4z" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M8 13h6" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M11 3C6.6 3 3 6.6 3 11s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" stroke="white" strokeWidth="1.5" />
+        <path d="M3 11h16M11 3c-2.2 2.7-3.5 5.3-3.5 8s1.3 5.3 3.5 8M11 3c2.2 2.7 3.5 5.3 3.5 8s-1.3 5.3-3.5 8" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
     accent: '#36c5f0',
+    orient: 'Society Value',
   },
 ]
 
 const culture = [
-  { label: 'Senior-Led Always', body: 'Every engagement is owned and delivered by a senior specialist. We do not staff projects with graduates or outsource delivery.', tag: 'Quality' },
-  { label: 'Bias Toward Action', body: 'We move fast. Strategy without execution is noise. We prototype in days, not months, and ship working solutions into production.', tag: 'Velocity' },
-  { label: 'Relentlessly Curious', body: 'We invest in continuous learning because the technology we work with never stands still. Our team reads, experiments, and challenges its own assumptions constantly.', tag: 'Growth' },
-  { label: 'Radical Ownership', body: 'We own our commitments end to end. If something goes wrong we fix it, learn from it, and make sure it does not happen again. No excuses, no finger-pointing.', tag: 'Accountability' },
-  { label: 'Quietly Confident', body: 'We let results do the talking. No hype, no overselling. We prefer to underpromise and consistently overdeliver.', tag: 'Integrity' },
-  { label: 'Built to Last', body: 'We build relationships, not transactions. Most of our clients have worked with us across multiple engagements because they trust us to deliver, every time.', tag: 'Partnership' },
+  { label: 'People Before Process', body: 'We build teams where people are trusted, heard, and empowered to solve hard problems. Great culture is not a policy, it is how we treat each other every day.', tag: 'Team' },
+  { label: 'Results That Matter', body: 'We measure success by real business outcomes. Faster operations, lower costs, better decisions. If it does not move the needle for the business, we question whether we should be doing it.', tag: 'Business' },
+  { label: 'Partners, Not Vendors', body: 'We show up as an extension of your team, not a third-party supplier. Long-term trust is more important to us than any single contract.', tag: 'Client' },
+  { label: 'Technology for Good', body: 'We are deliberate about the impact of what we build. We advocate for responsible AI, inclusive design, and solutions that create opportunity beyond the boardroom.', tag: 'Society' },
+  { label: 'Grow Together', body: 'When our clients succeed, our team grows. When our team grows, society benefits. We believe sustainable success has to work at every level: individual, organisation, and community.', tag: 'All Four' },
+  { label: 'Honest by Default', body: 'We say what we mean and mean what we say. With clients, with each other, and with the wider world. Transparency is not a value we perform, it is one we practise.', tag: 'Integrity' },
 ]
 
 
@@ -386,6 +391,7 @@ export default function AboutPage() {
                   </div>
                   {/* Text panel */}
                   <div className="flex-1 bg-white dark:bg-gray-800 p-10 flex flex-col justify-center">
+                    <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#007cf4] border border-[#007cf4]/25 rounded-full px-3 py-1 self-start mb-4">{v.orient}</span>
                     <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-3 group-hover:text-[#007cf4] transition-colors duration-300">{v.title}</h3>
                     <p className="text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl">{v.desc}</p>
                   </div>
