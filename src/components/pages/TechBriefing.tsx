@@ -1,6 +1,8 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { news } from '@/lib/briefingNews'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -12,57 +14,6 @@ const categoryColors: Record<string, { bg: string; text: string }> = {
   'Cloud & Infrastructure': { bg: 'bg-orange-50 dark:bg-orange-900/20', text: 'text-orange-600 dark:text-orange-400' },
   'CRM & Workflows': { bg: 'bg-pink-50 dark:bg-pink-900/20', text: 'text-pink-600 dark:text-pink-400' },
 }
-
-const news = [
-  {
-    category: 'AI & Machine Learning',
-    headline: 'OpenAI Expands Enterprise API with Batch Processing and Lower Latency Tiers',
-    summary: 'New pricing tiers and async batch endpoints make large-scale AI workloads significantly more cost-effective for enterprise deployments.',
-    source: 'The Verge',
-    readTime: '3 min read',
-    featured: true,
-  },
-  {
-    category: 'Business Automation',
-    headline: 'Gartner: 80% of Organisations Will Use Intelligent Automation by 2026',
-    summary: 'A new Gartner report projects rapid automation adoption across finance, HR, and supply chain — with ROI realised in under 12 months for most deployments.',
-    source: 'Gartner Research',
-    readTime: '4 min read',
-    featured: false,
-  },
-  {
-    category: 'Data Engineering',
-    headline: 'dbt Labs Releases dbt Core 1.8 with Significantly Improved Incremental Strategies',
-    summary: 'The latest release introduces microbatch incremental materialisation, reducing full-refresh costs for large analytical pipelines.',
-    source: 'dbt Blog',
-    readTime: '5 min read',
-    featured: false,
-  },
-  {
-    category: 'CRM & Workflows',
-    headline: 'HubSpot Launches AI-Powered CRM Copilot Across All Professional Tiers',
-    summary: 'HubSpot Breeze AI now automates contact enrichment, deal scoring, and email sequencing natively inside its CRM platform.',
-    source: 'TechCrunch',
-    readTime: '3 min read',
-    featured: false,
-  },
-  {
-    category: 'Digital Transformation',
-    headline: 'McKinsey: Firms That Automate Reporting Cycles Cut Decision Latency by 60%',
-    summary: 'A global study finds that executive teams with automated analytics pipelines make strategic decisions three times faster than peers using manual reporting.',
-    source: 'McKinsey & Co.',
-    readTime: '6 min read',
-    featured: false,
-  },
-  {
-    category: 'Cloud & Infrastructure',
-    headline: 'AWS Announces Native Workflow Orchestration for Data Pipelines in All Regions',
-    summary: 'Amazon EventBridge Pipes now supports complex multi-step data pipeline orchestration, reducing reliance on third-party tools for ETL workflows.',
-    source: 'AWS Blog',
-    readTime: '4 min read',
-    featured: false,
-  },
-]
 
 const today = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
 
@@ -94,7 +45,7 @@ export default function TechBriefing() {
 
         {/* Featured card */}
         <motion.div
-          className="group relative overflow-hidden rounded-3xl mb-5 cursor-pointer"
+          className="group relative overflow-hidden rounded-3xl mb-5"
           style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,27 +53,29 @@ export default function TechBriefing() {
           transition={{ duration: 0.7, ease }}
           whileHover={{ scale: 1.01 }}
         >
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #fff 0%, transparent 55%)' }} />
-          <div className="relative z-10 p-8 md:p-12 flex flex-col md:flex-row md:items-center gap-6">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="bg-white/20 text-white text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1">{featured.category}</span>
-                <span className="text-white/50 text-xs">Featured Story</span>
+          <Link href={`/insights/briefing/${featured.slug}`} className="block">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #fff 0%, transparent 55%)' }} />
+            <div className="relative z-10 p-8 md:p-12 flex flex-col md:flex-row md:items-center gap-6">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="bg-white/20 text-white text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1">{featured.category}</span>
+                  <span className="text-white/50 text-xs">Featured Story</span>
+                  <span className="text-white/30 text-xs">·</span>
+                  <span className="text-white/50 text-xs">{featured.source}</span>
+                </div>
+                <h3 className="font-inter-tight font-black text-white text-xl md:text-2xl leading-snug mb-3">{featured.headline}</h3>
+                <p className="text-white/70 text-sm leading-relaxed max-w-2xl">{featured.summary}</p>
+                <div className="flex items-center gap-3 mt-5 text-white/50 text-xs">
+                  <span>{featured.readTime}</span>
+                </div>
               </div>
-              <h3 className="font-inter-tight font-black text-white text-xl md:text-2xl leading-snug mb-3">{featured.headline}</h3>
-              <p className="text-white/70 text-sm leading-relaxed max-w-2xl">{featured.summary}</p>
-              <div className="flex items-center gap-4 mt-5">
-                <span className="text-white/50 text-xs">{featured.source}</span>
-                <span className="text-white/30 text-xs">·</span>
-                <span className="text-white/50 text-xs">{featured.readTime}</span>
+              <div className="shrink-0">
+                <span className="inline-flex items-center gap-2 bg-white text-[#007cf4] font-bold text-sm px-5 py-3 rounded-full group-hover:gap-3 transition-all duration-200">
+                  Read Story →
+                </span>
               </div>
             </div>
-            <div className="shrink-0">
-              <span className="inline-flex items-center gap-2 bg-white text-[#007cf4] font-bold text-sm px-5 py-3 rounded-full group-hover:gap-3 transition-all duration-200">
-                Read Story →
-              </span>
-            </div>
-          </div>
+          </Link>
         </motion.div>
 
         {/* News grid */}
@@ -131,25 +84,27 @@ export default function TechBriefing() {
             const col = categoryColors[item.category] ?? { bg: 'bg-gray-50 dark:bg-gray-800', text: 'text-gray-600 dark:text-gray-400' }
             return (
               <motion.div
-                key={i}
-                className="group bg-white dark:bg-gray-800 border border-black/8 dark:border-white/8 hover:border-[#007cf4]/40 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-md hover:scale-[1.02] cursor-pointer"
+                key={item.slug}
+                className="group relative bg-white dark:bg-gray-800 border border-black/8 dark:border-white/8 hover:border-[#007cf4]/40 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-md hover:scale-[1.02]"
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, delay: i * 0.07, ease }}
               >
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl" />
-                <div>
-                  <span className={`inline-block text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1 mb-4 ${col.bg} ${col.text}`}>{item.category}</span>
-                  <h3 className="font-inter-tight font-bold text-black dark:text-white text-base leading-snug mb-2 group-hover:text-[#007cf4] transition-colors duration-200">{item.headline}</h3>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{item.summary}</p>
-                </div>
-                <div className="flex items-center gap-3 mt-5 pt-4 border-t border-black/5 dark:border-white/5">
-                  <span className="text-gray-400 text-xs">{item.source}</span>
-                  <span className="text-gray-300 dark:text-gray-600 text-xs">·</span>
-                  <span className="text-gray-400 text-xs">{item.readTime}</span>
-                  <span className="ml-auto text-[#007cf4] text-xs font-semibold group-hover:gap-1 transition-all">Read →</span>
-                </div>
+                <Link href={`/insights/briefing/${item.slug}`} className="flex flex-col h-full p-6">
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="flex-1">
+                    <span className={`inline-block text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1 mb-4 ${col.bg} ${col.text}`}>{item.category}</span>
+                    <h3 className="font-inter-tight font-bold text-black dark:text-white text-base leading-snug mb-2 group-hover:text-[#007cf4] transition-colors duration-200">{item.headline}</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{item.summary}</p>
+                  </div>
+                  <div className="flex items-center gap-3 mt-5 pt-4 border-t border-black/5 dark:border-white/5">
+                    <span className="text-gray-400 text-xs">{item.source}</span>
+                    <span className="text-gray-300 dark:text-gray-600 text-xs">·</span>
+                    <span className="text-gray-400 text-xs">{item.readTime}</span>
+                    <span className="ml-auto text-[#007cf4] text-xs font-semibold group-hover:translate-x-0.5 transition-transform">Read →</span>
+                  </div>
+                </Link>
               </motion.div>
             )
           })}
