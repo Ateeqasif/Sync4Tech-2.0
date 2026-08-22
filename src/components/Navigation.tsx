@@ -93,6 +93,7 @@ const simpleLinks = [
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'Insights', href: '/insights' },
   { label: 'About', href: '/about' },
+  { label: 'Careers', href: '/careers' },
 ]
 
 export default function Navigation() {
