@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/sections/FinalCTA'
 import InsightsFilter from '@/components/pages/InsightsFilter'
+import TechBriefing from '@/components/pages/TechBriefing'
+import NewsletterSubscribe from '@/components/pages/NewsletterSubscribe'
 
 export const metadata: Metadata = {
   title: 'AI & Automation Insights | Sync4Tech Blog',
@@ -24,7 +26,9 @@ export default function InsightsPage() {
         subtitle="Practical guides, deep dives and expert perspectives on AI, automation and digital transformation."
         breadcrumb={[{ label: 'Insights', href: '/insights' }]}
       />
+      <TechBriefing />
       <InsightsFilter />
+      <NewsletterSubscribe />
       <FinalCTA />
     </main>
   )
