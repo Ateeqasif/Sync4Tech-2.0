@@ -91,8 +91,8 @@ const industriesMega = [
 
 const simpleLinks = [
   { label: 'Case Studies', href: '/case-studies' },
-  { label: 'Insights', href: '/insights' },
-  { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/insights' },
+  { label: 'Who We Are', href: '/about' },
   { label: 'Careers', href: '/careers' },
 ]
 
@@ -167,7 +167,7 @@ export default function Navigation() {
                     : 'text-[#033a9d]/80 hover:text-[#007cf4] dark:text-white/80 dark:hover:text-[#36c5f0]'
                 }`}
               >
-                Services
+                What We Do
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className={`transition-transform duration-200 ${megaOpen === 'services' ? 'rotate-180' : ''}`}>
                   <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -343,7 +343,7 @@ export default function Navigation() {
                 className="flex items-center justify-between py-2.5 text-sm font-semibold text-[#033a9d] dark:text-white"
                 onClick={() => setMobileExpanded(mobileExpanded === 'services' ? null : 'services')}
               >
-                Services
+                What We Do
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className={`transition-transform duration-200 ${mobileExpanded === 'services' ? 'rotate-180' : ''}`}>
                   <path d="M2 5l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
