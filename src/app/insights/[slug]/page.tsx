@@ -462,6 +462,93 @@ const articles: Record<string, {
     ],
     takeaways: ['Process mining reveals how processes actually execute not how they are assumed to execute', 'It requires only three data fields: case ID, activity name, and timestamp already in your system logs', 'Order-to-cash, purchase-to-pay, and incident management are the highest-ROI starting processes', 'Data preparation takes 30–50% of implementation time plan for it explicitly', 'Most organisations find 10x more process variants than assumed with the variants driving most of the cost and rework'],
   },
+
+  'sales-automation-guide-2026': {
+    tag: 'Automation', title: 'Sales Automation Guide 2026:', highlight: 'Close More Deals with Less Manual Work',
+    excerpt: 'The complete playbook for automating your sales process in 2026. From lead capture and CRM enrichment to follow-up sequences and pipeline reporting — without losing the human touch.',
+    date: 'August 2026', readTime: '12 min read',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Sales team using automation tools on laptops',
+    body: [
+      { content: 'Sales teams in 2026 are operating in a fundamentally different environment. Buyers are better informed, sales cycles are longer, and the volume of touchpoints required to close a deal has increased year on year. The businesses winning in this environment are not the ones hiring more salespeople. They are the ones automating the repetitive, low-value parts of the sales process so their people can focus entirely on building relationships and closing deals.' },
+      { heading: 'What Sales Automation Actually Means in 2026', content: 'Sales automation is the use of technology to handle tasks in the sales process that do not require human judgement. This includes:', bullets: [
+        'Lead capture and routing: automatically pulling leads from web forms, ads, and third-party sources into your CRM and routing them to the right representative based on territory, industry, or deal size',
+        'Contact enrichment: automatically appending firmographic and technographic data to every new contact so your team starts every conversation with full context',
+        'Follow-up sequences: triggered email and LinkedIn touchpoints that run automatically based on prospect behaviour and pipeline stage',
+        'Pipeline reporting: automated dashboards that give sales leadership real-time visibility of pipeline health, conversion rates, and forecast accuracy',
+        'Meeting scheduling: eliminating back-and-forth email by letting prospects book directly into available calendar slots',
+      ] },
+      { heading: 'The Five Sales Workflows Worth Automating First', content: 'Not every sales task is a good automation candidate. The highest-ROI targets share three characteristics: they are high-frequency, they follow a consistent pattern, and they do not require relationship-building or nuanced judgement. The five workflows that meet all three criteria consistently across the organisations we work with are:',
+        bullets: [
+          'Lead qualification scoring: using CRM data and engagement signals to automatically score and prioritise inbound leads so reps work the highest-probability opportunities first',
+          'New lead nurture sequences: a structured cadence of personalised emails triggered when a lead enters the pipeline, running until the lead responds or a rep intervenes',
+          'Post-demo follow-up: automated summary emails, proposal reminders, and next-step nudges sent at the right intervals without any manual action from the rep',
+          'Stalled deal re-engagement: detecting when a deal has been inactive for a defined period and triggering a re-engagement sequence automatically',
+          'Won and lost deal analysis: triggering post-close surveys and automatically logging key deal attributes so your team can identify patterns in what drives wins',
+        ]
+      },
+      { heading: 'Choosing the Right Tools for 2026', content: 'The sales automation technology landscape has matured considerably. The choice of tools should follow your process design, not precede it. That said, the platforms delivering the most consistent results across mid-market sales teams in 2026 are HubSpot Sales Hub for CRM-native automation, Outreach or Salesloft for multi-channel sequencing, Clay for AI-powered contact enrichment, and Zapier or Make for connecting tools that do not integrate natively. The critical decision is not which tool to use but how to connect them into a coherent, data-consistent workflow. Fragmented tooling where each platform holds its own version of prospect data is the most common cause of failed sales automation programmes.' },
+      { heading: 'The Human Touch: What Not to Automate', content: 'The businesses that achieve the highest win rates with sales automation are careful about what they do not automate. Personalised outreach to high-value prospects, discovery calls, negotiation, and relationship maintenance all require genuine human engagement. The purpose of automation is not to remove humans from sales. It is to ensure that when a human is in a conversation, they are fully prepared, working from complete information, and spending no time on tasks that a system can handle.' },
+      { heading: 'Measuring Sales Automation ROI', content: 'The clearest measures of sales automation success are: lead response time (target under 5 minutes for inbound leads), rep time spent on administrative tasks (target below 20% of working hours), pipeline conversion rates at each stage, and forecast accuracy. Businesses that implement a well-designed sales automation stack typically see response times drop by 80%, administrative time fall by 30–40%, and conversion rates improve by 15–25% within the first 90 days.' },
+    ],
+    takeaways: [
+      'Sales automation handles repetitive tasks so reps can focus on relationships and closing',
+      'The five highest-ROI workflows are lead scoring, nurture sequences, post-demo follow-up, stalled deal re-engagement, and win/loss analysis',
+      'Tool choice should follow process design — fragmented tooling causes most automation failures',
+      'Never automate personalised outreach to high-value prospects, discovery, or negotiation',
+      'Well-implemented automation reduces admin time by 30–40% and improves conversion rates by 15–25% within 90 days',
+    ],
+    faqs: [
+      { q: 'What is the difference between sales automation and CRM?', a: 'A CRM is a database that stores prospect and customer information. Sales automation is the layer of logic and tooling built on top of the CRM that triggers actions, sequences, and updates automatically. You need both: the CRM as your system of record and automation to make it active rather than passive.' },
+      { q: 'Will sales automation make my outreach feel impersonal?', a: 'Only if it is poorly designed. The goal is to automate the structural elements of outreach — timing, routing, scheduling — while keeping the content genuinely personalised. The best implementations use automation to ensure the right person gets a relevant message at the right moment, which feels more personal than generic bulk outreach sent manually.' },
+      { q: 'How long does it take to see results from sales automation?', a: 'Most organisations see meaningful improvements in lead response time and pipeline visibility within the first 30 days. Conversion rate improvements typically become measurable at the 60–90 day mark once enough deals have moved through the automated pipeline.' },
+    ],
+  },
+
+  'business-workflow-automation-guide-2026': {
+    tag: 'Automation', title: 'Business Workflow Automation Guide for 2026:', highlight: 'The Complete Playbook',
+    excerpt: 'Everything you need to know to automate business workflows in 2026. Covers process discovery, tool selection, implementation, governance, and how to measure ROI from day one.',
+    date: 'August 2026', readTime: '14 min read',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Business workflow automation diagram on screen',
+    body: [
+      { content: 'Workflow automation is no longer a competitive advantage. In 2026 it is a baseline operational requirement. The businesses that have already automated their core workflows are operating at a different speed and cost structure from those that have not. The gap is widening every quarter. This guide covers everything you need to know to automate your business workflows effectively: how to identify the right processes, select the right tools, implement with minimal disruption, and measure results from day one.' },
+      { heading: 'What Is Business Workflow Automation?', content: 'Workflow automation is the use of software to execute predefined sequences of tasks without human intervention. When a trigger event occurs, the automation runs a series of actions across connected systems. These actions can include creating records, updating databases, sending notifications, routing approvals, generating documents, and triggering downstream workflows in other tools. Modern workflow automation differs from traditional scripting in three important ways: it connects to cloud applications via APIs rather than requiring access to underlying databases, it can incorporate AI-driven decision logic rather than being purely rule-based, and it is configurable by operations teams without deep engineering expertise.' },
+      { heading: 'Step 1: Process Discovery — Finding the Right Workflows to Automate', content: 'The most common mistake in workflow automation programmes is choosing the wrong processes to automate first. The right candidates share three characteristics:',
+        bullets: [
+          'High frequency: the process runs at least daily. The more often it runs, the greater the cumulative saving from automation.',
+          'Consistent structure: the process follows a defined pattern. Highly variable processes that require case-by-case judgement are poor automation candidates.',
+          'Significant manual effort: the process currently consumes meaningful time from your team. Automating a 5-minute task saves very little; automating a 2-hour task changes capacity materially.',
+        ]
+      },
+      { heading: 'Step 2: Process Mapping — Documenting What You Are Automating', content: 'Before building any automation, you need a precise understanding of what the current process actually does. This means documenting every step, every decision point, every system involved, and every exception that can occur. Do not rely on how the process is supposed to work. Interview the people who actually run it. The gap between the documented process and the real process is almost always significant, and building automation based on the documented version without validating against reality is one of the most common causes of automation failures.' },
+      { heading: 'Step 3: Tool Selection — Choosing the Right Automation Platform', content: 'The automation tool landscape in 2026 can be broadly divided into four categories:',
+        bullets: [
+          'No-code/low-code platforms (Zapier, Make, n8n): best for connecting cloud applications and building straightforward trigger-action workflows. Accessible to non-technical teams. Suitable for most mid-market automation use cases.',
+          'Enterprise integration platforms (MuleSoft, Boomi, Informatica): designed for complex, high-volume integrations between enterprise systems. Higher implementation cost but more robust for large-scale deployments.',
+          'AI-native automation platforms (UiPath, Automation Anywhere, Microsoft Power Automate): combine traditional workflow automation with AI-driven decision logic and document processing. Best for processes involving unstructured data.',
+          'Vertical-specific automation tools (GoHighLevel for sales/marketing, Procore for construction, Veeva for life sciences): pre-built automation for specific industries and use cases. Fastest time to value when the use case fits.',
+        ]
+      },
+      { heading: 'Step 4: Implementation — Building and Deploying Without Disruption', content: 'Effective automation implementation follows a four-phase pattern: build a working prototype that covers the core path of the process in the first week, test it against real data with a small group of users in week two, address edge cases and exceptions in weeks three and four, and deploy to full production with monitoring in place by week five or six. The most important implementation principle is to build incrementally and test continuously rather than attempting to automate the entire process before any part of it is in production. Partial automation delivering real results is always better than a comprehensive automation that is still being built.' },
+      { heading: 'Step 5: Governance — Keeping Your Automation Healthy', content: 'Automations break. APIs change, data structures shift, business rules evolve. Without governance, your automation estate becomes a liability rather than an asset. Effective governance requires three things: ownership (every automation has a named owner who is responsible for monitoring it), monitoring (every automation generates logs that are reviewed when errors occur), and a change management process (changes to source systems are assessed for their impact on existing automations before they are deployed). Organisations that treat automation governance as an afterthought typically spend more time fixing broken automations than they saved by building them.' },
+      { heading: 'Measuring ROI from Day One', content: 'Define your success metrics before you build anything. The clearest measures are: time saved per week across the team, error rate reduction in the automated process, processing volume handled without additional headcount, and cost per transaction before and after automation. Measure baseline performance before implementation and track metrics at 30, 60, and 90 days post-deployment. Most well-designed workflow automations break even within 60 days and deliver 3–8x ROI within the first year.' },
+    ],
+    takeaways: [
+      'Workflow automation is a 2026 baseline requirement, not a competitive differentiator — the gap between adopters and non-adopters is compounding',
+      'The best automation candidates are high-frequency, consistently structured, and currently consuming significant manual effort',
+      'Process mapping must reflect how the process actually runs, not how it is supposed to run',
+      'Tool selection should follow process design — no-code platforms handle most mid-market use cases effectively',
+      'Build incrementally and test continuously rather than automating everything before going live',
+      'Governance is not optional — every automation needs an owner, monitoring, and a change management process',
+    ],
+    faqs: [
+      { q: 'How do I know which of my workflows are ready to automate?', a: 'Start by listing every process your team runs manually more than once per week. Then rate each one on frequency, consistency, and manual effort. Processes that score high on all three are your first automation targets. A structured process audit with a specialist will give you a prioritised roadmap with estimated ROI for each candidate.' },
+      { q: 'Do I need to replace my existing systems to automate workflows?', a: 'In almost all cases, no. Modern workflow automation tools connect to your existing systems via APIs and webhooks. The goal is to build automation on top of your current tech stack, not to replace it. The rare exception is where a core system is so outdated that it has no integration capabilities — but this is increasingly uncommon.' },
+      { q: 'What is the biggest risk in a workflow automation project?', a: 'Building automation for a process that is not well understood. If you automate a broken or poorly documented process, you produce wrong outputs at high speed. The investment in process mapping and validation before building is the single most important factor in automation project success.' },
+      { q: 'How much does workflow automation cost to implement?', a: 'Costs vary significantly depending on complexity. A simple three-step integration between two cloud tools can be built in a day. A complex multi-system workflow covering a core business process end-to-end might take four to eight weeks. Most mid-market workflow automation projects we deliver are scoped at four to six weeks and generate payback within two to three months of go-live.' },
+    ],
+  },
 }
 
 export function generateStaticParams() {

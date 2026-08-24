@@ -305,6 +305,28 @@ const articles = [
     imageAlt: 'Business consultant strategy meeting',
     featured: false,
   },
+  {
+    slug: 'sales-automation-guide-2026',
+    tag: 'Automation',
+    readTime: '12 min read',
+    title: 'Sales Automation Guide 2026: Close More Deals with Less Manual Work',
+    description: 'The complete playbook for automating your sales process in 2026. From lead capture and CRM enrichment to follow-up sequences and pipeline reporting — without losing the human touch.',
+    date: 'Aug 10, 2026',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Sales team using automation tools on laptops',
+    featured: false,
+  },
+  {
+    slug: 'business-workflow-automation-guide-2026',
+    tag: 'Automation',
+    readTime: '14 min read',
+    title: 'Business Workflow Automation Guide for 2026: The Complete Playbook',
+    description: 'Everything you need to know to automate business workflows in 2026. Covers process discovery, tool selection, implementation, governance, and how to measure ROI from day one.',
+    date: 'Aug 8, 2026',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Business workflow automation diagram on screen',
+    featured: false,
+  },
 ]
 
 const PER_PAGE = 11
