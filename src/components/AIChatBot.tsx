@@ -123,9 +123,16 @@ export default function AIChatBot() {
           try {
             const parsed = JSON.parse(payload);
 
+            if (parsed.error) {
+              setDisplayMessages((prev) => {
+                const filtered = prev.filter((m) => !m.streaming);
+                return [...filtered, { role: 'bot', text: parsed.error }];
+              });
+              isDone = true;
+            }
+
             if (parsed.chunk) {
               fullReply += parsed.chunk;
-              // Update the streaming message in-place
               setDisplayMessages((prev) => {
                 const next = [...prev];
                 const last = next[next.length - 1];
@@ -138,7 +145,6 @@ export default function AIChatBot() {
 
             if (parsed.done) {
               isDone = true;
-              // Replace JSON blob with a friendly message
               const friendlyText = fullReply.replace(/\{[^}]*"done"\s*:\s*true[^}]*\}/, '').trim() ||
                 `Thanks! I've passed your details to the Sync4Tech team. Someone will be in touch with you very soon.`;
               setDisplayMessages((prev) => {
@@ -158,17 +164,21 @@ export default function AIChatBot() {
       }
 
       if (!isDone) {
-        // Finalise streaming message
         const cleanText = fullReply.replace(/\{[^}]*"done"\s*:\s*true[^}]*\}/, '').trim() || fullReply;
-        setDisplayMessages((prev) => {
-          const next = [...prev];
-          const last = next[next.length - 1];
-          if (last?.streaming) {
-            next[next.length - 1] = { role: 'bot', text: cleanText };
-          }
-          return next;
-        });
-        setHistory((prev) => [...prev, { role: 'assistant', content: cleanText }]);
+        if (cleanText) {
+          setDisplayMessages((prev) => {
+            const next = [...prev];
+            const last = next[next.length - 1];
+            if (last?.streaming) {
+              next[next.length - 1] = { role: 'bot', text: cleanText };
+            }
+            return next;
+          });
+          setHistory((prev) => [...prev, { role: 'assistant', content: cleanText }]);
+        } else {
+          // Remove empty streaming bubble
+          setDisplayMessages((prev) => prev.filter((m) => !m.streaming));
+        }
       }
     } catch {
       setTyping(false);
