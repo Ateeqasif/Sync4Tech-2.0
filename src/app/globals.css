@@ -3,34 +3,52 @@
 @tailwind utilities;
 
 :root {
+  /* Brand accent — unchanged */
   --accent: #007cf4;
   --accent-secondary: #36c5f0;
   --accent-navy: #033a9d;
+
+  /* Apple HIG light palette */
   --bg-primary: #ffffff;
-  --bg-secondary: #f0f9ff;
-  --bg-card: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-  --border-color: rgba(0, 124, 244, 0.15);
-  --grid-color: rgba(0, 124, 244, 0.05);
-  --card-shadow: 0 4px 24px rgba(0, 124, 244, 0.08);
-  --nav-bg: rgba(224, 242, 254, 0.55);
-  --nav-border: rgba(0, 124, 244, 0.15);
+  --bg-secondary: #f5f5f7;
+  --bg-tertiary: #e8e8ed;
+  --bg-card: rgba(255, 255, 255, 0.72);
+  --bg-card-solid: #ffffff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-muted: #aeaeb2;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-accent: rgba(0, 124, 244, 0.18);
+  --grid-color: rgba(0, 0, 0, 0.03);
+  --card-shadow: 0 2px 20px rgba(0, 0, 0, 0.06), 0 0 0 0.5px rgba(0,0,0,0.06);
+  --card-shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.12), 0 0 0 0.5px rgba(0,0,0,0.08);
+  --nav-bg: rgba(255, 255, 255, 0.72);
+  --nav-border: rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --section-alt: #f5f5f7;
 }
 
 html.dark {
-  --bg-primary: #050f2e;
-  --bg-secondary: #071540;
-  --bg-card: #0a1a4a;
-  --text-primary: #f0f9ff;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --border-color: rgba(54, 197, 240, 0.2);
-  --grid-color: rgba(54, 197, 240, 0.06);
-  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --nav-bg: rgba(5, 15, 46, 0.85);
-  --nav-border: rgba(54, 197, 240, 0.2);
+  /* Apple HIG dark palette — true blacks */
+  --bg-primary: #000000;
+  --bg-secondary: #1c1c1e;
+  --bg-tertiary: #2c2c2e;
+  --bg-card: rgba(28, 28, 30, 0.72);
+  --bg-card-solid: #1c1c1e;
+  --text-primary: #f5f5f7;
+  --text-secondary: #aeaeb2;
+  --text-muted: #6e6e73;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(0, 124, 244, 0.25);
+  --grid-color: rgba(255, 255, 255, 0.025);
+  --card-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255,255,255,0.06);
+  --card-shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.7), 0 0 0 0.5px rgba(255,255,255,0.08);
+  --nav-bg: rgba(0, 0, 0, 0.75);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(28, 28, 30, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --section-alt: #1c1c1e;
 }
 
 /* Custom cursor hide on non-touch — restored inside search overlay */
@@ -40,22 +58,9 @@ html.dark {
   [data-search-overlay] a, [data-search-overlay] button { cursor: pointer !important; }
 }
 
-/* Dark-mode background overrides.
-   Many sections/cards were hardcoded to light hex values (added when the
-   site was light-only) while still pairing with dark:text-white. Force
-   those specific light fills dark again so text stays legible. */
-html.dark .dark\:bg-\[\#f8faff\] {
-  background-color: var(--bg-secondary) !important;
-}
-html.dark .dark\:bg-white {
-  background-color: var(--bg-card) !important;
-}
-html.dark .bg-white {
-  background-color: var(--bg-primary) !important;
-}
-html.dark .bg-\[\#f8faff\] {
-  background-color: var(--bg-secondary) !important;
-}
+/* Dark-mode background overrides — now mapping to Apple-true-black palette */
+html.dark .dark\:bg-\[\#f8faff\],
+html.dark .bg-\[\#f8faff\],
 html.dark .bg-\[\#f0f7ff\],
 html.dark .bg-\[\#f0f4ff\],
 html.dark .bg-\[\#f5f5f7\],
@@ -66,19 +71,77 @@ html.dark .bg-gray-50,
 html.dark .bg-gray-100 {
   background-color: var(--bg-secondary) !important;
 }
+html.dark .dark\:bg-white,
+html.dark .bg-white {
+  background-color: var(--bg-secondary) !important;
+}
+html.dark section.bg-white,
+html.dark section.bg-\[\#f5f5f7\] {
+  background-color: var(--bg-primary) !important;
+}
 html.dark .text-gray-700,
 html.dark .text-gray-800,
 html.dark .text-gray-900 {
   color: var(--text-primary) !important;
 }
+html.dark .dark\:bg-gray-800,
+html.dark .dark\:bg-gray-900 {
+  background-color: var(--bg-secondary) !important;
+}
 
 /* Typography */
 body {
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: var(--bg-primary);
   color: var(--text-primary);
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+/* Apple-style glass material */
+.apple-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--card-shadow);
+}
+
+.apple-glass:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Apple-style card */
+.apple-card {
+  background: var(--bg-card-solid);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.apple-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Alternate section background */
+.section-alt {
+  background: var(--section-alt);
+}
+
+/* Apple display headline tracking */
+.display-headline {
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+}
+
+/* Subtle separator */
+.apple-separator {
+  border: none;
+  border-top: 1px solid var(--border-color);
 }
 
 /* Gradient text */
@@ -100,18 +163,18 @@ body {
   overflow: visible;
 }
 
-/* Glass nav */
+/* Glass nav — Apple vibrancy */
 .glass-nav {
   background: var(--nav-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
   border-bottom: 1px solid var(--nav-border);
-  box-shadow: 0 1px 24px 0 rgba(0, 124, 244, 0.07);
+  box-shadow: 0 0.5px 0 var(--nav-border);
 }
 
 /* Layout */
 .section-container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -119,34 +182,39 @@ body {
 
 @media (min-width: 768px) {
   .section-container {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
 
+/* Apple-style generous section spacing */
 .py-section {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 @media (min-width: 768px) {
   .py-section {
-    padding-top: 5.5rem;
-    padding-bottom: 5.5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
-/* Buttons */
+/* Buttons — Apple-style clean, less glow */
 .btn-glow {
-  box-shadow: 0 0 20px rgba(0, 124, 244, 0.4), 0 0 60px rgba(0, 124, 244, 0.1);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0, 124, 244, 0.35);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 .btn-glow:hover {
-  box-shadow: 0 0 30px rgba(54, 197, 240, 0.6), 0 0 80px rgba(54, 197, 240, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 124, 244, 0.45);
+  transform: translateY(-1px);
+}
+.btn-glow:active {
+  transform: translateY(0);
 }
 
 .blue-glow {
-  box-shadow: 0 0 40px rgba(0, 124, 244, 0.3);
+  box-shadow: 0 0 32px rgba(0, 124, 244, 0.2);
 }
 
 /* Keyframe Animations */

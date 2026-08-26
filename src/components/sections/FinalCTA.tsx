@@ -31,64 +31,73 @@ function SectionGrid() {
 export default function FinalCTA() {
   const { t } = useLanguage()
   return (
-    <section className="py-section bg-white dark:bg-gray-900 relative overflow-hidden" id="contact">
-      <SectionGrid />
-      <BrandWatermark position="right" size={600} opacity={0.045} />
+    <section className="py-section relative overflow-hidden" id="contact" style={{ background: 'var(--section-alt)' }}>
+      <BrandWatermark position="right" size={600} opacity={0.025} />
 
       <div className="section-container relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">{t.finalCta.eyebrow}</span>
+          <span className="text-[#007cf4] text-xs font-semibold tracking-widest uppercase mb-4 block">{t.finalCta.eyebrow}</span>
 
           <h2
-            className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight mb-6 max-w-4xl mx-auto"
-            style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
+            className="font-inter-tight font-black leading-none tracking-tight mb-6 mx-auto"
+            style={{ fontSize: 'clamp(36px, 5.5vw, 68px)', color: 'var(--text-primary)', letterSpacing: '-0.04em', maxWidth: '820px' }}
           >
             {t.finalCta.h2}
           </h2>
 
-          <p className="text-gray-500 dark:text-gray-400 text-xl max-w-xl mx-auto mb-12 leading-relaxed">
+          <p
+            className="mx-auto mb-12 leading-relaxed"
+            style={{ fontSize: '19px', color: 'var(--text-secondary)', maxWidth: '500px' }}
+          >
             {t.finalCta.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <motion.a
               href="/contact"
-              className="inline-flex items-center gap-2.5 text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 group btn-glow"
-              style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 text-white px-8 py-3.5 rounded-full font-semibold text-[15px] transition-all duration-200 group btn-glow"
+              style={{ background: 'linear-gradient(135deg, #0062cc 0%, #007cf4 100%)' }}
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.98 }}
             >
               {t.finalCta.cta1}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </motion.a>
             <motion.a
               href="/case-studies"
-              className="inline-flex items-center gap-2.5 bg-white dark:bg-white/10 text-black dark:text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 border border-black/15 dark:border-white/20 group hover:border-[#007cf4]/40 hover:text-[#007cf4]"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] transition-all duration-200 border"
+              style={{
+                color: 'var(--text-primary)',
+                borderColor: 'var(--border-color)',
+                background: 'var(--glass-bg)',
+                backdropFilter: 'blur(12px)',
+              }}
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.98 }}
             >
               {t.finalCta.cta2}
             </motion.a>
           </div>
 
           <motion.div
-            className="mt-16 flex flex-wrap items-center justify-center gap-8 text-gray-400 dark:text-gray-500 text-sm"
+            className="mt-14 flex flex-wrap items-center justify-center gap-6 text-sm"
+            style={{ color: 'var(--text-muted)' }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            {['No commitment required', 'NDA available on request', 'Serving UK, US and Pakistan'].map((t, i) => (
+            {['No commitment required', 'NDA available on request', 'Serving UK, US and Pakistan'].map((item, i) => (
               <>
-                {i > 0 && <span key={`dot-${i}`} className="w-1 h-1 rounded-full bg-gray-300" />}
-                <span key={t}>{t}</span>
+                {i > 0 && <span key={`dot-${i}`} className="w-1 h-1 rounded-full" style={{ background: 'var(--border-color)' }} />}
+                <span key={item}>{item}</span>
               </>
             ))}
           </motion.div>

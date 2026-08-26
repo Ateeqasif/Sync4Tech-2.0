@@ -40,50 +40,64 @@ const outcomes = [
 
 export default function BusinessOutcomes() {
   return (
-    <section className="py-section bg-white dark:bg-gray-900" id="outcomes">
+    <section className="py-section bg-white dark:bg-black" id="outcomes">
       <div className="section-container">
         <motion.div
-          className="text-center max-w-2xl mx-auto mb-20"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center max-w-2xl mx-auto mb-14"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Proven Results</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <span className="text-[#007cf4] text-xs font-semibold tracking-widest uppercase mb-4 block">Proven Results</span>
+          <h2
+            className="font-inter-tight font-black leading-none tracking-tight"
+            style={{ fontSize: 'clamp(36px, 5vw, 60px)', color: 'var(--text-primary)', letterSpacing: '-0.03em' }}
+          >
             Outcomes That
             <br />
             <span className="gradient-text">Speak Louder.</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-black/8 dark:bg-white/5">
+        {/* Apple-style stat grid — clean cards with separator lines */}
+        <div
+          className="grid grid-cols-2 md:grid-cols-3 rounded-3xl overflow-hidden"
+          style={{ border: '1px solid var(--border-color)', boxShadow: 'var(--card-shadow)' }}
+        >
           {outcomes.map((o, i) => (
             <motion.div
               key={i}
-              className="group bg-white dark:bg-gray-800 p-10 relative overflow-hidden cursor-default transition-colors duration-500 hover:bg-[#007cf4]"
-              initial={{ opacity: 0, y: 20 }}
+              className="group relative p-10 cursor-default transition-all duration-300"
+              style={{
+                background: 'var(--bg-card-solid)',
+                borderRight: (i % 3 !== 2) ? '1px solid var(--border-color)' : 'none',
+                borderBottom: i < 3 ? '1px solid var(--border-color)' : 'none',
+              }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+              whileHover={{ background: 'linear-gradient(145deg, #007cf4 0%, #0055c4 100%)' }}
             >
-              {/* Top border grow */}
               <div
-                className="absolute top-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500"
-                style={{ background: 'linear-gradient(90deg, #36c5f0, #ffffff)' }}
-              />
-              {/* Shimmer on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: 'radial-gradient(ellipse at 30% 30%, rgba(54,197,240,0.15) 0%, transparent 70%)' }}
-              />
-              <div
-                className="font-inter-tight font-black text-black dark:text-white group-hover:text-white transition-colors duration-500 mb-2"
-                style={{ fontSize: 'clamp(40px, 5vw, 64px)', lineHeight: 1 }}
+                className="font-inter-tight font-black mb-2 transition-colors duration-300 group-hover:text-white"
+                style={{ fontSize: 'clamp(36px, 4.5vw, 56px)', lineHeight: 1, letterSpacing: '-0.03em', color: 'var(--text-primary)' }}
               >
                 <CountUp end={parseInt(o.metric)} suffix={o.suffix} />
               </div>
-              <div className="font-semibold text-black dark:text-white group-hover:text-white transition-colors duration-500 mb-2 text-sm">{o.label}</div>
-              <div className="text-gray-500 dark:text-gray-400 group-hover:text-white/70 transition-colors duration-500 text-xs leading-relaxed">{o.description}</div>
+              <div
+                className="font-semibold mb-1.5 text-sm transition-colors duration-300 group-hover:text-white"
+                style={{ color: 'var(--text-primary)' }}
+              >
+                {o.label}
+              </div>
+              <div
+                className="text-xs leading-relaxed transition-colors duration-300 group-hover:text-white/70"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                {o.description}
+              </div>
             </motion.div>
           ))}
         </div>

@@ -1,75 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
-
-function ParticleCanvas() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    let animId: number
-    const resize = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
-    }
-    resize()
-    window.addEventListener('resize', resize)
-
-    const count = 80
-    const nodes = Array.from({ length: count }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 1.5 + 0.5,
-    }))
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      nodes.forEach(n => {
-        n.x += n.vx
-        n.y += n.vy
-        if (n.x < 0 || n.x > canvas.width) n.vx *= -1
-        if (n.y < 0 || n.y > canvas.height) n.vy *= -1
-
-        ctx.beginPath()
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(0,124,244,0.4)'
-        ctx.fill()
-      })
-
-      for (let i = 0; i < count; i++) {
-        for (let j = i + 1; j < count; j++) {
-          const dx = nodes[i].x - nodes[j].x
-          const dy = nodes[i].y - nodes[j].y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 120) {
-            ctx.beginPath()
-            ctx.moveTo(nodes[i].x, nodes[i].y)
-            ctx.lineTo(nodes[j].x, nodes[j].y)
-            ctx.strokeStyle = `rgba(0,124,244,${0.08 * (1 - dist / 120)})`
-            ctx.lineWidth = 0.5
-            ctx.stroke()
-          }
-        }
-      }
-      animId = requestAnimationFrame(draw)
-    }
-    draw()
-    return () => {
-      window.removeEventListener('resize', resize)
-      cancelAnimationFrame(animId)
-    }
-  }, [])
-
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
-}
 
 function CountUp({ end, suffix = '', duration = 2000 }: { end: number; suffix?: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -111,34 +44,31 @@ const slides = [
     accentColor: '#007cf4',
     h1Line1: 'Automate Work,',
     h1Line2: 'Scale Business',
-    h1Line3: '',
     subtitle: 'Stop losing time to manual processes. Sync4Tech automates CRM workflows, connects business systems, and eliminates bottlenecks so your team can focus on growing the business.',
     cta1: { label: 'Book a Strategy Call', href: '/contact' },
     cta2: { label: 'Explore Our Solutions', href: '/solutions' },
   },
   {
     badge: 'Data Intelligence',
-    accentColor: '#36c5f0',
+    accentColor: '#007cf4',
     h1Line1: 'One Source,',
     h1Line2: 'Total Clarity',
-    h1Line3: '',
     subtitle: 'Disconnected data costs real decisions. Unify every source, build reliable reporting pipelines, and give leadership one trusted view of your business performance in real time.',
     cta1: { label: 'Discuss Your Data Challenges', href: '/contact' },
     cta2: { label: 'View Our Capabilities', href: '/solutions' },
   },
   {
     badge: 'Consulting and Strategy',
-    accentColor: '#033a9d',
+    accentColor: '#007cf4',
     h1Line1: 'Strategy First,',
     h1Line2: 'Results Always',
-    h1Line3: '',
     subtitle: 'Turn transformation goals into a clear roadmap. We define priorities, architecture, KPIs, and governance before a single line of code is written or budget spent.',
     cta1: { label: 'Request an Assessment', href: '/contact' },
     cta2: { label: 'View Our Capabilities', href: '/solutions' },
   },
 ]
 
-function useTypewriter(text: string, speed = 38) {
+function useTypewriter(text: string, speed = 40) {
   const [displayed, setDisplayed] = useState('')
   const [done, setDone] = useState(false)
 
@@ -147,6 +77,7 @@ function useTypewriter(text: string, speed = 38) {
     setDone(false)
     if (!text) return
     let i = 0
+    let timer: ReturnType<typeof setTimeout>
     const tick = () => {
       i += 1
       setDisplayed(text.slice(0, i))
@@ -156,12 +87,14 @@ function useTypewriter(text: string, speed = 38) {
         setDone(true)
       }
     }
-    let timer = setTimeout(tick, speed)
+    timer = setTimeout(tick, speed)
     return () => clearTimeout(timer)
   }, [text, speed])
 
   return { displayed, done }
 }
+
+const ease = [0.22, 1, 0.36, 1] as const
 
 export default function Hero() {
   const { t } = useLanguage()
@@ -170,92 +103,94 @@ export default function Hero() {
   const [direction, setDirection] = useState(1)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const goTo = useCallback((idx: number) => {
-    setDirection(idx > current ? 1 : -1)
-    setCurrent(idx)
-  }, [current])
-
   const next = useCallback(() => {
-    const idx = (current + 1) % slides.length
-    setDirection(1)
-    setCurrent(idx)
-  }, [current])
+    setCurrent(c => {
+      setDirection(1)
+      return (c + 1) % slides.length
+    })
+  }, [])
 
-  // Auto-advance every 5s
   useEffect(() => {
-    intervalRef.current = setInterval(next, 5000)
+    intervalRef.current = setInterval(next, 5500)
     return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
   }, [next])
 
   const resetTimer = (idx: number) => {
     if (intervalRef.current) clearInterval(intervalRef.current)
-    goTo(idx)
-    intervalRef.current = setInterval(next, 5000)
+    setDirection(idx > current ? 1 : -1)
+    setCurrent(idx)
+    intervalRef.current = setInterval(next, 5500)
   }
 
   const slide = slides[current]
-
-  const line1 = useTypewriter(slide.h1Line1, 42)
-  const line2 = useTypewriter(line1.done ? slide.h1Line2 : '', 42)
-  const line3 = useTypewriter(line2.done ? (slide.h1Line3 || '') : '', 42)
+  const line1 = useTypewriter(slide.h1Line1, 44)
+  const line2 = useTypewriter(line1.done ? slide.h1Line2 : '', 44)
 
   const variants = {
-    enter: (d: number) => ({ opacity: 0, x: d > 0 ? 60 : -60 }),
-    center: { opacity: 1, x: 0 },
-    exit: (d: number) => ({ opacity: 0, x: d > 0 ? -60 : 60 }),
+    enter: (d: number) => ({ opacity: 0, y: d > 0 ? 24 : -24 }),
+    center: { opacity: 1, y: 0 },
+    exit: (d: number) => ({ opacity: 0, y: d > 0 ? -24 : 24 }),
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-gray-900" id="home">
-      {/* Background layers */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 opacity-50">
-          <ParticleCanvas />
-        </div>
-        {/* Strong top-center glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[700px] rounded-full opacity-[0.18]"
-          style={{ background: 'radial-gradient(ellipse, #007cf4 0%, transparent 65%)' }} />
-        {/* Bottom-right accent */}
-        <div className="absolute bottom-0 right-0 w-[700px] h-[500px] rounded-full opacity-[0.10]"
-          style={{ background: 'radial-gradient(ellipse, #36c5f0 0%, transparent 65%)' }} />
-        {/* Left accent */}
-        <div className="absolute top-1/3 left-0 w-[400px] h-[400px] rounded-full opacity-[0.07]"
-          style={{ background: 'radial-gradient(ellipse, #033a9d 0%, transparent 70%)' }} />
-        {/* Grid */}
-        <div className="absolute inset-0 opacity-[0.035]"
+    <section
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black"
+      id="home"
+    >
+      {/* Apple-style ambient background — subtle, clean */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Primary blue ambient — top center */}
+        <div
+          className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[700px]"
+          style={{ background: 'radial-gradient(ellipse at center, rgba(0,124,244,0.12) 0%, transparent 70%)', filter: 'blur(40px)' }}
+        />
+        {/* Secondary subtle — bottom right */}
+        <div
+          className="absolute bottom-0 right-[-10%] w-[500px] h-[400px]"
+          style={{ background: 'radial-gradient(ellipse at center, rgba(54,197,240,0.07) 0%, transparent 70%)', filter: 'blur(60px)' }}
+        />
+        {/* Very subtle dot grid — Apple product page style */}
+        <div
+          className="absolute inset-0 opacity-[0.4] dark:opacity-[0.15]"
           style={{
-            backgroundImage: 'linear-gradient(#007cf4 1px, transparent 1px), linear-gradient(90deg, #007cf4 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
+            backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px)',
+            backgroundSize: '32px 32px',
           }}
         />
       </div>
 
-      <div className="relative z-10 section-container text-center pt-36 pb-28">
+      <div className="relative z-10 section-container w-full text-center pt-40 pb-32">
 
-        {/* Social proof bar */}
+        {/* Social proof pill — Apple vibrancy glass */}
         <motion.div
-          className="flex items-center justify-center gap-3 mb-8"
-          initial={{ opacity: 0, y: -10 }}
+          className="flex items-center justify-center mb-10"
+          initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, ease }}
         >
-          <div className="inline-flex items-center gap-2.5 bg-[#007cf4]/8 dark:bg-[#007cf4]/15 border border-[#007cf4]/20 rounded-full px-5 py-2">
-            <span className="flex -space-x-1.5">
+          <div className="inline-flex items-center gap-3 apple-glass rounded-full px-5 py-2.5">
+            <span className="flex -space-x-2">
               {[
                 'https://i.pravatar.cc/40?img=11',
                 'https://i.pravatar.cc/40?img=32',
                 'https://i.pravatar.cc/40?img=47',
                 'https://i.pravatar.cc/40?img=68',
               ].map((src, i) => (
-                <span key={i} className="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 overflow-hidden block" style={{ zIndex: 4 - i }}>
+                <span
+                  key={i}
+                  className="w-6 h-6 rounded-full border-2 border-white dark:border-black overflow-hidden block"
+                  style={{ zIndex: 4 - i }}
+                >
                   <img src={src} alt="" className="w-full h-full object-cover" />
                 </span>
               ))}
             </span>
-            <span className="text-xs font-semibold text-gray-600 dark:text-gray-300">Trusted by <span className="text-[#007cf4] font-bold">150+ businesses</span> worldwide</span>
-            <span className="flex items-center gap-0.5 text-amber-400 text-xs">
-              {'★★★★★'.split('').map((s,i) => <span key={i}>{s}</span>)}
+            <span className="text-xs font-semibold" style={{ color: 'var(--text-secondary)' }}>
+              Trusted by{' '}
+              <span className="font-bold" style={{ color: 'var(--accent)' }}>150+ businesses</span>
+              {' '}worldwide
             </span>
+            <span className="text-amber-400 text-xs tracking-tight select-none">★★★★★</span>
           </div>
         </motion.div>
 
@@ -267,145 +202,163 @@ export default function Hero() {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, ease }}
           >
-            {/* Badge */}
-            <div className="flex items-center justify-center mb-6">
-              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-[#007cf4]/25 bg-[#007cf4]/5 dark:bg-[#007cf4]/10">
-                <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: slide.accentColor }} />
-                <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: slide.accentColor }}>{slide.badge}</span>
-              </div>
+            {/* Category label — Apple-style eyebrow */}
+            <div className="flex items-center justify-center gap-2 mb-7">
+              <span
+                className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase"
+                style={{ color: 'var(--accent)' }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#007cf4] animate-pulse" />
+                {slide.badge}
+              </span>
             </div>
 
-            {/* Headline */}
+            {/* Headline — Apple display typography */}
             <h1
-              className="font-inter-tight font-black leading-[0.92] tracking-tight mb-6 mx-auto"
-              style={{ fontSize: 'clamp(44px, 7.5vw, 96px)', maxWidth: '900px' }}
+              className="font-inter-tight font-black mx-auto mb-7 display-headline"
+              style={{
+                fontSize: 'clamp(48px, 8vw, 100px)',
+                maxWidth: '920px',
+                color: 'var(--text-primary)',
+                letterSpacing: '-0.04em',
+                lineHeight: 0.95,
+              }}
             >
-              <span className="text-black dark:text-white">
+              <span>
                 {line1.displayed}
                 {!line1.done && (
                   <motion.span
-                    className="inline-block w-[3px] ml-[2px] align-middle rounded-sm"
-                    style={{ height: '0.85em', background: '#007cf4', verticalAlign: 'middle' }}
+                    className="inline-block w-[3px] ml-[3px] rounded-full align-middle"
+                    style={{ height: '0.8em', background: '#007cf4', verticalAlign: 'middle' }}
                     animate={{ opacity: [1, 0, 1] }}
-                    transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
+                    transition={{ duration: 0.6, repeat: Infinity }}
                   />
                 )}
               </span>
               <br />
-              <span className="gradient-text-animated" style={{ paddingLeft: '0.05em', paddingRight: '0.08em' }}>
+              <span className="gradient-text-animated">
                 {line2.displayed}
                 {line1.done && !line2.done && (
                   <motion.span
-                    className="inline-block w-[3px] ml-[2px] align-middle rounded-sm"
-                    style={{ height: '0.85em', background: '#36c5f0', verticalAlign: 'middle' }}
+                    className="inline-block w-[3px] ml-[3px] rounded-full align-middle"
+                    style={{ height: '0.8em', background: '#36c5f0', verticalAlign: 'middle' }}
                     animate={{ opacity: [1, 0, 1] }}
-                    transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
+                    transition={{ duration: 0.6, repeat: Infinity }}
                   />
                 )}
               </span>
-              {slide.h1Line3 && (
-                <>
-                  <br />
-                  <span className="gradient-text-animated" style={{ paddingLeft: '0.05em', paddingRight: '0.08em' }}>
-                    {line3.displayed}
-                    {line2.done && !line3.done && (
-                      <motion.span
-                        className="inline-block w-[3px] ml-[2px] align-middle rounded-sm"
-                        style={{ height: '0.85em', background: '#36c5f0', verticalAlign: 'middle' }}
-                        animate={{ opacity: [1, 0, 1] }}
-                        transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
-                      />
-                    )}
-                  </span>
-                </>
-              )}
             </h1>
 
-            {/* Subtitle */}
-            <p className="text-gray-500 dark:text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto mb-10 leading-relaxed" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+            {/* Subtitle — Apple body copy */}
+            <p
+              className="mx-auto mb-10 leading-relaxed"
+              style={{
+                fontSize: 'clamp(17px, 2.2vw, 21px)',
+                maxWidth: '620px',
+                color: 'var(--text-secondary)',
+                letterSpacing: '-0.01em',
+              }}
+            >
               {slide.subtitle}
             </p>
 
-            {/* CTAs */}
+            {/* CTAs — Apple-style pill buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
               <a
                 href={slide.cta1.href}
-                className="inline-flex items-center gap-2.5 text-white px-9 py-4 rounded-full font-bold text-base btn-glow transition-all duration-300 group shadow-lg shadow-[#007cf4]/25"
-                style={{ background: 'linear-gradient(135deg, #033a9d, #007cf4)' }}
+                className="inline-flex items-center gap-2 text-white px-8 py-3.5 rounded-full font-semibold text-[15px] btn-glow transition-all duration-200 group"
+                style={{ background: 'linear-gradient(135deg, #0062cc 0%, #007cf4 100%)', letterSpacing: '-0.01em' }}
               >
                 {slide.cta1.label}
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-1 transition-transform duration-200">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-200">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
               <a
                 href={slide.cta2.href}
-                className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm font-semibold hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-colors duration-200 group"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] transition-all duration-200 group border"
+                style={{
+                  color: 'var(--accent)',
+                  borderColor: 'var(--border-accent)',
+                  background: 'var(--glass-bg)',
+                  backdropFilter: 'blur(12px)',
+                  letterSpacing: '-0.01em',
+                }}
               >
                 {slide.cta2.label}
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
-                  <path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
             </div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Slide dots */}
-        <div className="flex items-center justify-center gap-3 mb-16 mt-4">
+        {/* Slide indicator dots */}
+        <div className="flex items-center justify-center gap-2 mb-20 mt-2">
           {slides.map((s, i) => (
             <button
               key={i}
               onClick={() => resetTimer(i)}
-              aria-label={`Go to slide ${i + 1}: ${s.badge}`}
-              className="group flex items-center gap-2 transition-all duration-300"
+              aria-label={`Slide ${i + 1}: ${s.badge}`}
+              className="transition-all duration-300"
             >
               <span
                 className="block rounded-full transition-all duration-300"
                 style={{
-                  width: i === current ? '32px' : '8px',
-                  height: '8px',
-                  background: i === current ? slide.accentColor : 'rgba(0,124,244,0.2)',
+                  width: i === current ? '24px' : '6px',
+                  height: '6px',
+                  background: i === current ? '#007cf4' : 'var(--border-color)',
+                  opacity: i === current ? 1 : 0.5,
                 }}
               />
-              <span className={`text-xs font-semibold tracking-wide transition-all duration-300 ${i === current ? 'opacity-100' : 'opacity-0 w-0 overflow-hidden'}`}
-                style={{ color: slide.accentColor }}>
-                {s.badge}
-              </span>
             </button>
           ))}
         </div>
 
-        {/* Metrics */}
+        {/* Metrics bar — Apple frosted glass shelf */}
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-0 max-w-3xl mx-auto rounded-2xl overflow-hidden border border-[#007cf4]/12 dark:border-[#007cf4]/20 bg-white/70 dark:bg-white/5 backdrop-blur-sm shadow-xl shadow-[#007cf4]/5"
+          className="apple-glass rounded-2xl overflow-hidden max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          transition={{ duration: 0.9, delay: 1.1, ease }}
         >
-          {metricValues.map((m, i) => (
-            <div
-              key={i}
-              className={`flex-1 min-w-[140px] text-center px-6 py-5 ${i < metricValues.length - 1 ? 'border-r border-[#007cf4]/10 dark:border-[#007cf4]/15' : ''}`}
-            >
-              <div className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-1">
-                <CountUp end={m.value} suffix={m.suffix} duration={m.duration} />
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-black/8 dark:divide-white/8">
+            {metricValues.map((m, i) => (
+              <div
+                key={i}
+                className="text-center px-6 py-5"
+                style={{ borderColor: 'var(--border-color)' }}
+              >
+                <div
+                  className="font-inter-tight font-black mb-1"
+                  style={{ fontSize: 'clamp(26px, 3.5vw, 34px)', color: 'var(--text-primary)', letterSpacing: '-0.03em' }}
+                >
+                  <CountUp end={m.value} suffix={m.suffix} duration={m.duration} />
+                </div>
+                <div
+                  className="text-[11px] font-semibold uppercase tracking-widest"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  {metricLabels[i]}
+                </div>
               </div>
-              <div className="text-gray-400 dark:text-gray-500 text-xs font-semibold uppercase tracking-wider">{metricLabels[i]}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll cue */}
         <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.2 }}
+          transition={{ delay: 2.5 }}
         >
-          <span className="text-gray-300 dark:text-gray-600 text-[10px] tracking-widest uppercase">Scroll</span>
+          <span className="text-[10px] font-medium tracking-widest uppercase" style={{ color: 'var(--text-muted)' }}>
+            Scroll
+          </span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="animate-bounce-down">
             <path d="M8 3v8M4 8l4 4 4-4" stroke="#007cf4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

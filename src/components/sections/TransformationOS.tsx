@@ -54,23 +54,22 @@ function TechGrid() {
 
 export default function TransformationOS() {
   return (
-    <section className="py-section bg-white dark:bg-gray-900 relative" id="solutions">
-      <TechGrid />
-
+    <section className="py-section relative" id="solutions" style={{ background: 'var(--section-alt)' }}>
       <div className="section-container relative z-10">
+        {/* Section header — Apple-style centered */}
         <motion.div
-          className="text-center max-w-2xl mx-auto mb-20"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">
+          <span className="text-[#007cf4] text-xs font-semibold tracking-widest uppercase mb-4 block">
             What We Build
           </span>
           <h2
-            className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight"
-            style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
+            className="font-inter-tight font-black leading-none tracking-tight"
+            style={{ fontSize: 'clamp(36px, 5vw, 60px)', color: 'var(--text-primary)', letterSpacing: '-0.03em' }}
           >
             The Transformation
             <br />
@@ -78,90 +77,91 @@ export default function TransformationOS() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Apple-style 2×2 bento grid */}
+        <div className="grid md:grid-cols-2 gap-4">
           {pillars.map((p, i) => {
-            const dark = isDarkCard[i]
+            const isAccent = i === 0 || i === 3
             return (
               <motion.div
                 key={i}
-                className="group relative rounded-3xl overflow-hidden"
-                style={{ minHeight: '320px', border: '1.5px solid rgba(54,197,240,0.35)' }}
-                initial={{ opacity: 0, y: 50 }}
+                className="group relative rounded-3xl overflow-hidden apple-card"
+                style={{
+                  minHeight: '300px',
+                  background: isAccent
+                    ? 'linear-gradient(145deg, #007cf4 0%, #0055c4 100%)'
+                    : 'var(--bg-card-solid)',
+                  border: isAccent ? 'none' : '1px solid var(--border-color)',
+                  boxShadow: isAccent
+                    ? '0 4px 32px rgba(0,124,244,0.22)'
+                    : 'var(--card-shadow)',
+                }}
+                initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -4, boxShadow: '0 20px 48px rgba(0,124,244,0.18)' }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -3, boxShadow: isAccent ? '0 12px 48px rgba(0,124,244,0.32)' : 'var(--card-shadow-hover)' }}
               >
                 <Link href={p.href} className="absolute inset-0 z-20" aria-label={`Learn more about ${p.title}`} />
-                {/* Default face */}
-                <div
-                  className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0"
-                  style={{
-                    background: dark ? 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' : '#ffffff',
-                  }}
-                />
 
-                {/* Hover face swapped color */}
-                <div
-                  className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{
-                    background: dark ? 'linear-gradient(135deg, #0055c4 0%, #007cf4 100%)' : 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)',
-                  }}
-                />
+                {/* Subtle inner highlight for accent cards */}
+                {isAccent && (
+                  <div className="absolute top-0 inset-x-0 h-px bg-white/20" />
+                )}
 
-                {/* Glow on hover */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ boxShadow: 'inset 0 0 80px rgba(0,124,244,0.25)' }}
-                />
-
-                {/* Top accent line */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-[3px] transition-opacity duration-300"
-                  style={{ background: 'linear-gradient(90deg, #007cf4, #36c5f0)', opacity: dark ? 0.6 : 0.4 }}
-                />
-
-                {/* Content */}
-                <div className="relative z-10 p-10 flex flex-col h-full" style={{ minHeight: '320px' }}>
+                <div className="relative z-10 p-9 flex flex-col h-full" style={{ minHeight: '300px' }}>
                   {/* Eyebrow */}
-                  <p className={`text-xs font-bold uppercase tracking-[0.25em] mb-4 transition-colors duration-500 ${dark ? 'text-white/75' : 'text-[#007cf4] group-hover:text-white/75'}`}>
+                  <p
+                    className="text-[11px] font-bold uppercase tracking-widest mb-5"
+                    style={{ color: isAccent ? 'rgba(255,255,255,0.65)' : 'var(--accent)' }}
+                  >
                     {p.subtitle}
                   </p>
 
                   {/* Title */}
                   <h3
-                    className={`font-inter-tight font-black mb-4 leading-tight transition-colors duration-500 ${dark ? 'text-white' : 'text-[#050f2e] group-hover:text-white'}`}
-                    style={{ fontSize: 'clamp(28px, 3vw, 40px)' }}
+                    className="font-inter-tight font-black mb-4 leading-tight"
+                    style={{
+                      fontSize: 'clamp(24px, 2.8vw, 36px)',
+                      color: isAccent ? '#ffffff' : 'var(--text-primary)',
+                      letterSpacing: '-0.03em',
+                    }}
                   >
                     {p.title}
                   </h3>
 
                   {/* Description */}
-                  <p className={`text-base leading-relaxed mb-8 max-w-sm transition-colors duration-500 ${dark ? 'text-white/70' : 'text-[#374151] group-hover:text-white/70'}`}>
+                  <p
+                    className="text-[15px] leading-relaxed mb-8 max-w-sm"
+                    style={{ color: isAccent ? 'rgba(255,255,255,0.72)' : 'var(--text-secondary)' }}
+                  >
                     {p.description}
                   </p>
 
-                  {/* Feature pills */}
-                  <div className="flex flex-wrap gap-2 mt-auto mb-6">
+                  {/* Feature tags */}
+                  <div className="flex flex-wrap gap-2 mt-auto mb-5">
                     {p.features.map((f) => (
                       <span
                         key={f}
-                        className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-500 ${
-                          dark
-                            ? 'bg-white/15 text-white border border-white/25'
-                            : 'bg-[#007cf4]/8 text-[#007cf4] border border-[#007cf4]/20 group-hover:bg-white/15 group-hover:text-white group-hover:border-white/25'
-                        }`}
+                        className="rounded-full px-3.5 py-1.5 text-[11px] font-semibold"
+                        style={{
+                          background: isAccent ? 'rgba(255,255,255,0.15)' : 'rgba(0,124,244,0.08)',
+                          color: isAccent ? 'rgba(255,255,255,0.9)' : 'var(--accent)',
+                          border: isAccent ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,124,244,0.15)',
+                        }}
                       >
                         {f}
                       </span>
                     ))}
                   </div>
 
-                  {/* Learn more link */}
-                  <div className={`flex items-center gap-2 text-xs font-bold tracking-wide uppercase transition-all duration-300 group-hover:gap-3 ${dark ? 'text-white/85' : 'text-[#007cf4] group-hover:text-white/85'}`}>
+                  {/* CTA link */}
+                  <div
+                    className="flex items-center gap-1.5 text-[13px] font-semibold group-hover:gap-2.5 transition-all duration-200"
+                    style={{ color: isAccent ? 'rgba(255,255,255,0.9)' : 'var(--accent)' }}
+                  >
                     Learn more
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-300 group-hover:translate-x-0.5">
-                      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                 </div>
@@ -171,15 +171,19 @@ export default function TransformationOS() {
         </div>
 
         <motion.div
-          className="text-center mt-14"
+          className="text-center mt-12"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Link href="/solutions" className="inline-flex items-center gap-2 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all duration-200 group">
+          <Link
+            href="/solutions"
+            className="inline-flex items-center gap-2 text-[14px] font-semibold transition-all duration-200 group hover:gap-3"
+            style={{ color: 'var(--accent)' }}
+          >
             View all solutions
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
               <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Link>
