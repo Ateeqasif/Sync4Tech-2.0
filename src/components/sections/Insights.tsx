@@ -111,31 +111,34 @@ export default function Insights() {
 
   return (
     <section className="py-section" style={{ background: 'var(--bg-secondary, #f5f5f7)' }} id="insights">
-      {/* Header row */}
+      {/* Header */}
       <div className="section-container mb-10">
         <motion.div
-          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div>
-            <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Insights</p>
-            <h2 className="font-inter-tight" style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.1, color: 'var(--text-primary)' }}>
-              The latest.{' '}
-              <span style={{ color: 'var(--text-secondary, #6e6e73)', fontWeight: 400 }}>Ideas shaping modern businesses.</span>
-            </h2>
-          </div>
-          <Link
-            href="/insights"
-            className="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-[#007cf4] hover:underline transition-all self-start sm:self-auto pb-1"
+          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Insights</span>
+          <h2 className="font-inter-tight" style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }}>
+            Ideas That Shape
+            <br />
+            <span className="gradient-text">Modern Businesses</span>
+          </h2>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            View all insights
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
+            <Link href="/insights" className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-[#007cf4] hover:gap-3 transition-all duration-200 group">
+              View All Insights
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
 
