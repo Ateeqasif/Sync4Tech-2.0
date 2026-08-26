@@ -90,7 +90,7 @@ const industriesMega = [
 ]
 
 const simpleLinks = [
-  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Our Work', href: '/case-studies' },
   { label: 'Blog', href: '/insights' },
   { label: 'Who We Are', href: '/about' },
   { label: 'Careers', href: '/careers' },
