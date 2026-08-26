@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const GREETING = "Hi! I'm the Sync4Tech AI. How can I help you today?";
+const GREETING = "Hi! I'm Sync, your AI consultant from Sync4Tech. Ask me anything about our services, or tell me what challenge you're facing.";
 
 const BrainIcon = ({ color = 'white', size = 24 }: { color?: string; size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
@@ -19,6 +19,12 @@ const BrainIcon = ({ color = 'white', size = 24 }: { color?: string; size?: numb
   </svg>
 );
 
+const SparkleIcon = () => (
+  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+    <path d="M5 0L6 4L10 5L6 6L5 10L4 6L0 5L4 4L5 0Z" fill="currentColor" />
+  </svg>
+);
+
 interface Message {
   role: 'user' | 'assistant';
   content: string;
@@ -27,6 +33,7 @@ interface Message {
 interface DisplayMessage {
   role: 'bot' | 'user';
   text: string;
+  streaming?: boolean;
 }
 
 export default function AIChatBot() {
@@ -35,6 +42,7 @@ export default function AIChatBot() {
   const [history, setHistory] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [typing, setTyping] = useState(false);
+  const [streaming, setStreaming] = useState(false);
   const [done, setDone] = useState(false);
   const [greetingShown, setGreetingShown] = useState(false);
   const [displayedGreeting, setDisplayedGreeting] = useState('');
@@ -63,14 +71,14 @@ export default function AIChatBot() {
             setGreetingComplete(true);
             setTimeout(() => inputRef.current?.focus(), 100);
           }
-        }, 28);
-      }, 700);
+        }, 22);
+      }, 600);
     }
   }, [open]);
 
   const sendMessage = async () => {
     const text = inputValue.trim();
-    if (!text || typing || done) return;
+    if (!text || typing || streaming || done) return;
 
     setInputValue('');
     setDisplayMessages((prev) => [...prev, { role: 'user', text }]);
@@ -84,21 +92,98 @@ export default function AIChatBot() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: newHistory }),
       });
-      const data = await res.json();
-      const reply = data.text || "Sorry, I'm having trouble connecting. Please try again.";
-      setDisplayMessages((prev) => [...prev, { role: 'bot', text: reply }]);
-      setHistory((prev) => [...prev, { role: 'assistant', content: reply }]);
-      if (data.done) setDone(true);
-    } catch {
-      setDisplayMessages((prev) => [
-        ...prev,
-        { role: 'bot', text: "Sorry, I'm having trouble connecting right now. Please try again in a moment." },
-      ]);
-    } finally {
+
+      if (!res.ok || !res.body) throw new Error('Stream failed');
+
       setTyping(false);
+      setStreaming(true);
+
+      // Add empty streaming message
+      setDisplayMessages((prev) => [...prev, { role: 'bot', text: '', streaming: true }]);
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      let fullReply = '';
+      let isDone = false;
+
+      while (true) {
+        const { done: readerDone, value } = await reader.read();
+        if (readerDone) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() ?? '';
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          const payload = line.slice(6).trim();
+          if (payload === '[DONE]') break;
+
+          try {
+            const parsed = JSON.parse(payload);
+
+            if (parsed.chunk) {
+              fullReply += parsed.chunk;
+              // Update the streaming message in-place
+              setDisplayMessages((prev) => {
+                const next = [...prev];
+                const last = next[next.length - 1];
+                if (last?.streaming) {
+                  next[next.length - 1] = { ...last, text: fullReply };
+                }
+                return next;
+              });
+            }
+
+            if (parsed.done) {
+              isDone = true;
+              // Replace JSON blob with a friendly message
+              const friendlyText = fullReply.replace(/\{[^}]*"done"\s*:\s*true[^}]*\}/, '').trim() ||
+                `Thanks! I've passed your details to the Sync4Tech team. Someone will be in touch with you very soon.`;
+              setDisplayMessages((prev) => {
+                const next = [...prev];
+                const last = next[next.length - 1];
+                if (last?.streaming) {
+                  next[next.length - 1] = { role: 'bot', text: friendlyText };
+                }
+                return next;
+              });
+              setDone(true);
+            }
+          } catch {
+            // ignore malformed SSE lines
+          }
+        }
+      }
+
+      if (!isDone) {
+        // Finalise streaming message
+        const cleanText = fullReply.replace(/\{[^}]*"done"\s*:\s*true[^}]*\}/, '').trim() || fullReply;
+        setDisplayMessages((prev) => {
+          const next = [...prev];
+          const last = next[next.length - 1];
+          if (last?.streaming) {
+            next[next.length - 1] = { role: 'bot', text: cleanText };
+          }
+          return next;
+        });
+        setHistory((prev) => [...prev, { role: 'assistant', content: cleanText }]);
+      }
+    } catch {
+      setTyping(false);
+      setDisplayMessages((prev) => {
+        // Remove streaming placeholder if any
+        const filtered = prev.filter((m) => !m.streaming);
+        return [...filtered, { role: 'bot', text: "Sorry, I'm having trouble connecting right now. Please try again in a moment." }];
+      });
+    } finally {
+      setStreaming(false);
       setTimeout(() => inputRef.current?.focus(), 50);
     }
   };
+
+  const isDisabled = !greetingComplete || typing || streaming;
 
   return (
     <div className="fixed bottom-6 right-6 z-[9980] flex flex-col items-end gap-3">
@@ -117,14 +202,19 @@ export default function AIChatBot() {
                 <BrainIcon color="#007cf4" size={20} />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-white font-bold text-sm">Sync4Tech AI</div>
-                <div className="text-white/70 text-xs">Powered by Claude · Online</div>
+                <div className="text-white font-bold text-sm flex items-center gap-1.5">
+                  Sync — AI Consultant
+                  <span className="text-[#36c5f0] flex items-center" style={{ fontSize: '9px' }}>
+                    <SparkleIcon />
+                  </span>
+                </div>
+                <div className="text-white/70 text-xs">Powered by Claude Sonnet · Online</div>
               </div>
               <button onClick={() => setOpen(false)} className="text-white text-xl leading-none hover:text-white/70 transition-colors">×</button>
             </div>
 
             {/* Messages */}
-            <div className="bg-white dark:bg-gray-900 p-4 min-h-[220px] max-h-72 overflow-y-auto flex flex-col gap-3">
+            <div className="bg-white dark:bg-gray-900 p-4 min-h-[220px] max-h-80 overflow-y-auto flex flex-col gap-3">
               {/* Typing dots */}
               {typing && (
                 <div className="flex items-center gap-1 bg-gray-100 dark:bg-[#071540] rounded-2xl rounded-bl-sm px-4 py-3 w-fit">
@@ -153,8 +243,23 @@ export default function AIChatBot() {
                     : 'bg-gray-100 dark:bg-[#071540] text-gray-700 dark:text-gray-200 rounded-bl-sm'
                 }`}>
                   {msg.text}
+                  {msg.streaming && msg.text && (
+                    <motion.span
+                      className="inline-block w-0.5 h-3.5 bg-current ml-0.5 align-middle rounded-full"
+                      animate={{ opacity: [1, 0] }}
+                      transition={{ repeat: Infinity, duration: 0.5 }}
+                    />
+                  )}
                 </div>
               ))}
+
+              {/* Done state */}
+              {done && (
+                <div className="text-center text-xs text-gray-400 pt-1">
+                  Chat session complete. Visit <a href="/contact" className="text-[#007cf4] underline">our contact page</a> to book a call.
+                </div>
+              )}
+
               <div ref={bottomRef} />
             </div>
 
@@ -167,13 +272,13 @@ export default function AIChatBot() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-                  placeholder={greetingComplete ? 'Type your message...' : ''}
-                  disabled={!greetingComplete || typing}
+                  placeholder={greetingComplete ? 'Ask anything...' : ''}
+                  disabled={isDisabled}
                   className="flex-1 text-sm outline-none text-gray-700 dark:text-gray-200 placeholder-gray-400 bg-transparent py-1 disabled:opacity-40"
                 />
                 <button
                   onClick={sendMessage}
-                  disabled={!inputValue.trim() || !greetingComplete || typing}
+                  disabled={!inputValue.trim() || isDisabled}
                   className="w-8 h-8 rounded-full flex items-center justify-center bg-[#007cf4] hover:opacity-90 transition-opacity flex-shrink-0 disabled:opacity-40"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -193,6 +298,7 @@ export default function AIChatBot() {
         whileHover={{ scale: 1.1 }}
         className="relative w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
         style={{ background: 'linear-gradient(135deg, #033a9d, #007cf4)' }}
+        aria-label="Open AI chat"
       >
         {!open && (
           <motion.span

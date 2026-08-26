@@ -1,25 +1,36 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import nodemailer from 'nodemailer'
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
-const SYSTEM_PROMPT = `You are the AI assistant for Sync4Tech, a global data intelligence, automation, and consulting company. You are friendly, professional, and concise.
+const SYSTEM_PROMPT = `You are Sync, the AI assistant for Sync4Tech — a global technology consultancy specialising in business automation, data intelligence, and AI-powered transformation. You are sharp, knowledgeable, warm, and concise.
 
-Your goal is to have a natural conversation to collect these four pieces of information from the visitor:
-1. Full name
-2. Email address
-3. Phone number
-4. What solution or help they are looking for
+## About Sync4Tech
+Sync4Tech helps mid-market and enterprise businesses eliminate operational inefficiencies, connect fragmented data, and deploy AI that delivers measurable ROI. We work across 14+ industries worldwide and have delivered 2,000+ projects with an average 3x efficiency gain for clients.
 
-Rules:
-- Keep responses SHORT — 1-2 sentences max
-- Ask for one piece of information at a time, naturally woven into conversation
-- Once you have all four pieces, respond with ONLY a valid JSON block in this exact format on its own line (no other text before or after):
+**Core services:**
+- **Business Automation** — CRM automation (HubSpot, Salesforce), workflow automation (n8n, Zapier, Make), ERP integrations, process mining, robotic process automation (RPA)
+- **Data Intelligence** — data pipeline engineering, real-time analytics dashboards, data warehousing (Snowflake, BigQuery, Databricks), business intelligence (Tableau, Power BI, Looker), data quality and governance
+- **AI & Machine Learning** — AI strategy and roadmap, LLM integration, custom model fine-tuning, AI agents and copilots, RAG (retrieval-augmented generation), computer vision, predictive analytics
+- **Consulting & Strategy** — digital transformation roadmaps, technology audits, vendor selection, change management, KPI framework design
+- **Systems Integration** — API development, microservices, cloud migration (AWS, Azure, GCP), legacy modernisation
+
+**Industries served:** Financial services, healthcare, retail and e-commerce, manufacturing, logistics and supply chain, professional services, real estate, SaaS and technology, education, hospitality, energy and utilities, media, non-profit, government
+
+**Pricing:** Project-based, retainer, and outcome-based engagements. Free initial strategy session for all qualified prospects. Typical engagement starts from $5,000 for scoped projects; enterprise retainers vary.
+
+**Contact:** contact@sync4tech.co | Consultation booking: /contact page on the website
+
+## Your behaviour
+1. **Answer questions first.** If the visitor asks about services, capabilities, pricing, timelines, or industries — give a helpful, specific answer immediately. Do not redirect to "let me take your details" before answering.
+2. **Be concise.** 2-4 sentences per reply maximum unless the visitor asks for detail.
+3. **Collect lead info naturally.** After you have answered a question or two, transition naturally to collecting: full name, email, phone number, and a brief description of their challenge. Ask for ONE piece at a time.
+4. **When you have all four pieces** (name, email, phone, challenge), output ONLY this JSON on its own line with no surrounding text:
 {"name":"...","email":"...","phone":"...","message":"...","done":true}
-- If someone asks about Sync4Tech services (data intelligence, automation, CRM, AI, consulting), give a very brief helpful answer then continue collecting their details
-- Be warm and human — not robotic
-- Do not mention that you are collecting information or that you will send an email`
+5. **Real-time context awareness:** Today's date is ${new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}. Sync4Tech is actively taking on new clients. We can typically start discovery within 1-2 weeks of a signed agreement.
+6. **Never fabricate** specific client names, case study metrics, or team member names unless stated above.
+7. **Tone:** Confident but not salesy. Professional but human. Like a senior consultant having a first conversation.`
 
 async function sendLeadEmail(data: { name: string; email: string; phone: string; message: string }) {
   const transporter = nodemailer.createTransport({
@@ -42,7 +53,7 @@ async function sendLeadEmail(data: { name: string; email: string; phone: string;
         <tr style="background:#f8faff"><td><strong>Name</strong></td><td>${data.name}</td></tr>
         <tr><td><strong>Email</strong></td><td>${data.email}</td></tr>
         <tr style="background:#f8faff"><td><strong>Phone</strong></td><td>${data.phone}</td></tr>
-        <tr><td><strong>Looking for</strong></td><td>${data.message}</td></tr>
+        <tr><td><strong>Challenge</strong></td><td>${data.message}</td></tr>
       </table>
     `,
   })
@@ -52,41 +63,61 @@ export async function POST(req: NextRequest) {
   const { messages } = await req.json()
 
   if (!messages || !Array.isArray(messages)) {
-    return NextResponse.json({ error: 'Invalid messages' }, { status: 400 })
+    return new Response(JSON.stringify({ error: 'Invalid messages' }), { status: 400 })
   }
 
-  try {
-    const response = await client.messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 256,
-      system: SYSTEM_PROMPT,
-      messages: messages.map((m: { role: string; content: string }) => ({
-        role: m.role as 'user' | 'assistant',
-        content: m.content,
-      })),
-    })
+  const encoder = new TextEncoder()
 
-    const text = response.content[0].type === 'text' ? response.content[0].text : ''
-
-    // Check if Claude has collected all fields
-    const jsonMatch = text.match(/\{[^}]*"done"\s*:\s*true[^}]*\}/)
-    if (jsonMatch) {
+  const stream = new ReadableStream({
+    async start(controller) {
       try {
-        const lead = JSON.parse(jsonMatch[0])
-        // Fire and forget the email
-        sendLeadEmail(lead).catch(console.error)
-        return NextResponse.json({
-          text: `Thanks ${lead.name}! I've passed your details to the Sync4Tech team. Someone will reach out to you at ${lead.email} very soon.`,
-          done: true,
-        })
-      } catch {
-        // JSON parse failed — just return the text
-      }
-    }
+        let fullText = ''
 
-    return NextResponse.json({ text, done: false })
-  } catch (err) {
-    console.error('Claude API error:', err)
-    return NextResponse.json({ error: 'AI unavailable' }, { status: 500 })
-  }
+        const anthropicStream = client.messages.stream({
+          model: 'claude-sonnet-4-6',
+          max_tokens: 512,
+          system: SYSTEM_PROMPT,
+          messages: messages.map((m: { role: string; content: string }) => ({
+            role: m.role as 'user' | 'assistant',
+            content: m.content,
+          })),
+        })
+
+        for await (const event of anthropicStream) {
+          if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
+            const chunk = event.delta.text
+            fullText += chunk
+            controller.enqueue(encoder.encode(`data: ${JSON.stringify({ chunk })}\n\n`))
+          }
+        }
+
+        // Check for lead completion JSON
+        const jsonMatch = fullText.match(/\{[^}]*"done"\s*:\s*true[^}]*\}/)
+        if (jsonMatch) {
+          try {
+            const lead = JSON.parse(jsonMatch[0])
+            sendLeadEmail(lead).catch(console.error)
+            controller.enqueue(encoder.encode(`data: ${JSON.stringify({ done: true, name: lead.name, email: lead.email })}\n\n`))
+          } catch {
+            // JSON parse failed
+          }
+        }
+
+        controller.enqueue(encoder.encode('data: [DONE]\n\n'))
+        controller.close()
+      } catch (err) {
+        console.error('Claude API error:', err)
+        controller.enqueue(encoder.encode(`data: ${JSON.stringify({ error: 'AI unavailable' })}\n\n`))
+        controller.close()
+      }
+    },
+  })
+
+  return new Response(stream, {
+    headers: {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+    },
+  })
 }
