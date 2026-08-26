@@ -45,7 +45,7 @@ export default function CaseStudiesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <div style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-4xl md:text-5xl mb-1">{s.v}</div>
+                <div className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl mb-1">{s.v}</div>
                 <div className="text-gray-500 dark:text-gray-400 text-sm">{s.l}</div>
               </motion.div>
             ))}

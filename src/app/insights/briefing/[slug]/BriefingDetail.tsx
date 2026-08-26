@@ -47,7 +47,7 @@ export default function BriefingDetail({ item }: { item: NewsItem }) {
             transition={{ duration: 0.6, ease }}
           >
             <span className="inline-block bg-white/15 text-white text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1 mb-5">{item.category}</span>
-            <h1 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-white text-2xl md:text-4xl mb-5">{item.headline}</h1>
+            <h1 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05 }} className="font-inter-tight text-white text-2xl md:text-4xl mb-5">{item.headline}</h1>
             <p className="text-white/70 text-base leading-relaxed mb-8">{item.summary}</p>
 
             <div className="flex flex-wrap items-center gap-4">
