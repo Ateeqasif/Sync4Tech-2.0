@@ -13,7 +13,7 @@ const articles: Record<string, {
   'why-ai-agents-will-replace-workflows': {
     tag: 'AI', title: 'Why AI Agents Will Replace 40% of Business', highlight: 'Workflows by 2026',
     excerpt: "The shift from AI tools to AI agents is the biggest operational inflection point since cloud computing. Here's what it means for your business.",
-    date: 'June 2025', readTime: '6 min read',
+    date: 'June 2026', readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'AI neural network visualization',
     body: [
@@ -28,7 +28,7 @@ const articles: Record<string, {
   'hidden-cost-of-manual-operations': {
     tag: 'Automation', title: 'The Hidden Cost of Manual Operations', highlight: 'Most CFOs Miss',
     excerpt: 'Beyond payroll, manual processes carry invisible costs in errors, delays and missed opportunities. We break down the true price of not automating.',
-    date: 'May 2025', readTime: '8 min read',
+    date: 'May 2026', readTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Automation technology circuit board',
     body: [
@@ -43,7 +43,7 @@ const articles: Record<string, {
   'from-spreadsheets-to-strategy': {
     tag: 'Data', title: 'From Spreadsheets to Strategy:', highlight: 'A Modern Data Infrastructure Guide',
     excerpt: 'Mid-market companies often outgrow their data tools before realising it. This guide shows the path from reactive reporting to predictive intelligence.',
-    date: 'April 2025', readTime: '10 min read',
+    date: 'April 2026', readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Data analytics dashboard',
     body: [
@@ -58,7 +58,7 @@ const articles: Record<string, {
   'crm-automation-sales-pipeline': {
     tag: 'Operations', title: 'How CRM Automation Doubled Our Client\'s', highlight: 'Sales Pipeline in 90 Days',
     excerpt: 'A step-by-step look at how we connected HubSpot, GoHighLevel and Zapier to build a fully automated lead nurture engine that never sleeps.',
-    date: 'March 2025', readTime: '7 min read',
+    date: 'March 2026', readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Sales pipeline on a laptop screen',
     body: [
@@ -73,7 +73,7 @@ const articles: Record<string, {
   'six-week-transformation-playbook': {
     tag: 'Transformation', title: 'The 6-Week Digital Transformation Playbook', highlight: 'for Mid-Market Companies',
     excerpt: 'Most transformation programmes fail because they try to do too much at once. Our phased approach delivers measurable ROI before the next quarter closes.',
-    date: 'February 2025', readTime: '9 min read',
+    date: 'February 2026', readTime: '9 min read',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Team working on digital strategy in a modern office',
     body: [
@@ -89,7 +89,7 @@ const articles: Record<string, {
   'generative-ai-in-enterprise': {
     tag: 'AI', title: 'Generative AI in the Enterprise:', highlight: 'What Actually Works in Production',
     excerpt: "After deploying AI across 50+ organisations, we've learned what separates pilots that stick from proofs-of-concept that gather dust. Here's the full picture.",
-    date: 'January 2025', readTime: '11 min read',
+    date: 'January 2026', readTime: '11 min read',
     image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Generative AI interface on futuristic screen',
     body: [
@@ -105,7 +105,7 @@ const articles: Record<string, {
   'llm-integration-guide': {
     tag: 'AI', title: 'The Practical Guide to LLM Integration', highlight: 'for Non-Technical Teams',
     excerpt: 'Large language models are no longer just for engineers. This guide walks business teams through what LLM integration actually involves and how to drive it successfully.',
-    date: 'June 2025', readTime: '7 min read',
+    date: 'June 2026', readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'AI language model interface',
     body: [
@@ -120,7 +120,7 @@ const articles: Record<string, {
   'rpa-vs-intelligent-automation': {
     tag: 'Automation', title: 'RPA vs Intelligent Automation:', highlight: 'Which Is Right for Your Business?',
     excerpt: 'Robotic process automation and intelligent automation are often conflated but they solve different problems. Here is how to choose the right approach for your workflows.',
-    date: 'May 2025', readTime: '6 min read',
+    date: 'May 2026', readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Robotic process automation concept',
     body: [
@@ -135,7 +135,7 @@ const articles: Record<string, {
   'data-governance-essentials': {
     tag: 'Data', title: 'Data Governance Essentials', highlight: 'Every Scaling Business Needs',
     excerpt: 'As your data estate grows, the cost of bad governance compounds. Here are the foundations every mid-market company needs to put in place before the chaos becomes structural.',
-    date: 'May 2025', readTime: '8 min read',
+    date: 'May 2026', readTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Data security and governance',
     body: [
@@ -150,7 +150,7 @@ const articles: Record<string, {
   'automating-finance-operations': {
     tag: 'Operations', title: 'Automating Finance Operations:', highlight: 'From Invoice to Insight',
     excerpt: 'Finance teams spend 60% of their time on tasks that could be fully automated. Here is how to build an end-to-end automated finance operation and what you will gain.',
-    date: 'April 2025', readTime: '9 min read',
+    date: 'April 2026', readTime: '9 min read',
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Finance operations and accounting',
     body: [
@@ -165,7 +165,7 @@ const articles: Record<string, {
   'ai-in-healthcare': {
     tag: 'AI', title: 'How AI Is Reshaping Healthcare', highlight: 'Operations Without Replacing Doctors',
     excerpt: 'AI in healthcare is not about replacing clinical judgement it is about removing the operational friction that prevents clinicians from doing their best work.',
-    date: 'April 2025', readTime: '8 min read',
+    date: 'April 2026', readTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Healthcare technology and AI',
     body: [
@@ -180,7 +180,7 @@ const articles: Record<string, {
   'no-code-automation-tools': {
     tag: 'Automation', title: 'No-Code Automation Tools in 2025:', highlight: 'The Complete Comparison',
     excerpt: 'Zapier, Make, n8n, Power Automate the no-code automation landscape has never been richer or more confusing. Here is how to choose the right platform for your business.',
-    date: 'March 2025', readTime: '10 min read',
+    date: 'March 2026', readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'No-code development platform',
     body: [
@@ -195,7 +195,7 @@ const articles: Record<string, {
   'real-time-analytics-guide': {
     tag: 'Data', title: 'Real-Time Analytics:', highlight: 'Why Batch Reporting Is Killing Your Decisions',
     excerpt: 'If your dashboards show yesterday\'s data, your decisions are already behind. Here is what real-time analytics actually requires and how to build it without a team of data engineers.',
-    date: 'March 2025', readTime: '7 min read',
+    date: 'March 2026', readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Real-time data analytics dashboard',
     body: [
@@ -210,7 +210,7 @@ const articles: Record<string, {
   'supply-chain-automation': {
     tag: 'Operations', title: 'Supply Chain Automation:', highlight: 'Reducing Delays Before They Happen',
     excerpt: 'Supply chain disruptions cost businesses 6–10% of annual revenue. Intelligent automation can predict, prevent, and respond to disruptions faster than any manual process.',
-    date: 'February 2025', readTime: '8 min read',
+    date: 'February 2026', readTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Supply chain and logistics',
     body: [
@@ -225,7 +225,7 @@ const articles: Record<string, {
   'building-ai-strategy-2025': {
     tag: 'AI', title: 'Building an AI Strategy in 2025:', highlight: 'Where to Start and What to Skip',
     excerpt: 'Every business needs an AI strategy. Most do not know what that actually means. This guide gives you the framework to build one that delivers results rather than just intentions.',
-    date: 'February 2025', readTime: '9 min read',
+    date: 'February 2026', readTime: '9 min read',
     image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'AI strategy planning',
     body: [
@@ -241,7 +241,7 @@ const articles: Record<string, {
   'digital-transformation-mistakes': {
     tag: 'Transformation', title: '7 Digital Transformation Mistakes', highlight: 'We See Again and Again',
     excerpt: 'After 200+ transformation engagements, the same failure patterns appear. Here is what they are, why they happen, and how to avoid them before they derail your programme.',
-    date: 'January 2025', readTime: '6 min read',
+    date: 'January 2026', readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'Digital transformation challenges',
     body: [
@@ -256,7 +256,7 @@ const articles: Record<string, {
   'workflow-automation-roi': {
     tag: 'Automation', title: 'How to Calculate the ROI of', highlight: 'Workflow Automation (With Examples)',
     excerpt: 'Most automation ROI calculations undercount the real return by 3–5x. Here is the complete framework for calculating the true value of automation before you build anything.',
-    date: 'January 2025', readTime: '7 min read',
+    date: 'January 2026', readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1543286386-713bdd548da4?w=1200&q=80&auto=format&fit=crop',
     imageAlt: 'ROI calculation and business metrics',
     body: [

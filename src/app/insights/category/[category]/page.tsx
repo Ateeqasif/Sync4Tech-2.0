@@ -42,7 +42,7 @@ const allArticles = [
     tag: 'AI',
     title: 'Why AI Agents Will Replace 40% of Business Workflows by 2026',
     excerpt: "The shift from AI tools to AI agents is the biggest operational inflection point since cloud computing. Here's what it means for your business.",
-    date: 'June 2025', readTime: '6 min read',
+    date: 'July 2026', readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&auto=format&fit=crop',
   },
   {
@@ -50,7 +50,7 @@ const allArticles = [
     tag: 'Automation',
     title: 'The Hidden Cost of Manual Operations Most CFOs Miss',
     excerpt: 'Beyond payroll, manual processes carry invisible costs in errors, delays and missed opportunities. We break down the true price of not automating.',
-    date: 'May 2025', readTime: '8 min read',
+    date: 'June 2026', readTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop',
   },
   {
@@ -58,7 +58,7 @@ const allArticles = [
     tag: 'Data',
     title: 'From Spreadsheets to Strategy: Building a Modern Data Infrastructure',
     excerpt: 'Mid-market companies often outgrow their data tools before realising it. This guide shows the path from reactive reporting to predictive intelligence.',
-    date: 'April 2025', readTime: '10 min read',
+    date: 'April 2026', readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop',
   },
   {
@@ -66,7 +66,7 @@ const allArticles = [
     tag: 'Operations',
     title: "How CRM Automation Doubled Our Client's Sales Pipeline in 90 Days",
     excerpt: 'A step-by-step look at how we connected HubSpot, GoHighLevel and Zapier to build a fully automated lead nurture engine that never sleeps.',
-    date: 'March 2025', readTime: '7 min read',
+    date: 'March 2026', readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop',
   },
   {
@@ -74,7 +74,7 @@ const allArticles = [
     tag: 'Transformation',
     title: 'The 6-Week Digital Transformation Playbook for Mid-Market Companies',
     excerpt: 'Most transformation programmes fail because they try to do too much at once. Our phased approach delivers measurable ROI before the next quarter closes.',
-    date: 'February 2025', readTime: '9 min read',
+    date: 'February 2026', readTime: '9 min read',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop',
   },
   {
@@ -82,7 +82,7 @@ const allArticles = [
     tag: 'AI',
     title: 'Generative AI in the Enterprise: What Actually Works in Production',
     excerpt: "After deploying AI across 50+ organisations, we've learned what separates pilots that stick from proofs-of-concept that gather dust.",
-    date: 'January 2025', readTime: '11 min read',
+    date: 'January 2026', readTime: '11 min read',
     image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80&auto=format&fit=crop',
   },
 ]
