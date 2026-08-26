@@ -32,7 +32,7 @@ export default function ExecutionGap() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#36c5f0] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">{t.executionGap.eyebrow}</span>
-          <h2 className="font-inter-tight apple-headline" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
+          <h2 className="font-inter-tight" style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }}>
             {t.executionGap.h2Line1}<br />
             <span style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(90deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}>
               {t.executionGap.h2Line2}

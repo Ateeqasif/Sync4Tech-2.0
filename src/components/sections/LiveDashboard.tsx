@@ -428,8 +428,8 @@ export default function LiveDashboard() {
             </span>
           </div>
           <h2
-            className="font-inter-tight apple-headline"
-            style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}
+            className="font-inter-tight"
+            style={{ fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }}
           >
             AI &amp; Automation
             <br />

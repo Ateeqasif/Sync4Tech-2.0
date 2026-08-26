@@ -135,7 +135,7 @@ export default function IntelligentBusiness() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="eyebrow">Intelligence Layer</span>
-            <h2 className="font-inter-tight apple-headline mb-6" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
+            <h2 className="font-inter-tight mb-6" style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }}>
               Connect Every
               <br />
               <span className="gradient-text">Business Function.</span>

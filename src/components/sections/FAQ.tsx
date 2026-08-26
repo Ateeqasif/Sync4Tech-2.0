@@ -86,7 +86,7 @@ export default function FAQ() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="eyebrow">FAQ</span>
-          <h2 className="font-inter-tight apple-headline" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
+          <h2 className="font-inter-tight" style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }}>
             Frequently Asked
             <br />
             <span className="gradient-text">Questions</span>

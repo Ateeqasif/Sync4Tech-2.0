@@ -70,7 +70,7 @@ export default function WhySync4Tech() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="eyebrow">Why Us</span>
-          <h2 className="font-inter-tight apple-headline mb-4" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
+          <h2 className="font-inter-tight mb-4" style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }}>
             The Sync4Tech
             <br />
             <span className="gradient-text">Difference</span>

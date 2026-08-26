@@ -66,8 +66,8 @@ export default function TransformationOS() {
         >
           <span className="eyebrow">What We Build</span>
           <h2
-            className="font-inter-tight apple-headline"
-            style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}
+            className="font-inter-tight"
+            style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }}
           >
             The Transformation
             <br />

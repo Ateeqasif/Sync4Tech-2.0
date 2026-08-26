@@ -44,8 +44,8 @@ export default function FinalCTA() {
           <span className="eyebrow">{t.finalCta.eyebrow}</span>
 
           <h2
-            className="font-inter-tight apple-headline mb-6 mx-auto"
-            style={{ fontSize: 'clamp(36px, 5.5vw, 64px)', maxWidth: '800px' }}
+            className="font-inter-tight mb-6 mx-auto"
+            style={{ fontSize: 'clamp(36px, 5.5vw, 64px)', maxWidth: '800px', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }}
           >
             {t.finalCta.h2}
           </h2>
