@@ -18,8 +18,8 @@ export const en = {
     cta2: "Explore Business Automation Solutions",
     metric1Label: "Faster Workflow Execution",
     metric2Label: "Reduction in Operational Costs",
-    metric3Label: "Clients Served",
-    metric4Label: "Industries Supported"
+    metric3Label: "Projects Delivered",
+    metric4Label: "Industries Served"
   },
   executionGap: {
     eyebrow: "The Execution Gap",

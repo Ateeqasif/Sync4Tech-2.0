@@ -34,8 +34,8 @@ function CountUp({ end, suffix = '', duration = 2000 }: { end: number; suffix?: 
 const metricValues: { value: number; suffix: string; duration?: number }[] = [
   { value: 3, suffix: 'x' },
   { value: 68, suffix: '%' },
-  { value: 280, suffix: '+', duration: 2400 },
-  { value: 12, suffix: '+' },
+  { value: 2000, suffix: '+', duration: 2800 },
+  { value: 14, suffix: '+' },
 ]
 
 const slides = [
