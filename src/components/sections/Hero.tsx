@@ -187,7 +187,7 @@ export default function Hero() {
             </span>
             <span className="text-xs font-semibold" style={{ color: 'var(--text-secondary)' }}>
               Trusted by{' '}
-              <span className="font-bold" style={{ color: 'var(--accent)' }}>150+ businesses</span>
+              <span className="font-bold" style={{ color: 'var(--accent)' }}>1,500+ businesses</span>
               {' '}worldwide
             </span>
             <span className="text-amber-400 text-xs tracking-tight select-none">★★★★★</span>
