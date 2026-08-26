@@ -123,7 +123,7 @@ export default function ServicesPage() {
                   </div>
                   <div>
                     <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-2">{pillar.tagline}</p>
-                    <h2 className="font-inter-tight font-black text-white text-2xl md:text-3xl leading-tight mb-4">{pillar.name}</h2>
+                    <h2 className="font-inter-tight text-white text-2xl md:text-3xl leading-tight mb-4" style={{ fontWeight: 700 }}>{pillar.name}</h2>
                     <p className="text-white/70 text-sm leading-relaxed mb-8">{pillar.description}</p>
                     <Link
                       href={`/services/${pillar.slug}`}

@@ -37,7 +37,7 @@ export default function DataIntelligenceContent({ service }: Props) {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0, ease: EASE }}
             >
-              <h2 className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white mb-6">Common Challenges</h2>
+              <h2 className="font-inter-tight text-2xl text-gray-900 dark:text-white mb-6" style={{ fontWeight: 700 }}>Common Challenges</h2>
               <ul className="space-y-4">
                 {service.challenges.map((challenge, i) => (
                   <li key={i} className="flex gap-3">
@@ -56,7 +56,7 @@ export default function DataIntelligenceContent({ service }: Props) {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
             >
-              <h2 className="font-inter-tight font-black text-2xl text-white mb-6">With Sync4Tech</h2>
+              <h2 className="font-inter-tight text-2xl text-white mb-6" style={{ fontWeight: 700 }}>With Sync4Tech</h2>
               <ul className="space-y-4">
                 {service.outcomes.map((outcome, i) => (
                   <li key={i} className="flex gap-3">
@@ -74,7 +74,8 @@ export default function DataIntelligenceContent({ service }: Props) {
       <section className="bg-white dark:bg-gray-900 py-16">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            className="font-inter-tight text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -109,7 +110,8 @@ export default function DataIntelligenceContent({ service }: Props) {
       <section className="bg-[#f8faff] dark:bg-gray-900 py-20">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            className="font-inter-tight text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -132,7 +134,7 @@ export default function DataIntelligenceContent({ service }: Props) {
                     <path d="M3 8l3.5 3.5L13 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2">{feature.title}</h3>
+                <h3 className="font-inter-tight text-lg text-gray-900 dark:text-white mb-2" style={{ fontWeight: 700 }}>{feature.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
@@ -151,7 +153,7 @@ export default function DataIntelligenceContent({ service }: Props) {
             transition={{ duration: 0.8, ease: EASE }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Real-World Impact</span>
-            <h2 className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white">Use Cases</h2>
+            <h2 className="font-inter-tight text-3xl text-gray-900 dark:text-white" style={{ fontWeight: 700 }}>Use Cases</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {service.useCases.map((uc, i) => (
@@ -164,7 +166,7 @@ export default function DataIntelligenceContent({ service }: Props) {
                 transition={{ duration: 0.6, delay: i * 0.1, ease: EASE }}
               >
                 <div className="text-xs font-bold tracking-widest uppercase text-[#007cf4] mb-3">Case {String(i + 1).padStart(2, '0')}</div>
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-3 group-hover:text-[#007cf4] transition-colors">{uc.title}</h3>
+                <h3 className="font-inter-tight text-lg text-gray-900 dark:text-white mb-3 group-hover:text-[#007cf4] transition-colors" style={{ fontWeight: 700 }}>{uc.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{uc.desc}</p>
               </motion.div>
             ))}
@@ -176,7 +178,8 @@ export default function DataIntelligenceContent({ service }: Props) {
       <section className="bg-[#f8faff] dark:bg-gray-900 py-16">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white mb-8 text-center"
+            className="font-inter-tight text-2xl text-gray-900 dark:text-white mb-8 text-center"
+            style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -212,7 +215,7 @@ export default function DataIntelligenceContent({ service }: Props) {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <h2 className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white">Industries We Serve</h2>
+            <h2 className="font-inter-tight text-2xl text-gray-900 dark:text-white" style={{ fontWeight: 700 }}>Industries We Serve</h2>
             <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">We bring deep domain knowledge across these sectors</p>
           </motion.div>
           <motion.div
@@ -239,7 +242,8 @@ export default function DataIntelligenceContent({ service }: Props) {
       <section className="bg-[#f8faff] dark:bg-gray-900 py-20">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            className="font-inter-tight text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -265,7 +269,7 @@ export default function DataIntelligenceContent({ service }: Props) {
                     {step.step}
                   </span>
                 </div>
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2">{step.title}</h3>
+                <h3 className="font-inter-tight text-lg text-gray-900 dark:text-white mb-2" style={{ fontWeight: 700 }}>{step.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
                 {i < service.process.length - 1 && (
                   <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-gradient-to-r from-[#007cf4]/30 to-transparent -translate-x-6" />
@@ -280,7 +284,8 @@ export default function DataIntelligenceContent({ service }: Props) {
       <section className="bg-white dark:bg-gray-900 py-20">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            className="font-inter-tight text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}

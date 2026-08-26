@@ -164,7 +164,7 @@ export default function PricingPage() {
 
                 <div className="p-8 flex flex-col flex-1">
                   <div className="mb-6">
-                    <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-1">{tier.name}</h3>
+                    <h3 className="font-inter-tight text-black dark:text-white text-xl mb-1" style={{ fontWeight: 700 }}>{tier.name}</h3>
                     <p className="text-[#007cf4] text-sm font-semibold mb-4">{tier.tagline}</p>
                     <div className="flex items-baseline gap-1">
                       <span style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-4xl">{tier.price}</span>
@@ -263,7 +263,7 @@ export default function PricingPage() {
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Common Questions</span>
             </motion.div>
             <motion.h2
-              className="font-inter-tight font-black text-black dark:text-white text-3xl"
+              className="font-inter-tight text-black dark:text-white text-3xl" style={{ fontWeight: 700 }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}

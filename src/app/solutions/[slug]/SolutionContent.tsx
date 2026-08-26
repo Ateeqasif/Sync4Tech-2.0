@@ -36,7 +36,7 @@ export default function SolutionContent({ s, slug }: Props) {
             transition={{ duration: 0.8, delay: 0, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Overview</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-6 leading-tight">What is {s.name}?</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-3xl mb-6 leading-tight" style={{ fontWeight: 700 }}>What is {s.name}?</h2>
             {s.description.map((p, i) => (
               <p key={i} className="text-gray-500  leading-relaxed mb-4 text-sm">{p}</p>
             ))}
@@ -78,7 +78,7 @@ export default function SolutionContent({ s, slug }: Props) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Process</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl leading-tight">How We Deliver It</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-3xl leading-tight" style={{ fontWeight: 700 }}>How We Deliver It</h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {s.steps.map((step, i) => (
@@ -111,7 +111,7 @@ export default function SolutionContent({ s, slug }: Props) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Technology</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-10">Tools &amp; Technologies</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-3xl mb-10" style={{ fontWeight: 700 }}>Tools &amp; Technologies</h2>
           </motion.div>
           <div className="flex flex-wrap justify-center gap-3">
             {s.tools.map((t, i) => (
@@ -143,7 +143,7 @@ export default function SolutionContent({ s, slug }: Props) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Results</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">Measurable Outcomes</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-3xl" style={{ fontWeight: 700 }}>Measurable Outcomes</h2>
           </motion.div>
           <div className="max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-xl" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
             <div className="grid grid-cols-3 divide-x divide-white/20">
@@ -178,7 +178,7 @@ export default function SolutionContent({ s, slug }: Props) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Case Study</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-10">See It in Action</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-3xl mb-10" style={{ fontWeight: 700 }}>See It in Action</h2>
           </motion.div>
           <motion.div
             className="relative overflow-hidden rounded-2xl text-left shadow-xl"
@@ -212,7 +212,7 @@ export default function SolutionContent({ s, slug }: Props) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">FAQ</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">Common Questions</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-3xl" style={{ fontWeight: 700 }}>Common Questions</h2>
           </motion.div>
           <DetailFAQ items={s.faq} />
         </div>

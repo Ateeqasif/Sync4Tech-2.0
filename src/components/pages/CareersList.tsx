@@ -70,7 +70,7 @@ export default function CareersList() {
             >
               <button className="w-full text-left px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3" onClick={() => setOpen(open === i ? null : i)}>
                 <div>
-                  <h3 className="font-inter-tight font-black text-black dark:text-white text-base">{role.title}</h3>
+                  <h3 className="font-inter-tight text-black dark:text-white text-base" style={{ fontWeight: 700 }}>{role.title}</h3>
                   <div className="flex flex-wrap items-center gap-2 mt-1.5">
                     <span className="text-xs bg-[#007cf4]/10 text-[#007cf4] px-2.5 py-0.5 rounded-full font-medium">{role.dept}</span>
                     <span className="text-xs text-gray-400 flex items-center gap-1">
@@ -116,7 +116,7 @@ export default function CareersList() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2">Do not see a role that fits?</h3>
+          <h3 className="font-inter-tight text-black dark:text-white text-xl mb-2" style={{ fontWeight: 700 }}>Do not see a role that fits?</h3>
           <p className="text-gray-500 dark:text-gray-400 text-sm mb-5">We are always looking for exceptional people. Send us your CV and tell us how you would contribute.</p>
           <a
             href="mailto:careers@sync4tech.co?subject=Speculative Application"

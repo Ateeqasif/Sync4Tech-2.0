@@ -57,7 +57,7 @@ function ArticleFAQ({ faqs }: { faqs: FAQ[] }) {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-2">FAQ</p>
-      <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-6">Frequently Asked Questions</h2>
+      <h2 className="font-inter-tight text-black dark:text-white text-xl mb-6" style={{ fontWeight: 700 }}>Frequently Asked Questions</h2>
       <div className="flex flex-col gap-2">
         {faqs.map((faq, i) => (
           <div
@@ -152,7 +152,7 @@ export default function InsightContent({ a, related }: Props) {
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
                 {section.heading && (
-                  <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-4 mt-10">{section.heading}</h2>
+                  <h2 className="font-inter-tight text-black dark:text-white text-2xl mb-4 mt-10" style={{ fontWeight: 700 }}>{section.heading}</h2>
                 )}
                 <p className="text-gray-600 dark:text-gray-400  leading-relaxed text-base mb-4">{section.content}</p>
                 {section.bullets && (
@@ -181,7 +181,7 @@ export default function InsightContent({ a, related }: Props) {
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#033a9d] via-[#007cf4] to-[#36c5f0]" />
             <div className="bg-white dark:bg-gray-800 p-8 pl-10 relative">
               <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-2">Summary</p>
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-6">Key Takeaways</h2>
+              <h2 className="font-inter-tight text-black dark:text-white text-xl mb-6" style={{ fontWeight: 700 }}>Key Takeaways</h2>
               <ul className="flex flex-col gap-4">
                 {a.takeaways.map((t, i) => (
                   <motion.li
@@ -223,7 +223,7 @@ export default function InsightContent({ a, related }: Props) {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="section-container max-w-2xl mx-auto text-center">
-          <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-3">Ready to automate your operations?</h3>
+          <h3 className="font-inter-tight text-black dark:text-white text-2xl mb-3" style={{ fontWeight: 700 }}>Ready to automate your operations?</h3>
           <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">Tell us your biggest operational challenge and we will show you exactly how to solve it.</p>
           <Link href="/contact" className="inline-flex items-center gap-2 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all hover:opacity-90" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
             Get in touch →
@@ -242,7 +242,7 @@ export default function InsightContent({ a, related }: Props) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Keep Reading</p>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl">Related Articles</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-2xl" style={{ fontWeight: 700 }}>Related Articles</h2>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             {related.map((r, i) => (

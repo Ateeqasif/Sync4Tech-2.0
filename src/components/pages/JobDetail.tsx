@@ -53,7 +53,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-6">About the Role</h2>
+              <h2 className="font-inter-tight text-black dark:text-white text-2xl mb-6" style={{ fontWeight: 700 }}>About the Role</h2>
               {j.about.map((p, i) => <p key={i} className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">{p}</p>)}
             </motion.div>
 
@@ -63,7 +63,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-6">What You'll Do</h2>
+              <h2 className="font-inter-tight text-black dark:text-white text-2xl mb-6" style={{ fontWeight: 700 }}>What You'll Do</h2>
               <ul className="flex flex-col gap-3">
                 {j.responsibilities.map((r, i) => (
                   <motion.li
@@ -86,7 +86,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-6">What We're Looking For</h2>
+              <h2 className="font-inter-tight text-black dark:text-white text-2xl mb-6" style={{ fontWeight: 700 }}>What We're Looking For</h2>
               <ul className="flex flex-col gap-3">
                 {j.requirements.map((r, i) => (
                   <motion.li
@@ -109,7 +109,7 @@ export default function JobDetail({ j, slug }: { j: Job; slug: string }) {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-xl mb-4">Nice to Have</h2>
+              <h2 className="font-inter-tight text-black dark:text-white text-xl mb-4" style={{ fontWeight: 700 }}>Nice to Have</h2>
               <ul className="flex flex-col gap-2">
                 {j.niceToHave.map((n, i) => (
                   <motion.li

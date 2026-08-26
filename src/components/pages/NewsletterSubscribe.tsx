@@ -111,13 +111,13 @@ export default function NewsletterSubscribe() {
                             <path d="M9 14l4 4 6-7" stroke="#34d399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </div>
-                        <h3 className="font-inter-tight font-black text-white text-xl mb-2">You're subscribed!</h3>
+                        <h3 className="font-inter-tight text-white text-xl mb-2" style={{ fontWeight: 700 }}>You're subscribed!</h3>
                         <p className="text-white/60 text-sm">Your first briefing will arrive tomorrow morning. Welcome aboard.</p>
                       </motion.div>
                     ) : (
                       <motion.form key="form" onSubmit={handleSubmit} className="space-y-4">
                         <div>
-                          <h3 className="font-inter-tight font-black text-white text-xl mb-1">Subscribe Free</h3>
+                          <h3 className="font-inter-tight text-white text-xl mb-1" style={{ fontWeight: 700 }}>Subscribe Free</h3>
                           <p className="text-white/55 text-xs">Join professionals already reading the daily briefing.</p>
                         </div>
 

@@ -178,7 +178,7 @@ export default function CaseStudiesFilter() {
                     <span className="text-[10px] text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider">{c.industry}</span>
                   </div>
 
-                  <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-base leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300">
+                  <h3 className="font-inter-tight text-gray-900 dark:text-white text-base leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300" style={{ fontWeight: 700 }}>
                     {c.title}
                   </h3>
                   <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{c.description}</p>

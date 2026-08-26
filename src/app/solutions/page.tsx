@@ -126,7 +126,7 @@ function InlineContact() {
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 16l8 8L26 8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
           </div>
-          <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-3">Message received!</h3>
+          <h3 className="font-inter-tight text-black dark:text-white text-2xl mb-3" style={{ fontWeight: 700 }}>Message received!</h3>
           <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-xs mx-auto mb-6">
             Thank you for reaching out. Our team will review your challenge and get back to you within 24 hours.
           </p>
@@ -137,7 +137,7 @@ function InlineContact() {
         </motion.div>
       ) : (
         <>
-          <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-6">Tell us about your challenge</h3>
+          <h3 className="font-inter-tight text-black dark:text-white text-xl mb-6" style={{ fontWeight: 700 }}>Tell us about your challenge</h3>
           <form onSubmit={async e => {
             e.preventDefault(); setLoading(true)
             try { await fetch('https://formsubmit.co/ajax/ateeqasif1168@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ _subject: `New enquiry from ${form.name} - ${form.company || 'Sync4Tech'}`, _cc: 'hassan.ali02468@gmail.com', _captcha: 'false', ...form, source: 'Solutions Page' }) }) } catch {}
@@ -322,7 +322,7 @@ export default function SolutionsPage() {
                     </div>
                   </div>
                   {/* Title & subtitle */}
-                  <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-2 group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors">{s.title}</h3>
+                  <h3 className="font-inter-tight text-black dark:text-white text-xl mb-2 group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors" style={{ fontWeight: 700 }}>{s.title}</h3>
                   <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-5">{s.subtitle}</p>
                   {/* Bullets */}
                   <ul className="flex flex-col gap-2 mt-auto">

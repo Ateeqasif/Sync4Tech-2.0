@@ -227,7 +227,7 @@ export default function CaseStudies() {
                   <span className="text-xs text-gray-400 font-medium">{c.company}</span>
                 </div>
 
-                <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-2xl md:text-3xl leading-tight mb-10">
+                <h3 className="font-inter-tight text-gray-900 dark:text-white text-2xl md:text-3xl leading-tight mb-10" style={{ fontWeight: 700 }}>
                   {c.headline}
                 </h3>
 

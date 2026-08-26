@@ -398,7 +398,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
               <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
               <span className="text-xs text-gray-400">{a.readTime}</span>
             </div>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl md:text-3xl mb-4 leading-tight group-hover:text-[#007cf4] transition-colors">{a.title}</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-2xl md:text-3xl mb-4 leading-tight group-hover:text-[#007cf4] transition-colors" style={{ fontWeight: 700 }}>{a.title}</h2>
             <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-6 text-sm">{a.description}</p>
             <span className="inline-flex items-center gap-2 text-[#007cf4] font-semibold text-sm group-hover:gap-3 transition-all">
               Read article
@@ -429,7 +429,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
               <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
               <span className="text-xs text-gray-400">{a.readTime}</span>
             </div>
-            <h3 className="font-inter-tight font-black text-black dark:text-white text-lg md:text-xl mb-3 leading-snug group-hover:text-[#007cf4] transition-colors">{a.title}</h3>
+            <h3 className="font-inter-tight text-black dark:text-white text-lg md:text-xl mb-3 leading-snug group-hover:text-[#007cf4] transition-colors" style={{ fontWeight: 700 }}>{a.title}</h3>
             <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed line-clamp-2">{a.description}</p>
             <div className="mt-4 flex items-center gap-1.5 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Read article →</div>
           </div>
@@ -456,7 +456,7 @@ function ArticleCard({ a, size }: { a: Article; size: 'hero' | 'wide' | 'tall' |
             <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
             <span className="text-xs text-gray-400">{a.readTime}</span>
           </div>
-          <h3 className="font-inter-tight font-black text-black dark:text-white text-base leading-snug mb-2 group-hover:text-[#007cf4] transition-colors">{a.title}</h3>
+          <h3 className="font-inter-tight text-black dark:text-white text-base leading-snug mb-2 group-hover:text-[#007cf4] transition-colors" style={{ fontWeight: 700 }}>{a.title}</h3>
           <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-3">{a.description}</p>
           <div className="mt-4 flex items-center gap-1.5 text-[#007cf4] text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Read article →</div>
         </div>

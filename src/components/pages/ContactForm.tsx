@@ -69,7 +69,7 @@ export default function ContactForm() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="bg-white dark:bg-gray-800 border border-[#007cf4]/15 dark:border-[#007cf4]/25 rounded-3xl p-8">
-                <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-6">Share with us</h2>
+                <h2 className="font-inter-tight text-black dark:text-white text-2xl mb-6" style={{ fontWeight: 700 }}>Share with us</h2>
                 {sent ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.92 }}
@@ -83,7 +83,7 @@ export default function ContactForm() {
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 16l8 8L26 8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       </div>
                     </div>
-                    <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-3">Message received!</h3>
+                    <h3 className="font-inter-tight text-black dark:text-white text-2xl mb-3" style={{ fontWeight: 700 }}>Message received!</h3>
                     <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-xs mx-auto mb-6">
                       Thank you for reaching out. Our team will review your challenge and get back to you within 24 hours.
                     </p>
@@ -186,7 +186,7 @@ export default function ContactForm() {
 
               {/* What happens next */}
               <div className="mt-auto bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-6">
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-4">What happens next</h3>
+                <h3 className="font-inter-tight text-black dark:text-white text-base mb-4" style={{ fontWeight: 700 }}>What happens next</h3>
                 <div className="space-y-3">
                   {[
                     'We review your requirements and operational context',
@@ -224,7 +224,7 @@ export default function ContactForm() {
         <div className="section-container max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">FAQ</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">Before You Reach Out</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-3xl" style={{ fontWeight: 700 }}>Before You Reach Out</h2>
           </div>
           <div className="space-y-3">
             {FAQ.map((faq, i) => (

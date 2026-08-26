@@ -61,7 +61,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">The Challenge</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl mb-8">The Situation Before Sync4Tech</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-3xl mb-8" style={{ fontWeight: 700 }}>The Situation Before Sync4Tech</h2>
           </motion.div>
           {cs.challengeBody.map((p, i) => (
             <motion.p
@@ -89,7 +89,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Our Approach</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">How We Solved It</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-3xl" style={{ fontWeight: 700 }}>How We Solved It</h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {cs.steps.map((step, i) => (
@@ -123,7 +123,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">The Results</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">Measurable Impact</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-3xl" style={{ fontWeight: 700 }}>Measurable Impact</h2>
           </motion.div>
           <div className="max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-xl" style={{ background: 'linear-gradient(160deg, #033a9d 0%, #007cf4 60%, #36c5f0 100%)' }}>
             <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20">
@@ -198,7 +198,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-4 block">Solutions Used</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl">Related Solutions</h2>
+            <h2 className="font-inter-tight text-black dark:text-white text-2xl" style={{ fontWeight: 700 }}>Related Solutions</h2>
           </motion.div>
           <motion.div
             className="flex flex-wrap justify-center gap-4"
@@ -220,7 +220,7 @@ export default function CaseStudyContent({ cs, slug, related, allCaseStudies }: 
       <section className="py-section bg-white dark:bg-gray-900">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-black dark:text-white text-2xl mb-8 text-center"
+            className="font-inter-tight text-black dark:text-white text-2xl mb-8 text-center" style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}

@@ -33,7 +33,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white mb-6">
+              <h2 className="font-inter-tight text-2xl text-gray-900 dark:text-white mb-6" style={{ fontWeight: 700 }}>
                 Common Challenges
               </h2>
               <ul className="space-y-4">
@@ -55,7 +55,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="font-inter-tight font-black text-2xl text-white mb-6">
+              <h2 className="font-inter-tight text-2xl text-white mb-6" style={{ fontWeight: 700 }}>
                 With Sync4Tech
               </h2>
               <ul className="space-y-4">
@@ -75,7 +75,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
       <section className="bg-white dark:bg-gray-900 py-20">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            className="font-inter-tight text-3xl text-gray-900 dark:text-white mb-12 text-center" style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -93,7 +93,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2">
+                <h3 className="font-inter-tight text-lg text-gray-900 dark:text-white mb-2" style={{ fontWeight: 700 }}>
                   {feature.title}
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
@@ -107,7 +107,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
       <section className="bg-[#f8faff] dark:bg-gray-900 py-16">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white mb-8 text-center"
+            className="font-inter-tight text-2xl text-gray-900 dark:text-white mb-8 text-center" style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -137,7 +137,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
       <section className="bg-white dark:bg-gray-900 py-20">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            className="font-inter-tight text-3xl text-gray-900 dark:text-white mb-12 text-center" style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -163,7 +163,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
                     {step.step}
                   </span>
                 </div>
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2">
+                <h3 className="font-inter-tight text-lg text-gray-900 dark:text-white mb-2" style={{ fontWeight: 700 }}>
                   {step.title}
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
@@ -180,7 +180,7 @@ export default function ConsultingContent({ svc }: ConsultingContentProps) {
       <section className="bg-[#f8faff] dark:bg-gray-900 py-20">
         <div className="section-container">
           <motion.h2
-            className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white mb-12 text-center"
+            className="font-inter-tight text-3xl text-gray-900 dark:text-white mb-12 text-center" style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}

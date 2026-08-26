@@ -392,7 +392,7 @@ export default function AboutPage() {
                   {/* Text panel */}
                   <div className="flex-1 bg-white dark:bg-gray-800 p-10 flex flex-col justify-center">
                     <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#007cf4] border border-[#007cf4]/25 rounded-full px-3 py-1 self-start mb-4">{v.orient}</span>
-                    <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl mb-3 group-hover:text-[#007cf4] transition-colors duration-300">{v.title}</h3>
+                    <h3 className="font-inter-tight text-black dark:text-white text-2xl mb-3 group-hover:text-[#007cf4] transition-colors duration-300" style={{ fontWeight: 700 }}>{v.title}</h3>
                     <p className="text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl">{v.desc}</p>
                   </div>
                 </motion.div>
@@ -453,7 +453,7 @@ export default function AboutPage() {
                       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #fff 0%, transparent 60%)' }} />
                       <span className="relative z-10 inline-block text-xs font-bold tracking-widest uppercase text-white/60 border border-white/20 rounded-full px-3 py-1 self-start mb-6">{c.tag}</span>
                       <div className="relative z-10">
-                        <h3 className="font-inter-tight font-black text-white text-2xl md:text-3xl mb-3">{c.label}</h3>
+                        <h3 className="font-inter-tight text-white text-2xl md:text-3xl mb-3" style={{ fontWeight: 700 }}>{c.label}</h3>
                         <p className="text-white/70 text-sm leading-relaxed max-w-md">{c.body}</p>
                       </div>
                     </div>
@@ -462,7 +462,7 @@ export default function AboutPage() {
                       <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#007cf4] to-[#36c5f0] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl" />
                       <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#007cf4] border border-[#007cf4]/25 rounded-full px-3 py-1 self-start mb-6">{c.tag}</span>
                       <div>
-                        <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-3 group-hover:text-[#007cf4] transition-colors duration-300">{c.label}</h3>
+                        <h3 className="font-inter-tight text-black dark:text-white text-xl mb-3 group-hover:text-[#007cf4] transition-colors duration-300" style={{ fontWeight: 700 }}>{c.label}</h3>
                         <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.body}</p>
                       </div>
                     </div>
@@ -536,7 +536,7 @@ export default function AboutPage() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl">About Sync4Tech</h2>
+              <h2 className="font-inter-tight text-black dark:text-white text-3xl" style={{ fontWeight: 700 }}>About Sync4Tech</h2>
             </motion.div>
           </div>
           <div className="space-y-4">

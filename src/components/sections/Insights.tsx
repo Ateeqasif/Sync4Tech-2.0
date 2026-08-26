@@ -165,7 +165,7 @@ export default function Insights() {
                     <span className="w-1 h-1 rounded-full bg-gray-300" />
                     <span className="text-xs text-gray-400">{filtered[0].readTime}</span>
                   </div>
-                  <h3 className="font-inter-tight font-black text-black dark:text-white text-2xl leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300">
+                  <h3 className="font-inter-tight text-black dark:text-white text-2xl leading-snug mb-3 group-hover:text-[#007cf4] transition-colors duration-300" style={{ fontWeight: 700 }}>
                     {filtered[0].title}
                   </h3>
                   <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">{filtered[0].excerpt}</p>

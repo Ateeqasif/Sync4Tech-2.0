@@ -111,7 +111,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
 
               <div className="p-8 flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 mb-7">
-                  <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-xl">Common Challenges</h3>
+                  <h3 className="font-inter-tight text-gray-900 dark:text-white text-xl" style={{ fontWeight: 700 }}>Common Challenges</h3>
                 </div>
                 <ul className="flex flex-col gap-4 flex-1">
                   {ind.challenges.map((item, i) => (
@@ -147,7 +147,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
 
               <div className="p-8 flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 mb-7">
-                  <h3 className="font-inter-tight font-black text-white text-xl">The Sync4Tech Approach</h3>
+                  <h3 className="font-inter-tight text-white text-xl" style={{ fontWeight: 700 }}>The Sync4Tech Approach</h3>
                 </div>
                 <ul className="flex flex-col gap-4 flex-1">
                   {ind.approach.map((item, i) => (
@@ -258,7 +258,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
                         </svg>
                       </div>
 
-                      <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2.5 group-hover:text-[#007cf4] transition-colors duration-300">
+                      <h3 className="font-inter-tight text-lg text-gray-900 dark:text-white mb-2.5 group-hover:text-[#007cf4] transition-colors duration-300" style={{ fontWeight: 700 }}>
                         {sol.name}
                       </h3>
                       <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{sol.desc}</p>

@@ -161,7 +161,7 @@ export default function PartnersPage() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Technology Vendors</p>
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl md:text-3xl mb-4">
+              <h2 className="font-inter-tight text-black dark:text-white text-2xl md:text-3xl mb-4" style={{ fontWeight: 700 }}>
                 Interested in partnering with Sync4Tech?
               </h2>
               <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-xl mx-auto mb-8">

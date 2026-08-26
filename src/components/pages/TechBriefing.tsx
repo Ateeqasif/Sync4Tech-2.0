@@ -63,7 +63,7 @@ export default function TechBriefing() {
                   <span className="text-white/30 text-xs">·</span>
                   <span className="text-white/50 text-xs">{featured.source}</span>
                 </div>
-                <h3 className="font-inter-tight font-black text-white text-xl md:text-2xl leading-snug mb-3">{featured.headline}</h3>
+                <h3 className="font-inter-tight text-white text-xl md:text-2xl leading-snug mb-3" style={{ fontWeight: 700 }}>{featured.headline}</h3>
                 <p className="text-white/70 text-sm leading-relaxed max-w-2xl">{featured.summary}</p>
                 <div className="flex items-center gap-3 mt-5 text-white/50 text-xs">
                   <span>{featured.readTime}</span>

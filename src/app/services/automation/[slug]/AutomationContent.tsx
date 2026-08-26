@@ -65,7 +65,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               </svg>
               <div className="p-8 flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 mb-7">
-                  <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-xl">Common Challenges</h3>
+                  <h3 className="font-inter-tight text-gray-900 dark:text-white text-xl" style={{ fontWeight: 700 }}>Common Challenges</h3>
                 </div>
                 <ul className="flex flex-col gap-4 flex-1">
                   {svc.challenges.map((item, i) => (
@@ -100,7 +100,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
               </svg>
               <div className="p-8 flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-3 mb-7">
-                  <h3 className="font-inter-tight font-black text-white text-xl">What You Get Instead</h3>
+                  <h3 className="font-inter-tight text-white text-xl" style={{ fontWeight: 700 }}>What You Get Instead</h3>
                 </div>
                 <ul className="flex flex-col gap-4 flex-1">
                   {svc.outcomes.map((item, i) => (
@@ -132,7 +132,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             transition={{ duration: 0.8, ease }}
           >
             <span className="text-[#36c5f0] text-sm font-semibold tracking-widest uppercase mb-3 block">Proven Results</span>
-            <h2 className="font-inter-tight font-black text-3xl text-white">The ROI in Numbers</h2>
+            <h2 className="font-inter-tight text-3xl text-white" style={{ fontWeight: 700 }}>The ROI in Numbers</h2>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {svc.stats.map((stat, i) => (
@@ -228,7 +228,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                         <path d="M2 8l4 4 8-8" stroke={grad.from} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-2.5">{feature.title}</h3>
+                    <h3 className="font-inter-tight text-lg text-gray-900 dark:text-white mb-2.5" style={{ fontWeight: 700 }}>{feature.title}</h3>
                     <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{feature.desc}</p>
                   </div>
                 </motion.div>
@@ -249,7 +249,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             transition={{ duration: 0.8, ease }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Built For Your Team</span>
-            <h2 className="font-inter-tight font-black text-3xl text-gray-900 dark:text-white">Who Benefits Most</h2>
+            <h2 className="font-inter-tight text-3xl text-gray-900 dark:text-white" style={{ fontWeight: 700 }}>Who Benefits Most</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {svc.benefits.map((b, i) => (
@@ -274,7 +274,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                     <path d="M8 2a3 3 0 100 6 3 3 0 000-6zM3 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
                 </div>
-                <h3 className="font-inter-tight font-black text-lg text-gray-900 dark:text-white mb-3">{b.role}</h3>
+                <h3 className="font-inter-tight text-lg text-gray-900 dark:text-white mb-3" style={{ fontWeight: 700 }}>{b.role}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
@@ -327,7 +327,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
                 >
                   {step.step}
                 </span>
-                <h3 className="font-inter-tight font-black text-gray-900 dark:text-white text-lg leading-tight">{step.title}</h3>
+                <h3 className="font-inter-tight text-gray-900 dark:text-white text-lg leading-tight" style={{ fontWeight: 700 }}>{step.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
@@ -388,7 +388,7 @@ export default function AutomationContent({ svc }: { svc: ServiceData }) {
             transition={{ duration: 0.8, ease }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Sector Experience</span>
-            <h2 className="font-inter-tight font-black text-2xl text-gray-900 dark:text-white">Industries We Serve</h2>
+            <h2 className="font-inter-tight text-2xl text-gray-900 dark:text-white" style={{ fontWeight: 700 }}>Industries We Serve</h2>
             <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Deep domain expertise across these sectors</p>
           </motion.div>
           <motion.div

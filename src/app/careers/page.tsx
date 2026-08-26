@@ -90,7 +90,7 @@ export default function CareersPage() {
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shadow-md" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
                   <div className="text-white [&>svg]:stroke-white">{perk.icon}</div>
                 </div>
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors">{perk.title}</h3>
+                <h3 className="font-inter-tight text-black dark:text-white text-base mb-2 group-hover:text-[#007cf4] transition-colors" style={{ fontWeight: 700 }}>{perk.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{perk.desc}</p>
               </motion.div>
             ))}
@@ -128,7 +128,7 @@ export default function CareersPage() {
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg text-white font-inter-tight font-black text-sm" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
                   {String(i + 1).padStart(2, '0')}
                 </div>
-                <h3 className="font-inter-tight font-black text-black dark:text-white text-lg mb-2 group-hover:text-[#007cf4] transition-colors">{c.title}</h3>
+                <h3 className="font-inter-tight text-black dark:text-white text-lg mb-2 group-hover:text-[#007cf4] transition-colors" style={{ fontWeight: 700 }}>{c.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{c.desc}</p>
               </motion.div>
             ))}

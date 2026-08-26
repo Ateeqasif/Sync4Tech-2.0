@@ -195,7 +195,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         <section className="py-section bg-[#f8faff] dark:bg-gray-900">
           <div className="section-container">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-2xl">More Insights</h2>
+              <h2 className="font-inter-tight text-black dark:text-white text-2xl" style={{ fontWeight: 700 }}>More Insights</h2>
               <Link href="/insights" className="text-[#007cf4] text-sm font-semibold hover:gap-3 transition-all inline-flex items-center gap-1">View all →</Link>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
