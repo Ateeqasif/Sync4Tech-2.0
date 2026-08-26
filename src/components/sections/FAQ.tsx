@@ -197,30 +197,28 @@ export default function FAQ() {
 
         {/* Bottom CTA */}
         <motion.div
-          className="mt-14 rounded-2xl border border-[#007cf4]/15 dark:border-[#007cf4]/25 bg-[#f8faff] dark:bg-gray-800 p-8 text-center"
+          className="mt-14 max-w-3xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <p className="font-inter-tight font-bold text-[#050f2e] dark:text-white text-lg mb-1">Still have questions?</p>
-          <p className="text-gray-400 text-sm mb-6">Talk to one of our specialists. No sales pitch, just straight answers.</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="/contact"
-              className="btn-primary"
-              style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
-            >
-              Talk to an Expert
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </a>
-            <a
-              href="/case-studies"
-              className="btn-secondary"
-            >
-              See Our Work
-            </a>
+          <div className="border-t border-black/8 dark:border-white/10 pt-10">
+            <p className="font-inter-tight font-bold text-[#050f2e] dark:text-white text-lg mb-1">Still have questions?</p>
+            <p className="text-gray-400 text-sm mb-6">Talk to one of our specialists. No sales pitch, just straight answers.</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a
+                href="/contact"
+                className="btn-primary"
+                style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+              >
+                Talk to an Expert
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </a>
+              <a href="/case-studies" className="btn-secondary">See Our Work</a>
+            </div>
           </div>
+          <div className="border-b border-black/8 dark:border-white/10 mt-10" />
         </motion.div>
       </div>
     </section>
