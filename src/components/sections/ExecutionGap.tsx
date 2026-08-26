@@ -165,7 +165,7 @@ export default function ExecutionGap() {
               style={{ boxShadow: '0 2px 12px rgba(0,124,244,0.06)' }}
             >
               <div
-                style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl mb-1"
+                className="font-inter-tight text-3xl md:text-4xl mb-1"
                 style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(135deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}
               >
                 {stat.value}
