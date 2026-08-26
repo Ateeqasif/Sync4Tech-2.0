@@ -61,7 +61,7 @@ export default function NewsletterSubscribe() {
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="text-emerald-400 text-xs font-bold tracking-widest uppercase">Daily Briefing</span>
                 </div>
-                <h2 className="font-inter-tight font-black text-white text-3xl md:text-4xl leading-tight mb-4">
+                <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-white text-3xl md:text-4xl mb-4">
                   Stay Ahead of the<br />Curve. Every Day.
                 </h2>
                 <p className="text-white/65 text-sm leading-relaxed max-w-md mb-7">

@@ -83,7 +83,7 @@ export default function PartnersPage() {
               transition={{ duration: 0.8, delay: 0, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3">Our Approach</p>
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-6">
+              <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl mb-6">
                 Partner-certified,<br />outcome-driven
               </h2>
               <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">

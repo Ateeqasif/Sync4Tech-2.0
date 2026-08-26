@@ -55,7 +55,7 @@ export default function CareersList() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Open Roles</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Current Opportunities</h2>
+          <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl">Current Opportunities</h2>
         </motion.div>
 
         <div className="space-y-3">

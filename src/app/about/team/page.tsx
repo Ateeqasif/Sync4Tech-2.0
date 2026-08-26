@@ -125,7 +125,7 @@ export default function TeamPage() {
               Who We Are
             </motion.p>
             <motion.h2
-              className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl mb-4"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -216,7 +216,7 @@ export default function TeamPage() {
               How We Work
             </motion.p>
             <motion.h2
-              className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -259,7 +259,7 @@ export default function TeamPage() {
             Join Us
           </motion.p>
           <motion.h2
-            className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4"
+            style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl mb-4"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}

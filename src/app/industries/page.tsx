@@ -270,7 +270,7 @@ export default function IndustriesPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Why Industry Expertise Matters</h2>
+              <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl">Why Industry Expertise Matters</h2>
             </motion.div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
@@ -283,7 +283,7 @@ export default function IndustriesPage() {
                 transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="text-center bg-gradient-to-br from-[#007cf4]/5 to-[#36c5f0]/5 border border-[#007cf4]/15 rounded-2xl p-8"
               >
-                <div className="font-inter-tight font-black text-black dark:text-white text-5xl mb-2">{stat.value}{stat.suffix}</div>
+                <div style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-5xl mb-2">{stat.value}{stat.suffix}</div>
                 <div className="text-gray-500 dark:text-gray-400 text-sm">{stat.label}</div>
               </motion.div>
             ))}

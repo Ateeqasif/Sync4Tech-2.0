@@ -121,7 +121,7 @@ export default function PricingPage() {
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Engagement Models</span>
             </motion.div>
             <motion.h2
-              className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -167,7 +167,7 @@ export default function PricingPage() {
                     <h3 className="font-inter-tight font-black text-black dark:text-white text-xl mb-1">{tier.name}</h3>
                     <p className="text-[#007cf4] text-sm font-semibold mb-4">{tier.tagline}</p>
                     <div className="flex items-baseline gap-1">
-                      <span className="font-inter-tight font-black text-black dark:text-white text-4xl">{tier.price}</span>
+                      <span style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-4xl">{tier.price}</span>
                       <span className="text-gray-400 text-sm">{tier.unit}</span>
                     </div>
                     <div className="text-gray-400 text-xs mt-1">{tier.delivery}</div>
@@ -219,7 +219,7 @@ export default function PricingPage() {
               <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Every Engagement</span>
             </motion.div>
             <motion.h2
-              className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}

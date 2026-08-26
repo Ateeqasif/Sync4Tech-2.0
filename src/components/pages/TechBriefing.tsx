@@ -34,7 +34,7 @@ export default function TechBriefing() {
         >
           <div>
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-2 block">Daily Tech Briefing</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">What's Moving the Industry</h2>
+            <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl">What's Moving the Industry</h2>
             <p className="text-gray-500 dark:text-gray-400 text-sm mt-2 max-w-xl">Curated daily from across the world of data, automation, AI, and business technology.</p>
           </div>
           <div className="flex items-center gap-2 shrink-0">

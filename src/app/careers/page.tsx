@@ -74,7 +74,7 @@ export default function CareersPage() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Why Join Us</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Life at Sync4Tech</h2>
+            <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl">Life at Sync4Tech</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {perks.map((perk, i) => (
@@ -112,7 +112,7 @@ export default function CareersPage() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-3 block">Our Culture</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">How We Work</h2>
+            <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl">How We Work</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto">
             {cultureValues.map((c, i) => (

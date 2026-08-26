@@ -103,7 +103,7 @@ export default function Footer() {
         <div className="section-container py-16 relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
           <div className="max-w-xl">
             <p className="text-xs text-[#007cf4] font-semibold tracking-widest uppercase mb-4">{t.footer.stayAhead}</p>
-            <h3 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl leading-tight">
+            <h3 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl">
               {t.footer.heading}
             </h3>
             <p className="text-gray-500 dark:text-gray-400 mt-3 text-sm leading-relaxed max-w-sm">

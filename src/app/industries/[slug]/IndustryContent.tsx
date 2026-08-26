@@ -82,7 +82,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               The Problem
             </motion.p>
             <motion.h2
-              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -196,7 +196,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               Our Solutions
             </motion.p>
             <motion.h2
-              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -295,7 +295,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               Proven Impact
             </motion.p>
             <motion.h2
-              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -342,7 +342,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               Case Study
             </motion.p>
             <motion.h2
-              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -389,7 +389,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               Tech Stack
             </motion.p>
             <motion.h2
-              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -431,7 +431,7 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
               FAQ
             </motion.p>
             <motion.h2
-              className="font-inter-tight font-black text-3xl md:text-4xl text-gray-900 dark:text-white"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}

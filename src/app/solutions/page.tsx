@@ -303,7 +303,7 @@ export default function SolutionsPage() {
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.8, ease: EASE }}>
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3 block">What We Build</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Six Capabilities. One Transformation.</h2>
+            <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl">Six Capabilities. One Transformation.</h2>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {solutions.map((s, i) => (
@@ -354,7 +354,7 @@ export default function SolutionsPage() {
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.8, ease: EASE }}>
             <span className="text-[#007cf4] text-xs font-bold tracking-widest uppercase mb-3 block">Get Started</span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Ready to Transform?</h2>
+            <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl">Ready to Transform?</h2>
             <p className="text-gray-500 dark:text-gray-400 text-base mt-4 max-w-lg mx-auto leading-relaxed">
               Tell us your biggest operational challenge and we will show you exactly how to solve it.
             </p>

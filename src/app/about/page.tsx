@@ -305,7 +305,7 @@ export default function AboutPage() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Built to Solve the Execution Gap</h2>
+              <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl">Built to Solve the Execution Gap</h2>
             </motion.div>
           </div>
           <div className="space-y-4 relative">
@@ -346,7 +346,7 @@ export default function AboutPage() {
               What We Stand For
             </motion.span>
             <motion.h2
-              className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-4xl md:text-5xl"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -416,7 +416,7 @@ export default function AboutPage() {
               How We Operate
             </motion.span>
             <motion.h2
-              className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl"
+              style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-4xl md:text-5xl"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -493,7 +493,7 @@ export default function AboutPage() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, ease }}
             >
-              <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl">Global Presence</h2>
+              <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl">Global Presence</h2>
             </motion.div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto">

@@ -90,7 +90,7 @@ export default function HowItWorks() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#007cf4] text-xs font-bold tracking-[0.3em] uppercase mb-4 block">The Process</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white text-4xl md:text-5xl lg:text-6xl leading-tight">
+          <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-4xl md:text-5xl lg:text-6xl">
             How It <span style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(135deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}>Works</span>
           </h2>
         </motion.div>
@@ -151,7 +151,7 @@ export default function HowItWorks() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl mb-4 leading-tight group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors duration-300">
+                  <h3 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl mb-4 group-hover:text-[#007cf4] dark:group-hover:text-[#36c5f0] transition-colors duration-300">
                     {step.title}
                   </h3>
 

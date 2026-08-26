@@ -184,7 +184,7 @@ export default function IndustryOrbitSection({
             <span className="text-[#007cf4] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">
               {eyebrow}
             </span>
-            <h2 className="font-inter-tight font-black text-black dark:text-white text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
+            <h2 style={{ fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }} className="font-inter-tight text-3xl md:text-4xl lg:text-5xl mb-6">
               {title}{' '}
               <span style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(90deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}>
                 {highlight}.

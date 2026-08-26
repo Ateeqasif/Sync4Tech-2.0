@@ -137,8 +137,8 @@ export default function PageHero({ eyebrow, title, highlight, subtitle, breadcru
 
         {/* Title */}
         <motion.h1
-          className="font-inter-tight font-black leading-[1.0] tracking-tight mb-6 mx-auto"
-          style={{ fontSize: 'clamp(40px, 6vw, 88px)', maxWidth: '900px' }}
+          className="font-inter-tight mb-6 mx-auto"
+          style={{ fontSize: 'clamp(40px, 6vw, 88px)', maxWidth: '900px', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
