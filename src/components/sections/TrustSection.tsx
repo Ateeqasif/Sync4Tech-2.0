@@ -100,13 +100,13 @@ export default function TrustSection() {
         >
           <a
             href="/services"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-black/10 dark:border-white/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-all mr-3"
+            className="btn-secondary mr-3"
           >
             Explore Our Stack
           </a>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-semibold text-sm btn-glow hover:opacity-90 transition-opacity"
+            className="btn-primary"
             style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
           >
             Start a Project

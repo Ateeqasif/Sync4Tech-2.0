@@ -41,47 +41,27 @@ export default function FinalCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#007cf4] text-xs font-semibold tracking-widest uppercase mb-4 block">{t.finalCta.eyebrow}</span>
+          <span className="eyebrow">{t.finalCta.eyebrow}</span>
 
           <h2
-            className="font-inter-tight font-black leading-none tracking-tight mb-6 mx-auto"
-            style={{ fontSize: 'clamp(36px, 5.5vw, 68px)', color: 'var(--text-primary)', letterSpacing: '-0.04em', maxWidth: '820px' }}
+            className="font-inter-tight apple-headline mb-6 mx-auto"
+            style={{ fontSize: 'clamp(36px, 5.5vw, 64px)', maxWidth: '800px' }}
           >
             {t.finalCta.h2}
           </h2>
 
           <p
-            className="mx-auto mb-12 leading-relaxed"
-            style={{ fontSize: '19px', color: 'var(--text-secondary)', maxWidth: '500px' }}
+            className="apple-body-large mx-auto mb-10"
+            style={{ maxWidth: '480px' }}
           >
             {t.finalCta.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <motion.a
-              href="/contact"
-              className="inline-flex items-center gap-2 text-white px-8 py-3.5 rounded-full font-semibold text-[15px] transition-all duration-200 group btn-glow"
-              style={{ background: 'linear-gradient(135deg, #0062cc 0%, #007cf4 100%)' }}
-              whileHover={{ y: -1 }}
-              whileTap={{ scale: 0.98 }}
-            >
+            <motion.a href="/contact" className="btn-primary" whileTap={{ scale: 0.97 }}>
               {t.finalCta.cta1}
-              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
             </motion.a>
-            <motion.a
-              href="/case-studies"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] transition-all duration-200 border"
-              style={{
-                color: 'var(--text-primary)',
-                borderColor: 'var(--border-color)',
-                background: 'var(--glass-bg)',
-                backdropFilter: 'blur(12px)',
-              }}
-              whileHover={{ y: -1 }}
-              whileTap={{ scale: 0.98 }}
-            >
+            <motion.a href="/case-studies" className="btn-secondary" whileTap={{ scale: 0.97 }}>
               {t.finalCta.cta2}
             </motion.a>
           </div>

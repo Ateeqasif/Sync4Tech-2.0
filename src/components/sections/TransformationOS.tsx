@@ -64,12 +64,10 @@ export default function TransformationOS() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#007cf4] text-xs font-semibold tracking-widest uppercase mb-4 block">
-            What We Build
-          </span>
+          <span className="eyebrow">What We Build</span>
           <h2
-            className="font-inter-tight font-black leading-none tracking-tight"
-            style={{ fontSize: 'clamp(36px, 5vw, 60px)', color: 'var(--text-primary)', letterSpacing: '-0.03em' }}
+            className="font-inter-tight apple-headline"
+            style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}
           >
             The Transformation
             <br />

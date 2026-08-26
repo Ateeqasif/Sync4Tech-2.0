@@ -69,8 +69,8 @@ export default function WhySync4Tech() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Why Us</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight mb-4" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <span className="eyebrow">Why Us</span>
+          <h2 className="font-inter-tight apple-headline mb-4" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
             The Sync4Tech
             <br />
             <span className="gradient-text">Difference</span>
@@ -117,7 +117,7 @@ export default function WhySync4Tech() {
         >
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-semibold text-sm btn-glow hover:opacity-90 transition-opacity"
+            className="btn-primary"
             style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
           >
             Book a Free Strategy Session

@@ -32,7 +32,7 @@ export default function ExecutionGap() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#36c5f0] text-xs font-bold tracking-[0.25em] uppercase mb-4 block">{t.executionGap.eyebrow}</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white leading-[1.0] tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <h2 className="font-inter-tight apple-headline" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
             {t.executionGap.h2Line1}<br />
             <span style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(90deg,#007cf4,#36c5f0)', backgroundClip: 'text' }}>
               {t.executionGap.h2Line2}
@@ -184,7 +184,7 @@ export default function ExecutionGap() {
         >
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-sm btn-glow hover:opacity-90 transition-opacity"
+            className="btn-primary"
             style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
           >
             Close Your Execution Gap

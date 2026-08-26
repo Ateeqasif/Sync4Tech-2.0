@@ -85,8 +85,8 @@ export default function FAQ() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#36c5f0] text-sm font-semibold tracking-widest uppercase mb-4 block">FAQ</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <span className="eyebrow">FAQ</span>
+          <h2 className="font-inter-tight apple-headline" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
             Frequently Asked
             <br />
             <span className="gradient-text">Questions</span>
@@ -208,7 +208,7 @@ export default function FAQ() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-semibold text-sm btn-glow hover:opacity-90 transition-opacity"
+              className="btn-primary"
               style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
             >
               Talk to an Expert
@@ -216,7 +216,7 @@ export default function FAQ() {
             </a>
             <a
               href="/case-studies"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-black/10 dark:border-white/10 hover:border-[#007cf4]/40 hover:text-[#007cf4] dark:hover:text-[#36c5f0] transition-all"
+              className="btn-secondary"
             >
               See Our Work
             </a>

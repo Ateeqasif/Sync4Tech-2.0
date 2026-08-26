@@ -204,26 +204,16 @@ export default function Hero() {
             exit="exit"
             transition={{ duration: 0.5, ease }}
           >
-            {/* Category label — Apple-style eyebrow */}
-            <div className="flex items-center justify-center gap-2 mb-7">
-              <span
-                className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase"
-                style={{ color: 'var(--accent)' }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#007cf4] animate-pulse" />
-                {slide.badge}
-              </span>
-            </div>
-
-            {/* Headline — Apple display typography */}
+            {/* Headline — Apple SF Pro Display style */}
             <h1
-              className="font-inter-tight font-black mx-auto mb-7 display-headline"
+              className="font-inter-tight mx-auto mb-5"
               style={{
-                fontSize: 'clamp(48px, 8vw, 100px)',
-                maxWidth: '920px',
+                fontSize: 'clamp(56px, 9vw, 96px)',
+                maxWidth: '900px',
                 color: 'var(--text-primary)',
-                letterSpacing: '-0.04em',
-                lineHeight: 0.95,
+                fontWeight: 700,
+                letterSpacing: '-0.003em',
+                lineHeight: 1.05,
               }}
             >
               <span>
@@ -231,19 +221,19 @@ export default function Hero() {
                 {!line1.done && (
                   <motion.span
                     className="inline-block w-[3px] ml-[3px] rounded-full align-middle"
-                    style={{ height: '0.8em', background: '#007cf4', verticalAlign: 'middle' }}
+                    style={{ height: '0.8em', background: '#0071e3', verticalAlign: 'middle' }}
                     animate={{ opacity: [1, 0, 1] }}
                     transition={{ duration: 0.6, repeat: Infinity }}
                   />
                 )}
               </span>
               <br />
-              <span className="gradient-text-animated">
+              <span className="gradient-text">
                 {line2.displayed}
                 {line1.done && !line2.done && (
                   <motion.span
                     className="inline-block w-[3px] ml-[3px] rounded-full align-middle"
-                    style={{ height: '0.8em', background: '#36c5f0', verticalAlign: 'middle' }}
+                    style={{ height: '0.8em', background: '#0071e3', verticalAlign: 'middle' }}
                     animate={{ opacity: [1, 0, 1] }}
                     transition={{ duration: 0.6, repeat: Infinity }}
                   />
@@ -251,46 +241,43 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Subtitle — Apple body copy */}
+            {/* Subtitle — Apple large body, near-black, regular weight */}
             <p
-              className="mx-auto mb-10 leading-relaxed"
+              className="mx-auto mb-3"
               style={{
-                fontSize: 'clamp(17px, 2.2vw, 21px)',
-                maxWidth: '620px',
-                color: 'var(--text-secondary)',
+                fontSize: 'clamp(21px, 2.8vw, 28px)',
+                maxWidth: '600px',
+                color: 'var(--text-primary)',
+                fontWeight: 400,
                 letterSpacing: '-0.01em',
+                lineHeight: 1.45,
               }}
             >
-              {slide.subtitle}
+              {slide.subtitle.split('.')[0]}.
             </p>
 
-            {/* CTAs — Apple-style pill buttons */}
+            {/* Category caption — small gray, Apple style */}
+            <p
+              className="mx-auto mb-10"
+              style={{
+                fontSize: '17px',
+                maxWidth: '560px',
+                color: 'var(--text-secondary)',
+                fontWeight: 400,
+                letterSpacing: '-0.01em',
+                lineHeight: 1.53,
+              }}
+            >
+              {slide.badge}
+            </p>
+
+            {/* CTAs — Apple exact pill buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-              <a
-                href={slide.cta1.href}
-                className="inline-flex items-center gap-2 text-white px-8 py-3.5 rounded-full font-semibold text-[15px] btn-glow transition-all duration-200 group"
-                style={{ background: 'linear-gradient(135deg, #0062cc 0%, #007cf4 100%)', letterSpacing: '-0.01em' }}
-              >
+              <a href={slide.cta1.href} className="btn-primary">
                 {slide.cta1.label}
-                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-200">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
               </a>
-              <a
-                href={slide.cta2.href}
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] transition-all duration-200 group border"
-                style={{
-                  color: 'var(--accent)',
-                  borderColor: 'var(--border-accent)',
-                  background: 'var(--glass-bg)',
-                  backdropFilter: 'blur(12px)',
-                  letterSpacing: '-0.01em',
-                }}
-              >
+              <a href={slide.cta2.href} className="btn-secondary">
                 {slide.cta2.label}
-                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-0.5 transition-transform">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
               </a>
             </div>
           </motion.div>
