@@ -160,8 +160,8 @@ export default function CaseStudies() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#36c5f0] text-sm font-semibold tracking-widest uppercase mb-4 block">Case Studies</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <span className="eyebrow">Case Studies</span>
+          <h2 className="font-inter-tight apple-headline" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
             Real Results,
             <br />
             <span className="gradient-text">Real Impact</span>
