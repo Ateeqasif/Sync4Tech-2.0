@@ -85,7 +85,7 @@ export default function Insights() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="text-[#007cf4] text-sm font-semibold tracking-widest uppercase mb-4 block">Insights</span>
-          <h2 className="font-inter-tight font-black text-black dark:text-white leading-tight tracking-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
+          <h2 className="font-inter-tight" style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 700, letterSpacing: '-0.003em', lineHeight: 1.05, color: 'var(--text-primary)' }}>
             Ideas That Shape
             <br />
             <span className="gradient-text">Modern Businesses</span>
