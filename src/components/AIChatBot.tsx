@@ -3,7 +3,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const GREETING = "Hi! I'm Sync, your AI consultant from Sync4Tech. Ask me anything about our services, or tell me what challenge you're facing.";
+const GREETINGS = [
+  "Hey there! I'm Mayai from Sync4Tech. What's on your mind — are you looking to automate something, make sense of your data, or something else?",
+  "Hi! Mayai here, part of the Sync4Tech team. Happy to chat — what kind of challenge are you working through?",
+  "Hey, good to have you here. I'm Mayai from Sync4Tech. Tell me a bit about what you're trying to solve and I'll point you in the right direction.",
+  "Hello! I'm Mayai — I work with the team at Sync4Tech. What brings you here today?",
+  "Hi there! Mayai from Sync4Tech. Are you exploring automation, data, AI... or not quite sure yet? Either way, let's figure it out together.",
+]
 
 const BrainIcon = ({ color = 'white', size = 24 }: { color?: string; size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
@@ -48,6 +54,7 @@ export default function AIChatBot() {
   const [displayedGreeting, setDisplayedGreeting] = useState('');
   const [greetingComplete, setGreetingComplete] = useState(false);
   const greetingStarted = useRef(false);
+  const greeting = useRef(GREETINGS[Math.floor(Math.random() * GREETINGS.length)]);
   const inputRef = useRef<HTMLInputElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -63,10 +70,11 @@ export default function AIChatBot() {
         setTyping(false);
         setGreetingShown(true);
         let i = 0;
+        const g = greeting.current;
         const iv = setInterval(() => {
           i++;
-          setDisplayedGreeting(GREETING.slice(0, i));
-          if (i >= GREETING.length) {
+          setDisplayedGreeting(g.slice(0, i));
+          if (i >= g.length) {
             clearInterval(iv);
             setGreetingComplete(true);
             setTimeout(() => inputRef.current?.focus(), 100);
@@ -213,12 +221,12 @@ export default function AIChatBot() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-white font-bold text-sm flex items-center gap-1.5">
-                  Sync — AI Consultant
+                  Mayai — Sync4Tech
                   <span className="text-[#36c5f0] flex items-center" style={{ fontSize: '9px' }}>
                     <SparkleIcon />
                   </span>
                 </div>
-                <div className="text-white/70 text-xs">Powered by Claude Sonnet · Online</div>
+                <div className="text-white/70 text-xs">Sync4Tech Consultant · Online</div>
               </div>
               <button onClick={() => setOpen(false)} className="text-white text-xl leading-none hover:text-white/70 transition-colors">×</button>
             </div>
@@ -308,7 +316,7 @@ export default function AIChatBot() {
         whileHover={{ scale: 1.1 }}
         className="relative w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
         style={{ background: 'linear-gradient(135deg, #033a9d, #007cf4)' }}
-        aria-label="Open AI chat"
+        aria-label="Chat with Mayai"
       >
         {!open && (
           <motion.span
