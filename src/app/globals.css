@@ -414,3 +414,8 @@ body {
   transition-duration: 0.001ms !important;
 }
 .a11y-pause canvas { display: none !important; }
+
+/* Hide scrollbar on carousel tracks */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
