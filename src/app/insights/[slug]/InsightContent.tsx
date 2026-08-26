@@ -223,10 +223,10 @@ export default function InsightContent({ a, related }: Props) {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="section-container max-w-2xl mx-auto text-center">
-          <h3 className="font-inter-tight text-black dark:text-white text-2xl mb-3" style={{ fontWeight: 700 }}>Ready to automate your operations?</h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">Tell us your biggest operational challenge and we will show you exactly how to solve it.</p>
+          <h3 className="font-inter-tight text-black dark:text-white text-2xl mb-3" style={{ fontWeight: 700 }}>Want us to consult on your business?</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">Tell us your biggest challenge — whether it is automation, data, AI, or digital transformation — and we will show you exactly how to solve it. Free strategy session, no commitment required.</p>
           <Link href="/contact" className="inline-flex items-center gap-2 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all hover:opacity-90" style={{ background: 'linear-gradient(135deg,#033a9d,#007cf4)' }}>
-            Get in touch →
+            Book a Free Consultation →
           </Link>
         </div>
       </motion.section>
