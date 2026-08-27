@@ -168,8 +168,8 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* Overlay — keeps text readable */}
-        <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.92)' }} />
-        <div className="absolute inset-0 hidden dark:block" style={{ background: 'rgba(0,0,0,0.87)' }} />
+        <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.70)' }} />
+        <div className="absolute inset-0 hidden dark:block" style={{ background: 'rgba(0,0,0,0.70)' }} />
 
         {/* Blue ambient — top center */}
         <div
