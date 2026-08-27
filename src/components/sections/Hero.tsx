@@ -48,6 +48,7 @@ const slides = [
     subtitle: 'Stop losing time to manual processes. Sync4Tech automates CRM workflows, connects business systems, and eliminates bottlenecks so your team can focus on growing the business.',
     cta1: { label: 'Book a Strategy Call', href: '/contact' },
     cta2: { label: 'Explore Our Solutions', href: '/solutions' },
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=90&auto=format&fit=crop',
   },
   {
     badge: 'Data Intelligence',
@@ -57,6 +58,7 @@ const slides = [
     subtitle: 'Disconnected data costs real decisions. Unify every source, build reliable reporting pipelines, and give leadership one trusted view of your business performance in real time.',
     cta1: { label: 'Discuss Your Data Challenges', href: '/contact' },
     cta2: { label: 'View Our Capabilities', href: '/solutions' },
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=90&auto=format&fit=crop',
   },
   {
     badge: 'Consulting and Strategy',
@@ -66,6 +68,7 @@ const slides = [
     subtitle: 'Turn transformation goals into a clear roadmap. We define priorities, architecture, KPIs, and governance before a single line of code is written or budget spent.',
     cta1: { label: 'Request an Assessment', href: '/contact' },
     cta2: { label: 'View Our Capabilities', href: '/solutions' },
+    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1920&q=90&auto=format&fit=crop',
   },
 ]
 
@@ -138,19 +141,36 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black"
       id="home"
     >
-      {/* Background image — modern tech workspace */}
+      {/* Background — crossfades between slide images */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=90&auto=format&fit=crop"
-          alt=""
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          priority
-        />
-        {/* Overlay — strong enough to keep all text fully readable */}
-        <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.93)' }} />
-        <div className="absolute inset-0 hidden dark:block" style={{ background: 'rgba(0,0,0,0.88)' }} />
+        <AnimatePresence initial={false}>
+          {slides.map((s, i) =>
+            i === current ? (
+              <motion.div
+                key={i}
+                className="absolute inset-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2, ease: 'easeInOut' }}
+              >
+                <Image
+                  src={s.image}
+                  alt=""
+                  fill
+                  className="object-cover object-center"
+                  sizes="100vw"
+                  priority={i === 0}
+                />
+              </motion.div>
+            ) : null
+          )}
+        </AnimatePresence>
+
+        {/* Overlay — keeps text readable */}
+        <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.92)' }} />
+        <div className="absolute inset-0 hidden dark:block" style={{ background: 'rgba(0,0,0,0.87)' }} />
+
         {/* Blue ambient — top center */}
         <div
           className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[700px]"
