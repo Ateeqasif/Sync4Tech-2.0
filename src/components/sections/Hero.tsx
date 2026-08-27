@@ -143,16 +143,17 @@ export default function Hero() {
     >
       {/* Background — crossfades between slide images */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <AnimatePresence initial={false}>
+        <AnimatePresence initial={false} custom={direction}>
           {slides.map((s, i) =>
             i === current ? (
               <motion.div
                 key={i}
+                custom={direction}
                 className="absolute inset-0"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2, ease: 'easeInOut' }}
+                initial={{ x: direction > 0 ? '100%' : '-100%', opacity: 0.6 }}
+                animate={{ x: '0%', opacity: 1 }}
+                exit={{ x: direction > 0 ? '-100%' : '100%', opacity: 0.6 }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               >
                 <Image
                   src={s.image}
