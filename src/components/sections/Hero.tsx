@@ -148,8 +148,9 @@ export default function Hero() {
           sizes="100vw"
           priority
         />
-        {/* Light mode: near-white wash so text stays crisp */}
-        <div className="absolute inset-0 bg-white/88 dark:bg-black/80" />
+        {/* Overlay — strong enough to keep all text fully readable */}
+        <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.93)' }} />
+        <div className="absolute inset-0 hidden dark:block" style={{ background: 'rgba(0,0,0,0.88)' }} />
         {/* Blue ambient — top center */}
         <div
           className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[700px]"
