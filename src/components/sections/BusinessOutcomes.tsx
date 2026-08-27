@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 function CountUp({ end, suffix = '', prefix = '' }: { end: number; suffix?: string; prefix?: string }) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -40,8 +41,18 @@ const outcomes = [
 
 export default function BusinessOutcomes() {
   return (
-    <section className="py-section bg-white dark:bg-black" id="outcomes">
-      <div className="section-container">
+    <section className="py-section relative overflow-hidden bg-white dark:bg-black" id="outcomes">
+      {/* Subtle background — data/analytics imagery */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Image
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=85&auto=format&fit=crop"
+          alt=""
+          fill
+          className="object-cover object-center opacity-[0.04] dark:opacity-[0.07]"
+          sizes="100vw"
+        />
+      </div>
+      <div className="section-container relative z-10">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-14"
           initial={{ opacity: 0, y: 24 }}

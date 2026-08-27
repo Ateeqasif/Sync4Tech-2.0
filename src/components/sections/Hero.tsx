@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
+import Image from 'next/image'
 
 function CountUp({ end, suffix = '', duration = 2000 }: { end: number; suffix?: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -137,17 +138,27 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black"
       id="home"
     >
-      {/* Apple-style ambient background — subtle, clean */}
+      {/* Background image — modern tech workspace */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Primary blue ambient — top center */}
+        <Image
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=90&auto=format&fit=crop"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+        />
+        {/* Light mode: near-white wash so text stays crisp */}
+        <div className="absolute inset-0 bg-white/88 dark:bg-black/80" />
+        {/* Blue ambient — top center */}
         <div
           className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[700px]"
-          style={{ background: 'radial-gradient(ellipse at center, rgba(0,124,244,0.12) 0%, transparent 70%)', filter: 'blur(40px)' }}
+          style={{ background: 'radial-gradient(ellipse at center, rgba(0,124,244,0.14) 0%, transparent 70%)', filter: 'blur(40px)' }}
         />
-        {/* Secondary subtle — bottom right */}
+        {/* Teal ambient — bottom right */}
         <div
           className="absolute bottom-0 right-[-10%] w-[500px] h-[400px]"
-          style={{ background: 'radial-gradient(ellipse at center, rgba(54,197,240,0.07) 0%, transparent 70%)', filter: 'blur(60px)' }}
+          style={{ background: 'radial-gradient(ellipse at center, rgba(54,197,240,0.09) 0%, transparent 70%)', filter: 'blur(60px)' }}
         />
         {/* Very subtle dot grid — Apple product page style */}
         <div
