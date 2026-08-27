@@ -58,7 +58,7 @@ const slides = [
     subtitle: 'Disconnected data costs real decisions. Unify every source, build reliable reporting pipelines, and give leadership one trusted view of your business performance in real time.',
     cta1: { label: 'Discuss Your Data Challenges', href: '/contact' },
     cta2: { label: 'View Our Capabilities', href: '/solutions' },
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=90&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=90&auto=format&fit=crop',
   },
   {
     badge: 'Consulting and Strategy',
