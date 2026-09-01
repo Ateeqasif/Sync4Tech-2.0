@@ -7,6 +7,18 @@ import Link from 'next/link'
 
 const articles = [
   {
+    slug: 'hyperautomation-next-evolution',
+    tag: 'NEW',
+    tagColor: '#007cf4',
+    title: 'Hyperautomation: The Next Evolution Beyond RPA',
+    excerpt: 'AI, process mining, and intelligent orchestration combined. The results are dramatically better than RPA alone.',
+    readTime: '9 min read',
+    date: 'Sep 1, 2026',
+    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Hyperautomation robotic process automation',
+    dark: false,
+  },
+  {
     slug: 'ai-automation-revenue-growth-2026',
     tag: 'NEW',
     tagColor: '#007cf4',
