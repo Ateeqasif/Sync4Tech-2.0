@@ -35,13 +35,13 @@ export default function Home() {
         <Hero />
         <ClientLogoScroller />
         <TransformationOS />
+        <InfinityLoop />
         <BusinessOutcomes />
         <ExecutionGap />
         <Industries />
         <IntelligentBusiness />
         <TransformationJourney />
         <CaseStudies />
-        <InfinityLoop />
         <WhySync4Tech />
         <TrustSection />
         <Insights />
