@@ -36,10 +36,10 @@ export default function Home() {
         <ClientLogoScroller />
         <TransformationOS />
         <InfinityLoop />
+        <IntelligentBusiness />
         <BusinessOutcomes />
         <ExecutionGap />
         <Industries />
-        <IntelligentBusiness />
         <TransformationJourney />
         <CaseStudies />
         <WhySync4Tech />
