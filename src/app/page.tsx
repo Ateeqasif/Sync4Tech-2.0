@@ -3,7 +3,6 @@ import ExecutionGap from '@/components/sections/ExecutionGap'
 import TransformationOS from '@/components/sections/TransformationOS'
 import BusinessOutcomes from '@/components/sections/BusinessOutcomes'
 import Industries from '@/components/sections/Industries'
-import LiveDashboard from '@/components/sections/LiveDashboard'
 import TransformationJourney from '@/components/sections/TransformationJourney'
 import CaseStudies from '@/components/sections/CaseStudies'
 import InfinityLoop from '@/components/sections/InfinityLoop'
@@ -37,7 +36,6 @@ export default function Home() {
         <ClientLogoScroller />
         <TransformationOS />
         <BusinessOutcomes />
-        <LiveDashboard />
         <ExecutionGap />
         <Industries />
         <IntelligentBusiness />

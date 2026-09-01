@@ -4,6 +4,7 @@ import FinalCTA from '@/components/sections/FinalCTA'
 import InsightsFilter from '@/components/pages/InsightsFilter'
 import TechBriefing from '@/components/pages/TechBriefing'
 import NewsletterSubscribe from '@/components/pages/NewsletterSubscribe'
+import LiveDashboard from '@/components/sections/LiveDashboard'
 
 export const metadata: Metadata = {
   title: 'AI & Automation Insights | Sync4Tech Blog',
@@ -28,6 +29,7 @@ export default function InsightsPage() {
       />
       <TechBriefing />
       <InsightsFilter />
+      <LiveDashboard />
       <NewsletterSubscribe />
       <FinalCTA />
     </main>
