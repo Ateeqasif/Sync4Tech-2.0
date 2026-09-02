@@ -131,9 +131,9 @@ export default function Hero() {
   const line2 = useTypewriter(line1.done ? slide.h1Line2 : '', 44)
 
   const variants = {
-    enter: (d: number) => ({ opacity: 0, y: d > 0 ? 24 : -24 }),
-    center: { opacity: 1, y: 0 },
-    exit: (d: number) => ({ opacity: 0, y: d > 0 ? -24 : 24 }),
+    enter: (d: number) => ({ opacity: 0, x: d > 0 ? 40 : -40 }),
+    center: { opacity: 1, x: 0 },
+    exit: (d: number) => ({ opacity: 0, x: d > 0 ? -40 : 40 }),
   }
 
   return (
@@ -141,31 +141,32 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black"
       id="home"
     >
-      {/* Background — crossfades between slide images */}
+      {/* Background — slides between images */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
-          {slides.map((s, i) =>
-            i === current ? (
-              <motion.div
-                key={i}
-                custom={direction}
-                className="absolute inset-0"
-                initial={{ x: direction > 0 ? '100%' : '-100%', opacity: 0.6 }}
-                animate={{ x: '0%', opacity: 1 }}
-                exit={{ x: direction > 0 ? '-100%' : '100%', opacity: 0.6 }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <Image
-                  src={s.image}
-                  alt=""
-                  fill
-                  className="object-cover object-center"
-                  sizes="100vw"
-                  priority={i === 0}
-                />
-              </motion.div>
-            ) : null
-          )}
+          <motion.div
+            key={current}
+            custom={direction}
+            className="absolute inset-0"
+            variants={{
+              enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%' }),
+              center: { x: '0%' },
+              exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%' }),
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Image
+              src={slides[current].image}
+              alt=""
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+              priority={current === 0}
+            />
+          </motion.div>
         </AnimatePresence>
 
         {/* Overlay — keeps text readable */}
