@@ -6,7 +6,7 @@ export const en = {
     insights: "Insights",
     about: "About",
     careers: "Careers",
-    cta: "Book a Strategy Call"
+    cta: "Book a Free Consultation"
   },
   hero: {
     badge: "AI-Powered Business Transformation",

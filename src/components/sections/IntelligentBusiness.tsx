@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 const nodes = [
   { label: 'Sales', angle: 0 },
@@ -159,6 +160,32 @@ export default function IntelligentBusiness() {
                 </motion.div>
               ))}
             </div>
+
+            {/* CTA */}
+            <motion.div
+              className="mt-10 flex flex-wrap gap-4"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 hover:scale-[1.03]"
+                style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+              >
+                Book a Free Consultation
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border border-[#007cf4]/30 text-[#007cf4] hover:border-[#007cf4] hover:bg-[#007cf4]/5 transition-all duration-300"
+              >
+                Explore Our Services
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>
