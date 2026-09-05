@@ -61,11 +61,11 @@ const slides = [
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=90&auto=format&fit=crop',
   },
   {
-    badge: 'Consulting and Strategy',
+    badge: 'Consulting & Strategy',
     accentColor: '#007cf4',
     h1Line1: 'Strategy First,',
     h1Line2: 'Results Always',
-    subtitle: 'Turn transformation goals into a clear roadmap. We define priorities, architecture, KPIs, and governance before a single line of code is written or budget spent.',
+    subtitle: 'Strategy before execution, results every time. We define priorities, architecture and governance before a single line of code is written.',
     cta1: { label: 'Request an Assessment', href: '/contact' },
     cta2: { label: 'View Our Capabilities', href: '/solutions' },
     image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1920&q=90&auto=format&fit=crop',
