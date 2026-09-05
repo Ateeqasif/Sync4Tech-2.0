@@ -138,7 +138,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black"
+      className="relative min-h-screen flex flex-col overflow-hidden bg-white dark:bg-black"
       id="home"
     >
       {/* Background — slides between images */}
@@ -193,7 +193,8 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-10 section-container w-full text-center pt-40 pb-32">
+      {/* Main content — flex-1 centers it, metrics bar pinned below */}
+      <div className="relative z-10 section-container w-full flex flex-col flex-1 text-center pt-40">
 
         {/* Social proof pill — Apple vibrancy glass */}
         <motion.div
@@ -318,7 +319,7 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* Slide indicator dots */}
-        <div className="flex items-center justify-center gap-2 mb-20 mt-2">
+        <div className="flex items-center justify-center gap-2 mt-6 mb-8">
           {slides.map((s, i) => (
             <button
               key={i}
@@ -339,9 +340,9 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Metrics bar — Apple frosted glass shelf */}
+        {/* Metrics bar — pinned to bottom of flex container */}
         <motion.div
-          className="apple-glass rounded-2xl overflow-hidden max-w-2xl mx-auto"
+          className="apple-glass rounded-2xl overflow-hidden max-w-2xl mx-auto mt-auto mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 1.1, ease }}
@@ -372,7 +373,7 @@ export default function Hero() {
 
         {/* Scroll cue */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+          className="flex flex-col items-center gap-1.5 pb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5 }}
