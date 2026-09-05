@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import DetailFAQ from '@/components/pages/DetailFAQ'
 import ToolPill from '@/components/ToolPill'
@@ -21,6 +22,7 @@ interface IndustryCaseStudy {
   slug: string
   snippet: string
   outcome: string
+  image?: string
 }
 
 interface IndustryFAQItem {
@@ -355,20 +357,46 @@ export default function IndustryContent({ ind, slug, orbitConfig }: Props) {
           <div className="max-w-3xl mx-auto">
             <motion.div
               className="relative overflow-hidden rounded-2xl shadow-xl"
-              style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+              style={{ minHeight: '280px' }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: 0.15, ease }}
             >
-              <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-              <svg className="absolute top-4 right-6 opacity-10" width="80" height="64" viewBox="0 0 40 32" fill="none"><path d="M0 32V20C0 8.954 6.716 2.238 20.148 0L22 4.148C15.716 5.48 12.334 9.096 11.852 15H18V32H0zm22 0V20C22 8.954 28.716 2.238 42.148 0L44 4.148C37.716 5.48 34.334 9.096 33.852 15H40V32H22z" fill="white"/></svg>
-              <div className="relative p-8 md:p-10">
-                <span className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">{ind.caseStudy.snippet}</span>
-                <p className="text-white font-inter-tight font-bold text-lg md:text-xl leading-relaxed mb-6">{ind.caseStudy.outcome}</p>
-                <Link href={`/case-studies/${ind.caseStudy.slug}`} className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 text-[#007cf4] font-semibold text-sm px-5 py-2.5 rounded-full hover:shadow-lg transition-all hover:gap-3">
-                  Read full case study →
-                </Link>
+              <div className="grid md:grid-cols-5 h-full min-h-[280px]">
+                {/* Left: text */}
+                <div
+                  className="md:col-span-3 relative flex flex-col justify-between p-8 md:p-10"
+                  style={{ background: 'linear-gradient(135deg, #033a9d 0%, #007cf4 100%)' }}
+                >
+                  {/* grid overlay */}
+                  <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+                  <svg className="absolute top-4 right-6 opacity-10" width="80" height="64" viewBox="0 0 40 32" fill="none"><path d="M0 32V20C0 8.954 6.716 2.238 20.148 0L22 4.148C15.716 5.48 12.334 9.096 11.852 15H18V32H0zm22 0V20C22 8.954 28.716 2.238 42.148 0L44 4.148C37.716 5.48 34.334 9.096 33.852 15H40V32H22z" fill="white"/></svg>
+                  <div className="relative">
+                    <span className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">{ind.caseStudy.snippet}</span>
+                    <p className="text-white font-inter-tight font-bold text-lg md:text-xl leading-relaxed mb-6">{ind.caseStudy.outcome}</p>
+                    <Link href={`/case-studies/${ind.caseStudy.slug}`} className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 text-[#007cf4] font-semibold text-sm px-5 py-2.5 rounded-full hover:shadow-lg transition-all hover:gap-3">
+                      Read full case study &rarr;
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Right: industry image */}
+                {ind.caseStudy.image ? (
+                  <div className="md:col-span-2 relative hidden md:block">
+                    <Image
+                      src={ind.caseStudy.image}
+                      alt={ind.caseStudy.snippet}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 0px, 40vw"
+                    />
+                    {/* left-to-right fade so it blends into the blue panel */}
+                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #007cf4 0%, transparent 40%)' }} />
+                  </div>
+                ) : (
+                  <div className="md:col-span-2 hidden md:block" style={{ background: 'linear-gradient(135deg, #007cf4 0%, #36c5f0 100%)' }} />
+                )}
               </div>
             </motion.div>
           </div>

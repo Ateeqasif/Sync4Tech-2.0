@@ -52,6 +52,7 @@ const industries = {
       snippet: 'Healthcare Provider Network, 12 sites',
       outcome:
         'Automated patient intake across 12 clinics, reducing admin time by 74% and errors to near zero. Staff now spend their time with patients, not paperwork.',
+      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['HubSpot', 'Zapier', 'custom EMR integrations', 'Power BI', 'Make.com'],
     faq: [
@@ -121,6 +122,7 @@ const industries = {
       snippet: 'Financial Services Firm',
       outcome:
         'Replaced 3-day manual risk reporting with real-time dashboards, achieving 18x faster reporting and 100% accuracy for month-end compliance submissions.',
+      image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['Snowflake', 'dbt', 'Salesforce', 'Power BI', 'Python', 'Fivetran'],
     faq: [
@@ -190,6 +192,7 @@ const industries = {
       snippet: 'US Manufacturing Company',
       outcome:
         'Deployed IoT-connected predictive maintenance across a US production facility, eliminating unplanned shutdowns entirely and delivering a $2.1M annual saving with a 6-month payback period.',
+      image: 'https://images.unsplash.com/photo-1565793175034-2d403db41b82?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['AWS IoT', 'Python', 'Snowflake', 'Power BI', 'Make.com', 'scikit-learn'],
     faq: [
@@ -259,6 +262,7 @@ const industries = {
       snippet: 'E-Commerce Retailer',
       outcome:
         'Deployed AI demand forecasting and automated customer journey workflows for a retailer, cutting stockouts by 89% and unlocking £340K in annual savings within the first year.',
+      image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['Shopify', 'HubSpot', 'Klaviyo', 'Snowflake', 'Make.com', 'OpenAI'],
     faq: [
@@ -328,6 +332,7 @@ const industries = {
       snippet: 'Real Estate Agency',
       outcome:
         'Automated the full lead nurture cycle for an estate agency from portal lead capture through to viewing booking and follow-up tripling conversion rates and freeing agents for client-facing work.',
+      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['GoHighLevel', 'HubSpot', 'Zapier', 'Make.com', 'Monday.com', 'Twilio'],
     faq: [
@@ -397,6 +402,7 @@ const industries = {
       snippet: 'Logistics Provider',
       outcome:
         'Deployed AI route optimisation and automated dispatch for a logistics provider, cutting fuel costs by 31% and achieving 99.2% on-time delivery with fuel savings alone covering the project cost in the first quarter.',
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['Google Maps API', 'AWS', 'n8n', 'Twilio', 'Monday.com', 'Python'],
     faq: [
@@ -466,6 +472,7 @@ const industries = {
       snippet: 'Educational Institution',
       outcome:
         'Automated the full admissions workflow for an institution, cutting the admissions cycle from 3 weeks to 3 days and freeing administrative staff for learner support activities.',
+      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['Salesforce', 'HubSpot', 'Zapier', 'Power BI', 'Monday.com', 'Notion'],
     faq: [
@@ -535,6 +542,7 @@ const industries = {
       snippet: 'Law Firm',
       outcome:
         'Deployed AI document assembly and automated billing workflows for a law firm, reducing non-billable hours by 60% and compressing the billing cycle from 14 days to 48 hours.',
+      image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['Clio', 'HubSpot', 'Zapier', 'DocuSign', 'Make.com', 'OpenAI'],
     faq: [
@@ -586,6 +594,7 @@ const industries = {
       slug: 'saas-onboarding-automation',
       snippet: 'B2B SaaS Platform',
       outcome: 'Automated the full customer onboarding journey and deployed churn prediction models, reducing churn by 60% and cutting time-to-value from 3 weeks to under 5 days.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['HubSpot', 'Segment', 'Snowflake', 'OpenAI', 'n8n', 'Intercom'],
     faq: [
@@ -625,6 +634,7 @@ const industries = {
       slug: 'professional-services-automation',
       snippet: 'Management Consultancy',
       outcome: 'Automated project reporting and client onboarding workflows for a consultancy, reducing non-billable admin by 45% and recovering over £200K in previously lost billable hours annually.',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['Monday.com', 'HubSpot', 'Zapier', 'Harvest', 'DocuSign', 'Power BI'],
     faq: [
@@ -664,6 +674,7 @@ const industries = {
       slug: 'hospitality-revenue-automation',
       snippet: 'Boutique Hotel Group',
       outcome: 'Deployed automated revenue management and guest communication workflows for a hotel group, increasing RevPAR by 28% and achieving a 4.8-star average rating through consistent, personalised guest experiences.',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['Mews', 'HubSpot', 'Zapier', 'Twilio', 'OpenAI', 'Power BI'],
     faq: [
@@ -703,6 +714,7 @@ const industries = {
       slug: 'nonprofit-impact-automation',
       snippet: 'Non-Profit Organisation',
       outcome: 'Automated grant reporting and donor stewardship workflows for a non-profit, cutting quarterly reporting time by 70% and enabling the team to manage 3x more donor relationships with the same headcount.',
+      image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=900&q=80&auto=format&fit=crop',
     },
     tools: ['Salesforce Nonprofit', 'HubSpot', 'Zapier', 'Power BI', 'Airtable', 'Make.com'],
     faq: [
